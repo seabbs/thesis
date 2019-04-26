@@ -2,9 +2,8 @@
 
 
 [![badge](https://img.shields.io/badge/Development-Environment-lightblue.svg)](https://mybinder.org/v2/gh/seabbs/thesis/master?urlpath=rstudio)
-[![Documentation](https://img.shields.io/badge/Website-lightgrey.svg?style=flat)](https://www.samabbott.co.uk/thesis)
-[![DOI](https://zenodo.org/badge/173767331.svg)](https://zenodo.org/badge/latestdoi/173767331)
-
+[![Documentation](https://img.shields.io/badge/Website-click-here!-lightgrey.svg?style=flat)](https://www.samabbott.co.uk/thesis)
+[![DOI](https://zenodo.org/badge/65387003.svg)](https://zenodo.org/badge/latestdoi/65387003)
 
 [Sam Abbott](https://www.samabbott.co.uk)
 Supervised by: Hannah Christensen, and Ellen Brooks-Pollock
