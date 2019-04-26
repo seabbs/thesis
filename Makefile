@@ -18,6 +18,6 @@ thesis:
 #Commit updates
 .PHONY: git_commit
 git_commit:
-		git add --all
-		git commit -m "$(message)"
-		git push
+     git add --all
+     git commit -m "$(message)"
+     git push
