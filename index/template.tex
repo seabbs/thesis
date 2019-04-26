@@ -143,6 +143,14 @@ $dedication$
 $acknowledgements$
 }
 
+\Declaration{
+$declaration$
+}
+
+\Declaration{
+$declaration$
+}
+
 \Preface{
 $preface$
 }
@@ -190,6 +198,18 @@ $endfor$
     \end{acknowledgements}
   $endif$
 
+  $if(declaration)$
+    \begin{declaration}
+      $declaration$
+    \end{declaration}
+  $endif$
+  
+    $if(contribution)$
+    \begin{contribution}
+      $contribution$
+    \end{contributionn}
+  $endif$
+  
   $if(toc)$
     \hypersetup{linkcolor=$if(toccolor)$$toccolor$$else$black$endif$}
     \setcounter{tocdepth}{$toc-depth$}

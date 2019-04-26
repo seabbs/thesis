@@ -281,6 +281,26 @@
   \fontsize{12}{14}\selectfont
 }{\clearpage \if@restonecol\twocolumn\fi}%
 
+\newenvironment{declaration}{%
+  \if@twocolumn
+    \@restonecoltrue\onecolumn
+  \else
+    \@restonecolfalse
+  \fi
+  \chapter*{Declaration}
+  \fontsize{12}{14}\selectfont
+}{\clearpage \if@restonecol\twocolumn\fi}%
+
+\newenvironment{contribution}{%
+  \if@twocolumn
+    \@restonecoltrue\onecolumn
+  \else
+    \@restonecolfalse
+  \fi
+  \chapter*{Contributiorship statements}
+  \fontsize{12}{14}\selectfont
+}{\clearpage \if@restonecol\twocolumn\fi}%
+
 
 \ifx\@pdfoutput\@undefined
   \newcommand{\RTpercent}{\@percentchar\space}
@@ -342,6 +362,8 @@
 %\newcommand{\Keywords}[1]{\def\@Keywords{#1}}
 %\newcommand{\Plainkeywords}[1]{\def\@Plainkeywords{#1}}
 \newcommand{\Acknowledgements}[1]{\def\@Acknowledgements{#1}}
+\newcommand{\Declaration}[1]{\def\@Declaration{#1}}
+\newcommand{\Contributions}[1]{\def\@Contributions{#1}}
 \newcommand{\Dedication}[1]{\def\@Dedication{#1}}
 \newcommand{\Preface}[1]{\def\@Preface{#1}}
 % End of CII add
