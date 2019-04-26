@@ -52,6 +52,11 @@ Links to external chapter resources are given below.
 
 All links for Chapter 8 also apply to Chapters 9 and 10 as well.
 
+
+## Citing
+
+Please cite the individual chapter papers/resources as appropriate if used in your work.
+
 ## Reproducibility
 
 ### Repository structure
