@@ -21,7 +21,8 @@ Imports: tidyverse,
   ModelTBBCGEngland,
   bookdown,
   thesisdown,
-  wordcountaddin
+  wordcountaddin,
+  tinytex
 Remotes: seabbs/prettypublisher,
     seabbs/tbinenglanddataclean,
     seabbs/getTBinR,

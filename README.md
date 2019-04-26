@@ -90,6 +90,7 @@ git clone https://github.com/seabbs/thesis.git
 ``` r 
 #install.packages("packrat")
 packrat::restore()
+# If latex is not installed: tinytex::install_tinytex()
 ```
 
 - Build the thesis using `make`. Alternatively see the `index` folder for individual chapters.

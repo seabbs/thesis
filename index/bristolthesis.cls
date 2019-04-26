@@ -331,23 +331,6 @@
   \end{flushright}
   \end{titlepage}
 
-%% Approved for the division page
-  \cleardoublepage
-  {\fontsize{12}{14}
-  \setbox0=\hbox{Approved for the \@approvedforthe}
-  \thispagestyle{empty}
-  \null\vfil    % just below center of page
-  \par\vskip 6cm  % below center, not center
-  \centerline{\copy0} % approved
-  \centerline{(\@department)} %major
-  \vskip 1cm    %space to sign
-  \centerline{\makebox[\wd0][c]{\hrulefill}
-  \if@altadvisor \makebox[.5in]{} \makebox[\wd0][c]{\hrulefill} \fi}
-  \centerline{\makebox[\wd0][c]{\@advisor}
-  \if@altadvisor \makebox[.5in]{} \makebox[\wd0][c]{\@altadvisor} \fi}
-  \par\vfil\null}
-  \cleardoublepage
-  }
 }
 
 % From JSS
