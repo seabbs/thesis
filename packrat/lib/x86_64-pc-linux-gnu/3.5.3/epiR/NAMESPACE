@@ -1,0 +1,17 @@
+# Export all names
+exportPattern(".")
+
+S3method(print, epi.2by2)
+S3method(summary, epi.2by2)
+S3method(print, epi.tests)
+S3method(summary, epi.tests)
+S3method(print, epi.occc)
+S3method(summary, epi.occc)
+
+# Import all packages listed as Imports or Depends
+import(survival)
+importFrom("BiasedUrn", "dFNCHypergeo")
+importFrom("graphics", "hist")
+importFrom("methods", "slot")
+importFrom("stats", "anova", "aov", "addmargins", "complete.cases", "cor", "cov", "fisher.test", "mantelhaen.test", "model.matrix", "pbeta", "pbinom", "pchisq", "phyper", "pnorm", "pt", "qbeta", "qbinom", "qchisq", "qf", "qgamma", "qnorm", "qpois", "qt", "quantile", "rpois", "sd", "uniroot", "var", "vcov")
+importFrom("utils", "packageDescription", "write.table")

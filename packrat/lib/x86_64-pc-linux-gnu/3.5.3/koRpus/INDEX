@@ -1,0 +1,104 @@
+ARI                     Readability: Automated Readability Index (ARI)
+C.ld                    Lexical diversity: Herdan's C
+CTTR                    Lexical diversity: Carroll's corrected TTR
+                        (CTTR)
+DRP                     Readability: Degrees of Reading Power (DRP)
+ELF                     Readability: Fang's Easy Listening Formula
+                        (ELF)
+FOG                     Readability: Gunning FOG Index
+FORCAST                 Readability: FORCAST Index
+HDD                     Lexical diversity: HD-D (vocd-d)
+K.ld                    Lexical diversity: Yule's K
+LIX                     Readability: Bj\"ornsson's L\"asbarhetsindex
+                        (LIX)
+MATTR                   Lexical diversity: Moving-Average Type-Token
+                        Ratio (MATTR)
+MSTTR                   Lexical diversity: Mean Segmental Type-Token
+                        Ratio (MSTTR)
+MTLD                    Lexical diversity: Measure of Textual Lexical
+                        Diversity (MTLD)
+R.ld                    Lexical diversity: Guiraud's R
+RIX                     Readability: Anderson's Readability Index (RIX)
+S.ld                    Lexical diversity: Summer's S
+SMOG                    Readability: Simple Measure of Gobbledygook
+                        (SMOG)
+TRI                     Readability: Kuntzsch's Text-Redundanz-Index
+TTR                     Lexical diversity: Type-Token Ratio
+U.ld                    Lexical diversity: Uber Index (U)
+bormuth                 Readability: Bormuth's Mean Cloze and Grade
+                        Placement
+cTest                   Transform text into C-Test-like format
+clozeDelete             Transform text into cloze test format
+coleman                 Readability: Coleman's Formulas
+coleman.liau            Readability: Coleman-Liau Index
+correct.tag             Methods to correct koRpus objects
+dale.chall              Readability: Dale-Chall Readability Formula
+danielson.bryan         Readability: Danielson-Bryan
+dickes.steiwer          Readability: Dickes-Steiwer Handformel
+farr.jenkins.paterson   Readability: Farr-Jenkins-Paterson Index
+flesch                  Readability: Flesch Readability Ease
+flesch.kincaid          Readability: Flesch-Kincaid Grade Level
+freq.analysis           Analyze word frequencies
+fucks                   Readability: Fucks' Stilcharakteristik
+get.kRp.env             Get koRpus session environment
+guess.lang              Guess language a text is written in
+harris.jacobson         Readability: Harris-Jacobson indices
+hyph.XX                 Hyphenation patterns
+hyphen                  Automatic hyphenation
+jumbleWords             Produce jumbled words
+kRp.POS.tags            Get elaborated word tag definitions
+kRp.TTR,-class          S4 Class kRp.TTR
+kRp.analysis,-class     S4 Class kRp.analysis
+kRp.cluster             Work in (early) progress. Probably don't even
+                        look at it. Consider it pure magic that is not
+                        to be tempered with.
+kRp.corp.freq,-class    S4 Class kRp.corp.freq
+kRp.filter.wclass       Remove word classes
+kRp.hyph.pat,-class     S4 Class kRp.hyph.pat
+kRp.hyphen,-class       S4 Class kRp.hyphen
+kRp.lang,-class         S4 Class kRp.lang
+kRp.readability,-class
+                        S4 Class kRp.readability
+kRp.tagged,-class       S4 Class kRp.tagged
+kRp.text.analysis       Analyze texts using TreeTagger and word
+                        frequencies
+kRp.text.paste          Paste koRpus objects
+kRp.text.transform      Letter case transformation
+kRp.txt.freq,-class     S4 Class kRp.txt.freq
+kRp.txt.trans,-class    S4 Class kRp.txt.trans
+koRpus-package          The koRpus Package
+lex.div                 Analyze lexical diversity
+lex.div.num             Calculate lexical diversity
+linsear.write           Readability: Linsear Write Index
+maas                    Lexical diversity: Maas' indices
+manage.hyph.pat         Handling hyphenation pattern objects
+nWS                     Readability: Neue Wiener Sachtextformeln
+plot                    Plot method for objects of class kRp.tagged
+query                   A method to get information out of koRpus
+                        objects
+read.BAWL               Import BAWL-R data
+read.corp.LCC           Import LCC data
+read.corp.celex         Import Celex data
+read.corp.custom        Import custom corpus data
+read.hyph.pat           Reading patgen-compatible hyphenation pattern
+                        files
+read.tagged             Import already tagged texts
+readability             Measure readability
+readability.num         Calculate readability
+segment.optimizer       A function to optimize MSTTR segment sizes
+set.kRp.env             A function to set information on your koRpus
+                        environmenton
+set.lang.support        Add support for new languages
+show,kRp.lang-method    Show methods for koRpus objects
+spache                  Readability: Spache Formula
+strain                  Readability: Strain Index
+summary,kRp.lang-method
+                        Summary methods for koRpus objects
+taggedText              Getter/setter methods for koRpus objects
+textFeatures            Extract text features for authorship analysis
+tokenize                A simple tokenizer
+traenkle.bailer         Readability: Traenkle-Bailer Formeln
+treetag                 A function to call TreeTagger
+tuldava                 Readability: Tuldava's Text Difficulty Formula
+types                   Get types and tokens of a given text
+wheeler.smith           Readability: Wheeler-Smith Score

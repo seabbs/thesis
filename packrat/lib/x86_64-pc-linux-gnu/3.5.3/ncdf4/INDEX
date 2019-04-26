@@ -1,0 +1,19 @@
+nc_close                Close a netCDF File
+nc_create               Create a netCDF File
+nc_enddef               Takes a netCDF file out of define mode
+nc_open                 Open a netCDF File
+nc_redef                Puts a netCDF file back into define mode
+nc_sync                 Synchronize (flush to disk) a netCDF File
+nc_version              Report version of ncdf4 library
+ncatt_get               Get attribute from netCDF file
+ncatt_put               Put an attribute into a netCDF file
+ncdf4-package           Read, write, and create netCDF files (including
+                        version 4 format)
+ncdim_def               Define a netCDF Dimension
+ncvar_add               Add New netCDF Variable to Existing File
+ncvar_change_missval    Change the Missing Value For a netCDF Variable
+ncvar_def               Define a netCDF Variable
+ncvar_get               Read data from a netCDF file
+ncvar_put               Write data to a netCDF file
+ncvar_rename            Rename an Existing Variable in a netCDF File
+print.ncdf4             Print Information About a netCDF File

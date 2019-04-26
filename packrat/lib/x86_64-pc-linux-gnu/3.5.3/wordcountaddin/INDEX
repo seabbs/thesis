@@ -1,0 +1,3 @@
+text_stats              Get text stats for selected text (excluding
+                        code chunks and inline code)
+wordcountaddin          wordcountaddin

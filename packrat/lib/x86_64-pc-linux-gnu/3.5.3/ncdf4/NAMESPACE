@@ -1,0 +1,7 @@
+useDynLib( ncdf4 )
+
+export( nc_version, ncdim_def, ncvar_def, nc_open, ncvar_change_missval, nc_create, ncvar_add, ncatt_get, ncatt_put, ncvar_put, ncvar_get, nc_sync, nc_redef, nc_enddef, nc_close, ncvar_rename ) 
+
+S3method( print, ncdf4 )
+
+

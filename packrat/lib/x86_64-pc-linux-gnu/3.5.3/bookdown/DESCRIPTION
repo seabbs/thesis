@@ -1,0 +1,122 @@
+Package: bookdown
+Type: Package
+Title: Authoring Books and Technical Documents with R Markdown
+Version: 0.9.2
+Authors@R: c(
+    person("Yihui", "Xie", role = c("aut", "cre"), email = "xie@yihui.name", comment = c(ORCID = "0000-0003-0645-5666")),
+    person("JJ", "Allaire", role = "ctb"),
+    person("Albert", "Kim", role = "ctb"),
+    person("Alessandro", "Samuel-Rosa", role = "ctb"),
+    person("Andrzej", "Oles", role = "ctb"),
+    person("Aust", "Frederik", role = "ctb", comment = c(ORCID = "0000-0003-4900-788X")),
+    person("Bastiaan", "Quast", role = "ctb"),
+    person("Ben", "Marwick", role = "ctb"),
+    person("Chester", "Ismay", role = "ctb"),
+    person("Christophe", "Dervieux", role = "ctb"),
+    person("Clifton", "Franklund", role = "ctb"),
+    person("Daniel", "Emaasit", role = "ctb"),
+    person("David", "Shuman", role = "ctb"),
+    person("Dean", "Attali", role = "ctb"),
+    person("Drew", "Tyre", role = "ctb"),
+    person("Ellis", "Valentiner", role = "ctb"),
+    person("Frans", "van Dunne", role = "ctb"),
+    person("Hadley", "Wickham", role = "ctb"),
+    person("Jeff", "Allen", role = "ctb"),
+    person("Jennifer", "Bryan", role = "ctb"),
+    person("Jonathan", "McPhers", role = "ctb"),
+    person("Junwen", "Huang", role = "ctb"),
+    person("Kevin", "Cheung", role = "ctb"),
+    person("Kevin", "Ushey", role = "ctb"),
+    person("Kim", "Seonghyun", role = "ctb"),
+    person("Kirill", "Muller", role = "ctb"),
+    person("Luciano", "Selzer", role = "ctb"),
+    person("Matthew", "Lincoln", role = "ctb"),
+    person("Maximilian", "Held", role = "ctb"),
+    person("Michael", "Sachs", role = "ctb"),
+    person("Michal", "Bojanowski", role = "ctb"),
+    person("Noam", "Ross", role = "ctb"),
+    person("Peter", "Hickey", role = "ctb"),
+    person("Sahir", "Bhatnagar", role = "ctb"),
+    person("Steve", "Simpson", role = "ctb"),
+    person("Thierry", "Onkelinx", role = "ctb", comment = c(ORCID = "0000-0001-8804-4216")),
+    person("Vincent", "Fulco", role = "ctb"),
+    person("Yixuan", "Qiu", role = "ctb"),
+    person("Zhuoer", "Dong", role = "ctb"),
+    person(family = "RStudio Inc", role = "cph"),
+    person("Bartek", "Szopka", role = "ctb", comment = "The jQuery Highlight plugin"),
+    person(family = "jQuery Foundation", role = "cph", comment = "jQuery library"),
+    person(family = "jQuery contributors", role = c("ctb", "cph"), comment = "jQuery library; authors listed in inst/resources/AUTHORS"),
+    person(family = "MathQuill contributors", role = "ctb", comment = "The MathQuill library; authors listed in inst/resources/AUTHORS"),
+    person(family = "FriendCode Inc", role = c("cph", "ctb"), comment = "The gitbook style, with modifications")
+    )
+Maintainer: Yihui Xie <xie@yihui.name>
+Description: Output formats and utilities for authoring books and technical documents with R Markdown.
+License: GPL-3
+Imports: htmltools (>= 0.3.6), knitr (>= 1.16), rmarkdown (>= 1.9),
+        xfun (>= 0.2), tinytex, yaml (>= 2.1.14)
+Suggests: htmlwidgets, rstudioapi, miniUI, rsconnect (>= 0.4.3), servr
+        (>= 0.3), shiny, testit (>= 0.5), tufte, webshot
+URL: https://github.com/rstudio/bookdown
+BugReports: https://github.com/rstudio/bookdown/issues
+SystemRequirements: Pandoc (>= 1.17.2)
+LazyData: TRUE
+RoxygenNote: 6.1.1
+Encoding: UTF-8
+Author: Yihui Xie [aut, cre] (<https://orcid.org/0000-0003-0645-5666>),
+  JJ Allaire [ctb],
+  Albert Kim [ctb],
+  Alessandro Samuel-Rosa [ctb],
+  Andrzej Oles [ctb],
+  Aust Frederik [ctb] (<https://orcid.org/0000-0003-4900-788X>),
+  Bastiaan Quast [ctb],
+  Ben Marwick [ctb],
+  Chester Ismay [ctb],
+  Christophe Dervieux [ctb],
+  Clifton Franklund [ctb],
+  Daniel Emaasit [ctb],
+  David Shuman [ctb],
+  Dean Attali [ctb],
+  Drew Tyre [ctb],
+  Ellis Valentiner [ctb],
+  Frans van Dunne [ctb],
+  Hadley Wickham [ctb],
+  Jeff Allen [ctb],
+  Jennifer Bryan [ctb],
+  Jonathan McPhers [ctb],
+  Junwen Huang [ctb],
+  Kevin Cheung [ctb],
+  Kevin Ushey [ctb],
+  Kim Seonghyun [ctb],
+  Kirill Muller [ctb],
+  Luciano Selzer [ctb],
+  Matthew Lincoln [ctb],
+  Maximilian Held [ctb],
+  Michael Sachs [ctb],
+  Michal Bojanowski [ctb],
+  Noam Ross [ctb],
+  Peter Hickey [ctb],
+  Sahir Bhatnagar [ctb],
+  Steve Simpson [ctb],
+  Thierry Onkelinx [ctb] (<https://orcid.org/0000-0001-8804-4216>),
+  Vincent Fulco [ctb],
+  Yixuan Qiu [ctb],
+  Zhuoer Dong [ctb],
+  RStudio Inc [cph],
+  Bartek Szopka [ctb] (The jQuery Highlight plugin),
+  jQuery Foundation [cph] (jQuery library),
+  jQuery contributors [ctb, cph] (jQuery library; authors listed in
+    inst/resources/AUTHORS),
+  MathQuill contributors [ctb] (The MathQuill library; authors listed in
+    inst/resources/AUTHORS),
+  FriendCode Inc [cph, ctb] (The gitbook style, with modifications)
+Built: R 3.5.3; ; 2019-04-26 15:05:01 UTC; unix
+RemoteType: github
+RemoteHost: https://api.github.com
+RemoteRepo: bookdown
+RemoteUsername: rstudio
+RemoteRef: master
+RemoteSha: 5998ab4ef4af20ac25ca9eb9f7772fb8c350e614
+GithubRepo: bookdown
+GithubUsername: rstudio
+GithubRef: master
+GithubSHA1: 5998ab4ef4af20ac25ca9eb9f7772fb8c350e614

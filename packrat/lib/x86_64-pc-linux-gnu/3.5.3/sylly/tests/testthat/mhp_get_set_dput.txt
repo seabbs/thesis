@@ -1,0 +1,2 @@
+structure(c("x3yz2", "xyz", "0302"), .Names = c("orig", "char", 
+"nums"))

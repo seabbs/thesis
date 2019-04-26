@@ -1,0 +1,21 @@
+pretty_captioner        A wrapper for the captioner function
+pretty_ci               Format an estimate, lower and upper confidence
+                        intervals into a single character string
+pretty_figref           A wrapper for pretty_captioner with sensible
+                        defaults for captioning figures
+pretty_inline_ci        Reformat an estimate, with lower/upper
+                        confidence/credible intervals with an
+                        explanatory note
+pretty_per_effect       A Function to Convert Effect Estimates into
+                        Percentage Changes
+pretty_percentage       Calculate a percentage, and then format for
+                        publication
+pretty_round            Round and format numeric vectors; standardising
+                        trailing zeros
+pretty_supfigref        A wrapper for pretty_captioner with sensible
+                        defaults for captioning supplementary figures
+pretty_suptabref        A wrapper for pretty_captioner with sensible
+                        defaults for captioning supplementary tables
+pretty_table            Wrapper function for pretty tables
+pretty_tabref           A wrapper for pretty_captioner with sensible
+                        defaults for captioning tables

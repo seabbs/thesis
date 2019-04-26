@@ -1,0 +1,296 @@
+---
+output:
+  html_document: default
+  pdf_document: default
+  word_document: default
+---
+
+# Fitting a dynamic transmission model of Tuberculosis {#model-fitting}
+
+
+```{r model-fitting-setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, dpi = 320, 
+                      fig.width = 8, fig.height = 8,
+                      out.width = "80%", fig.align = 'center')
+
+##packages
+library(tidyverse)
+library(ModelTBBCGEngland)
+library(kableExtra)
+library(pander)
+## Resources path
+resources_path <- file.path("chapters", "model_fitting")
+```
+
+## Introduction
+
+In the previous chapter I outlined a mechanistic model of Tuberculosis (TB) transmission. Whilst this model made use of the best available evidence there remains a large degree of uncertainty regarding its structure and parameterisation. The majority of this uncertainty relates to the amount of TB transmission occuring in England. An approach to deal with this uncertainty is to fit the model to available observed data. Model fitting involves optimising over the available parameter space to return parameter sets that fit the data in some quantative way "better" than other parameter sets.  
+
+This chapter details an approach to challenging a infectious disease model to data using the state-space model formulation and bayesian model fitting techniques. It first outlines the infectious disease model discussed in the previous chapter as a state-space model, as well as detailing the data used for fitting the model, and the parameters that are fitted. It then outlines the theoretical, and practical, justification for the model fitting pipeline used to calibrate and fit this state space model. Finally it discusses the quality of the model fit, strengths and limitations of the approach, and areas for further work.
+
+## Formulation as a state-space models
+
+State space models (SSMs) may be used to model dynamic systems that are partially observed (such as all but the most contained infectious disease outbreak or endemic). They consist of a set of parameters, a latent continuous/discrete time state process and an observed continuous/discrete time process.[@Murray2015] The model developed in the previous section represents the state process of the SSM, with the parameters estimated for the model representing the model initial conditions and parameter set. To complete the mapping to an SSM an observational model is required. This observational model takes the latent estimates from the dynamic model and forecasts the observed data. We specifiy such an observational model in the Section \@ref(observational-model).
+
+### Observed data {#observed-data}
+
+Before the observation model can be detailed the data that will be used to fit the state-space model must be detailed.
+
+The primary data source used was the reported UK born TB notifications from 2000 to 2004 as recorded by the Enhanced Tuberculosis Survelliance (ETS) system (see Chapter \@ref(data)). These are the only years for which notifications are available stratified by UK birth status and for which universal school-age BCG vaccination was in place. As the model of TB transmission outlined in the previous chapter had multiple age-dependent parameters UK born TB notifications stratified by age group are also fitted to. The age groups considered are children (aged 0-14 years old), adults (15-69 years old), and older adults (70-89 years old). These age groups were used, rather than the more detailed 5 year age groups used in the TB transmission model (see Chapter \@ref(model-development)), for three reasons. Firstly, by using condensed age groups the number of notifications in each group increased. Having a larger number of notifications in each group reduces the impact of stochastics noise, which makes fitting the model easier. Secondly, reducing the number of data points, whilst still capturing the important age dynamics, reduces the compute requirements of the model (see Section \@ref(particle-filter)). As will be discussed in Section \@ref(fitting-pipeline) this was a major consideration as the model fitting approached used was highly compute intensive. Finally, the condensed age groups used were chosen to be meaningful. This allows model results to be more easily reported and interpreted. 
+
+In addition to the notification data available via the ETS pulmonary TB notifications (including both UK born and non-UK born cases) from 1990 were also fitted too. These TB notifications made to Statutory Notifications of Infectious Diseases (NOIDS) from 1913 to 1999. These data were sourced from Public Health England,[@PHE2017] and made available in R using `tbinenglanddataclean`^[Historic TB notification data via `tbinenglanddataclean`: https://www.samabbott.co.uk/tbinenglanddataclean/]. Data from 1990 was used as using data from a decade prior to the time period of interest allows the long term trends to be fitted to. Only a single data point was used as this limited the impact on the compute time of the fitting pipeline and would have brought only marginal improvements to the model fit (see Section \@ref(particle-filter)).
+
+### Observational model {#observational-model}
+
+There are three major considerations to account for when developing an observed disease notification model (i.e a reporting model). These are: systematic reporting error over time; systematic changes in reporting error over time; and reporting noise. For the notification data outlined in the previous section there is little evidence to suggest the form that this measurement model should take. For this reason I have assumed that all reporting errors are gaussian and that their are no time variable reporting errors. The reporting model can be then defined as follows,
+
+$$O = \mathcal{N}\left(E_{syst}A, E_{noise}A\right)$$
+
+Where $O$ are the observed notifications, $A$ are the incident cases of disease as forecast by the disease transmission model, $E_{syst}$ is the systematic reporting error, $E_{noise}$ is the reporting noise, and $\mathcal{N}$ represents the gaussian (normal) distribution. The priors for the model are defined in Table \@ref(tab:measurement-model). The prior for systematic reporting error is based on the assumption that cases are less likely to be reported than they are to be over reported. The prior for the reporting noise is an assumption. This observation model was also used for the non-UK born pulmonary cases. 
+
+A potential limitation of this model is that reporting of TB cases is likely to have improved over time. This is especially true of notifications reported prior to the introduction of the ETS in 2000 (see Chapter \@ref(data)). A potential improvement to this model would be to introduce seperate systematic reproting errors for notifications pre and post the introduction of the ETS. However, given that I have only included a single point prior to the introduction to the ETS doing so in this instance would lead to overfitting of these parameters. 
+
+```{r measurement-model}
+measurement_params_table %>% 
+  select(Parameter, Description, Distribution, Units, Method, Type) %>% 
+kable(caption = "Measurement model parameters, descriptions, prior distributions, units, method used to derive the prior distribution and the type (i.e data derived, literature, assumption). $\\mathcal{U}$ = Uniform", booktabs = TRUE, longtable = TRUE, escape = FALSE) %>% 
+  kable_styling(font_size = 8, latex_options = c("repeat_header")) %>% 
+  column_spec(c(5), width = "6cm") %>% 
+  column_spec(c(2), width = "4cm") %>%
+  column_spec(c(3), width = "6cm") %>%
+  column_spec(c(1,4,6), width = "1.5cm") %>% 
+  landscape()
+```
+
+### Fitted parameters
+
+The model outlined in the Chapter \@ref(model-development) has a large number of free parameters for which prior distributions have been specified based on the observed data, the literature, and expert knowledge. In theory the model fitting pipeline outlined below could be used to produce posterior distributions for all these parameters. However, in practise this is not feasible as the data discussed in Section \@ref(observed-data) only covers notifications and therefore does not contain sufficient information. If every parameter was allowed to update based on the data then it is likely that the resulting posterior distributions would not match with alternative data sources and the literature. Another potential issue is that by allowing all parameters to be fitted the meaningful information in the observed data may be lost. 
+
+For this reason in the model fitting pipeline outlined here I have only allowed parameters relating to TB transmission, and measurement model parameters, to have their posterior distributions updated by the model fitting pipeline. All other parameters have posterior distributions that exactly match their prior distributions. Parameters that have updated posterior distributions based on the data are,
+
+* Mixing rate between UK born and non-UK born ($M$).
+* Effective contact rate ($c_{eff}$).
+* Historic effective contact rate ($c^{hist}_{eff}$).
+* Half life of the effective contact rate ($c^{hist}_{half}$).
+* Scale up of time to treatment ($\nu_{scale}$).
+* Systematic reporting error ($E_{syst}$).
+* Reporting noise ($E_{noise}$).
+
+In addition for scenarios with age variable transmission probabilities the following paramters may also be fitted to,
+
+* Transmission probablity modifier for children ($\beta_{child}$).
+* Transmission probablity modifier for older adults ($\beta_{older adults}$).
+
+## Model fitting pipeline {#fitting-pipeline}
+
+### Introduction
+
+Fitting dynamic transmisson models is complex and requires the use of specialist statistical techniques. There are a variety of these tools available. Ranging for tried and tested to cutting edge. Historically many modellers have used maximum likelihood methods to fit deterministic models. Unfortunately, whilst computationally efficient, these methods only provide point estimates and are limited to relatively simple models. More recently Bayesian methods have become popular. These have numerous benefits including: explicit inclusion of prior knowledge via prior distributions for all parameters; ability to handle complex stochastic models; and provide parameter distributions (posterior distribution) of best fitting parameters rather than single point estimates. Unfortunately these methods also require calibration prior to use. This section outlines the theoretical justification, and implementation details, of an automated model fitting pipeline used to calibrate, and fit, the previously detailed state space model of TB tranmission in England.
+
+Libbi was used for all model fitting.[@Murray2015] LibBi is a software package for state-space modelling and Bayesian inference. It uses a domain specifc language for model specification, which is then optimised and compiled to provide highly efficient model code. It focusses on full information model fitting approaches including: particle Markov chain Monte Carlo (PMCMC), and SMC^2 methods for parameter estimation. All fitting algorithms are highly efficient and scalable across mutliple CPUs or GPUs. `RBI` and `RBI.helpers` were used to interface with LibBi from R.[@Funk:2019ud; @Funk:2019uw] `RBI.helpers` was also used to optimise the model fitting pipeline as detailed in the calibration section. As model fitting using `LibBi` is compute intensive a workstation was built, and overclocked, with these compute requirements in mind^[See these blog posts for details: https://www.samabbott.co.uk/post/building-an-rstats-workstation/, https://www.samabbott.co.uk/post/benchmarking-workstation-xgboost/, https://www.samabbott.co.uk/post/benchmarking-workstation-benchmarkme/]. All model fitting code is available on GitHub as an R package^[See here for details: https://github.com/seabbs/ModelTBBCGEngland].
+
+### The particle filter {#particle-filter}
+
+In order to fit a model to data it is neccessary to estimate, or calculate, the marginal likelihood. Mathematically, the marginal likelihood is the plausibility that a parameter set, given the specified statistical model and the initial conditions, describes the observed data. For complex state space models, such as that discussed in the previous chapter, calculating the marginal likelihood is not possible.[@Murray2015] The particle filter provides a model-agnostic approach, based on importance sampling, to estimate the marginal likelihood. The variant used in this thesis, the bootstrap particle filter, is described below. See [@Murray2015] for a more technical discussion of the bootstrap particle filter.
+
+1. For a given parameter set the particle filter is initialised by drawing a number of random samples (state particles) from the initial conditions of the model under consideration. These samples are then given a uniform weighting. 
+
+2. Sequentially for the each observed data point the particle filter is then advanced through a series of *propagation*, *weighting*, and *resampling* steps. 
+  
+  * *Propagation*: For each particle the model is simulated, producing a forecast of the observed data data point.
+  
+ * *Weighting:* The likelihood of the new observation, given the predicted state, is then computed for each state particle. State particles are then weighted based on this likelihood.
+ 
+ 3. The marginal likelihood (likelihood of the observed data given the parameter set, marginalised across the initial conditions) can then be estimated by taking the product of the mean likelihood at each observed data point. A sample trajectory can also be calculated using the estimated weights from each time point.
+ 
+The particle filter has been shown to provide an unbiased estimate of the likelihood for arbitary state-space models.[@Murray2015] As a full information technique the particle filter provides a more accurate estimate of the likelihood than other approximate techniques (such as approximate bayesian computation), with relatively little tuning or user interaction.[@Murray2015] The downside of the particle filter, compared to these approaches, is the high compute requirements, with each particle requiring a full model simulation. For highly complex models, the particle filter approach may not be tractable or a reduced level of accuracy of the marginal likelihood estimate must be accepted.
+
+### Sequential Monte Carlo
+
+The particle filter approach outlined above, is a member of a family of sequential monte carlo (SMC) methods. These methods all initialise particles and then follow the same *propagation*, *weighting*, and *resampling* steps as previously detailed. SMC may also be used to sample from the posterior distribution of a given set of priors and a specified model. This works as follows,
+
+1. Initially a number of samples (parameter particles) is taken from the prior distribution of the parameters and assigned a uniform weighting.
+
+2. These parameter particles are then iterated sequentially over each observed data point, undergoing the same *propagation*, *weighting*, and *resampling* steps as in the particle filter, as well as an additional *rejuvenation* step.
+
+   * *Propagation:* The model is simulated to the next observed data point. 
+   
+   * *Weighting:* Parameter particles are weighted using the marginal likelihood. In principle this could be computed exactly, but is most commonly estimated using a nested particle filter for each state particle (i.e as outlined in the previous section). For a subset of models a Kalman filter maybe used instead.[@Murray2015] The marginal likelihood may also be estimated using other partial information techniques such as approximate bayesian computation. In the case where a particle filter is used the full algorithm is known as Sequential Monte Carlo^2 (SMC^2). This algorithm is used for all dynamic model fitting in this thesis. 
+
+ *  *Resampling:* The parameter particle stock is restored to equal weights by resampling particles, with replacement, with the probability of each sample being drawn being proportional to its weight. 
+ 
+ * *Rejuvenation:* *Resampling* of the parameter particles at each time point leads to a reduction in the number of unique values present. For state particles (when estimating the marginal likelihood using a particle filter) particles are diversifed with each propagation but as parameters do not change in time parameter particles cannot diversify in this way. To account for this the *rejuvenation* step is inserted after the resampling of parameter particles at each time point. The *rejuvenation* step is a single, or multiple depending on the acceptance rate, Metropolis-Hastings step for each parameter particle. This step aims to preserve the distribution of the parameter particles, whilst increasing their diversity. To minimise unnessary rejuvenation an effective sample size thresold can be used. This only triggers rejuveation when particle diversity has decreased below the target effective sample size thresold. 
+
+#### Marginal Metropolis-Hastings
+
+The Metropolis-Hasting step may be used as a model fitting approach in it's own right (MCMC) when repeated sequentially. It works by proposing a new value from the proposal distribution, estimating the marginal likelihood using the attached particle filter (or using any other exact or inexact method), and then accepting or rejecting the move based on the acceptance probability.[@Murray2015] Where the acceptance probability is given by,
+
+$$ \text{min} \left(1,  \frac{p(y(t_{1:T}) |\theta')p(\theta')q(\theta | \theta')}{p(y(t_{1:T}) |\theta)p(\theta)q(\theta' | \theta)}\right) $$
+
+Where $y$ is the observed data, $\theta$ is the current parameter set, $\theta'$ is some proposed parameter set sampled from some proposal distribution $q(\theta' | \theta)$.[@Murray2015] By construction samples drawn using this rule are ergodic to the posterior distribution. This means that after convergance samples drawn using this rule may be considered as samples from the posterior distribution. 
+
+
+#### Strengths and limitations.
+
+SMC has numerous advantages over MCMC approaches. The first of these is that MCMC aproaches are sensitive to their initial conditions. If a model has multiple local best fits MCMC may only converge to a single minima rather than fully exploring the posterior distribution. Multiple MCMC chains may be used to try and account for this but as each chain must be independently run to convergance only a few concurrent chains are likely to be practical. SMC on the other hand is initialised with a large sample from the prior distribution, meaning that local minimas are more likely to be explored. Parameter particle weighting and resampling then balances the contribution to the posterior distribution of these local minimas based on their fit to the observed data. 
+
+Additionally, MCMC approaches are by definition sequential,[@Murray2015] although if they make use of particle filters these can be run in parallel. Increasing the number of particles in a filter may lead to an increase in the chain mixing rate of the MCMC chain but as particles numbers are increased any returns will decrease. To account for this multiple chains are often used, but as outlined above the burn-in required for each chain limits the potential speed-up. In comparision, each SMC parameter particle can have it's marginal likelihood computed seperately. Although the resampling step remains a bottleneck as it can only be completed once all marginal likelihoods have been computed.
+
+On the other hand SMC is less interative than MCMC meaning that model fitting is harder to inspect when it is in progress. This is because SMC is not sequential, unlike an MCMC run for which each draw can be inspected as it is computed. Similarly, as SMC is not a sequential technique multiple runs cannot be combined. This means that model fitting must be done in a single run using a priori knowledge to judge the number of MCMC rejuvernation steps required, and the expected total run time. SMC will also have a variable run time based on the effective sample size as rejuvernation only happens when parameter particles have been depleted beyond a certain point. 
+
+### Calibration
+
+#### Particle calibration
+
+The accuracy of the marginal likelihood estimate returned by the particle filter is dependent on the number of particles used, the number of observed data points, the parameter sample, and the complexity of the model. As the number of particles tends towards infinity the likelihood estimate provided by the particle filter should tend towards the exact solution. This suggests that choosing a very high number of particles maybe the optimal solution in terms of accuracy. Unfortunately, each particle requires a full model simulation, which for complex models can be computationally costly. This means that using very large numbers of particles is not tractable. For this reason it is neccassary to determine an optimal number of particles that both provides an adequately accurate estimate of the likelihood whilst being computationally tractable. 
+
+The `rbi.helpers` R package attempts to solve this issue by adopting the following strategy.[@Funk:2019uw] First, the approximate mean of the posterior distribution is obtained, as accurate likelihood estimates near the posterior mean are of the most interest. Repeated model simulations are then run using the same set of parameters, with the marginal likelihood being estimated each time using a given number of particles. The variance of these log-likelihood estimates is then calculated. This process is then repeated for increasing numbers of particles until the log-likelihood variance is below some target thresold, commonly 1.[@Funk:2019uw]
+
+I have implemented this as a two step process for each fitted scenario. Firstly, I used the Nelder-Mead simplex method, via LibBi,[@Murray2015] to find a parameter set that optimised the maximum likelihood. I then initialised a 1000 step PMCMC chain with this parameter set, using 256 particles in the particle filter. I then used `rbi.helpers`,[@Funk:2019uw] as outlined above, to estimate the number of particles required to produce a log-likelihood variance of less than 1 for this sample of the posterior distribiution, using 250 samples per step and starting with 64 particles. I initially planned to repeat this process for multiple draws from the posterior distribution but this proved to be infeasible given the compute available. A target of 5 for the log-likelihood variance was chosen as a smaller target could not be feasibly achieved given the compute resources available. Additionaly 256 was specified as the maximum number of feasible particles to use in the particle filter. 
+
+#### Proposal calibration
+
+When using an MCMC alogorithm a proposal distribution is required to provide new parameter samples to evaluate. For SMC^2 a proposal distribution is required to inform the MCMC sampler that is run during the rejuvernation step. By default if no proposal distribution is provided Libbi uses the prior distribution.[@Murray2015] The prior distribution can be an inefficient proposal distribution as it is likely to have a low acceptance rate (from the MCMC sampler).[@Murray2015] Having a low acceptance rates means that many more MCMC steps are required to generate a successful parameter sample. This results in slow mixing and computationally expensive MCMC steps may make model fitting intractable.
+
+A more efficient approach is to specify a proposal distribution that draws parameter samples that are closer to the current state of the MCMC chain than the overall prior distribution. There is an extensive literature examing how to optimise the proposal distribution to achieve an good acceptance rate. In practise it has been shown that a rate of between 10% and 20% is optimal for upwards of 5 parameters.[@Murray2015] This strikes a balance between allowing the chain to fully explore the posterior distribution whilst still being as efficient as possible.
+
+A simple approach to setting the proposal is to run a series of MCMC steps and then calculate the acceptence rate. Based on the acceptence rate the width of the proposal distributions can then be adapted. By repeating these steps multiple times a proposal distribution which gives an acceptance rate within the desired bounds can be arrived at. This adaption can either be independent for each parameter or dependent (taking into account empirical correlations). The `adapt_proposal` function, from the `rbi.helpers` R package,[@Funk:2019uw] implements this approach and is used in this model fitting pipeline. In many models parameters are likely to have strong correlations (i.e between UK and Non-UK born mixing rate and effective contact rate) and in these scenarios it is likely that a dependent strategy for adapting the proposal distribution will more efficiently explore the posterior distribution. However, the downside of adapting the proposal distribution using dependent methods is that the resulting proposal is highly complex, is computationally expensive to compute and may breakdown in some areas of the posterior distribution.
+
+In this model fitting pipeline I have used a maximum of 5 iterations of, manual, independent proposal adaption, drawing 250 samples in each iteration, starting with the prior distributions and halfing the scale each time. The proposal distribution is also truncated so that parameter samples cannot be drawn from areas without support from the prior distributions. As for the particle calibration, I initially used a maximum likelihood method to provide a point estimate of the best fitting parameter set, followed by 1000 PMCMC steps, using a 256 particle filter. This means that the proposal distribution is adapted near to the posterior mean rather than in the tails of the posterior distribution. 
+
+I chose to use, manual, independent proposal adaption method for several reasons. Firstly, when developing this pipeline the approaches implemented in `rbi.helpers` produced multiple transient errors in other `rbi` and `rbi.helpers` code. Secondly, the resulting dependent proposal distribution was highly complex, slow to compute, and diffult to debug. Finally, for SMC^2 efficient exploration of the proposal distribution is less important than when using MCMC alone as SMC^2 is initialised with multiple samples from the prior distribution. This means that multiple local maximas can be efficiently explored regardless of the proposal distribution used. The MCMC rejuvernation step then serves to provide additional samples from these local maximas. Proposal adaption was only carried out for the main model scenario with all other scenarios using this proposal distribution. 
+
+### Model comparision
+
+In the previous chapter multiple potential model structures were outlined, each of which could be valid based on theoretical considerations. The observed data can be used to identify which of these structures best reflects reality. This can be done using the deviance information criterion (DIC). The DIC is a hierarchical modeling generalization of the Akaike information criterion (AIC) and can be used to compare nested models.[@Gelman:nll_LBlw] 
+
+Smaller DIC values should indicate a better fit to data than larger DIC values. The DIC is composed of the deviance, which favours a good fit, and the effective number of parameters, which penalises overfitting.[@Gelman:nll_LBlw] Unlike the AIC the DIC can be estimated using samples from the posterior distribution and so is more readily calculated for models estimated using bayesian methods. It can be defined as,
+
+$$ {\mathit  {DIC}}=D({\bar  {\theta }})+2p_{D}$$
+Where $\bar{\theta}$ is the expectation of $\theta$, with $\theta$ being defined as the unknown parameters of the model. $p_{D}$ is the effective number of parameters in the model and is used to penalise more comple complex models. It can be estimated as follows,[@Gelman:nll_LBlw]
+
+
+$$p_{D}=p_{V}={\frac  {1}{2}}\widehat {\operatorname {var}}\left(D(\theta )\right).$$
+
+Finally the deviance is defined as,
+
+$$D(\theta)=-2\log(p(y|\theta ))+C$$
+
+Where y are the data, $\displaystyle p(y|\theta)$ is the likelihood function and C is a constant. C cancels out when comparing different models and therefore does not need to be calculated. 
+
+The DIC has two limitations. The first of these is that in its derivation it is assumed that the model that generates future observations encompasses the true model. This assumption may not hold in all circumstances. The second limitations is that the observed data is used to construct both the posterior distribution and to estimate the DIC. This means that the DIC tends to select for over-fitted model.[@Gelman:nll_LBlw] 
+
+In this chapter I have used the DIC, as estimated by the `DIC` function from `rbi.helpers`,[@Funk:2019uw]  to evaluate the various model structures outlined in the previous chapter. 
+
+### Parameter sensitivity
+
+Understanding the impact of parameter variation can help when interpreting findings from a model, targeting interventions, and identifying parameters for which improved estimates are needed. Often parameter sensitivity is assessed using single-parameter or local sensitivity analyses. Unfortunately, these techniques do not accurately capture uncertainty or sensitivity in the system as they hold all other parameters fixed.[@Marino2009a] Various techniques exist that can globally study a multi-dimensional parameter space. In this section, I will outline the partial rank correlation coefficient method (PRCC) and discuss it's strengths and weaknesses. The implementation of PRCC to estimate the parameter sensitivity of parameters fitted using the model fitting pipeline presented above is then discussed.
+
+
+PRCC is a sampling based approach which can be computed with minimal computational cost from a sample of the prior or posterior distributions of a model. It estimates the degree of correlation between a given parameter input and an output after adjusting (using a linear model) for variation in other inputs. It is an extension of more simplistic sampling techniques, the most basic of which, is simply examining scatter plots of a sampled parameter set against the outcome of interest. PRCC is required as these more simplistic techniques become intractable with higher dimensionality as they do not account for between paremeter correlation or are just difficult to interpret with multiple dimensions.[@Marino2009a] PRCC can be understood by first outlining the individual steps. These are:
+
+1.  **Correlation:** Provides a measure of the strength of a linear association between an input and and output (scaled from -1 to 1). It is calculated as follows,
+
+\[ 
+{\displaystyle \rho _{X,Y}={\frac {\operatorname {cov} (X,Y)}{\sigma _{X}\sigma _{Y}}}}
+\]
+
+Where $\operatorname {cov}$  is the covariance, $\sigma _{X}$ is the standard deviation of $X$, and $\sigma_Y$  is the standard deviation of $Y$. Where $X$ is the input and $Y$ is the output.
+
+2. **Rank Correlation:** This is defined as for correlation but with the data being rank transformed. Rank transformation reorders inputs and outputs in magnitude order. Unlike non-rank transformed correlation it can handle non-linear relationships but still requires monotonicity. 
+
+3. **Partial Rank Correlation:** Inputs and outputs are first rank transformed as above. Linear models are then built which adjust for the effects of the other inputs on $Y$, and on the current input $X_i$. Correlation is the calculated as above using the residuals from these models.
+
+A limitation of PRCC is that it whilst it can capture non-lnear relationships between outputs and inputs these relationships must be monotonic.[@Marino2009a] For relationships that are non-monotic methods that rely on the decompositon of model output variance, such as the extended Fourier amplitude sensitivity test,[@Marino2009a] are more appropriate. However, these approaches are computationally demanding as they typically require mutliple iterations of model simulation. Additionally, they cannot be used on a previous parameter samples, instead needing to sample and simulate the model within the parameter sensitivity algorithmn. This means that they cannot be used for "free" (i.e with neglible additional compute cost), unlike PRCC which can be estimated using a sample from the posterior distribution. For this reason these approaches have not been further explored in this thesis. 
+
+I have implemented PRCC using the `epiR` R package^[Code: https://github.com/seabbs/ModelTBBCGEngland/blob/master/R/test_sensitivity.R],[@EpiR] using the samples from the posterior distribution of the model calculated during the SMC^2 step. Parameter sensitivity measures such as PRCC must be calculated seperately for each output time point. To account for this I calculated the PRCC for each fitted paramter, at each time point fitted too, for both overall TB incidence rates and TB incidence rates in children. These results are then summarised by plotting the absolute PRCC values for each output measure, indicating the direction of correlation using colour^[Code: https://github.com/seabbs/ModelTBBCGEngland/blob/master/R/plot_sensitivity.R]. 
+
+### Pipeline overview
+
+The full model fitting pipeline can be summarised as follows^[Code: https://github.com/seabbs/ModelTBBCGEngland/blob/master/R/fit_model.R]:
+
+1. Model initialisation using minimal error checking and single precision computation. Implemented using the `disable-assert` adn `enable-single` flags in LibBi.[@Murray2015] Outputs are only given for times with oberserved data and a subset of parameters are recorded for final reporting^[Model code: https://github.com/seabbs/ModelTBBCGEngland/blob/master/inst/bi/BaseLineModel.bi]. 
+
+2. 2500 parameter sets were taken from the prior distribution and the model was then simulated for each one. 
+
+3. Maximum likelihood optimisation with 100 steps, using the Nelder-Mead simplex method, via LibBi.[@Murray2015] This approximates the mean of the posterior distribution.
+
+4. 1000 PMCMC steps, with 256 particles used in the particle filter. This provides a better estimate of the mean of the posterior distribution.
+
+5. Particle adaption via `rbi.helpers` at the approximate mean of the posterior distribution.[@Funk:2019uw] A minimum of 64 particles and a maximum of 256 particles are assessed with the target of a log-likelihood variance of less than 5. 250 PMCMC steps were used at each stage to estimate the log-likelihood variance.
+
+6. Manual independent proposal adaption at the approximate mean of the posterior distribution. The size of the proposal distribution is halved each iteration, with at most 5 iterations of adaption. The minimum target acceptance rate specified was 10% and the maximum was 20%. 250 PMCMC samples were used each time to estimate the acceptance rate. Proposal adaption was only carried out for the main model scenario, with other scenarios using this proposal. 
+
+7. SMC^2 model fitting with 3000 initial parameter particles. Particle rejuvernation was set to trigger when the effective sample size decreased below 1000, with 4 MCMC steps used each time. 
+
+8. For each sample from the posterior distribution the model was then simulated for all time points.
+
+9. The model DIC was computed using `rbi.helpers`.[@Funk:2019uw] This gives a model agnostic approach to evaluate the fit to the observed data.
+
+10. Parameter sensitivity was estimated by calculating the partial rank correlation coffecient (PRCC) for each model parameter, at each time point fitted too, for both overall TB incidence rates and TB incidence rates in children. Results were then plotted in order of the absolute magnitude of the correlation, with the direction of the correlation determined using colour. The `epiR` package was used to compute the PRCC.[@EpiR] 
+
+## Results
+
+### Calibration 
+
+* Report on proposal acceptance rate and number of particles selected in main scenario
+* Report on run time and feasibilty
+
+### Model comparision
+
+* Compare Scenarios using DIC and discuss results.
+* Table of DIC results with scenarios
+
+### Model fit to historic TB incidence rates
+
+* Plot of historic TB data + fit from model
+* Table of data + model fit + uncertainty
+* Comment on model fit
+
+### Model Fit to TB incidence rates from the ETS
+
+* Plot of TB data and fit
+* Table of data and fit
+* Comment on fit
+
+### Model fit to TB age distribution
+
+* Age group plot over time + fit
+* Age distribution over time + fit
+* Comment on fit
+
+### Posterior parameter distributions
+
+* Plot of Posterior Parameter distributions
+* Table of Posterior Parameter distributions
+* Comment on posteriors
+
+### Parameter Sensitivity
+
+* Plot parameter sensitivty
+* Comment on parameter sensitivity in light of strength of data
+
+## Discussion
+
+In this chapter I have formulated the disease transmission model developed in the previous chapter as a state-space model, developed a model fitting pipeline to fit this model to observed data, and presented the results of this fitted model. 
+
+* Summary of work from chapter
+
+* Method strengths and weaknesses
+* Software strenghts and weaknesses
+
+* Strengths and weaknesses
+* Next chapter
+* Conclusions
+
+
+## Summary
+
+* Defined the disease transmission model from the previous chapter as a state-space model. 
+* Outlined the observed data and defined an appropriate measurement model for this data. 
+* Developed a model fitting pipeline based on SMC^2 to fit the previously defined state-space model to TB notification data.
+* Evaluated the various scenarios discussed in the previous chapter using DIC and discussed the implications of these findings. 
+* Presented the model fit to data from the best fitting scenario as established using the DIC. 
+* Discussed the posterior distributions of the fitted parameters and compared these distributions to the prior distributions.
+* Estimated the model sensitivity to parameter changes and discussed the impact that this sensitivity may have.
+

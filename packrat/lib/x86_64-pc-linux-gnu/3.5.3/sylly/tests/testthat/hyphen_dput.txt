@@ -1,0 +1,12 @@
+new("kRp.hyphen"
+    , lang = "xy"
+    , desc = structure(list(num.syll = 8, syll.distrib = structure(c(1, 1, 
+0, 100, 100, 0), .Dim = c(6L, 1L), .Dimnames = list(c("num", 
+"cum.sum", "cum.inv", "pct", "cum.pct", "pct.inv"), "8")), syll.uniq.distrib = structure(c(1, 
+1, 0, 100, 100, 0), .Dim = c(6L, 1L), .Dimnames = list(c("num", 
+"cum.sum", "cum.inv", "pct", "cum.pct", "pct.inv"), "8")), avg.syll.word = 8, 
+    syll.per100 = 800), .Names = c("num.syll", "syll.distrib", 
+"syll.uniq.distrib", "avg.syll.word", "syll.per100"))
+    , hyphen = structure(list(syll = 8, word = "in-com-pre-hens-ib-il-it-ies"), .Names = c("syll", 
+"word"), row.names = c(NA, -1L), class = "data.frame")
+)

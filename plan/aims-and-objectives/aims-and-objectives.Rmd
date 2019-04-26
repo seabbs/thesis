@@ -1,0 +1,23 @@
+---
+title: "Aims and Objectives of the thesis"
+output:
+  pdf_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Aim
+
+To understand the impact of BCG vaccination on the epidemiology of tuberculosis in England, and to use this understanding to forecast the future effects of current BCG vaccination policy.
+
+## Objectives
+
+- To describe the current epidemiology of Tuberculosis in England by estimating incidence rates in the UK and Non-UK born populations,
+- To assess the evidence used to motivate the 2005 change in BCG vaccination policy,
+- To assess whether there is evidence in routinely-collected surveillance data that BCG vaccination impacts outcomes for TB cases in England,
+- To assess the direct effects of the 2005 change in vaccination policy on those eligible for vaccination,
+- To develop and apply a parsimonous transmission dynamic model of tuberculosis in order to understand the trade off between vaccinating those at highest risk of poor outcomes, and those most likely to be vectors of transmission; by using the 2005 change in vaccination policy as a case study,
+- To robustly fit the previously developed transmission dynamics TB model to available data; in order to forecast all long term effects of the 2005 change in vaccination policy, and to provide robust estimates of epidemiological parameters for TB in England.
+

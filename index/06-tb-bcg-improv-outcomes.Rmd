@@ -1,0 +1,372 @@
+---
+output:
+  html_document: default
+  pdf_document: default
+---
+
+---
+
+# Exploring the effects of BCG vaccination in patients diagnosed with tuberculosis: observational study using the Enhanced Tuberculosis Surveillance system {#benefical-bcg-out}
+
+```{r 06-knitr-options, include = FALSE}
+knitr::opts_chunk$set(echo = FALSE, dpi = 320,
+                      fig.width = 8, fig.height = 8,
+                      out.width = "80%", fig.align = 'center')
+```
+
+```{r setup, include = FALSE, eval = TRUE}
+## Word count: 3813
+## Packages
+library(tidyverse)
+library(knitr)
+library(kableExtra)
+library(pander)
+library(prettypublisher)
+
+## Resource path
+resources_path <- file.path("chapters", "tb-bcg-improv-outcomes")
+
+## Output see: https://github.com/seabbs/ExploreBCGOnOutcomes
+read_rds <- function(file) {
+  readRDS(file.path(resources_path, file))
+}
+
+demo_tab_bcg <- read_rds("demographic_tab_bcg.rds")
+estimate_study_power <- read_rds("estimate_study_power.rds")
+imp_sum_tab <- read_rds("imputed_sum_tab.rds")
+sum_imp_bcg <- imp_sum_tab[[1]]
+sum_imp_ageatvac <- imp_sum_tab[[2]]
+sum_imp_yrsinceBCG <- imp_sum_tab[[3]] 
+outcome_demo_tab_bcg <- read_rds("outcome_demo_tab_bcg.rds")
+participants <- read_rds("estimate_study_power.rds")
+estimate_study_power <- read_rds("participants.rds")
+predicted_cases_prevented <- read_rds("predicted_cases_prevented.rds")
+bcg_ass_main <- read_rds("sensitivity_analysis.rds")
+
+read_rda <- function(file) {
+  load(file.path(resources_path, file), envir = globalenv())
+}
+
+rda_files <- list("descriptive_data.rda", "OR_for_text.rda", 
+                  "regression_analysis.rda")
+
+walk(rda_files, read_rda)
+```
+
+## Introduction
+
+Bacillus Calmette–Guérin (BCG) primarily reduces the progression from infection to disease, however there is evidence that BCG may provide additional benefits. In this Chapter I aimed to investigate whether there is evidence in routinely-collected surveillance data (see Chapter \@ref(data)) that BCG vaccination impacts outcomes for tuberculosis (TB) cases in England. Any impact on TB outcomes could add additional weight to vaccination policies with wider population coverage, as these policies would have benefits beyond reducing TB incidence rates. 
+
+To conduct this study, I first obtained all TB notifications for 2009-2015 in England from the Enhanced Tuberculosis surveillance system (see Chapter \@ref(data)). I then considered five outcomes: All-cause mortality, death due to TB (in those who died), recurrent TB, pulmonary disease, and sputum smear status. I used logistic regression, with complete case analysis, to investigate each outcome with BCG vaccination, years since vaccination and age at vaccination, adjusting for potential confounders. All analyses were repeated using multiply imputed data. This work was supervised by Hannah Christensen and Ellen Brooks-Pollock. Collaborators at Public Health England including, Maeve K Lalor, Dominik Zenner, Colin Campbell, and Mary E Ramsay provided the data and commented on multiple versions of this work. 
+
+## Background
+
+Bacillus Calmette–Guérin (BCG) is one of the mostly widely-used vaccines and the only vaccine that protects against tuberculosis (TB) disease. BCG was first used in humans in 1921 and was introduced into the WHO Expanded Program on Immunization in 1974.[@The2004] BCG vaccination has been controversial due to its variable efficacy and possibility of causing a false positive result with the standard skin test for TB.[@Zwerling2011a] However, the lack of a more effective vaccine and the emergence of drug-resistant TB strains means that BCG vaccination remains an important tool for reducing TB incidence and mortality rates.
+
+BCG’s primary mode of action is to directly prevent the development of active, symptomatic disease. Its efficacy in adults is context specific, with estimates ranging between 0% and 78% (see Chapter \@ref(background)).[@Mangtani2014a] It has been shown to highly efficacious in England and there is some evidence that efficacy increases with distance from the equator. Efficacy has been shown to be dependent on previous exposure, with unexposed individuals receiving the greatest benefit.[@Barreto2014a] Unlike in adults, BCG has consistently been shown to be highly protective against TB and TB meningitis in children.[@Rodrigues1993; @Colditz1994] For this reason the majority of countries that use BCG, vaccinate at birth.[@Zwerling2011] Adult vaccination is no longer common in the UK, where universal BCG vaccination of adolescents was stopped in 2005 in favour of a targeted neonatal programme aimed at high risk children.
+
+Vaccination policy has been primarily based on reducing the incidence of TB disease, and mitigating disease severity, with little attention having been given to any additional effects of BCG vaccination on TB outcomes.[@Fine2005a; @Teo2006] There is some evidence that BCG vaccination induces innate immune responses which may provide non-specific protection,[@Kleinnijenhuis2012] TB patients with BCG scars were found to respond better to treatment with earlier sputum smear conversion,[@Jeremiah2010] and there is evidence to suggest that BCG vaccination is associated with reduced all-cause neonatal mortality[@Garly2003; @Higgins] and both reduced TB[@Abubakar2013] and all-cause[@Rieckmann2016] mortality in the general population. Given that the immunology behind TB immunity is not fully understood these findings suggest that BCG may play a more important role in improving TB outcomes than previously thought. I aimed to quantify the effects of BCG vaccination on outcomes for individuals with notified TB in England using routinely collected surveillance data (see Chapter \@ref(data)) to provide evidence for appropriate public health action and provision. Where I found an association, I additionally explored the role of years since vaccination, and age at vaccination. 
+
+
+## Method
+
+### Enhanced Tuberculosis Surveillance (ETS) system
+
+I extracted all notifications from the Enhanced Tuberculosis Surveillance (ETS) system from January 1, 2009 to December 31, 2015 (Chapter \@ref(data)). BCG vaccination status and year of vaccination have been collected since 2008. The outcomes I considered were: all-cause mortality, death due to TB (in those who died), recurrent TB, pulmonary disease, and sputum smear status. These outcomes were selected based on: their availability in the ETS; evidence from the literature of prior associations with BCG vaccination; associations with increased case infectiousness; or severe outcomes for patients.
+
+All-cause mortality was defined using the overall outcome recorded in ETS, this is based on up to 36 months of follow up starting from date of starting treatment. Follow up ends when a case is recorded as completing treatment, with treatment status evaluated at 12, 24, and 36 months from starting treatment. Where the treatment start date was not available the notification date was used if appropriate. The date of death was validated against Office for National Statistics (ONS) data. Those that were lost to follow up, or not evaluated were treated as missing. In cases with a known cause of death, death due to TB was defined as those that died from TB, or where TB had contributed to their death. Cause of death was recorded by case managers. TB cases who had recurrent episodes were identified using probabilistic matching. Positive sputum smear status was given to cases that had a sputum sample shown to contain Acid-Fast Bacilli. A positive sputum smear status indicates that cases are more likely to be infectious. Cases were defined as having pulmonary TB if a positive sputum smear sample was recorded, if a positive culture was grown from a pulmonary laboratory specimen, or if they were clinically assessed as having pulmonary TB.
+
+
+### Exposure variables relating to BCG
+
+I included three exposure variables related to BCG: BCG status (vaccinated, yes/no), years since vaccination and age at vaccination. 
+
+BCG status was collected and recorded in ETS by case managers. Information on BCG vaccination status may have come from vaccination records, patient recall or the presence of a scar. When cases are uncertain, and there is no evidence of a scar, no BCG status is given. Year of vaccination was collected similarly. Years since BCG vaccination was defined as year of notification minus year of vaccination and categorised into two groups (0 to 10 and 11+ years). This was based on: evidence that the average duration of BCG protection is at least 10-15 years;[@Abubakar2013] increasing recall bias with time since vaccination, and any association between years since vaccination and TB outcomes may be non-linear (see Chapter \@ref(data)).
+
+I calculated age at vaccination as year of vaccination minus year of birth. I categorized age at vaccination into $0$ to $< 1$, $1$ to $< 12$, $12$ to $< 16$ and 16+ years because the distribution was bi-model with modes at 0 and 12 years. This categorization captures the current UK policy of vaccination at birth, historic policy of vaccination at 13-15 years and catch up vaccination for high risk children.
+
+### Statistical Analysis
+
+R was used for all statistical analysis.[@R] The analysis was conducted in two stages. Firstly, I calculated proportions for all demographic and outcome variables, and compared vaccinated and unvaccinated TB cases using the $\chi ^2$ test. Secondly, I used logistic regression, with complete case analysis, to estimate the association between exposures and outcome variables, both with and without adjustment for confounders. 
+
+In the multivariable models, I adjusted for sex,[@Parslow2001; @Roth2006a; @Aaby2014] age,[@Teale1993] Index of Multiple Deprivation (2010) categorised into five groups for England (IMD rank),[@DCLG2011; @Bhatti1995] ethnicity,[@Parslow2001; @Abubakar2008] UK birth status,[@French2007; @Djuretic2002] and year of notification. As the relationship between age and outcomes was non-linear, I modelled age using a natural cubic spline with knots at the 25%, 50% and 75% quantiles.
+
+I conducted sensitivity analyses to assess the robustness of the results, by dropping each confounding variable in turn and assessing the effect on the adjusted Odds Ratios (aORs) of the exposure variable. I repeated the analysis excluding duplicate recurrent cases, and restricting the study population to those eligible for the BCG schools scheme (defined as UK born cases that were aged 14 or over in 2004) to assess the comparability of the BCG vaccinated and unvaccinated populations. To mitigate the impact of missing data I used multiple imputation, with the MICE package.[@VanBuuren2011] I imputed 50 data sets (for 20 iterations) using ) using all outcome and explanatory variables included in the analysis as predictors along with Public Health England centre. The model results were pooled using the small sample method,[@Barnard1999] and effect sizes compared with those from the main analysis.
+
+## Results
+
+### Description of the data
+
+There were 51,645 TB notifications between 2009-2015 in England. Reporting of vaccination status and year of vaccination improved over time: 64.9% (20865/32154) of notifications included vaccination status for 2009 to 2012, increasing to 70% (13647/19491) from 2013 to 2015. The majority of cases that had a known vaccination status were vaccinated (70.6%, 24354/34512), and where age and year of vaccination was known, the majority of cases were vaccinated at birth (60%, 5979/10066).
+
+Vaccinated cases were younger than unvaccinated cases on average (median age 34 years (IQR 26 to 45) compared to 38 years (IQR 26 to 62)). A higher proportion of non-UK borncases were BCG vaccinated, (72.7%, 18297/25171) compared to UK born cases (65.2%, 5787/8871, P: < 0.001) and, of those vaccinated, a higher proportion of non-UK born cases were vaccinated at birth compared to UK born cases (68%, 4691/6896 vs. 40.5%, 1253/3096 respectively, P: < 0.001). See Table \@ref(tab:06-outcome-sum) for the breakdown of outcome variables and Table \@ref(tab:06-demo-sum) for the breakdown of confounding variables.  See Chapter \@ref(data) for an extended discussion of the epidemiology of TB in England.
+
+```{r 06-outcome-sum}
+replace_html_with_latex <- function(df) {
+  df %>% 
+  map_dfc(~ str_remove_all(., "&nbsp;&nbsp;")) %>% 
+  map_dfc(~ str_replace_all(., "\\*\\*\\[", "\\[")) %>% 
+  map_dfc(~ str_replace_all(., "\\]\\*\\*", "\\]")) %>% 
+  map_dfc(~ str_replace_all(., "\\[\\*", "\\[")) %>% 
+  map_dfc(~ str_replace_all(., "\\*\\]", "\\]"))
+    
+}
+
+indents <- grep("&nbsp;&nbsp;  ", outcome_demo_tab_bcg$`Demographic Characteristics`)
+outcome_demo_tab_bcg <- replace_html_with_latex(outcome_demo_tab_bcg)
+  
+
+
+
+outcome_demo_tab_bcg %>% 
+  set_names(., c("Outcome", names(.)[-1])) %>% 
+  kable(caption = "Outcomes for individuals in England notified with tuberculosis between 2009-2015,  stratified by BCG vaccination status.",
+         booktabs = TRUE, escape = TRUE) %>% 
+    column_spec(c(1), width = "2cm") %>% 
+    add_indent(indents) %>% 
+    kable_styling(font_size = 8) %>% 
+    kable_styling(latex_options = "hold_position")%>% 
+    add_header_above(c(" " = 2, "BCG status" = 3)) %>% 
+    add_footnote(label = c("{% all cases}(% complete within vaccine status)[% complete within category]",
+ "* Death due to TB in those who died and where cause of death was known"
+), notation = "none") %>% 
+  {.}
+```
+
+
+```{r 06-demo-sum}
+indents <- grep("&nbsp;&nbsp;  ", demo_tab_bcg$`Demographic Characteristics`)
+demo_tab_bcg <- replace_html_with_latex(demo_tab_bcg)
+
+demo_tab_bcg %>% 
+  set_names(., c("Confounder", names(.)[-1])) %>% 
+  kable(caption = "Confounders for individuals in England notified with tuberculosis between 2009-2015,  stratified by BCG vaccination status.",
+         booktabs = TRUE, escape = TRUE) %>% 
+    column_spec(c(1), width = "2cm") %>% 
+    add_indent(indents) %>% 
+    kable_styling(font_size = 8) %>% 
+    kable_styling(latex_options = "hold_position") %>% 
+    add_header_above(c(" " = 2, "BCG status" = 3)) %>% 
+    add_footnote(label = c("{% all cases}(% complete within vaccine status)[% complete within category]",
+ "* Death due to TB in those who died and where cause of death was known"
+), notation = "none") %>% 
+  {.}
+```
+
+
+### All-cause mortality
+
+In the univariable analysis the odds of death from any cause were lower for BCG vaccinated TB cases compared to unvaccinated cases, with an OR of `r OR.mort` (Table \@ref(tab:06-bcg-mortality), Table \@ref(tab:06-bcg-sum-tab))); an association remained after adjusting for confounders, but was attenuated with an aOR of `r aOR.mort`.  I estimate that if all unvaccinated cases had been vaccinated there would have been on average 19 (95% CI 9 to 29)  fewer deaths per year during the study period (out of 81 deaths per year on average in unvaccinated cases). Whilst there was evidence in univariable analyses to suggest all-cause mortality was higher in persons vaccinated more than 10 years prior to notification of TB and that all-cause mortality increased with increasing age group, these disappeared after adjusting for potential confounders (Table \@ref(tab:06-yrssincebcg-sum-tab), Table \@ref(tab:06-ageatvac-sum-tab)). 
+
+Similar results to the multivariable analysis were found using multiply imputed data for the association between vaccination status and all-cause mortality (aOR: `r sum_imp_bcg[1, 5][[1]] %>% pretty_inline_ci()`, P:  `r sum_imp_bcg[1, 6][[1]]`), but not for time since vaccination with a greatly increased risk of all-cause mortality estimated for those vaccinated more than 10 years before case notification, compared to those vaccinated more recently (aOR: `r sum_imp_yrsinceBCG[1, 5][[1]] %>%  pretty_inline_ci()`, (see Table \@ref(tab:06-yrssincebcg-sum-tab), Table \@ref(tab:06-imp-bcg))). For age at vaccination results for the multivariable analysis using multiply imputed data were comparable to those found using complete case analysis, except that there was some evidence that vaccination in adolescence, compared to under 1, was associated with increased, rather than decreased, all-cause mortality (aOR: `r sum_imp_ageatvac[2, 6][[1]] %>%  pretty_inline_ci()`, Table \@ref(tab:06-imp-ageatvac)).
+
+```{r 06-bcg-mortality}
+bcg_mortality_tab <- table_var_out[['bcgvacc']] %>% transpose()
+bcg_mortality_tab  <- bcg_mortality_tab[["spline"]][[1]]
+
+indents <- grep("&nbsp;&nbsp;  ", bcg_mortality_tab$`Demographic Characteristics`)
+bcg_mortality_tab$`Demographic Characteristics` <- str_remove(bcg_mortality_tab$`Demographic Characteristics`, "&nbsp;&nbsp;  ")
+
+bcg_mortality_tab  %>%
+  set_names(c("Variable", "Total", "All-cause mortality", 
+              "OR (95% CI)", "P-value",
+              "aOR (95% CI)", "P-value")) %>% 
+    kable(caption = "Summary of logistic regression model output with BCG vaccination as the exposure and all-cause mortality as the outcome.",
+         booktabs = TRUE, escape = TRUE) %>% 
+    kable_styling(latex_options = "hold_position") %>% 
+    column_spec(c(1), width = "2cm") %>% 
+    add_indent(indents) %>% 
+    kable_styling(font_size = 8) %>% 
+    add_header_above(c(" " = 3, "Univariable" = 2, "Multivariable" = 2)) %>% 
+    add_footnote(label = c("OR (95% CI): unadjusted odds ratio with 95% confidence intervals,", "aOR (95% CI): adjusted odds ratios with 95% confidence intervals"), notation = "none") %>% 
+  {.}
+```
+
+
+### Deaths due to TB (in those who died)
+
+There was little evidence of any association between BCG vaccination and deaths due to TB (in those who died and where cause of death was known) in the univariable analysis (Table \@ref(tab:06-bcg-sum-tab)). The adjusted point estimate indicated an association between BCG vaccination and reduced deaths due to TB (in those who died) although the confidence intervals remained wide with a similar result found using multiply imputed data (see Table \@ref(tab:06-imp-bcg)). There were insufficient data to robustly estimate an association between deaths due to TB (in those who died) and years since vaccination or age at vaccination (Table \@ref(tab:06-yrssincebcg-sum-tab), Table \@ref(tab:06-ageatvac-sum-tab)).
+
+### Recurrent TB
+
+In both the univariable and multivariable analysis there was some evidence that BCG vaccination was associated with reduced recurrent TB, although the strength of the evidence was weakened after adjusting for confounders (Table \@ref(tab:06-bcg-sum-tab)). In the adjusted analysis, the odds of recurrent TB were lower for BCG vaccinated cases compared to unvaccinated cases, with an aOR of `r aOR.prev`. The strength of the evidence for this association was comparable in the analysis using multiply imputed data (see Table \@ref(tab:06-imp-bcg)). There was little evidence in the adjusted analysis of any association between recurrent TB and years since vaccination (Table \@ref(tab:06-yrssincebcg-sum-tab)) or age at vaccination (Table \@ref(tab:06-ageatvac-sum-tab)).
+
+### Other Outcomes
+
+After adjusting for confounders there was little evidence for any association between BCG vaccination and pulmonary disease or positive sputum smear status (Table \@ref(tab:06-bcg-sum-tab)); similar results were found using multiply imputed data (see Table \@ref(tab:06-imp-bcg)).
+
+```{r 06-bcg-sum-tab}
+combine_model_data_sum <- function(ModelSum, DataSum) {
+  ## Add sample size for each category 
+  DataSum %>%  
+    select(Uni_Cases, Uni_CasesWithOutcome, Multi_Cases, Multi_CasesWithOutcome) %>%
+         mutate(Uni_CasesWithOutcome = paste0(Uni_CasesWithOutcome, ' (', pretty_round(Uni_CasesWithOutcome / Uni_Cases * 100, digits = 0), ')') %>% str_replace(c('NA', 'Nan'), '-'), 
+                Multi_CasesWithOutcome = paste0(Multi_CasesWithOutcome, ' (', pretty_round(Multi_CasesWithOutcome/Multi_Cases*100, digits = 0), ')') %>%  str_replace(c('NA', 'Nan'), '-')) -> DataSum
+  
+  ModelSum <- cbind(ModelSum[,1:2], 
+                    DataSum %>% select(Uni_Cases, Uni_CasesWithOutcome),
+                    ModelSum[,3:4],
+                    DataSum %>% select(Multi_Cases, Multi_CasesWithOutcome), 
+                    ModelSum[,5:6]
+  )
+  return(ModelSum)
+}
+
+table_var_outs[[1]] %>% 
+  combine_model_data_sum(DataSum = ModelDataSum[[1]]) %>% 
+    set_names(c('Outcome', 'BCG vaccinated', 'Cases**', 'Cases with outcome (%)', 'OR (95% CI)', 'P-value', 'Cases***', 'Cases with outcome (%)', 'aOR (95% CI)', 'P-value')) %>% 
+    kable(caption = "Summary of associations between BCG vaccination and all outcomes",
+         booktabs = TRUE) %>% 
+    column_spec(c(1, 2, 4, 8), width = "2cm") %>% 
+    add_header_above(c(" " = 2, "Univariable" = 4, "Multivariable" = 4)) %>% 
+    kable_styling(font_size = 8) %>% 
+    kable_styling(latex_options = "hold_position") %>% 
+    add_footnote(label = c("OR (95% CI): unadjusted odds ratio with 95% confidence intervals",
+                           "aOR (95% CI): adjusted odds ratios with 95% confidence intervals", 
+                           "* Death due to TB in those who died and where cause of death was known",
+                           "** Univariable sample size for outcomes ordered as in table (% of all cases) = 30746 (60%), 596 (23%), 33954 (66%), 34410 (67%), 13678 (26%)", 
+                           "*** Multivariable sample size with outcomes ordered as in table (% of all cases) = 25993 (50%), 506 (20%), 29086 (56%), 29379 (57%), 11718 (23%)"
+), 
+notation = "none") %>% 
+  landscape() %>% 
+    {.}
+```
+
+```{r 06-yrssincebcg-sum-tab}
+table_var_outs[[2]][4, c(3,5)] <- "$\\textit{Insufficient data}$"
+table_var_outs[[2]][3, c(4,6)] <- "-"
+table_var_outs[[2]]$`Age group (years)` <- str_replace(table_var_outs[[2]]$`Age group (years)`, "\u2264", "$\\\\leq$")
+
+table_var_outs[[2]] %>% 
+    combine_model_data_sum(DataSum = ModelDataSum[[2]]) %>% 
+    set_names(c('Outcome', 'Years since BCG', 'Cases**', 'Cases with outcome (\\%)', 'OR (95\\% CI)', 'P-value', 'Cases***', 'Cases with outcome (\\%)', 'aOR (95\\% CI)', 'P-value')) %>% 
+    kable(caption = "Summary of associations between years since vaccination and all outcomes in individuals who were vaccinated. The baseline exposure is vaccination $\\leq 10$ years before diagnosis compared to vaccination $11+$ years before diagnosis. Deaths due to TB (in those who died) had insufficient data for effect sizes to be estimated in both the univariable and multivariable analysis",
+          booktabs = TRUE, escape = FALSE) %>% 
+    column_spec(c(1, 2, 4, 8), width = "2cm") %>%  
+    add_header_above(c(" " = 2, "Univariable" = 4, "Multivariable" = 4)) %>% 
+    kable_styling(font_size = 8) %>% 
+    kable_styling(latex_options = "hold_position") %>% 
+    add_footnote(label = c("OR (95% CI): unadjusted odds ratio with 95% confidence intervals",
+                           "aOR (95% CI): adjusted odds ratios with 95% confidence intervals", 
+                           "* Death due to TB in those who died and where cause of death was known",
+                           "** Univariable sample size for outcomes ordered as in table (% of vaccinated cases) = 8824 (36%), 110 (28%), 9952 (41%), 10018 (41%), 3221 (13%)", 
+                           "*** Multivariable sample size with outcomes ordered as in table (% of vaccinated cases) = 7725 (32%), 100 (25%), 8807 (36%), 8855 (36%), 2856 (12%)"
+), 
+notation = "none") %>% 
+  landscape()
+``` 
+
+```{r 06-ageatvac-sum-tab}
+table_var_outs[[3]]$`Age group (years)` <- str_replace(table_var_outs[[3]]$`Age group (years)`, "\u2264", "$\\\\leq$") %>% 
+  str_replace("\u2265", "$\\\\geq$")
+
+
+table_var_outs[[3]] %>% 
+    combine_model_data_sum(DataSum = ModelDataSum[[3]]) %>% 
+    set_names(c('Outcome', 'Age at BCG', 'Cases**', 'Cases with outcome (\\%)', 'OR (95\\% CI)', 'P-value', 'Cases***', 'Cases with outcome (\\%)', 'aOR (95\\% CI)', 'P-value')) %>% 
+    kable(caption = "Summary of associations between age at vaccination and all outcomes in individuals who were vaccinated - the baseline exposure is vaccination at birth compared to vaccination from 1 to < 12, 12 to < 16, and 16+ years of age.",
+         booktabs = TRUE, escape = FALSE) %>% 
+    column_spec(c(1, 2, 4, 8), width = "2cm") %>% 
+    add_header_above(c(" " = 2, "Univariable" = 4, "Multivariable" = 4)) %>% 
+    kable_styling(font_size = 8) %>% 
+    kable_styling(latex_options = "hold_position") %>% 
+    add_footnote(label = c("OR (95% CI): unadjusted odds ratio with 95% confidence intervals",
+                           "aOR (95% CI): adjusted odds ratios with 95% confidence intervals", 
+                            "* Death due to TB in those who died and where cause of death was known",
+                            "** Univariable sample size for outcomes ordered as in table (% of vaccinated cases) = 8824 (36%), 110 (28%), 9952 (41%), 10018 (41%), 3221 (13%)", 
+                           "*** Multivariable sample size with outcomes ordered as in table (% of vaccinated cases) = 7725 (32%), 100 (25%), 8807 (36%), 8855 (36%), 2856 (12%)"
+), 
+notation = "none") %>% 
+  landscape() %>% 
+  {.}
+```
+
+### Sensitivity analysis of the missing data using multiple imputation
+
+As discussed in the previous sections, I found that repeating the analysis with an imputed data set had some effect on the results from the complete case analysis. There was a decrease in the accuracy of effect size estimates for BCG vaccination, some increase in p-values (Table \@ref(tab:06-imp-bcg)). However, none of the estimated effects changed their direction, and there were no detectable systematic changes in the results. 
+
+```{r 06-imp-bcg}
+imp_tab_gen <- function(df = NULL, caption = NULL, escape = TRUE) {
+  df %>% 
+  kable(caption = caption,
+        booktabs = TRUE, escape = escape) %>% 
+  column_spec(c(1), width = "3cm") %>%
+  add_footnote(label = c("OR: odds ratio with 95% confidence intervals", "aOR: adjusted odds ratio with 95% confidence intervals",
+                         "fmi: fraction of missing information",
+                         "* Death due to TB in those who died and where cause of death was known"),
+               notation = "none") %>% 
+  kable_styling(latex_options = "hold_position")
+}
+
+
+sum_imp_bcg %>% 
+  set_names( c('Outcome', 'OR (95% CI)', 'P-value', 'fmi', 'aOR (95% CI)', 'P-value', 'fmi')) %>% 
+  imp_tab_gen(caption = 'Summary of associations between BCG vaccination and all outcomes, using pooled imputed data.') %>% 
+  add_header_above(c(" " = 1, "Univariable" = 3, "Multivariable" = 3)) 
+```
+
+For the secondary exposure variables (years since vaccination and age at vaccination, (Table \@ref(tab:06-imp-yrsincebcg) and Table \@ref(tab:06-imp-ageatvac)), I found a change in direction of the point estimate between years since vaccination and all-cause mortality and recurrent TB, but similar results for age at vaccination and outcomes.
+
+```{r 06-imp-yrsincebcg}
+sum_imp_yrsinceBCG %>% 
+  set_names( c('Outcome', 'OR (95% CI)', 'P-value', 'fmi', 'aOR (95% CI)', 'P-value', 'fmi')) %>% 
+  imp_tab_gen(caption = 'Summary of associations between years since vaccination and all outcomes, using pooled imputed data. There was insufficient data to estimate an effect for deaths due to TB (in those who died)') %>% 
+  add_header_above(c(" " = 1, "Univariable" = 3, "Multivariable" = 3))
+```
+
+```{r 06-imp-ageatvac}
+sum_imp_ageatvac$`Age group (years)` <- str_replace(sum_imp_ageatvac$`Age group (years)`, "\u2264", "$\\\\leq$") %>% 
+  str_replace("\u2265", "$\\\\geq$")
+
+sum_imp_ageatvac %>% 
+  set_names( c('Outcome', 'Age group', 'OR (95\\% CI)', 'P-value', 'fmi', 'aOR (95\\% CI)', 'P-value', 'fmi')) %>% 
+  imp_tab_gen(caption = 'Summary of associations between age at vaccination and all outcomes, using pooled imputed data (reference is vaccination at <1 year).', escape = FALSE) %>% 
+  add_header_above(c(" " = 2, "Univariable" = 3, "Multivariable" = 3))  %>% 
+  kable_styling(font_size = 8) 
+```
+
+
+### Sensitivity analysis
+
+Dropping duplicate recurrent TB notifications increased the magnitude, and precision, of the effect sizes for recurrent TB, all-cause mortality, and deaths due to TB (in those who died) (see Table \@ref(tab:06-sens-table)). Restricting the analysis to only cases that were eligible for the BCG schools scheme reduced the sample size of the analysis (from an initial study size of 51645, of which 12832 were UK born, to 9943 cases that would have been eligible for the BCG schools scheme). With this reduced sample size, there was strong evidence in adjusted analyses of an association between BCG vaccination and reduced recurrent TB, and evidence of an association with decreased all-cause mortality (see Table \@ref(tab:06-sens-table)).
+
+```{r 06-sens-table, message=FALSE, echo=FALSE, results='asis', warning=FALSE}
+bcg_ass_main %>% 
+  set_names(c('Study population', 'Outcome', 'BCG', 'OR (95% CI)', 'P-value', 'aOR (95% CI)', 'P-value')) %>% 
+  kable(caption = "Summary of associations between BCG vaccination and all outcomes; cases that have no recurrent flag in the ETS (n=50407), and cases that would have been eligible for the BCG schools scheme (n=9943). Those defined to be eligible for the schools scheme are the UK born, that were aged 14 or over in 2004", booktabs = TRUE) %>% 
+    column_spec(c(1:2), width = "3cm") %>% 
+    kable_styling(latex_options = "hold_position") %>%
+    add_footnote(label = c("OR: odds ratio with 95% confidence intervals", "aOR: adjusted odds ratio with 95% confidence intervals",
+                         "fmi: fraction of missing information",
+                         "* Death due to TB in those who died and where cause of death was known"),
+               notation = "none") %>% 
+    add_header_above(c(" " = 3, "Univariable" = 2, "Multivariable" = 2)) %>% 
+    kable_styling(font_size = 8)
+```
+
+## Discussion
+
+Using TB surveillance data collected in England I found that BCG vaccination, prior to the development of active TB, was associated with reduced all-cause mortality and fewer recurrent TB cases, although the evidence for this association was weaker. There was some suggestion that the association with all-cause mortality was due to reduced deaths due to TB (in those who died), though the study was underpowered to definitively assess this. I did not find evidence of an association between BCG status and positive smear status or pulmonary TB. Analysis with multiply imputed data indicated that notification 10+ years after vaccination was associated with increased all-cause mortality. In separate analyses, there was some evidence that vaccination at birth, compared to at any other age, was associated with reduced all-cause mortality, and increased deaths due to TB (in those who died).
+
+This study used a large detailed dataset, with coverage across demographic groups, and standardized data collection from notifications and laboratories. The use of routine surveillance data means that this study would be readily repeatable with new data. The surveillance data contained multiple known risk factors, this allowed us to adjust for these confounders in the multivariable analysis, which attenuated the evidence for an association with BCG vaccination for all outcomes. However, there are important limitations to consider. The study was conducted within a population of active TB cases, therefore the association with all-cause mortality cannot be extrapolated to the general population. Additionally, vaccinated and unvaccinated populations may not be directly comparable because vaccination has been targeted at high-risk neonates in the UK since 2005. I mitigated this potential source for bias by conducting a sensitivity analysis including only those eligible for the universal school age scheme, and whilst the strength of associations were attenuated there remained some evidence of improved outcomes. Sensitivity analysis excluding recurrent cases indicated their inclusion may have biased our results towards the null.
+
+Variable data completeness changed with time, with both BCG vaccination status and year of vaccination having a high percentage of missing data, which may not be missing completely at random. I therefore checked the robustness of our results with multiple imputation including regional variability, however an unknown missing not at random mechanism, or unmeasured confounding may still have introduced bias. I found a greatly increased risk of all-cause mortality for those vaccinated more than 10 years ago in the analysis with multiply imputed data, compared to the complete case analysis. This is likely to be driven by a missing not at random mechanism for years since vaccination, with older cases being both more likely to have been vaccinated more than 10 years previously and to also have an unknown year of vaccination.  The high percentage of missing data also means that I was likely to be underpowered to detect an effect of BCG vaccination on sputum smear status and deaths due to TB (in those who died), with years since vaccination, and age at vaccination likely to be underpowered for all outcomes. I was not able to adjust for either tuberculin skin test (TST) stringency, or the latitude effect, although I was able to adjust for UK birth status.[@Roy2014b] However, the bias induced by these confounders is likely to be towards the null, meaning that our effect estimates are likely to be conservative. Finally, BCG vaccination status, and year of vaccination, may be subject to misclassification due to recall bias; validation studies of the recording of BCG status in the ETS would be required to assess this.
+ 
+Little work has been done to assess the overall effect of BCG on outcomes for active TB cases although the possible non-specific effects of BCG are an area of active research.[@Higgins; @Kandasamy2016; @Pollard2017] Whilst multiple studies have investigated BCG's association with all-cause mortality, it has been difficult to assess whether the association continues beyond the first year of life.[@Pollard2017] The effect size of the association I identified between BCG and all-cause mortality in active TB cases was comparable to that found in a Danish case-cohort study in the general population (aHR: 0.58 (95% CI 0.39 to 0.85).[@Rieckmann2016] A recent systematic review also found that BCG vaccination was associated with reduced all-cause mortality in neonates, with an average relative risk of 0.70 (95% CI 0.49 to 1.01) from five clinical trials and 0.47 (95% CI 0.32 to 0.69) from nine observational studies at high risk of bias.[@Higgins] I found some weak evidence that BCG vaccination was associated with reduced deaths due to TB (in those who died), although our point estimate had large confidence intervals. Several meta-analyses have found evidence supporting this association,[@Colditz1994; @Abubakar2013] with one meta-analysis estimating a 71% (RR: 0.29 95% CI 0.16 to 0.53) reduction in deaths due to TB in individuals vaccinated with BCG.[@Colditz1994] The meta-analysis performed by Abubakar et al. also found consistent evidence for this association, with a Rate Ratio of 0.22 (95% CI 0.15 to 0.33).[@Abubakar2013] In contrast to our study, both of these meta-analyses estimated the protection from TB mortality in BCG vaccinated individuals rather than in BCG vaccinated cases who had died from any cause. Additionally, neither study explored the association between BCG vaccination and all-cause mortality or recurrent TB. This study could not determine the possible causal pathway for the association between BCG vaccination all-cause mortality, and recurrent TB. These are important to establish in order to understand the effect of BCG vaccination on TB outcomes.
+
+I found that BCG vaccination was associated with reduced all-cause mortality, with some weaker evidence of an association with reduced recurrent TB. A plausible mechanism for this association is that BCG vaccination improves treatment outcomes,[@Jeremiah2010] which then results in decreased mortality, and reduced recurrent TB. However, these effects may also be independent and for all-cause mortality may not be directly related to active TB. In this case, a possible mechanism for the association between BCG vaccination and all-cause mortality is that BCG vaccination modulates the innate immune response, resulting in non-specific protection.[@Kleinnijenhuis2012] For low incidence countries, where the reduction in TB cases has been used as evidence to scale back vaccination programs,[@Zwerling2011] these results suggest that BCG vaccination may be more beneficial than previously thought. In countries that target vaccination at those considered to be at high risk of TB the results from this study could be used to help drive uptake by providing additional incentives for vaccination. The evidence I have presented should be considered in future cost-effectiveness studies of BCG vaccination programs. 
+
+Several other Chapters (Chapter \@ref(sutherland), Chapter \@ref(direct-eff), and Chapter \@ref(model-results)) in this thesis assess the impact of moving from universal school age vaccination to selective high risk neonatal vaccination. The reduction in BCG coverage that this implies means that on top of any potential increase in TB incidence rates there may also have been a reduction in the benefical effects from the BCG vaccine discussed in this Chapter. However, as outlined in the previous paragraph, the evidence of reductions in both all-cause, and TB specific mortality, is strongest in the early years of life. This means that the move to neonatal vaccination may have actually led to an increase in the non-specific benefits.
+
+Further work is required to determine whether years since vaccination and age at vaccination are associated with TB outcomes as this study was limited by low sample size, missing data for year of vaccination, and the relative rarity of some TB outcomes. However, due to the continuous collection of the surveillance data used in this analysis, this study could be repeated once additional data have been collected. If this study were to be repeated with a larger sample size particular attention should be given to the functional form of any decay in protection from negative TB outcomes. Additionally, a larger sample size would allow investigation of the associations identified between TB outcomes and BCG vaccination stratified by pulmonary, extrapulmonary, and disseminated TB disease. The results from this study require validation in independent datasets and the analysis should be reproducible in other low incidence countries that have similarly developed surveillance systems. If validated in low incidence countries, similar studies in medium to high incidence countries should be conducted because any effect would have a greater impact in these settings. 
+
+## Summary
+
+* I found evidence of an association between BCG vaccination and reduced all-cause mortality (aOR:0.76 (95%CI 0.64 to 0.89), P:0.001) and weak evidence of an association with reduced recurrent TB (aOR:0.90 (95%CI 0.81 to 1.00), P:0.056). Analyses using multiple imputation suggested that the benefits of vaccination for all-cause mortality were reduced after 10 years.
+
+* There was some suggestion that the association with all-cause mortality was due to reduced deaths due to TB (in those who died), though the study was underpowered to definitively assess this. 
+
+* There was little evidence for other associations.
+
+* The code for the analysis contained in this Chapter can be found at: [doi.org/10.5281/zenodo.1213799](doi.org/10.5281/zenodo.1213799)^[Alternatively available from: https://github.com/seabbs/ExploreBCGOnOutcomes]
+

@@ -1,0 +1,168 @@
+---
+title: "Using visdat"
+author: "Nicholas Tierney"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Using visdat}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, echo = FALSE, include = FALSE}
+
+knitr::opts_chunk$set(fig.width = 5,
+                      fig.height = 4)
+
+```
+
+When you get a new data set, you need to look at the data to get a sense of what it contains and potential problems with it. That's a key phrase here "looking at the data" - what does that mean?
+
+On the one hand, you can look at the head of the data:
+
+```{r head-iris}
+
+head(iris)
+
+```
+
+Or you can have a `glimpse` at it through `dplyr::glimpse`
+
+```{r glimpse}
+
+dplyr::glimpse(iris)
+
+```
+
+Here we see that we have doubles, and a factor. We get some insight into the data.
+
+But we don't always have data like the canonical iris dataset. let's take a look at some data that might be a bit more typical of "messy" data.
+
+```{r visdat-glimpse}
+library(visdat)
+dplyr::glimpse(typical_data)
+
+```
+
+Looking at this, you might then ask:
+
+> Isn't it odd that Income is a factor? And Age is a character? 
+
+And you might start to wonder what else is different, what else changed? 
+
+And it might be a bit unclear where to go from there. Do you plot the data? Why does my plot look weird? What are these other strange features in the data? The `visdat` package provides visualisations of an entire dataframe at once. Initially inspired by [`csv-fingerprint`](https://github.com/setosa/csv-fingerprint), `visdat` provides tools to create heatmap-like visualisations of an entire dataframe. `visdat` provides 2 main functions: `vis_dat` and `vis_miss`.
+
+`vis_dat()` helps explore the data class structure and missingness:
+
+```{r load-data}
+
+vis_dat(typical_data)
+
+```
+
+And the `vis_miss` function provides a custom plot for missing data.
+
+```{r example-vis-miss}
+
+vis_miss(typical_data)
+
+```
+
+The name `visdat` was chosen as it borrows from the idea of [`testdat`](https://github.com/ropensci/testdat), which provides unit testing for your data.  In a similar way, `visdat` provides visual tests, the idea being that first you visualise your data (`visdat`), then you run tests from `testdat`, or a package like `assertr`, to fix these errors.
+
+## Using `vis_dat`
+
+Let's see what's inside the dataset `airquality`, which contains information about daily air quality measurements in New York from May to September 1973. More information about the dataset can be found with `?airquality`.
+
+```{r vis_dat}
+
+library(visdat)
+
+vis_dat(airquality)
+
+```
+The plot above tells us that R reads this dataset as having numeric and integer values, with some missing data in `Ozone` and `Solar.R`. The classes are represented on the legend, and missing data represented by grey. The column/variable names are listed on the x axis. 
+
+By default, `vis_dat` sorts the columns according to the type of the data in the vectors. You can turn this off by setting `sort_type = FALSE`. This feature is better illustrated using the `typical_data` dataset, created using [wakefield](github.com/trinker/wakefield) and contained within `visdat`.
+
+```{r visdat-typical}
+
+vis_dat(typical_data)
+
+vis_dat(typical_data, 
+        sort_type = FALSE)
+
+```
+
+## Using `vis_miss`
+
+We can explore the missing data further using `vis_miss`.
+
+```{r vis_miss}
+
+vis_miss(airquality)
+
+```
+
+Notice that the percentages of missingness are provided in the data. These are accurate to 1 decimal place. `vis_miss` indicates when there is a very small amount of missing data at <0.1% missingness.
+
+
+```{r vismiss-new-data}
+
+df_test <- data.frame(x1 = 1:10000,
+                      x2 = rep("A", 10000),
+                      x3 = c(rep(1L, 9999), NA))
+
+vis_miss(df_test)
+
+```
+
+`vis_miss` will also indicate when there is no missing data at all. 
+
+```{r vismiss-mtcars}
+
+df_test <- data.frame(x1 = 1:10000,
+                      x2 = rep("tidy", 10000),
+                      x3 = rep("data", 10000))
+
+vis_miss(df_test)
+
+```
+
+Columns can be arranged by columns with most missingness, by setting `sort_miss = TRUE`.
+
+```{r vismiss}
+
+vis_miss(airquality,
+         sort_miss = TRUE)
+
+```
+
+And missingness can be clustered by setting `cluster = TRUE`
+
+```{r vis_miss-cluster}
+
+vis_miss(airquality, 
+         cluster = TRUE)
+
+```
+
+To further explore the missingness structure in a dataset, I recommend the [`narnia`](https://github.com/njtierney/narnia) package, which provides more general tools for graphical and numerical exploration of missing values.
+
+## Interactivity
+
+Thanks to Carson Sievert, you can now add some really nifty interactivity into visdat by using `plotly::ggplotly`, allowing for information to be revealed upon mouseover of a cell.
+
+```{r plotly-example}
+
+library(plotly)
+
+vis_dat(airquality) %>% ggplotly()
+vis_miss(airquality) %>% ggplotly()
+
+```
+
+# Future work
+
+There are some other features in development for interactivity, guessing types of data, and comparing datasets.
+

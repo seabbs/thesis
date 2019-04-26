@@ -1,0 +1,85 @@
+
+R version 3.4.3 (2017-11-30) -- "Kite-Eating Tree"
+Copyright (C) 2017 The R Foundation for Statistical Computing
+Platform: x86_64-pc-linux-gnu (64-bit)
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+  Natural language support but running in an English locale
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+> library(subplex)
+> 
+> ripple <- function (x) {
++     r <- sqrt(sum(x^2))
++     1-exp(-r^2)*cos(10*r)^2
++ }
+> 
+> fit <- subplex(par=c(1),fn=ripple,hessian=TRUE)
+> stopifnot(all.equal(fit$par,0,tol=1e-5))
+> 
+> fit <- subplex(par=c(1),fn="ripple",hessian=TRUE)
+> stopifnot(all.equal(fit$par,0,tol=1e-5))
+> print(fit$message)
+[1] "success! tolerance satisfied"
+> 
+> fit <- subplex(par=c(1),fn="ripple",hessian=TRUE)
+> stopifnot(all.equal(fit$par,0,tol=1e-5))
+> 
+> fit <- subplex(par=c(0.1,3),fn=ripple,hessian=TRUE)
+> stopifnot(all.equal(fit$value,0,tol=1e-5))
+> 
+> fit <- subplex(par=c(0.1,3),fn=ripple,hessian=TRUE,
++                control=list(parscale=c(0.01,0.001)))
+> 
+> fit <- subplex(par=c(0.1,3,2),fn=ripple,hessian=TRUE)
+> stopifnot(all.equal(fit$par,c(0.45932,1.10399,0.34408),tol=1e-4))
+> print(fit$message)
+[1] "success! tolerance satisfied"
+> 
+> fit <- subplex(par=c(0.1,3),fn=ripple,control=list(reltol=0))
+> print(fit$message)
+[1] "limit of machine precision reached"
+> fit <- subplex(par=c(0.1,3),fn=ripple,control=list(reltol=0,maxit=10))
+> print(fit$message)
+[1] "number of function evaluations exceeds 'maxit'"
+> 
+> try(subplex(par=c(0.1,3,2),fn=3,hessian=FALSE))
+Error in match.fun(fn) : '3' is not a function, character or symbol
+> try(subplex(par=c(0.1,3,2),fn=ripple,control=list(reltol=-100)))
+Error : in ‘subplex’: 'reltol' must be a non-negative scalar
+> try(subplex(par=c(0.1,3,2),fn=ripple,control=list(maxit=-100)))
+Error : in ‘subplex’: 'maxit' must be a positive integer
+> try(subplex(par=numeric(0),fn=ripple))
+Error : in ‘subplex’: 'par' must be a non-empty vector
+> 
+> fit <- subplex(par=c(0.1,3,2),fn=ripple,control=list(parscale=0.1))
+> stopifnot(all.equal(fit$value,1,tol=1e-4))
+> 
+> try(subplex(par=c(0.1,3,2),fn=ripple,control=list(parscale=c(0.1,0.5))))
+Error : in ‘subplex’: 'parscale' misspecified: either specify a single scale or one for each component of 'par'
+> try(subplex(par=c(0.1,3,2),fn=ripple,control=list(parscale=c(0.01,0.05,1e-30))))
+Error : in ‘subplex’: 'parscale' is too small relative to 'par'
+> fit <- subplex(par=c(0.1,3,2),fn=ripple,control=list(parscale=c(0.01,0.05,0.1)))
+> 
+> fit <- subplex(par=c(0.1,3,2),fn=ripple,control=list(maxit=2))
+> stopifnot(fit$conv==-1)
+> 
+> fit <- subplex(par=c(0.1,3,2),fn=ripple,control=list(reltol=1e-3))
+> stopifnot(all.equal(fit$value,0.791,tol=1e-3))
+> 
+> try(fit <- subplex(par=c(0.1,3,2),fn=ripple,control=list(parscale=c(1e-90))))
+Error : in ‘subplex’: 'parscale' is too small relative to 'par'
+> try(fit <- subplex(par=c(1e100,3e100,2e100),fn=ripple,control=list(parscale=1e-10)))
+Error : in ‘subplex’: 'parscale' is too small relative to 'par'
+> 
+> 

@@ -1,0 +1,80 @@
+---
+output:
+  html_document: default
+  pdf_document: default
+  word_document: default
+---
+
+# Investigating the impact of the 2005 change in BCG vaccination policy using a fitted dynamic transmission model of TB {#model-results}
+
+
+```{r model-results-setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, dpi = 320, 
+                      fig.width = 8, fig.height = 8,
+                      out.width = "80%", fig.align = 'center')
+
+##packages
+library(tidyverse)
+library(kableExtra)
+library(pander)
+## Resources path
+resources_path <- file.path("chapters", "model_results")
+```
+
+## Introduction
+
+* Why
+* What did I do in the last chapter and how does this extend it
+* What I did summary
+
+## Method
+
+### Scenarios considered
+
+* Outline scenarios considered
+
+### Future Non-UK born cases assumption
+
+* Exponential decay
+* Remain constant
+* Compare and constrast what these mean at different timelines
+
+## Results
+  
+## Impact between 2005 and 2010
+
+  * Comparision of cases at multiple time horizons.
+  * Comparision of age distribution of cases.
+  * Comparision of deaths at multiple time horizons.
+  * Comparision of age distribution of deaths.
+  * All in reflection of reality.
+  
+## Non-UK born cases decline exponentially over time
+
+  * Comparision of cases at multiple time horizons (10 and 25 years).
+  * Comparision of age distribution of cases.
+  * Comparision of deaths at multiple time horizons (10 and 25 years).
+  * Comparision of age distribution of deaths
+  
+## Non-UK born cases stay at todays levels
+
+  * Comparision of cases at multiple time horizons (10 and 25 years).
+  * Comparision of age distribution of cases.
+  * Comparision of deaths at multiple time horizons (10 and 25 years).
+  * Comparision of age distribution of deaths
+  
+  
+## Discussion
+
+
+* Summary of work from chapter
+* Strengths and weaknesses
+* Literature comparisions
+* Concliusions
+
+
+## Summary
+
+* Best vaccination scenario according to model
+* Implications for actual policy
+* 

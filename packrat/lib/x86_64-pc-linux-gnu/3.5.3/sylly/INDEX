@@ -1,0 +1,17 @@
+correct.hyph            Correct kRp.hyphen objects
+describe                Getter/setter methods for sylly objects
+get.sylly.env           Get sylly session environment
+hyphen                  Automatic hyphenation
+kRp.hyph.pat,-class     S4 Class kRp.hyph.pat
+kRp.hyphen,-class       S4 Class kRp.hyphen
+manage.hyph.pat         Handling hyphenation pattern objects
+read.hyph.pat           Reading patgen-compatible hyphenation pattern
+                        files
+set.hyph.support        Add support for new languages
+set.sylly.env           A function to set information on your sylly
+                        environment
+show,kRp.hyphen-method
+                        Show method for sylly objects
+summary,kRp.hyphen-method
+                        Summary method for sylly objects
+sylly-package           The sylly Package

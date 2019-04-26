@@ -1,0 +1,93 @@
+epi.2by2                Summary measures for count data presented in a
+                        2 by 2 table
+epi.RtoBUGS             R to WinBUGS data conversion
+epi.SClip               Lip cancer in Scotland 1975 - 1980
+epi.about               The library epiR: summary information
+epi.asc                 Write matrix to an ASCII raster file
+epi.betabuster          An R version of Wes Johnson and Chun-Lung Su's
+                        Betabuster
+epi.bohning             Bohning's test for overdispersion of Poisson
+                        data
+epi.ccc                 Concordance correlation coefficient
+epi.ccsize              Sample size, power or minimum detectable odds
+                        ratio for an unmatched or matched case-control
+                        study
+epi.cluster1size        Sample size under under one-stage cluster
+                        sampling
+epi.cluster2size        Sample size under under two-stage cluster
+                        sampling
+epi.clustersize         Sample size for cluster-sample surveys
+epi.cohortsize          Sample size, power or minimum detectable risk
+                        ratio for a cohort study
+epi.conf                Confidence intervals for means, proportions,
+                        incidence, and standardised mortality ratios
+epi.convgrid            Convert British National Grid georeferences to
+                        easting and northing coordinates
+epi.cp                  Extract unique covariate patterns from a data
+                        set
+epi.cpresids            Covariate pattern residuals from a logistic
+                        regression model
+epi.descriptives        Descriptive statistics
+epi.detectsize          Sample size to detect disease
+epi.dgamma              Estimate the precision of a [structured]
+                        heterogeneity term
+epi.directadj           Directly adjusted incidence rate estimates
+epi.dms                 Decimal degrees and degrees, minutes and
+                        seconds conversion
+epi.dsl                 Mixed-effects meta-analysis of binary outcomes
+                        using the DerSimonian and Laird method
+epi.edr                 Estimated dissemination ratio
+epi.empbayes            Empirical Bayes estimates
+epi.epidural            Rates of use of epidural anaesthesia in trials
+                        of caregiver support
+epi.equivb              Estimate the sample size for a parallel
+                        equivalence trial, binary outcomes
+epi.equivc              Estimate the sample size for a parallel
+                        equivalence trial, continuous outcomes
+epi.herdtest            Estimate herd test characteristics
+epi.incin               Laryngeal and lung cancer cases in Lancashire
+                        1974 - 1983
+epi.indirectadj         Indirectly adjusted incidence risk estimates
+epi.insthaz             Instantaneous hazard computed on the basis of a
+                        Kaplan-Meier survival function
+epi.interaction         Relative excess risk due to interaction in a
+                        case-control study
+epi.iv                  Fixed-effect meta-analysis of binary outcomes
+                        using the inverse variance method
+epi.kappa               Kappa statistic
+epi.ltd                 Lactation to date and standard lactation milk
+                        yields
+epi.meansize            Sample size, power and minimum detectable
+                        difference when comparing means
+epi.mh                  Fixed-effects meta-analysis of binary outcomes
+                        using the Mantel-Haenszel method
+epi.nomogram            Post-test probability of disease given
+                        sensitivity and specificity of a test
+epi.noninfb             Estimate the sample size for a parallel
+                        non-inferiority trial, binary outcomes
+epi.noninfc             Estimate the sample size for a parallel
+                        equivalence trial, continuous outcomes
+epi.occc                Overall concordance correlation coefficient
+                        (OCCC)
+epi.offset              Create offset vector
+epi.pooled              Estimate herd test characteristics when pooled
+                        sampling is used
+epi.popsize             Estimate population size
+epi.prcc                Partial rank correlation coefficients
+epi.prev                Estimate true prevalence
+epi.propsize            Sample size, power and minimum detectable risk
+                        ratio when comparing proportions
+epi.simplesize          Sample size under simple random sampling
+epi.smd                 Fixed-effect meta-analysis of continuous
+                        outcomes using the standardised mean difference
+                        method
+epi.stratasize          Sample size under under stratified random
+                        sampling
+epi.supb                Estimate the sample size for a parallel
+                        superiority trial, binary outcomes
+epi.supc                Estimate the sample size for a parallel
+                        superiority trial, continuous outcomes
+epi.survivalsize        Sample size, power and minimum detectable
+                        hazard for time to event studies
+epi.tests               Sensitivity, specificity and predictive value
+                        of a diagnostic test

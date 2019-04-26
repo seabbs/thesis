@@ -1,0 +1,26 @@
+Package: visdat
+Title: Preliminary Data Visualisation
+Version: 0.1.0
+Authors@R: person("Nicholas", "Tierney", email = "nicholas.tierney@gmail.com", role = c("aut", "cre"))
+Description: Create preliminary exploratory data visualisations of an entire 
+  dataset to identify problems or unexpected features using 'ggplot2'.
+Depends: R (>= 3.2.2)
+License: MIT + file LICENSE
+LazyData: true
+RoxygenNote: 6.0.1.9000
+Imports: ggplot2, tidyr, dplyr, purrr, magrittr, stats
+URL: https://github.com/njtierney/visdat/
+BugReports: https://github.com/njtierney/visdat/issues
+Suggests: plotly (>= 4.5.6), testthat, knitr, rmarkdown, vdiffr
+VignetteBuilder: knitr
+NeedsCompilation: no
+Packaged: 2017-07-11 16:38:25 UTC; ntie0001
+Author: Nicholas Tierney [aut, cre]
+Maintainer: Nicholas Tierney <nicholas.tierney@gmail.com>
+Repository: CRAN
+Date/Publication: 2017-07-11 16:51:27 UTC
+Built: R 3.5.3; ; 2019-04-26 14:32:31 UTC; unix
+RemoteType: cran
+RemoteSha: 0.1.0
+RemoteRepos: c(CRAN = "https://mran.microsoft.com/snapshot/2018-07-02")
+RemotePkgType: source

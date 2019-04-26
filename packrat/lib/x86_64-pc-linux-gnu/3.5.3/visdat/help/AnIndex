@@ -1,0 +1,13 @@
+visdat-package	visdat
+add_vis_dat_pal	add_vis_dat_pal
+fingerprint	fingerprint
+label_col_missing_pct	label_col_missing_pct
+miss_guide_label	miss_guide_label
+typical_data	typical_data
+typical_data_large	typical_data_large
+visdat	visdat
+vis_create_	vis_create_
+vis_dat	vis_dat
+vis_extract_value_	vis_extract_value_
+vis_gather_	vis_gather_
+vis_miss	vis_miss

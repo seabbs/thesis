@@ -1,0 +1,38 @@
+add_footnote            Add footnote
+add_header_above        Add a header row on top of current header
+add_indent              Add indentations to row headers
+auto_index              Automatically figuring out the group_row index
+cell_spec               Specify Cell/Text format
+collapse_rows           Collapse repeated rows to multirow cell
+column_spec             Specify the look of the selected column
+footnote                Add footnote (new)
+footnote_marker_number
+                        Footnote marker
+group_rows              Put a few rows of a table into one category
+html_dependency_bsTable
+                        HTML dependency for Twitter bootstrap (table
+                        only)
+html_dependency_kePrint
+                        HTML dependency for js script to enable
+                        bootstrap tooltip and popup message
+kableExtra-package      kableExtra
+kableExtra_latex_packages
+                        LaTeX Packages
+kable_as_image          Convert a LaTeX table to an image and place it
+                        in a rmarkdown document
+kable_styling           HTML table attributes
+landscape               Print the table on an isolated landscape page
+                        in PDF
+linebreak               Make linebreak in LaTeX Table cells
+magic_mirror            Magic mirror that returns kable's attributes
+rmd_format              Rmarkdown Format
+row_spec                Specify the look of the selected row
+save_kable              Save kable to files
+scroll_box              Put a HTML table into a scrollable box
+spec_angle              Generate rotation angle for continuous values
+spec_color              Generate viridis Color code for continuous
+                        values
+spec_font_size          Generate common font size for continuous values
+spec_popover            Setup bootstrap popover
+spec_tooltip            Setup bootstrap tooltip
+usepackage_latex        Load a LaTeX package

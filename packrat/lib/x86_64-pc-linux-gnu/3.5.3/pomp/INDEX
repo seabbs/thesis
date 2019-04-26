@@ -1,0 +1,56 @@
+Bayesian sequential Monte Carlo
+                        The Liu and West Bayesian particle filter
+Example pomp models     Examples of the construction of POMP models
+LondonYorke             Historical childhood disease incidence data
+MCMC proposal distributions
+                        MCMC proposal distributions
+Nonlinear forecasting   Parameter estimation my maximum simulated
+                        quasi-likelihood (nonlinear forecasting)
+POMP simulation         Simulations of a partially-observed Markov
+                        process
+Power spectrum computation and matching
+                        Power spectrum computation and
+                        spectrum-matching for partially-observed Markov
+                        processes
+Probe functions         Some useful probes for partially-observed
+                        Markov processes
+Probes and synthetic likelihood
+                        Probe a partially-observed Markov process by
+                        computing summary statistics and the synthetic
+                        likelihood.
+Simulated annealing     Simulated annealing with box constraints.
+Trajectory matching     Parameter estimation by fitting the trajectory
+                        of a model's deterministic skeleton to data
+abc                     Estimation by approximate Bayesian computation
+                        (ABC)
+bake                    Tools for reproducible computations.
+blowflies               Model for Nicholson's blowflies.
+bspline.basis           B-spline bases
+dacca                   Model of cholera transmission for historic
+                        Bengal.
+ensembe Kalman filter   Ensemble Kalman filters
+euler.sir               Compartmental epidemiological models
+eulermultinom           The Euler-multinomial distributions and Gamma
+                        white-noise processes
+gompertz                Gompertz model with log-normal observations.
+logmeanexp              The log-mean-exp trick
+mif                     Maximum likelihood by iterated filtering
+mif2                    IF2: Maximum likelihood by iterated, perturbed
+                        Bayes maps
+ou2                     Two-dimensional discrete-time
+                        Ornstein-Uhlenbeck process
+parmat                  Create a matrix of parameters
+particle filter         Particle filter
+pmcmc                   The particle Markov chain Metropolis-Hastings
+                        algorithm
+pomp constructor        Constructor of the basic pomp object
+pomp low-level interface
+                        pomp low-level interface
+pomp methods            Functions for manipulating, displaying, and
+                        extracting information from objects of the
+                        'pomp' class
+pomp-package            Inference for partially observed Markov
+                        processes
+profileDesign           Design matrices for pomp calculations
+ricker                  Ricker model with Poisson observations.
+rw2                     Two-dimensional random-walk process

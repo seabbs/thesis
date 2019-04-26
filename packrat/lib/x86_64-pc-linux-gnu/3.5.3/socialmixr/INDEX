@@ -1,0 +1,20 @@
+check                   Check contact survey data
+cite                    Citation for a survey
+clean                   Clean contact survey data
+contact_matrix          Generate a contact matrix from diary survey
+                        data
+get_survey              Get a survey, either from its Zenodo
+                        repository, a set of files, or a survey
+                        variable
+limits_to_agegroups     Convert lower age limits to age groups.
+list_surveys            List all surveys available for download
+polymod                 Social contact data from 8 European countries
+pop_age                 Change age groups in population data
+reduce_agegroups        Reduce the number of age groups given a broader
+                        set of limits
+survey                  Contact survey
+survey_countries        List all countries contained in a survey
+wpp_age                 Get age-specific population data according to
+                        the World Population Prospects 2015 edition
+wpp_countries           List all countries and regions for which
+                        socialmixr has population data

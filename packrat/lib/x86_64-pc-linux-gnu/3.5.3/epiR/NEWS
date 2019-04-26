@@ -1,0 +1,20 @@
+
+        CHANGES IN epiR VERSION 0.9-96
+
+BUG FIXES
+
+    o epi.noninfb
+    Study power estimation when r argument for epi.noninfb was not equal 
+    to 1 returned incorrect results. 
+    [Spotted by Aline Guttmann]
+    Fixed.
+
+    o epi.interaction
+    Error returned when model = coxph. 
+    [Spotted by Eirik Degerud]
+    Fixed.
+    
+    o epi.directadj
+    Inconsistency in documentation.
+    [Spotted by Jose Conde]
+    Fixed.

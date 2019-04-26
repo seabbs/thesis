@@ -1,0 +1,88 @@
+---
+title: "Thesis timeline"
+author: "Sam Abbott"
+output:
+  pdf_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r, include = FALSE}
+library(tidyverse)
+library(knitr)
+library(kableExtra)
+```
+
+## Overview of Timeline
+
+This timeline gives a breakdown on the current status of each PhD chapter. It then outlines the monthly targets towards a completion date of the 01/05/19.
+
+## Chapter Breakdown
+
+1. **Introduction:**
+    - Status: Planned and partially written
+    
+1. **The epidemiology of tuberculosis, and the role of BCG vaccination, in England:** 
+    - Status: Draft complete, needs updating based on comments from Matt.
+    
+1. **Reassessing the Evidence for Universal School-age Bacillus Calmette Guerin (BCG) Vaccination in England and Wales:**
+    - Status: Complete as draft paper - requires some updating based on work from the JVCI and conversion into thesis chapter
+    
+1. **Beneficial effects of BCG vaccination in outcomes for patients diagnosed with TB: observation study using the Enhanced Tuberculosis Surveillance System 2009-2015:**
+    - Status: Under review at Vaccine (5 months) - requires conversion
+    
+1. **Estimating the effect of the 2005 UK BCG vaccination policy change: A retrospective cohort study using the Enhanced Tuberculosis Surveillance system, 2000-2015:**
+    - Status: Complete as draft paper - requires conversion
+    
+1. **Developing and parameterising a dynamic transmission model of tuberculosis:**
+    - Status: Chapter complete but requires updating based on changes during model implementation and fitting
+
+
+1. **Investigating the impact of the 2005 change in BCG vaccination policy using a fitted dynamic transmission model of TB**
+    - Status: Model, model fitting pipeline, model scenario analysis and model sensitivity implemented. Preliminary results have been used to construct code to produce final plots/tables/output metrics. Run and validating model fitting is in progress. Chapter has been outlined and partially written up (~30%).
+
+1. **Discussion:**
+    - Status: Outlined.
+
+## Monthly Breakdown
+
+```{r, echo = FALSE, results = "asis"}
+timeline_tab <- data_frame(
+  Month = c("Feburary", ""),
+            Sam = c(
+              "1st Introduction",
+              "15th, The epidemiology of tuberculosis, and the role of BCG vaccination, in England & 
+              Developing and parameterising a dynamic transmission model of tuberculosis"),
+            Supervisors = c("15th Introduction", "")
+            ) %>% 
+    add_row(Month = c("March", ""),
+          Sam = c("1st Reassessing the Evidence for Universal School-age Bacillus Calmette Guerin (BCG) Vaccination in England and Wales & 
+                  Beneficial effects of BCG vaccination in outcomes for patients diagnosed with TB: observation study using the Enhanced Tuberculosis Surveillance System 2009-2015",
+                  "15th Investigating the impact of the 2005 change in BCG vaccination policy using a fitted dynamic transmission model of TB & 
+                   Estimating the effect of the 2005 UK BCG vaccination policy change: A retrospective cohort study using the Enhanced Tuberculosis Surveillance system, 2000-2015"),
+          Supervisors = c("1st The epidemiology of tuberculosis, and the role of BCG vaccination, in England & 
+              Developing and parameterising a dynamic transmission model of tuberculosis",
+              "")) %>% 
+    add_row(Month = c("April"),
+          Sam = c("1st All chapters excepting the last two chapters with Supervisors,
+                  15th Final two chapters updated based on supervisor comments."),
+          Supervisors = c("1st Investigating the impact of the 2005 change in BCG vaccination policy using a fitted dynamic transmission model of TB & 
+                    Estimating the effect of the 2005 UK BCG vaccination policy change: A retrospective cohort study using the Enhanced Tuberculosis Surveillance system, 2000-2015")
+          ) %>% 
+    add_row(Month = c("May"),
+          Sam = c("1st Final hand in + viva organisation"),
+          Supervisors = c("")) 
+
+
+kable(timeline_tab, booktabs = TRUE) %>% 
+  column_spec(c(1), width = "2cm") %>% 
+  column_spec(c(2, 3), width = "8cm") %>%
+  landscape()
+```
+
+
+
+
+

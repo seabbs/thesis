@@ -1,0 +1,70 @@
+structure(list(.i = c("1", "2", "--"), .in = c("1", "3", ".in1"
+), .inc = c("1", "4", "--"), .inco = c("1", "5", "--"), .incom = c("1", 
+"6", "--"), .incomp = c("1", "7", "--"), `in` = c("2", "3", "--"
+), inc = c("2", "4", "2inc"), inco = c("2", "5", "--"), incom = c("2", 
+"6", "--"), incomp = c("2", "7", "--"), incompr = c("2", "8", 
+"--"), nc = c("3", "4", "--"), nco = c("3", "5", "--"), ncom = c("3", 
+"6", "--"), ncomp = c("3", "7", "--"), ncompr = c("3", "8", "--"
+), ncompre = c("3", "9", "--"), co = c("4", "5", "1c2o2"), com = c("4", 
+"6", "--"), comp = c("4", "7", "comp4"), compr = c("4", "8", 
+"--"), compre = c("4", "9", "--"), compreh = c("4", "10", "--"
+), om = c("5", "6", "2om"), omp = c("5", "7", "--"), ompr = c("5", 
+"8", "--"), ompre = c("5", "9", "--"), ompreh = c("5", "10", 
+"--"), omprehe = c("5", "11", "--"), mp = c("6", "7", "m1p"), 
+    mpr = c("6", "8", "--"), mpre = c("6", "9", "--"), mpreh = c("6", 
+    "10", "--"), mprehe = c("6", "11", "--"), mprehen = c("6", 
+    "12", "--"), pr = c("7", "8", "1pr2"), pre = c("7", "9", 
+    "--"), preh = c("7", "10", "--"), prehe = c("7", "11", "--"
+    ), prehen = c("7", "12", "--"), prehens = c("7", "13", "--"
+    ), re = c("8", "9", "r2e"), reh = c("8", "10", "--"), rehe = c("8", 
+    "11", "--"), rehen = c("8", "12", "--"), rehens = c("8", 
+    "13", "--"), rehensi = c("8", "14", "--"), eh = c("9", "10", 
+    "e1h2"), ehe = c("9", "11", "--"), ehen = c("9", "12", "--"
+    ), ehens = c("9", "13", "--"), ehensi = c("9", "14", "--"
+    ), ehensib = c("9", "15", "--"), he = c("10", "11", "he2"
+    ), hen = c("10", "12", "--"), hens = c("10", "13", "--"), 
+    hensi = c("10", "14", "--"), hensib = c("10", "15", "--"), 
+    hensibi = c("10", "16", "--"), en = c("11", "12", "--"), 
+    ens = c("11", "13", "en2s"), ensi = c("11", "14", "--"), 
+    ensib = c("11", "15", "--"), ensibi = c("11", "16", "--"), 
+    ensibil = c("11", "17", "--"), ns = c("12", "13", "4n1s"), 
+    nsi = c("12", "14", "n2si"), nsib = c("12", "15", "ns3ib"
+    ), nsibi = c("12", "16", "--"), nsibil = c("12", "17", "--"
+    ), nsibili = c("12", "18", "--"), si = c("13", "14", "--"
+    ), sib = c("13", "15", "4s1ib"), sibi = c("13", "16", "--"
+    ), sibil = c("13", "17", "--"), sibili = c("13", "18", "--"
+    ), sibilit = c("13", "19", "--"), ib = c("14", "15", "--"
+    ), ibi = c("14", "16", "ib1i"), ibil = c("14", "17", "--"
+    ), ibili = c("14", "18", "--"), ibilit = c("14", "19", "--"
+    ), ibiliti = c("14", "20", "--"), bi = c("15", "16", "--"
+    ), bil = c("15", "17", "b1il"), bili = c("15", "18", "--"
+    ), bilit = c("15", "19", "--"), biliti = c("15", "20", "--"
+    ), bilitie = c("15", "21", "--"), il = c("16", "17", "--"
+    ), ili = c("16", "18", "--"), ilit = c("16", "19", "--"), 
+    iliti = c("16", "20", "--"), ilitie = c("16", "21", "--"), 
+    ilities = c("16", "22", "--"), li = c("17", "18", "--"), 
+    lit = c("17", "19", "l1it"), liti = c("17", "20", "--"), 
+    litie = c("17", "21", "--"), lities = c("17", "22", "--"), 
+    lities. = c("17", "23", "--"), it = c("18", "19", "--"), 
+    iti = c("18", "20", "--"), itie = c("18", "21", "it1ie"), 
+    ities = c("18", "22", "--"), ities. = c("18", "23", "--"), 
+    ti = c("19", "20", "--"), tie = c("19", "21", "--"), ties = c("19", 
+    "22", "--"), ties. = c("19", "23", "--"), ie = c("20", "21", 
+    "ie2"), ies = c("20", "22", "--"), ies. = c("20", "23", "--"
+    ), es = c("21", "22", "--"), es. = c("21", "23", "4es.")), .Names = c(".i", 
+".in", ".inc", ".inco", ".incom", ".incomp", "in", "inc", "inco", 
+"incom", "incomp", "incompr", "nc", "nco", "ncom", "ncomp", "ncompr", 
+"ncompre", "co", "com", "comp", "compr", "compre", "compreh", 
+"om", "omp", "ompr", "ompre", "ompreh", "omprehe", "mp", "mpr", 
+"mpre", "mpreh", "mprehe", "mprehen", "pr", "pre", "preh", "prehe", 
+"prehen", "prehens", "re", "reh", "rehe", "rehen", "rehens", 
+"rehensi", "eh", "ehe", "ehen", "ehens", "ehensi", "ehensib", 
+"he", "hen", "hens", "hensi", "hensib", "hensibi", "en", "ens", 
+"ensi", "ensib", "ensibi", "ensibil", "ns", "nsi", "nsib", "nsibi", 
+"nsibil", "nsibili", "si", "sib", "sibi", "sibil", "sibili", 
+"sibilit", "ib", "ibi", "ibil", "ibili", "ibilit", "ibiliti", 
+"bi", "bil", "bili", "bilit", "biliti", "bilitie", "il", "ili", 
+"ilit", "iliti", "ilitie", "ilities", "li", "lit", "liti", "litie", 
+"lities", "lities.", "it", "iti", "itie", "ities", "ities.", 
+"ti", "tie", "ties", "ties.", "ie", "ies", "ies.", "es", "es."
+), row.names = c("on", "off", "match"), class = "data.frame")

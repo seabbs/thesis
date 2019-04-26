@@ -1,0 +1,53 @@
+Package: readxl
+Title: Read Excel Files
+Version: 1.1.0
+Authors@R: c(
+    person("Hadley", "Wickham", , "hadley@rstudio.com", role = c("aut"), 
+      comment = c(ORCID = "0000-0003-4757-117X")
+    ),
+    person("Jennifer", "Bryan", , "jenny@rstudio.com", role = c("aut", "cre"),
+      comment = c(ORCID = "0000-0002-6983-2759")
+    ),
+    person("RStudio", role = c("cph", "fnd"), comment = "Copyright holder of
+      all R code and all C/C++ code without explicit copyright attribution"),
+    person("Marcin", "Kalicinski", role = c("ctb", "cph"), comment = "Author of included RapidXML code"),
+    person("Komarov Valery", role = c("ctb", "cph"), comment = "Author of included libxls code"),
+    person("Christophe Leitienne", role = c("ctb", "cph"), comment = "Author of included libxls code"),
+    person("Bob Colbert", role = c("ctb", "cph"), comment = "Author of included libxls code"),
+    person("David Hoerl", role = c("ctb", "cph"), comment = "Author of included libxls code"),
+    person("Evan Miller", role = c("ctb", "cph"), comment = "Author of included libxls code")
+    )
+Description: Import excel files into R. Supports '.xls' via the embedded
+    'libxls' C library <https://github.com/evanmiller/libxls> and '.xlsx' via
+    the embedded 'RapidXML' C++ library <https://rapidxml.sourceforge.net>.
+    Works on Windows, Mac and Linux without external dependencies.
+License: GPL-3
+LazyData: true
+LinkingTo: Rcpp
+Imports: cellranger, Rcpp (>= 0.12.12), tibble (>= 1.1)
+Suggests: covr, knitr, rmarkdown, rprojroot (>= 1.1), testthat
+URL: http://readxl.tidyverse.org, https://github.com/tidyverse/readxl
+BugReports: https://github.com/tidyverse/readxl/issues
+VignetteBuilder: knitr
+RoxygenNote: 6.0.1.9000
+Encoding: UTF-8
+NeedsCompilation: yes
+Packaged: 2018-04-19 17:27:26 UTC; jenny
+Author: Hadley Wickham [aut] (<https://orcid.org/0000-0003-4757-117X>),
+  Jennifer Bryan [aut, cre] (<https://orcid.org/0000-0002-6983-2759>),
+  RStudio [cph, fnd] (Copyright holder of all R code and all C/C++ code
+    without explicit copyright attribution),
+  Marcin Kalicinski [ctb, cph] (Author of included RapidXML code),
+  Komarov Valery [ctb, cph] (Author of included libxls code),
+  Christophe Leitienne [ctb, cph] (Author of included libxls code),
+  Bob Colbert [ctb, cph] (Author of included libxls code),
+  David Hoerl [ctb, cph] (Author of included libxls code),
+  Evan Miller [ctb, cph] (Author of included libxls code)
+Maintainer: Jennifer Bryan <jenny@rstudio.com>
+Repository: CRAN
+Date/Publication: 2018-04-20 03:53:22 UTC
+Built: R 3.5.3; x86_64-pc-linux-gnu; 2019-04-26 14:48:10 UTC; unix
+RemoteType: cran
+RemoteSha: 1.1.0
+RemoteRepos: c(CRAN = "https://mran.microsoft.com/snapshot/2018-07-02")
+RemotePkgType: source

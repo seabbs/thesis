@@ -1,0 +1,26 @@
+Package: socialmixr
+Version: 0.1.2
+Date: 2018-02-22
+Title: Social Mixing Matrices for Infectious Disease Modelling
+Authors@R: person("Sebastian", "Funk", email = "sebastian.funk@lshtm.ac.uk", role = c("aut", "cre"))
+Depends: R (>= 3.4.0)
+Imports: data.table, curl, httr, jsonlite, oai, wpp2015, countrycode,
+        stringr, XML
+Description: Provides methods for sampling contact matrices from diary data for use in infectious disease modelling, as discussed in Mossong et al. (2008) <doi:10.1371/journal.pmed.0050074>.
+License: GPL-3
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 6.0.1
+Suggests: testthat, knitr, rmarkdown, ggplot2, reshape2, formatR
+VignetteBuilder: knitr
+NeedsCompilation: no
+Author: Sebastian Funk [aut, cre]
+Maintainer: Sebastian Funk <sebastian.funk@lshtm.ac.uk>
+Packaged: 2018-02-22 14:21:51 UTC; seb
+Repository: CRAN
+Date/Publication: 2018-02-22 14:31:51 UTC
+Built: R 3.5.3; ; 2019-04-26 14:42:06 UTC; unix
+RemoteType: cran
+RemoteSha: 0.1.2
+RemoteRepos: c(CRAN = "https://mran.microsoft.com/snapshot/2018-07-02")
+RemotePkgType: source

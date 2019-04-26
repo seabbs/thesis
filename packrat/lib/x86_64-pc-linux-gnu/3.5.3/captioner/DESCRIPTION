@@ -1,0 +1,26 @@
+Package: captioner
+Type: Package
+Title: Numbers Figures and Creates Simple Captions
+Version: 2.2.3
+Date: 2015-07-15
+Authors@R: person("Letaw", "Alathea", email = "alathea@zoology.ubc.ca", role = c("aut", "cre"))
+URL: https://github.com/adletaw/captioner
+BugReports: https://github.com/adletaw/captioner/issues
+Description: Provides a method for automatically numbering figures,
+    tables, or other objects.  Captions can be displayed in full, or as citations.
+    This is especially useful for adding figures and tables to R markdown
+    documents without having to numbering them manually.
+License: MIT + file LICENSE
+Suggests: knitr
+VignetteBuilder: knitr
+NeedsCompilation: no
+Packaged: 2015-07-15 18:43:40 UTC; a
+Author: Letaw Alathea [aut, cre]
+Maintainer: Letaw Alathea <alathea@zoology.ubc.ca>
+Repository: CRAN
+Date/Publication: 2015-07-16 00:46:21
+Built: R 3.5.3; ; 2019-04-26 14:52:28 UTC; unix
+RemoteType: cran
+RemoteSha: 2.2.3
+RemoteRepos: c(CRAN = "https://mran.microsoft.com/snapshot/2018-07-02")
+RemotePkgType: source

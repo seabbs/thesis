@@ -1,0 +1,37 @@
+calculate_incidence_ets_lfs_ons
+                        Function to Calculate Incidence Rates from ETS
+                        and Demographic Data
+case_rate               Function to Estimate the Case Rate for a Given
+                        Variable, stratified by given variables,
+                        dependant on age, year, agegrp2, and uk birth
+                        status. Missing data for the rate variable is
+                        dropped
+clean_and_munge_england_births
+                        A Function to Clean and Merge Observed and
+                        Projected Births in England
+clean_and_munge_england_life_expectancy
+                        A Function to Clean and Munge Life Expectancy
+                        Estimates from England
+clean_demographics_uk   Clean and Munge UK Demographic Data
+clean_labour_force_survey
+                        Load and Clean Labour Force Survey Data
+clean_munge_ets_2016    Clean and Munge 2016 Enhanced Tuberculosis
+                        Surviellance Data
+combine_ons_with_lfs    A Function that Combines the ONS Demographic
+                        Data, with the LFS Demographic Data
+est_inc_crude_adj       Function to Estimate Age Adjusted Incidence
+extract_case_counts     Extract Case Counts from the ETS Data
+form_df_epiR_inc_rate   Function to Split by Country of Birth and
+                        Format for epiR
+plot_historic_prop_pul_tb
+                        Plot Historic Proportions of
+                        Pulmonary/Extra-Pulmonary TB
+plot_historic_tb_ew     Plot Historic TB Notifications in England and
+                        Wales
+plot_pop_age_compare_ons_lfs
+                        A Function to Plot Differences Between LFS and
+                        ONS Data
+save_data               A Function to Save Results in Multiple Formats
+tb_interventions_timeline
+                        Tuberculosis Interventions Timeline
+tb_not_ew               Tuberculosis Notifications in England and Wales

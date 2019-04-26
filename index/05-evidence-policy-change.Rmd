@@ -1,0 +1,50 @@
+---
+output:
+  pdf_document: default
+  html_document: default
+---
+# Reassessing the Evidence for Universal School-age Bacillus Calmette Guerin (BCG) Vaccination in England and Wales {#sutherland}
+
+
+```{r 05-knitr-options, include = FALSE}
+knitr::opts_chunk$set(echo = FALSE, dpi = 320,
+                      fig.width = 8, fig.height = 8,
+                      out.width = "80%", fig.align = 'center')
+```
+
+```{r 05-setup, include = FALSE}
+## Packages
+library(tidyverse)
+library(prettypublisher)
+library(knitr)
+library(kableExtra)
+
+## Read formated results
+## See https://github.com/seabbs/AssessBCGPolicyChange/blob/master/vignettes/paper.Rmd
+## for code required to reproduce 
+## Chapter is an edited version of the orginal reproducible document.
+```
+
+## Introduction
+
+
+Prior to the change in BCG vaccination policy in 2005 (see Chapter \@ref(background)) several studies were carried out to assess the impact of any potential policy change. In this Chapter I aimed to update one of these studies.
+
+I recreated a previous approach for estimating the impact of ending the BCG schools scheme in England and Wales, updating the model with parameter uncertainty, and measurement error. I investigated scenarios considered by the Joint Committee on Vaccination and Immunisation, and explored new approaches using notification data (see Chapter \@ref(data)). I estimated the number of vaccines needed to prevent a single notification, and the average annual additional notifications caused by ending the BCG schools’ scheme. This work was supervised by Hannah Christensen and Ellen Brooks-Pollock.
+
+## Summary
+
+
+* I found a 1.9% annual decrease in Tuberculosis incidence rates best matched our estimates from notifications.
+
+* I estimate that 1600 (95% Interquartile range (IQR) 1300 to 2100) vaccines would have been required to prevent a single notification in 2004. 
+
+* If the scheme had ended in 2001, 302 (95% IQR 238 to 369) additional annual notifications would have occurred compared to if the scheme had continued. If the scheme ended in 2016, 120 (95% IQR 88 to 155) additional annual notifications would have occurred.
+
+* The estimates of the impact of ending the BCG schools scheme were highly sensitive to the annual decrease in incidence rates. 
+
+* The impact of ending the BCG schools scheme was found to be greater than previously thought when parameter values were updated and notifications were used.
+
+* The results highlight the importance of including uncertainty when forecasting the impact of changes in vaccination policy.
+
+* The code for the analysis contained in this Chapter can be found at: [doi.org/10.5281/zenodo.2635687](https://doi.org/10.5281/zenodo.2635687)^[Alternatively available from: https://github.com/seabbs/AssessBCGPolicyChange]

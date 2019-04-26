@@ -1,0 +1,164 @@
+---
+output:
+  pdf_document: default
+  html_document: default
+  word_document: default
+---
+
+# getTBinR: an R package for accessing and summarising the World Health Organization Tuberculosis data {#getTBinR}
+
+
+```{r gettbinr-setup, include=FALSE, echo = FALSE}
+knitr::opts_chunk$set(echo = TRUE, dpi = 320, cache = TRUE,
+                      fig.width = 8, fig.height = 8,
+                      out.width = "80%", fig.align = 'center')
+## Wordcount: 1796
+##packages
+## Install via 
+## CRAN: install.packages("getTBinR")
+## Dev Version:: devtools::install_github("seabbs/getTBinR")
+library(getTBinR)
+library(tidyverse)
+## Resources path
+resources_path <- file.path("chapters", "getTBinR")
+```
+
+## Introduction
+
+Developing tools for rapidly accessing and exploring data sets benefits the public health research community by enabling multiple data sets to be combined in a consistent manner, increasing the visibility of key data sets, and providing a framework that can be used to explore key questions of interest. Tooling also reduces the barriers to entry, allowing non-specialists to explore data sets that would otherwise be inaccessible. This widening of access may also lead to new insights and wider interest for key public health issues.
+  
+`getTBinR` is an R package [@RCoreTeam2019] to facilitate working with the data [@WHO:2018] collected by the World Health Organization (WHO) on the country level epidemiology of Tuberculosis (TB). All data is freely available from the [WHO](https://www.who.int/tb/country/data/download/en/) and the package code is archived on Zenodo [@Abbott:2019] and [Github](https://www.samabbott.co.uk/getTBinR/). The aim of `getTBinR` is to allow researchers, and other interested individuals, to quickly and easily gain access to a detailed TB data set and to start using it to derive key insights. It provides a consistent set of tools that can be used to rapidly evaluate hypotheses on a widely used data set before they are explored further using more complex methods or more detailed data. The functions provided in this package were developed to have sensible defaults to allow those new to the field to quickly gain key insights but also allow sufficient customisation so that experienced users may rapidly prototype new ideas. 
+
+The data sourced by `getBTinR` is collected by the WHO, via member governments, and used to compile the yearly global TB report [@WHO:2018]. Data collection encompasses TB incidence, TB mortality rates, the age distribution of TB cases, the proportion of drug resistant cases, case detection rates, and treatment rates. For a complete description of the data and data collection process, see [@WHO:2018]. These data are used by the WHO, governmental organisations and researchers to summarise country level TB epidemiology, as well as the wider global and regional picture.
+
+The `getTBinR` package facilitates downloading the most up-to-date version of multiple TB relevant data sources from the WHO, along with the accompanying data dictionaries. It also contains functions to allow easy exploration of the data via searching data dictionaries, summarising key metrics on a regional and global level, and visualising the data in a variety of highly customisable ways. In addition, it provides both a dashboard and an automated country level report that enables the global, regional, and country level picture to be quickly summarised. An example of a potential use of the package is to explore estimates of the TB case fatality ratio [@Abbott:2018]. In a few lines of code, using only built in package tooling, large regional differences can be discovered. Further insights can then be found by linking to other publicly available data sets or using a model based analysis. See https://www.samabbott.co.uk/getTBinR/ for documentation. The remainder of this chapter outlines the key functionality of `getTBinR v0.5.7` and summarises the current impact.
+
+## Installation
+
+`getTBinR` has been released to the Comprehensive R Archive Network (CRAN) and can therefore can be installed with the following code,
+
+```{r cran-installation, eval = FALSE, echo = TRUE}
+install.packages("getTBinR")
+```
+
+As `getTBinR` is under active development, the development version can be installed from GitHub with the following (provided the `devtools` package is installed),
+
+```{r gh-installation, eval = FALSE, echo = TRUE}
+# install.packages("devtools")
+devtools::install_github("seabbs/getTBinR")
+```
+
+## Data extraction and variable look-up
+
+`getTBinR` provides a single user facing function for data extraction, `get_tb_burden`. This function downloads multiple data sets from the WHO, cleans variables names where required, and finally joins all data sets together. To reduce unnecessary downloads, and improve performance, downloads are cached automatically. `get_tb_burden` is called by all other package functions allowing for a seamless user experience. `get_data_dict` has similar functionality to `get_tb_burden` but extracts data dictionaries rather than the underlying data. It is called by the majority of the package functions in order to provide intelligent labels.
+
+To improve the user experience, and to facilitate intelligent labeling, `getTBinR` provides a search function for the data dictionary (`search_data_dict`). This function is able to search, using fuzzy matching, for variables, variable descriptions, and key phrases. The code below gives an example search for `country` and `e_inc_100k` (TB incidence rate) variables, along with an accompanying search for variables referencing mortality.
+
+```{r search-data-dict, echo = TRUE}
+search_data_dict(var = c("country","e_inc_100k"),
+                 def = c("mortality"), verbose = FALSE)
+```
+
+## Data visualisation {#getbinr-vis}
+
+`getTBInR` implements a range of functions to allow rapid development of complex visuals, with minimal R knowledge. All functions make use of cached data so that no data needs to be provided and can automatically match variables to variable names. Additionally, all visualisation functions have a common user interface, allowing for knowledge transfer between functions. As all visualisation functions return `ggplot2` objects (a commonly used R graphing library), user modification is readily supported.
+
+Functionality that is common to all plotting functions is the ability to: plot data for a given list of countries; fuzzy match country names; plot data for a given metric present in the data; compute percentage changes from raw metric values; look up the supplied metric to see if the data dictionary contains an appropriate name; plot data over a user supplied range of years; facet over a user supplied variable; implement a user supplied transform (i.e log scaling); modify the colour palette used; and switch to comparable interactive graphics (using the `plotly` package). In addition to this, `plot_tb_burden` and `plot_tb_burden_summary` can incorporate confidence intervals. By default this is done by searching the data provided for matching variables. Function specific functionality is outlined below.
+
+### Mapping TB burden metrics
+
+The `map_tb_burden` function makes use of an inbuilt, country level, shapefile (a geospatial vector data format) to produce a global or regional map of the metric supplied. Figure \@ref(fig:map-tb-incidence-eur) gives a global overview of country level TB incidence rate. The use of a map here allows for the identification of spatial patterns that would be difficult to distinguish using other plot types. Figure \@ref(fig:map-tb-incidence-eur) was produced with the following code,
+
+```{r map-tb-incidence-eur, fig.cap = "Map of global TB incidence rates in 2017 as generated by `getTBinR'. Visualising the data with a map allows for spatial trends to be rapidly explored.", echo = TRUE}
+map_tb_burden(metric = "e_inc_100k", verbose = FALSE)
+```
+
+### Plotting an overview for a given TB metric
+
+The `plot_tb_burden_overview` function returns a dot plot that allows the trend over time of a metric to be plotted in a simplified way. Figure \@ref(fig:plot-tb-overview) shows incidence rates, by country, in Europe from 2000 to 2017. The dot plot format allows us to identify common trends across countries, after ranking for incidence rate. A more traditional line plot of the same data would be difficult to interpret due to the large number of countries. Figure \@ref(fig:plot-tb-overview) was produced with the following code,
+
+```{r plot-tb-overview, fig.width = 10, fig.height = 10, fig.cap = "Dot plot showing trends over time in TB incidence rates in Europe ordered by TB incidence rates in 2017. ", echo = TRUE}
+plot_tb_burden_overview(metric = "e_inc_100k",
+                        countries = "United Kingdom",
+                        compare_to_region = TRUE,
+                        interactive = FALSE,
+                        verbose = FALSE)
+```
+
+
+### Plotting a comparision between country, regional and global metric values {#gettbinr-plot-sum}
+
+The `plot_tb_burden_summary` function plots a regional, global, or custom overview of the supplied metric and can also include country level data for comparison. It can make use of a range of summary methods including: the country level mean, country level median, and summarised rates and proportions. Rates and proportions can be weighted with a user supplied variable but the package default is to use the summarised population. Confidence intervals are recomputed using a bootstrapping method where appropriate so that country level uncertainty is properly incorporated into the summarised metrics. The data can also be smoothed using a locally weighted regression to provide trend lines. Figure \@ref(fig:plot-regional-summary) shows a regional summary of TB incidence rates produced using `plot_tb_burden_summary`. This plot allows regional trends to be identified and compared against the global trend. Figure \@ref(fig:plot-regional-summary) was produced with the following code, 
+
+```{r plot-regional-summary, fig.cap = "TB incidence by region and globally as computed and visualised by `getTBinR`. Confidence intervals have been disabled in order to avoid obscuring the dominant trends.", echo = TRUE} 
+plot_tb_burden_summary(conf = NULL, metric_label = "e_inc_100k",
+                       verbose = FALSE)
+```
+
+## Plotting country level trends for a given metric
+
+The `plot_tb_burden` function plots TB trends at a country level using a simple, unaggregated, line plot. This allows for trends identified with the more complex plotting functions outlined above to be examined in more detail. Figure \@ref(fig:plot-tb-burden) shows the trend over time in TB incidence rates in the United Kingdom, along with confidence intervals. Unlike the plots above the focus on a single country allows changes over time to be more easily understood. Figure \@ref(fig:plot-tb-burden) was produced with the following code,
+
+```{r plot-tb-burden, fig.cap = "TB incidence rates over time, with confidence intervals, in the UK. As produced by `getTBinR`.", echo = TRUE}
+plot_tb_burden(metric = "e_inc_100k",
+               countries = "United Kingdom",
+               verbose = FALSE) 
+```
+
+## Data summarisation {#gettbinr-sum}
+
+The same summarisation functionality outlined in \@ref(gettbinr-plot-sum)  is also available in a separate function, `summarise_tb_burden`, which can be used to generate summarised data sets for further analysis or visualisation. All non-plotting functions outlined for `plot_tb_burden_summary` are implemented here. The code below summarises TB incidence rates in the UK, in Europe, and globally.
+
+```{r uk-sum-tab, echo = TRUE}
+summarise_tb_burden(metric = "e_inc_num",
+                     stat = "rate",
+                     countries = "United Kingdom", 
+                     compare_to_world = TRUE, 
+                     compare_to_region = TRUE,
+                     verbose = FALSE)
+```
+
+## Dashboard
+
+
+To explore the package functionality in an interactive session, or to investigate TB without having to code extensively in R, a shiny dashboard has been built into the package. This can either be used locally using, 
+
+```{r run-dash, eval = FALSE, echo = TRUE}
+run_tb_dashboard()
+```
+
+Or accessed online (http://www.seabbs.co.uk/shiny/ExploreGlobalTB). Any metric in the WHO TB data can be explored, with country selection using the built in map, and animation possible by year. The shiny app can also be used to generate the country level reports discussed in the next section. Figure \@ref(fig:dash-snapshot) shows a screenshot of the dashboard, with South Africa selected as the country of interest.
+
+```{r dash-snapshot, echo = FALSE, fig.cap = "Snapshot of the built in package dashboard."}
+knitr::include_graphics(file.path(resources_path, "img", "ExploreGlobalTB.png"))
+```
+
+## Country report
+
+An automated country level report has also been built into `getTBinR`. This summarises key TB metrics and provides regional and global rankings. The most commonly required plots are also produced, including the trend in TB incidence rates, proportion of cases that lead to death, and the proportion of cases with MDR TB. The report can be generated with the following code,
+
+```{r, eval = FALSE, echo = TRUE}
+## Code saves report into your current working directory
+render_country_report(country = "United Kingdom", save_dir = ".")
+```
+
+
+Figure \@ref(fig:report-snapshot) shows a screenshot of the start of the report for the United Kingdom. Note the automated reporting of country rankings in the text, along with summary metrics of interest.
+
+```{r report-snapshot, echo = FALSE, fig.cap = "Screenshot of the start of the built in package summary report, for the United Kingdom."}
+knitr::include_graphics(file.path(resources_path, "img", "ExampleCountryReport.png"))
+```
+
+## Package Infrastructure
+
+`getTBinR` has been developed using R package best practices and as such is thoroughly tested  using an automated testing suite that runs against Linux, Windows and MacOS environments. Package documentation is supplied in a searchable website (https://www.samabbott.co.uk/getTBinR/) and a development environment can be launched with a single button press (https://mybinder.org/v2/gh/seabbs/getTBinR/master?urlpath=rstudio). Use cases for the package have been outlined using multiple case studies, see the package documentation for details.
+
+## Summary
+
+ * In this chapter I have introduced `getTBinR` an R package for accessing, summarising and visualising the WHO TB surveillance data set used to compile the yearly WHO global TB report.
+ 
+ * I have outlined the need for data access packages in general - more specifically explaining the purpose of `getTBinR`, detailing the package functionality and outlining the package infrastructure used.
+ 
+ * As of the 1st of February 2019, `getTBinR` has been released on CRAN for over a year. It has been downloaded over 7000 times, has no outstanding issues, and has received multiple updates greatly expanding the functionality available. The standalone dashboard hosted online (http://www.seabbs.co.uk/shiny/ExploreGlobalTB/) has had over 2000 unique users. 
+
+

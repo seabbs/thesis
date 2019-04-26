@@ -1,0 +1,13 @@
+     \usepackage{pdflscape}
+     \usepackage[section]{placeins}
+     \newcommand{\blandscape}{\begin{landscape}}
+     \newcommand{\elandscape}{\end{landscape}}
+     
+
+     \makeatletter
+\AtBeginDocument{%
+  \expandafter\renewcommand\expandafter\subsection\expandafter{%
+    \expandafter\@fb@secFB\subsection
+  }%
+}
+\makeatother
