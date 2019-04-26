@@ -1,7 +1,7 @@
 PackratFormat: 1.4
 PackratVersion: 0.4.9.3
 RVersion: 3.5.3
-Repos: CRAN=https://mran.microsoft.com/snapshot/2019-04-20
+Repos: CRAN=https://mran.microsoft.com/snapshot/2019-04-25
 
 Package: packrat
 Source: CRAN

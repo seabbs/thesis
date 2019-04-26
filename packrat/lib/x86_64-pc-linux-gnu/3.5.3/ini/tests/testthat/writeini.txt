@@ -1,4 +1,0 @@
-[Hello World]
-Foo=Bar
-Foo1=Bar=345
-

@@ -1,7 +1,0 @@
-thesis_epub             Creates an R Markdown epub Thesis document
-thesis_gitbook          Creates an R Markdown gitbook Thesis document
-thesis_pdf              Creates an R Markdown PDF Thesis document
-thesis_word             Creates an R Markdown Word Thesis document
-thesisdown              thesisdown: A package for creating
-                        undergraduate, Masters, and PhD theses using R
-                        Markdown
