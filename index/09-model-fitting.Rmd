@@ -276,7 +276,7 @@ In this chapter I have formulated the disease transmission model developed in th
 * Summary of work from chapter
 
 * Method strengths and weaknesses
-* Software strenghts and weaknesses
+* Software strengths and weaknesses
 
 * Strengths and weaknesses
 * Next chapter
