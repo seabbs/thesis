@@ -15,7 +15,7 @@ knitr::opts_chunk$set(echo = FALSE, dpi = 320,
 ```
 
 ```{r setup, include = FALSE, eval = TRUE}
-## Word count: 3813
+## Word count: 3869
 ## Packages
 library(tidyverse)
 library(knitr)

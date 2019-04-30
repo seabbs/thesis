@@ -2,6 +2,9 @@
 output: html_document
 ---
 
+```{r}
+##Wordcount: 1865
+```
 # Discussion {#discussion}
 
 This thesis has assessed the impact of the 2005 change in BCG vaccination policy in some detail. The aim of this chapter is to provide an overview of the principle findings of this thesis; interpret these findings; discuss the overall strengths and weaknesses of this thesis; outline the potential implications; explore the opportunities for public engagement that this work allowed; and describe potential future research. Each results chapter contains a detailed discussion of the approach used, and the results, for that chapter. Consequently, the aim of this chapter is to summarise and discuss the findings from this thesis as a whole. 
