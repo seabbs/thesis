@@ -14,6 +14,6 @@ ADD . /home/rstudio/thesis
 
 WORKDIR /home/rstudio/thesis
 
-RUN Rscript -e "packrat::restore()"
+RUN Rscript -e "devtools::install_deps()"
 
-RUN Rscript -e "source('.Rprofile'); install.packages('tinytex'); tinytex::install_tinytex()"
+RUN Rscript -e "install.packages('tinytex'); tinytex::install_tinytex()"

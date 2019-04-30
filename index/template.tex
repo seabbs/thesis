@@ -1,4 +1,3 @@
-
 % This is the Reed College LaTeX thesis template. Most of the work
 % for the document class was done by Sam Noble (SN), as well as this
 % template. Later comments etc. by Ben Salzberg (BTS). Additional
@@ -103,6 +102,14 @@ $endif$
 %%% Remember to use the correct department!
 \department{$department$}
 
+% if you're writing a thesis in an interdisciplinary major,
+% uncomment the line below and change the text as appropriate.
+% check the Senior Handbook if unsure.
+%\thedivisionof{The Established Interdisciplinary Committee for}
+% if you want the approval page to say "Approved for the Committee",
+% uncomment the next line
+\approvedforthe{Committee}
+
 % Added by CII
 %%% Copied from knitr
 %% maxwidth is the original width if it's less than linewidth
@@ -147,8 +154,8 @@ $acknowledgements$
 $declaration$
 }
 
-\Declaration{
-$declaration$
+\Contribution{
+$contribution$
 }
 
 \Preface{
@@ -197,17 +204,17 @@ $endfor$
       $acknowledgements$
     \end{acknowledgements}
   $endif$
-
+  
+  $if(contribution)$
+    \begin{contribution}
+      $contribution$
+    \end{contribution}
+  $endif$
+  
   $if(declaration)$
     \begin{declaration}
       $declaration$
     \end{declaration}
-  $endif$
-  
-    $if(contribution)$
-    \begin{contribution}
-      $contribution$
-    \end{contributionn}
   $endif$
   
   $if(toc)$

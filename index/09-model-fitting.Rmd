@@ -72,7 +72,6 @@ For this reason in the model fitting pipeline outlined here I have only allowed 
 * Effective contact rate ($c_{eff}$).
 * Historic effective contact rate ($c^{hist}_{eff}$).
 * Half life of the effective contact rate ($c^{hist}_{half}$).
-* Scale up of time to treatment ($\nu_{scale}$).
 * Systematic reporting error ($E_{syst}$).
 * Reporting noise ($E_{noise}$).
 

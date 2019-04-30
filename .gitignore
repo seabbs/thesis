@@ -28,4 +28,4 @@ vignettes/*.pdf
 README.html
 ## Ignore private data
 data/
-
+index/thesis.*

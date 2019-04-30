@@ -32,7 +32,7 @@
 %
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{bristolthesis}[2004/01/27 The Reed College Thesis Class]
+\ProvidesClass{bristolthesis}[University of Bristol Thesis Class]
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{book}}
 \ProcessOptions\relax
 \LoadClass{book}
@@ -56,7 +56,7 @@
     \usepackage{fontspec}
   \fi
   \defaultfontfeatures{Mapping=tex-text,Scale=MatchLowercase}
-  \newcommand{\euro}{€}
+  \newcommand{\euro}{â¬}
 \fi
 % use upquote if available, for straight quotes in verbatim environments
 \IfFileExists{upquote.sty}{\usepackage{upquote}}{}
@@ -304,10 +304,10 @@
 
 \ifx\@pdfoutput\@undefined
   \newcommand{\RTpercent}{\@percentchar\space}
-  \AtBeginDvi{\special{!\RTpercent Reed College LaTeX Thesis Class 2001/12/04 SN}}
-  \AtBeginDvi{\special{rawpostscript \RTpercent Reed College LaTeX Thesis Class 2001/12/04 SN}}
+  \AtBeginDvi{\special{!\RTpercent University of Bristol Thesis Class}}
+  \AtBeginDvi{\special{rawpostscript \RTpercent University of Bristol LaTeX Thesis Class}}
 \else
-  \AtEndDocument{\pdfinfo{/Creator  (Reed College LaTeX Thesis Class 2001/12/04 SN)}}
+  \AtEndDocument{\pdfinfo{/Creator  (University of Bristol LaTeX Thesis Class 2001/12/04 SN)}}
 \fi
 
 % I hacked the title page to all be the same font size
@@ -351,6 +351,7 @@
   \end{flushright}
   \end{titlepage}
 
+  }
 }
 
 % From JSS
@@ -362,8 +363,8 @@
 %\newcommand{\Keywords}[1]{\def\@Keywords{#1}}
 %\newcommand{\Plainkeywords}[1]{\def\@Plainkeywords{#1}}
 \newcommand{\Acknowledgements}[1]{\def\@Acknowledgements{#1}}
-\newcommand{\Declaration}[1]{\def\@Declaration{#1}}
-\newcommand{\Contributions}[1]{\def\@Contributions{#1}}
 \newcommand{\Dedication}[1]{\def\@Dedication{#1}}
 \newcommand{\Preface}[1]{\def\@Preface{#1}}
+\newcommand{\Declaration}[1]{\def\@Declaration{#1}}
+\newcommand{\Contribution}[1]{\def\@Contribution{#1}}
 % End of CII add

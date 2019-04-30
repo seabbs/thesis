@@ -463,20 +463,24 @@ In the next chapter, I will consider an age modified transmission probablity, an
 
 
 
-```{r summary-scenarios, results = "asis"}
+```{r summary-scenarios}
 scenarios <- tibble(
-  Parameter = c("$\beta_a$ - transmission probability", "", ""),
-  Scenario = c("*Constant across age groups*",
+  Parameter = c("$\\beta_a$ - transmission probability", "", ""),
+  Scenario = c("Constant across age groups",
                "Variable between children (0-14) and adults (15-89)",
                "Variable between children (0-14), adults (15-59), and older adults (60-80)")
 ) %>% 
   add_row(
     Parameter = c("Historic non-UK born cases", "", ""),
-    Scenario = c("*Linear increase from 1960 to 1999 based on notifications in 2000*",
-                 "Increasing from 1960 to 1999 based on notifications in 2000 using a log link function.")
+    Scenario = c("Increasing from 1960 to 1999 based on notifications in 2000 using a log link function.",
+                 "Linear increase from 1960 to 1999 based on notifications in 2000",
+                 ""
+                 )
   )
 
-pander(scenarios, caption = "(\\#tab:summary-scenarios) Summary of planned scenario analyses to be carried out in the next chapter as part of model fitting by comparision of the goodness of fit to the data. The baseline scenarios are indicated using italics.", split.cells = c(1, 20, 60), split.table = 100)
+kable(scenarios, caption = "Summary of planned scenario analyses to be carried out in the next chapter as part of model fitting by comparision of the goodness of fit to the data.", booktabs = TRUE, escape = FALSE) %>% 
+  column_spec(c(1), width = "2cm") %>% 
+  column_spec(c(2), width = "8cm")
 ```
 
 This chapter has outlined a realistic dynamic transmission model of TB that includes key features required to investigate BCG vaccination policy and is robustly parameterised from an extensive, and previously unused in a TB model, routine surveillance data-set. Transformations, and approximations, of parameters have been used to make the best use of available data. However, there are several key limitations. Firstly, the model presented here does not explicitly model TB transmission in the non-UK born. This means that in order to initialise the model assumptions must be made about the historic number of non-UK born cases and the future incidence in the non-UK born must also be assumed in order to produce projections of future TB incidence. However, this simplification allows many complexities of TB in the non-UK born to be discounted, such as the rate of case importation, heterogeneity amongst the non-UK born from different countries, and mixing within the non-UK born. It also means that, as stated above, explicit assumptions must be made about the number of historic, and future, TB cases in the non-UK born. This makes the impact of these assumptions clearer as a scenario analysis can be conducted, whereas if non-UK born cases were explicitly modeled incidence in these populations would depend on more abstract assumptions. Finally, the majority of the non-UK born population would not be exposed to England's BCG vaccination policy and so are unlikely to be impacted by changes in this policy. Secondly, the model presented here does not include high and low risk stratification within the UK born. Individuals that are from countries with incidence above 40 per 100,000, or that have parents/grandparents from countries with incidence above 40 per 100,000, are considered at higher risk of TB.[@PublicHealthEngland2011a] In addition, individuals living in areas of the UK with incidence above this threshold are also considered at higher risk. Current BCG vaccination policy targets high risk neonates for vaccination, with low risk neonates not being vaccinated. Ideally this high/low risk stratification would be included as it would allow the evaluation of the current BCG vaccination policy. Unfortunately this has not been possible as there is little data from which to extrapolate either the number of high risk notifications in the ETS, or the size of the high risk population. There is also little evidence to suggest the degree of mixing between the non-UK born, the high risk UK born population and the low risk non-UK born population. It is likely that introducing this structure into the model, without the data outlined above, would lead to the model being poorly specified and therefore failing to fit to the observed data. Instead, in the final chapter in this thesis, the high risk neonatal programme will be proxied by a universal neonatal programme. This will allow for a comparison to be made between school-age and neonatal vaccination but does not allow for the impact of targeting high risk individuals to be evaluated. Finally, the model presented here does not include the full complexity of TB epidemiology. Drug resistant TB may have more severe outcomes, standard TB treatment may fail resulting in a longer period on treatment, and TB outcomes may vary by risk group.[@PHE2017] However, drug resistant TB cases are known to make up a small fraction of TB cases in England in the UK born, variable treatment times have been included in the prior distribution of treatment times and TB outcomes. Model parameters have also been stratified by pulmonary status and age group where appropriate. Additionally, complexity has been included for the action of the BCG vaccine, with realistic waning in effectiveness. Observed age-specific mortality rates and the number of live births has also been included, allowing for realistic population demographics. This means that estimates of the impact of the change in vaccination policy are likely to be more accurate, whereas a more complex model of the epidemiology of TB would likely have little impact on these results.

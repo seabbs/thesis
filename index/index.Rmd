@@ -61,6 +61,9 @@ If you'd like to include a comment that won't be produced in your resulting file
 <!--
 If you receive a duplicate label error after knitting, make sure to delete the thesis.Rmd file and then knit again.
 -->
+```{r, include=FALSE}
+options(tinytex.verbose = TRUE)
+```
 
 ```{r knitr-options, include = FALSE}
 knitr::opts_chunk$set(echo = FALSE, dpi = 320, 

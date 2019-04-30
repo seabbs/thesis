@@ -12,5 +12,5 @@ Determining the benefits of being BCG vaccinated is necessary to properly assess
 
 Surveillance data can help assess whether changes in vaccination policy have influenced incidence rates. I used surveillance data to determine whether those at school-age, or neonates, were directly affected by the policy change. I found the policy change was associated with increased notifications in the UK born but this was outweighed by a reduction in notifications in the non-UK born. \par
 
-Statistical modelling is restricted by the available data. Incorporating non-linear and indirect effects can also be complex. Therefore, I developed a dynamic model of Tuberculosis, fitting to available data, and forecast the long term and indirect effects of the policy change. I found that school-age vaccination *placeholder* Tuberculosis incidence rates compared with neonatal or no vaccination. \par
+Statistical modelling is restricted by the available data. Incorporating non-linear and indirect effects can also be complex. Therefore, I developed a dynamic model of Tuberculosis, fitting to available data, and forecast the long term and indirect effects of the policy change. I found that school-age vaccination *placeholder* Tuberculosis incidence rates compared with neonatal or no vaccination.
 
