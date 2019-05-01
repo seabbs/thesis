@@ -23,6 +23,35 @@ library(kableExtra)
 ## See https://github.com/seabbs/AssessBCGPolicyChange/blob/master/vignettes/paper.Rmd
 ## for code required to reproduce 
 ## Chapter is an edited version of the orginal reproducible document.
+##Wordcount: 
+
+
+## Functions for results read in
+read_formated <- function(name) {
+  path <- file.path("chapters/evidence-policy-change", paste0(name, ".rds"))
+  
+  tmp <- readRDS(path)
+  
+  return(tmp)
+}
+
+
+load_formated <- function(name) {
+
+  path <- file.path("chapters/evidence-policy-change", paste0(name, ".rda"))
+  
+  load(path)
+}
+
+## Read in all relevent rda's
+rda_list <- c("annual_nots-mw", "annual_nots_tab", "avg-inc", "avg-not",
+              "mann-whitney", "max-not",
+              "min-not", "model-valid",
+              "table-vac-prev")
+
+walk(rda_list, ~ load_formated(.))
+
+
 ```
 
 ## Introduction
@@ -31,6 +60,14 @@ library(kableExtra)
 Prior to the change in BCG vaccination policy in 2005 (see Chapter \@ref(background)) several studies were carried out to assess the impact of any potential policy change. In this Chapter I aimed to update one of these studies.
 
 I recreated a previous approach for estimating the impact of ending the BCG schools scheme in England and Wales, updating the model with parameter uncertainty, and measurement error. I investigated scenarios considered by the Joint Committee on Vaccination and Immunisation, and explored new approaches using notification data (see Chapter \@ref(data)). I estimated the number of vaccines needed to prevent a single notification, and the average annual additional notifications caused by ending the BCG schools’ scheme. This work was supervised by Hannah Christensen and Ellen Brooks-Pollock.
+
+
+
+
+
+
+
+
 
 ## Summary
 
