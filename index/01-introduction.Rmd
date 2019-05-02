@@ -88,6 +88,8 @@ Journal of Open Source Software, 2019, 4(34), 1260., doi: https://doi.org/10.211
 
 ### Papers under review
 
+* Abbott S, Christensen H, Brooks-Pollock E. *Reassessing the evidence for universal school-age Bacillus Calmette Guerin (BCG) vaccination in England and Wales*, doi: https://doi.org/10.1101/567511 
+
 * Abbott S, Christensen H, Lalor MK, Zenner D,Campbell C, Ramsay M, Brooks-Pollock E. *Exploring the effects of BCG vaccination in patients diagnosed with tuberculosis: observational study using the Enhanced Tuberculosis Surveillance system*, doi: https://doi.org/10.1101/366476
 
 * Abbott S, Christensen H, Welton NJ, Brooks-Pollock E. *Estimating the effect of the 2005 change in BCG policy in England: A retrospective cohort study*, doi: https://doi.org/10.1101/567511
