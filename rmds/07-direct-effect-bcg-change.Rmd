@@ -8,7 +8,7 @@ output:
 ```{r 07-knitr-options, include = FALSE}
 knitr::opts_chunk$set(echo = FALSE, dpi = 320,
                       fig.width = 8, fig.height = 8,
-                      out.width = "80%", fig.align = 'center')
+                      out.width = "80%", fig.align = 'center', cache = FALSE)
 ```
 
 ```{r 07-setup, include = FALSE}
@@ -146,7 +146,7 @@ ModelComUniversalNonUKBorn <- read_formated("summary-universal-nonukborn")
 ```
 
 
-```{r best-fitting-models, messages = FALSE, warnings = FALSE, include = FALSE}
+```{r best-fitting-models, messages = FALSE, warnings = FALSE,include = FALSE, cache = FALSE}
 ## Combine model summary and fitted models
 BestFitTargetedUKBorn <- read_formated("best-targeted-ukborn")
 BestFitUniversalUKBorn <- read_formated("best-universal-ukborn")
