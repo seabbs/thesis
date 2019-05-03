@@ -9,7 +9,7 @@ clean_docs:
      
 .PHONY: thesis		 
 thesis:
-	cd index && make
+	cd rmds && make
 	cd docs && touch .nojekyll
      
 

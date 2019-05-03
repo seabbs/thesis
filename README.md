@@ -62,7 +62,7 @@ Please cite the individual chapter papers/resources as appropriate if used in yo
 
 This repository has the following structure:
 
-- `index`: Thesis chapters as Rmd's.
+- `rmds`: Thesis chapters as Rmd's.
 - `docs`: Formatted PhD thesis (`html` + `pdf`).
 - `plan`: Initial aims and objectives + in progress planning.
 - `packrat`: All R packages required.

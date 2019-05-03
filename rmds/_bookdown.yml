@@ -1,0 +1,19 @@
+book_filename: "thesis"
+repo: https://github.com/seabbs/thesis/
+chapter_name: "Chapter "
+rmd_files: ["index.Rmd", ##01 is the introduction
+            "02-background.Rmd",
+            "03-getTBinR.Rmd",
+            "04-tb-epi-england.Rmd",
+            "05-evidence-policy-change.Rmd", 
+            "06-tb-bcg-improv-outcomes.Rmd",
+            "07-direct-effect-bcg-change.Rmd",
+            "08-model-development.Rmd",
+            "09-model-fitting.Rmd", 
+            "10-model-results.Rmd",
+            "98-discussion.Rmd", 
+            "99-references.Rmd"
+      ]
+download: [["thesis.pdf", "PDF"]]
+delete_merged_file: true
+output_dir: "../docs"
