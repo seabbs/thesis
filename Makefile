@@ -10,6 +10,7 @@ clean_docs:
 .PHONY: thesis		 
 thesis:
 	cd index && make
+	cd docs && touch .nojekyll
      
 
 #Commit updates

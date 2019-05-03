@@ -44,7 +44,7 @@ Author: David B. Dahl [aut], David Scott [aut, cre], Charles Roosen
     Castelo [ctb], Seth Falcon [ctb], Stefan Edwards [ctb], Sven
     Garbade [ctb], Uwe Ligges [ctb]
 Date/Publication: 2019-04-21 12:20:03 UTC
-Built: R 3.5.3; ; 2019-05-02 18:12:14 UTC; unix
-InstallAgent: packrat 0.4.9.3
+Built: R 3.5.3; ; 2019-05-03 10:21:37 UTC; unix
+InstallAgent: packrat 0.5.0.8
 InstallSource: CRAN
-Hash: e1f051eae973dde071de125367b696d3
+Hash: dc0d47261b678d26032363bebd050540

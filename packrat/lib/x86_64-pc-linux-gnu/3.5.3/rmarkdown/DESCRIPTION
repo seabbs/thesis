@@ -92,7 +92,7 @@ Author: JJ Allaire [aut], Yihui Xie [aut, cre]
     (Ionicons), Aidan Lister [ctb, cph] (jQuery StickyTabs)
 Repository: CRAN
 Date/Publication: 2019-03-14 08:50:03 UTC
-Built: R 3.5.3; ; 2019-05-03 08:46:10 UTC; unix
-InstallAgent: packrat 0.4.9.3
+Built: R 3.5.3; ; 2019-05-03 10:27:58 UTC; unix
+InstallAgent: packrat 0.5.0.8
 InstallSource: CRAN
 Hash: 241424e590a32decf6e9f0cd32a5760b

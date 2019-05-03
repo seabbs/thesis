@@ -22,7 +22,7 @@ Maintainer: Sebastian Funk <sebastian.funk@lshtm.ac.uk>
 Packaged: 2018-08-09 22:08:43 UTC; seb
 Repository: CRAN
 Date/Publication: 2018-08-09 22:50:03 UTC
-Built: R 3.5.3; ; 2019-05-02 19:12:59 UTC; unix
-InstallAgent: packrat 0.4.9.3
+Built: R 3.5.3; ; 2019-05-03 10:35:32 UTC; unix
+InstallAgent: packrat 0.5.0.8
 InstallSource: CRAN
 Hash: 50a37d2552dd3c82d04abbf698a8bc20

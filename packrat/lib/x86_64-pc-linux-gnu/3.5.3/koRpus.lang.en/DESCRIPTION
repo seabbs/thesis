@@ -24,7 +24,7 @@ Author: Meik Michalke [aut, cre]
 Maintainer: Meik Michalke <meik.michalke@hhu.de>
 Repository: CRAN
 Date/Publication: 2018-03-21 11:29:01 UTC
-Built: R 3.5.3; ; 2019-05-02 17:21:54 UTC; unix
-InstallAgent: packrat 0.4.9.3
+Built: R 3.5.3; ; 2019-05-03 10:25:45 UTC; unix
+InstallAgent: packrat 0.5.0.8
 InstallSource: CRAN
-Hash: 85acc5e1dd66e0aaa388185114ad897f
+Hash: 4e25f32d02336b178d506180cc18f20e

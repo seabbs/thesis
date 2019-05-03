@@ -21,7 +21,7 @@ Author: Jennifer Bryan [cre, aut], Hadley Wickham [ctb]
 Maintainer: Jennifer Bryan <jenny@stat.ubc.ca>
 Repository: CRAN
 Date/Publication: 2016-07-27 03:17:48
-Built: R 3.5.3; ; 2019-05-02 18:35:27 UTC; unix
-InstallAgent: packrat 0.4.9.3
+Built: R 3.5.3; ; 2019-05-03 10:28:03 UTC; unix
+InstallAgent: packrat 0.5.0.8
 InstallSource: CRAN
-Hash: 4e1ef4d099b0c5fd531a3938cf4624bd
+Hash: be9d203e7849f73818b36f93e9273c2c

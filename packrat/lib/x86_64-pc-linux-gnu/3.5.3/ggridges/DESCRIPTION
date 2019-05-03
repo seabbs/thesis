@@ -29,7 +29,7 @@ Author: Claus O. Wilke [cre, aut], RStudio [cph] (Copyright for ggplot2
 Maintainer: Claus O. Wilke <wilke@austin.utexas.edu>
 Repository: CRAN
 Date/Publication: 2018-09-27 15:20:03 UTC
-Built: R 3.5.3; ; 2019-05-02 16:50:06 UTC; unix
-InstallAgent: packrat 0.4.9.3
+Built: R 3.5.3; ; 2019-05-03 10:34:47 UTC; unix
+InstallAgent: packrat 0.5.0.8
 InstallSource: CRAN
 Hash: cbac0ded47c2e868ab613a648a291d95

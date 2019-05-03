@@ -24,7 +24,7 @@ Author: Max Kuhn [aut, cre], Hadley Wickham [aut], Davis Vaughan [aut],
 Maintainer: Max Kuhn <max@rstudio.com>
 Repository: CRAN
 Date/Publication: 2018-11-29 13:20:03 UTC
-Built: R 3.5.3; ; 2019-05-02 17:45:05 UTC; unix
-InstallAgent: packrat 0.4.9.3
+Built: R 3.5.3; ; 2019-05-03 10:16:50 UTC; unix
+InstallAgent: packrat 0.5.0.8
 InstallSource: CRAN
-Hash: 0a2498d0288de2a2dabf31438562c2b1
+Hash: 4aaf002dd434e8c854611c5d11a1d58e

@@ -18,21 +18,13 @@ URL: http://www.samabbott.co.uk/tbinenglanddataclean,
     https://github.com/seabbs/tbinenglanddataclean
 BugReports: https://github.com/seabbs/tbinenglanddataclean/issues
 VignetteBuilder: knitr
-RemoteType: github
-RemoteHost: api.github.com
-RemoteRepo: tbinenglanddataclean
-RemoteUsername: seabbs
-RemoteRef: master
-RemoteSha: 3ce4ed544043eb4465be67fe40b4144cd384c541
 GithubRepo: tbinenglanddataclean
 GithubUsername: seabbs
 GithubRef: master
 GithubSHA1: 3ce4ed544043eb4465be67fe40b4144cd384c541
-NeedsCompilation: no
-Packaged: 2019-05-02 16:50:36 UTC; seabbs
 Author: Sam Abbott [aut, cre]
 Maintainer: Sam Abbott <contact@samabbott.co.uk>
-Built: R 3.5.3; ; 2019-05-02 16:50:37 UTC; unix
-InstallAgent: packrat 0.4.9.3
+Built: R 3.5.3; ; 2019-05-03 10:45:29 UTC; unix
+InstallAgent: packrat 0.5.0.8
 InstallSource: github
 Hash: 7ec7632709da9274ac44142d7eeba0d9

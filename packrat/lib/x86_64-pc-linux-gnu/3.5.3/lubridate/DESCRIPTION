@@ -56,7 +56,7 @@ Author: Vitalie Spinu [aut, cre], Garrett Grolemund [aut], Hadley
     Boiser [ctb], Chel Hee Lee [ctb]
 Repository: CRAN
 Date/Publication: 2018-04-11 10:08:43 UTC
-Built: R 3.5.3; x86_64-pc-linux-gnu; 2019-05-02 17:46:59 UTC; unix
-InstallAgent: packrat 0.4.9.3
+Built: R 3.5.3; x86_64-pc-linux-gnu; 2019-05-03 10:25:07 UTC; unix
+InstallAgent: packrat 0.5.0.8
 InstallSource: CRAN
-Hash: 5a450aa1a4f101fad2e188fbc5855df2
+Hash: 3206e6df69af4462c2c17c0e207f79a3

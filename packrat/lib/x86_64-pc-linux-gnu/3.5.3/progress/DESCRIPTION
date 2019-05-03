@@ -20,7 +20,7 @@ NeedsCompilation: no
 Packaged: 2018-06-04 13:47:24 UTC; gaborcsardi
 Repository: CRAN
 Date/Publication: 2018-06-14 12:51:38 UTC
-Built: R 3.5.3; ; 2019-05-02 18:31:52 UTC; unix
-InstallAgent: packrat 0.4.9.3
+Built: R 3.5.3; ; 2019-05-03 10:24:37 UTC; unix
+InstallAgent: packrat 0.5.0.8
 InstallSource: CRAN
 Hash: 0ff5f631b66daf57857f28062f3e6f30

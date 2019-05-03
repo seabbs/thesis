@@ -25,7 +25,7 @@ URL: http://fvas.unimelb.edu.au/veam
 NeedsCompilation: no
 Repository: CRAN
 Date/Publication: 2018-11-06 12:30:07 UTC
-Built: R 3.5.3; ; 2019-05-02 18:18:29 UTC; unix
-InstallAgent: packrat 0.4.9.3
+Built: R 3.5.3; ; 2019-05-03 10:21:40 UTC; unix
+InstallAgent: packrat 0.5.0.8
 InstallSource: CRAN
 Hash: 7e1386f69f10ed24cbda1d20302bf893

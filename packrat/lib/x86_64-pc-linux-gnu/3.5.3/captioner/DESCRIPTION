@@ -20,7 +20,7 @@ Author: Letaw Alathea [aut, cre]
 Maintainer: Letaw Alathea <alathea@zoology.ubc.ca>
 Repository: CRAN
 Date/Publication: 2015-07-16 00:46:21
-Built: R 3.5.3; ; 2019-05-02 16:33:15 UTC; unix
-InstallAgent: packrat 0.4.9.3
+Built: R 3.5.3; ; 2019-05-03 10:15:04 UTC; unix
+InstallAgent: packrat 0.5.0.8
 InstallSource: CRAN
 Hash: 95d7df03f65e5b40ccd29546aeb3a888

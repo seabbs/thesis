@@ -27,7 +27,7 @@ Author: Joe Cheng [aut, cre], RStudio [cph, fnd]
 Maintainer: Joe Cheng <joe@rstudio.com>
 Repository: CRAN
 Date/Publication: 2018-04-13 08:59:30 UTC
-Built: R 3.5.3; x86_64-pc-linux-gnu; 2019-05-02 18:31:53 UTC; unix
-InstallAgent: packrat 0.4.9.3
+Built: R 3.5.3; x86_64-pc-linux-gnu; 2019-05-03 10:24:40 UTC; unix
+InstallAgent: packrat 0.5.0.8
 InstallSource: CRAN
-Hash: 5b73233bf19b201caa7d5f7351fd717e
+Hash: 3a177f5946e3b85c4f65f3ca3e500cd0

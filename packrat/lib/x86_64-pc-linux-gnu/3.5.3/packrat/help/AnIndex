@@ -1,6 +1,8 @@
 packrat-package	packrat
 .snapshotImpl	snapshotImpl
 appDependencies	appDependencies
+bitbucket_pwd	bitbucket_pwd
+bitbucket_user	bitbucket_user
 bundle	bundle
 bundles_dir	packrat-resources
 clean	clean
@@ -13,7 +15,6 @@ install	install
 install_local	install_local
 lib_dir	packrat-resources
 lockfile-metadata	lockfile-metadata
-migrate	migrate
 off	packrat-mode
 on	packrat-mode
 opts	packrat-options

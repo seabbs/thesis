@@ -104,7 +104,7 @@ Author: Winston Chang [aut, cre], Joe Cheng [aut], JJ Allaire [aut],
 Maintainer: Winston Chang <winston@rstudio.com>
 Repository: CRAN
 Date/Publication: 2019-04-22 16:00:09 UTC
-Built: R 3.5.3; ; 2019-05-02 19:06:01 UTC; unix
-InstallAgent: packrat 0.4.9.3
+Built: R 3.5.3; ; 2019-05-03 10:33:11 UTC; unix
+InstallAgent: packrat 0.5.0.8
 InstallSource: CRAN
 Hash: a48cf01573400333efa51dc999ab6447

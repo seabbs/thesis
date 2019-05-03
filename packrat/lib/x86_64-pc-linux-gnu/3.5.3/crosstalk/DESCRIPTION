@@ -46,7 +46,7 @@ Author: Joe Cheng [aut, cre], RStudio [cph], jQuery Foundation [cph]
 Maintainer: Joe Cheng <joe@rstudio.com>
 Repository: CRAN
 Date/Publication: 2016-12-21 08:30:32
-Built: R 3.5.3; ; 2019-05-02 19:15:42 UTC; unix
-InstallAgent: packrat 0.4.9.3
+Built: R 3.5.3; ; 2019-05-03 10:35:26 UTC; unix
+InstallAgent: packrat 0.5.0.8
 InstallSource: CRAN
 Hash: c13adea5906fbe2becfcb5f843b26749

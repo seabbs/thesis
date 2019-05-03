@@ -15,20 +15,12 @@ Encoding: UTF-8
 LazyData: true
 SystemRequirements: pandoc (>= 1.18) - http://pandoc.org
 RoxygenNote: 6.0.1
-RemoteType: github
-RemoteHost: api.github.com
-RemoteRepo: thesisdown
-RemoteUsername: ismayc
-RemoteRef: master
-RemoteSha: 9cab57f62764a1ae91749baeacae20dd392b3519
 GithubRepo: thesisdown
 GithubUsername: ismayc
 GithubRef: master
 GithubSHA1: 9cab57f62764a1ae91749baeacae20dd392b3519
-NeedsCompilation: no
-Packaged: 2019-05-02 17:14:56 UTC; seabbs
 Author: Chester Ismay [cre], Nick Solomon [aut]
-Built: R 3.5.3; ; 2019-05-02 17:14:57 UTC; unix
-InstallAgent: packrat 0.4.9.3
+Built: R 3.5.3; ; 2019-05-03 10:45:40 UTC; unix
+InstallAgent: packrat 0.5.0.8
 InstallSource: github
 Hash: 7c310cd04ccad74ec7bd2f63cd83f2c3

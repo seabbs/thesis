@@ -60,7 +60,7 @@ Author: Ross Ihaka [aut], Paul Murrell [aut]
 Maintainer: Achim Zeileis <Achim.Zeileis@R-project.org>
 Repository: CRAN
 Date/Publication: 2019-03-18 14:43:29 UTC
-Built: R 3.5.3; x86_64-pc-linux-gnu; 2019-05-02 17:33:02 UTC; unix
-InstallAgent: packrat 0.4.9.3
+Built: R 3.5.3; x86_64-pc-linux-gnu; 2019-05-03 10:15:12 UTC; unix
+InstallAgent: packrat 0.5.0.8
 InstallSource: CRAN
 Hash: 60a56e9998b8b58ee378db3dc91b27a5

@@ -27,7 +27,7 @@ Author: Winston Chang [aut, cre], Yihui Xie [ctb], Francois Guillem
 Maintainer: Winston Chang <winston@rstudio.com>
 Repository: CRAN
 Date/Publication: 2018-09-28 21:40:02 UTC
-Built: R 3.5.3; ; 2019-05-02 18:09:45 UTC; unix
-InstallAgent: packrat 0.4.9.3
+Built: R 3.5.3; ; 2019-05-03 10:25:53 UTC; unix
+InstallAgent: packrat 0.5.0.8
 InstallSource: CRAN
 Hash: c95b36acba37ea1d6cd6e1c6fe2c2ecc

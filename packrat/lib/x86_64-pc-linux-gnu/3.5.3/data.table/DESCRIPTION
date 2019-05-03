@@ -60,7 +60,7 @@ Author: Matt Dowle [aut, cre], Arun Srinivasan [aut], Jan Gorecki
 Maintainer: Matt Dowle <mattjdowle@gmail.com>
 Repository: CRAN
 Date/Publication: 2019-04-07 10:05:02 UTC
-Built: R 3.5.3; x86_64-pc-linux-gnu; 2019-05-02 17:38:49 UTC; unix
-InstallAgent: packrat 0.4.9.3
+Built: R 3.5.3; x86_64-pc-linux-gnu; 2019-05-03 10:15:23 UTC; unix
+InstallAgent: packrat 0.5.0.8
 InstallSource: CRAN
 Hash: b1642cf2ee0ab1d1b152ffacdb4401f7

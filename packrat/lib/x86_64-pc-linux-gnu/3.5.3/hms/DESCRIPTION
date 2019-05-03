@@ -21,7 +21,7 @@ Author: Kirill Müller [aut, cre], The R Consortium [fnd]
 Maintainer: Kirill Müller <krlmlr+r@mailbox.org>
 Repository: CRAN
 Date/Publication: 2018-03-10 21:33:37 UTC
-Built: R 3.5.3; ; 2019-05-02 18:18:37 UTC; unix
-InstallAgent: packrat 0.4.9.3
+Built: R 3.5.3; ; 2019-05-03 10:23:19 UTC; unix
+InstallAgent: packrat 0.5.0.8
 InstallSource: CRAN
 Hash: b4096a4f6a6736138e9a825c2baaacf0

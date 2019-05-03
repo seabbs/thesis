@@ -14,7 +14,7 @@ Packaged: 2014-12-06 23:59:42 UTC; neuwirth
 NeedsCompilation: no
 Repository: CRAN
 Date/Publication: 2014-12-07 08:28:55
-Built: R 3.5.3; ; 2019-05-02 17:54:37 UTC; unix
-InstallAgent: packrat 0.4.9.3
+Built: R 3.5.3; ; 2019-05-03 10:14:46 UTC; unix
+InstallAgent: packrat 0.5.0.8
 InstallSource: CRAN
 Hash: c0d56cd15034f395874c870141870c25

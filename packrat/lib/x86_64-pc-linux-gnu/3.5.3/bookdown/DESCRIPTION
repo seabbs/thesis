@@ -55,18 +55,10 @@ SystemRequirements: Pandoc (>= 1.17.2)
 LazyData: TRUE
 RoxygenNote: 6.1.1
 Encoding: UTF-8
-RemoteType: github
-RemoteHost: api.github.com
-RemoteRepo: bookdown
-RemoteUsername: rstudio
-RemoteRef: master
-RemoteSha: 0e46919b63b6e492be74fd4ddf070fb772789717
 GithubRepo: bookdown
 GithubUsername: rstudio
 GithubRef: master
 GithubSHA1: 0e46919b63b6e492be74fd4ddf070fb772789717
-NeedsCompilation: no
-Packaged: 2019-05-02 17:12:29 UTC; seabbs
 Author: Yihui Xie [aut, cre] (<https://orcid.org/0000-0003-0645-5666>),
     JJ Allaire [ctb], Albert Kim [ctb], Alessandro Samuel-Rosa [ctb],
     Andrzej Oles [ctb], Aust Frederik [ctb]
@@ -89,7 +81,7 @@ Author: Yihui Xie [aut, cre] (<https://orcid.org/0000-0003-0645-5666>),
     [ctb] (The MathQuill library; authors listed in
     inst/resources/AUTHORS), FriendCode Inc [cph, ctb] (The gitbook
     style, with modifications)
-Built: R 3.5.3; ; 2019-05-02 17:12:30 UTC; unix
-InstallAgent: packrat 0.4.9.3
+Built: R 3.5.3; ; 2019-05-03 10:45:25 UTC; unix
+InstallAgent: packrat 0.5.0.8
 InstallSource: github
 Hash: f8f4ff688e85ecc9669c5bb81229c082

@@ -20,7 +20,7 @@ URL: http://github.com/edzer/hexbin
 Packaged: 2018-01-15 16:56:46 UTC; edzer
 Repository: CRAN
 Date/Publication: 2018-01-15 18:56:40 UTC
-Built: R 3.5.3; x86_64-pc-linux-gnu; 2019-05-02 17:45:07 UTC; unix
-InstallAgent: packrat 0.4.9.3
+Built: R 3.5.3; x86_64-pc-linux-gnu; 2019-05-03 10:16:57 UTC; unix
+InstallAgent: packrat 0.5.0.8
 InstallSource: CRAN
 Hash: db6c71309772ea1f664081576e5b943d

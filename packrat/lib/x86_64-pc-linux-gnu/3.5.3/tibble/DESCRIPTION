@@ -37,7 +37,7 @@ Author: Kirill Müller [aut, cre], Hadley Wickham [aut], Romain Francois
 Maintainer: Kirill Müller <krlmlr+r@mailbox.org>
 Repository: CRAN
 Date/Publication: 2019-03-16 22:50:03 UTC
-Built: R 3.5.3; x86_64-pc-linux-gnu; 2019-05-02 18:35:23 UTC; unix
-InstallAgent: packrat 0.4.9.3
+Built: R 3.5.3; x86_64-pc-linux-gnu; 2019-05-03 10:25:49 UTC; unix
+InstallAgent: packrat 0.5.0.8
 InstallSource: CRAN
 Hash: e9d844f966bd4d40556b50c3b2239646

@@ -20,7 +20,7 @@ NeedsCompilation: no
 Packaged: 2018-06-11 23:15:15 UTC; wickhamc
 Repository: CRAN
 Date/Publication: 2018-06-12 04:29:06 UTC
-Built: R 3.5.3; ; 2019-05-02 18:24:59 UTC; unix
-InstallAgent: packrat 0.4.9.3
+Built: R 3.5.3; ; 2019-05-03 10:22:42 UTC; unix
+InstallAgent: packrat 0.5.0.8
 InstallSource: CRAN
-Hash: 247d1c1d72f3072563912ef860758624
+Hash: 38d0efee9bb99bef143bde41c4ce715c

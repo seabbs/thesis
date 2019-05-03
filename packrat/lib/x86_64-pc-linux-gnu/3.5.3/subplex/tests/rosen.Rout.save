@@ -1,0 +1,54 @@
+
+R version 3.4.3 (2017-11-30) -- "Kite-Eating Tree"
+Copyright (C) 2017 The R Foundation for Statistical Computing
+Platform: x86_64-pc-linux-gnu (64-bit)
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+  Natural language support but running in an English locale
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+> library(subplex)
+> 
+> ## Rosenbrock Banana function
+> rosen <- function (x) {
++     x1 <- x[1]
++     x2 <- x[2]
++     100*(x2-x1*x1)^2+(1-x1)^2
++ }
+> 
+> fit <- subplex(par=c(11,-33),fn=rosen)
+> stopifnot(all.equal(fit$par,c(1,1),tol=1e-4))
+> 
+> rosen2 <- function (x) {
++     X <- matrix(x,ncol=2) 
++     sum(apply(X,1,rosen))
++ }
+> 
+> fit <- subplex(par=c(-33,11,14,9,0,12),fn=rosen2,control=list(maxit=30000))
+> stopifnot(all.equal(fit$par,c(1,1,1,1,1,1),tol=1e-4))
+> 
+> fit <- subplex(par=c(-33,11,14,9,0,12,15,9,-150,123),fn=rosen2,control=list(maxit=5e5),hessian=TRUE)
+> 
+> ## Rosenbrock Banana function (using names)
+> rosen <- function (x, g = 0, h = 0) {
++     x1 <- x['a']
++     x2 <- x['b']-h
++     100*(x2-x1*x1)^2+(1-x1)^2+g
++ }
+> 
+> fit <- subplex(par=c(b=11,a=-33),fn=rosen,h=22,
++                control=list(abstol=1e-9,parscale=5),hessian=TRUE)
+> stopifnot(all.equal(fit$par,c(b=23,a=1),tol=1e-5))
+> stopifnot(all.equal(as.numeric(fit$hessian),c(200,-400,-400,802),tol=1e-5))
+> 
+> 

@@ -41,7 +41,7 @@ Author: JJ Allaire [aut], Jeffrey Horner [aut], Yihui Xie [aut, cre]
 Maintainer: Yihui Xie <xie@yihui.name>
 Repository: CRAN
 Date/Publication: 2018-12-07 00:50:11 UTC
-Built: R 3.5.3; x86_64-pc-linux-gnu; 2019-04-30 08:31:57 UTC; unix
-InstallAgent: packrat 0.4.9.3
+Built: R 3.5.3; x86_64-pc-linux-gnu; 2019-05-03 10:23:15 UTC; unix
+InstallAgent: packrat 0.5.0.8
 InstallSource: CRAN
 Hash: 730f688930cef3223d59bd8aef679ab9
