@@ -27,5 +27,5 @@ vignettes/*.pdf
 .Rproj.user
 README.html
 ## Ignore private data
-index/thesis.*
+rmds/thesis.*
 data/tbinenglanddataclean

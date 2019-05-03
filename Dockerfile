@@ -1,5 +1,5 @@
 ## Start with the tidyverse docker image
-FROM rocker/tidyverse:3.5.3
+FROM rocker/verse:3.5.3
 
 MAINTAINER "Sam Abbott" contact@samabbott.co.uk
 
