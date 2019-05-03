@@ -13,7 +13,7 @@ site: bookdown::bookdown_site
 always_allow_html: yes
 output: 
   thesisdown::thesis_pdf: default
-  #thesisdown::thesis_gitbook: default
+  thesisdown::thesis_gitbook: default
   #thesisdown::thesis_word: default
   #thesisdown::thesis_epub: default
 abstract: >
@@ -33,11 +33,6 @@ lof: true
 space_between_paragraphs: true
 #Delete the # at the beginning of the previous line if you'd like
 #to have a blank new line between each paragraph
-link-citations: yes
-colorlinks: yes
-description: "A dissertation submitted to the University of Bristol in accordance with the requirements for award of the degree of Doctor of Philosophy in the Faculty of Health Sciences. This dissertation explores the use of the BCG vaccine for Tuberculosis control in England."
-url: 'https\::/samabbott.co.uk/thesis/'
-github-repo: seabbs/thesis
 header-includes:
   - \usepackage{booktabs}
   - \usepackage{longtable}
@@ -144,7 +139,7 @@ To understand the impact of BCG vaccination on the epidemiology of tuberculosis 
 
 * **Chapter \@ref(model-results):** In this chapter the model, developed and fitted in the previous chapters, is used to forecast the impact of universal BCG vaccination at school-age vs. universal vaccination of neonates vs. no vaccination from 2005 on-wards. The results from this forecasting are compared to the actual notifications recorded from 2005 to 2015, with the divergence from the observed data discussed. The ongoing impact of each policy is then discussed through to 2030.
 
-* **Chapter \@ref(discussion):** Results from all previous Chapters are summarised and discussed as a whole. The strengths and weaknesses of the analysis in this thesis are outlined. Further work is suggested. Future work is outlined.
+* **Chapter \@ref(discussion-chapt):** Results from all previous Chapters are summarised and discussed as a whole. The strengths and weaknesses of the analysis in this thesis are outlined. Further work is suggested. Future work is outlined.
 
 ## Thesis output
 

@@ -1,1 +1,1 @@
-source("../packrat/init.R")
+source("../.Rprofile", chdir = TRUE)

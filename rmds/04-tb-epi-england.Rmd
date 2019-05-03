@@ -572,7 +572,6 @@ knitr::include_graphics("chapters/tb-epi-england/figures/plot-loss-fol-case-rate
 knitr::include_graphics("chapters/tb-epi-england/figures/plot-loss-fol-age-dist.png")
 ```
 
-
 ## Discussion
 
 In this chapter I have explored the epidemiology of TB in England using routine data-sets, with a particular focus on the impact of missing data, the mechanisms underlying that missing date, seasonal trends, the role of age, UK birth status and BCG status. I have also estimated incidence rates, stratified by UK birth status and age, which I then used to identify trends in TB incidence over time. Finally I explored TB outcomes in England using case rates, again stratified by BCG status and UK birth status.
