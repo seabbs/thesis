@@ -1,0 +1,14 @@
+cldr_examples           List of CLDR country name codes and associated
+                        examples
+codelist                Country Code Translation Data Frame
+                        (Cross-Sectional)
+codelist_panel          Country Code Translation Data Frame
+                        (Country-Year Panel)
+countrycode             Converts long country names into one of many
+                        different coding schemes. Translates from one
+                        scheme to another. Converts country name or
+                        coding scheme to the official short English
+                        country name. Creates a new variable with the
+                        name of the continent or region to which each
+                        country belongs.
+countrycode-package     Convert Country Codes or Country Names

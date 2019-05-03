@@ -1,0 +1,48 @@
+Package: visdat
+Title: Preliminary Visualisation of Data
+Version: 0.5.3
+Authors@R: c( person("Nicholas", "Tierney", role = c("aut", "cre"),
+    email = "nicholas.tierney@gmail.com", comment = c(ORCID =
+    "https://orcid.org/0000-0003-1460-8722")), person("Sean", "Hughes",
+    role = "rev", comment =c(ORCID =
+    "https://orcid.org/0000-0002-9409-9405", "Sean Hughes reviewed the
+    package for rOpenSci, see
+    https://github.com/ropensci/onboarding/issues/87")), person("Mara",
+    "Averick", role = "rev", comment = "Mara Averick reviewed the
+    package for rOpenSci, see
+    https://github.com/ropensci/onboarding/issues/87"),
+    person("Stuart", "Lee", role = c("ctb")), person("Earo", "Wang",
+    role = c("ctb")), person("Nic", "Crane", role = c("ctb")) )
+Description: Create preliminary exploratory data visualisations of an
+    entire dataset to identify problems or unexpected features using
+    'ggplot2'.
+Depends: R (>= 3.2.2)
+License: MIT + file LICENSE
+LazyData: true
+RoxygenNote: 6.1.1
+Imports: ggplot2, tidyr, dplyr, purrr, readr, magrittr, stats, tibble,
+    glue
+URL: http://visdat.njtierney.com/, https://github.com/ropensci/visdat
+BugReports: https://github.com/ropensci/visdat/issues
+Suggests: testthat, plotly (>= 4.5.6), knitr, rmarkdown, vdiffr,
+    gdtools, spelling
+VignetteBuilder: knitr
+Encoding: UTF-8
+Language: en-US
+NeedsCompilation: no
+Packaged: 2019-02-15 02:57:38 UTC; ntie0001
+Author: Nicholas Tierney [aut, cre]
+    (<https://orcid.org/0000-0003-1460-8722>), Sean Hughes [rev]
+    (<https://orcid.org/0000-0002-9409-9405>, Sean Hughes reviewed the
+    package for rOpenSci, see
+    https://github.com/ropensci/onboarding/issues/87), Mara Averick
+    [rev] (Mara Averick reviewed the package for rOpenSci, see
+    https://github.com/ropensci/onboarding/issues/87), Stuart Lee
+    [ctb], Earo Wang [ctb], Nic Crane [ctb]
+Maintainer: Nicholas Tierney <nicholas.tierney@gmail.com>
+Repository: CRAN
+Date/Publication: 2019-02-15 15:30:03 UTC
+Built: R 3.5.3; ; 2019-05-02 19:15:43 UTC; unix
+InstallAgent: packrat 0.4.9.3
+InstallSource: CRAN
+Hash: b217279158485f8d3097cfd31d68335d

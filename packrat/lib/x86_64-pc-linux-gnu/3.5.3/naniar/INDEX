@@ -1,0 +1,171 @@
+GeomMissPoint           naniar-ggproto
+add_any_miss            Add a column describing presence of any missing
+                        values
+add_label_missings      Add a column describing if there are any
+                        missings in the dataset
+add_label_shadow        Add a column describing whether there is a
+                        shadow
+add_miss_cluster        Add a column that tells us which "missingness
+                        cluster" a row belongs to
+add_n_miss              Add column containing number of missing data
+                        values
+add_prop_miss           Add column containing proportion of missing
+                        data values
+add_shadow              Add a shadow column to dataframe
+add_shadow_shift        Add a shadow shifted column to a dataset
+add_span_counter        Add a counter variable for a span of dataframe
+all-is-miss-complete    Identify if all values are missing or complete
+all_row_complete        Helper function to determine whether all rows
+                        are complete
+all_row_miss            Helper function to determine whether all rows
+                        are missing
+any-na                  Identify if there are any missing or complete
+                        values
+any_row_miss            Helper function to determine whether there are
+                        any missings
+as_shadow               Create shadows
+as_shadow.data.frame    Create shadow data
+as_shadow_upset         Convert data into shadow format for doing an
+                        upset plot
+bind_shadow             Bind a shadow dataframe to original data
+cast_shadow             Add a shadow column to a dataset
+cast_shadow_shift       Add a shadow and a shadow_shift column to a
+                        dataset
+cast_shadow_shift_label
+                        Add a shadow column and a shadow shifted column
+                        to a dataset
+common_na_numbers       Common number values for NA
+common_na_strings       Common string values for NA
+gather_shadow           Long form representation of a shadow matrix
+geom_miss_point         geom_miss_point
+gg_miss_case            Plot the number of missings per case (row)
+gg_miss_case_cumsum     Plot of cumulative sum of missing for cases
+gg_miss_fct             Plot the number of missings for each variable,
+                        broken down by a factor
+gg_miss_span            Plot the number of missings in a given
+                        repeating span
+gg_miss_upset           Plot the pattern of missingness using an upset
+                        plot.
+gg_miss_var             Plot the number of missings for each variable
+gg_miss_var_cumsum      Plot of cumulative sum of missing value for
+                        each variable
+gg_miss_which           Plot which variables contain a missing value
+group_by_fun            Group By Helper
+impute_below            Impute data with values shifted 10% below
+                        range.
+impute_below_all        Impute data with values shifted 10% below
+                        range.
+impute_below_at         Scoped variants of 'impute_below'
+impute_below_if         Scoped variants of 'impute_below'
+impute_mean             Impute the mean value into a vector with
+                        missing values
+impute_median           Impute the median value into a vector with
+                        missing values
+is_shade                Detect if this is a shade
+is_shadow               Test if input is or are shadow variables
+label_miss_1d           Label a missing from one column
+label_miss_2d           label_miss_2d
+label_missings          Is there a missing value in the row of a
+                        dataframe?
+label_shadow            Label shadow values as missing or not missing
+miss-complete-case-pct
+                        Percentage of cases that contain a missing or
+                        complete values.
+miss-complete-case-prop
+                        Proportion of cases that contain a missing or
+                        complete values.
+miss-complete-var-pct   Percentage of variables containing missings or
+                        complete values
+miss-complete-var-prop
+                        Proportion of variables containing missings or
+                        complete values
+miss_case_summary       Summarise the missingness in each case
+miss_case_table         Tabulate missings in cases.
+miss_prop_summary       Proportions of missings in data, variables, and
+                        cases.
+miss_scan_count         Search and present different kinds of missing
+                        values
+miss_summary            Collate summary measures from naniar into one
+                        tibble
+miss_var_run            Find the number of missing and complete values
+                        in a single run
+miss_var_span           Summarise the number of missings for a given
+                        repeating span on a variable
+miss_var_summary        Summarise the missingness in each variable
+miss_var_table          Tabulate the missings in the variables
+miss_var_which          Which variables contain missing values?
+n-var-case-complete     The number of variables with complete values
+n-var-case-miss         The number of variables or cases with missing
+                        values
+n_complete              Return the number of complete values
+n_complete_row          Return a vector of the number of complete
+                        values in each row
+n_miss                  Return the number of missing values
+n_miss_row              Return a vector of the number of missing values
+                        in each row
+nabular                 Convert data into nabular form by binding shade
+                        to it
+naniar                  naniar
+new_nabular             Create a new nabular format
+new_shade               Create a new shade factor
+new_shadow              Create a new shadow
+oceanbuoys              West Pacific Tropical Atmosphere Ocean Data,
+                        1993 & 1997.
+pct-miss-complete-case
+                        Percentage of cases that contain a missing or
+                        complete values.
+pct-miss-complete-var   Percentage of variables containing missings or
+                        complete values
+pct_complete            Return the percent of complete values
+pct_miss                Return the percent of missing values
+pedestrian              Pedestrian count information around Melbourne
+                        for 2016
+plotly_helpers          Plotly helpers (Convert a geom to a "basic"
+                        geom.)
+prop-miss-complete-case
+                        Proportion of cases that contain a missing or
+                        complete values.
+prop-miss-complete-var
+                        Proportion of variables containing missings or
+                        complete values
+prop_complete           Return the proportion of complete values
+prop_complete_row       Return a vector of the proportion of missing
+                        values in each row
+prop_miss               Return the proportion of missing values
+prop_miss_row           Return a vector of the proportion of missing
+                        values in each row
+recode_shadow           Add special missing values to the shadow matrix
+replace_to_na           Replace values with missings
+replace_with_na         Replace values with missings
+replace_with_na_all     Replace all values with NA where a certain
+                        condition is met
+replace_with_na_at      Replace specified variables with NA where a
+                        certain condition is met
+replace_with_na_if      Replace values with NA based on some condition,
+                        for variables that meet some predicate
+riskfactors             The Behavioral Risk Factor Surveillance System
+                        (BRFSS) Survey Data, 2009.
+scoped-impute_mean      Scoped variants of 'impute_mean'
+scoped-impute_median    Scoped variants of 'impute_median'
+shade                   Create new levels of missing
+shadow_expand_relevel   Expand and relevel a shadow column with a new
+                        suffix
+shadow_long             Reshape shadow data into a long format
+shadow_shift            Shift missing values to facilitate missing data
+                        exploration/visualisation
+shadow_shift.numeric    Shift (impute) numeric values for graphical
+                        exploration
+stat_miss_point         stat_miss_point
+test_if_dataframe       Test if input is a data.frame
+test_if_missing         Test if the input is Missing
+test_if_null            Test if the input is NULL
+test_if_shadow          Test if input is a shadow
+unbinders               Unbind (remove) shadow from data, and vice
+                        versa
+update_shadow           Expand all shadow levels
+what_levels             check the levels of many things
+where                   Split a call into two components with a useful
+                        verb name
+where_na                Which rows and cols contain missings?
+which_are_shade         Which variables are shades?
+which_na                Which elements contain missings?

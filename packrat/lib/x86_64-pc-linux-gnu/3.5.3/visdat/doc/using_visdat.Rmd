@@ -1,0 +1,309 @@
+---
+title: "Using visdat"
+author: "Nicholas Tierney"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Using visdat}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, echo = FALSE, include = FALSE}
+
+knitr::opts_chunk$set(fig.width = 5,
+                      fig.height = 4)
+
+```
+
+When you get a new data set, you need to look at the data to get a sense of what it contains and potential problems with it. That's a key phrase here "looking at the data" - what does that mean?
+
+On the one hand, you can look at the head of the data:
+
+```{r head-iris}
+
+head(iris)
+
+```
+
+Or you can have a `glimpse` at it through `dplyr::glimpse`
+
+```{r glimpse}
+library(dplyr)
+glimpse(iris)
+
+```
+
+Here we see that we have doubles, and a factor. We get some insight into the data.
+
+But we don't always have data like the canonical iris dataset. let's take a look at some data that might be a bit more typical of "messy" data using the `typical_data` dataset
+from the `visdat` package.
+
+```{r visdat-glimpse}
+library(visdat)
+
+glimpse(typical_data)
+
+```
+
+Looking at this, you might then ask:
+
+> Isn't it odd that Income is a factor? And Age is a character? 
+
+And you might start to wonder what else is different, what else changed? 
+
+And it might be a bit unclear where to go from there. Do you plot the data? Why does my plot look weird? What are these other strange features in the data? The `visdat` package provides visualisations of an entire dataframe at once. Initially inspired by [`csv-fingerprint`](https://github.com/setosa/csv-fingerprint), `visdat` provides tools to create heatmap-like visualisations of an entire dataframe. `visdat` provides 2 main functions: `vis_dat` and `vis_miss`.
+
+`vis_dat()` helps explore the data class structure and missingness:
+
+```{r load-data}
+
+vis_dat(typical_data)
+
+```
+
+And the `vis_miss` function provides a custom plot for missing data.
+
+```{r example-vis-miss}
+
+vis_miss(typical_data)
+
+```
+
+The name `visdat` was chosen as it borrows from the idea of [`testdat`](https://github.com/ropensci/testdat), which provides unit testing for your data.  In a similar way, `visdat` provides visual tests, the idea being that first you visualise your data (`visdat`), then you run tests from `testdat`, or a package like `assertr`, to fix these errors.
+
+## `vis_dat`
+
+Let's see what's inside the dataset `airquality`, which contains information about daily air quality measurements in New York from May to September 1973. More information about the dataset can be found with `?airquality`.
+
+```{r vis_dat}
+
+vis_dat(airquality)
+
+```
+The plot above tells us that R reads this dataset as having numeric and integer values, with some missing data in `Ozone` and `Solar.R`. The classes are represented on the legend, and missing data represented by grey. The column/variable names are listed on the x axis. 
+
+By default, `vis_dat` sorts the columns according to the type of the data in the vectors. You can turn this off by setting `sort_type = FALSE`. This feature is better illustrated using the `typical_data` dataset, created using [wakefield](github.com/trinker/wakefield) and contained within `visdat`.
+
+```{r visdat-typical}
+
+vis_dat(typical_data)
+
+vis_dat(typical_data, 
+        sort_type = FALSE)
+
+```
+
+## `vis_miss`
+
+We can explore the missing data further using `vis_miss`.
+
+```{r vis_miss}
+
+vis_miss(airquality)
+
+```
+
+Notice that the percentages of missingness are provided in the data. These are accurate to 1 decimal place. `vis_miss` indicates when there is a very small amount of missing data at <0.1% missingness.
+
+
+```{r vismiss-new-data}
+
+df_test <- data.frame(x1 = 1:10000,
+                      x2 = rep("A", 10000),
+                      x3 = c(rep(1L, 9999), NA))
+
+vis_miss(df_test)
+
+```
+
+`vis_miss` will also indicate when there is no missing data at all. 
+
+```{r vismiss-mtcars}
+
+df_test <- data.frame(x1 = 1:10000,
+                      x2 = rep("tidy", 10000),
+                      x3 = rep("data", 10000))
+
+vis_miss(df_test)
+
+```
+
+Columns can be arranged by columns with most missingness, by setting `sort_miss = TRUE`.
+
+```{r vismiss}
+
+vis_miss(airquality,
+         sort_miss = TRUE)
+
+```
+
+And missingness can be clustered by setting `cluster = TRUE`
+
+```{r vis_miss-cluster}
+
+vis_miss(airquality, 
+         cluster = TRUE)
+
+```
+
+To further explore the missingness structure in a dataset, I recommend the [`naniar`](https://github.com/njtierney/naniar) package, which provides more general tools for graphical and numerical exploration of missing values.
+
+
+## `vis_compare`
+
+Sometimes you want to see what has changed in your data. `vis_compare()` displays the differences in two dataframes of the same size. Let's look at an example.
+
+Let's make some changes to the `chickwts`, and compare this new dataset.
+
+```{r vis-compare-iris}
+chickwts_diff <- chickwts
+chickwts_diff[sample(1:nrow(chickwts), 30),sample(1:ncol(chickwts), 2)] <- NA
+
+vis_compare(chickwts_diff, chickwts)
+
+```
+
+Here the differences are marked in blue.
+
+If you try and compare differences when the dimensions are different, you get an ugly error.
+
+```{r vis-compare-error, eval = FALSE}
+
+chickwts_diff_2 <- chickwts
+chickwts_diff_2$new_col <- chickwts_diff_2$weight*2
+
+vis_compare(chickwts, chickwts_diff_2)
+# Error in vis_compare(chickwts, chickwts_diff_2) : 
+#   Dimensions of df1 and df2 are not the same. vis_compare requires dataframes of identical dimensions.
+```
+
+
+## `vis_expect`
+
+`vis_expect` visualises certain conditions or values in your data. For example,
+If you are not sure whether to expect values greater than 25 in your data
+(airquality), you could write: `vis_expect(airquality, ~.x >= 25)`, and you can
+see if there are times where the  values in your data are greater than or equal
+to 25.
+
+```{r vis-expect}
+
+vis_expect(airquality, ~.x >= 25)
+
+```
+
+This shows the proportion of times that there are values greater than 25, as well as the missings.
+
+You could also, for example, explore a 
+set of bad strings, or possible NA values and visualise where they are 
+using `vis_expect(data, ~.x %in% bad_strings)` where `bad_strings` is a
+character vector containing bad strings  like `N A`, `N/A` etc.
+
+```{r vis-expect-bad-strings}
+
+bad_data <- data.frame(x = c(rnorm(100), rep("N/A", 10)),
+                       y = c(rep("N A ", 30), rnorm(80)))
+
+vis_expect(bad_data, ~.x %in% c("N/A", "N A "))
+```
+
+## `vis_cor`
+
+To make it easy to plot correlations of your data, use `vis_cor`:
+
+```{r vis-cor}
+
+vis_cor(airquality)
+
+```
+
+Under the hood, `vis_cor` is powered by the `cor` function in base R, and takes
+a character string indicating which correlation coefficient (or covariance) is
+to be computed. One of "pearson" (default), "kendall", or "spearman".
+
+```{r vis-cor-spearman}
+
+vis_cor(airquality, cor_method = "spearman")
+
+```
+
+You can also specify what to do for the missing data using the `na_action`
+function, which again borrows from the `cor` methods. This can be "everything",
+"all.obs", "complete.obs", "na.or.complete", or "pairwise.complete.obs"
+(default), e.g.:
+
+```{r vis-cor-na-action}
+
+vis_cor(airquality,
+        na_action = "complete.obs")
+
+```
+
+## `vis_guess`
+
+`vis_guess()` takes a guess at what each cell is. It's best illustrated using some messy data, which we'll make here.
+
+```{r create-messy-vec}
+
+messy_vector <- c(TRUE,
+                  T,
+                  "TRUE",
+                  "T",
+                  "01/01/01",
+                  "01/01/2001",
+                  NA,
+                  NaN,
+                  "NA",
+                  "Na",
+                  "na",
+                  "10",
+                  10,
+                  "10.1",
+                  10.1,
+                  "abc",
+                  "$%TG")
+
+set.seed(1114)
+messy_df <- data.frame(var1 = messy_vector,
+                       var2 = sample(messy_vector),
+                       var3 = sample(messy_vector))
+
+```
+
+
+```{r vis-guess-messy-df, fig.show='hold', out.width='50%'}
+
+vis_guess(messy_df)
+vis_dat(messy_df)
+
+```
+
+So here we see that there are many different kinds of data in your dataframe. As an analyst this might be a depressing finding. We can see this comparison above.
+
+Here, you might just assume your data is weird because it's all factors - or worse, not notice that this is a problem.
+
+At the moment `vis_guess` is very slow. Please take this into consideration when you are using it on data with more than 1000 rows. We're looking into ways of making it faster, potentially using methods from the `parallel` package, or extending the c++ code from `readr:::collectorGuess`.
+
+# Interactivity
+
+You can make the plots in visdat by wrapping them in `plotly::ggplotly`:
+
+```{r intx, eval = FALSE}
+
+library(plotly)
+ggplotly(vis_dat(airquality))
+ggplotly(vis_miss(airquality))
+ggplotly(vis_guess(airquality))
+
+```
+
+In the future these will have their own functions, written in plotly with nice
+standardised on-hover behaviour. If you would like to see how these work,
+please see the [development version on GitHub](https://github.com/ropensci/visdat).
+
+# Future work
+
+Future work from here is focussed on making `visdat` more stable, improving the 
+speed of plotting, and adding interactive versions for each function.
+

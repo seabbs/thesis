@@ -1,0 +1,136 @@
+---
+title: "Using the sylly Package for Hyphenation and Syllable Count"
+author: "m.eik michalke"
+date: "`r Sys.Date()`"
+output: 
+  rmarkdown::html_vignette:
+    toc: true
+    includes: 
+      in_header: vignette_header.html
+bibliography: sylly_lit.bib
+csl: apa.csl
+abstract: >
+  
+vignette: >
+  %\VignetteIndexEntry{Using the sylly Package for Hyphenation and Syllable Count}
+  %\VignetteEngine{knitr::rmarkdown}
+  \usepackage[utf8x]{inputenc}
+  \usepackage[apaciteclassic]{apacite}
+---
+
+```{r setup, include=FALSE}
+header_con <- file("vignette_header.html")
+writeLines('<meta name="flattr:id" content="4zdzgd" />', header_con)
+close(header_con)
+```
+
+
+# Hyphenation
+
+The method `hyphen()` takes vectors of character strings (i.e., single words) and applies an hyphenation algorithm [@liang_word_1983] to each word. This algorithm was originally developed for automatic word hyphenation in $\LaTeX$, and is gracefully misused here to be of a slightly different service.^[The `hyphen()` method was originally implemented as part of the `koRpus` package, but was later split off into its own package, which is `sylly`. `koRpus` adds further `hyphen()` methods so they can be used on tokenized and POS tagged objects directly.]
+
+`hyphen()` needs a set of hyphenation patterns for each language it should analyze. If you're lucky, there's already a [pre-built package in the official `l10n` repository](https://undocumeantit.github.io/repos) for your language of interest that you only need to install and load. These packages are called `sylly.XX`, where `XX` is a two letter abbreviation for the particular language. For instance, `sylly.de` adds support for German, whereas `sylly.en` adds support for English:
+
+
+```{r, eval=FALSE}
+sampleText <- c("This", "is", "a", "rather", "stupid", "demonstration")
+library(sylly.en)
+hyph.txt.en <- hyphen(sampleText, hyph.pattern="en")
+```
+
+## Alternative output formats
+
+The method has a parameter called `as` which defines the object class of the returned results. It defaults to the S4 class `kRp.hyphen`. In addition to the hyphenated tokens, it includes various statistics and metadata, like the language of the text. These objects were designed to integrate seamlessly with the methods and functions of the `koRpus` package.
+
+When all you need is the actual data frame with hyphenated text, you could call `hyphenText()` on the `kRp.hyphen` object. But you could also set `as="data.frame"` accordinly in the first place. Alternatively, using the shortcut method `hyphen_df()` instead of `hyphen()` will also return a simple data frame.
+
+If you're only even interested in the numeric results, you can set `as="numeric"` (or use `hyphen_c()`), which will strip down the results to just the numeric vector of syllables.
+
+# Support new languages
+
+Should there be no package for your language, you can import pattern files from the $\LaTeX$ sources^[Look for `*.pat.txt` files at <http://tug.ctan.org/tex-archive/language/hyph-utf8/tex/generic/hyph-utf8/patterns/txt/>] and use the result as `hyph.pattern`:^[You can also use the private method `sylly:::sylly\_langpack()` to generate an R package skeleton for this language, but it requires you to look at the `sylly` source code, as the commented code is the only documentation. The results of this method are optimized to be packaged with `roxyPackage` (<https://github.com/unDocUMeantIt/roxyPackage>). In this combination, generating new language packages can almost be automatized.]
+
+
+```{r, eval=FALSE}
+url.is.pattern <- url("http://tug.ctan.org/tex-archive/language/hyph-
+utf8/tex/generic/hyph-utf8/patterns/txt/hyph-is.pat.txt")
+hyph.is <- read.hyph.pat(url.is.pattern, lang="is")
+close(url.is.pattern)
+hyph.txt.is <- hyphen(icelandicSampleText, hyph.pattern=hyph.is)
+```
+
+
+# Correcting errors
+
+`hyphen()` might not produce perfect results. As a rule of thumb, if in doubt it seems to behave rather conservative, that is, is might underestimate the real number of syllables in a text.
+
+Depending on your use case, the more accurate the end results should be, the less you should rely on automatic hyphenation alone. But it sure is a good starting point, for there is a method called `correct.hyph()` to help you clean these results of errors later on. The most comfortable way to do this is to call `hyphenText(hyph.txt.en)`, which will get you a data frame with two colums, `word` (the hyphenated words) and `syll` (the number of syllables), and open it in a spread sheet editor:^[For example, this can be comfortably done with RKWard: <http://rkward.kde.org>]
+
+
+```{r, eval=FALSE}
+hyphenText(hyph.txt.en)
+```
+```
+##    syll     word
+[...]
+## 20    1    first
+## 21    1    place
+## 22    1  primary
+## 23    2 de-fense
+## 24    1      and
+[...]
+```
+
+You can then manually correct wrong hyphenations by removing or inserting ``-'' as hyphenation indicators, and call the method on the corrected object without further arguments, which will cause it to recount all syllables and update the statistics:
+
+```{r, eval=FALSE}
+hyph.txt.en <- correct.hyph(hyph.txt.en)
+```
+
+The method can also be used to alter entries directly:
+
+
+```{r, eval=FALSE}
+hyph.txt.en <- correct.hyph(hyph.txt.en, word="primary", hyphen="pri-ma-ry")
+```
+```
+## Changed
+## 
+##    syll    word
+## 22    1 primary
+## 
+##   into
+## 
+##    syll      word
+## 22    3 pri-ma-ry
+```
+
+Once you have corrected the hyphenation of a token, `sylly` will also update its cache (see below) and use the corrected format from now on.
+
+# Caching the hyphenation dictionary
+
+By default, `hyphen()` caches the results of each token it analyzed internally for the running R session, and also checks its cache for each token it is called on. This speeds up the process, because it only has to split the token and look up matching patterns once. If for some reason you don't want this (e.g., if it uses to much memory), you can turn caching off by setting `hyphen(..., cache=FALSE)`.
+
+If on the other hand you would like to preserve and re-use the cache, you can also configure `sylly` to write it to a file. To do so, you sould use `set.sylly.env()`:
+
+```{r, eval=FALSE}
+set.sylly.env(hyph.cache.file="~/sylly_cache.Rdata")
+```
+
+The file will be created dynamically the first time it is needed, should it not exist already. You can use the same cache file for multiple languages. Furthermore, since most setting done with `set.sylly.env()` are stored in you session's `options()`, you can also define this file permanently by adding somethin like the following to your `.Rprofile` file:
+
+```{r, eval=FALSE}
+options(
+  sylly=list(
+    hyph.cache.file="~/sylly_cache.RData"
+  )
+)
+```
+
+This will cause `sylly` to always use this cache file by default. One of the main benefits of this, next to boosting speed, is the fact that corrections you have done in the past will be preserved for future sessions. In other words, if you fix incorrect hyphenation results from time to time, the overall accuracy of your results will improve constantly.
+
+# Acknowledgements
+
+The APA style used in this vignette was kindly provided by the [CSL project](http://CitationStyles.org), licensed under [Creative Commons Attribution-ShareAlike 3.0 Unported license](https://creativecommons.org/licenses/by-sa/3.0/).
+
+# References

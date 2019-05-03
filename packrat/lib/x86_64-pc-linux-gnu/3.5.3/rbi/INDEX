@@ -1,0 +1,61 @@
+Equals.bi_model         Check if two models are equal
+Extract.bi_model        Subset model lines
+Extract_assign.bi_model
+                        Subset and replace model lines
+Unequals.bi_model       Check if two models are unequal
+add_block               Add a block to a LibBi model
+attach_data             Attach a new file or data set to a 'libbi'
+                        object
+bi_contents             Bi contents
+bi_dim_len              NetCDF dimension length
+bi_file_summary         NetCDF File Summary
+bi_generate_dataset     Bi Generate Dataset
+bi_model                Bi Model
+bi_open                 Bi open
+bi_read                 Bi Read
+bi_write                Create (e.g., init or observation) files for
+                        LibBi
+enable_outputs          Enable outputting variables in a 'bi_model'
+extract_sample          Extract a sample from a 'LibBi' run.
+filter                  Using the LibBi wrapper to filter
+fix                     Fix noise term, state or parameter of a libbi
+                        model
+flatten                 Flatten list of data frames This function takes
+                        a list of data frames (such as, for example,
+                        returned by 'bi_read') and converts it to a
+                        flat data frame
+get_block               Get the contents of a block in a LibBi model
+get_const               Get constants in a LibBi model
+get_dims                Get dimensions in a LibBi model
+get_name                Get the name of a bi model
+get_traces              Get the parameter traces
+insert_lines            Insert lines in a LibBi model
+join                    Join multiple 'libbi' objects
+libbi                   LibBi Wrapper
+logLik                  Using the LibBi wrapper to logLik
+optimise                Using the LibBi wrapper to optimise
+option_list             Convert string to option list
+option_string           Convert Options
+predict                 Using the LibBi wrapper to predict
+print_log               Print the log file a 'libbi' object
+rbi-package             RBi - R interface for 'libbi'
+read_libbi              Read results of a 'LibBi' run from an RDS file
+                        or from a folder. This completely reconstructs
+                        the saved 'LibBi' object
+remove_lines            Remove line(s) and/or block(s) in a libbi model
+remove_vars             Remove variables
+replace_all             Replace all instances of a string with another
+                        in a model
+rewrite                 Using the LibBi wrapper to rewrite
+run                     Using the LibBi wrapper to launch LibBi
+sample                  Using the LibBi wrapper to sample
+sample_obs              Sample observations from a LibBi model that has
+                        been run
+save_libbi              Write results of a 'LibBi' run to an RDS file
+set_name                Set the name of a bi model
+simulate                Using the LibBi wrapper to simulate
+summary                 Print summary information about a 'libbi'
+                        object
+update                  Update a libbi object
+var_names               Get variable names in a LibBi model
+write_model             Writes a bi model to a file.

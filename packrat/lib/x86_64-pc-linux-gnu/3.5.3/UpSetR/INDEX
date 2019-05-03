@@ -1,0 +1,7 @@
+elements                Element query for queries paramter
+fromExpression          Expression to UpSetR converters
+fromList                List of named vectors to UpSetR converter
+histogram               Histogram for custom plot
+intersects              Intersection query for queries paramter
+scatter_plot            Scatterplot for customplot
+upset                   UpSetR Plot

@@ -1,0 +1,36 @@
+add_vis_dat_pal         (Internal) Add a specific palette to a visdat
+                        plot
+all_numeric             (Internal) Are they all numeric columns?
+compare_print           (Internal) A utility function for 'vis_compare'
+expect_frame            Create a dataframe to help visualise 'expected'
+                        values
+expect_guide_label      (Internal) Label the legend with the percent of
+                        missing data
+fingerprint             Take the fingerprint of a data.frame - find the
+                        class or return NA
+gather_cor              (Internal) create a tidy dataframe of
+                        correlations suitable for plotting
+guess_type              (Internal) Guess the type of each individual
+                        cell in a dataframe
+label_col_missing_pct   (Internal) Create labels for the columns
+                        containing the % missing data
+miss_guide_label        Label the legend with the percent of missing
+                        data
+test_if_dataframe       Test if input is a data.frame
+typical_data            A small toy dataset of imaginary people
+typical_data_large      A small toy dataset of imaginary people
+vis_compare             Visually compare two dataframes and see where
+                        they are different.
+vis_cor                 Visualise correlations amongst variables in
+                        your data as a heatmap
+vis_create_             (Internal) Create a boilerplate for
+                        visualisations of the 'vis_' family
+vis_dat                 Visualises a data.frame to tell you what it
+                        contains.
+vis_expect              Visualise whether a value is in a data frame
+vis_extract_value_      (Internal) Add values of each row as a column
+vis_gather_             (Internal) Gather rows into a format
+                        appropriate for grid visualisation
+vis_guess               Visualise type guess in a data.frame
+vis_miss                Visualise a data.frame to display missingness.
+visdat                  visdat

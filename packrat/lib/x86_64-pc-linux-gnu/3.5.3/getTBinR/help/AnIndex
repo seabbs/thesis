@@ -1,0 +1,15 @@
+getTBinR-package	getTBinR-package
+getTBinR	getTBinR-package
+get_data	get_data
+get_data_dict	get_data_dict
+get_tb_burden	get_tb_burden
+map_tb_burden	map_tb_burden
+plot_tb_burden	plot_tb_burden
+plot_tb_burden_overview	plot_tb_burden_overview
+plot_tb_burden_summary	plot_tb_burden_summary
+prepare_df_plot	prepare_df_plot
+render_country_report	render_country_report
+run_tb_dashboard	run_tb_dashboard
+search_data_dict	search_data_dict
+summarise_tb_burden	summarise_tb_burden
+who_shapefile	who_shapefile

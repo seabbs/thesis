@@ -1,0 +1,20 @@
+get_data                Generic Get Data Function
+get_data_dict           Get the WHO Data Dictionary for TB Data
+get_tb_burden           Get the WHO TB Burden Data
+map_tb_burden           Map TB Burden
+plot_tb_burden          Plot TB Burden by Country
+plot_tb_burden_overview
+                        Plot an overview of TB Burden for Multiple
+                        Countries
+plot_tb_burden_summary
+                        Plot Summaries of TB Burden - By Region,
+                        Globally and for Custom Groups
+prepare_df_plot         Generic Function to Prepare TB Burden Data for
+                        Plotting
+render_country_report   Render a Country Level TB Report
+run_tb_dashboard        Run a TB Shiny Dashboard
+search_data_dict        Search the WHO TB Data Dictionary by Variable
+                        Name.
+summarise_tb_burden     Summarise TB Burden - By Region, Globally and
+                        for Custom Groups
+who_shapefile           WHO shapefile

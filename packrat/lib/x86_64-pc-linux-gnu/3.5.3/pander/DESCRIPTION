@@ -1,0 +1,45 @@
+Package: pander
+Authors@R: c( person("Gergely", "Daróczi", , "daroczig@rapporter.net",
+    role = c("aut", "cre"), comment = c(ORCID =
+    "0000-0003-3149-8537")), person("Roman", "Tsegelskyi", ,
+    "roman.tsegelskyi@gmail.com", role = c("aut")))
+Title: An R 'Pandoc' Writer
+Type: Package
+Encoding: UTF-8
+Description: Contains some functions catching all messages, 'stdout'
+    and other useful information while evaluating R code and other
+    helpers to return user specified text elements (like: header,
+    paragraph, table, image, lists etc.) in 'pandoc' markdown or
+    several type of R objects similarly automatically transformed to
+    markdown format. Also capable of exporting/converting (the
+    resulting) complex 'pandoc' documents to e.g. HTML, 'PDF', 'docx'
+    or 'odt'. This latter reporting feature is supported in brew syntax
+    or with a custom reference class with a smarty caching 'backend'.
+Version: 0.6.3
+Date: 2018-11-06
+URL: http://rapporter.github.io/pander
+BugReports: https://github.com/rapporter/pander/issues
+License: AGPL-3 | file LICENSE
+Depends: R (>= 2.15.0)
+Imports: grDevices, graphics, methods, utils, stats, digest, tools,
+    Rcpp
+Suggests: grid, lattice, ggplot2 (>= 0.9.2), sylly, sylly.en,
+    futile.logger, survival, microbenchmark, zoo, nlme, descr, MASS,
+    knitr, rmarkdown, tables, reshape, memisc, Epi, randomForest,
+    tseries, gtable, rms, forecast, data.table
+SystemRequirements: pandoc (http://johnmacfarlane.net/pandoc) for
+    exporting markdown files to other formats.
+LinkingTo: Rcpp
+VignetteBuilder: knitr
+RoxygenNote: 6.1.0
+NeedsCompilation: yes
+Packaged: 2018-11-06 10:17:46 UTC; daroczig
+Author: Gergely Daróczi [aut, cre]
+    (<https://orcid.org/0000-0003-3149-8537>), Roman Tsegelskyi [aut]
+Maintainer: Gergely Daróczi <daroczig@rapporter.net>
+Repository: CRAN
+Date/Publication: 2018-11-06 10:50:02 UTC
+Built: R 3.5.3; x86_64-pc-linux-gnu; 2019-05-02 17:54:14 UTC; unix
+InstallAgent: packrat 0.4.9.3
+InstallSource: CRAN
+Hash: 98b86dfaa1df41c44943d17eb4661c27

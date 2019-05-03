@@ -1,0 +1,30 @@
+Package: rvest
+Title: Easily Harvest (Scrape) Web Pages
+Version: 0.3.3
+Authors@R: c(person(given = "Hadley", family = "Wickham", role =
+    c("aut", "cre"), email = "hadley@rstudio.com"), person(given =
+    "RStudio", role = "cph"))
+Description: Wrappers around the 'xml2' and 'httr' packages to make it
+    easy to download, then manipulate, HTML and XML.
+License: GPL-3
+URL: http://rvest.tidyverse.org/, https://github.com/tidyverse/rvest
+BugReports: https://github.com/tidyverse/rvest/issues
+Depends: R (>= 3.1), xml2
+Imports: httr (>= 0.5), magrittr, selectr
+Suggests: covr, knitr, png, rmarkdown, spelling, stringi (>= 0.3.1),
+    testthat
+VignetteBuilder: knitr
+Encoding: UTF-8
+Language: en-US
+LazyData: true
+RoxygenNote: 6.1.1
+NeedsCompilation: no
+Packaged: 2019-03-29 21:47:17 UTC; hadley
+Author: Hadley Wickham [aut, cre], RStudio [cph]
+Maintainer: Hadley Wickham <hadley@rstudio.com>
+Repository: CRAN
+Date/Publication: 2019-04-11 07:22:44 UTC
+Built: R 3.5.3; ; 2019-05-02 18:31:50 UTC; unix
+InstallAgent: packrat 0.4.9.3
+InstallSource: CRAN
+Hash: 26cbe586097662b0c1fcbc583123a6bb

@@ -1,0 +1,33 @@
+
+        CHANGES IN epiR VERSION 0.9-98
+
+SIGNIFICANT USER-VISIBLE CHANGES
+
+    o epi.prev
+    Function does not truncate true prevalence estimates to values between 0 and 1. Warning issued when apparent prevalence is less than (1 - specificity). Additional references added to docuementation. 
+
+
+        CHANGES IN epiR VERSION 0.9-97
+
+BUG FIXES
+
+    o epi.prev
+    Error in formatting of confidence intervals when method = "sterne" and method = "blaker". 
+    [Spotted by Salome Duerr]
+    Fixed.
+
+    o epi.noninfb
+    Study power estimation when r argument for epi.noninfb was not equal 
+    to 1 returned incorrect results. 
+    [Spotted by Aline Guttmann]
+    Fixed.
+
+    o epi.interaction
+    Error returned when model = coxph. 
+    [Spotted by Eirik Degerud]
+    Fixed.
+    
+    o epi.directadj
+    Inconsistency in documentation.
+    [Spotted by Jose Conde]
+    Fixed.

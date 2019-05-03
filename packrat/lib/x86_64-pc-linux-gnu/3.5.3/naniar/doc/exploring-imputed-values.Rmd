@@ -1,0 +1,199 @@
+---
+title: "Exploring Imputed Values"
+author: "Nicholas Tierney"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Exploring Imputed Values}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+Imputating missing values is an iterative process. `naniar` aims to make it easier to manage imputed values by providing the `nabular` data structure to simplify managing missingness. This vignette provides some useful recipes for imputing and exploring imputed data.
+
+`naniar` implements a few imputation methods to facilitate exploration and visualisations, which were not otherwise available: `impute_below`, and `impute_mean`. For single imputation, the R package `simputation` works very well with `naniar`, and provides the main example given.
+
+# Imputing and tracking missing values
+
+# Using `impute_below`
+
+`impute_below` imputes values below the minimum of the data, with some noise to reduce overplotting. The amount data is imputed below, and the amount of jitter, can be changed by changing the arguments `prop_below` and `jitter`.
+
+```{r demonstrate-impute-below}
+library(dplyr)
+library(naniar)
+
+airquality %>%
+  impute_below_at(vars(Ozone)) %>%
+  select(Ozone, Solar.R) %>%
+  head()
+```
+
+# Using `impute_mean`
+
+The mean can be imputed using `impute_mean`, and is useful to explore structure in missingness, but are not recommended for use in analysis. Similar to `simputation`, each `impute_` function returns the data with values imputed. 
+
+Imputation functions in `naniar` implement "scoped variants" for imputation: `_all`, `_at` and `_if`. 
+
+This means: 
+
+- `_all` operates on all columns
+- `_at` operates on specific columns, and 
+- `_if` operates on columns that meet some condition (such as `is.numeric` or `is.character`). 
+
+If the `impute_` functions are used as-is - e.g., `impute_mean`, this will work on a single vector, but not a data.frame.
+
+Some examples for `impute_mean` are now given:
+
+```{r impute-vector, echo = TRUE}
+
+impute_mean(oceanbuoys$air_temp_c) %>% head()
+
+impute_mean_at(oceanbuoys, .vars = vars(air_temp_c)) %>% head()
+
+impute_mean_if(oceanbuoys, .predicate = is.integer) %>% head()
+
+impute_mean_all(oceanbuoys) %>% head()
+
+```
+
+When we impute data like this, we cannot identify where the imputed values are - we need to track them. We can track the imputed values using the `nabular` format of the data.
+
+### Track imputed values using nabular data
+
+We can track the missing values by combining the verbs `bind_shadow`, `impute_`, `add_label_shadow`. We can then refer to missing values by their shadow variable, `_NA`. The `add_label_shadow` function adds an additional column called `any_missing`, which tells us if any observation has a missing value. 
+
+#### Imputing values using simputation
+
+We can impute the data using the easy-to-use `simputation` package, and then track the missingness using `bind_shadow` and `add_label_shadow`:
+
+```{r bind-impute-label-example, echo = TRUE}
+
+library(simputation)
+ocean_imp <- oceanbuoys %>%
+  bind_shadow() %>%
+  impute_lm(air_temp_c ~ wind_ew + wind_ns) %>%
+  impute_lm(humidity ~  wind_ew + wind_ns) %>%
+  impute_lm(sea_temp_c ~  wind_ew + wind_ns) %>%
+  add_label_shadow()
+
+```
+
+We can then show the previously missing (now imputed!) data in a scatterplot with ggplot2 by setting the `color` aesthetic in ggplot to `any_missing`:   
+
+```{r ocean-imp-air-temp-humidity}
+library(ggplot2)
+ggplot(ocean_imp,
+       aes(x = air_temp_c,
+           y = humidity,
+           color = any_missing)) + 
+  geom_point() +
+  scale_color_brewer(palette = "Dark2") +
+  theme(legend.position = "bottom")
+```
+
+Or, if you want to look at one variable, you can look at a density plot of one variable, using `fill = any_missing`
+
+```{r ocean-imp-density, fig.show = "hold", fig.height = 4, fig.width = 4, out.width = "49%"}
+
+ggplot(ocean_imp,
+       aes(x = air_temp_c,
+           fill = any_missing)) + 
+  geom_density(alpha = 0.3) + 
+  scale_fill_brewer(palette = "Dark2") +
+  theme(legend.position = "bottom")
+
+ggplot(ocean_imp,
+       aes(x = humidity,
+           fill = any_missing)) + 
+  geom_density(alpha = 0.3) + 
+  scale_fill_brewer(palette = "Dark2") +
+  theme(legend.position = "bottom")
+
+```
+
+We can also compare imputed values to complete cases by grouping by `any_missing`, and summarising.
+
+```{r summarise-imputations}
+ocean_imp %>%
+  group_by(any_missing) %>%
+  summarise_at(.vars = vars(air_temp_c),
+               .funs = funs(min, mean, median, max, .args = list(na.rm = TRUE)))
+```
+
+# Improving imputations
+
+One thing that we notice with our imputations are that they aren't very good - we can improve upon the imputation by including the variables year and latitude and longitude:
+
+```{r imp-add-year}
+ocean_imp_yr <- oceanbuoys %>%
+  bind_shadow() %>%
+  impute_lm(air_temp_c ~ wind_ew + wind_ns + year + longitude + latitude) %>%
+  impute_lm(humidity ~  wind_ew + wind_ns + year + longitude + latitude) %>%
+  impute_lm(sea_temp_c ~  wind_ew + wind_ns + year + longitude + latitude) %>%
+  add_label_shadow()
+```
+
+```{r ggplot-air-temp-humidity}
+ggplot(ocean_imp_yr,
+       aes(x = air_temp_c,
+           y = humidity,
+           color = any_missing)) + 
+  geom_point() +
+  scale_color_brewer(palette = "Dark2") +
+  theme(legend.position = "bottom")
+```
+
+# Other imputation approaches
+
+Not all imputation packages return data in tidy 
+
+## Hmisc aregImpute
+
+We can explore using a single imputation of `Hmisc::aregImpute()`, which allows for multiple imputation with bootstrapping, additive regression, and predictive mean matching. We are going to explore predicting mean matching, and single imputation.
+
+```{r Hmisc-aregimpute}
+
+library(Hmisc)
+
+aq_imp <- aregImpute(~Ozone + Temp + Wind + Solar.R,
+                     n.impute = 1,
+                     type = "pmm",
+                     data = airquality)
+
+aq_imp
+```
+
+We are now going to get our data into `nabular` form, and then insert the imputed values:
+
+```{r Hmisc-aregimpute-insert}
+
+# nabular form!
+aq_nab <- nabular(airquality) %>%  add_label_shadow()
+
+# insert imputed values
+aq_nab$Ozone[is.na(aq_nab$Ozone)] <- aq_imp$imputed$Ozone
+aq_nab$Solar.R[is.na(aq_nab$Solar.R)] <- aq_imp$imputed$Solar.R
+
+```
+
+In the future there will be a more concise way to insert these imputed values into data, but for the moment the method above is what I would recommend for single imputation.
+
+We can then explore the imputed values like so:
+
+```{r hmisc-aregimpute-vis}
+
+ggplot(aq_nab,
+       aes(x = Ozone,
+           y = Solar.R,
+           colour = any_missing)) + 
+  geom_point()
+
+```

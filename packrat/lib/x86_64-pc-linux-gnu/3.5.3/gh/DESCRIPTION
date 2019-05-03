@@ -1,10 +1,9 @@
 Package: gh
 Title: 'GitHub' 'API'
 Version: 1.0.1
-Authors@R: 
-    c(person("Gábor", "Csárdi",, "csardi.gabor@gmail.com", c("cre", "ctb")),
-      person("Jennifer", "Bryan", role = "aut"),
-      person("Hadley", "Wickham", role = "aut"))
+Authors@R: c(person("Gábor", "Csárdi",, "csardi.gabor@gmail.com",
+    c("cre", "ctb")), person("Jennifer", "Bryan", role = "aut"),
+    person("Hadley", "Wickham", role = "aut"))
 Description: Minimal client to access the 'GitHub' 'API'.
 License: MIT + file LICENSE
 LazyData: true
@@ -16,10 +15,12 @@ RoxygenNote: 6.0.1.9000
 Encoding: UTF-8
 NeedsCompilation: no
 Packaged: 2017-07-16 16:36:29 UTC; gaborcsardi
-Author: Gábor Csárdi [cre, ctb],
-  Jennifer Bryan [aut],
-  Hadley Wickham [aut]
+Author: Gábor Csárdi [cre, ctb], Jennifer Bryan [aut], Hadley Wickham
+    [aut]
 Maintainer: Gábor Csárdi <csardi.gabor@gmail.com>
 Repository: CRAN
 Date/Publication: 2017-07-16 20:28:25 UTC
 Built: R 3.5.3; ; 2019-04-26 16:53:50 UTC; unix
+InstallAgent: packrat 0.4.9.3
+InstallSource: CRAN
+Hash: 0fafa863f1a86a1f1966e5d5b46a48b5

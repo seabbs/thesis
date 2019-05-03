@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<meta name="author" content="Nicholas Tierney" />
+
+<meta name="date" content="2019-02-15" />
+
+<title>Replacing values with NA</title>
+
+
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css" data-origin="pandoc">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+
+</style>
+<script>
+// apply pandoc div.sourceCode style to pre.sourceCode instead
+(function() {
+  var sheets = document.styleSheets;
+  for (var i = 0; i < sheets.length; i++) {
+    if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
+    try { var rules = sheets[i].cssRules; } catch (e) { continue; }
+    for (var j = 0; j < rules.length; j++) {
+      var rule = rules[j];
+      // check if there is a div.sourceCode rule
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") continue;
+      var style = rule.style.cssText;
+      // check if color or background-color is set
+      if (rule.style.color === '' || rule.style.backgroundColor === '') continue;
+      // replace div.sourceCode by a pre.sourceCode rule
+      sheets[i].deleteRule(j);
+      sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
+    }
+  }
+})();
+</script>
+
+
+
+<style type="text/css">body {
+background-color: #fff;
+margin: 1em auto;
+max-width: 700px;
+overflow: visible;
+padding-left: 2em;
+padding-right: 2em;
+font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+font-size: 14px;
+line-height: 1.35;
+}
+#header {
+text-align: center;
+}
+#TOC {
+clear: both;
+margin: 0 0 10px 10px;
+padding: 4px;
+width: 400px;
+border: 1px solid #CCCCCC;
+border-radius: 5px;
+background-color: #f6f6f6;
+font-size: 13px;
+line-height: 1.3;
+}
+#TOC .toctitle {
+font-weight: bold;
+font-size: 15px;
+margin-left: 5px;
+}
+#TOC ul {
+padding-left: 40px;
+margin-left: -1.5em;
+margin-top: 5px;
+margin-bottom: 5px;
+}
+#TOC ul ul {
+margin-left: -2em;
+}
+#TOC li {
+line-height: 16px;
+}
+table {
+margin: 1em auto;
+border-width: 1px;
+border-color: #DDDDDD;
+border-style: outset;
+border-collapse: collapse;
+}
+table th {
+border-width: 2px;
+padding: 5px;
+border-style: inset;
+}
+table td {
+border-width: 1px;
+border-style: inset;
+line-height: 18px;
+padding: 5px 5px;
+}
+table, table th, table td {
+border-left-style: none;
+border-right-style: none;
+}
+table thead, table tr.even {
+background-color: #f7f7f7;
+}
+p {
+margin: 0.5em 0;
+}
+blockquote {
+background-color: #f6f6f6;
+padding: 0.25em 0.75em;
+}
+hr {
+border-style: solid;
+border: none;
+border-top: 1px solid #777;
+margin: 28px 0;
+}
+dl {
+margin-left: 0;
+}
+dl dd {
+margin-bottom: 13px;
+margin-left: 13px;
+}
+dl dt {
+font-weight: bold;
+}
+ul {
+margin-top: 0;
+}
+ul li {
+list-style: circle outside;
+}
+ul ul {
+margin-bottom: 0;
+}
+pre, code {
+background-color: #f7f7f7;
+border-radius: 3px;
+color: #333;
+white-space: pre-wrap; 
+}
+pre {
+border-radius: 3px;
+margin: 5px 0px 10px 0px;
+padding: 10px;
+}
+pre:not([class]) {
+background-color: #f7f7f7;
+}
+code {
+font-family: Consolas, Monaco, 'Courier New', monospace;
+font-size: 85%;
+}
+p > code, li > code {
+padding: 2px 0px;
+}
+div.figure {
+text-align: center;
+}
+img {
+background-color: #FFFFFF;
+padding: 2px;
+border: 1px solid #DDDDDD;
+border-radius: 3px;
+border: 1px solid #CCCCCC;
+margin: 0 5px;
+}
+h1 {
+margin-top: 0;
+font-size: 35px;
+line-height: 40px;
+}
+h2 {
+border-bottom: 4px solid #f7f7f7;
+padding-top: 10px;
+padding-bottom: 2px;
+font-size: 145%;
+}
+h3 {
+border-bottom: 2px solid #f7f7f7;
+padding-top: 10px;
+font-size: 120%;
+}
+h4 {
+border-bottom: 1px solid #f7f7f7;
+margin-left: 8px;
+font-size: 105%;
+}
+h5, h6 {
+border-bottom: 1px solid #ccc;
+font-size: 105%;
+}
+a {
+color: #0033dd;
+text-decoration: none;
+}
+a:hover {
+color: #6666ff; }
+a:visited {
+color: #800080; }
+a:visited:hover {
+color: #BB00BB; }
+a[href^="http:"] {
+text-decoration: underline; }
+a[href^="https:"] {
+text-decoration: underline; }
+
+code > span.kw { color: #555; font-weight: bold; } 
+code > span.dt { color: #902000; } 
+code > span.dv { color: #40a070; } 
+code > span.bn { color: #d14; } 
+code > span.fl { color: #d14; } 
+code > span.ch { color: #d14; } 
+code > span.st { color: #d14; } 
+code > span.co { color: #888888; font-style: italic; } 
+code > span.ot { color: #007020; } 
+code > span.al { color: #ff0000; font-weight: bold; } 
+code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61717; background-color: #e3d2d2; } 
+</style>
+
+</head>
+
+<body>
+
+
+
+
+<h1 class="title toc-ignore">Replacing values with NA</h1>
+<h4 class="author"><em>Nicholas Tierney</em></h4>
+<h4 class="date"><em>2019-02-15</em></h4>
+
+
+
+<p>When dealing with missing values, you might want to replace values with a missing values (<code>NA</code>). This is useful in cases when you know the origin of the data and can be certain which values should be missing. For example, you might know that all values of “N/A”, “N A”, and “Not Available”, or -99, or -1 are supposed to be missing.</p>
+<p><code>naniar</code> provides functions to specifically work on this type of problem using the function <code>replace_with_na()</code>. This function is the compliment to <code>tidyr::replace_na()</code>, which replaces an NA value with a specified value, whereas <code>naniar::replace_with_na()</code> replaces a value with an NA:</p>
+<ul>
+<li><code>tidyr::replace_na()</code>: Missing values turns into a value (NA –&gt; -99)</li>
+<li><code>naniar::replace_with_na()</code>: Value becomes a missing value (-99 –&gt; NA)</li>
+</ul>
+<p>In this vignette, we describe some simple use cases for these functions and describe how they work.</p>
+<div id="example-data" class="section level1">
+<h1>Example data</h1>
+<p>First, we introduce a small fictional dataset, <code>df</code>, which contains some common features of a dataset with the sorts of missing values we might encounter. This includes multiple specifications of missing values, such as “N/A”, “N A”, and “Not Available”. And also some common numeric codes, like -98, -99, and -1.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"></a>
+<a class="sourceLine" id="cb1-2" data-line-number="2">df &lt;-<span class="st"> </span>tibble<span class="op">::</span><span class="kw">tribble</span>(</a>
+<a class="sourceLine" id="cb1-3" data-line-number="3">  <span class="op">~</span>name,           <span class="op">~</span>x,  <span class="op">~</span>y,              <span class="op">~</span>z,  </a>
+<a class="sourceLine" id="cb1-4" data-line-number="4">  <span class="st">&quot;N/A&quot;</span>,           <span class="dv">1</span>,   <span class="st">&quot;N/A&quot;</span>,           <span class="dv">-100</span>, </a>
+<a class="sourceLine" id="cb1-5" data-line-number="5">  <span class="st">&quot;N A&quot;</span>,           <span class="dv">3</span>,   <span class="st">&quot;NOt available&quot;</span>, <span class="dv">-99</span>,</a>
+<a class="sourceLine" id="cb1-6" data-line-number="6">  <span class="st">&quot;N / A&quot;</span>,         <span class="ot">NA</span>,  <span class="dv">29</span>,              <span class="dv">-98</span>,</a>
+<a class="sourceLine" id="cb1-7" data-line-number="7">  <span class="st">&quot;Not Available&quot;</span>, <span class="dv">-99</span>, <span class="dv">25</span>,              <span class="dv">-101</span>,</a>
+<a class="sourceLine" id="cb1-8" data-line-number="8">  <span class="st">&quot;John Smith&quot;</span>,    <span class="dv">-98</span>, <span class="dv">28</span>,              <span class="dv">-1</span>)</a></code></pre></div>
+<div id="using-replace_with_na" class="section level2">
+<h2>Using <code>replace_with_na()</code></h2>
+<p>What if we want to replace the value -99 in the <code>x</code> column with a missing value?</p>
+<p>First, let’s load <code>naniar</code>:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="kw">library</span>(naniar)</a></code></pre></div>
+<p>Now, we specify the fact that we want to replace -99 with a missing value. To do so we use the <code>replace</code> argument, and specify a named list, which contains the names of the variable and the value it would take to replace with <code>NA</code>.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1">df <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">replace_with_na</span>(<span class="dt">replace =</span> <span class="kw">list</span>(<span class="dt">x =</span> <span class="dv">-99</span>))</a>
+<a class="sourceLine" id="cb3-2" data-line-number="2"><span class="co">#&gt; # A tibble: 5 x 4</span></a>
+<a class="sourceLine" id="cb3-3" data-line-number="3"><span class="co">#&gt;   name              x y                 z</span></a>
+<a class="sourceLine" id="cb3-4" data-line-number="4"><span class="co">#&gt;   &lt;chr&gt;         &lt;dbl&gt; &lt;chr&gt;         &lt;dbl&gt;</span></a>
+<a class="sourceLine" id="cb3-5" data-line-number="5"><span class="co">#&gt; 1 N/A               1 N/A            -100</span></a>
+<a class="sourceLine" id="cb3-6" data-line-number="6"><span class="co">#&gt; 2 N A               3 NOt available   -99</span></a>
+<a class="sourceLine" id="cb3-7" data-line-number="7"><span class="co">#&gt; 3 N / A            NA 29              -98</span></a>
+<a class="sourceLine" id="cb3-8" data-line-number="8"><span class="co">#&gt; 4 Not Available    NA 25             -101</span></a>
+<a class="sourceLine" id="cb3-9" data-line-number="9"><span class="co">#&gt; 5 John Smith      -98 28               -1</span></a></code></pre></div>
+<p>And say we want to replace -98 as well?</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1">df <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb4-2" data-line-number="2"><span class="st">  </span><span class="kw">replace_with_na</span>(<span class="dt">replace =</span> <span class="kw">list</span>(<span class="dt">x =</span> <span class="kw">c</span>(<span class="op">-</span><span class="dv">99</span>, <span class="dv">-98</span>)))</a>
+<a class="sourceLine" id="cb4-3" data-line-number="3"><span class="co">#&gt; # A tibble: 5 x 4</span></a>
+<a class="sourceLine" id="cb4-4" data-line-number="4"><span class="co">#&gt;   name              x y                 z</span></a>
+<a class="sourceLine" id="cb4-5" data-line-number="5"><span class="co">#&gt;   &lt;chr&gt;         &lt;dbl&gt; &lt;chr&gt;         &lt;dbl&gt;</span></a>
+<a class="sourceLine" id="cb4-6" data-line-number="6"><span class="co">#&gt; 1 N/A               1 N/A            -100</span></a>
+<a class="sourceLine" id="cb4-7" data-line-number="7"><span class="co">#&gt; 2 N A               3 NOt available   -99</span></a>
+<a class="sourceLine" id="cb4-8" data-line-number="8"><span class="co">#&gt; 3 N / A            NA 29              -98</span></a>
+<a class="sourceLine" id="cb4-9" data-line-number="9"><span class="co">#&gt; 4 Not Available    NA 25             -101</span></a>
+<a class="sourceLine" id="cb4-10" data-line-number="10"><span class="co">#&gt; 5 John Smith       NA 28               -1</span></a></code></pre></div>
+<p>And then what if we want to replace -99 and -98 in all the numeric columns, x and z?</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1">df <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb5-2" data-line-number="2"><span class="st">  </span><span class="kw">replace_with_na</span>(<span class="dt">replace =</span> <span class="kw">list</span>(<span class="dt">x =</span> <span class="kw">c</span>(<span class="op">-</span><span class="dv">99</span>,<span class="op">-</span><span class="dv">98</span>),</a>
+<a class="sourceLine" id="cb5-3" data-line-number="3">                             <span class="dt">z =</span> <span class="kw">c</span>(<span class="op">-</span><span class="dv">99</span>, <span class="dv">-98</span>)))</a>
+<a class="sourceLine" id="cb5-4" data-line-number="4"><span class="co">#&gt; # A tibble: 5 x 4</span></a>
+<a class="sourceLine" id="cb5-5" data-line-number="5"><span class="co">#&gt;   name              x y                 z</span></a>
+<a class="sourceLine" id="cb5-6" data-line-number="6"><span class="co">#&gt;   &lt;chr&gt;         &lt;dbl&gt; &lt;chr&gt;         &lt;dbl&gt;</span></a>
+<a class="sourceLine" id="cb5-7" data-line-number="7"><span class="co">#&gt; 1 N/A               1 N/A            -100</span></a>
+<a class="sourceLine" id="cb5-8" data-line-number="8"><span class="co">#&gt; 2 N A               3 NOt available    NA</span></a>
+<a class="sourceLine" id="cb5-9" data-line-number="9"><span class="co">#&gt; 3 N / A            NA 29               NA</span></a>
+<a class="sourceLine" id="cb5-10" data-line-number="10"><span class="co">#&gt; 4 Not Available    NA 25             -101</span></a>
+<a class="sourceLine" id="cb5-11" data-line-number="11"><span class="co">#&gt; 5 John Smith       NA 28               -1</span></a></code></pre></div>
+<p>Using <code>replace_with_na()</code> works well when we know the exact value to be replaced, and for which variables we want to replace, providing there are not many variables. But what do you do when you’ve got many variables you want to observe?</p>
+</div>
+<div id="extending-replace_with_na" class="section level2">
+<h2>Extending <code>replace_with_na()</code></h2>
+<p>Sometimes you have many of the same value that you want to replace. For example, -99 and -98 above, and also the variants of “NA”, such as “N/A”, and “N / A”, and “Not Available”. You might also have certain variables that you want to be affected by these rules, or you might have more complex rules, like, “only affect variables that are numeric, or character, with this rule”.</p>
+<p>To account for these cases we have borrowed from <a href="http://dplyr.tidyverse.org/reference/scoped.html"><code>dplyr</code>’s scoped variants</a> and created the functions:</p>
+<ul>
+<li><code>replace_with_na_all()</code> Replaces NA for all variables.</li>
+<li><code>replace_with_na_at()</code> Replaces NA on a subset of variables specified with character quotes (e.g., c(“var1”, “var2”)).</li>
+<li><code>replace_with_na_if()</code> Replaces NA based on applying an operation on the subset of variables for which a predicate function (is.numeric, is.character, etc) returns TRUE.</li>
+</ul>
+<p>Below we will now consider some very simple examples of the use of these functions, so that you can better understand how to use them.</p>
+</div>
+<div id="using-replace_with_na_all" class="section level2">
+<h2>Using <code>replace_with_na_all()</code></h2>
+<p>Use <code>replace_with_na_all()</code> when you want to replace ALL values that meet a condition across an entire dataset. The syntax here is a little different, and follows the rules for rlang’s expression of simple functions. This means that the function starts with <code>~</code>, and when referencing a variable, you use <code>.x</code>.</p>
+<p>For example, if we want to replace all cases of -99 in our dataset, we write:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1"></a>
+<a class="sourceLine" id="cb6-2" data-line-number="2">df <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">replace_with_na_all</span>(<span class="dt">condition =</span> <span class="op">~</span>.x <span class="op">==</span><span class="st"> </span><span class="dv">-99</span>)</a>
+<a class="sourceLine" id="cb6-3" data-line-number="3"><span class="co">#&gt; # A tibble: 5 x 4</span></a>
+<a class="sourceLine" id="cb6-4" data-line-number="4"><span class="co">#&gt;   name              x y                 z</span></a>
+<a class="sourceLine" id="cb6-5" data-line-number="5"><span class="co">#&gt;   &lt;chr&gt;         &lt;dbl&gt; &lt;chr&gt;         &lt;dbl&gt;</span></a>
+<a class="sourceLine" id="cb6-6" data-line-number="6"><span class="co">#&gt; 1 N/A               1 N/A            -100</span></a>
+<a class="sourceLine" id="cb6-7" data-line-number="7"><span class="co">#&gt; 2 N A               3 NOt available    NA</span></a>
+<a class="sourceLine" id="cb6-8" data-line-number="8"><span class="co">#&gt; 3 N / A            NA 29              -98</span></a>
+<a class="sourceLine" id="cb6-9" data-line-number="9"><span class="co">#&gt; 4 Not Available    NA 25             -101</span></a>
+<a class="sourceLine" id="cb6-10" data-line-number="10"><span class="co">#&gt; 5 John Smith      -98 28               -1</span></a></code></pre></div>
+<p>Likewise, if you have a set of (annoying) repeating strings like various spellings of “NA”, then I suggest you first lay out all the offending cases:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" data-line-number="1"></a>
+<a class="sourceLine" id="cb7-2" data-line-number="2"><span class="co"># write out all the offending strings</span></a>
+<a class="sourceLine" id="cb7-3" data-line-number="3">na_strings &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;NA&quot;</span>, <span class="st">&quot;N A&quot;</span>, <span class="st">&quot;N / A&quot;</span>, <span class="st">&quot;N/A&quot;</span>, <span class="st">&quot;N/ A&quot;</span>, <span class="st">&quot;Not Available&quot;</span>, <span class="st">&quot;NOt available&quot;</span>)</a></code></pre></div>
+<p>Then you write <code>~.x %in% na_strings</code> - which reads as “does this value occur in the list of NA strings”.</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1"></a>
+<a class="sourceLine" id="cb8-2" data-line-number="2">df <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb8-3" data-line-number="3"><span class="st">  </span><span class="kw">replace_with_na_all</span>(<span class="dt">condition =</span> <span class="op">~</span>.x <span class="op">%in%</span><span class="st"> </span>na_strings)</a>
+<a class="sourceLine" id="cb8-4" data-line-number="4"><span class="co">#&gt; # A tibble: 5 x 4</span></a>
+<a class="sourceLine" id="cb8-5" data-line-number="5"><span class="co">#&gt;   name           x y         z</span></a>
+<a class="sourceLine" id="cb8-6" data-line-number="6"><span class="co">#&gt;   &lt;chr&gt;      &lt;dbl&gt; &lt;chr&gt; &lt;dbl&gt;</span></a>
+<a class="sourceLine" id="cb8-7" data-line-number="7"><span class="co">#&gt; 1 &lt;NA&gt;           1 &lt;NA&gt;   -100</span></a>
+<a class="sourceLine" id="cb8-8" data-line-number="8"><span class="co">#&gt; 2 &lt;NA&gt;           3 &lt;NA&gt;    -99</span></a>
+<a class="sourceLine" id="cb8-9" data-line-number="9"><span class="co">#&gt; 3 &lt;NA&gt;          NA 29      -98</span></a>
+<a class="sourceLine" id="cb8-10" data-line-number="10"><span class="co">#&gt; 4 &lt;NA&gt;         -99 25     -101</span></a>
+<a class="sourceLine" id="cb8-11" data-line-number="11"><span class="co">#&gt; 5 John Smith   -98 28       -1</span></a></code></pre></div>
+<p>You can also use the built-in strings and numbers in naniar:</p>
+<ul>
+<li><code>common_na_numbers</code></li>
+<li><code>common_na_strings</code></li>
+</ul>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" data-line-number="1">common_na_numbers</a>
+<a class="sourceLine" id="cb9-2" data-line-number="2"><span class="co">#&gt; [1]    -9   -99  -999 -9999  9999    66    77    88</span></a>
+<a class="sourceLine" id="cb9-3" data-line-number="3">common_na_strings</a>
+<a class="sourceLine" id="cb9-4" data-line-number="4"><span class="co">#&gt;  [1] &quot;NA&quot;     &quot;N A&quot;    &quot;N/A&quot;    &quot;NA &quot;    &quot; NA&quot;    &quot;N /A&quot;   &quot;N / A&quot; </span></a>
+<a class="sourceLine" id="cb9-5" data-line-number="5"><span class="co">#&gt;  [8] &quot; N / A&quot; &quot;N / A &quot; &quot;na&quot;     &quot;n a&quot;    &quot;n/a&quot;    &quot;na &quot;    &quot; na&quot;   </span></a>
+<a class="sourceLine" id="cb9-6" data-line-number="6"><span class="co">#&gt; [15] &quot;n /a&quot;   &quot;n / a&quot;  &quot; a / a&quot; &quot;n / a &quot; &quot;NULL&quot;   &quot;null&quot;   &quot;&quot;      </span></a>
+<a class="sourceLine" id="cb9-7" data-line-number="7"><span class="co">#&gt; [22] &quot;\\?&quot;    &quot;\\*&quot;    &quot;\\.&quot;</span></a></code></pre></div>
+<p>And you can replace values matching those strings or numbers like so:</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" data-line-number="1">df <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb10-2" data-line-number="2"><span class="st">  </span><span class="kw">replace_with_na_all</span>(<span class="dt">condition =</span> <span class="op">~</span>.x <span class="op">%in%</span><span class="st"> </span>common_na_strings)</a>
+<a class="sourceLine" id="cb10-3" data-line-number="3"><span class="co">#&gt; # A tibble: 5 x 4</span></a>
+<a class="sourceLine" id="cb10-4" data-line-number="4"><span class="co">#&gt;   name              x y                 z</span></a>
+<a class="sourceLine" id="cb10-5" data-line-number="5"><span class="co">#&gt;   &lt;chr&gt;         &lt;dbl&gt; &lt;chr&gt;         &lt;dbl&gt;</span></a>
+<a class="sourceLine" id="cb10-6" data-line-number="6"><span class="co">#&gt; 1 &lt;NA&gt;              1 &lt;NA&gt;           -100</span></a>
+<a class="sourceLine" id="cb10-7" data-line-number="7"><span class="co">#&gt; 2 &lt;NA&gt;              3 NOt available   -99</span></a>
+<a class="sourceLine" id="cb10-8" data-line-number="8"><span class="co">#&gt; 3 &lt;NA&gt;             NA 29              -98</span></a>
+<a class="sourceLine" id="cb10-9" data-line-number="9"><span class="co">#&gt; 4 Not Available   -99 25             -101</span></a>
+<a class="sourceLine" id="cb10-10" data-line-number="10"><span class="co">#&gt; 5 John Smith      -98 28               -1</span></a></code></pre></div>
+<div id="replace_with_na_at" class="section level3">
+<h3><code>replace_with_na_at()</code></h3>
+<p>This is similar to <code>_all</code>, but instead in this case you can specify the variables that you want affected by the rule that you state. This is useful in cases where you want to specify a rule that only affects a selected number of variables.</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" data-line-number="1"></a>
+<a class="sourceLine" id="cb11-2" data-line-number="2">df <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb11-3" data-line-number="3"><span class="st">  </span><span class="kw">replace_with_na_at</span>(<span class="dt">.vars =</span> <span class="kw">c</span>(<span class="st">&quot;x&quot;</span>,<span class="st">&quot;z&quot;</span>),</a>
+<a class="sourceLine" id="cb11-4" data-line-number="4">                     <span class="dt">condition =</span> <span class="op">~</span>.x <span class="op">==</span><span class="st"> </span><span class="dv">-99</span>)</a>
+<a class="sourceLine" id="cb11-5" data-line-number="5"><span class="co">#&gt; # A tibble: 5 x 4</span></a>
+<a class="sourceLine" id="cb11-6" data-line-number="6"><span class="co">#&gt;   name              x y                 z</span></a>
+<a class="sourceLine" id="cb11-7" data-line-number="7"><span class="co">#&gt;   &lt;chr&gt;         &lt;dbl&gt; &lt;chr&gt;         &lt;dbl&gt;</span></a>
+<a class="sourceLine" id="cb11-8" data-line-number="8"><span class="co">#&gt; 1 N/A               1 N/A            -100</span></a>
+<a class="sourceLine" id="cb11-9" data-line-number="9"><span class="co">#&gt; 2 N A               3 NOt available    NA</span></a>
+<a class="sourceLine" id="cb11-10" data-line-number="10"><span class="co">#&gt; 3 N / A            NA 29              -98</span></a>
+<a class="sourceLine" id="cb11-11" data-line-number="11"><span class="co">#&gt; 4 Not Available    NA 25             -101</span></a>
+<a class="sourceLine" id="cb11-12" data-line-number="12"><span class="co">#&gt; 5 John Smith      -98 28               -1</span></a></code></pre></div>
+<p>Although you can achieve this with regular <code>replace_with_na()</code>, it is more concise to use, <code>replace_with_na_at()</code>. Additionally, you can specify rules as function, for example, make a value NA if the exponent of that number is less than 1:</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb12-1" data-line-number="1"></a>
+<a class="sourceLine" id="cb12-2" data-line-number="2">df <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb12-3" data-line-number="3"><span class="st">  </span><span class="kw">replace_with_na_at</span>(<span class="dt">.vars =</span> <span class="kw">c</span>(<span class="st">&quot;x&quot;</span>,<span class="st">&quot;z&quot;</span>),</a>
+<a class="sourceLine" id="cb12-4" data-line-number="4">                     <span class="dt">condition =</span> <span class="op">~</span><span class="st"> </span><span class="kw">exp</span>(.x) <span class="op">&lt;</span><span class="st"> </span><span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb12-5" data-line-number="5"><span class="co">#&gt; # A tibble: 5 x 4</span></a>
+<a class="sourceLine" id="cb12-6" data-line-number="6"><span class="co">#&gt;   name              x y                 z</span></a>
+<a class="sourceLine" id="cb12-7" data-line-number="7"><span class="co">#&gt;   &lt;chr&gt;         &lt;dbl&gt; &lt;chr&gt;         &lt;dbl&gt;</span></a>
+<a class="sourceLine" id="cb12-8" data-line-number="8"><span class="co">#&gt; 1 N/A               1 N/A              NA</span></a>
+<a class="sourceLine" id="cb12-9" data-line-number="9"><span class="co">#&gt; 2 N A               3 NOt available    NA</span></a>
+<a class="sourceLine" id="cb12-10" data-line-number="10"><span class="co">#&gt; 3 N / A            NA 29               NA</span></a>
+<a class="sourceLine" id="cb12-11" data-line-number="11"><span class="co">#&gt; 4 Not Available    NA 25               NA</span></a>
+<a class="sourceLine" id="cb12-12" data-line-number="12"><span class="co">#&gt; 5 John Smith       NA 28               NA</span></a></code></pre></div>
+</div>
+<div id="replace_with_na_if" class="section level3">
+<h3><code>replace_with_na_if()</code></h3>
+<p>There may be some cases where you can identify variables based on some test - <code>is.character()</code> - are they character variables? <code>is.numeric()</code> - Are they numeric or double? and a given value inside that type of data. For example,</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" data-line-number="1"></a>
+<a class="sourceLine" id="cb13-2" data-line-number="2">df <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb13-3" data-line-number="3"><span class="st">  </span><span class="kw">replace_with_na_if</span>(<span class="dt">.predicate =</span> is.character,</a>
+<a class="sourceLine" id="cb13-4" data-line-number="4">                     <span class="dt">condition =</span> <span class="op">~</span>.x <span class="op">%in%</span><span class="st"> </span>(<span class="st">&quot;N/A&quot;</span>))</a>
+<a class="sourceLine" id="cb13-5" data-line-number="5"><span class="co">#&gt; # A tibble: 5 x 4</span></a>
+<a class="sourceLine" id="cb13-6" data-line-number="6"><span class="co">#&gt;   name              x y                 z</span></a>
+<a class="sourceLine" id="cb13-7" data-line-number="7"><span class="co">#&gt;   &lt;chr&gt;         &lt;dbl&gt; &lt;chr&gt;         &lt;dbl&gt;</span></a>
+<a class="sourceLine" id="cb13-8" data-line-number="8"><span class="co">#&gt; 1 &lt;NA&gt;              1 &lt;NA&gt;           -100</span></a>
+<a class="sourceLine" id="cb13-9" data-line-number="9"><span class="co">#&gt; 2 N A               3 NOt available   -99</span></a>
+<a class="sourceLine" id="cb13-10" data-line-number="10"><span class="co">#&gt; 3 N / A            NA 29              -98</span></a>
+<a class="sourceLine" id="cb13-11" data-line-number="11"><span class="co">#&gt; 4 Not Available   -99 25             -101</span></a>
+<a class="sourceLine" id="cb13-12" data-line-number="12"><span class="co">#&gt; 5 John Smith      -98 28               -1</span></a>
+<a class="sourceLine" id="cb13-13" data-line-number="13"></a>
+<a class="sourceLine" id="cb13-14" data-line-number="14"><span class="co"># or</span></a>
+<a class="sourceLine" id="cb13-15" data-line-number="15">df <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb13-16" data-line-number="16"><span class="st">  </span><span class="kw">replace_with_na_if</span>(<span class="dt">.predicate =</span> is.character,</a>
+<a class="sourceLine" id="cb13-17" data-line-number="17">                     <span class="dt">condition =</span> <span class="op">~</span>.x <span class="op">%in%</span><span class="st"> </span>(na_strings))</a>
+<a class="sourceLine" id="cb13-18" data-line-number="18"><span class="co">#&gt; # A tibble: 5 x 4</span></a>
+<a class="sourceLine" id="cb13-19" data-line-number="19"><span class="co">#&gt;   name           x y         z</span></a>
+<a class="sourceLine" id="cb13-20" data-line-number="20"><span class="co">#&gt;   &lt;chr&gt;      &lt;dbl&gt; &lt;chr&gt; &lt;dbl&gt;</span></a>
+<a class="sourceLine" id="cb13-21" data-line-number="21"><span class="co">#&gt; 1 &lt;NA&gt;           1 &lt;NA&gt;   -100</span></a>
+<a class="sourceLine" id="cb13-22" data-line-number="22"><span class="co">#&gt; 2 &lt;NA&gt;           3 &lt;NA&gt;    -99</span></a>
+<a class="sourceLine" id="cb13-23" data-line-number="23"><span class="co">#&gt; 3 &lt;NA&gt;          NA 29      -98</span></a>
+<a class="sourceLine" id="cb13-24" data-line-number="24"><span class="co">#&gt; 4 &lt;NA&gt;         -99 25     -101</span></a>
+<a class="sourceLine" id="cb13-25" data-line-number="25"><span class="co">#&gt; 5 John Smith   -98 28       -1</span></a></code></pre></div>
+<p>This means that you are able to apply a rule to many variables that meet a pre-specified condition. This can be of particular use if you have many variables and don’t want to list them all, and also if you know that there is a particular problem for variables of a particular class.</p>
+</div>
+</div>
+</div>
+<div id="notes-on-alternative-ways-to-handle-replacing-with-nas" class="section level1">
+<h1>Notes on alternative ways to handle replacing with NAs</h1>
+<p>There are some alternative ways to handle replacing values with NA in the tidyverse, <code>na_if</code> and using <code>readr</code>. These are ultimately not as expressive as the <code>replace_with_na()</code> functions, but they are very useful if you only have one kind of value to replace with a missing, and if you know what the missing values are upon reading in the data.</p>
+<p><strong><code>dplyr::na_if</code></strong></p>
+<p>This function allows you to replace exact values - similar to <code>replace_with_na()</code>, but for all columns in a data frame. Here is how you would use it in our examples.</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb14-1" data-line-number="1"></a>
+<a class="sourceLine" id="cb14-2" data-line-number="2"><span class="co"># instead of:</span></a>
+<a class="sourceLine" id="cb14-3" data-line-number="3">df_<span class="dv">1</span> &lt;-<span class="st"> </span>df <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">replace_with_na_all</span>(<span class="dt">condition =</span> <span class="op">~</span>.x <span class="op">==</span><span class="st"> </span><span class="dv">-99</span>)</a>
+<a class="sourceLine" id="cb14-4" data-line-number="4">df_<span class="dv">1</span></a>
+<a class="sourceLine" id="cb14-5" data-line-number="5"><span class="co">#&gt; # A tibble: 5 x 4</span></a>
+<a class="sourceLine" id="cb14-6" data-line-number="6"><span class="co">#&gt;   name              x y                 z</span></a>
+<a class="sourceLine" id="cb14-7" data-line-number="7"><span class="co">#&gt;   &lt;chr&gt;         &lt;dbl&gt; &lt;chr&gt;         &lt;dbl&gt;</span></a>
+<a class="sourceLine" id="cb14-8" data-line-number="8"><span class="co">#&gt; 1 N/A               1 N/A            -100</span></a>
+<a class="sourceLine" id="cb14-9" data-line-number="9"><span class="co">#&gt; 2 N A               3 NOt available    NA</span></a>
+<a class="sourceLine" id="cb14-10" data-line-number="10"><span class="co">#&gt; 3 N / A            NA 29              -98</span></a>
+<a class="sourceLine" id="cb14-11" data-line-number="11"><span class="co">#&gt; 4 Not Available    NA 25             -101</span></a>
+<a class="sourceLine" id="cb14-12" data-line-number="12"><span class="co">#&gt; 5 John Smith      -98 28               -1</span></a>
+<a class="sourceLine" id="cb14-13" data-line-number="13"></a>
+<a class="sourceLine" id="cb14-14" data-line-number="14">df_<span class="dv">2</span> &lt;-<span class="st"> </span>df <span class="op">%&gt;%</span><span class="st"> </span>dplyr<span class="op">::</span><span class="kw">na_if</span>(<span class="op">-</span><span class="dv">99</span>)</a>
+<a class="sourceLine" id="cb14-15" data-line-number="15">df_<span class="dv">2</span></a>
+<a class="sourceLine" id="cb14-16" data-line-number="16"><span class="co">#&gt; # A tibble: 5 x 4</span></a>
+<a class="sourceLine" id="cb14-17" data-line-number="17"><span class="co">#&gt;   name              x y                 z</span></a>
+<a class="sourceLine" id="cb14-18" data-line-number="18"><span class="co">#&gt;   &lt;chr&gt;         &lt;dbl&gt; &lt;chr&gt;         &lt;dbl&gt;</span></a>
+<a class="sourceLine" id="cb14-19" data-line-number="19"><span class="co">#&gt; 1 N/A               1 N/A            -100</span></a>
+<a class="sourceLine" id="cb14-20" data-line-number="20"><span class="co">#&gt; 2 N A               3 NOt available    NA</span></a>
+<a class="sourceLine" id="cb14-21" data-line-number="21"><span class="co">#&gt; 3 N / A            NA 29              -98</span></a>
+<a class="sourceLine" id="cb14-22" data-line-number="22"><span class="co">#&gt; 4 Not Available    NA 25             -101</span></a>
+<a class="sourceLine" id="cb14-23" data-line-number="23"><span class="co">#&gt; 5 John Smith      -98 28               -1</span></a>
+<a class="sourceLine" id="cb14-24" data-line-number="24"></a>
+<a class="sourceLine" id="cb14-25" data-line-number="25"><span class="co"># are they the same?</span></a>
+<a class="sourceLine" id="cb14-26" data-line-number="26"><span class="kw">all.equal</span>(df_<span class="dv">1</span>, df_<span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb14-27" data-line-number="27"><span class="co">#&gt; [1] TRUE</span></a></code></pre></div>
+<p>Note, however, that <code>na_if()</code> can only take arguments of length one. This means that it cannot capture other statements like</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb15-1" data-line-number="1"></a>
+<a class="sourceLine" id="cb15-2" data-line-number="2">na_strings &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;NA&quot;</span>, <span class="st">&quot;N A&quot;</span>, <span class="st">&quot;N / A&quot;</span>, <span class="st">&quot;N/A&quot;</span>, <span class="st">&quot;N/ A&quot;</span>, <span class="st">&quot;Not Available&quot;</span>, <span class="st">&quot;NOt available&quot;</span>)</a>
+<a class="sourceLine" id="cb15-3" data-line-number="3">df_<span class="dv">3</span> &lt;-<span class="st"> </span>df <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">replace_with_na_all</span>(<span class="dt">condition =</span> <span class="op">~</span>.x <span class="op">%in%</span><span class="st"> </span>na_strings)</a></code></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb16-1" data-line-number="1"></a>
+<a class="sourceLine" id="cb16-2" data-line-number="2"><span class="co"># Not run:</span></a>
+<a class="sourceLine" id="cb16-3" data-line-number="3">df_<span class="dv">4</span> &lt;-<span class="st"> </span>df <span class="op">%&gt;%</span><span class="st"> </span>dplyr<span class="op">::</span><span class="kw">na_if</span>(<span class="dt">x =</span> ., <span class="dt">y =</span> na_strings)</a>
+<a class="sourceLine" id="cb16-4" data-line-number="4"><span class="co"># Error in check_length(y, x, fmt_args(&quot;y&quot;), glue(&quot;same as {fmt_args(~x)}&quot;)) : </span></a>
+<a class="sourceLine" id="cb16-5" data-line-number="5">  <span class="co"># argument &quot;y&quot; is missing, with no default</span></a></code></pre></div>
+<p>It also cannot handle more complex equations, where you want to refer to values in other columns, or values less than or greater than another value.</p>
+<p><strong>catch NAs with <code>readr</code></strong></p>
+<p>When reading in your data, you can use the <code>na</code> argument inside <code>readr</code> to replace certain values with NA. For example:</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb17-1" data-line-number="1"><span class="co"># not run</span></a>
+<a class="sourceLine" id="cb17-2" data-line-number="2">dat_raw &lt;-<span class="st"> </span>readr<span class="op">::</span><span class="kw">read_csv</span>(<span class="st">&quot;original.csv&quot;</span>, <span class="dt">na =</span> na_strings)</a></code></pre></div>
+<p>This would convert all of the values in <code>na_strings</code> into missing values.</p>
+<p>This is useful to use if you happen to know the NA types upon reading in the data. However, this is not always practical in a data analysis pipeline.</p>
+</div>
+
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

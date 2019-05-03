@@ -1,0 +1,39 @@
+Package: rbi.helpers
+Version: 0.3.0
+Title: 'RBi' Helper Functions
+Author: Sebastian Funk <sebastian.funk@lshtm.ac.uk>
+Maintainer: Sebastian Funk <sebastian.funk@lshtm.ac.uk>
+Depends: rbi (>= 0.10.0)
+Imports: data.table, lubridate, reshape2, Matrix
+Suggests: R.rsp, testthat, covr (>= 3.2.0), stringi
+Description: Contains a collection of helper functions to use with
+    'RBi', the R interface to 'LibBi', described in Murray et al.
+    (2015) <doi:10.18637/jss.v067.i10>. It contains functions to adapt
+    the proposal distribution and number of particles in particle
+    Markov-Chain Monte Carlo, as well as calculating the Deviance
+    Information Criterion (DIC) and converting between times in 'LibBi'
+    results and R time/dates.
+License: GPL-3
+URL: http://libbi.org, https://github.com/sbfnk/RBi,
+    https://github.com/sbfnk/RBi.helpers
+BugReports: https://github.com/sbfnk/RBi.helpers/issues
+SystemRequirements: libbi (>= 1.4.2)
+LazyLoad: no
+RoxygenNote: 6.1.1
+VignetteBuilder: R.rsp
+NeedsCompilation: no
+Packaged: 2019-05-02 17:00:20 UTC; seabbs
+RemoteType: github
+RemoteHost: api.github.com
+RemoteRepo: rbi.helpers
+RemoteUsername: sbfnk
+RemoteRef: master
+RemoteSha: e7bc17d5a71e5b11992847f5cc7bdeb88bd01baa
+GithubRepo: rbi.helpers
+GithubUsername: sbfnk
+GithubRef: master
+GithubSHA1: e7bc17d5a71e5b11992847f5cc7bdeb88bd01baa
+Built: R 3.5.3; ; 2019-05-02 17:00:21 UTC; unix
+InstallAgent: packrat 0.4.9.3
+InstallSource: github
+Hash: 9c21537dd1e8a30f578ccbd1c5f2fd1d

@@ -1,0 +1,31 @@
+Package: epiR
+Version: 0.9-99
+Date: 2018-11-6
+Title: Tools for the Analysis of Epidemiological Data
+Author: Mark Stevenson <mark.stevenson1@unimelb.edu.au> with
+    contributions from Telmo Nunes, Cord Heuer, Jonathon Marshall,
+    Javier Sanchez, Ron Thornton, Jeno Reiczigel, Jim Robison-Cox,
+    Paola Sebastiani, Peter Solymos, Kazuki Yoshida, Geoff Jones, Sarah
+    Pirikahu, Simon Firestone, Ryan Kyle, Johann Popp and Mathew Jay.
+Maintainer: Mark Stevenson <mark.stevenson1@unimelb.edu.au>
+Description: Tools for the analysis of epidemiological data. Contains
+    functions for directly and indirectly adjusting measures of disease
+    frequency, quantifying measures of association on the basis of
+    single or multiple strata of count data presented in a contingency
+    table, and computing confidence intervals around incidence risk and
+    incidence rate estimates. Miscellaneous functions for use in
+    meta-analysis, diagnostic test interpretation, and sample size
+    calculations.
+Depends: R (>= 3.0.0), survival
+Imports: BiasedUrn, methods
+Suggests: MASS (>= 3.1-20)
+License: GPL (>= 2)
+Packaged: 2018-11-06 10:32:51 UTC; Mark Stevenson
+URL: http://fvas.unimelb.edu.au/veam
+NeedsCompilation: no
+Repository: CRAN
+Date/Publication: 2018-11-06 12:30:07 UTC
+Built: R 3.5.3; ; 2019-05-02 18:18:29 UTC; unix
+InstallAgent: packrat 0.4.9.3
+InstallSource: CRAN
+Hash: 7e1386f69f10ed24cbda1d20302bf893

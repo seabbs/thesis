@@ -1,0 +1,17 @@
+ModelTBBCGEngland-package	ModelTBBCGEngland-package
+%>%	pipe
+births	births
+england_demographics	england_demographics
+everything_from_model	everything_from_model
+fit_model	fit_model
+incidence	incidence
+ModelTBBCGEngland	ModelTBBCGEngland-package
+mortality_rates	mortality_rates
+plot_param	plot_param
+plot_sensitivity	plot_sensitivity
+plot_state	plot_state
+read_libbi	read_libbi
+save_libbi	save_libbi
+setup_model_input	setup_model_input
+setup_model_obs	setup_model_obs
+test_sensitivity	test_sensitivity

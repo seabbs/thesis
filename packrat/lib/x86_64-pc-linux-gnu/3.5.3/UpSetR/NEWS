@@ -1,0 +1,162 @@
+Release v1.3.3
+
+- Made element query compatible with check.names
+- Removed border from active query bars
+- Adjusted metadata heatmap and text title positions (centered title and removed 90 degree rotation)
+
+-----------------
+
+Release v1.3.2
+
+- update logarithmic axis and bar labels
+- allow decimal values for log scales
+- set intersection size axis min to 0 for log scales
+
+-----------------
+
+Release v1.3.1
+
+- Fixed log scale bugs
+- Allow users to label their own queries, which can be displayed in query legend
+- Fixed query legend positioning bug. Allows query legend to be placed on top or bottom of plot grid
+- Fixed warnings and notes from new ggplot2 release
+- Updated plot margin of intersection size bar plot
+
+-----------------
+
+Release v1.3.0
+
+- Introduced text scales for all plot axis labels, tick labels, set names, and numbers above the bars
+- Removed names.size parameter and replaced it with a text scale
+- Fixed vignettes so plot size and text is appropriately scaled
+
+-----------------
+
+Release v1.2.4
+
+- Fixed check.names bug so that it reorders the set size bar plot, not just the set labels
+- Show all intersections when nintersects is set to NA
+
+-----------------
+
+Release v1.2.3
+
+- Allow user to keep order of sets entered when using sets parameter
+- Updated Basic Usage vignette with example on how to do this
+
+-----------------
+
+Release v1.2.2
+
+- Support for log10 and log2 scale transformations 
+
+-----------------
+
+Release v1.2.1
+
+- Updated vignettes
+- Adjusted metadata plot text size for ggplot2 update
+- Default gray88 color if matrix_rows metadata attribute used and no colors supplied
+- Fixed metadata error so that matrix_rows may be used alone
+- New link to UpSetR Shiny app in README
+
+-----------------
+
+Release v1.2.0
+
+- Options for set metadata heat map, boolean heat map, text, and bar plot
+- Allow for multiple set metadata plots
+- Option to color matrix background using metadata
+- Created set.metadata.plots vignette
+- Removed set metadata example from attribute.plots vignette
+- Size adjustment of geoms for ggplot2 version 2.1.0
+
+-----------------
+
+Release v1.1.1
+
+- Added selective import from plyr package to avoid warning from gridExtra package update (Requested by CRAN)
+
+-----------------
+
+Release v1.1.0
+
+- Added set metadata plot feature
+- Added intersections parameter to include only intersections specified
+- Reorder sets when using `sets` or `intersections` parameter
+- Add label option for intersection size and set size bar plots
+- Include boxplot summary example in attribute vignette
+- Added set metadata example in attribute vignette and label parameter examples to basic usage vignette
+
+-----------------
+
+Release v1.0.3
+
+- Fixed overlapping between matrix and intersection size bar plot (caused by late changes to ggplot2 update)
+- Updated vignettes to regenerate plots from new code
+
+-----------------
+
+Release v1.0.2
+
+- Updated vignettes to include examples of the fromExpression and fromList functions
+- Changed to selective imports from grid package
+
+-----------------
+
+Release v1.0.1
+
+- Fixed matrix plot to correctly work with new ggplot2 update
+
+-----------------
+
+Release v1.0.0
+
+- Added directionality when choosing sets (-1,0,+1)
+- Allowed for NA's in non-set columns
+- Added increasing/decreasing options for ordering intersections
+- Added fromList to convert a list of named vectors to an UpSetR data frame
+- Added fromExpression to convert a vector acting as an expression to an UpSetR data frame
+- Updated vignette for alternative input formats (list & expression)
+
+-----------------
+
+Release v.0.0.5
+
+- Now plotting using the base grid package to make compatible with all versions of gridExtra package 
+- Allowed for element query overlay of intersection size bars
+- Added vignettes of basic usage, queries, and attribute plots
+- Matched set size font with intersection size font
+- Added utils, stats, methods, grDevices to imports to be safe (usually pre-installed)
+- Added badges
+- Updated README
+- Bumped required R version up to 3.0
+
+-----------------
+
+Release v.0.0.4
+
+- changed aes to aes_string for ggplot2 aesthetics
+
+----------------- 
+
+Release v0.0.3
+
+- Fixed all CRAN issues
+- changed all ggplot2 aesthetics to aes_string() to resort from using "hacky" methods to get around CRAN issues
+
+----------------- 
+
+Release v0.0.2
+
+- Renamed custom.plots as attribute.plots to better fit its purpose.
+- Re-added query legend option when user selects for attribute plots
+- Lowered minimum required R version. 
+- Allowed for 360 degree rotation of intersection size bar labels 
+- Changed default color of matrix shaing from dodgerblue to light gray
+
+----------------- 
+
+Release v0.0.1
+
+- First public release.

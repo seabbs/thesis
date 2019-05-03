@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<meta name="author" content="Sebastian Funk" />
+
+<meta name="date" content="2018-08-09" />
+
+<title>Introduction to socialmixr</title>
+
+
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+
+<style type="text/css">body {
+background-color: #fff;
+margin: 1em auto;
+max-width: 700px;
+overflow: visible;
+padding-left: 2em;
+padding-right: 2em;
+font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+font-size: 14px;
+line-height: 1.35;
+}
+#header {
+text-align: center;
+}
+#TOC {
+clear: both;
+margin: 0 0 10px 10px;
+padding: 4px;
+width: 400px;
+border: 1px solid #CCCCCC;
+border-radius: 5px;
+background-color: #f6f6f6;
+font-size: 13px;
+line-height: 1.3;
+}
+#TOC .toctitle {
+font-weight: bold;
+font-size: 15px;
+margin-left: 5px;
+}
+#TOC ul {
+padding-left: 40px;
+margin-left: -1.5em;
+margin-top: 5px;
+margin-bottom: 5px;
+}
+#TOC ul ul {
+margin-left: -2em;
+}
+#TOC li {
+line-height: 16px;
+}
+table {
+margin: 1em auto;
+border-width: 1px;
+border-color: #DDDDDD;
+border-style: outset;
+border-collapse: collapse;
+}
+table th {
+border-width: 2px;
+padding: 5px;
+border-style: inset;
+}
+table td {
+border-width: 1px;
+border-style: inset;
+line-height: 18px;
+padding: 5px 5px;
+}
+table, table th, table td {
+border-left-style: none;
+border-right-style: none;
+}
+table thead, table tr.even {
+background-color: #f7f7f7;
+}
+p {
+margin: 0.5em 0;
+}
+blockquote {
+background-color: #f6f6f6;
+padding: 0.25em 0.75em;
+}
+hr {
+border-style: solid;
+border: none;
+border-top: 1px solid #777;
+margin: 28px 0;
+}
+dl {
+margin-left: 0;
+}
+dl dd {
+margin-bottom: 13px;
+margin-left: 13px;
+}
+dl dt {
+font-weight: bold;
+}
+ul {
+margin-top: 0;
+}
+ul li {
+list-style: circle outside;
+}
+ul ul {
+margin-bottom: 0;
+}
+pre, code {
+background-color: #f7f7f7;
+border-radius: 3px;
+color: #333;
+white-space: pre-wrap; 
+}
+pre {
+border-radius: 3px;
+margin: 5px 0px 10px 0px;
+padding: 10px;
+}
+pre:not([class]) {
+background-color: #f7f7f7;
+}
+code {
+font-family: Consolas, Monaco, 'Courier New', monospace;
+font-size: 85%;
+}
+p > code, li > code {
+padding: 2px 0px;
+}
+div.figure {
+text-align: center;
+}
+img {
+background-color: #FFFFFF;
+padding: 2px;
+border: 1px solid #DDDDDD;
+border-radius: 3px;
+border: 1px solid #CCCCCC;
+margin: 0 5px;
+}
+h1 {
+margin-top: 0;
+font-size: 35px;
+line-height: 40px;
+}
+h2 {
+border-bottom: 4px solid #f7f7f7;
+padding-top: 10px;
+padding-bottom: 2px;
+font-size: 145%;
+}
+h3 {
+border-bottom: 2px solid #f7f7f7;
+padding-top: 10px;
+font-size: 120%;
+}
+h4 {
+border-bottom: 1px solid #f7f7f7;
+margin-left: 8px;
+font-size: 105%;
+}
+h5, h6 {
+border-bottom: 1px solid #ccc;
+font-size: 105%;
+}
+a {
+color: #0033dd;
+text-decoration: none;
+}
+a:hover {
+color: #6666ff; }
+a:visited {
+color: #800080; }
+a:visited:hover {
+color: #BB00BB; }
+a[href^="http:"] {
+text-decoration: underline; }
+a[href^="https:"] {
+text-decoration: underline; }
+
+code > span.kw { color: #555; font-weight: bold; } 
+code > span.dt { color: #902000; } 
+code > span.dv { color: #40a070; } 
+code > span.bn { color: #d14; } 
+code > span.fl { color: #d14; } 
+code > span.ch { color: #d14; } 
+code > span.st { color: #d14; } 
+code > span.co { color: #888888; font-style: italic; } 
+code > span.ot { color: #007020; } 
+code > span.al { color: #ff0000; font-weight: bold; } 
+code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61717; background-color: #e3d2d2; } 
+</style>
+
+</head>
+
+<body>
+
+
+
+
+<h1 class="title toc-ignore">Introduction to socialmixr</h1>
+<h4 class="author"><em>Sebastian Funk</em></h4>
+<h4 class="date"><em>2018-08-09</em></h4>
+
+
+
+<p><a href="https://github.com/sbfnk/socialmixr">socialmixr</a> is an <code>R</code> package to derive social mixing matrices from survey data. These are particularly useful for age-structured <a href="https://en.wikipedia.org/wiki/Mathematical_modelling_of_infectious_disease">infectious disease models</a>. For background on age-specific mixing matrices and what data inform them, see, for example, the paper on by <a href="https://doi.org/10.1371/journal.pmed.0050074">Mossong et al</a>.</p>
+<div id="usage" class="section level1">
+<h1>Usage</h1>
+<p>The latest stable version of the <code>socialmixr</code> package is installed via</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw">install.packages</span>(<span class="st">'socialmixr'</span>)</a></code></pre></div>
+<p>The latest development version of the <code>socialmixr</code> package can be installed via</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1">devtools<span class="op">::</span><span class="kw">install_github</span>(<span class="st">'sbfnk/socialmixr'</span>)</a></code></pre></div>
+<p>To load the package, use</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="kw">library</span>(<span class="st">'socialmixr'</span>)</a></code></pre></div>
+<pre><code>#&gt; 
+#&gt; Attaching package: 'socialmixr'
+#&gt; The following object is masked from 'package:utils':
+#&gt; 
+#&gt;     cite</code></pre>
+<p>At the heart of the <code>socialmixr</code> package is the <code>contact_matrix</code> function. This extracts a contact matrix from survey data. You can use the <code>R</code> help to find out about usage of the <code>contact_matrix</code> function, including a list of examples:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1">?contact_matrix</a></code></pre></div>
+<p>The POLYMOD data are included with the package and can be loaded using</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1"><span class="kw">data</span>(polymod)</a></code></pre></div>
+<p>An example use would be</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" data-line-number="1"><span class="kw">contact_matrix</span>(polymod, <span class="dt">countries =</span> <span class="st">&quot;United Kingdom&quot;</span>, <span class="dt">age.limits =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">5</span>, <span class="dv">15</span>))</a>
+<a class="sourceLine" id="cb7-2" data-line-number="2"><span class="co">#&gt; Using POLYMOD social contact data. To cite this in a publication, use the 'cite' function</span></a>
+<a class="sourceLine" id="cb7-3" data-line-number="3"><span class="co">#&gt; $matrix</span></a>
+<a class="sourceLine" id="cb7-4" data-line-number="4"><span class="co">#&gt;          contact.age.group</span></a>
+<a class="sourceLine" id="cb7-5" data-line-number="5"><span class="co">#&gt; age.group      [0,1)     [1,5)   [5,15)      15+</span></a>
+<a class="sourceLine" id="cb7-6" data-line-number="6"><span class="co">#&gt;    [0,1)  0.40000000 0.8000000 1.266667 5.933333</span></a>
+<a class="sourceLine" id="cb7-7" data-line-number="7"><span class="co">#&gt;    [1,5)  0.11250000 1.9375000 1.462500 5.450000</span></a>
+<a class="sourceLine" id="cb7-8" data-line-number="8"><span class="co">#&gt;    [5,15) 0.02450980 0.5049020 7.946078 6.215686</span></a>
+<a class="sourceLine" id="cb7-9" data-line-number="9"><span class="co">#&gt;    15+    0.03230337 0.3581461 1.290730 9.594101</span></a>
+<a class="sourceLine" id="cb7-10" data-line-number="10"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb7-11" data-line-number="11"><span class="co">#&gt; $participants</span></a>
+<a class="sourceLine" id="cb7-12" data-line-number="12"><span class="co">#&gt;    lower.age.limit participants proportion</span></a>
+<a class="sourceLine" id="cb7-13" data-line-number="13"><span class="co">#&gt; 1:           [0,1)           15 0.01483680</span></a>
+<a class="sourceLine" id="cb7-14" data-line-number="14"><span class="co">#&gt; 2:           [1,5)           80 0.07912957</span></a>
+<a class="sourceLine" id="cb7-15" data-line-number="15"><span class="co">#&gt; 3:          [5,15)          204 0.20178042</span></a>
+<a class="sourceLine" id="cb7-16" data-line-number="16"><span class="co">#&gt; 4:             15+          712 0.70425321</span></a></code></pre></div>
+<p>This generates a contact matrix from the UK part of the POLYMOD study, with age groups 0-1, 1-5, 5-15 and 15+ years. It contains the mean number of contacts that each member of an age group (row) has reported with members of the same or another age group (column).</p>
+</div>
+<div id="methodology" class="section level1">
+<h1>Methodology</h1>
+<p>The <code>contact_matrix</code> function requires a survey given as a list of two elements, both given as data.frames: <code>participants</code> and <code>contacts</code>. They must be linked by an ID column that refers to the identity of the queried participants (by default <code>global_id</code>, but this can be changed using the <code>id.column</code> argument). The <code>participants</code> data frame, as a minimum, must have the ID column and a column denoting participant age (which can be set by the <code>part.age.column</code> argument, by default <code>participant_age</code>). The <code>contacts</code> data frame, similarly, must have the ID column and a column denoting age (which can be set by the <code>contact.age.column</code> argument, by default <code>cnt_age_mean</code>).</p>
+<p>The function then either randomly samples participants (if <code>bootstrap</code> is set to <code>TRUE</code>) or takes all participants in the survey and determines the mean number of contacts in each age group given the age group of the participant. The age groups can be set using the <code>age.limits</code> argument, which should be set to the lower limits of the age groups (e.g., <code>age.limits=c(0, 5, 10)</code> for age groups 0-5, 5-10, 10+). If these are not given, the narrowest age groups possible given survey and demographic data are used.</p>
+</div>
+<div id="surveys" class="section level1">
+<h1>Surveys</h1>
+<p>The key argument to the <code>contact_matrix</code> function is the <code>survey</code> that it supposed to use. The <code>socialmixr</code> package includes the POLYMOD survey, which will be used if not survey is specified. It also provides access to all surveys in the <a href="https://zenodo.org/communities/social_contact_data">Social contact data</a> community on <a href="https://zenodo.org">Zenodo</a>. The available surveys can be listed (if an internet connection is available) with</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1"><span class="kw">list_surveys</span>()</a>
+<a class="sourceLine" id="cb8-2" data-line-number="2"><span class="co">#&gt;    id       date                             title            creator</span></a>
+<a class="sourceLine" id="cb8-3" data-line-number="3"><span class="co">#&gt; 1:  1 2018-01-23        France social contact data   Guillaume Béraud</span></a>
+<a class="sourceLine" id="cb8-4" data-line-number="4"><span class="co">#&gt; 2:  2 2017-11-07       POLYMOD social contact data       Joël Mossong</span></a>
+<a class="sourceLine" id="cb8-5" data-line-number="5"><span class="co">#&gt; 3:  3 2017-12-07      Peruvian social contact data Carlos G. Grijalva</span></a>
+<a class="sourceLine" id="cb8-6" data-line-number="6"><span class="co">#&gt; 4:  4 2018-06-14   Social contact data for Vietnam        Horby Peter</span></a>
+<a class="sourceLine" id="cb8-7" data-line-number="7"><span class="co">#&gt; 5:  5 2017-12-22      Zimbabwe social contact data   Alessia Melegaro</span></a>
+<a class="sourceLine" id="cb8-8" data-line-number="8"><span class="co">#&gt; 6:  6 2018-02-05 Social contact data for Hong Kong       Kathy  Leung</span></a>
+<a class="sourceLine" id="cb8-9" data-line-number="9"><span class="co">#&gt;                                       url</span></a>
+<a class="sourceLine" id="cb8-10" data-line-number="10"><span class="co">#&gt; 1: https://doi.org/10.5281/zenodo.1157918</span></a>
+<a class="sourceLine" id="cb8-11" data-line-number="11"><span class="co">#&gt; 2: https://doi.org/10.5281/zenodo.1043437</span></a>
+<a class="sourceLine" id="cb8-12" data-line-number="12"><span class="co">#&gt; 3: https://doi.org/10.5281/zenodo.1095664</span></a>
+<a class="sourceLine" id="cb8-13" data-line-number="13"><span class="co">#&gt; 4: https://doi.org/10.5281/zenodo.1289473</span></a>
+<a class="sourceLine" id="cb8-14" data-line-number="14"><span class="co">#&gt; 5: https://doi.org/10.5281/zenodo.1127693</span></a>
+<a class="sourceLine" id="cb8-15" data-line-number="15"><span class="co">#&gt; 6: https://doi.org/10.5281/zenodo.1165561</span></a></code></pre></div>
+<p>A survey can be downloaded using the <code>get_survey</code> command. This will get the relevant data of a survey given either its ID (the first column in the output of the <code>list_surveys</code> command) or Zenodo DOI (also returned by <code>list_surveys</code>). All other relevant commands in the <code>socialmixr</code> package accept a DOI or ID, but if a survey is to be used repeatedly it is worth downloading it and storing it locally to avoid the need for a network connection and speed up processing.</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" data-line-number="1">peru &lt;-<span class="st"> </span><span class="kw">get_survey</span>(<span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb9-2" data-line-number="2"><span class="kw">saveRDS</span>(peru, <span class="st">&quot;peru.rds&quot;</span>)</a></code></pre></div>
+<p>This way, the <code>peru</code> data set can be loaded in the future without the need for an internet connection using</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" data-line-number="1">peru &lt;-<span class="st"> </span><span class="kw">readRDS</span>(<span class="st">&quot;peru.rds&quot;</span>)</a></code></pre></div>
+<p>Some surveys may contain data from multiple countries. To check this, use the <code>survey_countries</code> function</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" data-line-number="1"><span class="kw">survey_countries</span>(polymod)</a>
+<a class="sourceLine" id="cb11-2" data-line-number="2"><span class="co">#&gt; Using POLYMOD social contact data. To cite this in a publication, use the 'cite' function</span></a>
+<a class="sourceLine" id="cb11-3" data-line-number="3"><span class="co">#&gt; [1] &quot;Italy&quot;          &quot;Germany&quot;        &quot;Luxembourg&quot;     &quot;Netherlands&quot;   </span></a>
+<a class="sourceLine" id="cb11-4" data-line-number="4"><span class="co">#&gt; [5] &quot;Poland&quot;         &quot;United Kingdom&quot; &quot;Finland&quot;        &quot;Belgium&quot;</span></a></code></pre></div>
+<p>If one wishes to get a contact matrix for one or more specific countries, a <code>countries</code> argument can be passed to <code>contact_matrix</code>. If this is not done, the different surveys contained in a dataset are combined as if they were one single sample (i.e., not applying any population-weighting by country or other correction).</p>
+<p>By default, socialmixr uses the POLYMOD survey. A reference for any given survey can be obtained using <code>cite</code>, e.g.</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb12-1" data-line-number="1"><span class="kw">cite</span>(polymod)</a>
+<a class="sourceLine" id="cb12-2" data-line-number="2"><span class="co">#&gt; Using POLYMOD social contact data. To cite this in a publication, use the 'cite' function</span></a>
+<a class="sourceLine" id="cb12-3" data-line-number="3"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb12-4" data-line-number="4"><span class="co">#&gt; To cite POLYMOD social contact data in publications use:</span></a>
+<a class="sourceLine" id="cb12-5" data-line-number="5"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb12-6" data-line-number="6"><span class="co">#&gt; Mossong J, Hens N, Jit M, Beutels P, Auranen K, Mikolajczyk R,</span></a>
+<a class="sourceLine" id="cb12-7" data-line-number="7"><span class="co">#&gt; Massari M, Salmaso S, Tomba GS, Wallinga J, Heijne J,</span></a>
+<a class="sourceLine" id="cb12-8" data-line-number="8"><span class="co">#&gt; Sadkowska-Todys M, Rosinska M, Edmunds WJ (2017). &quot;POLYMOD social</span></a>
+<a class="sourceLine" id="cb12-9" data-line-number="9"><span class="co">#&gt; contact data.&quot; doi: https://doi.org/10.5281/zenodo.1157934 (URL:</span></a>
+<a class="sourceLine" id="cb12-10" data-line-number="10"><span class="co">#&gt; http://doi.org/https://doi.org/10.5281/zenodo.1157934), Version</span></a>
+<a class="sourceLine" id="cb12-11" data-line-number="11"><span class="co">#&gt; 1.1.</span></a>
+<a class="sourceLine" id="cb12-12" data-line-number="12"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb12-13" data-line-number="13"><span class="co">#&gt; A BibTeX entry for LaTeX users is</span></a>
+<a class="sourceLine" id="cb12-14" data-line-number="14"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb12-15" data-line-number="15"><span class="co">#&gt;   @Misc{,</span></a>
+<a class="sourceLine" id="cb12-16" data-line-number="16"><span class="co">#&gt;     title = {POLYMOD social contact data},</span></a>
+<a class="sourceLine" id="cb12-17" data-line-number="17"><span class="co">#&gt;     author = {Joël Mossong and Niel Hens and Mark Jit and Philippe Beutels and Kari Auranen and Rafael Mikolajczyk and Marco Massari and Stefania Salmaso and Gianpaolo Scalia Tomba and Jacco Wallinga and Janneke Heijne and Malgorzata Sadkowska-Todys and Magdalena Rosinska and W. John Edmunds},</span></a>
+<a class="sourceLine" id="cb12-18" data-line-number="18"><span class="co">#&gt;     doi = {https://doi.org/10.5281/zenodo.1157934},</span></a>
+<a class="sourceLine" id="cb12-19" data-line-number="19"><span class="co">#&gt;     note = {Version 1.1},</span></a>
+<a class="sourceLine" id="cb12-20" data-line-number="20"><span class="co">#&gt;     year = {2017},</span></a>
+<a class="sourceLine" id="cb12-21" data-line-number="21"><span class="co">#&gt;   }</span></a></code></pre></div>
+</div>
+<div id="bootstrapping" class="section level1">
+<h1>Bootstrapping</h1>
+<p>To get an idea of uncertainty of the contact matrices, a bootstrap can be used. If an argument <code>n</code> greater than 1 is passed to <code>contact_matrix</code>, multiple samples of contact matrices are generated. For each sample, participants are sampled (with replacement, to get the same number of participants of the original study), and contacts are sampled from the set of all the contacts of all the participants (again, with replacement). All resulting contact matrices are returned as <code>matrices</code> field in the returned list. From these, derived quantities can be obtained, for example the mean</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" data-line-number="1">m &lt;-<span class="st"> </span><span class="kw">contact_matrix</span>(polymod, <span class="dt">countries =</span> <span class="st">&quot;United Kingdom&quot;</span>, <span class="dt">age.limits =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">5</span>, <span class="dv">15</span>), <span class="dt">n=</span><span class="dv">5</span>)</a>
+<a class="sourceLine" id="cb13-2" data-line-number="2"><span class="co">#&gt; Using POLYMOD social contact data. To cite this in a publication, use the 'cite' function</span></a>
+<a class="sourceLine" id="cb13-3" data-line-number="3"><span class="kw">length</span>(m<span class="op">$</span>matrices)</a>
+<a class="sourceLine" id="cb13-4" data-line-number="4"><span class="co">#&gt; [1] 5</span></a>
+<a class="sourceLine" id="cb13-5" data-line-number="5">mr &lt;-<span class="st"> </span><span class="kw">Reduce</span>(<span class="st">&quot;+&quot;</span>, <span class="kw">lapply</span>(m<span class="op">$</span>matrices, <span class="cf">function</span>(x) {x<span class="op">$</span>matrix})) <span class="op">/</span><span class="st"> </span><span class="kw">length</span>(m<span class="op">$</span>matrices)</a>
+<a class="sourceLine" id="cb13-6" data-line-number="6">mr</a>
+<a class="sourceLine" id="cb13-7" data-line-number="7"><span class="co">#&gt;          contact.age.group</span></a>
+<a class="sourceLine" id="cb13-8" data-line-number="8"><span class="co">#&gt; age.group      [0,1)     [1,5)   [5,15)      15+</span></a>
+<a class="sourceLine" id="cb13-9" data-line-number="9"><span class="co">#&gt;    [0,1)  0.59012282 0.7681383 1.283456 6.092954</span></a>
+<a class="sourceLine" id="cb13-10" data-line-number="10"><span class="co">#&gt;    [1,5)  0.09956610 1.6573981 1.547400 5.443418</span></a>
+<a class="sourceLine" id="cb13-11" data-line-number="11"><span class="co">#&gt;    [5,15) 0.02067134 0.4688799 7.754331 6.257101</span></a>
+<a class="sourceLine" id="cb13-12" data-line-number="12"><span class="co">#&gt;    15+    0.03413030 0.3305091 1.246192 9.523608</span></a></code></pre></div>
+</div>
+<div id="demography" class="section level1">
+<h1>Demography</h1>
+<p>Obtaining symmetric contact matrices or splitting out their components (see below) requires information about the underlying demographic composition of the survey population. This can be passed to <code>contact_matrix</code> as the <code>survey.pop</code> argument, a <code>data.frame</code> with two columns, <code>lower.age.limit</code> (denoting the lower end of the age groups) and <code>population</code> (denoting the number of people in each age group). If no <code>survey.pop</code> is not given, <code>contact_matrix</code> will try to obtain the age structure of the population (as per the <code>countries</code> argument) from the <a href="https://esa.un.org/unpd/wpp/">World Population Prospects</a> of the United Nations, using estimates from the year that closest matches the year in which the contact survey was conducted.</p>
+<p>If demographic information is used, this is returned by <code>contact_matrix</code> as the <code>demography</code> field in the results list.</p>
+</div>
+<div id="symmetric-contact-matrices" class="section level1">
+<h1>Symmetric contact matrices</h1>
+<p>Conceivably, contact matrices should be symmetric: the total number of contacts made by members of one age group with those of another should be the same as vice versa. Mathematically, if <span class="math inline">\(c_{ij}\)</span> is the mean number of contacts made by members of age group <span class="math inline">\(i\)</span> with members of age group <span class="math inline">\(j\)</span>, and the total number of people in age group <span class="math inline">\(i\)</span> is <span class="math inline">\(N_i\)</span>, then</p>
+<p><span class="math display">\[c_{ij} N_i = c_{ji}N_j\]</span></p>
+<p>Because of variation in the sample from which the contact matrix is obtained, this relationship is usually not fulfilled exactly. In order to obtain a symmetric contact matrix that fulfills it, one can use</p>
+<p><span class="math display">\[c'_{ij} = \frac{1}{2N_i} (c_ij N_i + c_ji N_j)\]</span></p>
+<p>To get this version of the contact matrix, use <code>symmetric = TRUE</code> when calling the <code>contact_matrix</code> function.</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb14-1" data-line-number="1"><span class="kw">contact_matrix</span>(polymod, <span class="dt">countries =</span> <span class="st">&quot;United Kingdom&quot;</span>, <span class="dt">age.limits =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">5</span>, <span class="dv">15</span>), <span class="dt">symmetric =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb14-2" data-line-number="2"><span class="co">#&gt; Using POLYMOD social contact data. To cite this in a publication, use the 'cite' function</span></a>
+<a class="sourceLine" id="cb14-3" data-line-number="3"><span class="co">#&gt; Warning in pop_age(survey.pop, age.limits, ...): Not all age groups represented in population data (5-year age band).</span></a>
+<a class="sourceLine" id="cb14-4" data-line-number="4"><span class="co">#&gt;   Linearly estimating age group sizes from the 5-year bands.</span></a>
+<a class="sourceLine" id="cb14-5" data-line-number="5"><span class="co">#&gt; $matrix</span></a>
+<a class="sourceLine" id="cb14-6" data-line-number="6"><span class="co">#&gt;          contact.age.group</span></a>
+<a class="sourceLine" id="cb14-7" data-line-number="7"><span class="co">#&gt; age.group      [0,1)     [1,5)    [5,15)      15+</span></a>
+<a class="sourceLine" id="cb14-8" data-line-number="8"><span class="co">#&gt;    [0,1)  0.40000000 0.6250000 0.7643524 4.122001</span></a>
+<a class="sourceLine" id="cb14-9" data-line-number="9"><span class="co">#&gt;    [1,5)  0.15625000 1.9375000 1.4059984 5.927286</span></a>
+<a class="sourceLine" id="cb14-10" data-line-number="10"><span class="co">#&gt;    [5,15) 0.07149388 0.5260415 7.9460784 7.425725</span></a>
+<a class="sourceLine" id="cb14-11" data-line-number="11"><span class="co">#&gt;    15+    0.05762596 0.3314560 1.1098739 9.594101</span></a>
+<a class="sourceLine" id="cb14-12" data-line-number="12"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb14-13" data-line-number="13"><span class="co">#&gt; $demography</span></a>
+<a class="sourceLine" id="cb14-14" data-line-number="14"><span class="co">#&gt;    lower.age.limit population proportion year</span></a>
+<a class="sourceLine" id="cb14-15" data-line-number="15"><span class="co">#&gt; 1:               0     690312 0.01146507 2005</span></a>
+<a class="sourceLine" id="cb14-16" data-line-number="16"><span class="co">#&gt; 2:               1    2761248 0.04586028 2005</span></a>
+<a class="sourceLine" id="cb14-17" data-line-number="17"><span class="co">#&gt; 3:               5    7380235 0.12257488 2005</span></a>
+<a class="sourceLine" id="cb14-18" data-line-number="18"><span class="co">#&gt; 4:              15   49378217 0.82009977 2005</span></a>
+<a class="sourceLine" id="cb14-19" data-line-number="19"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb14-20" data-line-number="20"><span class="co">#&gt; $participants</span></a>
+<a class="sourceLine" id="cb14-21" data-line-number="21"><span class="co">#&gt;    lower.age.limit participants proportion</span></a>
+<a class="sourceLine" id="cb14-22" data-line-number="22"><span class="co">#&gt; 1:           [0,1)           15 0.01483680</span></a>
+<a class="sourceLine" id="cb14-23" data-line-number="23"><span class="co">#&gt; 2:           [1,5)           80 0.07912957</span></a>
+<a class="sourceLine" id="cb14-24" data-line-number="24"><span class="co">#&gt; 3:          [5,15)          204 0.20178042</span></a>
+<a class="sourceLine" id="cb14-25" data-line-number="25"><span class="co">#&gt; 4:             15+          712 0.70425321</span></a></code></pre></div>
+</div>
+<div id="splitting-contact-matrices" class="section level1">
+<h1>Splitting contact matrices</h1>
+<p>The <code>contact_matrix</code> contains a simple model for the elements of the contact matrix, by which it is split into a <em>global</em> component, as well as three components representing <em>contacts</em>, <em>assortativity</em> and <em>demography</em>. In other words, the elements <span class="math inline">\(c_{ij}\)</span> of the contact matrix are modelled as</p>
+<p><span class="math display">\[ c_{ij} = q d_i a_{ij} n_j \]</span></p>
+<p>where <span class="math inline">\(q d_i\)</span> is the number of contacts that a member of group <span class="math inline">\(i\)</span> makes across age groups, <span class="math inline">\(n_j\)</span> is the proportion of the surveyed population in age group <span class="math inline">\(j\)</span>. The constant <span class="math inline">\(q\)</span> is set to the value of the largest eigenvalue of <span class="math inline">\(c_{ij}\)</span>; if used in an infectious disease model, it can be replaced by the basic reproduction number <span class="math inline">\(R_0\)</span>.</p>
+<p>To model the contact matrix in this way with the <code>contact_matrix</code> function, set <code>split = TRUE</code>. The components of the matrix are returned as elements <code>normalisation</code> (<span class="math inline">\(q\)</span>), <code>contacts</code> (<span class="math inline">\(d_i\)</span>), <code>matrix</code> (<span class="math inline">\(a_{ij}\)</span>) and <code>demography</code> (<span class="math inline">\(n_j\)</span>) of the resulting list.</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb15-1" data-line-number="1"><span class="kw">contact_matrix</span>(polymod, <span class="dt">countries =</span> <span class="st">&quot;United Kingdom&quot;</span>, <span class="dt">age.limits =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">5</span>, <span class="dv">15</span>), <span class="dt">split =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb15-2" data-line-number="2"><span class="co">#&gt; Using POLYMOD social contact data. To cite this in a publication, use the 'cite' function</span></a>
+<a class="sourceLine" id="cb15-3" data-line-number="3"><span class="co">#&gt; Warning in pop_age(survey.pop, age.limits, ...): Not all age groups represented in population data (5-year age band).</span></a>
+<a class="sourceLine" id="cb15-4" data-line-number="4"><span class="co">#&gt;   Linearly estimating age group sizes from the 5-year bands.</span></a>
+<a class="sourceLine" id="cb15-5" data-line-number="5"><span class="co">#&gt; $mean.contacts</span></a>
+<a class="sourceLine" id="cb15-6" data-line-number="6"><span class="co">#&gt; [1] 11.73887</span></a>
+<a class="sourceLine" id="cb15-7" data-line-number="7"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb15-8" data-line-number="8"><span class="co">#&gt; $normalisation</span></a>
+<a class="sourceLine" id="cb15-9" data-line-number="9"><span class="co">#&gt; [1] 1.022869</span></a>
+<a class="sourceLine" id="cb15-10" data-line-number="10"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb15-11" data-line-number="11"><span class="co">#&gt; $contacts</span></a>
+<a class="sourceLine" id="cb15-12" data-line-number="12"><span class="co">#&gt; [1] 0.6995727 0.7464190 1.2235173 0.9390331</span></a>
+<a class="sourceLine" id="cb15-13" data-line-number="13"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb15-14" data-line-number="14"><span class="co">#&gt; $matrix</span></a>
+<a class="sourceLine" id="cb15-15" data-line-number="15"><span class="co">#&gt;          contact.age.group</span></a>
+<a class="sourceLine" id="cb15-16" data-line-number="16"><span class="co">#&gt; age.group     [0,1)     [1,5)    [5,15)       15+</span></a>
+<a class="sourceLine" id="cb15-17" data-line-number="17"><span class="co">#&gt;    [0,1)  4.1534023 2.0767011 1.2302166 0.8612967</span></a>
+<a class="sourceLine" id="cb15-18" data-line-number="18"><span class="co">#&gt;    [1,5)  1.0948299 4.7138509 1.3312672 0.7414821</span></a>
+<a class="sourceLine" id="cb15-19" data-line-number="19"><span class="co">#&gt;    [5,15) 0.1455146 0.7494002 4.4126024 0.5159003</span></a>
+<a class="sourceLine" id="cb15-20" data-line-number="20"><span class="co">#&gt;    15+    0.2498871 0.6926217 0.9339135 1.0375529</span></a>
+<a class="sourceLine" id="cb15-21" data-line-number="21"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb15-22" data-line-number="22"><span class="co">#&gt; $demography</span></a>
+<a class="sourceLine" id="cb15-23" data-line-number="23"><span class="co">#&gt;    lower.age.limit population proportion year</span></a>
+<a class="sourceLine" id="cb15-24" data-line-number="24"><span class="co">#&gt; 1:               0     690312 0.01146507 2005</span></a>
+<a class="sourceLine" id="cb15-25" data-line-number="25"><span class="co">#&gt; 2:               1    2761248 0.04586028 2005</span></a>
+<a class="sourceLine" id="cb15-26" data-line-number="26"><span class="co">#&gt; 3:               5    7380235 0.12257488 2005</span></a>
+<a class="sourceLine" id="cb15-27" data-line-number="27"><span class="co">#&gt; 4:              15   49378217 0.82009977 2005</span></a>
+<a class="sourceLine" id="cb15-28" data-line-number="28"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb15-29" data-line-number="29"><span class="co">#&gt; $participants</span></a>
+<a class="sourceLine" id="cb15-30" data-line-number="30"><span class="co">#&gt;    lower.age.limit participants proportion</span></a>
+<a class="sourceLine" id="cb15-31" data-line-number="31"><span class="co">#&gt; 1:           [0,1)           15 0.01483680</span></a>
+<a class="sourceLine" id="cb15-32" data-line-number="32"><span class="co">#&gt; 2:           [1,5)           80 0.07912957</span></a>
+<a class="sourceLine" id="cb15-33" data-line-number="33"><span class="co">#&gt; 3:          [5,15)          204 0.20178042</span></a>
+<a class="sourceLine" id="cb15-34" data-line-number="34"><span class="co">#&gt; 4:             15+          712 0.70425321</span></a></code></pre></div>
+</div>
+<div id="plotting" class="section level1">
+<h1>Plotting</h1>
+<p>The contact matrices can be plotted, for example, using the <code>geom_tile</code> function of the <code>ggplot2</code> package.</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb16-1" data-line-number="1"><span class="kw">library</span>(<span class="st">&quot;reshape2&quot;</span>)</a>
+<a class="sourceLine" id="cb16-2" data-line-number="2"><span class="kw">library</span>(<span class="st">&quot;ggplot2&quot;</span>)</a>
+<a class="sourceLine" id="cb16-3" data-line-number="3">df &lt;-<span class="st"> </span><span class="kw">melt</span>(mr, <span class="dt">varnames =</span> <span class="kw">c</span>(<span class="st">&quot;age1&quot;</span>, <span class="st">&quot;age2&quot;</span>), <span class="dt">value.name =</span> <span class="st">&quot;contacts&quot;</span>)</a>
+<a class="sourceLine" id="cb16-4" data-line-number="4"><span class="kw">ggplot</span>(df, <span class="kw">aes</span>(<span class="dt">x =</span> age2, <span class="dt">y =</span> age1, <span class="dt">fill =</span> contacts)) <span class="op">+</span><span class="st"> </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">&quot;bottom&quot;</span>) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb16-5" data-line-number="5"><span class="st">    </span><span class="kw">geom_tile</span>()</a></code></pre></div>
+<p><img src="data:image/png;base64,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gDPrz94RQAABBHwqQAD2acfTbAQQQACBzAoQgDPrz94RQAABBHwqQAD2acfTbAQQQACBzAoQgDPrz94RQAABBHwqQAD2acfTbAQQQACBzAoQgDPrz94RQAABBHwqQAD2acfTbAQQQACBzAoQgDPrz94RQAABBHwqQAD2acfTbAQQQACBzAoQgDPrz94RQAABBHwqQAD2acfTbAQQQACBzAoQgDPrz94RQAABBHwqQAD2acfTbAQQQACBzAoQgDPrz94RQAABBHwqQAD2acfTbAQQQACBzAoQgDPrz94RQAABBHwqQAD2acfTbAQQQACBzAoQgDPrz94RQAABBHwqQAD2acfTbAQQQACBzAoQgDPrz94RQAABBHwqQAD2acfTbAQQQACBzAoQgDPrz94RQAABBHwqQAD2acfTbAQQQACBzAoQgDPrz94RQAABBHwqQAD2acfTbAQQQACBzAoQgDPrz94RQAABBHwqQAD2acfTbAQQQACBzAoQgDPrz94RQAABBHwqkPEAvGzZMnn++edl27Ztpgv2798vr7zyimzcuDFul5SWlsqKFSvsfGvWrJGdO3fay8wggAACCCDgVoGMB+BZs2aZoFleXi4ffPCB/PznP5d///vfcuedd8qiRYuiuh0/flymTp0qixcvtvO0bdtWnnzySXuZGQQQQAABBNwqkPEArDBDhw6Vdu3ayfTp0+W+++6T2267TTQwz5kzR06cOBFht2XLFrn++uvl8OHDYeuaNGkiderUkbVr14als4AAAggggIDbBPLdUiEdAevh4+7du5sqNW/e3ATTzz//XM4888ywah49elQmTZokBw4ckCVLloStGzBggMyfP1969uxpp+/bt0/efPNNe7ljx47SunVre5kZBBBAAAEEEhGoXbt23Ow5OTkx87gmAH/xxRdSt25dCa1wgwYN5ODBgxEBuGvXrqZRb7zxRkTjdCS9adOmsPStW7eagB1M1ODdrVu34CKfCCCAAAIIJCRQXFwcN78OFmNNrgnAeXl5cvLkybC66qi4Vq1aYWnxFhRFL846dOiQ1K9f32Tv3bu3fPjhh/amirJ79257mRkEEEAAAQQSEXASQ4qKisyR3GjluiYAN27cWI4cOSJlZWWildZJR78tW7aMVvcq0zVoBwIByc//tmm5ublhgVz3wYQAAggggEAmBVxxEZYCaMC84IILzC1Jurx8+XJp2LCh+dFlPYzsJHDu2rVLWrRoEfNbh5bHhAACCCCAQCYFXBOAFeGWW26RZ599Vq699lpzFfRdd91l24wZM0Y2b95sL0eb0fuJ9SIrJgQQQAABBNws8O1xWhfUUu/jXbhwoXz11VdS+QS3BuVmzZqF1bJ///6iP6HTiy++KNdcc01oEvMIIIAAAgi4TsAVI+BnnnlG1q1bZ+NUDr66Qm8batq0qZ2nqhm9P1jPH4feglRVPtIQQAABBBDItEDGR8Djx4+XY8eORYx4K8MMGjSoclLEsj6YY+zYsRHpJCCAAAIIIOA2gYwH4D59+qTMpEePHikri4IQQAABBBBIp4ArDkGns4GUjQACCCCAgBsFCMBu7BXqhAACCCDgeQECsOe7mAYigAACCLhRgADsxl6hTggggAACnhcgAHu+i2kgAggggIAbBQjAbuwV6oQAAggg4HkBArDnu5gGIoAAAgi4UYAA7MZeoU4IIIAAAp4XIAB7votpIAIIIICAGwUIwG7sFeqEAAIIIOB5AQKw57uYBiKAAAIIuFGAAOzGXqFOCCCAAAKeFyAAe76LaSACCCCAgBsFCMBu7BXqhAACCCDgeQECsOe7mAYigAACCLhRgADsxl6hTggggAACnhcgAHu+i2kgAggggIAbBQjAbuwV6oQAAggg4HkBArDnu5gGIoAAAgi4UYAA7MZeoU4IIIAAAp4XIAB7votpIAIIIICAGwUIwG7sFeqEAAIIIOB5AQKw57uYBiKAAAIIuFGAAOzGXqFOCCCAAAKeFyAAe76LaSACCCCAgBsFCMBu7BXqhAACCCDgeQECsOe7mAYigAACCLhRgADsxl6hTggggAACnhcgAHu+i2kgAggggIAbBQjAbuwV6oQAAggg4HkBArDnu5gGIoAAAgi4UYAA7MZeoU4IIIAAAp4XIAB7votpIAIIIICAGwUIwG7sFeqEAAIIIOB5gZyANXm+lZUaWFJSIkePHq2U6r3F0047TWrVqiX79u3zXuOyqEUNGjSQgoIC2b9/fxbV2ntVbdiwoeTk5MjBgwe917gsalHjxo3l5MmT8tVXX2VRratX1aKiImnUqFHUjRkBR6VhBQIIIIAAAukTIACnz5aSEUAAAQQQiCpAAI5KwwoEEEAAAQTSJ0AATp8tJSOAAAIIIBBVgAAclYYVCCCAAAIIpE+AAJw+W0pGAAEEEEAgqgABOCoNKxBAAAEEEEifgC/vA04fp7tKfvvtt+XTTz+V6667zl0V81ltli5dau49vfrqq33Wcnc194UXXjD3n44YMcJdFfNZbZ599lnRZxQMGTLEZy2PbC4j4EgTz6RoAJ43b55n2pOtDVm2bJksXLgwW6vvmXprAF68eLFn2pOtDdEA/Morr2Rr9VNabwJwSjkpDAEEEEAAAWcCBGBnTuRCAAEEEEAgpQKcA04pp7sK02feHjlyRFq3bu2uivmsNvoM6BMnTkjLli191nJ3NXfv3r2mQs2bN3dXxXxWm927d0t+fr40bdrUZy2PbC4BONKEFAQQQAABBNIuwCHotBOzAwQQQAABBCIF8iOTSHG7gF5Vq69T7N69u5xxxhlSVlYm7733nnnV2nnnnWdefRetDaWlpfLhhx9Kv379TJY1a9aIHpJr1apVtE1IjyJQuR80W2Xfypvq+o8//jgsuU+fPkI/hJHEXNDX2C1fvtzkueyyy2TPnj2ya9cuext93V379u3t5cozGzZsMK/p1P93dIrWJ/ra0g8++ED69+9v8vFPYgJ6+92AAQPM4WbdMppzYqV6KzcBOAv7c9asWeaPQpcuXeTYsWMyevRoOfvss80foWeeeUamTZtmgnHlph0/flymTp0qubm5dgBu27atPP744zJlypTK2VmOIxDaD5q1Kt/KRaxevVpmzJgh7dq1s1dpAKYfbI64Mxpwn3zySRk5cqTo68yfeOIJ0fO7xcXFZlv9YhotAG/dulV+9atfya233mq+vOoG0fpE3+OsX7J69uxplx23cmQwAs8995xMnz5dLr74YjsAR3P2MxkBOEt7f+jQoeYPyFNPPSUXXHCB3HHHHaYlN910k6xatUr0j3rotGXLFrn77rtF/6joT3Bq0qSJ1KlTR9auXWv+0ATT+XQmEOyHaL6VS9m0aZMMHz484uEo9ENlqdjL+jt8zTXXmExq+uCDD0qbNm1ibqT3AM+dOzfs9183iNYnuu4HP/iB2WbcuHG6yBRHoLy8XCZPniwHDhyIyBnLWTPrBaM333yz/OUvf4nY1qsJnAPO8p7dvHmznHvuuXYrdH7dunX2cnBGD1lPmjTJ/qMVTNdPPUw0f/780CTmExSI5RtalP4RqlevnixYsMCMvHQEF5zoh6CE809116v99+3bZ36Hd+7cGXXj2rVrm5Gzjo5zcnLsfLH65JxzzpE333xTDh8+bOdnJrrAyZMnzZd/PapWeYrlrHn1/wU9veCniQCc5b2th+Pq169vt0Lnq/r22bVrV+nWrZudL3RGD4fq/xxM1ReI5RtaqjqvXLlSioqKzFPKJkyYYK+mH2wKxzP6qFW9BkIPb+offz0S9OKLL1a5/eDBg0XPD+sU+sUnVp/k5eWZkbUeumaKL6C/13qER28zqjxFc/7kk0/k/vvvl0ceecRc26Lz+qN/27w+RSp5vcUea5/+gdA/PMFJDwHpN/1EJj13phdIHDp0KCyYJ1IGeZ0JzJkzx5xP1PPww4YNE30usY7a9CI4+sGZYWiuzp07y6JFi6Rhw4YmWb/EqPEVV1wRmi3mfKw+0Q2bNWsmGoD13DJT9QWiOevpFz1lptezvPPOO/bps7p161Z/Z1myJSPgLOmoaNXUX149BBecdD7RBz5o0NYRQVXfWoPl8pm8gD6MY/v27eYiOC2tsLDQXIEe/KZPPyRurIcsv/zyS3tDPQ+sF2R98803dlqsmXh9ottqnoKCgljFsC6OQCxnvQtj4MCBcskll5j/J3Ref/SFDV6fCMBZ3sPf/e535aWXXjJX4OoTl/QbpJ630km/tevhuXiT3sLRokULczFWvLysT1wg2A/6R1yvUNdD0DqtX7/enC7Qq2x1oh8MQ0L/6K1CeoGUjp70S6S+cEH/kOsRBj0/vGPHjpjlxesT3VjL6NixY8xyWBlbwImzDgD69+8fuyCPreUQdJZ36Pe+9z1ZsWKFubhK/+jorRlnnnmmadWYMWPkj3/8o7lFKVYzt23bxh+YWEBJrgvtBz1Hqbcv6Y9eODRx4kT7yAP9kDj0WWedJVdddZXceOONokcQ9BqIe++91xSk97s//PDDorfERJv0YqxYfaJlfvHFF+Y2sWhlkB5fIJ6zllCrVi1zi1j80jyUw/rWyJRlAj/+8Y8D1qgqrNbW+dvA119/HZZm3SsZsP54hKVVtXDnnXcGrAcOVLWKtBgCVfVDVdmr6gfr0GnAOkwalp1+COOIumAdOQiMGjUqbL11HUTAGg2HpamvdXtSWFqshar6xDq6FLCOWsTajHUJClTlnGARnsnOIegs/TKlD9wIvd1Iz5dUPoerL2GI98BzvX9Vr1wMHgbNUo6MVbtyP1RVkar6Qe9jDb0Vhn6oSi56mp731aMIwVMsevQn9G4A3fLzzz+X73//+9ELqbSmcp9Yf+Xl+eeflxtuuKFSThaTEajsnExZ2b4tL2PIwh7Uc4h6zkvPSyV6wVXl5uphOj3/yxtiKsvEX6Yf4hulI4fek6uPXtXpoosuStsFUhrk9daZ888/Px3NoEwEhADMLwECCCCAAAIZEOAQdAbQ2SUCCCCAAAIEYH4HEEAAAQQQyIAAtyFlAJ1dIuBlAT1Hq4+D1AvLLrzwQvOscS+3l7YhUF0BRsDVlWM7BBCIENA32egFffqKQH0+85AhQ+Q//uM/IvKRgAACwkVY/BIggEBqBPTxj506dZKxY8fKL3/5S1OoPqdZH5Shr7vs0aNHanZEKQh4RIBD0B7pSJqBgBMBPSz86KOPyoYNG8yjR/UQsQZLfS61Trpe3zGtt/mcd955ok9aW7p0qdxzzz128fPmzTOPfDx+/Lg5vHzbbbeZe9D1mdb6xqGf/vSndl59tKDe72w9OIYAbKswg0CFAIeg+U1AwCcCGgT1jT76wg7rSVKi78XVxzb+9re/NQL6GstLL73UBFx9pZy+B1ff2KQPGwlOGqx/9atfmW379u0rf/jDH+RHP/qRWa33pM+YMUP0BSHBaeHChaJv7OrVq1cwiU8EEDglwH3A/Cog4BOBl19+2QTT2bNn229kGj16tGzevFmWL18ud911l3mVn45kg0/pOvvss82bhfTFEf/+979FX/83f/588+xxZdNtNZC/8cYb5iUIoZT/+te/5OKLLzaHpO+7777QVcwjgIAlwCFofg0Q8InAZZddJnpI+PXXXzdvYtJHmS5btsw8CU0J9LDz5ZdfbgdfTdNHOerjGHXS9fp4Rr24Sp+gFpzq1atn1ulbiILT22+/bd51fPXVV4cdvg6u5xMBBEQ4BM1vAQI+Efjoo4/Mm7L02carVq0yh6NDg6YegtbnVodOxcXF9qK+e1efN67PDtdnLwd/9BywjpSDkwbsQYMGyU033SR//vOf7dF2cD2fCCBQIcAImN8EBHwiMHXqVHOVso569bysTjpStd4kZOY1iL7//vtmPvjPK6+8EpyVdu3aifXGLXNeWM//6qTbPv3009KhQwezrOeL9fyyvgZTAzATAghEF2AEHN2GNQh4SkBfuqEXYAVfXr948WJ59tln7TcK6YvtNeDqRVY6Wp4yZYp513QQYcCAAeYFIJMnT5ZPPvlE9CpoDeq/+c1vzJuI9NzxL37xC3NRVpcuXeStt96yf/bu3Rsshk8EEDglQADmVwEBnwiMHz9e9FVw+qAMvVL5sccek4ceekg+/fRTsd4nLeeee64536vniPUtQ3qYWgOqvihdp4KCAtGgffToUenWrZsp47XXXhN9+IaWp7cvaTl//etfzcVXegFW8EefjMWEAALhAlwFHe7BEgKeF9BzvXrfr75DOnTSC6v0/K4+TCM43X777bJx40YzMg6m6WdJSYmUl5dL48aNQ5OZRwCBBAQYASeARVYEvCCgQbNy8NV26SFjfTDHihUrpLS01DxsQx8pqVcyV550JE3wrazCMgKJCTACTsyL3Ah4VkBHtJMmTTKBV5+UpRdW3XjjjaLnhpkQQCD1AgTg1JtSIgJZL1BWVmYOR2d9Q2gAAi4WIAC7uHOoGgIIIICAdwU4B+zdvqVlCCCAAAIuFiAAu7hzqBoCCCCAgHcFCMDe7VtahgACCCDgYgECsIs7h6ohgAACCHhXgADs3b6lZQgggAACLhYgALu4c6gaAggggIB3BQjA3u1bWoYAAggg4GIBArCLO4eqIYAAAgh4V4AA7N2+pWUIIIAAAi4WIAC7uHOoGgIIIICAdwUIwN7tW1qGAAIIIOBiAQKwizuHqiGAAAIIeFeAAOzdvqVlCCCAAAIuFiAAu7hzqBoCCCCAgHcFCMDe7VtahgACCCDgYgECsIs7h6ohgAACCHhXgADs3b6lZQgggAACLhYgALu4c6gaAggggIB3BQjA3u1bWoYAAggg4GIBArCLO4eqIYAAAgh4VyDfu02jZQh4X2D2vH/Iy68tD2lojjWfIzk51k+ufr/W5eBkzefl6dpggvVZkc/ktbapmDSHNa/LObmncgeXdROrDCu9R5ezZPP2z+XIsTIrj5VP92e2Ce7B2sZK+7Ye1rJunqufVrqWbeZ1+dRPnrWtlW6WraRgPXJyC6yFHOlzdhtZtf4za70u5pk0LUvXaQlWgWZ7U25IOSZd95kX8ifvVF1z8wqsbczWFeXpfK46VZTb+/8Vy5ptJRXL2h6zD9237tCadD+abtlqYrAeWqdcsz9N0TK1XVq05qsw1F0Ep94t8+TKLiH1C67g07MC9LZnu5aG+UFg46Yt8vrylSFNtf7QW3/4KwJwRUAwf/w1WYOAFRDMZzDg6JIVEHI1OJiAZRWl22teXdZgY+Yryq0o2woeVoBqfXpTWf3RJtl30ApOmk+Du9nGbKEFVQR8K69dppamQdcEcS3HmjflaySy1mkA1vwmzZrXelo/uXlF5rNn+5ay4qNt1nprMdf686X7tfepea1lDZ55leuu+TS9IpBXFFBRfm5BUcV+KgqtmFenUwG+W+v6smrzlxXba9n6Y9ZZu9N6qp22XYNtJbu8fN1fRdtMPs1uAn7Aymqlm/ab2kjTOtZKJl8J6G8GEwIIIIAAAgjUsAABuIbB2R0CCCCAAAIqQADm9wABBKolcOTYcTn5zTfV2ra6G5Va55treiotK6/pXbI/nwhwDtgnHU0zEUi1wKJX3zHnPFNdbqzy5r20psb3ufDdXdY+Y9WKdQhUT4ARcPXc2AoBBBBAAIGkBAjASfGxMQIIIIAAAtUTIABXz42tEEAAAQQQSEqAAJwUHxsjgAACCCBQPQECcPXc2AoBBBBAAIGkBAjASfGxMQIIIIAAAtUTIABXz42tEEAAAQQQSEqAAJwUHxsjgAACCCBQPQECcPXc2AoBBBBAAIGkBAjASfGxMQIIIIAAAtUTIABXz42tfCpw6NChlLX8xIkTcvz48ZSVR0EIIJBdAgTg7OovaptBgVtvvVUeffTRlNTgyy+/lO7du8uOHTtSUh6FIIBA9gkQgLOvz6hxhgRWrVqVsj1/9dVXsnHjxpSVl4mCTm/WSAry82p0122aF9fo/nRnrRrVqvF9skN/CBCA/dHPvmnl6tWrZfz48TJ8+HB57LHHZO/evXbbdX7ChAkyePBgGTVqlLzyyiv2upUrV8p//dd/yXvvvSc33HCDDB06VB555BE5efKkyaPz27Ztk8WLF8vvf/97k1ZWViZ/+MMf5Mc//rEMGTJEbr/9dtm+fbtdps5UVZ8jR47IXXfdZfL99re/laVLl5r5p59+Wn7wgx+Yfev6gwcPmnS3/nPphT2luH69Gq3e9/t1qdH96c6GdG9W4/tkh/4QIAD7o5990UodoV566aWyZcsWufLKK+Wf//yn/PCHPzRt10O+5557rixZssQE52+s99gOGzZM/vSnP5n1mzZtkunTp5vA3Lp1a+nTp4/cfffdJihrhk6dOkndunXlO9/5jnTpUhEENOj+/e9/N/u8/PLL5fXXX5eBAweKlq1TtPrk5+dLjx49TJ5u3bpJixYtZN68eTJu3Dj57ne/K1dffbUp63vf+57Jwz8IIOBNAd4H7M1+9WWrfv3rX8vPfvYzmTFjhmm/Btif/OQnsmHDBpkzZ44cPnxYtm7dKoWFhaLnczWYTpw4Ua6//nqTf//+/SbwaVDU6fPPPzej08mTJ8sVV1whU6dOld69e8uIESPkwIED0qxZMxPAO3fubPJ37NjRjF737dsnzZs3l2j10TqMHDnSBHgNth06dDB11rJ19J6Tk2MCsY62dZRdVFRkyucfBBDwlgAjYG/1p29bEwgEZO3atTJo0CDboEmTJiag6uj1/fffFx1RavANThqg9arm4LnY2rVrSzD4ap42bdpIaWlpMHvYZ+PGjeUf//iHCZBPPfWUOaR83333mTzHjh2TePUJK8xa0IC8fPlyadeundx2222iI3L9JPhWlmIZAe8IMAL2Tl/6uiV6XlWDpR4mrmoqKSmR4Eg1uF5HqToFz/PWqVMnuMp85ubmmkAalnhqQW8f0vO177zzjvTt21f69esnP/3pT82yZolXn8plDhgwwHyB+Mtf/mIOk+soXg+Zv/baa1JcHP3Co+uv/aEMvLhPSHE5385bI2mRkGVdk5NbKcVar/+F5rU30Rl7QTNpCVaK9WnN1yoqlIH9ep4yslKDZYRsovlM/lNbfvtRUYa9zmyjaRV7qMhnr7XSdayQI3VrF8hj40aY1RVpp/KbTc3Gpm6moNC0U3UOtuFUARXZtOxTbasoTTfUskwBUrswTx4Y2cVK+jbN1EwXKypckd/U8VTKqfJywso2G5zKqyVUlK+l6NSsLuOhCgn//EsA9k9fe7ql9erVM4eEdTQbPHeq52L1ELSOJHVk+fLLL4cZ6LKej+3atausW7cubF28hf/93/81wVHPN+s5Y500TSfdb7z6tG3b1uTVkbJOekHYaaedZs4568VgH3zwgZx//vkmXQ9TR5u6dm4v+sOEAALZJ8BXruzrM2ocRWDMmDHy8MMPy6uvvir6kAu9Cvrtt9+W8847T26++WbZvHmzPPTQQ+ZcsB7unTlzprkgy+lhXj3svH79etm9e7e5cEpHzsGrrPXq50mTJpmaBR+uEas+jRo1MnnXrFkjOjr/8MMPzQVgeuhZg/KePXukvLxczjrrrCitJRkBBLJewPqfnQkBTwgcPXo0cOONNwby8vICtWrVCliHhgPWVc9225588slAw4YNA1bADViHqgPXXnttwDpfa9ZbVyEHrABr59WZ+++/P2BdrWynWVdMB6xzyIFWrVqZNOt2pUD9+vUD1lXMAWsUHLCuiA5Yh4sD8+fPN+vj1eeyyy7T4W/AuvDK1MM6D2zqoHWzRsOBP/7xj/a+mUEAAe8J5GiTsv5bBA1AIERArxzWB10Ez/GGrDKjy507d5oRbEFBQegqR/M6staRafB8sS7r1dMtW7aMun2s+uiV2VqW9aXBbK+Hr/XqayvInzrnGLVYViCAQJYLEICzvAOpPgIIIIBAdgpwDjg7+41aI4AAAghkuQABOMs7kOojgAACCGSnALchZWe/UWsEakxAz3Pr/ch6a9VFF11U5blpvZL73XffDauTdZFZ2LLThUTK0ges6JXp+gjQ008/3ekuwvLpM74r34am9/zq40UrT3qbmz7JLDjpY0R79uwZXOQTgYQECMAJcZEZAX8J6O1V+nxqfbmFPjVMb63Se5T1qWGhk75QQh+jGXzGtQaw6gZgp2Xp/d36Eg0NgPrYzzfeeEP0caCJTnoL2BNPPGFvpgFWL6zTW8EqT7/73e/MKySbNm1qVqkNAbiyEstOBbgIy6kU+RDwoYAG1QYNGsiUKVNM6/WhIPo2KX1jVOik90Dr1dzBe6FD1yU676QsHfVqPfQLgj6xbNq0afLJJ5+IdatZorsLy6/3cOsTyB588EHzso6wldaCPrf7hRdeMJ+V17GMQKICnANOVIz8CPhIQF+9GHx1ojZbR4ZVPR9bn8OtgVofdKIj2GTubnRS1r/+9S9zOFyDr076KE8dDSc76Ys39LGi+pzwypO2Wx+8orexPfDAA+bBLpXzsIxAIgIE4ES0yIuAzwT0KWHBF1joyyf0aWLBt0eFUmjQfOmll8yhaX2Upr49qrqTk7L0vK2+bCM46ZPFqjpkHFzv5FPfcPX444+LBuGqpo8++kish6uYJ63pU9D0kaf6li0mBKorwDng6sqxHQI+Epg9e7boaFifWa0j3cqTXgyl50V1RKrnifXiJA3W+gzuRCcnZekzvPWBKMHp66+/NheJBZer86nvZNZ3PAef7V25DH02tz4kRV9DqVP37t3NKypHjx5dOSvLCDgSYATsiIlMCPhXQAPvf//3f5uLnPTVjpUnfdKXvnM5eDhYR836sgk9P5vo5LQsfZdz6IhX588444xEdxeWf+7cueaZ4WGJIQtffPGF6E9wUosdO3aYl28E0/hEIBEBAnAiWuRFwGcC+q7jhQsXyooVK8z7kUObrxdC6SFZPUR9yy23mEPQun716tWya9cuueSSS0KzO5qPV1Zwn/reZ73tSV9eoaNfvYpZR6/VnfQdznor0oUXXhhWhL5WUr9c6KSHqHW/mqbnuHWfV111lf3FI2xDFhBwIqDPgmZCAAEEqhKwRrIB65aigDW6tX9uv/12k1VfPGG9VcrMW/cJB/r06RM455xzAtah6MDzzz9fVXGO0mKVFbpPKwCal2G0b98+YN0mFbDuV3ZUflWZrFurAtrWypN1QVnAeqa4nXzvvfcGzj777IDuU9v72Wef2euYQSBRAW5DcvIthTwIIOBIQEeJekFUxcvrHW0SNZOTsvQhITp6req8dNSCk1yhL8zQl30EXymZZHFs7mMBArCPO5+mI4AAAghkToBzwJmzZ88IIIAAAj4WIAD7uPNpOgIIIIBA5gQIwJmzZ88IIIAAAj4WIAD7uPNpOgIIIIBA5gQIwJmzZ88IIIAAAj4WIAD7uPNpOgIIIIBA5gQIwJmzZ88IIIAAAj4WIAD7uPNpOgIIIIBA5gQIwJmzZ88IIIAAAj4WIAD7uPNpOgIIIIBA5gQIwJmzZ88IIIAAAj4WIAD7uPNpOgIIIIBA5gQIwJmzZ88IIIAAAj4WIAD7uPNpOgIIIIBA5gQIwJmzZ88IIIAAAj4W+P8H+DNkRQ5kGwAAAABJRU5ErkJggg==" /><!-- --></p>
+</div>
+
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
