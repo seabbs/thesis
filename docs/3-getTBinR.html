@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 3 getTBinR: an R package for accessing and summarising the World Health Organization Tuberculosis data | thesis.utf8</title>
+  <meta name="description" content="" />
+  <meta name="generator" content="bookdown  and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 3 getTBinR: an R package for accessing and summarising the World Health Organization Tuberculosis data | thesis.utf8" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 3 getTBinR: an R package for accessing and summarising the World Health Organization Tuberculosis data | thesis.utf8" />
+  
+  
+  
+
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="2-background.html">
+<link rel="next" href="4-data.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./"></a></li>
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="1-introduction.html"><a href="1-introduction.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
+<li class="chapter" data-level="1.1" data-path="1-introduction.html"><a href="1-introduction.html#theoretical-framework"><i class="fa fa-check"></i><b>1.1</b> Theoretical framework</a><ul>
+<li class="chapter" data-level="1.1.1" data-path="1-introduction.html"><a href="1-introduction.html#data-exploration-and-visualisation"><i class="fa fa-check"></i><b>1.1.1</b> Data exploration and visualisation</a></li>
+<li class="chapter" data-level="1.1.2" data-path="1-introduction.html"><a href="1-introduction.html#statistical-modelling"><i class="fa fa-check"></i><b>1.1.2</b> Statistical modelling</a></li>
+<li class="chapter" data-level="1.1.3" data-path="1-introduction.html"><a href="1-introduction.html#mechanistic-modelling"><i class="fa fa-check"></i><b>1.1.3</b> Mechanistic modelling</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="1-introduction.html"><a href="1-introduction.html#aims-and-objectives-of-the-thesis"><i class="fa fa-check"></i><b>1.2</b> Aims and objectives of the thesis</a><ul>
+<li class="chapter" data-level="1.2.1" data-path="1-introduction.html"><a href="1-introduction.html#aim"><i class="fa fa-check"></i><b>1.2.1</b> Aim</a></li>
+<li class="chapter" data-level="1.2.2" data-path="1-introduction.html"><a href="1-introduction.html#objectives"><i class="fa fa-check"></i><b>1.2.2</b> Objectives</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="1-introduction.html"><a href="1-introduction.html#chapter-overview"><i class="fa fa-check"></i><b>1.3</b> Chapter overview</a></li>
+<li class="chapter" data-level="1.4" data-path="1-introduction.html"><a href="1-introduction.html#thesis-output"><i class="fa fa-check"></i><b>1.4</b> Thesis output</a><ul>
+<li class="chapter" data-level="1.4.1" data-path="1-introduction.html"><a href="1-introduction.html#peer-reviewed-papers"><i class="fa fa-check"></i><b>1.4.1</b> Peer reviewed papers</a></li>
+<li class="chapter" data-level="1.4.2" data-path="1-introduction.html"><a href="1-introduction.html#papers-under-review"><i class="fa fa-check"></i><b>1.4.2</b> Papers under review</a></li>
+<li class="chapter" data-level="1.4.3" data-path="1-introduction.html"><a href="1-introduction.html#software"><i class="fa fa-check"></i><b>1.4.3</b> Software</a></li>
+<li class="chapter" data-level="1.4.4" data-path="1-introduction.html"><a href="1-introduction.html#talks"><i class="fa fa-check"></i><b>1.4.4</b> Talks</a></li>
+</ul></li>
+<li class="chapter" data-level="1.5" data-path="1-introduction.html"><a href="1-introduction.html#summary"><i class="fa fa-check"></i><b>1.5</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="2-background.html"><a href="2-background.html"><i class="fa fa-check"></i><b>2</b> Background</a><ul>
+<li class="chapter" data-level="2.1" data-path="2-background.html"><a href="2-background.html#tuberculosis"><i class="fa fa-check"></i><b>2.1</b> Tuberculosis</a><ul>
+<li class="chapter" data-level="2.1.1" data-path="2-background.html"><a href="2-background.html#natural-history-of-tuberculosis"><i class="fa fa-check"></i><b>2.1.1</b> Natural history of Tuberculosis</a></li>
+<li class="chapter" data-level="2.1.2" data-path="2-background.html"><a href="2-background.html#known-risk-factors"><i class="fa fa-check"></i><b>2.1.2</b> Known risk factors</a></li>
+<li class="chapter" data-level="2.1.3" data-path="2-background.html"><a href="2-background.html#treatments"><i class="fa fa-check"></i><b>2.1.3</b> Treatments</a></li>
+<li class="chapter" data-level="2.1.4" data-path="2-background.html"><a href="2-background.html#global-tb"><i class="fa fa-check"></i><b>2.1.4</b> Global TB</a></li>
+<li class="chapter" data-level="2.1.5" data-path="2-background.html"><a href="2-background.html#tb-in-the-england-and-wales"><i class="fa fa-check"></i><b>2.1.5</b> TB in the England and Wales</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="2-background.html"><a href="2-background.html#the-bacillus-calmetteguerin-vaccine"><i class="fa fa-check"></i><b>2.2</b> The Bacillus Calmette–Guérin Vaccine</a><ul>
+<li class="chapter" data-level="2.2.1" data-path="2-background.html"><a href="2-background.html#vaccine-action"><i class="fa fa-check"></i><b>2.2.1</b> Vaccine action</a></li>
+<li class="chapter" data-level="2.2.2" data-path="2-background.html"><a href="2-background.html#vaccine-effectiveness"><i class="fa fa-check"></i><b>2.2.2</b> Vaccine effectiveness</a></li>
+<li class="chapter" data-level="2.2.3" data-path="2-background.html"><a href="2-background.html#duration-of-protection"><i class="fa fa-check"></i><b>2.2.3</b> Duration of protection</a></li>
+<li class="chapter" data-level="2.2.4" data-path="2-background.html"><a href="2-background.html#additional-effects-of-bcg-vaccination"><i class="fa fa-check"></i><b>2.2.4</b> Additional effects of BCG vaccination</a></li>
+<li class="chapter" data-level="2.2.5" data-path="2-background.html"><a href="2-background.html#usage-globally"><i class="fa fa-check"></i><b>2.2.5</b> Usage Globally</a></li>
+<li class="chapter" data-level="2.2.6" data-path="2-background.html"><a href="2-background.html#usage-in-england"><i class="fa fa-check"></i><b>2.2.6</b> Usage in England</a></li>
+<li class="chapter" data-level="2.2.7" data-path="2-background.html"><a href="2-background.html#replacement-vaccines"><i class="fa fa-check"></i><b>2.2.7</b> Replacement vaccines</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="2-background.html"><a href="2-background.html#summary-1"><i class="fa fa-check"></i><b>2.3</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="3-getTBinR.html"><a href="3-getTBinR.html"><i class="fa fa-check"></i><b>3</b> getTBinR: an R package for accessing and summarising the World Health Organization Tuberculosis data</a><ul>
+<li class="chapter" data-level="3.1" data-path="3-getTBinR.html"><a href="3-getTBinR.html#introduction-1"><i class="fa fa-check"></i><b>3.1</b> Introduction</a></li>
+<li class="chapter" data-level="3.2" data-path="3-getTBinR.html"><a href="3-getTBinR.html#installation"><i class="fa fa-check"></i><b>3.2</b> Installation</a></li>
+<li class="chapter" data-level="3.3" data-path="3-getTBinR.html"><a href="3-getTBinR.html#data-extraction-and-variable-look-up"><i class="fa fa-check"></i><b>3.3</b> Data extraction and variable look-up</a></li>
+<li class="chapter" data-level="3.4" data-path="3-getTBinR.html"><a href="3-getTBinR.html#getbinr-vis"><i class="fa fa-check"></i><b>3.4</b> Data visualisation</a><ul>
+<li class="chapter" data-level="3.4.1" data-path="3-getTBinR.html"><a href="3-getTBinR.html#mapping-tb-burden-metrics"><i class="fa fa-check"></i><b>3.4.1</b> Mapping TB burden metrics</a></li>
+<li class="chapter" data-level="3.4.2" data-path="3-getTBinR.html"><a href="3-getTBinR.html#plotting-an-overview-for-a-given-tb-metric"><i class="fa fa-check"></i><b>3.4.2</b> Plotting an overview for a given TB metric</a></li>
+<li class="chapter" data-level="3.4.3" data-path="3-getTBinR.html"><a href="3-getTBinR.html#gettbinr-plot-sum"><i class="fa fa-check"></i><b>3.4.3</b> Plotting a comparision between country, regional and global metric values</a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="3-getTBinR.html"><a href="3-getTBinR.html#plotting-country-level-trends-for-a-given-metric"><i class="fa fa-check"></i><b>3.5</b> Plotting country level trends for a given metric</a></li>
+<li class="chapter" data-level="3.6" data-path="3-getTBinR.html"><a href="3-getTBinR.html#gettbinr-sum"><i class="fa fa-check"></i><b>3.6</b> Data summarisation</a></li>
+<li class="chapter" data-level="3.7" data-path="3-getTBinR.html"><a href="3-getTBinR.html#dashboard"><i class="fa fa-check"></i><b>3.7</b> Dashboard</a></li>
+<li class="chapter" data-level="3.8" data-path="3-getTBinR.html"><a href="3-getTBinR.html#country-report"><i class="fa fa-check"></i><b>3.8</b> Country report</a></li>
+<li class="chapter" data-level="3.9" data-path="3-getTBinR.html"><a href="3-getTBinR.html#package-infrastructure"><i class="fa fa-check"></i><b>3.9</b> Package Infrastructure</a></li>
+<li class="chapter" data-level="3.10" data-path="3-getTBinR.html"><a href="3-getTBinR.html#summary-2"><i class="fa fa-check"></i><b>3.10</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="4-data.html"><a href="4-data.html"><i class="fa fa-check"></i><b>4</b> The epidemiology of tuberculosis, and the role of BCG vaccination, in England</a><ul>
+<li class="chapter" data-level="4.1" data-path="4-data.html"><a href="4-data.html#introduction-2"><i class="fa fa-check"></i><b>4.1</b> Introduction</a></li>
+<li class="chapter" data-level="4.2" data-path="4-data.html"><a href="4-data.html#data-sources"><i class="fa fa-check"></i><b>4.2</b> Data sources</a><ul>
+<li class="chapter" data-level="4.2.1" data-path="4-data.html"><a href="4-data.html#ets-deep-dive"><i class="fa fa-check"></i><b>4.2.1</b> Enhanced tuberculosis surveillance system</a></li>
+<li class="chapter" data-level="4.2.2" data-path="4-data.html"><a href="4-data.html#demographic-data"><i class="fa fa-check"></i><b>4.2.2</b> Demographic data</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="4-data.html"><a href="4-data.html#tuberculosis-notifications"><i class="fa fa-check"></i><b>4.3</b> Tuberculosis notifications</a><ul>
+<li class="chapter" data-level="4.3.1" data-path="4-data.html"><a href="4-data.html#overview"><i class="fa fa-check"></i><b>4.3.1</b> Overview</a></li>
+<li class="chapter" data-level="4.3.2" data-path="4-data.html"><a href="4-data.html#age-dist-nots"><i class="fa fa-check"></i><b>4.3.2</b> Age distribution of notifications</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="4-data.html"><a href="4-data.html#pop-dist-england"><i class="fa fa-check"></i><b>4.4</b> Population Demographics in England</a></li>
+<li class="chapter" data-level="4.5" data-path="4-data.html"><a href="4-data.html#tb-inc-rates-epi"><i class="fa fa-check"></i><b>4.5</b> Tuberculosis incidence rates</a><ul>
+<li class="chapter" data-level="4.5.1" data-path="4-data.html"><a href="4-data.html#motivation"><i class="fa fa-check"></i><b>4.5.1</b> Motivation</a></li>
+<li class="chapter" data-level="4.5.2" data-path="4-data.html"><a href="4-data.html#method-1"><i class="fa fa-check"></i><b>4.5.2</b> Method</a></li>
+<li class="chapter" data-level="4.5.3" data-path="4-data.html"><a href="4-data.html#overall-trends-in-tb-incidence-rates"><i class="fa fa-check"></i><b>4.5.3</b> Overall trends in TB incidence rates</a></li>
+<li class="chapter" data-level="4.5.4" data-path="4-data.html"><a href="4-data.html#age-stratified-incidence-rates"><i class="fa fa-check"></i><b>4.5.4</b> Age stratified incidence rates</a></li>
+<li class="chapter" data-level="4.5.5" data-path="4-data.html"><a href="4-data.html#incidence-rates-in-children-as-a-proxy-for-tb-transmission"><i class="fa fa-check"></i><b>4.5.5</b> Incidence rates in children as a proxy for TB transmission</a></li>
+</ul></li>
+<li class="chapter" data-level="4.6" data-path="4-data.html"><a href="4-data.html#tb-outcomes"><i class="fa fa-check"></i><b>4.6</b> TB outcomes</a><ul>
+<li class="chapter" data-level="4.6.1" data-path="4-data.html"><a href="4-data.html#motivation-1"><i class="fa fa-check"></i><b>4.6.1</b> Motivation</a></li>
+<li class="chapter" data-level="4.6.2" data-path="4-data.html"><a href="4-data.html#method-2"><i class="fa fa-check"></i><b>4.6.2</b> Method</a></li>
+<li class="chapter" data-level="4.6.3" data-path="4-data.html"><a href="4-data.html#all-cause-mortality"><i class="fa fa-check"></i><b>4.6.3</b> All-cause mortality</a></li>
+<li class="chapter" data-level="4.6.4" data-path="4-data.html"><a href="4-data.html#tb-related-mortality"><i class="fa fa-check"></i><b>4.6.4</b> TB related mortality</a></li>
+<li class="chapter" data-level="4.6.5" data-path="4-data.html"><a href="4-data.html#successful-treatment"><i class="fa fa-check"></i><b>4.6.5</b> Successful treatment</a></li>
+<li class="chapter" data-level="4.6.6" data-path="4-data.html"><a href="4-data.html#lost-to-follow-up"><i class="fa fa-check"></i><b>4.6.6</b> Lost to follow up</a></li>
+</ul></li>
+<li class="chapter" data-level="4.7" data-path="4-data.html"><a href="4-data.html#discussion"><i class="fa fa-check"></i><b>4.7</b> Discussion</a></li>
+<li class="chapter" data-level="4.8" data-path="4-data.html"><a href="4-data.html#summary-3"><i class="fa fa-check"></i><b>4.8</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="5-sutherland.html"><a href="5-sutherland.html"><i class="fa fa-check"></i><b>5</b> Reassessing the evidence for universal school-age Bacillus Calmette Guerin (BCG) vaccination in England and Wales</a><ul>
+<li class="chapter" data-level="5.1" data-path="5-sutherland.html"><a href="5-sutherland.html#introduction-3"><i class="fa fa-check"></i><b>5.1</b> Introduction</a></li>
+<li class="chapter" data-level="5.2" data-path="5-sutherland.html"><a href="5-sutherland.html#background-3"><i class="fa fa-check"></i><b>5.2</b> Background</a></li>
+<li class="chapter" data-level="5.3" data-path="5-sutherland.html"><a href="5-sutherland.html#methods"><i class="fa fa-check"></i><b>5.3</b> Methods</a><ul>
+<li class="chapter" data-level="5.3.1" data-path="5-sutherland.html"><a href="5-sutherland.html#modelling-the-impact-of-ending-the-bcg-schools-scheme"><i class="fa fa-check"></i><b>5.3.1</b> Modelling the impact of ending the BCG schools’ scheme</a></li>
+<li class="chapter" data-level="5.3.2" data-path="5-sutherland.html"><a href="5-sutherland.html#updating-model-parameter-estimates"><i class="fa fa-check"></i><b>5.3.2</b> Updating model parameter estimates</a></li>
+<li class="chapter" data-level="5.3.3" data-path="5-sutherland.html"><a href="5-sutherland.html#statistical-analysis"><i class="fa fa-check"></i><b>5.3.3</b> Statistical analysis</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="5-sutherland.html"><a href="5-sutherland.html#results"><i class="fa fa-check"></i><b>5.4</b> Results</a><ul>
+<li class="chapter" data-level="5.4.1" data-path="5-sutherland.html"><a href="5-sutherland.html#model-validation"><i class="fa fa-check"></i><b>5.4.1</b> Model validation</a></li>
+<li class="chapter" data-level="5.4.2" data-path="5-sutherland.html"><a href="5-sutherland.html#annual-change-in-tb-incidence-rates"><i class="fa fa-check"></i><b>5.4.2</b> Annual change in TB incidence rates</a></li>
+</ul></li>
+<li class="chapter" data-level="5.5" data-path="5-sutherland.html"><a href="5-sutherland.html#vaccines-required-to-prevent-a-single-notification"><i class="fa fa-check"></i><b>5.5</b> Vaccines required to prevent a single notification</a><ul>
+<li class="chapter" data-level="5.5.1" data-path="5-sutherland.html"><a href="5-sutherland.html#average-annual-additional-cases-from-ending-the-bcg-schools-scheme-at-various-dates"><i class="fa fa-check"></i><b>5.5.1</b> Average annual additional cases from ending the BCG schools’ scheme at various dates</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="6-discussion-1.html"><a href="6-discussion-1.html"><i class="fa fa-check"></i><b>6</b> Discussion</a><ul>
+<li class="chapter" data-level="6.1" data-path="6-discussion-1.html"><a href="6-discussion-1.html#summary-4"><i class="fa fa-check"></i><b>6.1</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="7-benefical-bcg-out.html"><a href="7-benefical-bcg-out.html"><i class="fa fa-check"></i><b>7</b> Exploring the effects of BCG vaccination in patients diagnosed with tuberculosis: observational study using the Enhanced Tuberculosis Surveillance system</a><ul>
+<li class="chapter" data-level="7.1" data-path="7-benefical-bcg-out.html"><a href="7-benefical-bcg-out.html#introduction-4"><i class="fa fa-check"></i><b>7.1</b> Introduction</a></li>
+<li class="chapter" data-level="7.2" data-path="7-benefical-bcg-out.html"><a href="7-benefical-bcg-out.html#background-4"><i class="fa fa-check"></i><b>7.2</b> Background</a></li>
+<li class="chapter" data-level="7.3" data-path="7-benefical-bcg-out.html"><a href="7-benefical-bcg-out.html#method-3"><i class="fa fa-check"></i><b>7.3</b> Method</a><ul>
+<li class="chapter" data-level="7.3.1" data-path="7-benefical-bcg-out.html"><a href="7-benefical-bcg-out.html#enhanced-tuberculosis-surveillance-ets-system"><i class="fa fa-check"></i><b>7.3.1</b> Enhanced Tuberculosis Surveillance (ETS) system</a></li>
+<li class="chapter" data-level="7.3.2" data-path="7-benefical-bcg-out.html"><a href="7-benefical-bcg-out.html#exposure-variables-relating-to-bcg"><i class="fa fa-check"></i><b>7.3.2</b> Exposure variables relating to BCG</a></li>
+<li class="chapter" data-level="7.3.3" data-path="7-benefical-bcg-out.html"><a href="7-benefical-bcg-out.html#statistical-analysis-1"><i class="fa fa-check"></i><b>7.3.3</b> Statistical Analysis</a></li>
+</ul></li>
+<li class="chapter" data-level="7.4" data-path="7-benefical-bcg-out.html"><a href="7-benefical-bcg-out.html#results-1"><i class="fa fa-check"></i><b>7.4</b> Results</a><ul>
+<li class="chapter" data-level="7.4.1" data-path="7-benefical-bcg-out.html"><a href="7-benefical-bcg-out.html#description-of-the-data"><i class="fa fa-check"></i><b>7.4.1</b> Description of the data</a></li>
+<li class="chapter" data-level="7.4.2" data-path="7-benefical-bcg-out.html"><a href="7-benefical-bcg-out.html#all-cause-mortality-1"><i class="fa fa-check"></i><b>7.4.2</b> All-cause mortality</a></li>
+<li class="chapter" data-level="7.4.3" data-path="7-benefical-bcg-out.html"><a href="7-benefical-bcg-out.html#deaths-due-to-tb-in-those-who-died"><i class="fa fa-check"></i><b>7.4.3</b> Deaths due to TB (in those who died)</a></li>
+<li class="chapter" data-level="7.4.4" data-path="7-benefical-bcg-out.html"><a href="7-benefical-bcg-out.html#recurrent-tb"><i class="fa fa-check"></i><b>7.4.4</b> Recurrent TB</a></li>
+<li class="chapter" data-level="7.4.5" data-path="7-benefical-bcg-out.html"><a href="7-benefical-bcg-out.html#other-outcomes"><i class="fa fa-check"></i><b>7.4.5</b> Other Outcomes</a></li>
+<li class="chapter" data-level="7.4.6" data-path="7-benefical-bcg-out.html"><a href="7-benefical-bcg-out.html#sensitivity-analysis-of-the-missing-data-using-multiple-imputation"><i class="fa fa-check"></i><b>7.4.6</b> Sensitivity analysis of the missing data using multiple imputation</a></li>
+<li class="chapter" data-level="7.4.7" data-path="7-benefical-bcg-out.html"><a href="7-benefical-bcg-out.html#sensitivity-analysis"><i class="fa fa-check"></i><b>7.4.7</b> Sensitivity analysis</a></li>
+</ul></li>
+<li class="chapter" data-level="7.5" data-path="7-benefical-bcg-out.html"><a href="7-benefical-bcg-out.html#discussion-2"><i class="fa fa-check"></i><b>7.5</b> Discussion</a></li>
+<li class="chapter" data-level="7.6" data-path="7-benefical-bcg-out.html"><a href="7-benefical-bcg-out.html#summary-5"><i class="fa fa-check"></i><b>7.6</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="8-direct-eff.html"><a href="8-direct-eff.html"><i class="fa fa-check"></i><b>8</b> Estimating the effect of the 2005 change in BCG policy in England: A retrospective cohort study</a><ul>
+<li class="chapter" data-level="8.1" data-path="8-direct-eff.html"><a href="8-direct-eff.html#introduction-5"><i class="fa fa-check"></i><b>8.1</b> Introduction</a></li>
+<li class="chapter" data-level="8.2" data-path="8-direct-eff.html"><a href="8-direct-eff.html#background-5"><i class="fa fa-check"></i><b>8.2</b> Background</a></li>
+<li class="chapter" data-level="8.3" data-path="8-direct-eff.html"><a href="8-direct-eff.html#methods-1"><i class="fa fa-check"></i><b>8.3</b> Methods</a><ul>
+<li class="chapter" data-level="8.3.1" data-path="8-direct-eff.html"><a href="8-direct-eff.html#data-source"><i class="fa fa-check"></i><b>8.3.1</b> Data source</a></li>
+<li class="chapter" data-level="8.3.2" data-path="8-direct-eff.html"><a href="8-direct-eff.html#constructing-retrospective-cohorts"><i class="fa fa-check"></i><b>8.3.2</b> Constructing Retrospective cohorts</a></li>
+</ul></li>
+<li class="chapter" data-level="8.4" data-path="8-direct-eff.html"><a href="8-direct-eff.html#statistical-methods-overview"><i class="fa fa-check"></i><b>8.4</b> Statistical methods overview</a><ul>
+<li class="chapter" data-level="8.4.1" data-path="8-direct-eff.html"><a href="8-direct-eff.html#implementation-overview"><i class="fa fa-check"></i><b>8.4.1</b> Implementation overview</a></li>
+<li class="chapter" data-level="8.4.2" data-path="8-direct-eff.html"><a href="8-direct-eff.html#imp-uk-birth-status"><i class="fa fa-check"></i><b>8.4.2</b> Imputation of UK birth status</a></li>
+<li class="chapter" data-level="8.4.3" data-path="8-direct-eff.html"><a href="8-direct-eff.html#prior-choice"><i class="fa fa-check"></i><b>8.4.3</b> Prior choice</a></li>
+<li class="chapter" data-level="8.4.4" data-path="8-direct-eff.html"><a href="8-direct-eff.html#magnitude-estimation"><i class="fa fa-check"></i><b>8.4.4</b> Estimating the magnitude of the estimated impact of the change in BCG policy</a></li>
+</ul></li>
+<li class="chapter" data-level="8.5" data-path="8-direct-eff.html"><a href="8-direct-eff.html#results-2"><i class="fa fa-check"></i><b>8.5</b> Results</a><ul>
+<li class="chapter" data-level="8.5.1" data-path="8-direct-eff.html"><a href="8-direct-eff.html#descriptive-analysis"><i class="fa fa-check"></i><b>8.5.1</b> Descriptive analysis</a></li>
+<li class="chapter" data-level="8.5.2" data-path="8-direct-eff.html"><a href="8-direct-eff.html#adjusted-estimates-of-the-effects-of-the-change-in-policy-on-school-age-children"><i class="fa fa-check"></i><b>8.5.2</b> Adjusted estimates of the effects of the change in policy on school-age children</a></li>
+<li class="chapter" data-level="8.5.3" data-path="8-direct-eff.html"><a href="8-direct-eff.html#adjusted-estimates-of-the-effect-of-the-change-in-policy-in-those-relevant-to-the-targeted-neonatal-programme"><i class="fa fa-check"></i><b>8.5.3</b> Adjusted estimates of the effect of the change in policy in those relevant to the targeted neonatal programme</a></li>
+<li class="chapter" data-level="8.5.4" data-path="8-direct-eff.html"><a href="8-direct-eff.html#magnitude-of-the-estimated-impact-of-the-change-in-bcg-policy"><i class="fa fa-check"></i><b>8.5.4</b> Magnitude of the estimated impact of the change in BCG policy</a></li>
+</ul></li>
+<li class="chapter" data-level="8.6" data-path="8-direct-eff.html"><a href="8-direct-eff.html#discussion-3"><i class="fa fa-check"></i><b>8.6</b> Discussion</a></li>
+<li class="chapter" data-level="8.7" data-path="8-direct-eff.html"><a href="8-direct-eff.html#summary-6"><i class="fa fa-check"></i><b>8.7</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="9-model-development.html"><a href="9-model-development.html"><i class="fa fa-check"></i><b>9</b> Devoloping a dynamic transmission model of Tuberculosis</a><ul>
+<li class="chapter" data-level="9.1" data-path="9-model-development.html"><a href="9-model-development.html#introduction-6"><i class="fa fa-check"></i><b>9.1</b> Introduction</a></li>
+<li class="chapter" data-level="9.2" data-path="9-model-development.html"><a href="9-model-development.html#model-just"><i class="fa fa-check"></i><b>9.2</b> Choice of model structure</a></li>
+<li class="chapter" data-level="9.3" data-path="9-model-development.html"><a href="9-model-development.html#tuberculosis-disease"><i class="fa fa-check"></i><b>9.3</b> Tuberculosis disease</a><ul>
+<li class="chapter" data-level="9.3.1" data-path="9-model-development.html"><a href="9-model-development.html#bcg-vaccination"><i class="fa fa-check"></i><b>9.3.1</b> BCG vaccination</a></li>
+</ul></li>
+<li class="chapter" data-level="9.4" data-path="9-model-development.html"><a href="9-model-development.html#a-dynamic-model-of-tb-transmission"><i class="fa fa-check"></i><b>9.4</b> A dynamic model of TB transmission</a><ul>
+<li class="chapter" data-level="9.4.1" data-path="9-model-development.html"><a href="9-model-development.html#model-outline"><i class="fa fa-check"></i><b>9.4.1</b> Model outline</a></li>
+<li class="chapter" data-level="9.4.2" data-path="9-model-development.html"><a href="9-model-development.html#model-equations"><i class="fa fa-check"></i><b>9.4.2</b> Model equations</a></li>
+<li class="chapter" data-level="9.4.3" data-path="9-model-development.html"><a href="9-model-development.html#force-of-infection"><i class="fa fa-check"></i><b>9.4.3</b> Force of infection</a></li>
+</ul></li>
+<li class="chapter" data-level="9.5" data-path="9-model-development.html"><a href="9-model-development.html#parameterisation-and-data-synthesis"><i class="fa fa-check"></i><b>9.5</b> Parameterisation and data synthesis</a><ul>
+<li class="chapter" data-level="9.5.1" data-path="9-model-development.html"><a href="9-model-development.html#data-sources-1"><i class="fa fa-check"></i><b>9.5.1</b> Data sources</a></li>
+<li class="chapter" data-level="9.5.2" data-path="9-model-development.html"><a href="9-model-development.html#model-parameters"><i class="fa fa-check"></i><b>9.5.2</b> Model Parameters</a></li>
+</ul></li>
+<li class="chapter" data-level="9.6" data-path="9-model-development.html"><a href="9-model-development.html#initialisation"><i class="fa fa-check"></i><b>9.6</b> Initialisation</a><ul>
+<li class="chapter" data-level="9.6.1" data-path="9-model-development.html"><a href="9-model-development.html#starting-simulation-date-initial-population-and-changes-over-time."><i class="fa fa-check"></i><b>9.6.1</b> Starting simulation date, initial population and changes over time.</a></li>
+<li class="chapter" data-level="9.6.2" data-path="9-model-development.html"><a href="9-model-development.html#initial-disease-distribution"><i class="fa fa-check"></i><b>9.6.2</b> Initial disease distribution</a></li>
+</ul></li>
+<li class="chapter" data-level="9.7" data-path="9-model-development.html"><a href="9-model-development.html#discussion-4"><i class="fa fa-check"></i><b>9.7</b> Discussion</a></li>
+<li class="chapter" data-level="9.8" data-path="9-model-development.html"><a href="9-model-development.html#summary-7"><i class="fa fa-check"></i><b>9.8</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="10-model-fitting.html"><a href="10-model-fitting.html"><i class="fa fa-check"></i><b>10</b> Fitting a dynamic transmission model of Tuberculosis</a><ul>
+<li class="chapter" data-level="10.1" data-path="10-model-fitting.html"><a href="10-model-fitting.html#introduction-7"><i class="fa fa-check"></i><b>10.1</b> Introduction</a></li>
+<li class="chapter" data-level="10.2" data-path="10-model-fitting.html"><a href="10-model-fitting.html#formulation-as-a-state-space-models"><i class="fa fa-check"></i><b>10.2</b> Formulation as a state-space models</a><ul>
+<li class="chapter" data-level="10.2.1" data-path="10-model-fitting.html"><a href="10-model-fitting.html#observed-data"><i class="fa fa-check"></i><b>10.2.1</b> Observed data</a></li>
+<li class="chapter" data-level="10.2.2" data-path="10-model-fitting.html"><a href="10-model-fitting.html#observational-model"><i class="fa fa-check"></i><b>10.2.2</b> Observational model</a></li>
+<li class="chapter" data-level="10.2.3" data-path="10-model-fitting.html"><a href="10-model-fitting.html#fitted-parameters"><i class="fa fa-check"></i><b>10.2.3</b> Fitted parameters</a></li>
+</ul></li>
+<li class="chapter" data-level="10.3" data-path="10-model-fitting.html"><a href="10-model-fitting.html#fitting-pipeline"><i class="fa fa-check"></i><b>10.3</b> Model fitting pipeline</a><ul>
+<li class="chapter" data-level="10.3.1" data-path="10-model-fitting.html"><a href="10-model-fitting.html#introduction-8"><i class="fa fa-check"></i><b>10.3.1</b> Introduction</a></li>
+<li class="chapter" data-level="10.3.2" data-path="10-model-fitting.html"><a href="10-model-fitting.html#particle-filter"><i class="fa fa-check"></i><b>10.3.2</b> The particle filter</a></li>
+<li class="chapter" data-level="10.3.3" data-path="10-model-fitting.html"><a href="10-model-fitting.html#sequential-monte-carlo"><i class="fa fa-check"></i><b>10.3.3</b> Sequential Monte Carlo</a></li>
+<li class="chapter" data-level="10.3.4" data-path="10-model-fitting.html"><a href="10-model-fitting.html#calibration"><i class="fa fa-check"></i><b>10.3.4</b> Calibration</a></li>
+<li class="chapter" data-level="10.3.5" data-path="10-model-fitting.html"><a href="10-model-fitting.html#model-comparision"><i class="fa fa-check"></i><b>10.3.5</b> Model comparision</a></li>
+<li class="chapter" data-level="10.3.6" data-path="10-model-fitting.html"><a href="10-model-fitting.html#parameter-sensitivity"><i class="fa fa-check"></i><b>10.3.6</b> Parameter sensitivity</a></li>
+<li class="chapter" data-level="10.3.7" data-path="10-model-fitting.html"><a href="10-model-fitting.html#pipeline-overview"><i class="fa fa-check"></i><b>10.3.7</b> Pipeline overview</a></li>
+</ul></li>
+<li class="chapter" data-level="10.4" data-path="10-model-fitting.html"><a href="10-model-fitting.html#results-3"><i class="fa fa-check"></i><b>10.4</b> Results</a><ul>
+<li class="chapter" data-level="10.4.1" data-path="10-model-fitting.html"><a href="10-model-fitting.html#calibration-1"><i class="fa fa-check"></i><b>10.4.1</b> Calibration</a></li>
+<li class="chapter" data-level="10.4.2" data-path="10-model-fitting.html"><a href="10-model-fitting.html#model-comparision-1"><i class="fa fa-check"></i><b>10.4.2</b> Model comparision</a></li>
+<li class="chapter" data-level="10.4.3" data-path="10-model-fitting.html"><a href="10-model-fitting.html#model-fit-to-historic-tb-incidence-rates"><i class="fa fa-check"></i><b>10.4.3</b> Model fit to historic TB incidence rates</a></li>
+<li class="chapter" data-level="10.4.4" data-path="10-model-fitting.html"><a href="10-model-fitting.html#model-fit-to-tb-incidence-rates-from-the-ets"><i class="fa fa-check"></i><b>10.4.4</b> Model Fit to TB incidence rates from the ETS</a></li>
+<li class="chapter" data-level="10.4.5" data-path="10-model-fitting.html"><a href="10-model-fitting.html#model-fit-to-tb-age-distribution"><i class="fa fa-check"></i><b>10.4.5</b> Model fit to TB age distribution</a></li>
+<li class="chapter" data-level="10.4.6" data-path="10-model-fitting.html"><a href="10-model-fitting.html#posterior-parameter-distributions"><i class="fa fa-check"></i><b>10.4.6</b> Posterior parameter distributions</a></li>
+<li class="chapter" data-level="10.4.7" data-path="10-model-fitting.html"><a href="10-model-fitting.html#parameter-sensitivity-1"><i class="fa fa-check"></i><b>10.4.7</b> Parameter Sensitivity</a></li>
+</ul></li>
+<li class="chapter" data-level="10.5" data-path="10-model-fitting.html"><a href="10-model-fitting.html#discussion-5"><i class="fa fa-check"></i><b>10.5</b> Discussion</a></li>
+<li class="chapter" data-level="10.6" data-path="10-model-fitting.html"><a href="10-model-fitting.html#summary-8"><i class="fa fa-check"></i><b>10.6</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="11-model-results.html"><a href="11-model-results.html"><i class="fa fa-check"></i><b>11</b> Investigating the impact of the 2005 change in BCG vaccination policy using a fitted dynamic transmission model of TB</a><ul>
+<li class="chapter" data-level="11.1" data-path="11-model-results.html"><a href="11-model-results.html#introduction-9"><i class="fa fa-check"></i><b>11.1</b> Introduction</a></li>
+<li class="chapter" data-level="11.2" data-path="11-model-results.html"><a href="11-model-results.html#method-4"><i class="fa fa-check"></i><b>11.2</b> Method</a><ul>
+<li class="chapter" data-level="11.2.1" data-path="11-model-results.html"><a href="11-model-results.html#scenarios-considered"><i class="fa fa-check"></i><b>11.2.1</b> Scenarios considered</a></li>
+<li class="chapter" data-level="11.2.2" data-path="11-model-results.html"><a href="11-model-results.html#future-non-uk-born-cases-assumption"><i class="fa fa-check"></i><b>11.2.2</b> Future Non-UK born cases assumption</a></li>
+</ul></li>
+<li class="chapter" data-level="11.3" data-path="11-model-results.html"><a href="11-model-results.html#results-4"><i class="fa fa-check"></i><b>11.3</b> Results</a></li>
+<li class="chapter" data-level="11.4" data-path="11-model-results.html"><a href="11-model-results.html#impact-between-2005-and-2010"><i class="fa fa-check"></i><b>11.4</b> Impact between 2005 and 2010</a></li>
+<li class="chapter" data-level="11.5" data-path="11-model-results.html"><a href="11-model-results.html#non-uk-born-cases-decline-exponentially-over-time"><i class="fa fa-check"></i><b>11.5</b> Non-UK born cases decline exponentially over time</a></li>
+<li class="chapter" data-level="11.6" data-path="11-model-results.html"><a href="11-model-results.html#non-uk-born-cases-stay-at-todays-levels"><i class="fa fa-check"></i><b>11.6</b> Non-UK born cases stay at todays levels</a></li>
+<li class="chapter" data-level="11.7" data-path="11-model-results.html"><a href="11-model-results.html#discussion-6"><i class="fa fa-check"></i><b>11.7</b> Discussion</a></li>
+<li class="chapter" data-level="11.8" data-path="11-model-results.html"><a href="11-model-results.html#summary-9"><i class="fa fa-check"></i><b>11.8</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="4-data.html"><a href="4-data.html#discussion"><i class="fa fa-check"></i><b>12</b> Discussion</a><ul>
+<li class="chapter" data-level="12.0.1" data-path="12-discussion.html"><a href="12-discussion.html"><i class="fa fa-check"></i><b>12.0.1</b> Principal findings</a></li>
+<li class="chapter" data-level="12.1" data-path="12-discussion.html"><a href="12-discussion.html#strengths-and-limitations"><i class="fa fa-check"></i><b>12.1</b> Strengths and limitations</a></li>
+<li class="chapter" data-level="12.2" data-path="12-discussion.html"><a href="12-discussion.html#implications-for-policy-makers"><i class="fa fa-check"></i><b>12.2</b> Implications for policy makers</a></li>
+<li class="chapter" data-level="12.3" data-path="12-discussion.html"><a href="12-discussion.html#open-reproducible-research"><i class="fa fa-check"></i><b>12.3</b> Open reproducible research</a></li>
+<li class="chapter" data-level="12.4" data-path="12-discussion.html"><a href="12-discussion.html#public-engagement"><i class="fa fa-check"></i><b>12.4</b> Public engagement</a></li>
+<li class="chapter" data-level="12.5" data-path="12-discussion.html"><a href="12-discussion.html#future-research"><i class="fa fa-check"></i><b>12.5</b> Future research</a></li>
+<li class="chapter" data-level="12.6" data-path="12-discussion.html"><a href="12-discussion.html#conclusions"><i class="fa fa-check"></i><b>12.6</b> Conclusions</a></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="13-references.html"><a href="13-references.html"><i class="fa fa-check"></i><b>13</b> References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./"></a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="getTBinR" class="section level1">
+<h1><span class="header-section-number">Chapter 3</span> getTBinR: an R package for accessing and summarising the World Health Organization Tuberculosis data</h1>
+<div id="introduction-1" class="section level2">
+<h2><span class="header-section-number">3.1</span> Introduction</h2>
+<p>Developing tools for rapidly accessing and exploring data sets benefits the public health research community by enabling multiple data sets to be combined in a consistent manner, increasing the visibility of key data sets, and providing a framework that can be used to explore key questions of interest. Tooling also reduces the barriers to entry, allowing non-specialists to explore data sets that would otherwise be inaccessible. This widening of access may also lead to new insights and wider interest for key public health issues.</p>
+<p><code>getTBinR</code> is an R package <span class="citation">(<span class="citeproc-not-found" data-reference-id="RCoreTeam2019"><strong>???</strong></span>)</span> to facilitate working with the data <span class="citation">(<span class="citeproc-not-found" data-reference-id="WHO:2018"><strong>???</strong></span>)</span> collected by the World Health Organization (WHO) on the country level epidemiology of Tuberculosis (TB). All data is freely available from the <a href="https://www.who.int/tb/country/data/download/en/">WHO</a> and the package code is archived on Zenodo <span class="citation">(<span class="citeproc-not-found" data-reference-id="Abbott:2019"><strong>???</strong></span>)</span> and <a href="https://www.samabbott.co.uk/getTBinR/">Github</a>. The aim of <code>getTBinR</code> is to allow researchers, and other interested individuals, to quickly and easily gain access to a detailed TB data set and to start using it to derive key insights. It provides a consistent set of tools that can be used to rapidly evaluate hypotheses on a widely used data set before they are explored further using more complex methods or more detailed data. The functions provided in this package were developed to have sensible defaults to allow those new to the field to quickly gain key insights but also allow sufficient customisation so that experienced users may rapidly prototype new ideas.</p>
+<p>The data sourced by <code>getBTinR</code> is collected by the WHO, via member governments, and used to compile the yearly global TB report <span class="citation">(<span class="citeproc-not-found" data-reference-id="WHO:2018"><strong>???</strong></span>)</span>. Data collection encompasses TB incidence, TB mortality rates, the age distribution of TB cases, the proportion of drug resistant cases, case detection rates, and treatment rates. For a complete description of the data and data collection process, see <span class="citation">(<span class="citeproc-not-found" data-reference-id="WHO:2018"><strong>???</strong></span>)</span>. These data are used by the WHO, governmental organisations and researchers to summarise country level TB epidemiology, as well as the wider global and regional picture.</p>
+<p>The <code>getTBinR</code> package facilitates downloading the most up-to-date version of multiple TB relevant data sources from the WHO, along with the accompanying data dictionaries. It also contains functions to allow easy exploration of the data via searching data dictionaries, summarising key metrics on a regional and global level, and visualising the data in a variety of highly customisable ways. In addition, it provides both a dashboard and an automated country level report that enables the global, regional, and country level picture to be quickly summarised. An example of a potential use of the package is to explore estimates of the TB case fatality ratio <span class="citation">(<span class="citeproc-not-found" data-reference-id="Abbott:2018"><strong>???</strong></span>)</span>. In a few lines of code, using only built in package tooling, large regional differences can be discovered. Further insights can then be found by linking to other publicly available data sets or using a model based analysis. See <a href="https://www.samabbott.co.uk/getTBinR/" class="uri">https://www.samabbott.co.uk/getTBinR/</a> for documentation. The remainder of this chapter outlines the key functionality of <code>getTBinR v0.5.7</code> and summarises the current impact.</p>
+</div>
+<div id="installation" class="section level2">
+<h2><span class="header-section-number">3.2</span> Installation</h2>
+<p><code>getTBinR</code> has been released to the Comprehensive R Archive Network (CRAN) and can therefore can be installed with the following code,</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">install.packages</span>(<span class="st">&quot;getTBinR&quot;</span>)</code></pre>
+<p>As <code>getTBinR</code> is under active development, the development version can be installed from GitHub with the following (provided the <code>devtools</code> package is installed),</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># install.packages(&quot;devtools&quot;)</span>
+devtools<span class="op">::</span><span class="kw">install_github</span>(<span class="st">&quot;seabbs/getTBinR&quot;</span>)</code></pre>
+</div>
+<div id="data-extraction-and-variable-look-up" class="section level2">
+<h2><span class="header-section-number">3.3</span> Data extraction and variable look-up</h2>
+<p><code>getTBinR</code> provides a single user facing function for data extraction, <code>get_tb_burden</code>. This function downloads multiple data sets from the WHO, cleans variables names where required, and finally joins all data sets together. To reduce unnecessary downloads, and improve performance, downloads are cached automatically. <code>get_tb_burden</code> is called by all other package functions allowing for a seamless user experience. <code>get_data_dict</code> has similar functionality to <code>get_tb_burden</code> but extracts data dictionaries rather than the underlying data. It is called by the majority of the package functions in order to provide intelligent labels.</p>
+<p>To improve the user experience, and to facilitate intelligent labeling, <code>getTBinR</code> provides a search function for the data dictionary (<code>search_data_dict</code>). This function is able to search, using fuzzy matching, for variables, variable descriptions, and key phrases. The code below gives an example search for <code>country</code> and <code>e_inc_100k</code> (TB incidence rate) variables, along with an accompanying search for variables referencing mortality.</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">search_data_dict</span>(<span class="dt">var =</span> <span class="kw">c</span>(<span class="st">&quot;country&quot;</span>,<span class="st">&quot;e_inc_100k&quot;</span>),
+                 <span class="dt">def =</span> <span class="kw">c</span>(<span class="st">&quot;mortality&quot;</span>), <span class="dt">verbose =</span> <span class="ot">FALSE</span>)</code></pre>
+<pre><code># A tibble: 11 x 4
+   variable_name     dataset      code_list definition                     
+   &lt;chr&gt;             &lt;chr&gt;        &lt;chr&gt;     &lt;chr&gt;                          
+ 1 country           Country ide… &quot;&quot;        Country or territory name      
+ 2 e_inc_100k        Estimates    &quot;&quot;        Estimated incidence (all forms…
+ 3 e_mort_100k       Estimates    &quot;&quot;        Estimated mortality of TB case…
+ 4 e_mort_100k_hi    Estimates    &quot;&quot;        Estimated mortality of TB case…
+ 5 e_mort_100k_lo    Estimates    &quot;&quot;        Estimated mortality of TB case…
+ 6 e_mort_exc_tbhiv… Estimates    &quot;&quot;        Estimated mortality of TB case…
+ 7 e_mort_exc_tbhiv… Estimates    &quot;&quot;        Estimated mortality of TB case…
+ 8 e_mort_exc_tbhiv… Estimates    &quot;&quot;        Estimated mortality of TB case…
+ 9 e_mort_tbhiv_100k Estimates    &quot;&quot;        Estimated mortality of TB case…
+10 e_mort_tbhiv_100… Estimates    &quot;&quot;        Estimated mortality of TB case…
+11 e_mort_tbhiv_100… Estimates    &quot;&quot;        Estimated mortality of TB case…</code></pre>
+</div>
+<div id="getbinr-vis" class="section level2">
+<h2><span class="header-section-number">3.4</span> Data visualisation</h2>
+<p><code>getTBInR</code> implements a range of functions to allow rapid development of complex visuals, with minimal R knowledge. All functions make use of cached data so that no data needs to be provided and can automatically match variables to variable names. Additionally, all visualisation functions have a common user interface, allowing for knowledge transfer between functions. As all visualisation functions return <code>ggplot2</code> objects (a commonly used R graphing library), user modification is readily supported.</p>
+<p>Functionality that is common to all plotting functions is the ability to: plot data for a given list of countries; fuzzy match country names; plot data for a given metric present in the data; compute percentage changes from raw metric values; look up the supplied metric to see if the data dictionary contains an appropriate name; plot data over a user supplied range of years; facet over a user supplied variable; implement a user supplied transform (i.e log scaling); modify the colour palette used; and switch to comparable interactive graphics (using the <code>plotly</code> package). In addition to this, <code>plot_tb_burden</code> and <code>plot_tb_burden_summary</code> can incorporate confidence intervals. By default this is done by searching the data provided for matching variables. Function specific functionality is outlined below.</p>
+<div id="mapping-tb-burden-metrics" class="section level3">
+<h3><span class="header-section-number">3.4.1</span> Mapping TB burden metrics</h3>
+<p>The <code>map_tb_burden</code> function makes use of an inbuilt, country level, shapefile (a geospatial vector data format) to produce a global or regional map of the metric supplied. Figure <a href="3-getTBinR.html#fig:map-tb-incidence-eur">3.1</a> gives a global overview of country level TB incidence rate. The use of a map here allows for the identification of spatial patterns that would be difficult to distinguish using other plot types. Figure <a href="3-getTBinR.html#fig:map-tb-incidence-eur">3.1</a> was produced with the following code,</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">map_tb_burden</span>(<span class="dt">metric =</span> <span class="st">&quot;e_inc_100k&quot;</span>, <span class="dt">verbose =</span> <span class="ot">FALSE</span>)</code></pre>
+<div class="figure" style="text-align: center"><span id="fig:map-tb-incidence-eur"></span>
+<img src="thesis_files/figure-html/map-tb-incidence-eur-1.png" alt="Map of global TB incidence rates in 2017 as generated by `getTBinR'. Visualising the data with a map allows for spatial trends to be rapidly explored." width="80%" />
+<p class="caption">
+Figure 3.1: Map of global TB incidence rates in 2017 as generated by `getTBinR’. Visualising the data with a map allows for spatial trends to be rapidly explored.
+</p>
+</div>
+</div>
+<div id="plotting-an-overview-for-a-given-tb-metric" class="section level3">
+<h3><span class="header-section-number">3.4.2</span> Plotting an overview for a given TB metric</h3>
+<p>The <code>plot_tb_burden_overview</code> function returns a dot plot that allows the trend over time of a metric to be plotted in a simplified way. Figure <a href="3-getTBinR.html#fig:plot-tb-overview">3.2</a> shows incidence rates, by country, in Europe from 2000 to 2017. The dot plot format allows us to identify common trends across countries, after ranking for incidence rate. A more traditional line plot of the same data would be difficult to interpret due to the large number of countries. Figure <a href="3-getTBinR.html#fig:plot-tb-overview">3.2</a> was produced with the following code,</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot_tb_burden_overview</span>(<span class="dt">metric =</span> <span class="st">&quot;e_inc_100k&quot;</span>,
+                        <span class="dt">countries =</span> <span class="st">&quot;United Kingdom&quot;</span>,
+                        <span class="dt">compare_to_region =</span> <span class="ot">TRUE</span>,
+                        <span class="dt">interactive =</span> <span class="ot">FALSE</span>,
+                        <span class="dt">verbose =</span> <span class="ot">FALSE</span>)</code></pre>
+<div class="figure" style="text-align: center"><span id="fig:plot-tb-overview"></span>
+<img src="thesis_files/figure-html/plot-tb-overview-1.png" alt="Dot plot showing trends over time in TB incidence rates in Europe ordered by TB incidence rates in 2017. " width="80%" />
+<p class="caption">
+Figure 3.2: Dot plot showing trends over time in TB incidence rates in Europe ordered by TB incidence rates in 2017.
+</p>
+</div>
+</div>
+<div id="gettbinr-plot-sum" class="section level3">
+<h3><span class="header-section-number">3.4.3</span> Plotting a comparision between country, regional and global metric values</h3>
+<p>The <code>plot_tb_burden_summary</code> function plots a regional, global, or custom overview of the supplied metric and can also include country level data for comparison. It can make use of a range of summary methods including: the country level mean, country level median, and summarised rates and proportions. Rates and proportions can be weighted with a user supplied variable but the package default is to use the summarised population. Confidence intervals are recomputed using a bootstrapping method where appropriate so that country level uncertainty is properly incorporated into the summarised metrics. The data can also be smoothed using a locally weighted regression to provide trend lines. Figure <a href="3-getTBinR.html#fig:plot-regional-summary">3.3</a> shows a regional summary of TB incidence rates produced using <code>plot_tb_burden_summary</code>. This plot allows regional trends to be identified and compared against the global trend. Figure <a href="3-getTBinR.html#fig:plot-regional-summary">3.3</a> was produced with the following code,</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot_tb_burden_summary</span>(<span class="dt">conf =</span> <span class="ot">NULL</span>, <span class="dt">metric_label =</span> <span class="st">&quot;e_inc_100k&quot;</span>,
+                       <span class="dt">verbose =</span> <span class="ot">FALSE</span>)</code></pre>
+<div class="figure" style="text-align: center"><span id="fig:plot-regional-summary"></span>
+<img src="thesis_files/figure-html/plot-regional-summary-1.png" alt="TB incidence by region and globally as computed and visualised by `getTBinR`. Confidence intervals have been disabled in order to avoid obscuring the dominant trends." width="80%" />
+<p class="caption">
+Figure 3.3: TB incidence by region and globally as computed and visualised by <code>getTBinR</code>. Confidence intervals have been disabled in order to avoid obscuring the dominant trends.
+</p>
+</div>
+</div>
+</div>
+<div id="plotting-country-level-trends-for-a-given-metric" class="section level2">
+<h2><span class="header-section-number">3.5</span> Plotting country level trends for a given metric</h2>
+<p>The <code>plot_tb_burden</code> function plots TB trends at a country level using a simple, unaggregated, line plot. This allows for trends identified with the more complex plotting functions outlined above to be examined in more detail. Figure <a href="3-getTBinR.html#fig:plot-tb-burden">3.4</a> shows the trend over time in TB incidence rates in the United Kingdom, along with confidence intervals. Unlike the plots above the focus on a single country allows changes over time to be more easily understood. Figure <a href="3-getTBinR.html#fig:plot-tb-burden">3.4</a> was produced with the following code,</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot_tb_burden</span>(<span class="dt">metric =</span> <span class="st">&quot;e_inc_100k&quot;</span>,
+               <span class="dt">countries =</span> <span class="st">&quot;United Kingdom&quot;</span>,
+               <span class="dt">verbose =</span> <span class="ot">FALSE</span>) </code></pre>
+<div class="figure" style="text-align: center"><span id="fig:plot-tb-burden"></span>
+<img src="thesis_files/figure-html/plot-tb-burden-1.png" alt="TB incidence rates over time, with confidence intervals, in the UK. As produced by `getTBinR`." width="80%" />
+<p class="caption">
+Figure 3.4: TB incidence rates over time, with confidence intervals, in the UK. As produced by <code>getTBinR</code>.
+</p>
+</div>
+</div>
+<div id="gettbinr-sum" class="section level2">
+<h2><span class="header-section-number">3.6</span> Data summarisation</h2>
+<p>The same summarisation functionality outlined in <a href="3-getTBinR.html#gettbinr-plot-sum">3.4.3</a> is also available in a separate function, <code>summarise_tb_burden</code>, which can be used to generate summarised data sets for further analysis or visualisation. All non-plotting functions outlined for <code>plot_tb_burden_summary</code> are implemented here. The code below summarises TB incidence rates in the UK, in Europe, and globally.</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summarise_tb_burden</span>(<span class="dt">metric =</span> <span class="st">&quot;e_inc_num&quot;</span>,
+                     <span class="dt">stat =</span> <span class="st">&quot;rate&quot;</span>,
+                     <span class="dt">countries =</span> <span class="st">&quot;United Kingdom&quot;</span>, 
+                     <span class="dt">compare_to_world =</span> <span class="ot">TRUE</span>, 
+                     <span class="dt">compare_to_region =</span> <span class="ot">TRUE</span>,
+                     <span class="dt">verbose =</span> <span class="ot">FALSE</span>)</code></pre>
+<pre><code># A tibble: 144 x 5
+   area                            year e_inc_num e_inc_num_lo e_inc_num_hi
+   &lt;fct&gt;                          &lt;int&gt;     &lt;dbl&gt;        &lt;dbl&gt;        &lt;dbl&gt;
+ 1 United Kingdom of Great Brita…  2000      11.9         10.7         13.1
+ 2 United Kingdom of Great Brita…  2001      11.5         10.3         12.7
+ 3 United Kingdom of Great Brita…  2002      13.1         11.8         14.3
+ 4 United Kingdom of Great Brita…  2003      13.4         12.1         14.8
+ 5 United Kingdom of Great Brita…  2004      13.2         11.9         14.5
+ 6 United Kingdom of Great Brita…  2005      15.3         13.8         16.6
+ 7 United Kingdom of Great Brita…  2006      15.3         13.8         16.4
+ 8 United Kingdom of Great Brita…  2007      14.7         13.2         16.1
+ 9 United Kingdom of Great Brita…  2008      15.0         13.5         16.1
+10 United Kingdom of Great Brita…  2009      14.5         13.1         15.9
+# … with 134 more rows</code></pre>
+</div>
+<div id="dashboard" class="section level2">
+<h2><span class="header-section-number">3.7</span> Dashboard</h2>
+<p>To explore the package functionality in an interactive session, or to investigate TB without having to code extensively in R, a shiny dashboard has been built into the package. This can either be used locally using,</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">run_tb_dashboard</span>()</code></pre>
+<p>Or accessed online (<a href="http://www.seabbs.co.uk/shiny/ExploreGlobalTB" class="uri">http://www.seabbs.co.uk/shiny/ExploreGlobalTB</a>). Any metric in the WHO TB data can be explored, with country selection using the built in map, and animation possible by year. The shiny app can also be used to generate the country level reports discussed in the next section. Figure <a href="3-getTBinR.html#fig:dash-snapshot">3.5</a> shows a screenshot of the dashboard, with South Africa selected as the country of interest.</p>
+<div class="figure" style="text-align: center"><span id="fig:dash-snapshot"></span>
+<img src="chapters/getTBinR/img/ExploreGlobalTB.png" alt="Snapshot of the built in package dashboard." width="80%" />
+<p class="caption">
+Figure 3.5: Snapshot of the built in package dashboard.
+</p>
+</div>
+</div>
+<div id="country-report" class="section level2">
+<h2><span class="header-section-number">3.8</span> Country report</h2>
+<p>An automated country level report has also been built into <code>getTBinR</code>. This summarises key TB metrics and provides regional and global rankings. The most commonly required plots are also produced, including the trend in TB incidence rates, proportion of cases that lead to death, and the proportion of cases with MDR TB. The report can be generated with the following code,</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co">## Code saves report into your current working directory</span>
+<span class="kw">render_country_report</span>(<span class="dt">country =</span> <span class="st">&quot;United Kingdom&quot;</span>, <span class="dt">save_dir =</span> <span class="st">&quot;.&quot;</span>)</code></pre>
+<p>Figure <a href="3-getTBinR.html#fig:report-snapshot">3.6</a> shows a screenshot of the start of the report for the United Kingdom. Note the automated reporting of country rankings in the text, along with summary metrics of interest.</p>
+<div class="figure" style="text-align: center"><span id="fig:report-snapshot"></span>
+<img src="chapters/getTBinR/img/ExampleCountryReport.png" alt="Screenshot of the start of the built in package summary report, for the United Kingdom." width="80%" />
+<p class="caption">
+Figure 3.6: Screenshot of the start of the built in package summary report, for the United Kingdom.
+</p>
+</div>
+</div>
+<div id="package-infrastructure" class="section level2">
+<h2><span class="header-section-number">3.9</span> Package Infrastructure</h2>
+<p><code>getTBinR</code> has been developed using R package best practices and as such is thoroughly tested using an automated testing suite that runs against Linux, Windows and MacOS environments. Package documentation is supplied in a searchable website (<a href="https://www.samabbott.co.uk/getTBinR/" class="uri">https://www.samabbott.co.uk/getTBinR/</a>) and a development environment can be launched with a single button press (<a href="https://mybinder.org/v2/gh/seabbs/getTBinR/master?urlpath=rstudio" class="uri">https://mybinder.org/v2/gh/seabbs/getTBinR/master?urlpath=rstudio</a>). Use cases for the package have been outlined using multiple case studies, see the package documentation for details.</p>
+</div>
+<div id="summary-2" class="section level2">
+<h2><span class="header-section-number">3.10</span> Summary</h2>
+<ul>
+<li><p>In this chapter I have introduced <code>getTBinR</code> an R package for accessing, summarising and visualising the WHO TB surveillance data set used to compile the yearly WHO global TB report.</p></li>
+<li><p>I have outlined the need for data access packages in general - more specifically explaining the purpose of <code>getTBinR</code>, detailing the package functionality and outlining the package infrastructure used.</p></li>
+<li><p>As of the 1st of February 2019, <code>getTBinR</code> has been released on CRAN for over a year. It has been downloaded over 7000 times, has no outstanding issues, and has received multiple updates greatly expanding the functionality available. The standalone dashboard hosted online (<a href="http://www.seabbs.co.uk/shiny/ExploreGlobalTB/" class="uri">http://www.seabbs.co.uk/shiny/ExploreGlobalTB/</a>) has had over 2000 unique users.</p></li>
+</ul>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="2-background.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="4-data.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"download": [["thesis.pdf", "PDF"], ["thesis.epub", "EPUB"], ["thesis.docx", "Word"]],
+"toc": {
+"collapse": "section"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(src))
+      src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

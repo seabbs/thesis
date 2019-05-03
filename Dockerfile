@@ -15,5 +15,3 @@ ADD . /home/rstudio/thesis
 WORKDIR /home/rstudio/thesis
 
 RUN Rscript -e "install.packages('packrat'); packrat::restore()"
-
-RUN Rscript -e "install.packages('tinytex'); tinytex::install_tinytex()"
