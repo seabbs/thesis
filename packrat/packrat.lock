@@ -18,21 +18,6 @@ Source: CRAN
 Version: 1.0.0
 Hash: 6abedd7919c4457604c0aa44529a6683
 
-Package: ModelTBBCGEngland
-Source: github
-Version: 0.1.0
-Hash: 3c6c60871a9690ad4e1a3efb194fc1b9
-Requires: dplyr, epiR, ggplot2, magrittr, prettypublisher, purrr, rbi,
-    rbi.helpers, rmarkdown, scales, stringr, tibble, tidyr
-GithubRepo: ModelTBBCGEngland
-GithubUsername: seabbs
-GithubRef: master
-GithubSha1: 00c5a2ab0d27e62924054b08bf21df3ab6e97dc0
-RemoteHost: api.github.com
-RemoteRepo: ModelTBBCGEngland
-RemoteUsername: seabbs
-RemoteSha: 00c5a2ab0d27e62924054b08bf21df3ab6e97dc0
-
 Package: R6
 Source: CRAN
 Version: 2.4.0
@@ -592,34 +577,6 @@ Source: CRAN
 Version: 0.3.2
 Hash: d7bb7f62bb3af2d6510f50cb7190a060
 Requires: magrittr, rlang
-
-Package: rbi
-Source: github
-Version: 0.10.1
-Hash: a5628c551f7a6859f3104741a851f997
-Requires: data.table, ncdf4, processx, reshape2
-GithubRepo: rbi
-GithubUsername: sbfnk
-GithubRef: master
-GithubSha1: b5b3e2763351b5e64869b0069ff51cadfa1e8989
-RemoteHost: api.github.com
-RemoteRepo: rbi
-RemoteUsername: sbfnk
-RemoteSha: b5b3e2763351b5e64869b0069ff51cadfa1e8989
-
-Package: rbi.helpers
-Source: github
-Version: 0.3.0
-Hash: 9c21537dd1e8a30f578ccbd1c5f2fd1d
-Requires: data.table, lubridate, rbi, reshape2
-GithubRepo: rbi.helpers
-GithubUsername: sbfnk
-GithubRef: master
-GithubSha1: e7bc17d5a71e5b11992847f5cc7bdeb88bd01baa
-RemoteHost: api.github.com
-RemoteRepo: rbi.helpers
-RemoteUsername: sbfnk
-RemoteSha: e7bc17d5a71e5b11992847f5cc7bdeb88bd01baa
 
 Package: rcmdcheck
 Source: CRAN

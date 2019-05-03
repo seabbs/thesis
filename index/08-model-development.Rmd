@@ -16,11 +16,23 @@ knitr::opts_chunk$set(echo = FALSE, dpi = 320,
 ## Wordcount: 10220
 ##packages
 library(tidyverse)
-library(ModelTBBCGEngland)
 library(kableExtra)
 library(pander)
 ## Resources path
 resources_path <- file.path("chapters", "model-development")
+
+## Read data: https://github.com/seabbs/ModelTBBCGEngland/data
+load_formated <- function(name) {
+
+  path <- file.path("chapters/model-development/data", paste0(name, ".rda"))
+  
+  load(path, envir = globalenv())
+}
+
+load_formated("disease_params_table")
+load_formated("demographic_params_table")
+load_formated("sources_table")
+load_formated("eff_bcg")
 ```
 
 ## Introduction

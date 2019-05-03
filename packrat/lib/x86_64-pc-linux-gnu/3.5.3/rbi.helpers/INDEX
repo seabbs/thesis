@@ -1,8 +1,0 @@
-DIC                     Compute Deviance Information Criterion (DIC)
-                        for a libbi model
-acceptance_rate         Compute acceptance rate
-adapt_particles         Adapt the number of particles
-adapt_proposal          Adapt the proposal distribution of MCMC using
-                        the covariance of samples
-numeric_to_time         Convert numeric times to actual times or dates
-time_to_numeric         Convert actual times or dates to numeric times
