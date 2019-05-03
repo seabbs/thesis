@@ -82,7 +82,7 @@ saveRDS(miss_ets_post_2008, file = "chapters/tb-epi-england/data/miss_ets_post_2
 date_treatment <- ets %>% 
   filter(startedtreat %in% "Started") %>% 
   count(starttreatdate) %>% 
-  add_count(wt = n) %>% 
+  add_count(wt = n, name = "nn") %>% 
   filter(is.na(starttreatdate)) %>% 
   mutate(per = pretty_percentage(n, nn, 1)) %>% 
   pull(per)
@@ -92,7 +92,7 @@ date_treatment_end <- ets %>%
   filter(startedtreat %in% "Started") %>% 
   filter(overalloutcome %in% "Treatment completed") %>% 
   count(txenddate) %>% 
-  add_count(wt = n) %>% 
+  add_count(wt = n, name = "nn") %>% 
   filter(is.na(txenddate)) %>% 
   mutate(per = pretty_percentage(n, nn, 1)) %>% 
   pull(per)
@@ -108,7 +108,7 @@ date_death_missing <- ets %>%
 tomdeathrelat_missing <- ets %>% 
   filter(overalloutcome == "Died") %>% 
   count(tomdeathrelat) %>% 
-  add_count(wt = n) %>% 
+  add_count(wt = n, name = "nn") %>% 
   mutate(pretty_per = pretty_percentage(n, nn, 1)) %>% 
   filter(is.na(tomdeathrelat)) %>% 
   pull(pretty_per)

@@ -43,7 +43,7 @@ GithubRef: master
 GithubSHA1: c43f2dc20ac036d6cc93ec32bb9b33f9b4399f28
 Author: Sam Abbott [aut, cre] (<https://orcid.org/0000-0001-8057-8037>)
 Maintainer: Sam Abbott <contact@samabbott.co.uk>
-Built: R 3.5.3; ; 2019-05-03 10:45:37 UTC; unix
-InstallAgent: packrat 0.5.0.8
+Built: R 3.5.3; ; 2019-05-03 11:30:42 UTC; unix
+InstallAgent: packrat 0.5.0
 InstallSource: github
 Hash: 3e465be4e12186c1acce7f0c17abc58e

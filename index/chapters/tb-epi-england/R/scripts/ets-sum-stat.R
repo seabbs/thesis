@@ -28,7 +28,7 @@ var_count <- function(df, variable) {
     mutate(!!variable := !!variable %>% 
              forcats::fct_explicit_na()) %>% 
     count(!!variable) %>% 
-    add_count(wt = n) %>% 
+    add_count(wt = n, name = "nn") %>% 
     mutate(per = pretty_percentage(n, nn, 1))
   
 }

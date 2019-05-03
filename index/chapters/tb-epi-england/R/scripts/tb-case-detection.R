@@ -90,7 +90,8 @@ plot_detection_metric <- function(df, metric) {
   ## plot normalised incidence by month
   sum_month_plot <- df_expanded %>% 
     count(floor_date(date, "month"), wt = notifications) %>% 
-    add_count(year(`floor_date(date, "month")`), wt = n) %>% 
+    add_count(year(`floor_date(date, "month")`), 
+              wt = n, name = "nn") %>% 
     mutate(n = n / nn) %>% 
     mutate(month = month(`floor_date(date, "month")`, label = TRUE)) %>% 
     ggplot(aes(x= month, y = n)) +
@@ -105,7 +106,8 @@ plot_detection_metric <- function(df, metric) {
   ## Plot normalised incidencce by day
   sum_day_plot <- df_expanded %>% 
     count(floor_date(date, "day"), wt = notifications) %>% 
-    add_count(floor_date(`floor_date(date, "day")`, "month"), wt = n) %>% 
+    add_count(floor_date(`floor_date(date, "day")`, "month"),
+              wt = n, name = "nn") %>% 
     mutate(n = n / nn) %>% 
     mutate(mday = mday(`floor_date(date, "day")`)) %>% 
     ggplot(aes(x= mday, y = n, group = mday)) +

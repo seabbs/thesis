@@ -2,7 +2,7 @@ Package: packrat
 Type: Package
 Title: A Dependency Management System for Projects and their R Package
         Dependencies
-Version: 0.5.0-8
+Version: 0.5.0
 Author: Kevin Ushey, Jonathan McPherson, Joe Cheng, Aron Atkins, JJ Allaire
 Maintainer: Kevin Ushey <kevin@rstudio.com>
 Description: Manage the R packages your project depends
@@ -15,16 +15,8 @@ URL: https://github.com/rstudio/packrat/
 BugReports: https://github.com/rstudio/packrat/issues
 RoxygenNote: 6.1.1
 Encoding: UTF-8
-RemoteType: github
-RemoteHost: api.github.com
-RemoteRepo: packrat
-RemoteUsername: rstudio
-RemoteRef: master
-RemoteSha: 505f12aa4ef884cc7021719f4f0e4b69a0b93354
-GithubRepo: packrat
-GithubUsername: rstudio
-GithubRef: master
-GithubSHA1: 505f12aa4ef884cc7021719f4f0e4b69a0b93354
 NeedsCompilation: no
-Packaged: 2019-05-03 10:13:42 UTC; root
-Built: R 3.5.3; ; 2019-05-03 10:13:42 UTC; unix
+Packaged: 2018-11-13 23:16:36 UTC; kevin
+Repository: CRAN
+Date/Publication: 2018-11-14 08:40:02 UTC
+Built: R 3.5.3; ; 2019-05-03 11:29:50 UTC; unix

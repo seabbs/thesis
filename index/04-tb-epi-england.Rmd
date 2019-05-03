@@ -48,6 +48,7 @@ In this chapter I explore the epidemiology of TB in England using routine data-s
 ```{r load-ets, messages = FALSE}
 if (regen_results) {
   ets <- readRDS("../data/tbinenglanddataclean/clean_ets_2016.rds")
+
 }
 ```
 

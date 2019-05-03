@@ -20,7 +20,7 @@ GithubUsername: ismayc
 GithubRef: master
 GithubSHA1: 9cab57f62764a1ae91749baeacae20dd392b3519
 Author: Chester Ismay [cre], Nick Solomon [aut]
-Built: R 3.5.3; ; 2019-05-03 10:45:40 UTC; unix
-InstallAgent: packrat 0.5.0.8
+Built: R 3.5.3; ; 2019-05-03 11:30:51 UTC; unix
+InstallAgent: packrat 0.5.0
 InstallSource: github
 Hash: 7c310cd04ccad74ec7bd2f63cd83f2c3

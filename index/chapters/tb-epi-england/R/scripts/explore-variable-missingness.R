@@ -27,7 +27,7 @@ model_var_missing <- function(df, var, confounders, confounder_names) {
   data <- map2_dfr(confounders, confounder_names, ~ group_by(df, .dots = c(.x, var)) %>% 
                     count %>% 
                     group_by(.dots = .x) %>% 
-                    add_count(wt = n) %>% 
+                    add_count(wt = n, name = "nn") %>% 
                     filter_at(.vars = var, all_vars(. == "Missing")) %>% 
                     select(-contains(var)) %>% 
                     drop_na %>% 

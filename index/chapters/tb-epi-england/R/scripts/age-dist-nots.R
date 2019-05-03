@@ -9,7 +9,7 @@ plot_case_age_dist <- ets %>%
   ) %>% 
   drop_na(agegrp2, ukborn, year) %>% 
   count(ukborn, agegrp2, year) %>% 
-  add_count(year, ukborn, wt = n) %>% 
+  add_count(year, ukborn, wt = n, name = "nn") %>% 
   mutate(n = n / nn) %>% 
   mutate(`UK birth status` = ukborn) %>% 
   mutate(Year = factor(year)) %>% 
