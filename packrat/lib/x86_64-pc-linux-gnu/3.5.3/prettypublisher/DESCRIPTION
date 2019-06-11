@@ -25,7 +25,7 @@ GithubRef: master
 GithubSHA1: 4c3350d2a35fa8df16ef4b7ecd3d1293932b3b75
 Author: Sam Abbott [aut, cre]
 Maintainer: Sam Abbott <contact@samabbott.co.uk>
-Built: R 3.5.3; ; 2019-05-03 15:38:20 UTC; unix
+Built: R 3.5.3; ; 2019-05-03 17:27:17 UTC; unix
 InstallAgent: packrat 0.5.0
 InstallSource: github
 Hash: c11ba000b97e19f0339fec55ae961a47

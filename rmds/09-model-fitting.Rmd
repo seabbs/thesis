@@ -55,9 +55,9 @@ In addition to the notification data available via the ETS pulmonary TB notifica
 
 There are three major considerations to account for when developing an observed disease notification model (i.e a reporting model). These are: systematic reporting error over time; systematic changes in reporting error over time; and reporting noise. For the notification data outlined in the previous section there is little evidence to suggest the form that this measurement model should take. For this reason I have assumed that all reporting errors are gaussian and that their are no time variable reporting errors. The reporting model can be then defined as follows,
 
-$$O = \mathcal{N}\left(E_{syst}A, E_{noise}A\right)$$
+$$O = \mathcal{N}\left(E_{\text{syst}}A, E_{\text{noise}}A\right)$$
 
-Where $O$ are the observed notifications, $A$ are the incident cases of disease as forecast by the disease transmission model, $E_{syst}$ is the systematic reporting error, $E_{noise}$ is the reporting noise, and $\mathcal{N}$ represents the gaussian (normal) distribution. The priors for the model are defined in Table \@ref(tab:measurement-model). The prior for systematic reporting error is based on the assumption that cases are less likely to be reported than they are to be over reported. The prior for the reporting noise is an assumption. This observation model was also used for the non-UK born pulmonary cases. 
+Where $O$ are the observed notifications, $A$ are the incident cases of disease as forecast by the disease transmission model, $E_{\text{syst}}$ is the systematic reporting error, $E_{\text{noise}}$ is the reporting noise, and $\mathcal{N}$ represents the gaussian (normal) distribution. The priors for the model are defined in Table \@ref(tab:measurement-model). The prior for systematic reporting error is based on the assumption that cases are less likely to be reported than they are to be over reported. The prior for the reporting noise is an assumption. This observation model was also used for the non-UK born pulmonary cases. 
 
 A potential limitation of this model is that reporting of TB cases is likely to have improved over time. This is especially true of notifications reported prior to the introduction of the ETS in 2000 (see Chapter \@ref(data)). A potential improvement to this model would be to introduce seperate systematic reproting errors for notifications pre and post the introduction of the ETS. However, given that I have only included a single point prior to the introduction to the ETS doing so in this instance would lead to overfitting of these parameters. 
 
@@ -80,16 +80,17 @@ The model outlined in the Chapter \@ref(model-development) has a large number of
 For this reason in the model fitting pipeline outlined here I have only allowed parameters relating to TB transmission, and measurement model parameters, to have their posterior distributions updated by the model fitting pipeline. All other parameters have posterior distributions that exactly match their prior distributions. Parameters that have updated posterior distributions based on the data are,
 
 * Mixing rate between UK born and non-UK born ($M$).
-* Effective contact rate ($c_{eff}$).
-* Historic effective contact rate ($c^{hist}_{eff}$).
-* Half life of the effective contact rate ($c^{hist}_{half}$).
-* Systematic reporting error ($E_{syst}$).
-* Reporting noise ($E_{noise}$).
+* Effective contact rate ($c_{\text{eff}}$).
+* The year that the current effective contact rate was reached ($c^{\text{year}}_{\text{eff}}$).
+* Historic effective contact rate ($c^{\text{hist}}_{\text{eff}}$).
+* Half life of the effective contact rate ($c^{\text{hist}}_{\text{half}}$).
+* Systematic reporting error ($E_{\text{syst}}$).
+* Reporting noise ($E_{\text{noise}}$).
 
 In addition for scenarios with age variable transmission probabilities the following paramters may also be fitted to,
 
-* Transmission probablity modifier for children ($\beta_{child}$).
-* Transmission probablity modifier for older adults ($\beta_{older adults}$).
+* Transmission probablity modifier for children ($\beta_{\text{child}}$).
+* Transmission probablity modifier for older adults ($\beta_{\text{older-adults}}$).
 
 ## Model fitting pipeline {#fitting-pipeline}
 
