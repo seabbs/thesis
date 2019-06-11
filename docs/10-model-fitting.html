@@ -381,8 +381,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="observational-model" class="section level3">
 <h3><span class="header-section-number">10.2.2</span> Observational model</h3>
 <p>There are three major considerations to account for when developing an observed disease notification model (i.e a reporting model). These are: systematic reporting error over time; systematic changes in reporting error over time; and reporting noise. For the notification data outlined in the previous section there is little evidence to suggest the form that this measurement model should take. For this reason I have assumed that all reporting errors are gaussian and that their are no time variable reporting errors. The reporting model can be then defined as follows,</p>
-<p><span class="math display">\[O = \mathcal{N}\left(E_{syst}A, E_{noise}A\right)\]</span></p>
-<p>Where <span class="math inline">\(O\)</span> are the observed notifications, <span class="math inline">\(A\)</span> are the incident cases of disease as forecast by the disease transmission model, <span class="math inline">\(E_{syst}\)</span> is the systematic reporting error, <span class="math inline">\(E_{noise}\)</span> is the reporting noise, and <span class="math inline">\(\mathcal{N}\)</span> represents the gaussian (normal) distribution. The priors for the model are defined in Table <a href="10-model-fitting.html#tab:measurement-model">10.1</a>. The prior for systematic reporting error is based on the assumption that cases are less likely to be reported than they are to be over reported. The prior for the reporting noise is an assumption. This observation model was also used for the non-UK born pulmonary cases.</p>
+<p><span class="math display">\[O = \mathcal{N}\left(E_{\text{syst}}A, E_{\text{noise}}A\right)\]</span></p>
+<p>Where <span class="math inline">\(O\)</span> are the observed notifications, <span class="math inline">\(A\)</span> are the incident cases of disease as forecast by the disease transmission model, <span class="math inline">\(E_{\text{syst}}\)</span> is the systematic reporting error, <span class="math inline">\(E_{\text{noise}}\)</span> is the reporting noise, and <span class="math inline">\(\mathcal{N}\)</span> represents the gaussian (normal) distribution. The priors for the model are defined in Table <a href="10-model-fitting.html#tab:measurement-model">10.1</a>. The prior for systematic reporting error is based on the assumption that cases are less likely to be reported than they are to be over reported. The prior for the reporting noise is an assumption. This observation model was also used for the non-UK born pulmonary cases.</p>
 <p>A potential limitation of this model is that reporting of TB cases is likely to have improved over time. This is especially true of notifications reported prior to the introduction of the ETS in 2000 (see Chapter <a href="4-data.html#data">4</a>). A potential improvement to this model would be to introduce seperate systematic reproting errors for notifications pre and post the introduction of the ETS. However, given that I have only included a single point prior to the introduction to the ETS doing so in this instance would lead to overfitting of these parameters.</p>
 <table class="table" style="font-size: 8px; margin-left: auto; margin-right: auto;">
 <caption style="font-size: initial !important;">
@@ -460,16 +460,17 @@ Assumption
 <p>For this reason in the model fitting pipeline outlined here I have only allowed parameters relating to TB transmission, and measurement model parameters, to have their posterior distributions updated by the model fitting pipeline. All other parameters have posterior distributions that exactly match their prior distributions. Parameters that have updated posterior distributions based on the data are,</p>
 <ul>
 <li>Mixing rate between UK born and non-UK born (<span class="math inline">\(M\)</span>).</li>
-<li>Effective contact rate (<span class="math inline">\(c_{eff}\)</span>).</li>
-<li>Historic effective contact rate (<span class="math inline">\(c^{hist}_{eff}\)</span>).</li>
-<li>Half life of the effective contact rate (<span class="math inline">\(c^{hist}_{half}\)</span>).</li>
-<li>Systematic reporting error (<span class="math inline">\(E_{syst}\)</span>).</li>
-<li>Reporting noise (<span class="math inline">\(E_{noise}\)</span>).</li>
+<li>Effective contact rate (<span class="math inline">\(c_{\text{eff}}\)</span>).</li>
+<li>The year that the current effective contact rate was reached (<span class="math inline">\(c^{\text{year}}_{\text{eff}}\)</span>).</li>
+<li>Historic effective contact rate (<span class="math inline">\(c^{\text{hist}}_{\text{eff}}\)</span>).</li>
+<li>Half life of the effective contact rate (<span class="math inline">\(c^{\text{hist}}_{\text{half}}\)</span>).</li>
+<li>Systematic reporting error (<span class="math inline">\(E_{\text{syst}}\)</span>).</li>
+<li>Reporting noise (<span class="math inline">\(E_{\text{noise}}\)</span>).</li>
 </ul>
 <p>In addition for scenarios with age variable transmission probabilities the following paramters may also be fitted to,</p>
 <ul>
-<li>Transmission probablity modifier for children (<span class="math inline">\(\beta_{child}\)</span>).</li>
-<li>Transmission probablity modifier for older adults (<span class="math inline">\(\beta_{older adults}\)</span>).</li>
+<li>Transmission probablity modifier for children (<span class="math inline">\(\beta_{\text{child}}\)</span>).</li>
+<li>Transmission probablity modifier for older adults (<span class="math inline">\(\beta_{\text{older-adults}}\)</span>).</li>
 </ul>
 </div>
 </div>
