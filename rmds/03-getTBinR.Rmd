@@ -16,7 +16,7 @@ knitr::opts_chunk$set(echo = TRUE, dpi = 320, cache = TRUE,
 ##packages
 ## Install via 
 ## CRAN: install.packages("getTBinR")
-## Dev Version:: devtools::install_github("seabbs/getTBinR")
+## Dev Version:: devtools::install_github("seabbs/getTBinR", update = TRUE)
 library(getTBinR)
 library(tidyverse)
 ## Resources path
