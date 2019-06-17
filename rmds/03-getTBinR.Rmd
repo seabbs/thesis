@@ -31,7 +31,7 @@ Developing tools for rapidly accessing and exploring data sets benefits the publ
 
 The data sourced by `getBTinR` is collected by the WHO, via member governments, and used to compile the yearly global TB report [@WHO:2018]. Data collection encompasses TB incidence, TB mortality rates, the age distribution of TB cases, the proportion of drug resistant cases, case detection rates, and treatment rates. For a complete description of the data and data collection process, see [@WHO:2018]. These data are used by the WHO, governmental organisations and researchers to summarise country level TB epidemiology, as well as the wider global and regional picture.
 
-The `getTBinR` package facilitates downloading the most up-to-date version of multiple TB relevant data sources from the WHO, along with the accompanying data dictionaries. It also contains functions to allow easy exploration of the data via searching data dictionaries, summarising key metrics on a regional and global level, and visualising the data in a variety of highly customisable ways. In addition, it provides both a dashboard and an automated country level report that enables the global, regional, and country level picture to be quickly summarised. An example of a potential use of the package is to explore estimates of the TB case fatality ratio [@Abbott:2018]. In a few lines of code, using only built in package tooling, large regional differences can be discovered. Further insights can then be found by linking to other publicly available data sets or using a model based analysis. See https://www.samabbott.co.uk/getTBinR/ for documentation. The remainder of this chapter outlines the key functionality of `getTBinR v0.5.7` and summarises the current impact.
+The `getTBinR` package facilitates downloading the most up-to-date version of multiple TB relevant data sources from the WHO, along with the accompanying data dictionaries. It also contains functions to allow easy exploration of the data via searching data dictionaries, summarising key metrics on a regional and global level, and visualising the data in a variety of highly customisable ways. In addition, it provides both a dashboard and an automated country level report that enables the global, regional, and country level picture to be quickly summarised. An example of a potential use of the package is to explore estimates of the TB case fatality ratio [@Abbott:2018]. In a few lines of code, using only built in package tooling, large regional differences can be discovered. Further insights can then be found by linking to other publicly available data sets or using a model based analysis. See https://www.samabbott.co.uk/getTBinR/ for documentation. The remainder of this chapter outlines the key functionality of `getTBinR 0.6.1` and summarises the current impact.
 
 ## Installation
 
@@ -50,9 +50,9 @@ devtools::install_github("seabbs/getTBinR")
 
 ## Data extraction and variable look-up
 
-`getTBinR` provides a single user facing function for data extraction, `get_tb_burden`. This function downloads multiple data sets from the WHO, cleans variables names where required, and finally joins all data sets together. To reduce unnecessary downloads, and improve performance, downloads are cached automatically. `get_tb_burden` is called by all other package functions allowing for a seamless user experience. `get_data_dict` has similar functionality to `get_tb_burden` but extracts data dictionaries rather than the underlying data. It is called by the majority of the package functions in order to provide intelligent labels.
+`getTBinR` provides a single user facing function for data extraction, `get_tb_burden`. This function downloads multiple data sets from the WHO, cleans variables names where required, and finally joins all data sets together. On top of the core datasets provided by default, `getTBinR` also supports importing multiple other datasets. These include data on latent TB, HIV surveillance, intervention budgets, and outcomes (see `?additional_datasets` for a full list of available datasets). To reduce unnecessary downloads, and improve performance, downloads are cached automatically. `get_tb_burden` is called by all other package functions allowing for a seamless user experience. `get_data_dict` has similar functionality to `get_tb_burden` but extracts data dictionaries rather than the underlying data. It is called by the majority of the package functions in order to provide intelligent labels.
 
-To improve the user experience, and to facilitate intelligent labeling, `getTBinR` provides a search function for the data dictionary (`search_data_dict`). This function is able to search, using fuzzy matching, for variables, variable descriptions, and key phrases. The code below gives an example search for `country` and `e_inc_100k` (TB incidence rate) variables, along with an accompanying search for variables referencing mortality.
+To improve the user experience, and to facilitate intelligent labeling, `getTBinR` provides a search function for the data dictionary (`search_data_dict`). This function is able to search, using fuzzy matching, for variables, variable descriptions, key phrases, and datasets. The code below gives an example search for `country` and `e_inc_100k` (TB incidence rate) variables, along with an accompanying search for variables referencing mortality.
 
 ```{r search-data-dict, echo = TRUE}
 search_data_dict(var = c("country","e_inc_100k"),
@@ -135,7 +135,7 @@ knitr::include_graphics(file.path(resources_path, "img", "ExploreGlobalTB.png"))
 
 ## Country report
 
-An automated country level report has also been built into `getTBinR`. This summarises key TB metrics and provides regional and global rankings. The most commonly required plots are also produced, including the trend in TB incidence rates, proportion of cases that lead to death, and the proportion of cases with MDR TB. The report can be generated with the following code,
+An automated country level report has also been built into `getTBinR`. This summarises key TB metrics and provides regional and global rankings. The most commonly required plots are also produced, including the trend in TB incidence rates, proportion of cases that lead to death, and the proportion of cases with MDR-TB. The report can be generated with the following code,
 
 ```{r, eval = FALSE, echo = TRUE}
 ## Code saves report into your current working directory
@@ -159,6 +159,6 @@ knitr::include_graphics(file.path(resources_path, "img", "ExampleCountryReport.p
  
  * I have outlined the need for data access packages in general - more specifically explaining the purpose of `getTBinR`, detailing the package functionality and outlining the package infrastructure used.
  
- * As of the 1st of February 2019, `getTBinR` has been released on CRAN for over a year. It has been downloaded over 7000 times, has no outstanding issues, and has received multiple updates greatly expanding the functionality available. The standalone dashboard hosted online (http://www.seabbs.co.uk/shiny/ExploreGlobalTB/) has had over 2000 unique users. 
+ * As of the 1st of July 2019, `getTBinR` has been released on CRAN for over a year. It has been downloaded over 9000 times, has no outstanding bug-related issues, and has received multiple updates greatly expanding the functionality available. The standalone dashboard hosted online (http://www.seabbs.co.uk/shiny/ExploreGlobalTB/) has had over 3000 unique users. 
 
 
