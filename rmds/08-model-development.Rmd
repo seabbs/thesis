@@ -106,13 +106,13 @@ The model includes the following compartments: Susceptible ($S$), high risk late
 
 #### Demographic model
 
-The model is stratified into 5 year age groups from 0 to 49, with a single age group from 50-69, and from 70 to 89. 5 year age groups are most commonly used in the literature when age stratifying TB and BCG parameters. Using 5 year age groups in the model presented here allows for this data to be utilised to its maximum potential. Older adults were grouped into larger age groups as they are thought to be responsible for a small amount of TB transmission and because fine scale BCG mechanisms do not need to be modelled in these age groups. Adults aged 90+ were not modeled due to large amounts of uncertainty in the demographic data and because cases in these population represent a small fraction of total TB cases (see Chapter \@ref(data)). The number of births in a given year is incorporated as a time varying parameter. The natural mortality rate is also allowed to vary with time and is stratified by age. Immigration and emigration were not included in the demographic model as reliable age stratified data was unavailable and it is unlikely that either immigration or emigration of the UK born population is a significant driver of overall population size, or structure.
+The model is stratified into 11 age groups with 5 year age groups from 0 to 49, a single age group from 50-69, and a single age group from 70 to 89. Older adults were grouped into larger age groups as they are thought to be responsible for a small amount of TB transmission and because fine scale BCG mechanisms do not need to be modelled in these age groups. Adults aged 90+ were not modeled due to large amounts of uncertainty in the demographic data and because cases in these population represent a small fraction of total TB cases (see Chapter \@ref(data)). The number of births in a given year is incorporated as a time varying parameter. The natural mortality rate is also allowed to vary with time and is stratified by age. Immigration and emigration were not included in the demographic model as reliable age stratified data was unavailable and it is unlikely that either immigration or emigration of the UK born population is a significant driver of overall population size, or structure.
 
 #### Vaccination model
 
 The vaccination model is nested into the demographic process model and therefore vaccination is possible upon entry to each modeled age group. The target age group can be varied to represent changing BCG vaccination policy. The vaccinated population is then modeled explicitly throughout all disease compartments. The primary action of the BCG vaccine is to prevent the transition from latent to active disease, this is included for both high and low risk latent cases. Waning vaccination effectiveness has been included by stratifying vaccine effectiveness by age group. The partial protection offered by BCG vaccination against initial infection has been included as a negative modifier on the protection from latent to active disease and as a modifier on the proportion of cases that are initially infected. This allows estimates of the effectiveness of BCG vaccination at preventing active TB disease in the susceptible population to be used, as these estimates have the most robust data sources. It is assumed that latently infected individuals do not gain additional protection from re-infection from the BCG vaccine. The BCG vaccine has been modeled as being partially protective for all individuals rather than as a "take" vaccine (i.e all or nothing protection). This assumption simplifies the model and will not impact the dynamics of TB transmission, assuming that protected and unprotected BCG vaccinated individuals obey the mass action assumption (See Chapter \@ref(introduction) and [@Anderson1991]).
 
-```{r model-flow-diag, out.width = "400px", fig.cap = "Flow diagram for the dynamic Tuberculosis (TB) disease model with demographics and vaccination described in the text. The TB model contains the following compartments; Susceptible ($S$), high risk latent ($H$), low risk latent ($L$), active cases with pulmonary TB ($P$), active TB cases with extra-pulmonary TB only ($E$), pulmonary cases on treatment ($T_P$), and extra-pulmonary cases on treatment ($T_E$). The vaccinated ($v$) and unvaccinated ($u$) populations are represented by $k$, such that $k = u,v$. Age stratification is represented by $a$ (where $a = 1, 2, ...,15$) in the disease model and the $0,\ 1,\ 2,\ 3$ subscripts in the demographic model. Five year age groups are modelled (i.e $0-4$, $5-9$, $10-14$, ...) up to 49 years old, with a single age group for those aged 50-69 years old and those aged 70-89 years old. Individuals aged $90+$ are not explicitly modelled. In the demographic and vaccination model the A compartment represents the demographic processes modelled in all population compartments except for the vacinated and unvaccinated susceptible populations. Solid arrows represent transition rates within the modelled populations and dashed arrows represent transition rates into, or out of the modelled populations (i.e birth and death processes)."}
+```{r model-flow-diag, out.width = "400px", fig.cap = "Flow diagram for the dynamic Tuberculosis (TB) disease model with demographics and vaccination described in the text. The TB model contains the following compartments; Susceptible ($S$), high risk latent ($H$), low risk latent ($L$), active cases with pulmonary TB ($P$), active TB cases with extra-pulmonary TB only ($E$), pulmonary cases on treatment ($T_P$), and extra-pulmonary cases on treatment ($T_E$). The vaccinated ($v$) and unvaccinated ($u$) populations are represented by $k$, such that $k = u,v$. Age stratification is represented by $a$ (where $a = 1, 2, ...,11$) in the disease model and the $0,\ 1,\ 2,\ 3$ subscripts in the demographic model. Five year age groups are modelled (i.e $0-4$, $5-9$, $10-14$, ...) up to 49 years old, with a single age group for those aged 50-69 years old and those aged 70-89 years old. Individuals aged $90+$ are not explicitly modelled. In the demographic and vaccination model the A compartment represents the demographic processes modelled in all population compartments except for the vacinated and unvaccinated susceptible populations. Solid arrows represent transition rates within the modelled populations and dashed arrows represent transition rates into, or out of the modelled populations (i.e birth and death processes)."}
 knitr::include_graphics(file.path(resources_path, "resources", "model_diagrams", "tb_model_flow.png"))
 ```
 
@@ -138,31 +138,31 @@ The disease model ($C^d$) is then defined as,
 \end{equation}
 
 \begin{equation}
-\frac{dL^{kd}_{a}}{dt} =  \kappa_a H^{k}_{a} - (1 - \delta)\lambda_a L^k_{a} - (1 - \alpha^k_a) \epsilon^a_L L^{k}_{a} + \phi_a^P T^{k}_{Pa} + \phi_a^E T^{k}_{Ea}
+\frac{dL^{kd}_{a}}{dt} =  \kappa_a H^{k}_{a} - (1 - \delta)\lambda_a L^k_{a} - (1 - \alpha^k_a) \epsilon^a_L L^{k}_{a} + \phi_a (T^{k}_{Pa} + T^{k}_{Ea})
   (\#eq:low-model)
 \end{equation}
 
 \begin{equation}
-\frac{dP^{kd}_a}{dt} =  \Upsilon_a(1 - \alpha^k_a)(\epsilon^a_HH^{k}_{a}  + \epsilon^a_LL^{k}_{a}) + \zeta^P_a T^{k}_{Pa} - \nu_a^P P^{k}_a - \mu^P_a P^{k}_a
+\frac{dP^{kd}_a}{dt} =  \Upsilon_a(1 - \alpha^k_a)(\epsilon^a_HH^{k}_{a}  + \epsilon^a_LL^{k}_{a}) + \zeta_a T^{k}_{Pa} - \nu_a^P P^{k}_a - \mu^P_a P^{k}_a
   (\#eq:pul-model)
 \end{equation}
 
 \begin{equation}
-\frac{dE^{kd}_a}{dt} =  (1 - \Upsilon_a)(1 - \alpha^k_a)(\epsilon^a_HH^{k}_{a}  + \epsilon^a_LL^{k}_{a}) + \zeta^E_a T^{k}_a - \nu_a^E E^{k}_a - \mu^E_a E^{k}_a
+\frac{dE^{kd}_a}{dt} =  (1 - \Upsilon_a)(1 - \alpha^k_a)(\epsilon^a_HH^{k}_{a}  + \epsilon^a_LL^{k}_{a}) + \zeta_a T^{k}_a - \nu_a^E E^{k}_a - \mu^E_a E^{k}_a
   (\#eq:extra-pul-model)
 \end{equation}
 
 \begin{equation}
-\frac{dT^{kd}_{Pa}}{dt} = \nu_a^P P^{k}_a - \zeta^P_a T^{k}_{Pa} - \mu^P_a T^{k}_{Pa} - \phi_a^P T^{k}_{Pa}
+\frac{dT^{kd}_{Pa}}{dt} = \nu_a^P P^{k}_a - \zeta_a T^{k}_{Pa} - \mu^P_a T^{k}_{Pa} - \phi_a T^{k}_{Pa}
   (\#eq:pul-treat-model)
 \end{equation}
 
 \begin{equation}
-\frac{dT^{kd}_{Ea}}{dt} = \nu_a^E E^{k}_a - \zeta^E_a T^{k}_{Ea} - \mu^E_a T^{k}_{Ea} - \phi_a^E T^{k}_{Ea}
+\frac{dT^{kd}_{Ea}}{dt} = \nu_a^E E^{k}_a - \zeta_a T^{k}_{Ea} - \mu^E_a T^{k}_{Ea} - \phi_a T^{k}_{Ea}
   (\#eq:extra-pul-treat-model)
 \end{equation}
 
-Where the unvaccinated ($u$) and vaccinated ($v$) populations are represented by $k = u,v$ and age groups are represented by $a=0,1,2,3, ... 10$ for 0-4 year olds ($a=0$), 5-9 year olds ($a=1$), up to 45-49 year olds ($a=10$). 50-69 year olds are modelled as a single group ($a=11$), as are 70-89 year olds ($a=12$). Individuals $90+$ are excluded from the model. The disease models parameters are defined as follows: $\epsilon_a$ is the age-specific rate of activation from each latent population, $\kappa_a$ is the age-specific rate of transition into the low risk latent population, $\nu_a$ is the rate of starting treatment, $\delta$ is the protection from re-infection conferred by prior latent infection, $\Upsilon_a$ is the age-specific proportion of cases that develop pulmonary TB, with or without extra-pulmonary TB, $\mu^{P,E}_a$ is the age-specific mortality from active pulmonary ($P$) and extra-pulmonary ($E$) TB, and $\alpha_a$ is the age-specific effectiveness of the BCG vaccine at preventing active TB disease. In the unvaccinated population $\alpha = 0$.  $\chi^k_a$ is the age-specific protection inferred due to vaccination from initial infection, in the unvaccinated population it is defined to be $0$.
+Where the unvaccinated ($u$) and vaccinated ($v$) populations are represented by $k = u,v$ and age groups are represented by $a=0,1,2,3, ... 11$. The disease model parameters are defined as follows: $\lambda_a S^k_a$ is the force of infection; $\epsilon_a$ is the rate of activation from each latent population; $\kappa_a$ is the rate of transition into the low risk latent population; $\nu_a$ is the rate of starting treatment; $\delta$ is the protection from re-infection conferred by prior latent infection; $\Upsilon_a$ is the proportion of cases that develop pulmonary TB, with or without extra-pulmonary TB; $\mu^{P,E}_a$ is the mortality from active pulmonary ($P$) and extra-pulmonary ($E$) TB; $\zeta_a$ is the rate of treatment failure; $\phi_a$ is the rate of successful treatment; $\alpha_a$ is the age-specific effectiveness of the BCG vaccine at preventing active TB disease; and $\chi^k_a$ is the age-specific protection inferred due to vaccination from initial infection. In the unvaccinated population $\alpha = 0$ and $\chi = 0$. Parameters with an $a$ subscript, or superscript, are age-stratified.
 
 The demographic and vaccination model ($C^p$) is then defined as ($A = H,\ L,\ P,\ E,\ T_P,\ T_E$),
 
@@ -186,7 +186,6 @@ Where $\omega(t)$ is the time varying number of births, $\gamma_a$ is the age-sp
 The signum function used above is defined as follows;
 \begin{equation}
 sgn(x) := \begin{cases}
--1 & \text{if } x < 0, \\
 0 & \text{if } x = 0, \\
 1 & \text{if } x > 0. \end{cases}
   (\#eq:signum)
@@ -194,7 +193,7 @@ sgn(x) := \begin{cases}
 
 ### Force of infection
 
-The age-specific (a), and vaccination dependent (k), force of infection ($\lambda^k_a$) is defined as follows,
+The force of infection ($\lambda^k_a$) is the rate at which susceptible individuals are infected. Here it is defined using the law of mass action which assumes that infectious cases and susceptible cases randomly mix with the rate of mixing being determined by the fraction of the population that are susceptible, the transmission probability, and the contact rate.[@Anderson1991; @Keeling2007] It is age stratified ($a$, $A = \text{max}(a)$) by contact rates, by the proportion of cases that are smear positive in a given age group, by the transmission probability of each case, and by the rate of starting treatment. Stratification by vaccine status ($k$) is introduced by the number of current pulmonary TB cases. It can be defined as follows,
 
 \begin{equation}
 \lambda^k_a = \frac{\beta_a}{N} \sum\limits_{i=1}^{A} \rho_i C_{ai}(\frac{M\iota_i}{\nu_a^P} + \sum\limits_{j = u,v}P^j_i)
@@ -202,7 +201,7 @@ The age-specific (a), and vaccination dependent (k), force of infection ($\lambd
 \end{equation}
 
 
-Where $\iota_a$ is the age stratified number of non-UK born pulmonary cases notified in a given year, $\rho_a$ is the age-specific proportion of cases that are smear positive, $\nu$ is the rate of starting treatment for active TB, $C_{ai}$ is the age stratified contact matrix, and $M$ is the mixing rate between the UK born and non-UK born population. The force of infection is age stratified by contact rates and by the proportion of cases that are smear positive in a given age group.
+Where $\iota_a$ is the age stratified number of non-UK born pulmonary cases notified in a given year, $P^{u,v}_a$ is the number of vaccinated, and unvaccinated, pulmonary TB cases, $\rho_a$ is the age-specific proportion of cases that are smear positive, $\nu^P_a$ is the rate of starting treatment for active pulmonary TB, $C_{ai}$ is the age-stratified contact matrix (Section \@ref(contact-matrix)), $\beta_a$ is the age-stratified transmission probability, and $M$ is the mixing rate between the UK born and non-UK born population. 
 
 ## Parameterisation and data synthesis
 
@@ -212,7 +211,7 @@ Parameters distributions were either estimated from the available data or assume
 
 #### Enhanced TB Surveillance System
 
-Model parameters were estimated using the ETS system where possible, with data on all notified cases in England from Jan 1, 2000 to Dec 31, 2015. The ETS is a robust national surveillance network that collects collects demographic, clinical, and microbiological data; a yearly report is published detailing data collection, cleaning, and trends in TB incidence (Chapter \@ref(data)).[@PHE2017]
+Model parameters were estimated using the ETS system where possible, with data on all notified cases in England from Jan 1, 2000 to Dec 31, 2015. The ETS is a robust national surveillance network that collects demographic, clinical, and microbiological data; a yearly report is published detailing data collection, cleaning, and trends in TB incidence (Chapter \@ref(data)).[@PHE2017]
 
 #### Labour Force Survey
 
@@ -268,7 +267,8 @@ sources_table %>%
 
 ##### Non-UK born pulmonary cases
 
-Non-UK born pulmonary cases were estimated using the ETS (see Chapter \@ref(data)) for each age-group included in the model from 2000 until 2015. Prior to 2000, incidence in the non-UK born are unavailable and the relationship to transmission in UK-born cases is unknown. To account for this, importation of non-UK born cases in the model begins in 1960 and then is scaled up through to 2000. As the form of this relationship is unknown the following functional form was used to scale cases based on those observed in 2000,
+
+Non-UK born pulmonary cases was estimated using the ETS (see Chapter \@ref(data)) for each age-group included in the model from 2000 until 2015. Prior to 2000, incidence in the non-UK born are unavailable and the relationship to transmission in UK-born cases is unknown. To account for this, importation of non-UK born cases in the model begins in 1960 and then is scaled up through to 2000. As the form of this relationship is unknown the following functional form was used to scale cases based on those observed in 2000,
 
 \begin{equation}
 \text{Non UK-born scaling} = \frac{e^{\left(\frac{t - 1960}{\text{ln}(2) * \iota_{\text{scale}}}\right)} - 1}{e^{\left(\frac{2000 - 1960}{\text{ln}(2) * \iota_{\text{scale}}}\right)} - 1}
@@ -278,6 +278,7 @@ Non-UK born pulmonary cases were estimated using the ETS (see Chapter \@ref(data
 This functional form was chosen as it is flexible enough to represent exponential growth, log constrained growth and near linear growth depending on the choice of $\iota_{\text{scale}}$. This allows the scale up of non-UK born cases to be fitted to the available data during the model fitting stage (Chapter \@ref(model-fitting)). To incorperate the uncertainty in the number of observed non-UK born cases a normal distribution was used, with the standard deviation and mean determined using parameters from the observation model (Chapter \@ref(model-fitting)).
 
 ##### Probability of transmission
+
 
 The probability of transmission can be defined as the probability that a single contact between an infectious active TB case and a susceptible individual will lead to TB infection. The probability of transmission ($\beta_a$) can be redefined in terms of effective contacts ($C_{\text{eff}}$), historic effective contacts ($C^{\text{hist}}_{\text{eff}}$), actual average yearly total contacts ($C_{\text{actual}}$), the average period of time infectious ($\frac{1}{\nu_{\text{avg}}^{P}}$), and the average mortality rate ($\mu_{\text{age}}$) as follows,
 
@@ -308,6 +309,7 @@ Vynnycky et al. found that the effective contact rate (i.e the transmission prob
 
 ##### Rate of recovery from active disease
 
+
 The rate of recovery from active TB disease was estimated as the reciprocal of the time with active, untreated, disease from the ETS with UK born cases from 2000 until 2012. Cases with a period of time symptomatic that was less than 0 days were removed as these are likely to be spurious. Figure \@ref(fig:tb-time-treat) indicates that the distribution of time to treatment differs between children and adults and by pulmonary/extra-pulmonary TB status. There was little evidence that time to treatment differed between adults and older adults. A normal distribution was used for each age group, truncated to be greater than 0 months. Prior to 1952, and the introduction of isoniazid, I have assumed that the time to recovery from active TB disease is 2 years, representing natural recovery or other removal from the infectious population. From 1952 to 1990 the time with active TB is assumed to decrease linearly. 
 
 ```{r tb-time-treat, fig.cap = "Distribution of time to treatment (days) from the date of reported symptom onset until the date started treatment for the UK born, stratified by age group and pulmonary/extra-pulmonary TB status in the Enhanced Tuberculosis Surveillance system for notifications between 2000 and 2012. Age is stratified into three groups; children (0-14), adults (15-59) older adults (15-59). The time from symptom onset to starting treatment is shorter for cases with pulmonary TB cases across age groups, with younger cases starting treatment more rapidly than older cases."}
@@ -315,6 +317,7 @@ knitr::include_graphics(file.path(resources_path, "resources", "figure", "time_t
 ```
 
 ##### Rate of successful treatment
+
 
 The rate successful treatment was estimated as the reciprocal of the period of time on treatment using the ETS with UK born cases between 2000 and 2012. Cases with a treatment time less than 1 month were removed as TB treatment is standardised and should take at least several months. There was little evidence that time to treatment completion differed between pulmonary and extra-pulmonary TB cases but there was some evidence that older TB cases were more likely to be on treatment for longer than younger cases (Figure \@ref(fig:tb-treat-time-succ)). A normal distribution was used for children, adults and older adults, with each truncated to be greater than 4 months. This truncation was introduced as a faster treatment time than this was considered implausible.
 
@@ -325,15 +328,18 @@ knitr::include_graphics(file.path(resources_path, "resources", "figure", "time_c
 
 ##### Age-stratified contact matrix {#contact-matrix}
 
+
 The previously defined age-stratified contact matrix has 72 free parameters, assuming that the contact matrix is symmetric. Whilst these parameters could conceivably be fitted to the available age-stratified incidence data it is likely that doing so would result in over-fitting and potentially obscure other age related differences. An alternative is to specify the contact matrix using available data sources. This is commonly achieved using survey data on the number of self reported contacts between individuals.[@Mossong2008] 
 
 ###### The POLYMOD contact survey
+
 
 The POLYMOD survey, which was conducted between May 2005 and September 2006, asked 7,290 participants across eight European countries (Belgium, Germany, Finland, Great Britain, Italy, Luxembourg, the Netherlands, and Poland) about the number of unique contacts on a randomly assigned day of the week. Survey participants were recruited to be broadly representative of the population in terms of geographical spread, age, and sex. Children and adolescents were deliberately over-sampled due to the important role they typically play in the transmission of infectious diseases. Contacts were defined as either physical (skin-to-skin contact) or as nonphysical (two-way conversation of 3 or more words in the presence of an individual but without physical contact). The age and gender of contacts was recorded as was the duration and location of the contact event. The locations were stratified into: home; school; work; transport; leisure; and other. In total 97,904 contacts were recorded, with both physical and nonphysical contacts showing large amounts of assortativity by age.
 
 In the model presented here unstratified social (nonphysical) contacts are used to generate an age-stratified contact matrix. There are several reasons for this. Firstly, stratifying by home, school, work, transport or leisure contacts whilst initially appealing as doing so may lead to insights as to the nature of the type of contacts required for TB transmission may also lead to over-fitting without a strong apriori hypothesis. In high and medium burden countries it has been shown that within household transmission is not a major driver of overall transmission.[@Mathema2018] Until recently it has been thought that household transmission plays a more dominated role in low burden settings, such as England, which would indicate that home contacts should be considered. However, it has recently been found that only 7.7% (1849/24,060) of cases in England between 2010 and 2012 lived in a household with another case.[@Lalor2017] The same study estimated that overall only 3.9% of cases were due to recent household transmission, and there was no evidence that cases within households were more likely to transmit within the household than outside of it. There is little evidence to suggest that school, work, transport or leisure contacts are more likely to transmit TB in England than any other contact. The choice of contact type is disease dependent; for TB it is likely that closer contacts result in a greater likelihood of transmission.[@Mathema2018] Unfortunately the physical contacts recorded in the POLYMOD survey represent a poor proxy to closeness of contacts as physical contact can be a little as a handshake and because TB is a respiratory disease physical contact is not required. For this reason physical contacts have not been further evaluated. Instead, the uncertainty in age-dependent transmission rates has been explored by allowing for scenarios in which the transmission probability varies between children and adults, between children, adults and older adults and in which it does not vary.
 
 ###### Generation of the symmetric contact matrix
+
 
 As the POLYMOD contact data was collected using a survey there is likely to be measurement error and missing data for the number of contacts reported and the age that contacts were reported to be. Some participants also recorded contacts with an estimated age range rather than with a point estimate. In addition, as the survey had a relatively low sample size (1,011) in the UK the estimated contact matrices contain considerable uncertainty. These considerations are often not considered in modelling studies but may introduce significant bias. Here the `socialmixr` R package is used to generate 1000 bootstrapped contact matrix samples using the following steps,
 
@@ -369,9 +375,11 @@ knitr::include_graphics(file.path(resources_path, "resources", "figure", "contac
 
 #### Vaccination model parameters
 
+
 An overview of the vacination model parameters can be found in: Table \@ref(tab:disease-model) for parameters that impact the natural history of TB; Table  \@ref(tab:demo-model-params) for parameters that impact the population level distribution of BCG vaccination; and Table \@ref(tab:sources-tab) for an overview of the sources used to generate prior distributions. More detail is given, where required, in the following section.
 
 ##### Effectiveness of the BCG vaccine at preventing active TB
+
 
 The effectiveness of the BCG vaccine is usually estimated using it's effectiveness at reducing the incidence of active TB cases in a susceptible population. In the model outlined in this chapter the action of the BCG vaccine has been split into its main effect of reducing the rate of latent TB cases developing active disease and its secondary effect of reducing the likelihood of initial infection. There are few estimates of the effectiveness of the BCG vaccine at preventing active TB in cases that are already latently infected and where these estimates do exist they are not stratified by time since vaccination, or age at vaccination.[@Roy2014] As the overall effectiveness ($\alpha^T_a$) of the BCG vaccine can be estimated from the combined effectiveness at preventing initial infection ($\chi_a$) and then preventing activation in latently infected individuals ($\alpha_a$) using the following equation,
 
@@ -407,6 +415,7 @@ Where $SE$ is the standard error of the logged Risk Ratio. The transformed value
 
 ##### Effectiveness of the BCG vaccine at preventing initial infection
 
+
 Roy et al. published a meta-analysis that estimated the effectiveness of the BCG vaccine at preventing initial infection in children.[@Roy2014] This has been used as the primary source for this parameter, with the assumption being made that the effectiveness is the same in adults as it is in children. This is reasonable to assume as there is little evidence the the overall effectiveness of the BCG vaccines reduces with the age it is given in England. Unfortunately the meta-analysis by Roy et al. did not include an estimate of the effectiveness of the BCG vaccine at preventing initial TB infection stratified by time since vaccination. This is problematic as there is a large amount of evidence that the overall effectiveness of the BCG vaccine wanes with time,[@Abubakar2013; @Mangtani2017] and if the protection from initial infection does not also reduce over time then as overall effectiveness decreases the contribution from the prevention of initial infection will increase. For this reason I have assumed that the protection from initial infection reduces over time with the same functional form as for the overall effectiveness of BCG vaccination. This relation can be formalised using the following equation,
 
 \begin{equation}
@@ -417,6 +426,7 @@ Roy et al. published a meta-analysis that estimated the effectiveness of the BCG
 Where $i$ is the age at vaccination and $j$ is any subsequent age group. 
 
 #### Demographic model parameters
+
 
 The demographic model parameters are outlined in Table \@ref(tab:demo-model-params), additional details are given in the following section. Table \@ref(tab:sources-tab) contains details of the sources used to parameterise the demographic model, again more detail is given in the following section for complex parameters.
 
@@ -434,6 +444,7 @@ kable(caption = "Demographic model parameters, descriptions, prior distributions
 
 ##### Age-stratified population estimates
 
+
 Age-stratified and UK birth stratified population estimates for England were estimated using the Labour Force Survey (Chapter \@ref(data)). Figure \@ref(fig:age-strat-demo) indicates that the age distribution of the UK born population changed over the study period (2000 to 2015), with an increase in those in late middle age and older and a decrease in those in early middle age. The proportion of young adults and young children also increased. This may have impacted TB incidence as young adults are thought to be responsible for the majority of transmission. Data from the 1931 census was also used to estimate the population of England in 1931 stratified into the modeled age groups.
 
 ```{r age-strat-demo, fig.cap = "Distribution of the UK born population of England in 2000, 2004, 2008, and 2012. Age is grouped into 5 year age groups from 0 to 49, from 50-69, and from 70 to 89. Those aged 90+ are excluded due to low quality data. The age groups used here represent those used in the model. The figure indicates that the population has skewed older overall over the last two decades, although the proportion of young children has increased in the last 10 years."}
@@ -442,6 +453,7 @@ knitr::include_graphics(file.path(resources_path, "resources", "figure", "englan
 
 ##### Observed and projected births
 
+
 The number of births is incorporated into the demographic model as a time varying, noisy, parameter ($\omega(t)$). It is parameterised from the data published by the Office for National Statistics (ONS), with the available data covering all years modeled. The ONS publishes the recorded number of births in England each year starting from 1929 through to 2015, with projections avaiable through to 2101 (Figure \@ref(fig:births_england)). As there is some uncertainty as to the number of births in each year I included normally distributed noise with a standard deviation of 5% of annual births.
 
 ```{r births-england, fig.cap = "Estimated and projected live births in England from 1929 until 2101. The red line indicates estimated data and the blue line indicates projected data. Data is sourced from the Office for National Statistics (ONS)."}
@@ -449,6 +461,7 @@ knitr::include_graphics(file.path(resources_path, "resources", "figure", "births
 ```
 
 ##### Age-specific mortality rates
+
 
 The time varying, age-specific, noisy, all-cause mortality rates ($\mu^{\text{all-cause}}_a(t)$) included in the demographic model are sourced from Office for National Statistics (ONS) estimates from 1981 until 2015. For years outside of the available data mortality rates are forecast using an age-stratified exponential model (\@ref(fig:mortality-england). This model was used as it constrains mortality rates above zero and decreases yearly changes in mortality rates over time. To model the uncertainty in the estimate of the annual number of deaths a normally distributed noise term was introduced with a standard deviation of 5%. In order to calculate the all-cause dynamic mortality rate ($\mu^{\text{all-cause}}_a(t)$), excluding deaths from, or related to, TB the following equation is used,
 

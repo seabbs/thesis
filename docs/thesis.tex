@@ -472,18 +472,17 @@ Date: \emph{placeholder}
   \hypertarget{peer-reviewed-papers}{%
   \subsection{Peer reviewed papers}\label{peer-reviewed-papers}}
   \begin{itemize}
-  \tightlist
   \item
     Abbott S. \emph{getTBinR: an R package for accessing and summarising the World Health Organisation Tuberculosis data},
     Journal of Open Source Software, 2019, 4(34), 1260., doi: \url{https://doi.org/10.21105/joss.01260}
+  \item
+    Abbott S, Christensen H, Lalor MK, Zenner D,Campbell C, Ramsay M, Brooks-Pollock E. \emph{Exploring the effects of BCG vaccination in patients diagnosed with tuberculosis: observational study using the Enhanced Tuberculosis Surveillance system}, doi: \url{https://doi.org/10.1101/366476}
   \end{itemize}
   \hypertarget{papers-under-review}{%
   \subsection{Papers under review}\label{papers-under-review}}
   \begin{itemize}
   \item
     Abbott S, Christensen H, Brooks-Pollock E. \emph{Reassessing the evidence for universal school-age Bacillus Calmette Guerin (BCG) vaccination in England and Wales}, doi: \url{https://doi.org/10.1101/567511}
-  \item
-    Abbott S, Christensen H, Lalor MK, Zenner D,Campbell C, Ramsay M, Brooks-Pollock E. \emph{Exploring the effects of BCG vaccination in patients diagnosed with tuberculosis: observational study using the Enhanced Tuberculosis Surveillance system}, doi: \url{https://doi.org/10.1101/366476}
   \item
     Abbott S, Christensen H, Welton NJ, Brooks-Pollock E. \emph{Estimating the effect of the 2005 change in BCG policy in England: A retrospective cohort study}, doi: \url{https://doi.org/10.1101/567511}
   \end{itemize}
@@ -3331,7 +3330,7 @@ Date: \emph{placeholder}
   \hypertarget{demographic-model}{%
   \subsubsection{Demographic model}\label{demographic-model}}
   
-  The model is stratified into 5 year age groups from 0 to 49, with a single age group from 50-69, and from 70 to 89. 5 year age groups are most commonly used in the literature when age stratifying TB and BCG parameters. Using 5 year age groups in the model presented here allows for this data to be utilised to its maximum potential. Older adults were grouped into larger age groups as they are thought to be responsible for a small amount of TB transmission and because fine scale BCG mechanisms do not need to be modelled in these age groups. Adults aged 90+ were not modeled due to large amounts of uncertainty in the demographic data and because cases in these population represent a small fraction of total TB cases (see Chapter \ref{data}). The number of births in a given year is incorporated as a time varying parameter. The natural mortality rate is also allowed to vary with time and is stratified by age. Immigration and emigration were not included in the demographic model as reliable age stratified data was unavailable and it is unlikely that either immigration or emigration of the UK born population is a significant driver of overall population size, or structure.
+  The model is stratified into 11 age groups with 5 year age groups from 0 to 49, a single age group from 50-69, and a single age group from 70 to 89. Older adults were grouped into larger age groups as they are thought to be responsible for a small amount of TB transmission and because fine scale BCG mechanisms do not need to be modelled in these age groups. Adults aged 90+ were not modeled due to large amounts of uncertainty in the demographic data and because cases in these population represent a small fraction of total TB cases (see Chapter \ref{data}). The number of births in a given year is incorporated as a time varying parameter. The natural mortality rate is also allowed to vary with time and is stratified by age. Immigration and emigration were not included in the demographic model as reliable age stratified data was unavailable and it is unlikely that either immigration or emigration of the UK born population is a significant driver of overall population size, or structure.
   
   \hypertarget{vaccination-model}{%
   \subsubsection{Vaccination model}\label{vaccination-model}}
@@ -3343,7 +3342,7 @@ Date: \emph{placeholder}
   
   }
   
-  \caption{Flow diagram for the dynamic Tuberculosis (TB) disease model with demographics and vaccination described in the text. The TB model contains the following compartments; Susceptible ($S$), high risk latent ($H$), low risk latent ($L$), active cases with pulmonary TB ($P$), active TB cases with extra-pulmonary TB only ($E$), pulmonary cases on treatment ($T_P$), and extra-pulmonary cases on treatment ($T_E$). The vaccinated ($v$) and unvaccinated ($u$) populations are represented by $k$, such that $k = u,v$. Age stratification is represented by $a$ (where $a = 1, 2, ...,15$) in the disease model and the $0, 1, 2, 3$ subscripts in the demographic model. Five year age groups are modelled (i.e $0-4$, $5-9$, $10-14$, ...) up to 49 years old, with a single age group for those aged 50-69 years old and those aged 70-89 years old. Individuals aged $90+$ are not explicitly modelled. In the demographic and vaccination model the A compartment represents the demographic processes modelled in all population compartments except for the vacinated and unvaccinated susceptible populations. Solid arrows represent transition rates within the modelled populations and dashed arrows represent transition rates into, or out of the modelled populations (i.e birth and death processes).}\label{fig:model-flow-diag}
+  \caption{Flow diagram for the dynamic Tuberculosis (TB) disease model with demographics and vaccination described in the text. The TB model contains the following compartments; Susceptible ($S$), high risk latent ($H$), low risk latent ($L$), active cases with pulmonary TB ($P$), active TB cases with extra-pulmonary TB only ($E$), pulmonary cases on treatment ($T_P$), and extra-pulmonary cases on treatment ($T_E$). The vaccinated ($v$) and unvaccinated ($u$) populations are represented by $k$, such that $k = u,v$. Age stratification is represented by $a$ (where $a = 1, 2, ...,11$) in the disease model and the $0, 1, 2, 3$ subscripts in the demographic model. Five year age groups are modelled (i.e $0-4$, $5-9$, $10-14$, ...) up to 49 years old, with a single age group for those aged 50-69 years old and those aged 70-89 years old. Individuals aged $90+$ are not explicitly modelled. In the demographic and vaccination model the A compartment represents the demographic processes modelled in all population compartments except for the vacinated and unvaccinated susceptible populations. Solid arrows represent transition rates within the modelled populations and dashed arrows represent transition rates into, or out of the modelled populations (i.e birth and death processes).}\label{fig:model-flow-diag}
   \end{figure}
   \hypertarget{model-equations}{%
   \subsection{Model equations}\label{model-equations}}
@@ -3363,26 +3362,26 @@ Date: \emph{placeholder}
     \label{eq:high-model}
   \end{equation}
   \begin{equation}
-  \frac{dL^{kd}_{a}}{dt} =  \kappa_a H^{k}_{a} - (1 - \delta)\lambda_a L^k_{a} - (1 - \alpha^k_a) \epsilon^a_L L^{k}_{a} + \phi_a^P T^{k}_{Pa} + \phi_a^E T^{k}_{Ea}
+  \frac{dL^{kd}_{a}}{dt} =  \kappa_a H^{k}_{a} - (1 - \delta)\lambda_a L^k_{a} - (1 - \alpha^k_a) \epsilon^a_L L^{k}_{a} + \phi_a (T^{k}_{Pa} + T^{k}_{Ea})
     \label{eq:low-model}
   \end{equation}
   \begin{equation}
-  \frac{dP^{kd}_a}{dt} =  \Upsilon_a(1 - \alpha^k_a)(\epsilon^a_HH^{k}_{a}  + \epsilon^a_LL^{k}_{a}) + \zeta^P_a T^{k}_{Pa} - \nu_a^P P^{k}_a - \mu^P_a P^{k}_a
+  \frac{dP^{kd}_a}{dt} =  \Upsilon_a(1 - \alpha^k_a)(\epsilon^a_HH^{k}_{a}  + \epsilon^a_LL^{k}_{a}) + \zeta_a T^{k}_{Pa} - \nu_a^P P^{k}_a - \mu^P_a P^{k}_a
     \label{eq:pul-model}
   \end{equation}
   \begin{equation}
-  \frac{dE^{kd}_a}{dt} =  (1 - \Upsilon_a)(1 - \alpha^k_a)(\epsilon^a_HH^{k}_{a}  + \epsilon^a_LL^{k}_{a}) + \zeta^E_a T^{k}_a - \nu_a^E E^{k}_a - \mu^E_a E^{k}_a
+  \frac{dE^{kd}_a}{dt} =  (1 - \Upsilon_a)(1 - \alpha^k_a)(\epsilon^a_HH^{k}_{a}  + \epsilon^a_LL^{k}_{a}) + \zeta_a T^{k}_a - \nu_a^E E^{k}_a - \mu^E_a E^{k}_a
     \label{eq:extra-pul-model}
   \end{equation}
   \begin{equation}
-  \frac{dT^{kd}_{Pa}}{dt} = \nu_a^P P^{k}_a - \zeta^P_a T^{k}_{Pa} - \mu^P_a T^{k}_{Pa} - \phi_a^P T^{k}_{Pa}
+  \frac{dT^{kd}_{Pa}}{dt} = \nu_a^P P^{k}_a - \zeta_a T^{k}_{Pa} - \mu^P_a T^{k}_{Pa} - \phi_a T^{k}_{Pa}
     \label{eq:pul-treat-model}
   \end{equation}
   \begin{equation}
-  \frac{dT^{kd}_{Ea}}{dt} = \nu_a^E E^{k}_a - \zeta^E_a T^{k}_{Ea} - \mu^E_a T^{k}_{Ea} - \phi_a^E T^{k}_{Ea}
+  \frac{dT^{kd}_{Ea}}{dt} = \nu_a^E E^{k}_a - \zeta_a T^{k}_{Ea} - \mu^E_a T^{k}_{Ea} - \phi_a T^{k}_{Ea}
     \label{eq:extra-pul-treat-model}
   \end{equation}
-  Where the unvaccinated (\(u\)) and vaccinated (\(v\)) populations are represented by \(k = u,v\) and age groups are represented by \(a=0,1,2,3, ... 10\) for 0-4 year olds (\(a=0\)), 5-9 year olds (\(a=1\)), up to 45-49 year olds (\(a=10\)). 50-69 year olds are modelled as a single group (\(a=11\)), as are 70-89 year olds (\(a=12\)). Individuals \(90+\) are excluded from the model. The disease models parameters are defined as follows: \(\epsilon_a\) is the age-specific rate of activation from each latent population, \(\kappa_a\) is the age-specific rate of transition into the low risk latent population, \(\nu_a\) is the rate of starting treatment, \(\delta\) is the protection from re-infection conferred by prior latent infection, \(\Upsilon_a\) is the age-specific proportion of cases that develop pulmonary TB, with or without extra-pulmonary TB, \(\mu^{P,E}_a\) is the age-specific mortality from active pulmonary (\(P\)) and extra-pulmonary (\(E\)) TB, and \(\alpha_a\) is the age-specific effectiveness of the BCG vaccine at preventing active TB disease. In the unvaccinated population \(\alpha = 0\). \(\chi^k_a\) is the age-specific protection inferred due to vaccination from initial infection, in the unvaccinated population it is defined to be \(0\).
+  Where the unvaccinated (\(u\)) and vaccinated (\(v\)) populations are represented by \(k = u,v\) and age groups are represented by \(a=0,1,2,3, ... 11\). The disease model parameters are defined as follows: \(\lambda_a S^k_a\) is the force of infection; \(\epsilon_a\) is the rate of activation from each latent population; \(\kappa_a\) is the rate of transition into the low risk latent population; \(\nu_a\) is the rate of starting treatment; \(\delta\) is the protection from re-infection conferred by prior latent infection; \(\Upsilon_a\) is the proportion of cases that develop pulmonary TB, with or without extra-pulmonary TB; \(\mu^{P,E}_a\) is the mortality from active pulmonary (\(P\)) and extra-pulmonary (\(E\)) TB; \(\zeta_a\) is the rate of treatment failure; \(\phi_a\) is the rate of successful treatment; \(\alpha_a\) is the age-specific effectiveness of the BCG vaccine at preventing active TB disease; and \(\chi^k_a\) is the age-specific protection inferred due to vaccination from initial infection. In the unvaccinated population \(\alpha = 0\) and \(\chi = 0\). Parameters with an \(a\) subscript, or superscript, are age-stratified.
   
   The demographic and vaccination model (\(C^p\)) is then defined as (\(A = H,\ L,\ P,\ E,\ T_P,\ T_E\)),
   \begin{equation}
@@ -3402,7 +3401,6 @@ Date: \emph{placeholder}
   The signum function used above is defined as follows;
   \begin{equation}
   sgn(x) := \begin{cases}
-  -1 & \text{if } x < 0, \\
   0 & \text{if } x = 0, \\
   1 & \text{if } x > 0. \end{cases}
     \label{eq:signum}
@@ -3410,12 +3408,12 @@ Date: \emph{placeholder}
   \hypertarget{force-of-infection}{%
   \subsection{Force of infection}\label{force-of-infection}}
   
-  The age-specific (a), and vaccination dependent (k), force of infection (\(\lambda^k_a\)) is defined as follows,
+  The force of infection (\(\lambda^k_a\)) is the rate at which susceptible individuals are infected. Here it is defined using the law of mass action which assumes that infectious cases and susceptible cases randomly mix with the rate of mixing being determined by the fraction of the population that are susceptible, the transmission probability, and the contact rate.{[}6,7{]} It is age stratified (\(a\), \(A = \text{max}(a)\)) by contact rates, by the proportion of cases that are smear positive in a given age group, by the transmission probability of each case, and by the rate of starting treatment. Stratification by vaccine status (\(k\)) is introduced by the number of current pulmonary TB cases. It can be defined as follows,
   \begin{equation}
   \lambda^k_a = \frac{\beta_a}{N} \sum\limits_{i=1}^{A} \rho_i C_{ai}(\frac{M\iota_i}{\nu_a^P} + \sum\limits_{j = u,v}P^j_i)
     \label{eq:force-of-infection}
   \end{equation}
-  Where \(\iota_a\) is the age stratified number of non-UK born pulmonary cases notified in a given year, \(\rho_a\) is the age-specific proportion of cases that are smear positive, \(\nu\) is the rate of starting treatment for active TB, \(C_{ai}\) is the age stratified contact matrix, and \(M\) is the mixing rate between the UK born and non-UK born population. The force of infection is age stratified by contact rates and by the proportion of cases that are smear positive in a given age group.
+  Where \(\iota_a\) is the age stratified number of non-UK born pulmonary cases notified in a given year, \(P^{u,v}_a\) is the number of vaccinated, and unvaccinated, pulmonary TB cases, \(\rho_a\) is the age-specific proportion of cases that are smear positive, \(\nu^P_a\) is the rate of starting treatment for active pulmonary TB, \(C_{ai}\) is the age-stratified contact matrix (Section \ref{contact-matrix}), \(\beta_a\) is the age-stratified transmission probability, and \(M\) is the mixing rate between the UK born and non-UK born population.
   
   \hypertarget{parameterisation-and-data-synthesis}{%
   \section{Parameterisation and data synthesis}\label{parameterisation-and-data-synthesis}}
@@ -3428,7 +3426,7 @@ Date: \emph{placeholder}
   \hypertarget{enhanced-tb-surveillance-system}{%
   \subsubsection{Enhanced TB Surveillance System}\label{enhanced-tb-surveillance-system}}
   
-  Model parameters were estimated using the ETS system where possible, with data on all notified cases in England from Jan 1, 2000 to Dec 31, 2015. The ETS is a robust national surveillance network that collects collects demographic, clinical, and microbiological data; a yearly report is published detailing data collection, cleaning, and trends in TB incidence (Chapter \ref{data}).{[}1{]}
+  Model parameters were estimated using the ETS system where possible, with data on all notified cases in England from Jan 1, 2000 to Dec 31, 2015. The ETS is a robust national surveillance network that collects demographic, clinical, and microbiological data; a yearly report is published detailing data collection, cleaning, and trends in TB incidence (Chapter \ref{data}).{[}1{]}
   
   \hypertarget{labour-force-survey}{%
   \subsubsection{Labour Force Survey}\label{labour-force-survey}}
@@ -3740,7 +3738,7 @@ Date: \emph{placeholder}
   \hypertarget{non-uk-born-pulmonary-cases}{%
   \paragraph{Non-UK born pulmonary cases}\label{non-uk-born-pulmonary-cases}}
   
-  Non-UK born pulmonary cases were estimated using the ETS (see Chapter \ref{data}) for each age-group included in the model from 2000 until 2015. Prior to 2000, incidence in the non-UK born are unavailable and the relationship to transmission in UK-born cases is unknown. To account for this, importation of non-UK born cases in the model begins in 1960 and then is scaled up through to 2000. As the form of this relationship is unknown the following functional form was used to scale cases based on those observed in 2000,
+  Non-UK born pulmonary cases was estimated using the ETS (see Chapter \ref{data}) for each age-group included in the model from 2000 until 2015. Prior to 2000, incidence in the non-UK born are unavailable and the relationship to transmission in UK-born cases is unknown. To account for this, importation of non-UK born cases in the model begins in 1960 and then is scaled up through to 2000. As the form of this relationship is unknown the following functional form was used to scale cases based on those observed in 2000,
   \begin{equation}
   \text{Non UK-born scaling} = \frac{e^{\left(\frac{t - 1960}{\text{ln}(2) * \iota_{\text{scale}}}\right)} - 1}{e^{\left(\frac{2000 - 1960}{\text{ln}(2) * \iota_{\text{scale}}}\right)} - 1}
     \label{eq:non-uk-born-scale}
@@ -4037,7 +4035,7 @@ Date: \emph{placeholder}
   
   The primary data source used was the reported UK born TB notifications from 2000 to 2004 as recorded by the Enhanced Tuberculosis Survelliance (ETS) system (see Chapter \ref{data}). These are the only years for which notifications are available stratified by UK birth status and for which universal school-age BCG vaccination was in place. As the model of TB transmission outlined in the previous chapter had multiple age-dependent parameters UK born TB notifications stratified by age group are also fitted to. The age groups considered are children (aged 0-14 years old), adults (15-69 years old), and older adults (70-89 years old). These age groups were used, rather than the more detailed 5 year age groups used in the TB transmission model (see Chapter \ref{model-development}), for three reasons. Firstly, by using condensed age groups the number of notifications in each group increased. Having a larger number of notifications in each group reduces the impact of stochastics noise, which makes fitting the model easier. Secondly, reducing the number of data points, whilst still capturing the important age dynamics, reduces the compute requirements of the model (see Section \ref{particle-filter}). As will be discussed in Section \ref{fitting-pipeline} this was a major consideration as the model fitting approached used was highly compute intensive. Finally, the condensed age groups used were chosen to be meaningful. This allows model results to be more easily reported and interpreted.
   
-  In addition to the notification data available via the ETS pulmonary TB notifications (including both UK born and non-UK born cases) from 1990 were also fitted too. These TB notifications made to Statutory Notifications of Infectious Diseases (NOIDS) from 1913 to 1999. These data were sourced from Public Health England,{[}1{]} and made available in R using \texttt{tbinenglanddataclean}\footnote{Historic TB notification data via \texttt{tbinenglanddataclean}: \url{https://www.samabbott.co.uk/tbinenglanddataclean/}}. Data from 1990 was used as using data from a decade prior to the time period of interest allows the long term trends to be fitted to. Only a single data point was used as this limited the impact on the compute time of the fitting pipeline and would have brought only marginal improvements to the model fit (see Section \ref{particle-filter}).
+  In addition to the notification data available via the ETS pulmonary TB notifications (including both UK born and non-UK born cases) from 1990 were also fitted too. These TB notifications made to Statutory Notifications of Infectious Diseases (NOIDS) from 1913 to 1999. These data were sourced from Public Health England,{[}1{]} and made available in R using \texttt{tbinenglanddataclean}\footnote{Historic TB notification data via \texttt{tbinenglanddataclean}: \url{https://www.samabbott.co.uk/tbinenglanddataclean/}}. Data from 1990 was used as using data from a decade prior to the time period of interest allows the long term trends to be fitted to. Only a single data point was used as this limited the impact on the compute time of the fitting pipeline. Additional data points would have brought only marginal improvements to the model fit (see Section \ref{particle-filter}).
   
   \hypertarget{observational-model}{%
   \subsection{Observational model}\label{observational-model}}
@@ -4048,7 +4046,7 @@ Date: \emph{placeholder}
   
   Where \(O\) are the observed notifications, \(A\) are the incident cases of disease as forecast by the disease transmission model, \(E_{\text{syst}}\) is the systematic reporting error, \(E_{\text{noise}}\) is the reporting noise, and \(\mathcal{N}\) represents the gaussian (normal) distribution. The priors for the model are defined in Table \ref{tab:measurement-model}. The prior for systematic reporting error is based on the assumption that cases are less likely to be reported than they are to be over reported. The prior for the reporting noise is an assumption. This observation model was also used for the non-UK born pulmonary cases.
   
-  A potential limitation of this model is that reporting of TB cases is likely to have improved over time. This is especially true of notifications reported prior to the introduction of the ETS in 2000 (see Chapter \ref{data}). A potential improvement to this model would be to introduce seperate systematic reproting errors for notifications pre and post the introduction of the ETS. However, given that I have only included a single point prior to the introduction to the ETS doing so in this instance would lead to overfitting of these parameters.
+  A potential limitation of this model is that reporting of TB cases is likely to have improved over time. This is especially true of notifications reported prior to the introduction of the ETS in 2000 (see Chapter \ref{data}). A potential improvement to this model would be to introduce seperate systematic reporting errors for notifications pre and post the introduction of the ETS. However, given that I have only included a single point prior to the introduction to the ETS doing so in this instance would lead to overfitting of these parameters. Instead I have assumed that \$ E\_\{\text{noise}\}\$ is doubled for data points prior to the introduction of the ETS.
   \begin{landscape}\begingroup\fontsize{8}{10}\selectfont
   \begin{longtable}{>{\raggedright\arraybackslash}p{1.5cm}>{\raggedright\arraybackslash}p{4cm}>{\raggedright\arraybackslash}p{6cm}>{\raggedright\arraybackslash}p{1.5cm}>{\raggedright\arraybackslash}p{6cm}>{\raggedright\arraybackslash}p{1.5cm}}
   \caption{\label{tab:measurement-model}Measurement model parameters, descriptions, prior distributions, units, method used to derive the prior distribution and the type (i.e data derived, literature, assumption). $\mathcal{U}$ = Uniform}\\
@@ -4075,11 +4073,13 @@ Date: \emph{placeholder}
   
   The model outlined in the Chapter \ref{model-development} has a large number of free parameters for which prior distributions have been specified based on the observed data, the literature, and expert knowledge. In theory the model fitting pipeline outlined below could be used to produce posterior distributions for all these parameters. However, in practise this is not feasible as the data discussed in Section \ref{observed-data} only covers notifications and therefore does not contain sufficient information. If every parameter was allowed to update based on the data then it is likely that the resulting posterior distributions would not match with alternative data sources and the literature. Another potential issue is that by allowing all parameters to be fitted the meaningful information in the observed data may be lost.
   
-  For this reason in the model fitting pipeline outlined here I have only allowed parameters relating to TB transmission, and measurement model parameters, to have their posterior distributions updated by the model fitting pipeline. All other parameters have posterior distributions that exactly match their prior distributions. Parameters that have updated posterior distributions based on the data are,
+  For this reason in the model fitting pipeline outlined here I have only allowed parameters relating to TB transmission, and measurement model parameters, to have their posterior distributions updated by the model fitting pipeline. All other parameters have posterior distributions that match their prior distributions. Parameters that have updated posterior distributions based on the data are,
   \begin{itemize}
   \tightlist
   \item
     Mixing rate between UK born and non-UK born (\(M\)).
+  \item
+    Scaling on non-UK born cases (\(\iota_{\text{scale}}\)).
   \item
     Effective contact rate (\(c_{\text{eff}}\)).
   \item
@@ -4188,7 +4188,7 @@ Date: \emph{placeholder}
   
   The \texttt{rbi.helpers} R package attempts to solve this issue by adopting the following strategy.{[}121{]} First, the approximate mean of the posterior distribution is obtained, as accurate likelihood estimates near the posterior mean are of the most interest. Repeated model simulations are then run using the same set of parameters, with the marginal likelihood being estimated each time using a given number of particles. The variance of these log-likelihood estimates is then calculated. This process is then repeated for increasing numbers of particles until the log-likelihood variance is below some target thresold, commonly 1.{[}121{]}
   
-  I have implemented this as a two step process for each fitted scenario. Firstly, I used the Nelder-Mead simplex method, via LibBi,{[}119{]} to find a parameter set that optimised the maximum likelihood. I then initialised a 1000 step PMCMC chain with this parameter set, using 256 particles in the particle filter. I then used \texttt{rbi.helpers},{[}121{]} as outlined above, to estimate the number of particles required to produce a log-likelihood variance of less than 1 for this sample of the posterior distribiution, using 250 samples per step and starting with 64 particles. I initially planned to repeat this process for multiple draws from the posterior distribution but this proved to be infeasible given the compute available. A target of 5 for the log-likelihood variance was chosen as a smaller target could not be feasibly achieved given the compute resources available. Additionaly 256 was specified as the maximum number of feasible particles to use in the particle filter.
+  I have implemented this as a two step process for each fitted scenario. Firstly, I used the Nelder-Mead simplex method, via LibBi,{[}119{]} to find a parameter set that optimised the maximum likelihood. I then initialised a 1000 step PMCMC chain with this parameter set, using 256 particles in the particle filter. I then used \texttt{rbi.helpers},{[}121{]} as outlined above, to estimate the number of particles required to produce a log-likelihood variance of less than 1 for this sample of the posterior distribiution, using 250 samples per step and starting with 64 particles. I initially planned to repeat this process for multiple draws from the posterior distribution but this proved to be infeasible given the compute available. A target of 5 for the log-likelihood variance was chosen as a smaller target could not be feasibly achieved given the compute resources available. Additionally 256 was specified as the maximum number of feasible particles to use in the particle filter.
   
   \hypertarget{proposal-calibration}{%
   \subsubsection{Proposal calibration}\label{proposal-calibration}}
@@ -4252,7 +4252,7 @@ Date: \emph{placeholder}
   \end{enumerate}
   A limitation of PRCC is that it whilst it can capture non-lnear relationships between outputs and inputs these relationships must be monotonic.{[}123{]} For relationships that are non-monotic methods that rely on the decompositon of model output variance, such as the extended Fourier amplitude sensitivity test,{[}123{]} are more appropriate. However, these approaches are computationally demanding as they typically require mutliple iterations of model simulation. Additionally, they cannot be used on a previous parameter samples, instead needing to sample and simulate the model within the parameter sensitivity algorithmn. This means that they cannot be used for ``free'' (i.e with neglible additional compute cost), unlike PRCC which can be estimated using a sample from the posterior distribution. For this reason these approaches have not been further explored in this thesis.
   
-  I have implemented PRCC using the \texttt{epiR} R package\footnote{Code: \url{https://github.com/seabbs/ModelTBBCGEngland/blob/master/R/test_sensitivity.R}},{[}64{]} using the samples from the posterior distribution of the model calculated during the SMC\^{}2 step. Parameter sensitivity measures such as PRCC must be calculated seperately for each output time point. To account for this I calculated the PRCC for each fitted paramter, at each time point fitted too, for both overall TB incidence rates and TB incidence rates in children. These results are then summarised by plotting the absolute PRCC values for each output measure, indicating the direction of correlation using colour\footnote{Code: \url{https://github.com/seabbs/ModelTBBCGEngland/blob/master/R/plot_sensitivity.R}}.
+  I have implemented PRCC using the \texttt{epiR} R package\footnote{Code: \url{https://github.com/seabbs/ModelTBBCGEngland/blob/master/R/test_sensitivity.R}},{[}64{]} using the samples from the posterior distribution of the model calculated during the SMC\^{}2 step. Parameter sensitivity measures such as PRCC must be calculated seperately for each output time point. I calculated the PRCC for each fitted parameter, at the final time point with fitted data (2004), for both overall TB incidence rates and TB incidence rates in children. These results are then summarised by plotting the absolute PRCC values for each output measure, indicating the direction of correlation using colour\footnote{Code: \url{https://github.com/seabbs/ModelTBBCGEngland/blob/master/R/plot_sensitivity.R}}.
   
   \hypertarget{pipeline-overview}{%
   \subsection{Pipeline overview}\label{pipeline-overview}}
