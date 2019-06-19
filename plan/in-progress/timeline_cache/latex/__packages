@@ -18,3 +18,13 @@ usethis
 thesisdown
 tbinenglanddataclean
 getTBinR
+lubridate
+gridExtra
+visdat
+naniar
+haven
+survival
+epiR
+scales
+broom
+pomp
