@@ -3875,7 +3875,7 @@ Date: \emph{placeholder}
   \end{table}
   Using the literature derived estimates for the Risk Ratio (RR) of the BCG vaccine at different periods after vaccination, the log normal approximation for the distribution of Risk Ratios, and the relationship between vaccination effectiveness and the Risk Ratio (Effectiveness = 1 - Risk Ratio) I derived a prior distribution for the overall effectiveness of the BCG vaccine (\(\alpha^T_a\)). This can be summarised by the following equation,
   \begin{equation}
-    \alpha^T_a = 1 - e^{\mathcal{N}(log(RR), SE)}
+    \alpha^T_a = 1 - e^{\mathcal{N}(\text{ln}(RR), SE)}
     \label{eq:rr-to-alpha}
   \end{equation}
   Where \(SE\) is the standard error of the logged Risk Ratio. The transformed values used as the prior distribution are detailed in Table \ref{tab:disease-model}.
@@ -3987,7 +3987,7 @@ Date: \emph{placeholder}
   
   \caption{\label{tab:summary-scenarios}Summary of planned scenario analyses to be carried out in the next chapter as part of model fitting by comparision of the goodness of fit to the data.}
   \centering
-  \begin{tabular}{>{\raggedright\arraybackslash}p{2cm}>{\raggedright\arraybackslash}p{8cm}}
+  \begin{tabular}{>{\raggedright\arraybackslash}p{4cm}>{\raggedright\arraybackslash}p{8cm}}
   \toprule
   Parameter & Scenario\\
   \midrule

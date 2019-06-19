@@ -406,7 +406,7 @@ kable(eff_bcg, booktabs = TRUE, escape = TRUE,
 Using the literature derived estimates for the Risk Ratio (RR) of the BCG vaccine at different periods after vaccination, the log normal approximation for the distribution of Risk Ratios, and the relationship between vaccination effectiveness and the Risk Ratio (Effectiveness = 1 - Risk Ratio) I derived a prior distribution for the overall effectiveness of the BCG vaccine ($\alpha^T_a$). This can be summarised by the following equation,
 
 \begin{equation}
-  \alpha^T_a = 1 - e^{\mathcal{N}(log(RR), SE)}
+  \alpha^T_a = 1 - e^{\mathcal{N}(\text{ln}(RR), SE)}
   (\#eq:rr-to-alpha)
 \end{equation}
 
@@ -500,7 +500,7 @@ In the next chapter, I will consider the evidence for modifying the transmission
 
 ```{r summary-scenarios}
 kable(scenarios_table, caption = "Summary of planned scenario analyses to be carried out in the next chapter as part of model fitting by comparision of the goodness of fit to the data.", booktabs = TRUE, escape = FALSE) %>% 
-  column_spec(c(1), width = "2cm") %>% 
+  column_spec(c(1), width = "4cm") %>% 
   column_spec(c(2), width = "8cm")
 ```
 

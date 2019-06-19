@@ -1333,7 +1333,7 @@ Effectiveness (%)
 </table>
 <p>Using the literature derived estimates for the Risk Ratio (RR) of the BCG vaccine at different periods after vaccination, the log normal approximation for the distribution of Risk Ratios, and the relationship between vaccination effectiveness and the Risk Ratio (Effectiveness = 1 - Risk Ratio) I derived a prior distribution for the overall effectiveness of the BCG vaccine (<span class="math inline">\(\alpha^T_a\)</span>). This can be summarised by the following equation,</p>
 <p><span class="math display" id="eq:rr-to-alpha">\[\begin{equation}
-  \alpha^T_a = 1 - e^{\mathcal{N}(log(RR), SE)}
+  \alpha^T_a = 1 - e^{\mathcal{N}(\text{ln}(RR), SE)}
   \tag{9.21}
 \end{equation}\]</span></p>
 <p>Where <span class="math inline">\(SE\)</span> is the standard error of the logged Risk Ratio. The transformed values used as the prior distribution are detailed in Table <a href="9-model-development.html#tab:disease-model">9.1</a>.</p>
@@ -1536,7 +1536,7 @@ Scenario
 </thead>
 <tbody>
 <tr>
-<td style="text-align:left;width: 2cm; ">
+<td style="text-align:left;width: 4cm; ">
 <span class="math inline">\(\beta_a\)</span> - transmission probability
 </td>
 <td style="text-align:left;width: 8cm; ">
@@ -1544,14 +1544,14 @@ Constant across all age groups
 </td>
 </tr>
 <tr>
-<td style="text-align:left;width: 2cm; ">
+<td style="text-align:left;width: 4cm; ">
 </td>
 <td style="text-align:left;width: 8cm; ">
 Variable between children (0-14) and adults (15-89)
 </td>
 </tr>
 <tr>
-<td style="text-align:left;width: 2cm; ">
+<td style="text-align:left;width: 4cm; ">
 </td>
 <td style="text-align:left;width: 8cm; ">
 Variable between children (0-14), adults (15-59), and older adults (60-80)
