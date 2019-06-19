@@ -223,7 +223,7 @@ The full model fitting pipeline can be summarised as follows^[Code: https://gith
 
 1. Model initialisation using minimal error checking and single precision computation. Implemented using the `disable-assert` adn `enable-single` flags in LibBi.[@Murray2015] Outputs are only given for times with oberserved data and a subset of parameters are recorded for final reporting^[Model code: https://github.com/seabbs/ModelTBBCGEngland/blob/master/inst/bi/BaseLineModel.bi]. 
 
-2. 2500 parameter sets were taken from the prior distribution and the model was then simulated for each one. 
+2. 5000 parameter sets were taken from the prior distribution and the model was then simulated for each one. 
 
 3. Maximum likelihood optimisation with 100 steps, using the Nelder-Mead simplex method, via LibBi.[@Murray2015] This approximates the mean of the posterior distribution.
 
@@ -233,13 +233,13 @@ The full model fitting pipeline can be summarised as follows^[Code: https://gith
 
 6. Manual independent proposal adaption at the approximate mean of the posterior distribution. The size of the proposal distribution is halved each iteration, with at most 5 iterations of adaption. The minimum target acceptance rate specified was 10% and the maximum was 20%. 250 PMCMC samples were used each time to estimate the acceptance rate. Proposal adaption was only carried out for the main model scenario, with other scenarios using this proposal. 
 
-7. SMC^2 model fitting with 3000 initial parameter particles. Particle rejuvernation was set to trigger when the effective sample size decreased below 1000, with 4 MCMC steps used each time. 
+7. SMC^2 model fitting with 5000 initial parameter particles. Particle rejuvernation was set to trigger when the effective sample size decreased below 1000, with 4 MCMC steps used each time. 
 
 8. For each sample from the posterior distribution the model was then simulated for all time points.
 
 9. The model DIC was computed using `rbi.helpers`.[@Funk:2019uw] This gives a model agnostic approach to evaluate the fit to the observed data.
 
-10. Parameter sensitivity was estimated by calculating the partial rank correlation coffecient (PRCC) for each model parameter, at each time point fitted too, for both overall TB incidence rates and TB incidence rates in children. Results were then plotted in order of the absolute magnitude of the correlation, with the direction of the correlation determined using colour. The `epiR` package was used to compute the PRCC.[@EpiR] 
+10. Parameter sensitivity was estimated by calculating the partial rank correlation coffecient (PRCC) for each model parameter, for the final time point fitted too (2004), for both overall TB incidence rates and TB incidence rates in children. Results were then plotted in order of the absolute magnitude of the correlation, with the direction of the correlation determined using colour. The `epiR` package was used to compute the PRCC.[@EpiR] 
 
 ## Results
 

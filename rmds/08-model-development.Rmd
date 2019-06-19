@@ -32,7 +32,7 @@ load_formated <- function(name) {
 load_formated("disease_params_table")
 load_formated("demographic_params_table")
 load_formated("sources_table")
-#load_formated("scenarios_table")
+load_formated("scenarios_table")
 load_formated("eff_bcg")
 ```
 
@@ -498,7 +498,7 @@ All dynamic transmission models require a series of assumptions to be made. Thes
 
 In the next chapter, I will consider the evidence for modifying the transmission probability by age using three distinct scenarios (Table \@ref(tab:summary-scenarios)). Identifying if the transmission probablity varies with age is important as it may alter the distribution and number of TB cases. This would impact the observed effects of the BCG vaccine and is therefore of primary importance.
 
-```{r summary-scenarios, eval = FALSE}
+```{r summary-scenarios}
 kable(scenarios_table, caption = "Summary of planned scenario analyses to be carried out in the next chapter as part of model fitting by comparision of the goodness of fit to the data.", booktabs = TRUE, escape = FALSE) %>% 
   column_spec(c(1), width = "2cm") %>% 
   column_spec(c(2), width = "8cm")

@@ -4263,7 +4263,7 @@ Date: \emph{placeholder}
   \item
     Model initialisation using minimal error checking and single precision computation. Implemented using the \texttt{disable-assert} adn \texttt{enable-single} flags in LibBi.{[}119{]} Outputs are only given for times with oberserved data and a subset of parameters are recorded for final reporting\footnote{Model code: \url{https://github.com/seabbs/ModelTBBCGEngland/blob/master/inst/bi/BaseLineModel.bi}}.
   \item
-    2500 parameter sets were taken from the prior distribution and the model was then simulated for each one.
+    5000 parameter sets were taken from the prior distribution and the model was then simulated for each one.
   \item
     Maximum likelihood optimisation with 100 steps, using the Nelder-Mead simplex method, via LibBi.{[}119{]} This approximates the mean of the posterior distribution.
   \item
@@ -4273,13 +4273,13 @@ Date: \emph{placeholder}
   \item
     Manual independent proposal adaption at the approximate mean of the posterior distribution. The size of the proposal distribution is halved each iteration, with at most 5 iterations of adaption. The minimum target acceptance rate specified was 10\% and the maximum was 20\%. 250 PMCMC samples were used each time to estimate the acceptance rate. Proposal adaption was only carried out for the main model scenario, with other scenarios using this proposal.
   \item
-    SMC\^{}2 model fitting with 3000 initial parameter particles. Particle rejuvernation was set to trigger when the effective sample size decreased below 1000, with 4 MCMC steps used each time.
+    SMC\^{}2 model fitting with 5000 initial parameter particles. Particle rejuvernation was set to trigger when the effective sample size decreased below 1000, with 4 MCMC steps used each time.
   \item
     For each sample from the posterior distribution the model was then simulated for all time points.
   \item
     The model DIC was computed using \texttt{rbi.helpers}.{[}121{]} This gives a model agnostic approach to evaluate the fit to the observed data.
   \item
-    Parameter sensitivity was estimated by calculating the partial rank correlation coffecient (PRCC) for each model parameter, at each time point fitted too, for both overall TB incidence rates and TB incidence rates in children. Results were then plotted in order of the absolute magnitude of the correlation, with the direction of the correlation determined using colour. The \texttt{epiR} package was used to compute the PRCC.{[}64{]}
+    Parameter sensitivity was estimated by calculating the partial rank correlation coffecient (PRCC) for each model parameter, for the final time point fitted too (2004), for both overall TB incidence rates and TB incidence rates in children. Results were then plotted in order of the absolute magnitude of the correlation, with the direction of the correlation determined using colour. The \texttt{epiR} package was used to compute the PRCC.{[}64{]}
   \end{enumerate}
   \hypertarget{results-3}{%
   \section{Results}\label{results-3}}
