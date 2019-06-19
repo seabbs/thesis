@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 10 Fitting a dynamic transmission model of Tuberculosis | thesis.utf8</title>
+  <meta name="description" content="" />
+  <meta name="generator" content="bookdown  and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 10 Fitting a dynamic transmission model of Tuberculosis | thesis.utf8" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 10 Fitting a dynamic transmission model of Tuberculosis | thesis.utf8" />
+  
+  
+  
+
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="9-model-development.html">
+<link rel="next" href="11-model-results.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./"></a></li>
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#theoretical-framework"><i class="fa fa-check"></i><b>1.1</b> Theoretical framework</a><ul>
+<li class="chapter" data-level="1.1.1" data-path="index.html"><a href="index.html#data-exploration-and-visualisation"><i class="fa fa-check"></i><b>1.1.1</b> Data exploration and visualisation</a></li>
+<li class="chapter" data-level="1.1.2" data-path="index.html"><a href="index.html#statistical-modelling"><i class="fa fa-check"></i><b>1.1.2</b> Statistical modelling</a></li>
+<li class="chapter" data-level="1.1.3" data-path="index.html"><a href="index.html#mechanistic-modelling"><i class="fa fa-check"></i><b>1.1.3</b> Mechanistic modelling</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#aims-and-objectives-of-the-thesis"><i class="fa fa-check"></i><b>1.2</b> Aims and objectives of the thesis</a><ul>
+<li class="chapter" data-level="1.2.1" data-path="index.html"><a href="index.html#aim"><i class="fa fa-check"></i><b>1.2.1</b> Aim</a></li>
+<li class="chapter" data-level="1.2.2" data-path="index.html"><a href="index.html#objectives"><i class="fa fa-check"></i><b>1.2.2</b> Objectives</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#chapter-overview"><i class="fa fa-check"></i><b>1.3</b> Chapter overview</a></li>
+<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#thesis-output"><i class="fa fa-check"></i><b>1.4</b> Thesis output</a><ul>
+<li class="chapter" data-level="1.4.1" data-path="index.html"><a href="index.html#peer-reviewed-papers"><i class="fa fa-check"></i><b>1.4.1</b> Peer reviewed papers</a></li>
+<li class="chapter" data-level="1.4.2" data-path="index.html"><a href="index.html#papers-under-review"><i class="fa fa-check"></i><b>1.4.2</b> Papers under review</a></li>
+<li class="chapter" data-level="1.4.3" data-path="index.html"><a href="index.html#software"><i class="fa fa-check"></i><b>1.4.3</b> Software</a></li>
+<li class="chapter" data-level="1.4.4" data-path="index.html"><a href="index.html#talks"><i class="fa fa-check"></i><b>1.4.4</b> Talks</a></li>
+</ul></li>
+<li class="chapter" data-level="1.5" data-path="index.html"><a href="index.html#summary"><i class="fa fa-check"></i><b>1.5</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="2-background.html"><a href="2-background.html"><i class="fa fa-check"></i><b>2</b> Background</a><ul>
+<li class="chapter" data-level="2.1" data-path="2-background.html"><a href="2-background.html#tuberculosis"><i class="fa fa-check"></i><b>2.1</b> Tuberculosis</a><ul>
+<li class="chapter" data-level="2.1.1" data-path="2-background.html"><a href="2-background.html#natural-history-of-tuberculosis"><i class="fa fa-check"></i><b>2.1.1</b> Natural history of Tuberculosis</a></li>
+<li class="chapter" data-level="2.1.2" data-path="2-background.html"><a href="2-background.html#known-risk-factors"><i class="fa fa-check"></i><b>2.1.2</b> Known risk factors</a></li>
+<li class="chapter" data-level="2.1.3" data-path="2-background.html"><a href="2-background.html#treatments"><i class="fa fa-check"></i><b>2.1.3</b> Treatments</a></li>
+<li class="chapter" data-level="2.1.4" data-path="2-background.html"><a href="2-background.html#global-tb"><i class="fa fa-check"></i><b>2.1.4</b> Global TB</a></li>
+<li class="chapter" data-level="2.1.5" data-path="2-background.html"><a href="2-background.html#tb-in-the-england-and-wales"><i class="fa fa-check"></i><b>2.1.5</b> TB in the England and Wales</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="2-background.html"><a href="2-background.html#the-bacillus-calmetteguerin-vaccine"><i class="fa fa-check"></i><b>2.2</b> The Bacillus Calmette–Guérin Vaccine</a><ul>
+<li class="chapter" data-level="2.2.1" data-path="2-background.html"><a href="2-background.html#vaccine-action"><i class="fa fa-check"></i><b>2.2.1</b> Vaccine action</a></li>
+<li class="chapter" data-level="2.2.2" data-path="2-background.html"><a href="2-background.html#vaccine-effectiveness"><i class="fa fa-check"></i><b>2.2.2</b> Vaccine effectiveness</a></li>
+<li class="chapter" data-level="2.2.3" data-path="2-background.html"><a href="2-background.html#duration-of-protection"><i class="fa fa-check"></i><b>2.2.3</b> Duration of protection</a></li>
+<li class="chapter" data-level="2.2.4" data-path="2-background.html"><a href="2-background.html#additional-effects-of-bcg-vaccination"><i class="fa fa-check"></i><b>2.2.4</b> Additional effects of BCG vaccination</a></li>
+<li class="chapter" data-level="2.2.5" data-path="2-background.html"><a href="2-background.html#usage-globally"><i class="fa fa-check"></i><b>2.2.5</b> Usage Globally</a></li>
+<li class="chapter" data-level="2.2.6" data-path="2-background.html"><a href="2-background.html#usage-in-england"><i class="fa fa-check"></i><b>2.2.6</b> Usage in England</a></li>
+<li class="chapter" data-level="2.2.7" data-path="2-background.html"><a href="2-background.html#replacement-vaccines"><i class="fa fa-check"></i><b>2.2.7</b> Replacement vaccines</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="2-background.html"><a href="2-background.html#summary-1"><i class="fa fa-check"></i><b>2.3</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="3-getTBinR.html"><a href="3-getTBinR.html"><i class="fa fa-check"></i><b>3</b> getTBinR: an R package for accessing and summarising the World Health Organization Tuberculosis data</a><ul>
+<li class="chapter" data-level="3.1" data-path="3-getTBinR.html"><a href="3-getTBinR.html#introduction-1"><i class="fa fa-check"></i><b>3.1</b> Introduction</a></li>
+<li class="chapter" data-level="3.2" data-path="3-getTBinR.html"><a href="3-getTBinR.html#installation"><i class="fa fa-check"></i><b>3.2</b> Installation</a></li>
+<li class="chapter" data-level="3.3" data-path="3-getTBinR.html"><a href="3-getTBinR.html#data-extraction-and-variable-look-up"><i class="fa fa-check"></i><b>3.3</b> Data extraction and variable look-up</a></li>
+<li class="chapter" data-level="3.4" data-path="3-getTBinR.html"><a href="3-getTBinR.html#getbinr-vis"><i class="fa fa-check"></i><b>3.4</b> Data visualisation</a><ul>
+<li class="chapter" data-level="3.4.1" data-path="3-getTBinR.html"><a href="3-getTBinR.html#mapping-tb-burden-metrics"><i class="fa fa-check"></i><b>3.4.1</b> Mapping TB burden metrics</a></li>
+<li class="chapter" data-level="3.4.2" data-path="3-getTBinR.html"><a href="3-getTBinR.html#plotting-an-overview-for-a-given-tb-metric"><i class="fa fa-check"></i><b>3.4.2</b> Plotting an overview for a given TB metric</a></li>
+<li class="chapter" data-level="3.4.3" data-path="3-getTBinR.html"><a href="3-getTBinR.html#gettbinr-plot-sum"><i class="fa fa-check"></i><b>3.4.3</b> Plotting a comparision between country, regional and global metric values</a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="3-getTBinR.html"><a href="3-getTBinR.html#plotting-country-level-trends-for-a-given-metric"><i class="fa fa-check"></i><b>3.5</b> Plotting country level trends for a given metric</a></li>
+<li class="chapter" data-level="3.6" data-path="3-getTBinR.html"><a href="3-getTBinR.html#gettbinr-sum"><i class="fa fa-check"></i><b>3.6</b> Data summarisation</a></li>
+<li class="chapter" data-level="3.7" data-path="3-getTBinR.html"><a href="3-getTBinR.html#dashboard"><i class="fa fa-check"></i><b>3.7</b> Dashboard</a></li>
+<li class="chapter" data-level="3.8" data-path="3-getTBinR.html"><a href="3-getTBinR.html#country-report"><i class="fa fa-check"></i><b>3.8</b> Country report</a></li>
+<li class="chapter" data-level="3.9" data-path="3-getTBinR.html"><a href="3-getTBinR.html#package-infrastructure"><i class="fa fa-check"></i><b>3.9</b> Package Infrastructure</a></li>
+<li class="chapter" data-level="3.10" data-path="3-getTBinR.html"><a href="3-getTBinR.html#summary-2"><i class="fa fa-check"></i><b>3.10</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="4-data.html"><a href="4-data.html"><i class="fa fa-check"></i><b>4</b> The epidemiology of tuberculosis, and the role of BCG vaccination, in England</a><ul>
+<li class="chapter" data-level="4.1" data-path="4-data.html"><a href="4-data.html#introduction-2"><i class="fa fa-check"></i><b>4.1</b> Introduction</a></li>
+<li class="chapter" data-level="4.2" data-path="4-data.html"><a href="4-data.html#data-sources"><i class="fa fa-check"></i><b>4.2</b> Data sources</a><ul>
+<li class="chapter" data-level="4.2.1" data-path="4-data.html"><a href="4-data.html#ets-deep-dive"><i class="fa fa-check"></i><b>4.2.1</b> Enhanced tuberculosis surveillance system</a></li>
+<li class="chapter" data-level="4.2.2" data-path="4-data.html"><a href="4-data.html#demographic-data"><i class="fa fa-check"></i><b>4.2.2</b> Demographic data</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="4-data.html"><a href="4-data.html#tuberculosis-notifications"><i class="fa fa-check"></i><b>4.3</b> Tuberculosis notifications</a><ul>
+<li class="chapter" data-level="4.3.1" data-path="4-data.html"><a href="4-data.html#overview"><i class="fa fa-check"></i><b>4.3.1</b> Overview</a></li>
+<li class="chapter" data-level="4.3.2" data-path="4-data.html"><a href="4-data.html#age-dist-nots"><i class="fa fa-check"></i><b>4.3.2</b> Age distribution of notifications</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="4-data.html"><a href="4-data.html#pop-dist-england"><i class="fa fa-check"></i><b>4.4</b> Population Demographics in England</a></li>
+<li class="chapter" data-level="4.5" data-path="4-data.html"><a href="4-data.html#tb-inc-rates-epi"><i class="fa fa-check"></i><b>4.5</b> Tuberculosis incidence rates</a><ul>
+<li class="chapter" data-level="4.5.1" data-path="4-data.html"><a href="4-data.html#motivation"><i class="fa fa-check"></i><b>4.5.1</b> Motivation</a></li>
+<li class="chapter" data-level="4.5.2" data-path="4-data.html"><a href="4-data.html#method-1"><i class="fa fa-check"></i><b>4.5.2</b> Method</a></li>
+<li class="chapter" data-level="4.5.3" data-path="4-data.html"><a href="4-data.html#overall-trends-in-tb-incidence-rates"><i class="fa fa-check"></i><b>4.5.3</b> Overall trends in TB incidence rates</a></li>
+<li class="chapter" data-level="4.5.4" data-path="4-data.html"><a href="4-data.html#age-stratified-incidence-rates"><i class="fa fa-check"></i><b>4.5.4</b> Age stratified incidence rates</a></li>
+<li class="chapter" data-level="4.5.5" data-path="4-data.html"><a href="4-data.html#incidence-rates-in-children-as-a-proxy-for-tb-transmission"><i class="fa fa-check"></i><b>4.5.5</b> Incidence rates in children as a proxy for TB transmission</a></li>
+</ul></li>
+<li class="chapter" data-level="4.6" data-path="4-data.html"><a href="4-data.html#tb-outcomes"><i class="fa fa-check"></i><b>4.6</b> TB outcomes</a><ul>
+<li class="chapter" data-level="4.6.1" data-path="4-data.html"><a href="4-data.html#motivation-1"><i class="fa fa-check"></i><b>4.6.1</b> Motivation</a></li>
+<li class="chapter" data-level="4.6.2" data-path="4-data.html"><a href="4-data.html#method-2"><i class="fa fa-check"></i><b>4.6.2</b> Method</a></li>
+<li class="chapter" data-level="4.6.3" data-path="4-data.html"><a href="4-data.html#all-cause-mortality"><i class="fa fa-check"></i><b>4.6.3</b> All-cause mortality</a></li>
+<li class="chapter" data-level="4.6.4" data-path="4-data.html"><a href="4-data.html#tb-related-mortality"><i class="fa fa-check"></i><b>4.6.4</b> TB related mortality</a></li>
+<li class="chapter" data-level="4.6.5" data-path="4-data.html"><a href="4-data.html#successful-treatment"><i class="fa fa-check"></i><b>4.6.5</b> Successful treatment</a></li>
+<li class="chapter" data-level="4.6.6" data-path="4-data.html"><a href="4-data.html#lost-to-follow-up"><i class="fa fa-check"></i><b>4.6.6</b> Lost to follow up</a></li>
+</ul></li>
+<li class="chapter" data-level="4.7" data-path="4-data.html"><a href="4-data.html#discussion"><i class="fa fa-check"></i><b>4.7</b> Discussion</a></li>
+<li class="chapter" data-level="4.8" data-path="4-data.html"><a href="4-data.html#summary-3"><i class="fa fa-check"></i><b>4.8</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="5-sutherland.html"><a href="5-sutherland.html"><i class="fa fa-check"></i><b>5</b> Reassessing the evidence for universal school-age Bacillus Calmette Guerin (BCG) vaccination in England and Wales</a><ul>
+<li class="chapter" data-level="5.1" data-path="5-sutherland.html"><a href="5-sutherland.html#introduction-3"><i class="fa fa-check"></i><b>5.1</b> Introduction</a></li>
+<li class="chapter" data-level="5.2" data-path="5-sutherland.html"><a href="5-sutherland.html#background-3"><i class="fa fa-check"></i><b>5.2</b> Background</a></li>
+<li class="chapter" data-level="5.3" data-path="5-sutherland.html"><a href="5-sutherland.html#methods"><i class="fa fa-check"></i><b>5.3</b> Methods</a><ul>
+<li class="chapter" data-level="5.3.1" data-path="5-sutherland.html"><a href="5-sutherland.html#modelling-the-impact-of-ending-the-bcg-schools-scheme"><i class="fa fa-check"></i><b>5.3.1</b> Modelling the impact of ending the BCG schools’ scheme</a></li>
+<li class="chapter" data-level="5.3.2" data-path="5-sutherland.html"><a href="5-sutherland.html#updating-model-parameter-estimates"><i class="fa fa-check"></i><b>5.3.2</b> Updating model parameter estimates</a></li>
+<li class="chapter" data-level="5.3.3" data-path="5-sutherland.html"><a href="5-sutherland.html#statistical-analysis"><i class="fa fa-check"></i><b>5.3.3</b> Statistical analysis</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="5-sutherland.html"><a href="5-sutherland.html#results"><i class="fa fa-check"></i><b>5.4</b> Results</a><ul>
+<li class="chapter" data-level="5.4.1" data-path="5-sutherland.html"><a href="5-sutherland.html#model-validation"><i class="fa fa-check"></i><b>5.4.1</b> Model validation</a></li>
+<li class="chapter" data-level="5.4.2" data-path="5-sutherland.html"><a href="5-sutherland.html#annual-change-in-tb-incidence-rates"><i class="fa fa-check"></i><b>5.4.2</b> Annual change in TB incidence rates</a></li>
+</ul></li>
+<li class="chapter" data-level="5.5" data-path="5-sutherland.html"><a href="5-sutherland.html#vaccines-required-to-prevent-a-single-notification"><i class="fa fa-check"></i><b>5.5</b> Vaccines required to prevent a single notification</a><ul>
+<li class="chapter" data-level="5.5.1" data-path="5-sutherland.html"><a href="5-sutherland.html#average-annual-additional-cases-from-ending-the-bcg-schools-scheme-at-various-dates"><i class="fa fa-check"></i><b>5.5.1</b> Average annual additional cases from ending the BCG schools’ scheme at various dates</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="6-discussion-1.html"><a href="6-discussion-1.html"><i class="fa fa-check"></i><b>6</b> Discussion</a><ul>
+<li class="chapter" data-level="6.1" data-path="6-discussion-1.html"><a href="6-discussion-1.html#summary-4"><i class="fa fa-check"></i><b>6.1</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="7-benefical-bcg-out.html"><a href="7-benefical-bcg-out.html"><i class="fa fa-check"></i><b>7</b> Exploring the effects of BCG vaccination in patients diagnosed with tuberculosis: observational study using the Enhanced Tuberculosis Surveillance system</a><ul>
+<li class="chapter" data-level="7.1" data-path="7-benefical-bcg-out.html"><a href="7-benefical-bcg-out.html#introduction-4"><i class="fa fa-check"></i><b>7.1</b> Introduction</a></li>
+<li class="chapter" data-level="7.2" data-path="7-benefical-bcg-out.html"><a href="7-benefical-bcg-out.html#background-4"><i class="fa fa-check"></i><b>7.2</b> Background</a></li>
+<li class="chapter" data-level="7.3" data-path="7-benefical-bcg-out.html"><a href="7-benefical-bcg-out.html#method-3"><i class="fa fa-check"></i><b>7.3</b> Method</a><ul>
+<li class="chapter" data-level="7.3.1" data-path="7-benefical-bcg-out.html"><a href="7-benefical-bcg-out.html#enhanced-tuberculosis-surveillance-ets-system"><i class="fa fa-check"></i><b>7.3.1</b> Enhanced Tuberculosis Surveillance (ETS) system</a></li>
+<li class="chapter" data-level="7.3.2" data-path="7-benefical-bcg-out.html"><a href="7-benefical-bcg-out.html#exposure-variables-relating-to-bcg"><i class="fa fa-check"></i><b>7.3.2</b> Exposure variables relating to BCG</a></li>
+<li class="chapter" data-level="7.3.3" data-path="7-benefical-bcg-out.html"><a href="7-benefical-bcg-out.html#statistical-analysis-1"><i class="fa fa-check"></i><b>7.3.3</b> Statistical Analysis</a></li>
+</ul></li>
+<li class="chapter" data-level="7.4" data-path="7-benefical-bcg-out.html"><a href="7-benefical-bcg-out.html#results-1"><i class="fa fa-check"></i><b>7.4</b> Results</a><ul>
+<li class="chapter" data-level="7.4.1" data-path="7-benefical-bcg-out.html"><a href="7-benefical-bcg-out.html#description-of-the-data"><i class="fa fa-check"></i><b>7.4.1</b> Description of the data</a></li>
+<li class="chapter" data-level="7.4.2" data-path="7-benefical-bcg-out.html"><a href="7-benefical-bcg-out.html#all-cause-mortality-1"><i class="fa fa-check"></i><b>7.4.2</b> All-cause mortality</a></li>
+<li class="chapter" data-level="7.4.3" data-path="7-benefical-bcg-out.html"><a href="7-benefical-bcg-out.html#deaths-due-to-tb-in-those-who-died"><i class="fa fa-check"></i><b>7.4.3</b> Deaths due to TB (in those who died)</a></li>
+<li class="chapter" data-level="7.4.4" data-path="7-benefical-bcg-out.html"><a href="7-benefical-bcg-out.html#recurrent-tb"><i class="fa fa-check"></i><b>7.4.4</b> Recurrent TB</a></li>
+<li class="chapter" data-level="7.4.5" data-path="7-benefical-bcg-out.html"><a href="7-benefical-bcg-out.html#other-outcomes"><i class="fa fa-check"></i><b>7.4.5</b> Other Outcomes</a></li>
+<li class="chapter" data-level="7.4.6" data-path="7-benefical-bcg-out.html"><a href="7-benefical-bcg-out.html#sensitivity-analysis-of-the-missing-data-using-multiple-imputation"><i class="fa fa-check"></i><b>7.4.6</b> Sensitivity analysis of the missing data using multiple imputation</a></li>
+<li class="chapter" data-level="7.4.7" data-path="7-benefical-bcg-out.html"><a href="7-benefical-bcg-out.html#sensitivity-analysis"><i class="fa fa-check"></i><b>7.4.7</b> Sensitivity analysis</a></li>
+</ul></li>
+<li class="chapter" data-level="7.5" data-path="7-benefical-bcg-out.html"><a href="7-benefical-bcg-out.html#discussion-2"><i class="fa fa-check"></i><b>7.5</b> Discussion</a></li>
+<li class="chapter" data-level="7.6" data-path="7-benefical-bcg-out.html"><a href="7-benefical-bcg-out.html#summary-5"><i class="fa fa-check"></i><b>7.6</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="8-direct-eff.html"><a href="8-direct-eff.html"><i class="fa fa-check"></i><b>8</b> Estimating the effect of the 2005 change in BCG policy in England: A retrospective cohort study</a><ul>
+<li class="chapter" data-level="8.1" data-path="8-direct-eff.html"><a href="8-direct-eff.html#introduction-5"><i class="fa fa-check"></i><b>8.1</b> Introduction</a></li>
+<li class="chapter" data-level="8.2" data-path="8-direct-eff.html"><a href="8-direct-eff.html#background-5"><i class="fa fa-check"></i><b>8.2</b> Background</a></li>
+<li class="chapter" data-level="8.3" data-path="8-direct-eff.html"><a href="8-direct-eff.html#methods-1"><i class="fa fa-check"></i><b>8.3</b> Methods</a><ul>
+<li class="chapter" data-level="8.3.1" data-path="8-direct-eff.html"><a href="8-direct-eff.html#data-source"><i class="fa fa-check"></i><b>8.3.1</b> Data source</a></li>
+<li class="chapter" data-level="8.3.2" data-path="8-direct-eff.html"><a href="8-direct-eff.html#constructing-retrospective-cohorts"><i class="fa fa-check"></i><b>8.3.2</b> Constructing Retrospective cohorts</a></li>
+</ul></li>
+<li class="chapter" data-level="8.4" data-path="8-direct-eff.html"><a href="8-direct-eff.html#statistical-methods-overview"><i class="fa fa-check"></i><b>8.4</b> Statistical methods overview</a><ul>
+<li class="chapter" data-level="8.4.1" data-path="8-direct-eff.html"><a href="8-direct-eff.html#implementation-overview"><i class="fa fa-check"></i><b>8.4.1</b> Implementation overview</a></li>
+<li class="chapter" data-level="8.4.2" data-path="8-direct-eff.html"><a href="8-direct-eff.html#imp-uk-birth-status"><i class="fa fa-check"></i><b>8.4.2</b> Imputation of UK birth status</a></li>
+<li class="chapter" data-level="8.4.3" data-path="8-direct-eff.html"><a href="8-direct-eff.html#prior-choice"><i class="fa fa-check"></i><b>8.4.3</b> Prior choice</a></li>
+<li class="chapter" data-level="8.4.4" data-path="8-direct-eff.html"><a href="8-direct-eff.html#magnitude-estimation"><i class="fa fa-check"></i><b>8.4.4</b> Estimating the magnitude of the estimated impact of the change in BCG policy</a></li>
+</ul></li>
+<li class="chapter" data-level="8.5" data-path="8-direct-eff.html"><a href="8-direct-eff.html#results-2"><i class="fa fa-check"></i><b>8.5</b> Results</a><ul>
+<li class="chapter" data-level="8.5.1" data-path="8-direct-eff.html"><a href="8-direct-eff.html#descriptive-analysis"><i class="fa fa-check"></i><b>8.5.1</b> Descriptive analysis</a></li>
+<li class="chapter" data-level="8.5.2" data-path="8-direct-eff.html"><a href="8-direct-eff.html#adjusted-estimates-of-the-effects-of-the-change-in-policy-on-school-age-children"><i class="fa fa-check"></i><b>8.5.2</b> Adjusted estimates of the effects of the change in policy on school-age children</a></li>
+<li class="chapter" data-level="8.5.3" data-path="8-direct-eff.html"><a href="8-direct-eff.html#adjusted-estimates-of-the-effect-of-the-change-in-policy-in-those-relevant-to-the-targeted-neonatal-programme"><i class="fa fa-check"></i><b>8.5.3</b> Adjusted estimates of the effect of the change in policy in those relevant to the targeted neonatal programme</a></li>
+<li class="chapter" data-level="8.5.4" data-path="8-direct-eff.html"><a href="8-direct-eff.html#magnitude-of-the-estimated-impact-of-the-change-in-bcg-policy"><i class="fa fa-check"></i><b>8.5.4</b> Magnitude of the estimated impact of the change in BCG policy</a></li>
+</ul></li>
+<li class="chapter" data-level="8.6" data-path="8-direct-eff.html"><a href="8-direct-eff.html#discussion-3"><i class="fa fa-check"></i><b>8.6</b> Discussion</a></li>
+<li class="chapter" data-level="8.7" data-path="8-direct-eff.html"><a href="8-direct-eff.html#summary-6"><i class="fa fa-check"></i><b>8.7</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="9-model-development.html"><a href="9-model-development.html"><i class="fa fa-check"></i><b>9</b> Developing a dynamic transmission model of Tuberculosis</a><ul>
+<li class="chapter" data-level="9.1" data-path="9-model-development.html"><a href="9-model-development.html#introduction-6"><i class="fa fa-check"></i><b>9.1</b> Introduction</a></li>
+<li class="chapter" data-level="9.2" data-path="9-model-development.html"><a href="9-model-development.html#model-just"><i class="fa fa-check"></i><b>9.2</b> Choice of model structure</a></li>
+<li class="chapter" data-level="9.3" data-path="9-model-development.html"><a href="9-model-development.html#tuberculosis-disease"><i class="fa fa-check"></i><b>9.3</b> Tuberculosis disease</a><ul>
+<li class="chapter" data-level="9.3.1" data-path="9-model-development.html"><a href="9-model-development.html#bcg-vaccination"><i class="fa fa-check"></i><b>9.3.1</b> BCG vaccination</a></li>
+</ul></li>
+<li class="chapter" data-level="9.4" data-path="9-model-development.html"><a href="9-model-development.html#a-dynamic-model-of-tb-transmission"><i class="fa fa-check"></i><b>9.4</b> A dynamic model of TB transmission</a><ul>
+<li class="chapter" data-level="9.4.1" data-path="9-model-development.html"><a href="9-model-development.html#model-outline"><i class="fa fa-check"></i><b>9.4.1</b> Model outline</a></li>
+<li class="chapter" data-level="9.4.2" data-path="9-model-development.html"><a href="9-model-development.html#model-equations"><i class="fa fa-check"></i><b>9.4.2</b> Model equations</a></li>
+<li class="chapter" data-level="9.4.3" data-path="9-model-development.html"><a href="9-model-development.html#force-of-infection"><i class="fa fa-check"></i><b>9.4.3</b> Force of infection</a></li>
+</ul></li>
+<li class="chapter" data-level="9.5" data-path="9-model-development.html"><a href="9-model-development.html#parameterisation-and-data-synthesis"><i class="fa fa-check"></i><b>9.5</b> Parameterisation and data synthesis</a><ul>
+<li class="chapter" data-level="9.5.1" data-path="9-model-development.html"><a href="9-model-development.html#data-sources-1"><i class="fa fa-check"></i><b>9.5.1</b> Data sources</a></li>
+<li class="chapter" data-level="9.5.2" data-path="9-model-development.html"><a href="9-model-development.html#model-parameters"><i class="fa fa-check"></i><b>9.5.2</b> Model Parameters</a></li>
+</ul></li>
+<li class="chapter" data-level="9.6" data-path="9-model-development.html"><a href="9-model-development.html#initialisation"><i class="fa fa-check"></i><b>9.6</b> Initialisation</a><ul>
+<li class="chapter" data-level="9.6.1" data-path="9-model-development.html"><a href="9-model-development.html#starting-simulation-date-initial-population-and-changes-over-time."><i class="fa fa-check"></i><b>9.6.1</b> Starting simulation date, initial population and changes over time.</a></li>
+<li class="chapter" data-level="9.6.2" data-path="9-model-development.html"><a href="9-model-development.html#initial-disease-distribution"><i class="fa fa-check"></i><b>9.6.2</b> Initial disease distribution</a></li>
+</ul></li>
+<li class="chapter" data-level="9.7" data-path="9-model-development.html"><a href="9-model-development.html#discussion-4"><i class="fa fa-check"></i><b>9.7</b> Discussion</a></li>
+<li class="chapter" data-level="9.8" data-path="9-model-development.html"><a href="9-model-development.html#summary-7"><i class="fa fa-check"></i><b>9.8</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="10-model-fitting.html"><a href="10-model-fitting.html"><i class="fa fa-check"></i><b>10</b> Fitting a dynamic transmission model of Tuberculosis</a><ul>
+<li class="chapter" data-level="10.1" data-path="10-model-fitting.html"><a href="10-model-fitting.html#introduction-7"><i class="fa fa-check"></i><b>10.1</b> Introduction</a></li>
+<li class="chapter" data-level="10.2" data-path="10-model-fitting.html"><a href="10-model-fitting.html#formulation-as-a-state-space-models"><i class="fa fa-check"></i><b>10.2</b> Formulation as a state-space models</a><ul>
+<li class="chapter" data-level="10.2.1" data-path="10-model-fitting.html"><a href="10-model-fitting.html#observed-data"><i class="fa fa-check"></i><b>10.2.1</b> Observed data</a></li>
+<li class="chapter" data-level="10.2.2" data-path="10-model-fitting.html"><a href="10-model-fitting.html#observational-model"><i class="fa fa-check"></i><b>10.2.2</b> Observational model</a></li>
+<li class="chapter" data-level="10.2.3" data-path="10-model-fitting.html"><a href="10-model-fitting.html#fitted-parameters"><i class="fa fa-check"></i><b>10.2.3</b> Fitted parameters</a></li>
+</ul></li>
+<li class="chapter" data-level="10.3" data-path="10-model-fitting.html"><a href="10-model-fitting.html#fitting-pipeline"><i class="fa fa-check"></i><b>10.3</b> Model fitting pipeline</a><ul>
+<li class="chapter" data-level="10.3.1" data-path="10-model-fitting.html"><a href="10-model-fitting.html#introduction-8"><i class="fa fa-check"></i><b>10.3.1</b> Introduction</a></li>
+<li class="chapter" data-level="10.3.2" data-path="10-model-fitting.html"><a href="10-model-fitting.html#particle-filter"><i class="fa fa-check"></i><b>10.3.2</b> The particle filter</a></li>
+<li class="chapter" data-level="10.3.3" data-path="10-model-fitting.html"><a href="10-model-fitting.html#sequential-monte-carlo"><i class="fa fa-check"></i><b>10.3.3</b> Sequential Monte Carlo</a></li>
+<li class="chapter" data-level="10.3.4" data-path="10-model-fitting.html"><a href="10-model-fitting.html#calibration"><i class="fa fa-check"></i><b>10.3.4</b> Calibration</a></li>
+<li class="chapter" data-level="10.3.5" data-path="10-model-fitting.html"><a href="10-model-fitting.html#model-comparision"><i class="fa fa-check"></i><b>10.3.5</b> Model comparision</a></li>
+<li class="chapter" data-level="10.3.6" data-path="10-model-fitting.html"><a href="10-model-fitting.html#parameter-sensitivity"><i class="fa fa-check"></i><b>10.3.6</b> Parameter sensitivity</a></li>
+<li class="chapter" data-level="10.3.7" data-path="10-model-fitting.html"><a href="10-model-fitting.html#pipeline-overview"><i class="fa fa-check"></i><b>10.3.7</b> Pipeline overview</a></li>
+</ul></li>
+<li class="chapter" data-level="10.4" data-path="10-model-fitting.html"><a href="10-model-fitting.html#results-3"><i class="fa fa-check"></i><b>10.4</b> Results</a><ul>
+<li class="chapter" data-level="10.4.1" data-path="10-model-fitting.html"><a href="10-model-fitting.html#calibration-1"><i class="fa fa-check"></i><b>10.4.1</b> Calibration</a></li>
+<li class="chapter" data-level="10.4.2" data-path="10-model-fitting.html"><a href="10-model-fitting.html#model-comparision-1"><i class="fa fa-check"></i><b>10.4.2</b> Model comparision</a></li>
+<li class="chapter" data-level="10.4.3" data-path="10-model-fitting.html"><a href="10-model-fitting.html#model-fit-to-historic-tb-incidence-rates"><i class="fa fa-check"></i><b>10.4.3</b> Model fit to historic TB incidence rates</a></li>
+<li class="chapter" data-level="10.4.4" data-path="10-model-fitting.html"><a href="10-model-fitting.html#model-fit-to-tb-incidence-rates-from-the-ets"><i class="fa fa-check"></i><b>10.4.4</b> Model Fit to TB incidence rates from the ETS</a></li>
+<li class="chapter" data-level="10.4.5" data-path="10-model-fitting.html"><a href="10-model-fitting.html#model-fit-to-tb-age-distribution"><i class="fa fa-check"></i><b>10.4.5</b> Model fit to TB age distribution</a></li>
+<li class="chapter" data-level="10.4.6" data-path="10-model-fitting.html"><a href="10-model-fitting.html#posterior-parameter-distributions"><i class="fa fa-check"></i><b>10.4.6</b> Posterior parameter distributions</a></li>
+<li class="chapter" data-level="10.4.7" data-path="10-model-fitting.html"><a href="10-model-fitting.html#parameter-sensitivity-1"><i class="fa fa-check"></i><b>10.4.7</b> Parameter Sensitivity</a></li>
+</ul></li>
+<li class="chapter" data-level="10.5" data-path="10-model-fitting.html"><a href="10-model-fitting.html#discussion-5"><i class="fa fa-check"></i><b>10.5</b> Discussion</a></li>
+<li class="chapter" data-level="10.6" data-path="10-model-fitting.html"><a href="10-model-fitting.html#summary-8"><i class="fa fa-check"></i><b>10.6</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="11-model-results.html"><a href="11-model-results.html"><i class="fa fa-check"></i><b>11</b> Investigating the impact of the 2005 change in BCG vaccination policy using a fitted dynamic transmission model of TB</a><ul>
+<li class="chapter" data-level="11.1" data-path="11-model-results.html"><a href="11-model-results.html#introduction-9"><i class="fa fa-check"></i><b>11.1</b> Introduction</a></li>
+<li class="chapter" data-level="11.2" data-path="11-model-results.html"><a href="11-model-results.html#method-4"><i class="fa fa-check"></i><b>11.2</b> Method</a><ul>
+<li class="chapter" data-level="11.2.1" data-path="11-model-results.html"><a href="11-model-results.html#scenarios-considered"><i class="fa fa-check"></i><b>11.2.1</b> Scenarios considered</a></li>
+<li class="chapter" data-level="11.2.2" data-path="11-model-results.html"><a href="11-model-results.html#future-non-uk-born-cases-assumption"><i class="fa fa-check"></i><b>11.2.2</b> Future Non-UK born cases assumption</a></li>
+</ul></li>
+<li class="chapter" data-level="11.3" data-path="11-model-results.html"><a href="11-model-results.html#results-4"><i class="fa fa-check"></i><b>11.3</b> Results</a></li>
+<li class="chapter" data-level="11.4" data-path="11-model-results.html"><a href="11-model-results.html#impact-between-2005-and-2010"><i class="fa fa-check"></i><b>11.4</b> Impact between 2005 and 2010</a></li>
+<li class="chapter" data-level="11.5" data-path="11-model-results.html"><a href="11-model-results.html#non-uk-born-cases-decline-exponentially-over-time"><i class="fa fa-check"></i><b>11.5</b> Non-UK born cases decline exponentially over time</a></li>
+<li class="chapter" data-level="11.6" data-path="11-model-results.html"><a href="11-model-results.html#non-uk-born-cases-stay-at-todays-levels"><i class="fa fa-check"></i><b>11.6</b> Non-UK born cases stay at todays levels</a></li>
+<li class="chapter" data-level="11.7" data-path="11-model-results.html"><a href="11-model-results.html#discussion-6"><i class="fa fa-check"></i><b>11.7</b> Discussion</a></li>
+<li class="chapter" data-level="11.8" data-path="11-model-results.html"><a href="11-model-results.html#summary-9"><i class="fa fa-check"></i><b>11.8</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="12-discussion-chapt.html"><a href="12-discussion-chapt.html"><i class="fa fa-check"></i><b>12</b> Discussion</a><ul>
+<li class="chapter" data-level="12.0.1" data-path="12-discussion-chapt.html"><a href="12-discussion-chapt.html#principal-findings"><i class="fa fa-check"></i><b>12.0.1</b> Principal findings</a></li>
+<li class="chapter" data-level="12.1" data-path="12-discussion-chapt.html"><a href="12-discussion-chapt.html#strengths-and-limitations"><i class="fa fa-check"></i><b>12.1</b> Strengths and limitations</a></li>
+<li class="chapter" data-level="12.2" data-path="12-discussion-chapt.html"><a href="12-discussion-chapt.html#implications-for-policy-makers"><i class="fa fa-check"></i><b>12.2</b> Implications for policy makers</a></li>
+<li class="chapter" data-level="12.3" data-path="12-discussion-chapt.html"><a href="12-discussion-chapt.html#open-reproducible-research"><i class="fa fa-check"></i><b>12.3</b> Open reproducible research</a></li>
+<li class="chapter" data-level="12.4" data-path="12-discussion-chapt.html"><a href="12-discussion-chapt.html#public-engagement"><i class="fa fa-check"></i><b>12.4</b> Public engagement</a></li>
+<li class="chapter" data-level="12.5" data-path="12-discussion-chapt.html"><a href="12-discussion-chapt.html#future-research"><i class="fa fa-check"></i><b>12.5</b> Future research</a></li>
+<li class="chapter" data-level="12.6" data-path="12-discussion-chapt.html"><a href="12-discussion-chapt.html#conclusions"><i class="fa fa-check"></i><b>12.6</b> Conclusions</a></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="13-references.html"><a href="13-references.html"><i class="fa fa-check"></i><b>13</b> References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./"></a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="model-fitting" class="section level1">
+<h1><span class="header-section-number">Chapter 10</span> Fitting a dynamic transmission model of Tuberculosis</h1>
+<div id="introduction-7" class="section level2">
+<h2><span class="header-section-number">10.1</span> Introduction</h2>
+<p>In the previous chapter I outlined a mechanistic model of Tuberculosis (TB) transmission. Whilst this model made use of the best available evidence there remains a large degree of uncertainty regarding its structure and parameterisation. The majority of this uncertainty relates to the amount of TB transmission occuring in England. An approach to deal with this uncertainty is to fit the model to available observed data. Model fitting involves optimising over the available parameter space to return parameter sets that fit the data in some quantative way “better” than other parameter sets.</p>
+<p>This chapter details an approach to challenging a infectious disease model to data using the state-space model formulation and bayesian model fitting techniques. It first outlines the infectious disease model discussed in the previous chapter as a state-space model, as well as detailing the data used for fitting the model, and the parameters that are fitted. It then outlines the theoretical, and practical, justification for the model fitting pipeline used to calibrate and fit this state space model. Finally it discusses the quality of the model fit, strengths and limitations of the approach, and areas for further work.</p>
+</div>
+<div id="formulation-as-a-state-space-models" class="section level2">
+<h2><span class="header-section-number">10.2</span> Formulation as a state-space models</h2>
+<p>State space models (SSMs) may be used to model dynamic systems that are partially observed (such as all but the most contained infectious disease outbreak or endemic). They consist of a set of parameters, a latent continuous/discrete time state process and an observed continuous/discrete time process.<span class="citation">(<span class="citeproc-not-found" data-reference-id="Murray2015"><strong>???</strong></span>)</span> The model developed in the previous section represents the state process of the SSM, with the parameters estimated for the model representing the model initial conditions and parameter set. To complete the mapping to an SSM an observational model is required. This observational model takes the latent estimates from the dynamic model and forecasts the observed data. We specifiy such an observational model in the Section <a href="10-model-fitting.html#observational-model">10.2.2</a>.</p>
+<div id="observed-data" class="section level3">
+<h3><span class="header-section-number">10.2.1</span> Observed data</h3>
+<p>Before the observation model can be detailed the data that will be used to fit the state-space model must be detailed.</p>
+<p>The primary data source used was the reported UK born TB notifications from 2000 to 2004 as recorded by the Enhanced Tuberculosis Survelliance (ETS) system (see Chapter <a href="4-data.html#data">4</a>). These are the only years for which notifications are available stratified by UK birth status and for which universal school-age BCG vaccination was in place. As the model of TB transmission outlined in the previous chapter had multiple age-dependent parameters UK born TB notifications stratified by age group are also fitted to. The age groups considered are children (aged 0-14 years old), adults (15-69 years old), and older adults (70-89 years old). These age groups were used, rather than the more detailed 5 year age groups used in the TB transmission model (see Chapter <a href="9-model-development.html#model-development">9</a>), for three reasons. Firstly, by using condensed age groups the number of notifications in each group increased. Having a larger number of notifications in each group reduces the impact of stochastics noise, which makes fitting the model easier. Secondly, reducing the number of data points, whilst still capturing the important age dynamics, reduces the compute requirements of the model (see Section <a href="10-model-fitting.html#particle-filter">10.3.2</a>). As will be discussed in Section <a href="10-model-fitting.html#fitting-pipeline">10.3</a> this was a major consideration as the model fitting approached used was highly compute intensive. Finally, the condensed age groups used were chosen to be meaningful. This allows model results to be more easily reported and interpreted.</p>
+<p>In addition to the notification data available via the ETS pulmonary TB notifications (including both UK born and non-UK born cases) from 1990 were also fitted too. These TB notifications made to Statutory Notifications of Infectious Diseases (NOIDS) from 1913 to 1999. These data were sourced from Public Health England,<span class="citation">(<span class="citeproc-not-found" data-reference-id="PHE2017"><strong>???</strong></span>)</span> and made available in R using <code>tbinenglanddataclean</code><a href="#fn5" class="footnote-ref" id="fnref5"><sup>5</sup></a>. Data from 1990 was used as using data from a decade prior to the time period of interest allows the long term trends to be fitted to. Only a single data point was used as this limited the impact on the compute time of the fitting pipeline. Additional data points would have brought only marginal improvements to the model fit (see Section <a href="10-model-fitting.html#particle-filter">10.3.2</a>).</p>
+</div>
+<div id="observational-model" class="section level3">
+<h3><span class="header-section-number">10.2.2</span> Observational model</h3>
+<p>There are three major considerations to account for when developing an observed disease notification model (i.e a reporting model). These are: systematic reporting error over time; systematic changes in reporting error over time; and reporting noise. For the notification data outlined in the previous section there is little evidence to suggest the form that this measurement model should take. For this reason I have assumed that all reporting errors are gaussian and that their are no time variable reporting errors. The reporting model can be then defined as follows,</p>
+<p><span class="math display">\[O = \mathcal{N}\left(E_{\text{syst}}A, E_{\text{noise}}A\right)\]</span></p>
+<p>Where <span class="math inline">\(O\)</span> are the observed notifications, <span class="math inline">\(A\)</span> are the incident cases of disease as forecast by the disease transmission model, <span class="math inline">\(E_{\text{syst}}\)</span> is the systematic reporting error, <span class="math inline">\(E_{\text{noise}}\)</span> is the reporting noise, and <span class="math inline">\(\mathcal{N}\)</span> represents the gaussian (normal) distribution. The priors for the model are defined in Table <a href="10-model-fitting.html#tab:measurement-model">10.1</a>. The prior for systematic reporting error is based on the assumption that cases are less likely to be reported than they are to be over reported. The prior for the reporting noise is an assumption. This observation model was also used for the non-UK born pulmonary cases.</p>
+<p>A potential limitation of this model is that reporting of TB cases is likely to have improved over time. This is especially true of notifications reported prior to the introduction of the ETS in 2000 (see Chapter <a href="4-data.html#data">4</a>). A potential improvement to this model would be to introduce seperate systematic reporting errors for notifications pre and post the introduction of the ETS. However, given that I have only included a single point prior to the introduction to the ETS doing so in this instance would lead to overfitting of these parameters. Instead I have assumed that $ E_{}$ is doubled for data points prior to the introduction of the ETS.</p>
+<table class="table" style="font-size: 8px; margin-left: auto; margin-right: auto;">
+<caption style="font-size: initial !important;">
+<span id="tab:measurement-model">Table 10.1: </span>Measurement model parameters, descriptions, prior distributions, units, method used to derive the prior distribution and the type (i.e data derived, literature, assumption). <span class="math inline">\(\mathcal{U}\)</span> = Uniform
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+Parameter
+</th>
+<th style="text-align:left;">
+Description
+</th>
+<th style="text-align:left;">
+Distribution
+</th>
+<th style="text-align:left;">
+Units
+</th>
+<th style="text-align:left;">
+Method
+</th>
+<th style="text-align:left;">
+Type
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;width: 1.5cm; ">
+<span class="math inline">\(E_{\text{syst}}\)</span>
+</td>
+<td style="text-align:left;width: 4cm; ">
+Systematic reporting error of incident TB cases
+</td>
+<td style="text-align:left;width: 6cm; ">
+<span class="math inline">\(\mathcal{N}(0.9, 0.05)\)</span> truncated to be greater than 0.8 and lower than 1.
+</td>
+<td style="text-align:left;width: 1.5cm; ">
+Proportion
+</td>
+<td style="text-align:left;width: 6cm; ">
+Assumption is that underreporting of TB cases is more likely that exact, or over reporting.
+</td>
+<td style="text-align:left;width: 1.5cm; ">
+Assumption
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 1.5cm; ">
+<span class="math inline">\(E_{\text{noise}}\)</span>
+</td>
+<td style="text-align:left;width: 4cm; ">
+Magnitude of reporting noise for incidence TB cases.
+</td>
+<td style="text-align:left;width: 6cm; ">
+<span class="math inline">\(\mathcal{U}(0, 0.05)\)</span>.
+</td>
+<td style="text-align:left;width: 1.5cm; ">
+Proportion
+</td>
+<td style="text-align:left;width: 6cm; ">
+It is likely that reporting accuracy varies each year. An upper bound of 5% is used as this means that approximately 95% of observations will be within 20% of each other.
+</td>
+<td style="text-align:left;width: 1.5cm; ">
+Assumption
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="fitted-parameters" class="section level3">
+<h3><span class="header-section-number">10.2.3</span> Fitted parameters</h3>
+<p>The model outlined in the Chapter <a href="9-model-development.html#model-development">9</a> has a large number of free parameters for which prior distributions have been specified based on the observed data, the literature, and expert knowledge. In theory the model fitting pipeline outlined below could be used to produce posterior distributions for all these parameters. However, in practise this is not feasible as the data discussed in Section <a href="10-model-fitting.html#observed-data">10.2.1</a> only covers notifications and therefore does not contain sufficient information. If every parameter was allowed to update based on the data then it is likely that the resulting posterior distributions would not match with alternative data sources and the literature. Another potential issue is that by allowing all parameters to be fitted the meaningful information in the observed data may be lost.</p>
+<p>For this reason in the model fitting pipeline outlined here I have only allowed parameters relating to TB transmission, and measurement model parameters, to have their posterior distributions updated by the model fitting pipeline. All other parameters have posterior distributions that match their prior distributions. Parameters that have updated posterior distributions based on the data are,</p>
+<ul>
+<li>Mixing rate between UK born and non-UK born (<span class="math inline">\(M\)</span>).</li>
+<li>Scaling on non-UK born cases (<span class="math inline">\(\iota_{\text{scale}}\)</span>).</li>
+<li>Effective contact rate (<span class="math inline">\(c_{\text{eff}}\)</span>).</li>
+<li>The year that the current effective contact rate was reached (<span class="math inline">\(c^{\text{year}}_{\text{eff}}\)</span>).</li>
+<li>Historic effective contact rate (<span class="math inline">\(c^{\text{hist}}_{\text{eff}}\)</span>).</li>
+<li>Half life of the effective contact rate (<span class="math inline">\(c^{\text{hist}}_{\text{half}}\)</span>).</li>
+<li>Systematic reporting error (<span class="math inline">\(E_{\text{syst}}\)</span>).</li>
+<li>Reporting noise (<span class="math inline">\(E_{\text{noise}}\)</span>).</li>
+</ul>
+<p>In addition for scenarios with age variable transmission probabilities the following paramters may also be fitted to,</p>
+<ul>
+<li>Transmission probablity modifier for children (<span class="math inline">\(\beta_{\text{child}}\)</span>).</li>
+<li>Transmission probablity modifier for older adults (<span class="math inline">\(\beta_{\text{older-adults}}\)</span>).</li>
+</ul>
+</div>
+</div>
+<div id="fitting-pipeline" class="section level2">
+<h2><span class="header-section-number">10.3</span> Model fitting pipeline</h2>
+<div id="introduction-8" class="section level3">
+<h3><span class="header-section-number">10.3.1</span> Introduction</h3>
+<p>Fitting dynamic transmisson models is complex and requires the use of specialist statistical techniques. There are a variety of these tools available. Ranging for tried and tested to cutting edge. Historically many modellers have used maximum likelihood methods to fit deterministic models. Unfortunately, whilst computationally efficient, these methods only provide point estimates and are limited to relatively simple models. More recently Bayesian methods have become popular. These have numerous benefits including: explicit inclusion of prior knowledge via prior distributions for all parameters; ability to handle complex stochastic models; and provide parameter distributions (posterior distribution) of best fitting parameters rather than single point estimates. Unfortunately these methods also require calibration prior to use. This section outlines the theoretical justification, and implementation details, of an automated model fitting pipeline used to calibrate, and fit, the previously detailed state space model of TB tranmission in England.</p>
+<p>Libbi was used for all model fitting.<span class="citation">(<span class="citeproc-not-found" data-reference-id="Murray2015"><strong>???</strong></span>)</span> LibBi is a software package for state-space modelling and Bayesian inference. It uses a domain specifc language for model specification, which is then optimised and compiled to provide highly efficient model code. It focusses on full information model fitting approaches including: particle Markov chain Monte Carlo (PMCMC), and SMC^2 methods for parameter estimation. All fitting algorithms are highly efficient and scalable across mutliple CPUs or GPUs. <code>RBI</code> and <code>RBI.helpers</code> were used to interface with LibBi from R.<span class="citation">(<span class="citeproc-not-found" data-reference-id="Funk:2019ud"><strong>???</strong></span>; <span class="citeproc-not-found" data-reference-id="Funk:2019uw"><strong>???</strong></span>)</span> <code>RBI.helpers</code> was also used to optimise the model fitting pipeline as detailed in the calibration section. As model fitting using <code>LibBi</code> is compute intensive a workstation was built, and overclocked, with these compute requirements in mind<a href="#fn6" class="footnote-ref" id="fnref6"><sup>6</sup></a>. All model fitting code is available on GitHub as an R package<a href="#fn7" class="footnote-ref" id="fnref7"><sup>7</sup></a>.</p>
+</div>
+<div id="particle-filter" class="section level3">
+<h3><span class="header-section-number">10.3.2</span> The particle filter</h3>
+<p>In order to fit a model to data it is neccessary to estimate, or calculate, the marginal likelihood. Mathematically, the marginal likelihood is the plausibility that a parameter set, given the specified statistical model and the initial conditions, describes the observed data. For complex state space models, such as that discussed in the previous chapter, calculating the marginal likelihood is not possible.<span class="citation">(<span class="citeproc-not-found" data-reference-id="Murray2015"><strong>???</strong></span>)</span> The particle filter provides a model-agnostic approach, based on importance sampling, to estimate the marginal likelihood. The variant used in this thesis, the bootstrap particle filter, is described below. See <span class="citation">(<span class="citeproc-not-found" data-reference-id="Murray2015"><strong>???</strong></span>)</span> for a more technical discussion of the bootstrap particle filter.</p>
+<ol style="list-style-type: decimal">
+<li><p>For a given parameter set the particle filter is initialised by drawing a number of random samples (state particles) from the initial conditions of the model under consideration. These samples are then given a uniform weighting.</p></li>
+<li><p>Sequentially for the each observed data point the particle filter is then advanced through a series of <em>propagation</em>, <em>weighting</em>, and <em>resampling</em> steps.</p></li>
+</ol>
+<ul>
+<li><p><em>Propagation</em>: For each particle the model is simulated, producing a forecast of the observed data data point.</p></li>
+<li><p><em>Weighting:</em> The likelihood of the new observation, given the predicted state, is then computed for each state particle. State particles are then weighted based on this likelihood.</p></li>
+</ul>
+<ol start="3" style="list-style-type: decimal">
+<li>The marginal likelihood (likelihood of the observed data given the parameter set, marginalised across the initial conditions) can then be estimated by taking the product of the mean likelihood at each observed data point. A sample trajectory can also be calculated using the estimated weights from each time point.</li>
+</ol>
+<p>The particle filter has been shown to provide an unbiased estimate of the likelihood for arbitary state-space models.<span class="citation">(<span class="citeproc-not-found" data-reference-id="Murray2015"><strong>???</strong></span>)</span> As a full information technique the particle filter provides a more accurate estimate of the likelihood than other approximate techniques (such as approximate bayesian computation), with relatively little tuning or user interaction.<span class="citation">(<span class="citeproc-not-found" data-reference-id="Murray2015"><strong>???</strong></span>)</span> The downside of the particle filter, compared to these approaches, is the high compute requirements, with each particle requiring a full model simulation. For highly complex models, the particle filter approach may not be tractable or a reduced level of accuracy of the marginal likelihood estimate must be accepted.</p>
+</div>
+<div id="sequential-monte-carlo" class="section level3">
+<h3><span class="header-section-number">10.3.3</span> Sequential Monte Carlo</h3>
+<p>The particle filter approach outlined above, is a member of a family of sequential monte carlo (SMC) methods. These methods all initialise particles and then follow the same <em>propagation</em>, <em>weighting</em>, and <em>resampling</em> steps as previously detailed. SMC may also be used to sample from the posterior distribution of a given set of priors and a specified model. This works as follows,</p>
+<ol style="list-style-type: decimal">
+<li><p>Initially a number of samples (parameter particles) is taken from the prior distribution of the parameters and assigned a uniform weighting.</p></li>
+<li><p>These parameter particles are then iterated sequentially over each observed data point, undergoing the same <em>propagation</em>, <em>weighting</em>, and <em>resampling</em> steps as in the particle filter, as well as an additional <em>rejuvenation</em> step.</p>
+<ul>
+<li><p><em>Propagation:</em> The model is simulated to the next observed data point.</p></li>
+<li><p><em>Weighting:</em> Parameter particles are weighted using the marginal likelihood. In principle this could be computed exactly, but is most commonly estimated using a nested particle filter for each state particle (i.e as outlined in the previous section). For a subset of models a Kalman filter maybe used instead.<span class="citation">(<span class="citeproc-not-found" data-reference-id="Murray2015"><strong>???</strong></span>)</span> The marginal likelihood may also be estimated using other partial information techniques such as approximate bayesian computation. In the case where a particle filter is used the full algorithm is known as Sequential Monte Carlo^2 (SMC^2). This algorithm is used for all dynamic model fitting in this thesis.</p></li>
+</ul></li>
+</ol>
+<ul>
+<li><p><em>Resampling:</em> The parameter particle stock is restored to equal weights by resampling particles, with replacement, with the probability of each sample being drawn being proportional to its weight.</p></li>
+<li><p><em>Rejuvenation:</em> <em>Resampling</em> of the parameter particles at each time point leads to a reduction in the number of unique values present. For state particles (when estimating the marginal likelihood using a particle filter) particles are diversifed with each propagation but as parameters do not change in time parameter particles cannot diversify in this way. To account for this the <em>rejuvenation</em> step is inserted after the resampling of parameter particles at each time point. The <em>rejuvenation</em> step is a single, or multiple depending on the acceptance rate, Metropolis-Hastings step for each parameter particle. This step aims to preserve the distribution of the parameter particles, whilst increasing their diversity. To minimise unnessary rejuvenation an effective sample size thresold can be used. This only triggers rejuveation when particle diversity has decreased below the target effective sample size thresold.</p></li>
+</ul>
+<div id="marginal-metropolis-hastings" class="section level4">
+<h4><span class="header-section-number">10.3.3.1</span> Marginal Metropolis-Hastings</h4>
+<p>The Metropolis-Hasting step may be used as a model fitting approach in it’s own right (MCMC) when repeated sequentially. It works by proposing a new value from the proposal distribution, estimating the marginal likelihood using the attached particle filter (or using any other exact or inexact method), and then accepting or rejecting the move based on the acceptance probability.<span class="citation">(<span class="citeproc-not-found" data-reference-id="Murray2015"><strong>???</strong></span>)</span> Where the acceptance probability is given by,</p>
+<p><span class="math display">\[ \text{min} \left(1,  \frac{p(y(t_{1:T}) |\theta&#39;)p(\theta&#39;)q(\theta | \theta&#39;)}{p(y(t_{1:T}) |\theta)p(\theta)q(\theta&#39; | \theta)}\right) \]</span></p>
+<p>Where <span class="math inline">\(y\)</span> is the observed data, <span class="math inline">\(\theta\)</span> is the current parameter set, <span class="math inline">\(\theta&#39;\)</span> is some proposed parameter set sampled from some proposal distribution <span class="math inline">\(q(\theta&#39; | \theta)\)</span>.<span class="citation">(<span class="citeproc-not-found" data-reference-id="Murray2015"><strong>???</strong></span>)</span> By construction samples drawn using this rule are ergodic to the posterior distribution. This means that after convergance samples drawn using this rule may be considered as samples from the posterior distribution.</p>
+</div>
+<div id="strengths-and-limitations." class="section level4">
+<h4><span class="header-section-number">10.3.3.2</span> Strengths and limitations.</h4>
+<p>SMC has numerous advantages over MCMC approaches. The first of these is that MCMC aproaches are sensitive to their initial conditions. If a model has multiple local best fits MCMC may only converge to a single minima rather than fully exploring the posterior distribution. Multiple MCMC chains may be used to try and account for this but as each chain must be independently run to convergance only a few concurrent chains are likely to be practical. SMC on the other hand is initialised with a large sample from the prior distribution, meaning that local minimas are more likely to be explored. Parameter particle weighting and resampling then balances the contribution to the posterior distribution of these local minimas based on their fit to the observed data.</p>
+<p>Additionally, MCMC approaches are by definition sequential,<span class="citation">(<span class="citeproc-not-found" data-reference-id="Murray2015"><strong>???</strong></span>)</span> although if they make use of particle filters these can be run in parallel. Increasing the number of particles in a filter may lead to an increase in the chain mixing rate of the MCMC chain but as particles numbers are increased any returns will decrease. To account for this multiple chains are often used, but as outlined above the burn-in required for each chain limits the potential speed-up. In comparision, each SMC parameter particle can have it’s marginal likelihood computed seperately. Although the resampling step remains a bottleneck as it can only be completed once all marginal likelihoods have been computed.</p>
+<p>On the other hand SMC is less interative than MCMC meaning that model fitting is harder to inspect when it is in progress. This is because SMC is not sequential, unlike an MCMC run for which each draw can be inspected as it is computed. Similarly, as SMC is not a sequential technique multiple runs cannot be combined. This means that model fitting must be done in a single run using a priori knowledge to judge the number of MCMC rejuvernation steps required, and the expected total run time. SMC will also have a variable run time based on the effective sample size as rejuvernation only happens when parameter particles have been depleted beyond a certain point.</p>
+</div>
+</div>
+<div id="calibration" class="section level3">
+<h3><span class="header-section-number">10.3.4</span> Calibration</h3>
+<div id="particle-calibration" class="section level4">
+<h4><span class="header-section-number">10.3.4.1</span> Particle calibration</h4>
+<p>The accuracy of the marginal likelihood estimate returned by the particle filter is dependent on the number of particles used, the number of observed data points, the parameter sample, and the complexity of the model. As the number of particles tends towards infinity the likelihood estimate provided by the particle filter should tend towards the exact solution. This suggests that choosing a very high number of particles maybe the optimal solution in terms of accuracy. Unfortunately, each particle requires a full model simulation, which for complex models can be computationally costly. This means that using very large numbers of particles is not tractable. For this reason it is neccassary to determine an optimal number of particles that both provides an adequately accurate estimate of the likelihood whilst being computationally tractable.</p>
+<p>The <code>rbi.helpers</code> R package attempts to solve this issue by adopting the following strategy.<span class="citation">(<span class="citeproc-not-found" data-reference-id="Funk:2019uw"><strong>???</strong></span>)</span> First, the approximate mean of the posterior distribution is obtained, as accurate likelihood estimates near the posterior mean are of the most interest. Repeated model simulations are then run using the same set of parameters, with the marginal likelihood being estimated each time using a given number of particles. The variance of these log-likelihood estimates is then calculated. This process is then repeated for increasing numbers of particles until the log-likelihood variance is below some target thresold, commonly 1.<span class="citation">(<span class="citeproc-not-found" data-reference-id="Funk:2019uw"><strong>???</strong></span>)</span></p>
+<p>I have implemented this as a two step process for each fitted scenario. Firstly, I used the Nelder-Mead simplex method, via LibBi,<span class="citation">(<span class="citeproc-not-found" data-reference-id="Murray2015"><strong>???</strong></span>)</span> to find a parameter set that optimised the maximum likelihood. I then initialised a 1000 step PMCMC chain with this parameter set, using 256 particles in the particle filter. I then used <code>rbi.helpers</code>,<span class="citation">(<span class="citeproc-not-found" data-reference-id="Funk:2019uw"><strong>???</strong></span>)</span> as outlined above, to estimate the number of particles required to produce a log-likelihood variance of less than 1 for this sample of the posterior distribiution, using 250 samples per step and starting with 64 particles. I initially planned to repeat this process for multiple draws from the posterior distribution but this proved to be infeasible given the compute available. A target of 5 for the log-likelihood variance was chosen as a smaller target could not be feasibly achieved given the compute resources available. Additionally 256 was specified as the maximum number of feasible particles to use in the particle filter.</p>
+</div>
+<div id="proposal-calibration" class="section level4">
+<h4><span class="header-section-number">10.3.4.2</span> Proposal calibration</h4>
+<p>When using an MCMC alogorithm a proposal distribution is required to provide new parameter samples to evaluate. For SMC^2 a proposal distribution is required to inform the MCMC sampler that is run during the rejuvernation step. By default if no proposal distribution is provided Libbi uses the prior distribution.<span class="citation">(<span class="citeproc-not-found" data-reference-id="Murray2015"><strong>???</strong></span>)</span> The prior distribution can be an inefficient proposal distribution as it is likely to have a low acceptance rate (from the MCMC sampler).<span class="citation">(<span class="citeproc-not-found" data-reference-id="Murray2015"><strong>???</strong></span>)</span> Having a low acceptance rates means that many more MCMC steps are required to generate a successful parameter sample. This results in slow mixing and computationally expensive MCMC steps may make model fitting intractable.</p>
+<p>A more efficient approach is to specify a proposal distribution that draws parameter samples that are closer to the current state of the MCMC chain than the overall prior distribution. There is an extensive literature examing how to optimise the proposal distribution to achieve an good acceptance rate. In practise it has been shown that a rate of between 10% and 20% is optimal for upwards of 5 parameters.<span class="citation">(<span class="citeproc-not-found" data-reference-id="Murray2015"><strong>???</strong></span>)</span> This strikes a balance between allowing the chain to fully explore the posterior distribution whilst still being as efficient as possible.</p>
+<p>A simple approach to setting the proposal is to run a series of MCMC steps and then calculate the acceptence rate. Based on the acceptence rate the width of the proposal distributions can then be adapted. By repeating these steps multiple times a proposal distribution which gives an acceptance rate within the desired bounds can be arrived at. This adaption can either be independent for each parameter or dependent (taking into account empirical correlations). The <code>adapt_proposal</code> function, from the <code>rbi.helpers</code> R package,<span class="citation">(<span class="citeproc-not-found" data-reference-id="Funk:2019uw"><strong>???</strong></span>)</span> implements this approach and is used in this model fitting pipeline. In many models parameters are likely to have strong correlations (i.e between UK and Non-UK born mixing rate and effective contact rate) and in these scenarios it is likely that a dependent strategy for adapting the proposal distribution will more efficiently explore the posterior distribution. However, the downside of adapting the proposal distribution using dependent methods is that the resulting proposal is highly complex, is computationally expensive to compute and may breakdown in some areas of the posterior distribution.</p>
+<p>In this model fitting pipeline I have used a maximum of 5 iterations of, manual, independent proposal adaption, drawing 250 samples in each iteration, starting with the prior distributions and halfing the scale each time. The proposal distribution is also truncated so that parameter samples cannot be drawn from areas without support from the prior distributions. As for the particle calibration, I initially used a maximum likelihood method to provide a point estimate of the best fitting parameter set, followed by 1000 PMCMC steps, using a 256 particle filter. This means that the proposal distribution is adapted near to the posterior mean rather than in the tails of the posterior distribution.</p>
+<p>I chose to use, manual, independent proposal adaption method for several reasons. Firstly, when developing this pipeline the approaches implemented in <code>rbi.helpers</code> produced multiple transient errors in other <code>rbi</code> and <code>rbi.helpers</code> code. Secondly, the resulting dependent proposal distribution was highly complex, slow to compute, and diffult to debug. Finally, for SMC^2 efficient exploration of the proposal distribution is less important than when using MCMC alone as SMC^2 is initialised with multiple samples from the prior distribution. This means that multiple local maximas can be efficiently explored regardless of the proposal distribution used. The MCMC rejuvernation step then serves to provide additional samples from these local maximas. Proposal adaption was only carried out for the main model scenario with all other scenarios using this proposal distribution.</p>
+</div>
+</div>
+<div id="model-comparision" class="section level3">
+<h3><span class="header-section-number">10.3.5</span> Model comparision</h3>
+<p>In the previous chapter multiple potential model structures were outlined, each of which could be valid based on theoretical considerations. The observed data can be used to identify which of these structures best reflects reality. This can be done using the deviance information criterion (DIC). The DIC is a hierarchical modeling generalization of the Akaike information criterion (AIC) and can be used to compare nested models.<span class="citation">(<span class="citeproc-not-found" data-reference-id="Gelman:nll_LBlw"><strong>???</strong></span>)</span></p>
+<p>Smaller DIC values should indicate a better fit to data than larger DIC values. The DIC is composed of the deviance, which favours a good fit, and the effective number of parameters, which penalises overfitting.<span class="citation">(<span class="citeproc-not-found" data-reference-id="Gelman:nll_LBlw"><strong>???</strong></span>)</span> Unlike the AIC the DIC can be estimated using samples from the posterior distribution and so is more readily calculated for models estimated using bayesian methods. It can be defined as,</p>
+<p><span class="math display">\[ {\mathit  {DIC}}=D({\bar  {\theta }})+2p_{D}\]</span>
+Where <span class="math inline">\(\bar{\theta}\)</span> is the expectation of <span class="math inline">\(\theta\)</span>, with <span class="math inline">\(\theta\)</span> being defined as the unknown parameters of the model. <span class="math inline">\(p_{D}\)</span> is the effective number of parameters in the model and is used to penalise more comple complex models. It can be estimated as follows,<span class="citation">(<span class="citeproc-not-found" data-reference-id="Gelman:nll_LBlw"><strong>???</strong></span>)</span></p>
+<p><span class="math display">\[p_{D}=p_{V}={\frac  {1}{2}}\widehat {\operatorname {var}}\left(D(\theta )\right).\]</span></p>
+<p>Finally the deviance is defined as,</p>
+<p><span class="math display">\[D(\theta)=-2\log(p(y|\theta ))+C\]</span></p>
+<p>Where y are the data, <span class="math inline">\(\displaystyle p(y|\theta)\)</span> is the likelihood function and C is a constant. C cancels out when comparing different models and therefore does not need to be calculated.</p>
+<p>The DIC has two limitations. The first of these is that in its derivation it is assumed that the model that generates future observations encompasses the true model. This assumption may not hold in all circumstances. The second limitations is that the observed data is used to construct both the posterior distribution and to estimate the DIC. This means that the DIC tends to select for over-fitted model.<span class="citation">(<span class="citeproc-not-found" data-reference-id="Gelman:nll_LBlw"><strong>???</strong></span>)</span></p>
+<p>In this chapter I have used the DIC, as estimated by the <code>DIC</code> function from <code>rbi.helpers</code>,<span class="citation">(<span class="citeproc-not-found" data-reference-id="Funk:2019uw"><strong>???</strong></span>)</span> to evaluate the various model structures outlined in the previous chapter.</p>
+</div>
+<div id="parameter-sensitivity" class="section level3">
+<h3><span class="header-section-number">10.3.6</span> Parameter sensitivity</h3>
+<p>Understanding the impact of parameter variation can help when interpreting findings from a model, targeting interventions, and identifying parameters for which improved estimates are needed. Often parameter sensitivity is assessed using single-parameter or local sensitivity analyses. Unfortunately, these techniques do not accurately capture uncertainty or sensitivity in the system as they hold all other parameters fixed.<span class="citation">(<span class="citeproc-not-found" data-reference-id="Marino2009a"><strong>???</strong></span>)</span> Various techniques exist that can globally study a multi-dimensional parameter space. In this section, I will outline the partial rank correlation coefficient method (PRCC) and discuss it’s strengths and weaknesses. The implementation of PRCC to estimate the parameter sensitivity of parameters fitted using the model fitting pipeline presented above is then discussed.</p>
+<p>PRCC is a sampling based approach which can be computed with minimal computational cost from a sample of the prior or posterior distributions of a model. It estimates the degree of correlation between a given parameter input and an output after adjusting (using a linear model) for variation in other inputs. It is an extension of more simplistic sampling techniques, the most basic of which, is simply examining scatter plots of a sampled parameter set against the outcome of interest. PRCC is required as these more simplistic techniques become intractable with higher dimensionality as they do not account for between paremeter correlation or are just difficult to interpret with multiple dimensions.<span class="citation">(<span class="citeproc-not-found" data-reference-id="Marino2009a"><strong>???</strong></span>)</span> PRCC can be understood by first outlining the individual steps. These are:</p>
+<ol style="list-style-type: decimal">
+<li><strong>Correlation:</strong> Provides a measure of the strength of a linear association between an input and and output (scaled from -1 to 1). It is calculated as follows,</li>
+</ol>
+<p><span class="math display">\[ 
+{\displaystyle \rho _{X,Y}={\frac {\operatorname {cov} (X,Y)}{\sigma _{X}\sigma _{Y}}}}
+\]</span></p>
+<p>Where <span class="math inline">\(\operatorname {cov}\)</span> is the covariance, <span class="math inline">\(\sigma _{X}\)</span> is the standard deviation of <span class="math inline">\(X\)</span>, and <span class="math inline">\(\sigma_Y\)</span> is the standard deviation of <span class="math inline">\(Y\)</span>. Where <span class="math inline">\(X\)</span> is the input and <span class="math inline">\(Y\)</span> is the output.</p>
+<ol start="2" style="list-style-type: decimal">
+<li><p><strong>Rank Correlation:</strong> This is defined as for correlation but with the data being rank transformed. Rank transformation reorders inputs and outputs in magnitude order. Unlike non-rank transformed correlation it can handle non-linear relationships but still requires monotonicity.</p></li>
+<li><p><strong>Partial Rank Correlation:</strong> Inputs and outputs are first rank transformed as above. Linear models are then built which adjust for the effects of the other inputs on <span class="math inline">\(Y\)</span>, and on the current input <span class="math inline">\(X_i\)</span>. Correlation is the calculated as above using the residuals from these models.</p></li>
+</ol>
+<p>A limitation of PRCC is that it whilst it can capture non-lnear relationships between outputs and inputs these relationships must be monotonic.<span class="citation">(<span class="citeproc-not-found" data-reference-id="Marino2009a"><strong>???</strong></span>)</span> For relationships that are non-monotic methods that rely on the decompositon of model output variance, such as the extended Fourier amplitude sensitivity test,<span class="citation">(<span class="citeproc-not-found" data-reference-id="Marino2009a"><strong>???</strong></span>)</span> are more appropriate. However, these approaches are computationally demanding as they typically require mutliple iterations of model simulation. Additionally, they cannot be used on a previous parameter samples, instead needing to sample and simulate the model within the parameter sensitivity algorithmn. This means that they cannot be used for “free” (i.e with neglible additional compute cost), unlike PRCC which can be estimated using a sample from the posterior distribution. For this reason these approaches have not been further explored in this thesis.</p>
+<p>I have implemented PRCC using the <code>epiR</code> R package<a href="#fn8" class="footnote-ref" id="fnref8"><sup>8</sup></a>,<span class="citation">(<span class="citeproc-not-found" data-reference-id="EpiR"><strong>???</strong></span>)</span> using the samples from the posterior distribution of the model calculated during the SMC^2 step. Parameter sensitivity measures such as PRCC must be calculated seperately for each output time point. I calculated the PRCC for each fitted parameter, at the final time point with fitted data (2004), for both overall TB incidence rates and TB incidence rates in children. These results are then summarised by plotting the absolute PRCC values for each output measure, indicating the direction of correlation using colour<a href="#fn9" class="footnote-ref" id="fnref9"><sup>9</sup></a>.</p>
+</div>
+<div id="pipeline-overview" class="section level3">
+<h3><span class="header-section-number">10.3.7</span> Pipeline overview</h3>
+<p>The full model fitting pipeline can be summarised as follows<a href="#fn10" class="footnote-ref" id="fnref10"><sup>10</sup></a>:</p>
+<ol style="list-style-type: decimal">
+<li><p>Model initialisation using minimal error checking and single precision computation. Implemented using the <code>disable-assert</code> adn <code>enable-single</code> flags in LibBi.<span class="citation">(<span class="citeproc-not-found" data-reference-id="Murray2015"><strong>???</strong></span>)</span> Outputs are only given for times with oberserved data and a subset of parameters are recorded for final reporting<a href="#fn11" class="footnote-ref" id="fnref11"><sup>11</sup></a>.</p></li>
+<li><p>5000 parameter sets were taken from the prior distribution and the model was then simulated for each one.</p></li>
+<li><p>Maximum likelihood optimisation with 100 steps, using the Nelder-Mead simplex method, via LibBi.<span class="citation">(<span class="citeproc-not-found" data-reference-id="Murray2015"><strong>???</strong></span>)</span> This approximates the mean of the posterior distribution.</p></li>
+<li><p>1000 PMCMC steps, with 256 particles used in the particle filter. This provides a better estimate of the mean of the posterior distribution.</p></li>
+<li><p>Particle adaption via <code>rbi.helpers</code> at the approximate mean of the posterior distribution.<span class="citation">(<span class="citeproc-not-found" data-reference-id="Funk:2019uw"><strong>???</strong></span>)</span> A minimum of 64 particles and a maximum of 256 particles are assessed with the target of a log-likelihood variance of less than 5. 250 PMCMC steps were used at each stage to estimate the log-likelihood variance.</p></li>
+<li><p>Manual independent proposal adaption at the approximate mean of the posterior distribution. The size of the proposal distribution is halved each iteration, with at most 5 iterations of adaption. The minimum target acceptance rate specified was 10% and the maximum was 20%. 250 PMCMC samples were used each time to estimate the acceptance rate. Proposal adaption was only carried out for the main model scenario, with other scenarios using this proposal.</p></li>
+<li><p>SMC^2 model fitting with 5000 initial parameter particles. Particle rejuvernation was set to trigger when the effective sample size decreased below 1000, with 4 MCMC steps used each time.</p></li>
+<li><p>For each sample from the posterior distribution the model was then simulated for all time points.</p></li>
+<li><p>The model DIC was computed using <code>rbi.helpers</code>.<span class="citation">(<span class="citeproc-not-found" data-reference-id="Funk:2019uw"><strong>???</strong></span>)</span> This gives a model agnostic approach to evaluate the fit to the observed data.</p></li>
+<li><p>Parameter sensitivity was estimated by calculating the partial rank correlation coffecient (PRCC) for each model parameter, for the final time point fitted too (2004), for both overall TB incidence rates and TB incidence rates in children. Results were then plotted in order of the absolute magnitude of the correlation, with the direction of the correlation determined using colour. The <code>epiR</code> package was used to compute the PRCC.<span class="citation">(<span class="citeproc-not-found" data-reference-id="EpiR"><strong>???</strong></span>)</span></p></li>
+</ol>
+</div>
+</div>
+<div id="results-3" class="section level2">
+<h2><span class="header-section-number">10.4</span> Results</h2>
+<div id="calibration-1" class="section level3">
+<h3><span class="header-section-number">10.4.1</span> Calibration</h3>
+<ul>
+<li>Report on proposal acceptance rate and number of particles selected in main scenario</li>
+<li>Report on run time and feasibilty</li>
+</ul>
+</div>
+<div id="model-comparision-1" class="section level3">
+<h3><span class="header-section-number">10.4.2</span> Model comparision</h3>
+<ul>
+<li>Compare Scenarios using DIC and discuss results.</li>
+<li>Table of DIC results with scenarios</li>
+</ul>
+</div>
+<div id="model-fit-to-historic-tb-incidence-rates" class="section level3">
+<h3><span class="header-section-number">10.4.3</span> Model fit to historic TB incidence rates</h3>
+<ul>
+<li>Plot of historic TB data + fit from model</li>
+<li>Table of data + model fit + uncertainty</li>
+<li>Comment on model fit</li>
+</ul>
+</div>
+<div id="model-fit-to-tb-incidence-rates-from-the-ets" class="section level3">
+<h3><span class="header-section-number">10.4.4</span> Model Fit to TB incidence rates from the ETS</h3>
+<ul>
+<li>Plot of TB data and fit</li>
+<li>Table of data and fit</li>
+<li>Comment on fit</li>
+</ul>
+</div>
+<div id="model-fit-to-tb-age-distribution" class="section level3">
+<h3><span class="header-section-number">10.4.5</span> Model fit to TB age distribution</h3>
+<ul>
+<li>Age group plot over time + fit</li>
+<li>Age distribution over time + fit</li>
+<li>Comment on fit</li>
+</ul>
+</div>
+<div id="posterior-parameter-distributions" class="section level3">
+<h3><span class="header-section-number">10.4.6</span> Posterior parameter distributions</h3>
+<ul>
+<li>Plot of Posterior Parameter distributions</li>
+<li>Table of Posterior Parameter distributions</li>
+<li>Comment on posteriors</li>
+</ul>
+</div>
+<div id="parameter-sensitivity-1" class="section level3">
+<h3><span class="header-section-number">10.4.7</span> Parameter Sensitivity</h3>
+<ul>
+<li>Plot parameter sensitivty</li>
+<li>Comment on parameter sensitivity in light of strength of data</li>
+</ul>
+</div>
+</div>
+<div id="discussion-5" class="section level2">
+<h2><span class="header-section-number">10.5</span> Discussion</h2>
+<p>In this chapter I have formulated the disease transmission model developed in the previous chapter as a state-space model, developed a model fitting pipeline to fit this model to observed data, and presented the results of this fitted model.</p>
+<ul>
+<li><p>Summary of work from chapter</p></li>
+<li>Method strengths and weaknesses</li>
+<li><p>Software strengths and weaknesses</p></li>
+<li>Strengths and weaknesses</li>
+<li>Next chapter</li>
+<li><p>Conclusions</p></li>
+</ul>
+</div>
+<div id="summary-8" class="section level2">
+<h2><span class="header-section-number">10.6</span> Summary</h2>
+<ul>
+<li>Defined the disease transmission model from the previous chapter as a state-space model.</li>
+<li>Outlined the observed data and defined an appropriate measurement model for this data.</li>
+<li>Developed a model fitting pipeline based on SMC^2 to fit the previously defined state-space model to TB notification data.</li>
+<li>Evaluated the various scenarios discussed in the previous chapter using DIC and discussed the implications of these findings.</li>
+<li>Presented the model fit to data from the best fitting scenario as established using the DIC.</li>
+<li>Discussed the posterior distributions of the fitted parameters and compared these distributions to the prior distributions.</li>
+<li>Estimated the model sensitivity to parameter changes and discussed the impact that this sensitivity may have.</li>
+</ul>
+
+</div>
+</div>
+<div class="footnotes">
+<hr />
+<ol start="5">
+<li id="fn5"><p>Historic TB notification data via <code>tbinenglanddataclean</code>: <a href="https://www.samabbott.co.uk/tbinenglanddataclean/" class="uri">https://www.samabbott.co.uk/tbinenglanddataclean/</a><a href="10-model-fitting.html#fnref5" class="footnote-back">↩</a></p></li>
+<li id="fn6"><p>See these blog posts for details: <a href="https://www.samabbott.co.uk/post/building-an-rstats-workstation/" class="uri">https://www.samabbott.co.uk/post/building-an-rstats-workstation/</a>, <a href="https://www.samabbott.co.uk/post/benchmarking-workstation-xgboost/" class="uri">https://www.samabbott.co.uk/post/benchmarking-workstation-xgboost/</a>, <a href="https://www.samabbott.co.uk/post/benchmarking-workstation-benchmarkme/" class="uri">https://www.samabbott.co.uk/post/benchmarking-workstation-benchmarkme/</a><a href="10-model-fitting.html#fnref6" class="footnote-back">↩</a></p></li>
+<li id="fn7"><p>See here for details: <a href="https://github.com/seabbs/ModelTBBCGEngland" class="uri">https://github.com/seabbs/ModelTBBCGEngland</a><a href="10-model-fitting.html#fnref7" class="footnote-back">↩</a></p></li>
+<li id="fn8"><p>Code: <a href="https://github.com/seabbs/ModelTBBCGEngland/blob/master/R/test_sensitivity.R" class="uri">https://github.com/seabbs/ModelTBBCGEngland/blob/master/R/test_sensitivity.R</a><a href="10-model-fitting.html#fnref8" class="footnote-back">↩</a></p></li>
+<li id="fn9"><p>Code: <a href="https://github.com/seabbs/ModelTBBCGEngland/blob/master/R/plot_sensitivity.R" class="uri">https://github.com/seabbs/ModelTBBCGEngland/blob/master/R/plot_sensitivity.R</a><a href="10-model-fitting.html#fnref9" class="footnote-back">↩</a></p></li>
+<li id="fn10"><p>Code: <a href="https://github.com/seabbs/ModelTBBCGEngland/blob/master/R/fit_model.R" class="uri">https://github.com/seabbs/ModelTBBCGEngland/blob/master/R/fit_model.R</a><a href="10-model-fitting.html#fnref10" class="footnote-back">↩</a></p></li>
+<li id="fn11"><p>Model code: <a href="https://github.com/seabbs/ModelTBBCGEngland/blob/master/inst/bi/BaseLineModel.bi" class="uri">https://github.com/seabbs/ModelTBBCGEngland/blob/master/inst/bi/BaseLineModel.bi</a><a href="10-model-fitting.html#fnref11" class="footnote-back">↩</a></p></li>
+</ol>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="9-model-development.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="11-model-results.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"download": [["thesis.pdf", "PDF"]],
+"toc": {
+"collapse": "section"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(src))
+      src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
