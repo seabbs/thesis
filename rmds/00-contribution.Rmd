@@ -7,7 +7,7 @@ SA conceived, designed, and undertook the work. SA wrote the paper and approved 
 
 Abbott S, Christensen H, Brooks-Pollock E. *Reassessing the evidence for universal school-age Bacillus Calmette Guerin (BCG) vaccination in England and Wales*, doi: https://doi.org/10.1101/567511 \par
 
-SA, HC, and EBP conceived and designed the work. SA undertook the analysis with advice from all other authors. All authors contributed to the interpretation of the data. SA wrote the first draft of the paper and all authors contributed to subsequent drafts. All authors approve the work for publication and agree to be accountable for the work.
+SA, HC, and EBP conceived and designed the work. SA undertook the analysis with advice from all other authors. All authors contributed to the interpretation of the data. SA wrote the first draft of the paper and all authors contributed to subsequent drafts. All authors approve the work for publication and agree to be accountable for the work. \par
 
 Abbott S, Christensen H, Lalor MK, Zenner D,Campbell C, Ramsay M, Brooks-Pollock E. *Exploring the effects of BCG vaccination in patients diagnosed with tuberculosis: observational study using the Enhanced Tuberculosis Surveillance system*, doi: https://doi.org/10.1101/366476 \par
 
