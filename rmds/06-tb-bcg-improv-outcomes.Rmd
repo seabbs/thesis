@@ -57,11 +57,11 @@ walk(rda_files, read_rda)
 
 Bacillus Calmette–Guérin (BCG) primarily reduces the progression from infection to disease, however there is evidence that BCG may provide additional benefits. In this Chapter I aimed to investigate whether there is evidence in routinely-collected surveillance data (see Chapter \@ref(data)) that BCG vaccination impacts outcomes for tuberculosis (TB) cases in England. Any impact on TB outcomes could add additional weight to vaccination policies with wider population coverage, as these policies would have benefits beyond reducing TB incidence rates. 
 
-To conduct this study, I first obtained all TB notifications for 2009-2015 in England from the Enhanced Tuberculosis surveillance system (see Chapter \@ref(data)). I then considered five outcomes: All-cause mortality, death due to TB (in those who died), recurrent TB, pulmonary disease, and sputum smear status. I used logistic regression, with complete case analysis, to investigate each outcome with BCG vaccination, years since vaccination and age at vaccination, adjusting for potential confounders. All analyses were repeated using multiply imputed data. This work was supervised by Hannah Christensen and Ellen Brooks-Pollock. Collaborators at Public Health England including, Maeve K Lalor, Dominik Zenner, Colin Campbell, and Mary E Ramsay provided the data and commented on multiple versions of this work. 
+To conduct this study, I first obtained all TB notifications for 2009-2015 in England from the Enhanced Tuberculosis surveillance (ETS) system (see Chapter \@ref(data)). I then considered five outcomes: All-cause mortality, death due to TB (in those who died), recurrent TB, pulmonary disease, and sputum smear status. I used logistic regression, with complete case analysis, to investigate each outcome with BCG vaccination, years since vaccination and age at vaccination, adjusting for potential confounders. All analyses were repeated using multiply imputed data. This work was supervised by Hannah Christensen and Ellen Brooks-Pollock. Collaborators at Public Health England including, Maeve K Lalor, Dominik Zenner, Colin Campbell, and Mary E Ramsay provided the data and commented on multiple versions of this work. 
 
 ## Background
 
-Bacillus Calmette–Guérin (BCG) is one of the mostly widely-used vaccines and the only vaccine that protects against tuberculosis (TB) disease. BCG was first used in humans in 1921 and was introduced into the WHO Expanded Program on Immunization in 1974.[@The2004] BCG vaccination has been controversial due to its variable efficacy and possibility of causing a false positive result with the standard skin test for TB.[@Zwerling2011a] However, the lack of a more effective vaccine and the emergence of drug-resistant TB strains means that BCG vaccination remains an important tool for reducing TB incidence and mortality rates.
+Bacillus Calmette–Guérin (BCG) is one of the mostly widely-used vaccines and the only vaccine that protects against TB disease. BCG was first used in humans in 1921 and was introduced into the WHO Expanded Program on Immunization in 1974.[@The2004] BCG vaccination has been controversial due to its variable efficacy and possibility of causing a false positive result with the standard skin test for TB.[@Zwerling2011a] However, the lack of a more effective vaccine and the emergence of drug-resistant TB strains means that BCG vaccination remains an important tool for reducing TB incidence and mortality rates.
 
 BCG’s primary mode of action is to directly prevent the development of active, symptomatic disease. Its efficacy in adults is context specific, with estimates ranging between 0% and 78% (see Chapter \@ref(background)).[@Mangtani2014a] It has been shown to highly efficacious in England and there is some evidence that efficacy increases with distance from the equator. Efficacy has been shown to be dependent on previous exposure, with unexposed individuals receiving the greatest benefit.[@Barreto2014a] Unlike in adults, BCG has consistently been shown to be highly protective against TB and TB meningitis in children.[@Rodrigues1993; @Colditz1994] For this reason the majority of countries that use BCG, vaccinate at birth.[@Zwerling2011] Adult vaccination is no longer common in the UK, where universal BCG vaccination of adolescents was stopped in 2005 in favour of a targeted neonatal programme aimed at high risk children.
 
@@ -70,9 +70,9 @@ Vaccination policy has been primarily based on reducing the incidence of TB dise
 
 ## Method
 
-### Enhanced Tuberculosis Surveillance (ETS) system
+### Enhanced TB Surveillance (ETS) system
 
-I extracted all notifications from the Enhanced Tuberculosis Surveillance (ETS) system from January 1, 2009 to December 31, 2015 (Chapter \@ref(data)). BCG vaccination status and year of vaccination have been collected since 2008. The outcomes I considered were: all-cause mortality, death due to TB (in those who died), recurrent TB, pulmonary disease, and sputum smear status. These outcomes were selected based on: their availability in the ETS; evidence from the literature of prior associations with BCG vaccination; associations with increased case infectiousness; or severe outcomes for patients.
+I extracted all notifications from the ETS system from January 1, 2009 to December 31, 2015 (Chapter \@ref(data)). BCG vaccination status and year of vaccination have been collected since 2008. The outcomes I considered were: all-cause mortality, death due to TB (in those who died), recurrent TB, pulmonary disease, and sputum smear status. These outcomes were selected based on: their availability in the ETS; evidence from the literature of prior associations with BCG vaccination; associations with increased case infectiousness; or severe outcomes for patients.
 
 All-cause mortality was defined using the overall outcome recorded in ETS, this is based on up to 36 months of follow up starting from date of starting treatment. Follow up ends when a case is recorded as completing treatment, with treatment status evaluated at 12, 24, and 36 months from starting treatment. Where the treatment start date was not available the notification date was used if appropriate. The date of death was validated against Office for National Statistics (ONS) data. Those that were lost to follow up, or not evaluated were treated as missing. In cases with a known cause of death, death due to TB was defined as those that died from TB, or where TB had contributed to their death. Cause of death was recorded by case managers. TB cases who had recurrent episodes were identified using probabilistic matching. Positive sputum smear status was given to cases that had a sputum sample shown to contain Acid-Fast Bacilli. A positive sputum smear status indicates that cases are more likely to be infectious. Cases were defined as having pulmonary TB if a positive sputum smear sample was recorded, if a positive culture was grown from a pulmonary laboratory specimen, or if they were clinically assessed as having pulmonary TB.
 
@@ -120,7 +120,7 @@ outcome_demo_tab_bcg <- replace_html_with_latex(outcome_demo_tab_bcg)
 
 outcome_demo_tab_bcg %>% 
   set_names(., c("Outcome", names(.)[-1])) %>% 
-  kable(caption = "Outcomes for individuals in England notified with tuberculosis between 2009-2015,  stratified by BCG vaccination status.",
+  kable(caption = "Outcomes for individuals in England notified with TB between 2009-2015,  stratified by BCG vaccination status.",
          booktabs = TRUE, escape = TRUE) %>% 
     column_spec(c(1), width = "2cm") %>% 
     add_indent(indents) %>% 
@@ -140,7 +140,7 @@ demo_tab_bcg <- replace_html_with_latex(demo_tab_bcg)
 
 demo_tab_bcg %>% 
   set_names(., c("Confounder", names(.)[-1])) %>% 
-  kable(caption = "Confounders for individuals in England notified with tuberculosis between 2009-2015,  stratified by BCG vaccination status.",
+  kable(caption = "Confounders for individuals in England notified with TB between 2009-2015,  stratified by BCG vaccination status.",
          booktabs = TRUE, escape = TRUE) %>% 
     column_spec(c(1), width = "2cm") %>% 
     add_indent(indents) %>% 

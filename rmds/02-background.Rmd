@@ -25,11 +25,11 @@ resources_path  <- file.path("chapters", "background")
 
 ## Tuberculosis
 
-Tuberculosis (TB) is thought to infect over 1.7 billion people globally, of which 5-15% will develop active TB in their lifetime.[@TheWorldHealthOrganization:2018va] Of this number around 10% are likely to die from TB or TB related causes. TB is preventable and curable, but the majority of cases occur in less economically developed countries and are never diagnosed.[@TheWorldHealthOrganization:2018va] In the following section, the natural history of Tuberculosis, the risk factors, the treatment, the global impact, and the impact in England and Wales are explored.
+Tuberculosis (TB) is thought to infect over 1.7 billion people globally, of which 5-15% will develop active TB in their lifetime.[@TheWorldHealthOrganization:2018va] Of this number around 10% are likely to die from TB or TB related causes. TB is preventable and curable, but the majority of cases occur in less economically developed countries and are never diagnosed.[@TheWorldHealthOrganization:2018va] In the following section, the natural history of TB, the risk factors, the treatment, the global impact, and the impact in England and Wales are explored.
 
-### Natural history of Tuberculosis
+### Natural history of TB
 
-TB is primarily a respiratory disease (pulmonary TB) caused by the bacterium Mycobacterium tuberculosis, although it can also affect other parts of the body (extra-pulmonary TB). TB spreads via airborne droplets that are expelled when individuals with active pulmonary TB cough. After an infection with TB, 5-10% of individuals develop primary disease within 1-2 years of exposure. Children are more likely to develop active disease and to develop it more quickly than adults.[@TheWorldHealthOrganization:2018va] The majority of individuals then enter a latent stage in which they passively carry TB mycobacterium. Reactivation of bacilli can then occur many years later due to a loss of immune control.[@Gideon2011a] 
+TB is primarily a respiratory disease (pulmonary TB) caused by the bacterium Mycobacterium TB, although it can also affect other parts of the body (extra-pulmonary TB). TB spreads via airborne droplets that are expelled when individuals with active pulmonary TB cough. After an infection with TB, 5-10% of individuals develop primary disease within 1-2 years of exposure. Children are more likely to develop active disease and to develop it more quickly than adults.[@TheWorldHealthOrganization:2018va] The majority of individuals then enter a latent stage in which they passively carry TB mycobacterium. Reactivation of bacilli can then occur many years later due to a loss of immune control.[@Gideon2011a] 
 
 Both active and latent TB cases represent a range of diverse individual states. Pulmonary cases are typically responsible for the vast majority of transmission.[@Sepkowitz1996] Latent cases may have completely cleared the bacterium or be asymptotically carrying reproducing active TB bacterium.[@Gideon2011a] Adolescents have the highest risk of developing active TB, usually in the form of pulmonary TB.[@TheWorldHealthOrganization:2018va] The risk of developing pulmonary TB, versus extra-pulmonary TB, varies with age. For instance, younger children are more likely to develop pulmonary TB.[@TheWorldHealthOrganization:2018va]  
 
@@ -68,20 +68,20 @@ tb_interventions_timeline %>%
 
 TB is a global disease with an estimated 10.4 million new cases in 2016, of which 4.3 million were missed by health systems.[@TheWorldHealthOrganization:2018va]  Global incidence rates have decreased year-on-year since the early 2000's, with an average year on year decrease of 2.9%. However, global TB incidence remains above 134 per 100,000 population (Figure \@ref(fig:global-regional-tb-summary)). On a regional level, incidence rates vary with Africa and South-East Asia having a greater concentration of cases. In the Eastern Mediterranean incidence rates have remained relatively stable over the last 10 years. 
 
-```{r global-regional-tb-summary, fig.cap = "Tuberculosis incidence rates (per 100,000) by region and globally from 2000 until 2017. Globally incidence rates have been declining since the early 2000's but this decline varies with region. Plot produced using getTBinR"}
+```{r global-regional-tb-summary, fig.cap = "TB incidence rates (per 100,000) by region and globally from 2000 until 2017. Globally incidence rates have been declining since the early 2000's but this decline varies with region. Plot produced using getTBinR"}
 plot_tb_burden_summary(conf = NULL, verbose = FALSE)
 ```
 
 
 Regional incidence rates only tell part of the story as TB incidence rates vary significantly within regions. Six countries: India, Indonesia, China, Nigeria, Pakistan, and South Africa account for 60% of new cases. India, Indonesia, and Nigeria comprise nearly half of the gap between incident and notified cases.[@WHOTB2016] Figure \@ref(fig:map-global-tb) shows both regional similarities and countries, like Mongolia, that stand out as having higher TB incidence rates than surrounding countries.
 
-```{r map-global-tb, fig.cap = "Global map of country level Tuberculosis incidence rates (per 100,000 population) in 2017. Note the clustering of countries with high incidence rates in southern and central Africa and southern Asia. Map produced using getTBinR", fig.height = 5}
+```{r map-global-tb, fig.cap = "Global map of country level TB incidence rates (per 100,000 population) in 2017. Note the clustering of countries with high incidence rates in southern and central Africa and southern Asia. Map produced using getTBinR", fig.height = 5}
 map_tb_burden(verbose = FALSE)
 ```
 
 TB remains one of the top 10 causes death worldwide, leading to 1.7 million deaths in 2016 alone.[@TheWorldHealthOrganization:2018va]  Whilst the absolute number of deaths due to TB has fallen since 2000, the average global rate of decline in TB mortality rates was only 2.9% between 2000-2016. However, unlike the trend observed for incidence rates, the year-on-year decline of TB mortality rates has remained consistent in all regions (Figure \@ref(fig:global-regional-mortality-summary)). Several regions, including Africa and Europe, have seen TB mortality rates fall to below 50% of those in 2000.
 
-```{r global-regional-mortality-summary, fig.cap = "Tuberculosis (TB) mortality rates (per 100,000) by region and globally from 2000 until 2017. Mortality rates from TB have been falling in all regions since 2000. Plot produced using getTBinR"}
+```{r global-regional-mortality-summary, fig.cap = "TB mortality rates (per 100,000) by region and globally from 2000 until 2017. Mortality rates from TB have been falling in all regions since 2000. Plot produced using getTBinR"}
 plot_tb_burden_summary(conf = NULL, verbose = FALSE, metric = "e_mort_100k", 
                        denom = "e_inc_num", facet = "Area", legend = "none", 
                        scales = "free_y") 
@@ -95,7 +95,7 @@ map_tb_burden(metric = "e_tbhiv_prct", verbose = FALSE)
 
 Multi-drug-resistant TB (MDR-TB), which is defined as being resistant to at least isoniazid and rifampin, made up 4.6% of all new TB cases in 2015 (480,000). It can be acquired both through treatment failure and through transmission. Treatment requires the use of second line antibiotics, which often have more severe side effects and are more likely to fail, with only 52% successfully treated globally compared to 83% for drug susceptible TB.[@WHOTB2016] As for HIV co-infection, drug resistance is globally heterogeneous with some regions, like countries in the former USSR, having a much higher proportion of drug resistant cases. Figure \@ref(fig:map-global-tb-with-rr) shows the country level proportion of cases with at least rifampicin resistance and highlights the higher level of rifampicin resistance in countries formerly in the USSR. 88% of rifampicin cases in Russia in 2017 also had MDR-TB, which is comparable to the global median of 83% (Table \@ref(tab:prop-rr-with-mdr-tab)). Across all regions Europe had the highest median percentage of rifampicin cases with MDR-TB (100%), with Africa having the lowest (67%). This variation may indicate areas in which drug resistance is developing (regions with low proportions of MDR to rifampicin resistance), from regions in which MDR-TB results from transmission or importation (regions with high proportions of MDR to rifampicin resistance).  
 
-```{r map-global-tb-with-rr, fig.cap = "Global map of the estimated percentage of new Tuberculosis cases with rifampicin resistance (percent) in 2017. Not that a far higher percentage of TB cases have rifampicin resistance in the former Soviet Union that in the rest of the world. Map produced using getTBinR (see \\@ref(getTBinR) for details)", fig.height = 5}
+```{r map-global-tb-with-rr, fig.cap = "Global map of the estimated percentage of new TB cases with rifampicin resistance (percent) in 2017. Not that a far higher percentage of TB cases have rifampicin resistance in the former Soviet Union that in the rest of the world. Map produced using getTBinR (see \\@ref(getTBinR) for details)", fig.height = 5}
 map_tb_burden(metric = "e_rr_pct_new", verbose = FALSE)
 ```
 
@@ -114,7 +114,7 @@ summarise_tb_burden(countries = "Russia",
                   as.character(`Median percentage of RR* cases with MDR** (95% IQR***)`)
                   )) %>% 
   select(Area = area, `Median percentage of RR* cases with MDR** (95% IQR***)`) %>% 
-  knitr::kable(caption = "Percentage (\\%) of rifampicin resistant Tuberculosis (TB) cases that have multi-drug resistant TB in Russia and regional medians, with interquartile ranges.",
+  knitr::kable(caption = "Percentage (\\%) of rifampicin resistant TB cases that have multi-drug resistant TB in Russia and regional medians, with interquartile ranges.",
         booktabs = TRUE) %>% 
   add_footnote(label = c("* Rifampicin resistance", "** Multi-Drug Resistant TB", "*** Interquartile Range"), notation = "none") %>% 
   kable_styling(latex_options = "hold_position") %>% 
@@ -181,7 +181,7 @@ The BCG primarily acts by directly preventing the development of active, symptom
 
 The effectiveness of the vaccine is impacted by the age at which it is given, the latitude of the individual, and the period of time that has lapsed since vaccination. Multiple randomized control studies (RCTs) have been conducted on BCG efficacy. It has consistently been shown to be highly protective in children for both pulmonary TB and TB meningitis.[@Rodrigues1993, @Colditz1994] Efficacy in adults ranges from 0% to 78%,[@Mangtani2014a] with an MRC trial in England finding that BCG was 78% effective in the White UK-born.[@Hart1972] Effectiveness at preventing initial infection has been estimated at 19% (95% CI: 8% to 29%) globally.[@Roy2014]
 
-A meta-analysis of RCTs indicated that increased protection is associated with distance from the equator.[@Mangtani2014a] One hypothesis for this is that there is a greater density of mycobacterium near the equator that may mask, or block, the protection offered by the BCG vaccine.[@Zwerling2011] Recently it has been found that much of this latitude effect may be due to stringency in tuberculin skin testing (TST), with lower stringency near the equator.[@TheWorldHealthOrganization:2018va] TST screening tests for the presence of Tuberculosis infection but may give a false positive if the subject has been exposed to other mycobacteria or the BCG vaccine. Reduced stringency would lead to a greater number of TB positive individuals being vaccinated. These individuals would then receive no protection from the vaccine and would lead to a reduced estimate of the effectiveness of the vaccine overall. Regardless of the mechanism this effect means that vaccination early in life maximises the protection conferred by the BCG vaccine in countries with evidence of decreasing protection with age. 
+A meta-analysis of RCTs indicated that increased protection is associated with distance from the equator.[@Mangtani2014a] One hypothesis for this is that there is a greater density of mycobacterium near the equator that may mask, or block, the protection offered by the BCG vaccine.[@Zwerling2011] Recently it has been found that much of this latitude effect may be due to stringency in tuberculin skin testing (TST), with lower stringency near the equator.[@TheWorldHealthOrganization:2018va] TST screening tests for the presence of TB infection but may give a false positive if the subject has been exposed to other mycobacteria or the BCG vaccine. Reduced stringency would lead to a greater number of TB positive individuals being vaccinated. These individuals would then receive no protection from the vaccine and would lead to a reduced estimate of the effectiveness of the vaccine overall. Regardless of the mechanism this effect means that vaccination early in life maximises the protection conferred by the BCG vaccine in countries with evidence of decreasing protection with age. 
 
 ### Duration of protection
 
@@ -193,7 +193,7 @@ The limited duration of protection has informed vaccination policy globally.[@Zw
 
 Until recently little attention has been given to any additional effects of BCG vaccination.[@Fine2005a; @Teo2006] However, there is now some evidence that BCG vaccination induces innate immune responses that may provide non-specific protection[@Kleinnijenhuis2012] and reduce all-cause neonatal mortality.[@Garly2003; @Higgins] There is some evidence that this reduction in all-cause mortality extends later in life.[@Rieckmann2016] Additionally, BCG vaccination may improve outcomes for individuals with active TB disease. TB patients with BCG scars have been found to respond better to treatment with earlier sputum smear conversion.[@Jeremiah2010] There is also evidence to support an association between BCG vaccination and reduced TB[@Abubakar2013] mortality. The evidence for additional effects of BCG vaccination on outcomes in individuals with notified TB, in England, is explored further in Chapter \@ref(beneficial-bcg-out).
 
-In addition to its effect on TB outcomes, the BCG vaccine has also been found to be effective at preventing leprosy (with an RR of 0.45 (95% CI: 0.34-0.56)), with some evidence that this protection was stronger in those vaccinated before 15 years of age.[@TheWorldHealthOrganization:2018va] Additionally, there is some evidence that the BCG vaccine can provide protection against Non-Tuberculosis mycobacteria (NTM) infections, with an estimated effectiveness of 50%.[@TheWorldHealthOrganization:2018va] This protection has been shown to greatly reduce the incidence of NTM lymph node inflammation and protect against Buruli ulcers for the first 12 months following vaccination (RR, 0.50 [95% CI, .37–.69]). A study also found that individuals with Buruli ulcers are less likely to develop osteomyelitis (bone infection) if they have a BCG scar (RR, 0.36 (95% CI: 0.22 to 0.58)).[@Zimmermann:2018io]
+In addition to its effect on TB outcomes, the BCG vaccine has also been found to be effective at preventing leprosy (with an RR of 0.45 (95% CI: 0.34-0.56)), with some evidence that this protection was stronger in those vaccinated before 15 years of age.[@TheWorldHealthOrganization:2018va] Additionally, there is some evidence that the BCG vaccine can provide protection against Non-TB mycobacteria (NTM) infections, with an estimated effectiveness of 50%.[@TheWorldHealthOrganization:2018va] This protection has been shown to greatly reduce the incidence of NTM lymph node inflammation and protect against Buruli ulcers for the first 12 months following vaccination (RR, 0.50 [95% CI, .37–.69]). A study also found that individuals with Buruli ulcers are less likely to develop osteomyelitis (bone infection) if they have a BCG scar (RR, 0.36 (95% CI: 0.22 to 0.58)).[@Zimmermann:2018io]
 
 ### Usage Globally
 
@@ -215,9 +215,9 @@ Multiple replacement vaccines are currently in clinical trials.[@Zwerling2011a; 
 
 ## Summary
 
-* This chapter provides an overview of the natural history, risk factors, treatment, global epidemiology, and epidemiology in England and Wales of Tuberculosis.
+* This chapter provides an overview of the natural history, risk factors, treatment, global epidemiology, and epidemiology in England and Wales of TB.
 
-*  This chapter also details the action, effectiveness, duration of protection, effects and usage of the BCG vaccine. The only licensed vaccine for Tuberculosis.
+*  This chapter also details the action, effectiveness, duration of protection, effects and usage of the BCG vaccine. The only licensed vaccine for TB.
 
 * Motivation is given for the remaining chapters in this thesis.
 

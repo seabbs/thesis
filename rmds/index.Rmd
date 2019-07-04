@@ -100,32 +100,32 @@ In this thesis, a variety of statistical models are used to explore complex mult
 
 Mechanistic mathematical models provide an assumption based framework for understanding the transmission of infectious diseases.[@Anderson1991] Mechanistic models can be used to simplify complex real-world systems, whilst retaining a linkage to real-world processes.[@Keeling2007] This is unlike statistical models, which instead focus on modelling the underlying structure of the data generally without reference to the real-world processes. There are multiple mechanistic modelling approaches the most common being compartmental based models and individual based models.[@Anderson1991; @Keeling2007] Both of these approaches can be represented as a deterministic, semi-stochastic, or fully stochastic - both of the latter include a random component whilst the former does not. Recently, mechanistic models have been combined with statistical models to account for the fact that events may be only partially observed.[@King] Mechanistic models have an advantage over statistical models in that they can more easily be used to compare alternative scenarios over long periods of time for which observed data does not exist.
 
-In this thesis, a partially observed semi-stochastic compartmental model of Tuberculosis is developed that models demographic processes such as ageing, births and deaths, as well as vaccination and TB treatment (Chapter \@ref(model-development)). Compartmental infectious disease models generally operate by separating a given population into a series of groups, most commonly susceptible, infectious and recovered populations.[@Anderson1991; @Keeling2007] Movements between these groups are then modeled using a series of differential equations. Transmission is modeled using mass action,[@Anderson1991; @Keeling2007] where infected cases are assumed to randomly interact with susceptible individuals. Additional detail can be added to this model by stratifying the population further and adding additional parameters to modify the degree of mixing between populations. Transition between compartments is assumed to be exponential. See [@Anderson1991; @Keeling2007] for a theoretical introduction to infectious disease models and [@King] for implementation details using R.
+In this thesis, a partially observed semi-stochastic compartmental model of TB is developed that models demographic processes such as ageing, births and deaths, as well as vaccination and TB treatment (Chapter \@ref(model-development)). Compartmental infectious disease models generally operate by separating a given population into a series of groups, most commonly susceptible, infectious and recovered populations.[@Anderson1991; @Keeling2007] Movements between these groups are then modeled using a series of differential equations. Transmission is modeled using mass action,[@Anderson1991; @Keeling2007] where infected cases are assumed to randomly interact with susceptible individuals. Additional detail can be added to this model by stratifying the population further and adding additional parameters to modify the degree of mixing between populations. Transition between compartments is assumed to be exponential. See [@Anderson1991; @Keeling2007] for a theoretical introduction to infectious disease models and [@King] for implementation details using R.
 
 ## Aims and objectives of the thesis 
 
 ### Aim 
 
-To understand the impact of BCG vaccination on the epidemiology of tuberculosis in England, and to use this understanding to forecast the future effects of current and historic BCG vaccination policy.
+To understand the impact of BCG vaccination on the epidemiology of TB in England, and to use this understanding to forecast the future effects of current and historic BCG vaccination policy.
 
 ### Objectives
 
-  - To describe the current epidemiology of Tuberculosis in England, in the context of global Tuberculosis epidemiology.
+  - To describe the current epidemiology of TB in England, in the context of global TB epidemiology.
   - To assess some of the statistical modelling evidence used to justify the 2005 change in BCG vaccination policy in the UK.
   - To assess whether there is evidence in routinely-collected surveillance data that BCG vaccination impacts outcomes for TB cases in England.
   - To assess the effects of the 2005 change in vaccination policy on those eligible for vaccination.
-  - To develop a parsimonious transmission dynamic model of tuberculosis which captures current, and historic, vaccination policy and reflects our current understanding of TB epidemiology in England.
+  - To develop a parsimonious transmission dynamic model of TB which captures current, and historic, vaccination policy and reflects our current understanding of TB epidemiology in England.
   - To fit this model using all available data sources.
   - To investigate the effectiveness of universal school-age vs. universal neonatal vs. no vaccination using the previously developed transmission dynamic model.
 
 
 ## Chapter overview
 
-* **Chapter \@ref(background):** Background information is given on Tuberculosis and the BCG vaccine. This information helps motivate future chapters and is useful for non-subject area experts. 
+* **Chapter \@ref(background):** Background information is given on TB and the BCG vaccine. This information helps motivate future chapters and is useful for non-subject area experts. 
 
-* **Chapter \@ref(getTBinR):** `getTBinR`, an R package that facilitates downloading Tuberculosis relevant data from the World Health Organization and provides functionality for visualising the downloaded data, is introduced. The motivation and context for this package as part of the wider thesis is also outlined.
+* **Chapter \@ref(getTBinR):** `getTBinR`, an R package that facilitates downloading TB relevant data from the World Health Organization and provides functionality for visualising the downloaded data, is introduced. The motivation and context for this package as part of the wider thesis is also outlined.
 
-* **Chapter \@ref(data):** This chapter describes the epidemiology of tuberculosis in England, using routine national data-sets. Focusing on: the impact of missing data; the mechanisms underlying that missing date; seasonal trends; the role of age; UK birth status; BCG status; trends in TB incidence over time; and TB outcomes in England using case rates. These data are used in all subsequent chapters in this thesis.
+* **Chapter \@ref(data):** This chapter describes the epidemiology of TB in England, using routine national data-sets. Focusing on: the impact of missing data; the mechanisms underlying that missing date; seasonal trends; the role of age; UK birth status; BCG status; trends in TB incidence over time; and TB outcomes in England using case rates. These data are used in all subsequent chapters in this thesis.
 
 * **Chapter \@ref(sutherland):** This chapter recreates a simulation based statistical model that was used as part of the decision making process that led to the 2005 change in BCG vaccination policy. It extends the previously implemented model by capturing parameter and model uncertainty, and updating the underlying data. It then estimates the impact in real-terms of the change in policy using this updated model.
 
@@ -162,9 +162,9 @@ Journal of Open Source Software, 2019, 4(34), 1260., doi: https://doi.org/10.211
 
 #### Packages
 
-* **`getTBinR`**: The `getTBinR` R package facilitates downloading the most up-to-date version of multiple Tuberculosis relevant data sources from the World Health Organization, along with the accompanying data dictionaries. It also contains functions to allow easy exploration of the data via searching data dictionaries, summarising key metrics on a regional and global level, and visualising the data in a variety of customisable ways. See Chapter \@ref(getTBinR) for further details. Install from CRAN with `install.packages("getTBinR")` or install the development version from GitHub with `devtools::install_github("seabbs/getTBinR")`. Link: https://www.samabbott.co.uk/getTBinR/
+* **`getTBinR`**: The `getTBinR` R package facilitates downloading the most up-to-date version of multiple TB relevant data sources from the World Health Organization, along with the accompanying data dictionaries. It also contains functions to allow easy exploration of the data via searching data dictionaries, summarising key metrics on a regional and global level, and visualising the data in a variety of customisable ways. See Chapter \@ref(getTBinR) for further details. Install from CRAN with `install.packages("getTBinR")` or install the development version from GitHub with `devtools::install_github("seabbs/getTBinR")`. Link: https://www.samabbott.co.uk/getTBinR/
 
-* **`tbinenglanddataclean`**: An R package that contains the functions and documentation required to reproduce all data import and munging used in this thesis. This package provides a workflow to facilitate reproducing all analyses in this thesis and to expedite the work of others using data from the Enhanced Surveillance System (Chapter \@ref(data)). Available from GitHub using `devtools::install_github("seabbs/tbinenglanddataclean")`. Link: https://www.samabbott.co.uk/tbinenglanddataclean/
+* **`tbinenglanddataclean`**: An R package that contains the functions and documentation required to reproduce all data import and munging used in this thesis. This package provides a workflow to facilitate reproducing all analyses in this thesis and to expedite the work of others using data from the Enhanced Surveillance System (ETS) (Chapter \@ref(data)). Available from GitHub using `devtools::install_github("seabbs/tbinenglanddataclean")`. Link: https://www.samabbott.co.uk/tbinenglanddataclean/
 
 * **`idmodelr`**: An R package that contains a library  of infectious disease models as well as modelling utilities. It provides tooling that includes: example SEI/SEIR/SHLIR/SHLITR model code, a model solving wrapper; a model summary function; a scenario analysis function). Used by the explore infectious disease model dashboard (http://seabbs.co.uk/shiny/exploreidmodels/) for all functionality. Available from GitHub using `devtools::install_github("seabbs/idmodelr")`. Link: https://www.samabbott.co.uk/idmodelr/
 
@@ -174,11 +174,11 @@ Journal of Open Source Software, 2019, 4(34), 1260., doi: https://doi.org/10.211
 
 * **Explore global Tuberculosis**: Developed to showcase `geTBinR` (https://www.samabbott.co.uk/getTBinR/) package functionality. This dashboard allows the interactive exploration of WHO TB data. It can also be used to generate a static, country level, report on TB epidemiology. Link: http://seabbs.co.uk/shiny/ExploreGlobalTB/
 
-* **Explore Tuberculosis in England and Wales**: Developed to allow public Public Health England Tuberculosis Notification data to be explored interactively. Key interventions are highlighted and link to trends in Tuberculosis notifications. This app is used in its static form in Chapter \@ref(background). Link: http://seabbs.co.uk/shiny/TB_England_Wales/
+* **Explore Tuberculosis in England and Wales**: Developed to allow public Public Health England TB Notification data to be explored interactively. Key interventions are highlighted and link to trends in TB notifications. This app is used in its static form in Chapter \@ref(background). Link: http://seabbs.co.uk/shiny/TB_England_Wales/
 
 * **Explore infectious disease models**: Developed to be used within a modelling short course at the University of Bristol (https://github.com/bristolmathmodellers/biddmodellingcourse). This dashboard allows the user to simulate and compare a variety of compartmental infectious disease models. All model code is surfaced in an easily view-able format to allow for users to develop their own models. Link: http://seabbs.co.uk/shiny/exploreidmodels/
 
-* **Introduction to Tuberculosis models**: Developed to allow simple Tuberculosis models to be explored in an interactive session. Inspired by practicals from the Introduction to Tuberculosis, run by TB MAC (http://tb-mac.org/) at the 2017 Union conference. Link: http://seabbs.co.uk/shiny/intro_to_tb_models/
+* **Introduction to Tuberculosis models**: Developed to allow simple TB models to be explored in an interactive session. Inspired by practicals from the Introduction to TB, run by TB MAC (http://tb-mac.org/) at the 2017 Union conference. Link: http://seabbs.co.uk/shiny/intro_to_tb_models/
 
 * **The pebble game**: Developed as a learning aid to help a general audience understand the impact of vaccination on infectious disease dynamics. Used at Green Man 2016 as part of a week of outreach work and subsequently developed further. Link: http://seabbs.co.uk/shiny/thepebblegame/
 
@@ -197,7 +197,7 @@ Journal of Open Source Software, 2019, 4(34), 1260., doi: https://doi.org/10.211
 
 ## Summary
 
-- This chapter provides an introduction to Tuberculosis and the BCG vaccine. It then motivates the remainder of this thesis. 
+- This chapter provides an introduction to TB and the BCG vaccine. It then motivates the remainder of this thesis. 
 - An outline of the theoretical framework used throughout this thesis is given.
 - The aims and objectives of this thesis are detailed.
 - An overview of the chapters is provided.
