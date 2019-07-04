@@ -6,7 +6,7 @@ output:
 
 ---
 
-# Exploring the effects of BCG vaccination in patients diagnosed with tuberculosis: observational study using the Enhanced Tuberculosis Surveillance system {#benefical-bcg-out}
+# Exploring the effects of BCG vaccination in patients diagnosed with tuberculosis: observational study using the Enhanced Tuberculosis Surveillance system {#beneficial-bcg-out}
 
 ```{r 06-knitr-options, include = FALSE}
 knitr::opts_chunk$set(echo = FALSE, dpi = 320,
