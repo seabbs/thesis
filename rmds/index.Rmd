@@ -24,6 +24,8 @@ declaration: >
   `r if(knitr:::is_latex_output()) paste(readLines("00-declaration.Rmd"), collapse = ' ')`
 contribution: >
   `r if(knitr:::is_latex_output()) paste(readLines("00-contribution.Rmd"), collapse = ' ')`
+acronyms: >
+  `r if(knitr:::is_latex_output()) paste(readLines("00-acronyms.Rmd"), collapse = ' ')`
 bibliography: bib/thesis.bib
 #Download your specific bibliography database file and refer to it in the line above.
 csl: csl/bmj.csl
