@@ -301,6 +301,16 @@
   \fontsize{12}{14}\selectfont
 }{\clearpage \if@restonecol\twocolumn\fi}%
 
+\newenvironment{acronyms}{%
+  \if@twocolumn
+    \@restonecoltrue\onecolumn
+  \else
+    \@restonecolfalse
+  \fi
+  \chapter*{Acronyms}
+  \fontsize{12}{14}\selectfont
+}{\clearpage \if@restonecol\twocolumn\fi}%
+
 
 \ifx\@pdfoutput\@undefined
   \newcommand{\RTpercent}{\@percentchar\space}
@@ -367,4 +377,5 @@
 \newcommand{\Preface}[1]{\def\@Preface{#1}}
 \newcommand{\Declaration}[1]{\def\@Declaration{#1}}
 \newcommand{\Contribution}[1]{\def\@Contribution{#1}}
+\newcommand{\Acronyms}[1]{\def\@Acronyms{#1}}
 % End of CII add

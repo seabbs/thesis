@@ -162,6 +162,9 @@ $contribution$
 $preface$
 }
 
+\Acronyms{
+$acronyms$
+}
 
 $for(header-includes)$
 	$header-includes$
@@ -231,7 +234,11 @@ $endfor$
     \listoffigures
   $endif$
 
-
+  $if(acronyms)$
+    \begin{acronyms}
+      $acronyms$
+    \end{acronyms}
+  $endif$
 
   \mainmatter % here the regular arabic numbering starts
   \pagestyle{fancyplain} % turns page numbering back on
