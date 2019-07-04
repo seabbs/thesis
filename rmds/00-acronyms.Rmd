@@ -1,14 +1,15 @@
 
-* **BCG** - Bacillus Calmette–Guérin
 
-* **DOTS** - Directly Observed Treatment Short-course
+\textbf{BCG} - Bacillus Calmette–Guérin \par
 
-* **ETS** Enhanced Tuberculosis Surveillance System
+\textbf{DOTS} - Directly Observed Treatment Short-course \par
 
-* **LFS** - Labour Force Survey
+\textbf{ETS} Enhanced Tuberculosis Surveillance System \par
 
-* **MRSA** Methicillin-resistant Staphylococcus aureus
+\textbf{LFS} - Labour Force Survey \par
 
-* **PHE** - Public Health England
+\textbf{MRSA} Methicillin-resistant Staphylococcus aureus \par
 
-* **TB** – Tuberculosis
+\textbf{PHE} - Public Health England \par
+
+\textbf{TB} – Tuberculosis \par
