@@ -240,7 +240,9 @@ table_var_outs[[2]]$`Age group (years)` <- str_replace(table_var_outs[[2]]$`Age 
 table_var_outs[[2]] %>% 
     combine_model_data_sum(DataSum = ModelDataSum[[2]]) %>% 
     set_names(c('Outcome', 'Years since BCG', 'Cases**', 'Cases with outcome (\\%)', 'OR (95\\% CI)', 'P-value', 'Cases***', 'Cases with outcome (\\%)', 'aOR (95\\% CI)', 'P-value')) %>% 
-    kable(caption = "Summary of associations between years since vaccination and all outcomes in individuals who were vaccinated. The baseline exposure is vaccination $\\leq 10$ years before diagnosis compared to vaccination $11+$ years before diagnosis. Deaths due to TB (in those who died) had insufficient data for effect sizes to be estimated in both the univariable and multivariable analysis",
+    kable(
+      caption.short = "Summary of associations between years since vaccination and all outcomes in individuals who were vaccinated.", 
+      caption = "Summary of associations between years since vaccination and all outcomes in individuals who were vaccinated. The baseline exposure is vaccination $\\leq 10$ years before diagnosis compared to vaccination $11+$ years before diagnosis. Deaths due to TB (in those who died) had insufficient data for effect sizes to be estimated in both the univariable and multivariable analysis",
           booktabs = TRUE, escape = FALSE) %>% 
     column_spec(c(1, 2, 4, 8), width = "2cm") %>%  
     add_header_above(c(" " = 2, "Univariable" = 4, "Multivariable" = 4)) %>% 
@@ -264,7 +266,9 @@ table_var_outs[[3]]$`Age group (years)` <- str_replace(table_var_outs[[3]]$`Age 
 table_var_outs[[3]] %>% 
     combine_model_data_sum(DataSum = ModelDataSum[[3]]) %>% 
     set_names(c('Outcome', 'Age at BCG', 'Cases**', 'Cases with outcome (\\%)', 'OR (95\\% CI)', 'P-value', 'Cases***', 'Cases with outcome (\\%)', 'aOR (95\\% CI)', 'P-value')) %>% 
-    kable(caption = "Summary of associations between age at vaccination and all outcomes in individuals who were vaccinated - the baseline exposure is vaccination at birth compared to vaccination from 1 to < 12, 12 to < 16, and 16+ years of age.",
+    kable(
+      caption.short = "Summary of associations between age at vaccination and all outcomes in individuals who were vaccinated.", 
+      caption = "Summary of associations between age at vaccination and all outcomes in individuals who were vaccinated - the baseline exposure is vaccination at birth compared to vaccination from 1 to < 12, 12 to < 16, and 16+ years of age.",
          booktabs = TRUE, escape = FALSE) %>% 
     column_spec(c(1, 2, 4, 8), width = "2cm") %>% 
     add_header_above(c(" " = 2, "Univariable" = 4, "Multivariable" = 4)) %>% 
@@ -286,9 +290,16 @@ notation = "none") %>%
 As discussed in the previous sections, I found that repeating the analysis with an imputed data set had some effect on the results from the complete case analysis. There was a decrease in the accuracy of effect size estimates for BCG vaccination, some increase in p-values (Table \@ref(tab:06-imp-bcg)). However, none of the estimated effects changed their direction, and there were no detectable systematic changes in the results. 
 
 ```{r 06-imp-bcg}
-imp_tab_gen <- function(df = NULL, caption = NULL, escape = TRUE) {
+imp_tab_gen <- function(df = NULL, caption = NULL, caption.short = NULL, escape = TRUE) {
+  
+  if (is.null(caption.short)) {
+    caption.short <- caption
+  }
+  
   df %>% 
-  kable(caption = caption,
+  kable(
+        caption.short = caption.short,
+        caption = caption,
         booktabs = TRUE, escape = escape) %>% 
   column_spec(c(1), width = "3cm") %>%
   add_footnote(label = c("OR: odds ratio with 95% confidence intervals", "aOR: adjusted odds ratio with 95% confidence intervals",
@@ -310,7 +321,9 @@ For the secondary exposure variables (years since vaccination and age at vaccina
 ```{r 06-imp-yrsincebcg}
 sum_imp_yrsinceBCG %>% 
   set_names( c('Outcome', 'OR (95% CI)', 'P-value', 'fmi', 'aOR (95% CI)', 'P-value', 'fmi')) %>% 
-  imp_tab_gen(caption = 'Summary of associations between years since vaccination and all outcomes, using pooled imputed data. There was insufficient data to estimate an effect for deaths due to TB (in those who died)') %>% 
+  imp_tab_gen(
+    caption.short = "ummary of associations between years since vaccination and all outcomes, using pooled imputed data.", 
+    caption = 'Summary of associations between years since vaccination and all outcomes, using pooled imputed data. There was insufficient data to estimate an effect for deaths due to TB (in those who died)') %>% 
   add_header_above(c(" " = 1, "Univariable" = 3, "Multivariable" = 3))
 ```
 
@@ -333,7 +346,9 @@ Dropping duplicate recurrent TB notifications increased the magnitude, and preci
 ```{r 06-sens-table, message=FALSE, echo=FALSE, results='asis', warning=FALSE}
 bcg_ass_main %>% 
   set_names(c('Study population', 'Outcome', 'BCG', 'OR (95% CI)', 'P-value', 'aOR (95% CI)', 'P-value')) %>% 
-  kable(caption = "Summary of associations between BCG vaccination and all outcomes; cases that have no recurrent flag in the ETS (n=50407), and cases that would have been eligible for the BCG schools scheme (n=9943). Those defined to be eligible for the schools scheme are the UK born, that were aged 14 or over in 2004", booktabs = TRUE) %>% 
+  kable(
+    caption.short = "Summary of associations between BCG vaccination and all outcomes.", 
+    caption = "Summary of associations between BCG vaccination and all outcomes; cases that have no recurrent flag in the ETS (n=50407), and cases that would have been eligible for the BCG schools scheme (n=9943). Those defined to be eligible for the schools scheme are the UK born, that were aged 14 or over in 2004", booktabs = TRUE) %>% 
     column_spec(c(1:2), width = "3cm") %>% 
     kable_styling(latex_options = "hold_position") %>%
     add_footnote(label = c("OR: odds ratio with 95% confidence intervals", "aOR: adjusted odds ratio with 95% confidence intervals",

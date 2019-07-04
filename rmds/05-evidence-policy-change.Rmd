@@ -141,7 +141,9 @@ The model produced results that were comparable with those from [@Sutherland1989
 ```{r model-validation}
 comparision_tab[, 1:10] %>% 
   set_names(c("Year of Ending Scheme", rep(c("Original", "Recreated",	"Difference"), 3))) %>% 
-  kable(caption = "Comparison of results published by Sutherland et al. vs. the recreated model. This table shows the total notifications including primary and secondary effects from ending the BCG schools' scheme at various times in ethnic White adults aged 15-29 years old in England and Wales.", booktabs = TRUE) %>%
+  kable(
+    caption.short = "Comparison of results published by Sutherland et al. vs. the recreated model.",
+    caption = "Comparison of results published by Sutherland et al. vs. the recreated model. This table shows the total notifications including primary and secondary effects from ending the BCG schools' scheme at various times in ethnic White adults aged 15-29 years old in England and Wales.", booktabs = TRUE) %>%
   add_header_above(c(" " = 1, "1988" = 3,  "1993" = 3,  "1998" = 3)) %>% 
   column_spec(1, width = "2cm") %>%
   kable_styling(latex_options = "hold_position") %>% 
@@ -153,7 +155,9 @@ comparision_tab[, 1:10] %>%
 ```{r model-validation-2}
 comparision_tab[, -(2:10)] %>% 
   set_names(c("Year of Ending Scheme", rep(c("Original", "Recreated",	"Difference"), 3))) %>% 
-  kable(caption = "Continued: Comparison of results published by Sutherland et al. vs. the recreated model. This table shows the total notifications including primary and secondary effects from ending the BCG schools' scheme at various times in ethnic White adults aged 15-29 years old in England and Wales.", booktabs = TRUE) %>%
+  kable(
+    caption.short = "Continued: Comparison of results published by Sutherland et al. vs. the recreated model.",
+    caption = "Continued: Comparison of results published by Sutherland et al. vs. the recreated model. This table shows the total notifications including primary and secondary effects from ending the BCG schools' scheme at various times in ethnic White adults aged 15-29 years old in England and Wales.", booktabs = TRUE) %>%
   add_header_above(c(" " = 1, "2003" = 3,  "2008" = 3, "2013" = 3)) %>% 
   column_spec(1, width = "2cm") %>%
   kable_styling(latex_options = "hold_position") %>% 
@@ -166,7 +170,7 @@ comparision_tab[, -(2:10)] %>%
 
 I found that the assumption of a 9% annual decrease in incidence rates in the ethnic White UK born was not comparable to estimates using either notification data or age-specific incidence rates in the time period studied (Figure \@ref(fig:plot-annual-change)). The median annual decrease estimated using notifications was `r  str_replace(avg_not, "Q", "Quantiles (Q)")`, with a maximum of `r max_not$pa_change` in `r max_not$Year` and a minimum of `r min_not$pa_change` in `r min_not$Year`. Using age-specific incidence rates I estimated the median annual decrease in incidence rates for 15-19 year olds was `r avg_inc[1]`, `r avg_inc[2]` for 20-24 year olds, and `r avg_inc[3]` for 25-29 year olds. There was substantial variation between years and a high degree of uncertainty.
 
-```{r plot-annual-change, fig.cap = "Annual percentage change in ethnic White UK born incidence rates for those aged 15-19, 20-24, and 25-29 years old under different scenarios. For the notification and incidence rate scenarios each line represents the median of 10,000 parameter samples."}
+```{r plot-annual-change, fig.scap = "Annual percentage change in ethnic White UK born incidence rates for those aged 15-19, 20-24, and 25-29 years old under different scenarios.", fig.cap = "Annual percentage change in ethnic White UK born incidence rates for those aged 15-19, 20-24, and 25-29 years old under different scenarios. For the notification and incidence rate scenarios each line represents the median of 10,000 parameter samples.", out.extra = ""}
 knitr::include_graphics("chapters/evidence-policy-change/plot-annual-change-1.png")
 ```
 
@@ -175,7 +179,7 @@ knitr::include_graphics("chapters/evidence-policy-change/plot-annual-change-1.pn
 
 I found that updating parameter values, and incorporating uncertainty, did not alter the number of vaccines required to prevent a single notification within 15 years in a cohort vaccinated at school-age, when the annual decrease in TB incidence rates was assumed to be 9% (Figure \@ref(fig:graph-vacs-to-prev); Table \@ref(tab:vac-prevent-tab)). However, the updated estimate had a wide range (`r vac_2004_9` vaccines required in 2004). As the assumed annual decrease in incidence rates was reduced the number of vaccines required to prevent a single notification also reduced; an estimated `r vac_2004_1` vaccines were required to prevent a case in 2004 when the annual decrease was assumed to be 1.9%. Estimates of the number of vaccines required to prevent a notification were comparable but not equivalent when the annual decrease was estimated using notifications (`r vac_2004_nots`, P: `r p_not_vs_1_2004`) and age-specific incidence rates (`r vac_2004_inc`, P: `r p_inc_vs_1_2004`). The estimate using incidence rates had a high degree of uncertainty Figure \@ref(fig:graph-vacs-to-prev); Table \@ref(tab:vac-prevent-tab)). The number of vaccines required increased slightly over time with `r vac_prevent_1_2009` required in 2009, `r vac_prevent_1_2014` required in 2014, and `r vac_prevent_1_2019` required in 2019 when an annual decrease of 1.9% in incidence rates was assumed.
 
-```{r graph-vacs-to-prev, fig.cap = "Vaccines required in a cohort of those vaccinated at school-age to prevent a single case of TB within 15 years of vaccination in 2004, 2009, 2014, or 2019. The years presented were dictated by the 5 year timestep of the model. The percentage annual decrease scenarios considered were based on those considered by the JVCI BCG subgroup, with the addition of a scenario using aggregate notification data and a scenario using estimates of age-specific incidence rates in the UK born. Each boxplot summarises the output of 10,000 model simulations for each scenario. Outliers have been omitted for clarity."}
+```{r graph-vacs-to-prev, fig.scap = "Vaccines required in a cohort of those vaccinated at school-age to prevent a single case of TB within 15 years of vaccination in 2004, 2009, 2014, or 2019.", fig.cap = "Vaccines required in a cohort of those vaccinated at school-age to prevent a single case of TB within 15 years of vaccination in 2004, 2009, 2014, or 2019. The years presented were dictated by the 5 year timestep of the model. The percentage annual decrease scenarios considered were based on those considered by the JVCI BCG subgroup, with the addition of a scenario using aggregate notification data and a scenario using estimates of age-specific incidence rates in the UK born. Each boxplot summarises the output of 10,000 model simulations for each scenario. Outliers have been omitted for clarity.", out.extra = ""}
 knitr::include_graphics("chapters/evidence-policy-change/graph-vacs-to-prev-1.png")
 ```
  
@@ -194,14 +198,15 @@ knitr::include_graphics("chapters/evidence-policy-change/graph-vacs-to-prev-1.pn
 
 I found that updating parameter values, and incorporating uncertainty, did not alter the average annual additional notifications from stopping the BCG schools' scheme when the annual decrease was assumed to be 9% (Figure \@ref(fig:graph-avg-add-not); Table \@ref(tab:annual-prevent-tab)). There was a large degree of uncertainty in this estimate with `r avg_annual_2001_9` notifications prevented annually if vaccination was stopped in 2001. As the assumed annual decrease in incidence rates was reduced the annual number of additional notifications prevented increased with `r avg_annual_2001_1` notifications prevented annually when the annual decrease was assumed to be 1.9% and vaccination stopping in 2001. There was some evidence that the average annual number of notifications prevented was greater when the annual decrease was estimated using notifications (`r avg_annual_2001_nots`, P: `r a_not_vs_1_2001`) and age-specific incidence rates (`r avg_annual_2001_inc`, P: `r a_inc_vs_1_2001`), compared to an assumed annual decrease of 1.9% (Figure \@ref(fig:graph-avg-add-not); Table \@ref(tab:annual-prevent-tab)). The estimate made using incidence rates again had a high degree of uncertainty. When an annual decrease of 1.9% was assumed the number of notifications prevented annually reduced with time: `r avg_annual_1_2006` from ending vaccination in 2006; `r avg_annual_1_2011` from ending vaccination in 2011, and `r avg_annual_1_2016` from ending vaccination in 2016.
 
-```{r graph-avg-add-not, fig.cap = "Annual additional notifications in 15-29 year olds from stopping the BCG schools' scheme in 2001, 2006, 2011, and 2016 until 2028. The years presented were dictated by the 5 year timestep of the model. The percentage annual decrease scenarios considered were based on those considered by the JVCI BCG subgroup, with the addition of a scenario using aggregate notification data and a scenario using estimates of age-specific incidence rates in the UK born. Each boxplot summarises the output of 10,000 model simulations for each scenario. Outliers have been omitted for clarity."}
+```{r graph-avg-add-not, fig.scap = "Annual additional notifications in 15-29 year olds from stopping the BCG schools' scheme in 2001, 2006, 2011, and 2016 until 2028.", fig.cap = "Annual additional notifications in 15-29 year olds from stopping the BCG schools' scheme in 2001, 2006, 2011, and 2016 until 2028. The years presented were dictated by the 5 year timestep of the model. The percentage annual decrease scenarios considered were based on those considered by the JVCI BCG subgroup, with the addition of a scenario using aggregate notification data and a scenario using estimates of age-specific incidence rates in the UK born. Each boxplot summarises the output of 10,000 model simulations for each scenario. Outliers have been omitted for clarity.", out.extra = ""}
 knitr::include_graphics("chapters/evidence-policy-change/graph-avg-add-nots-1.png")
 ```
 
 
 ```{r annual-prevent-tab}
   read_formated("tab-annual_nots_prevented") %>% 
-  kable(caption = "The median number (with the 2.5\\% and 97.5\\% quantiles) of additional annual notifications due to ending the BCG schools' scheme in selected years.", booktabs = TRUE) %>% 
+  kable(
+    caption = "The median number (with the 2.5\\% and 97.5\\% quantiles) of additional annual notifications due to ending the BCG schools' scheme in selected years.", booktabs = TRUE) %>% 
   landscape() %>% 
   kable_styling(latex_options = "hold_position")  %>% 
   kable_styling(font_size = 8) %>% 

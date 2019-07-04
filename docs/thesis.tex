@@ -83,7 +83,7 @@
 \subtitle{What is the impact of changing policy?}
 \author{Samuel Abbott}
 % The month and year that you submit your FINAL draft TO THE LIBRARY (May or December)
-\date{May 2019}
+\date{August 2019}
 \division{Bristol Medical School: Population Health Sciences}
 \advisor{Ellen Brooks Pollock}
 %If you have two advisors for some reason, you can use the following
@@ -255,7 +255,11 @@ Date: \emph{placeholder}
 
 \par
 
-\textbf{MRSA} Methicillin-resistant Staphylococcus aureus
+\textbf{MRSA} - Methicillin-resistant Staphylococcus aureus
+
+\par
+
+\textbf{ONS} - Office for National Statistics
 
 \par
 
@@ -416,7 +420,11 @@ Date: \emph{placeholder}
       
       \par
       
-      \textbf{MRSA} Methicillin-resistant Staphylococcus aureus
+      \textbf{MRSA} - Methicillin-resistant Staphylococcus aureus
+      
+      \par
+      
+      \textbf{ONS} - Office for National Statistics
       
       \par
       
@@ -641,7 +649,7 @@ Date: \emph{placeholder}
   \end{enumerate}
   \begin{landscape}\begingroup\fontsize{8}{10}\selectfont
   \begin{longtable}{rlll>{\raggedright\arraybackslash}p{10cm}}
-  \caption{\label{tab:tab-interventions}A timeline of interventions against TB. Antibiotics used to treat TB are commonly given together, with those with the fewest side effects given first. Second line antibiotics are then used if the initial treatment fails or tests show the strain is multiply drug resistant. BCG - Bacillus Calmette–Guérin; TB – Tuberculosis; MRSA - Methicillin-resistant Staphylococcus aureus; DOTS - Directly Observed Treatment Short-course}\\
+  \caption[A timeline of interventions against TB]{\label{tab:tab-interventions}A timeline of interventions against TB. Antibiotics used to treat TB are commonly given together, with those with the fewest side effects given first. Second line antibiotics are then used if the initial treatment fails or tests show the strain is multiply drug resistant. BCG - Bacillus Calmette–Guérin; TB – Tuberculosis; MRSA - Methicillin-resistant Staphylococcus aureus; DOTS - Directly Observed Treatment Short-course}\\
   \toprule
   Year & Intervention & Type & Line & Detail\\
   \midrule
@@ -692,11 +700,11 @@ Date: \emph{placeholder}
   TB is a global disease with an estimated 10.4 million new cases in 2016, of which 4.3 million were missed by health systems.{[}2{]} Global incidence rates have decreased year-on-year since the early 2000's, with an average year on year decrease of 2.9\%. However, global TB incidence remains above 134 per 100,000 population (Figure \ref{fig:global-regional-tb-summary}). On a regional level, incidence rates vary with Africa and South-East Asia having a greater concentration of cases. In the Eastern Mediterranean incidence rates have remained relatively stable over the last 10 years.
   \begin{figure}
   
-  {\centering \includegraphics[width=0.8\linewidth]{thesis_files/figure-latex/global-regional-tb-summary-1} 
+  {\centering \includegraphics[width=0.8\linewidth,]{thesis_files/figure-latex/global-regional-tb-summary-1} 
   
   }
   
-  \caption{TB incidence rates (per 100,000) by region and globally from 2000 until 2017. Globally incidence rates have been declining since the early 2000's but this decline varies with region. Plot produced using getTBinR}\label{fig:global-regional-tb-summary}
+  \caption[TB incidence rates (per 100,000) by region and globally from 2000 until 2017.]{TB incidence rates (per 100,000) by region and globally from 2000 until 2017. Globally incidence rates have been declining since the early 2000's but this decline varies with region. Plot produced using getTBinR}\label{fig:global-regional-tb-summary}
   \end{figure}
   Regional incidence rates only tell part of the story as TB incidence rates vary significantly within regions. Six countries: India, Indonesia, China, Nigeria, Pakistan, and South Africa account for 60\% of new cases. India, Indonesia, and Nigeria comprise nearly half of the gap between incident and notified cases.{[}15{]} Figure \ref{fig:map-global-tb} shows both regional similarities and countries, like Mongolia, that stand out as having higher TB incidence rates than surrounding countries.
   \begin{figure}
@@ -705,16 +713,16 @@ Date: \emph{placeholder}
   
   }
   
-  \caption{Global map of country level TB incidence rates (per 100,000 population) in 2017. Note the clustering of countries with high incidence rates in southern and central Africa and southern Asia. Map produced using getTBinR}\label{fig:map-global-tb}
+  \caption[Global map of country level TB incidence rates (per 100,000 population) in 201]{Global map of country level TB incidence rates (per 100,000 population) in 2017. Note the clustering of countries with high incidence rates in southern and central Africa and southern Asia. Map produced using getTBinR}\label{fig:map-global-tb}
   \end{figure}
   TB remains one of the top 10 causes death worldwide, leading to 1.7 million deaths in 2016 alone.{[}2{]} Whilst the absolute number of deaths due to TB has fallen since 2000, the average global rate of decline in TB mortality rates was only 2.9\% between 2000-2016. However, unlike the trend observed for incidence rates, the year-on-year decline of TB mortality rates has remained consistent in all regions (Figure \ref{fig:global-regional-mortality-summary}). Several regions, including Africa and Europe, have seen TB mortality rates fall to below 50\% of those in 2000.
   \begin{figure}
   
-  {\centering \includegraphics[width=0.8\linewidth]{thesis_files/figure-latex/global-regional-mortality-summary-1} 
+  {\centering \includegraphics[width=0.8\linewidth,]{thesis_files/figure-latex/global-regional-mortality-summary-1} 
   
   }
   
-  \caption{TB mortality rates (per 100,000) by region and globally from 2000 until 2017. Mortality rates from TB have been falling in all regions since 2000. Plot produced using getTBinR}\label{fig:global-regional-mortality-summary}
+  \caption[TB mortality rates (per 100,000) by region and globally from 2000 until 2017.]{TB mortality rates (per 100,000) by region and globally from 2000 until 2017. Mortality rates from TB have been falling in all regions since 2000. Plot produced using getTBinR}\label{fig:global-regional-mortality-summary}
   \end{figure}
   There is an ongoing global co-epidemic of HIV and TB, with people living with HIV accounting for 1.4 million TB cases in 2016. 22\% of deaths from TB were in those living with HIV. Whilst this is a global problem, it is a particular issue in sub-Saharan Africa with over 60\% (95\% CI: 55\%-64\%) of incidence TB cases in South Africa also having HIV (Figure \ref{fig:map-global-tb-with-hiv}). This compares to a global mean of 9.1\% (95\% CI: 6.0\%-13.0\%) and a mean of 26.7\% (95\% CI: 17.4\%-38.1\%) in Africa.
   \begin{figure}
@@ -723,7 +731,7 @@ Date: \emph{placeholder}
   
   }
   
-  \caption{Global map of estimated HIV in incidence TB (percent) in 2017. Note that high percentage of TB cases with HIV in sub-saharan Africa. Map produced using getTBinR}\label{fig:map-global-tb-with-hiv}
+  \caption[Global map of estimated HIV in incidence TB (percent) in 2017.]{Global map of estimated HIV in incidence TB (percent) in 2017. Note that high percentage of TB cases with HIV in sub-saharan Africa. Map produced using getTBinR}\label{fig:map-global-tb-with-hiv}
   \end{figure}
   Multi-drug-resistant TB (MDR-TB), which is defined as being resistant to at least isoniazid and rifampin, made up 4.6\% of all new TB cases in 2015 (480,000). It can be acquired both through treatment failure and through transmission. Treatment requires the use of second line antibiotics, which often have more severe side effects and are more likely to fail, with only 52\% successfully treated globally compared to 83\% for drug susceptible TB.{[}15{]} As for HIV co-infection, drug resistance is globally heterogeneous with some regions, like countries in the former USSR, having a much higher proportion of drug resistant cases. Figure \ref{fig:map-global-tb-with-rr} shows the country level proportion of cases with at least rifampicin resistance and highlights the higher level of rifampicin resistance in countries formerly in the USSR. 88\% of rifampicin cases in Russia in 2017 also had MDR-TB, which is comparable to the global median of 83\% (Table \ref{tab:prop-rr-with-mdr-tab}). Across all regions Europe had the highest median percentage of rifampicin cases with MDR-TB (100\%), with Africa having the lowest (67\%). This variation may indicate areas in which drug resistance is developing (regions with low proportions of MDR to rifampicin resistance), from regions in which MDR-TB results from transmission or importation (regions with high proportions of MDR to rifampicin resistance).
   \begin{figure}
@@ -732,7 +740,7 @@ Date: \emph{placeholder}
   
   }
   
-  \caption{Global map of the estimated percentage of new TB cases with rifampicin resistance (percent) in 2017. Not that a far higher percentage of TB cases have rifampicin resistance in the former Soviet Union that in the rest of the world. Map produced using getTBinR (see \\ref{getTBinR} for details)}\label{fig:map-global-tb-with-rr}
+  \caption[Global map of the estimated percentage of new TB cases with rifampicin resistance (percent) in 2017.]{Global map of the estimated percentage of new TB cases with rifampicin resistance (percent) in 2017. Not that a far higher percentage of TB cases have rifampicin resistance in the former Soviet Union that in the rest of the world. Map produced using getTBinR (see \\ref{getTBinR} for details)}\label{fig:map-global-tb-with-rr}
   \end{figure}
   \begin{table}[!h]
   
@@ -768,11 +776,11 @@ Date: \emph{placeholder}
   TB incidence in England and Wales has decreased dramatically from a century ago (Figure \ref{fig:plot-incidence}, or see \url{http://www.seabbs.co.uk/shiny/TB_England_Wales} for an interactive dashboard). However, in the past several decades, incidence rates first stabilised and have since increased since their lowest point in the 1990's. In 2000 there were 6044 notified TB cases in England, increasing to a maximum of 8280 notified TB cases in 2011. Since then, notifications have declined year on year.{[}16{]} Figure \ref{fig:plot-incidence} includes the interventions discussed above (Table \ref{tab:tab-interventions}) and indicates that the introduction of several antibiotics and BCG vaccination in the 1950s may have led to an extended decrease in incidence.
   \begin{figure}
   
-  {\centering \includegraphics[width=0.8\linewidth]{thesis_files/figure-latex/plot-incidence-1} 
+  {\centering \includegraphics[width=0.8\linewidth,]{thesis_files/figure-latex/plot-incidence-1} 
   
   }
   
-  \caption{TB notifications in England and Wales from 1913 to 2017, stratified initially by respiratory/non-respiratory status and from 1982 by pulmonary/non-pulmonary TB. Interventions are highlighted with vertical lines, with linetype denoting the type of intervention, more information on each intervention is available in the corresponding table. Figure produced using tbinenglanddataclean (https://www.samabbott.co.uk/tbinenglanddataclean/)}\label{fig:plot-incidence}
+  \caption[TB notifications in England and Wales from 1913 to 2017, stratified initially by respiratory/non-respiratory status and from 1982 by pulmonary/non-pulmonary TB.]{TB notifications in England and Wales from 1913 to 2017, stratified initially by respiratory/non-respiratory status and from 1982 by pulmonary/non-pulmonary TB. Interventions are highlighted with vertical lines, with linetype denoting the type of intervention, more information on each intervention is available in the corresponding table. Figure produced using tbinenglanddataclean (https://www.samabbott.co.uk/tbinenglanddataclean/)}\label{fig:plot-incidence}
   \end{figure}
   \hypertarget{heterogeneity-of-tb}{%
   \subsubsection{Heterogeneity of TB}\label{heterogeneity-of-tb}}
@@ -799,7 +807,7 @@ Date: \emph{placeholder}
   
   }
   
-  \caption{From 1913 until 1981 the figure shows the proportion respiratory vs. non-respiratory cases and from 1982 it shows the proportion of pulmonary vs. non-pulmonary TB. Figure produced using tbinenglanddataclean (https://www.samabbott.co.uk/tbinenglanddataclean/)}\label{fig:plot-prop-pul}
+  \caption[From 1913 until 1981 the figure shows the proportion respiratory vs. non-respiratory cases and from 1982 it shows the proportion of pulmonary vs. non-pulmonary TB.]{From 1913 until 1981 the figure shows the proportion respiratory vs. non-respiratory cases and from 1982 it shows the proportion of pulmonary vs. non-pulmonary TB. Figure produced using tbinenglanddataclean (https://www.samabbott.co.uk/tbinenglanddataclean/)}\label{fig:plot-prop-pul}
   \end{figure}
   \hypertarget{the-bacillus-calmetteguerin-vaccine}{%
   \section{The Bacillus Calmette--Guérin Vaccine}\label{the-bacillus-calmetteguerin-vaccine}}
@@ -939,11 +947,11 @@ Date: \emph{placeholder}
   \end{Shaded}
   \begin{figure}
   
-  {\centering \includegraphics[width=0.8\linewidth]{thesis_files/figure-latex/map-tb-incidence-eur-1} 
+  {\centering \includegraphics[width=0.8\linewidth,]{thesis_files/figure-latex/map-tb-incidence-eur-1} 
   
   }
   
-  \caption{Map of global TB incidence rates in 2017 as generated by `getTBinR'. Visualising the data with a map allows for spatial trends to be rapidly explored.}\label{fig:map-tb-incidence-eur}
+  \caption[Map of global TB incidence rates in 2017 as generated by `getTBinR'.]{Map of global TB incidence rates in 2017 as generated by `getTBinR'. Visualising the data with a map allows for spatial trends to be rapidly explored.}\label{fig:map-tb-incidence-eur}
   \end{figure}
   \hypertarget{plotting-an-overview-for-a-given-tb-metric}{%
   \subsection{Plotting an overview for a given TB metric}\label{plotting-an-overview-for-a-given-tb-metric}}
@@ -978,11 +986,11 @@ Date: \emph{placeholder}
   \end{Shaded}
   \begin{figure}
   
-  {\centering \includegraphics[width=0.8\linewidth]{thesis_files/figure-latex/plot-regional-summary-1} 
+  {\centering \includegraphics[width=0.8\linewidth,]{thesis_files/figure-latex/plot-regional-summary-1} 
   
   }
   
-  \caption{TB incidence by region and globally as computed and visualised by `getTBinR`. Confidence intervals have been disabled in order to avoid obscuring the dominant trends.}\label{fig:plot-regional-summary}
+  \caption[TB incidence by region and globally as computed and visualised by `getTBinR`.]{TB incidence by region and globally as computed and visualised by `getTBinR`. Confidence intervals have been disabled in order to avoid obscuring the dominant trends.}\label{fig:plot-regional-summary}
   \end{figure}
   \hypertarget{plotting-country-level-trends-for-a-given-metric}{%
   \section{Plotting country level trends for a given metric}\label{plotting-country-level-trends-for-a-given-metric}}
@@ -997,11 +1005,11 @@ Date: \emph{placeholder}
   \end{Shaded}
   \begin{figure}
   
-  {\centering \includegraphics[width=0.8\linewidth]{thesis_files/figure-latex/plot-tb-burden-1} 
+  {\centering \includegraphics[width=0.8\linewidth,]{thesis_files/figure-latex/plot-tb-burden-1} 
   
   }
   
-  \caption{TB incidence rates over time, with confidence intervals, in the UK. As produced by `getTBinR`.}\label{fig:plot-tb-burden}
+  \caption[TB incidence rates over time, with confidence intervals, in the UK. As produced by `getTBinR`.]{TB incidence rates over time, with confidence intervals, in the UK. As produced by `getTBinR`.}\label{fig:plot-tb-burden}
   \end{figure}
   \hypertarget{gettbinr-sum}{%
   \section{Data summarisation}\label{gettbinr-sum}}
@@ -1068,7 +1076,7 @@ Date: \emph{placeholder}
   
   }
   
-  \caption{Screenshot of the start of the built in package summary report, for the United Kingdom.}\label{fig:report-snapshot}
+  \caption{Screenshot of the start of the built-in package summary report, for the United Kingdom.}\label{fig:report-snapshot}
   \end{figure}
   \hypertarget{package-infrastructure}{%
   \section{Package Infrastructure}\label{package-infrastructure}}
@@ -1204,15 +1212,15 @@ Date: \emph{placeholder}
   As the ETS is aggregated across England, from a variety of sources, some level of missing data is inevitable. This takes two forms; under-reporting of notified cases, of which there is some evidence in the literature,{[}46{]} and data missing for a notified case. The former is particularly problematic as apart from using comparative studies the structure of those that are not notified is unknown. For variables that are missing data within the data-set it is possible to calculate the proportion of missing data (Figure \ref{fig:plot-missing-struct}, Table \ref{tab:missing-var-tabs}) but care must be taken to account for nested variables such as date of death and year of BCG vaccination. This can be done by assuming the value for the top level variable when it is known that the variable is not truly missing. An example of this is using overall outcome for data of death when notifications are known to have not died. Doing this shows high completeness for common demographic variables such as sex, age, ethnic group and UK birth status. More problematically, BCG status and year of BCG status have a high percentage missing, even after accounting for the introduction of national collection of these variables in 2008. Socio-economic status (as national quintiles) was not collected until 2010 but after this point is highly complete. Comparing pre 2009 and post 2008 in Table \ref{tab:missing-var-tabs} (and by inspecting Figure \ref{fig:plot-missing-struct}) there are also issues of changing completeness over time,{[}1,47{]} if this is not accounted for than it may lead to spurious trends. Figure \ref{fig:plot-missing-struct} also indicates that there are multiple groups of variables that share a common pattern of missing data.
   \begin{figure}
   
-  {\centering \includegraphics[width=0.6\linewidth]{chapters/tb-epi-england/figures/plot-missing-struct} 
+  {\centering \includegraphics[width=0.6\linewidth,]{chapters/tb-epi-england/figures/plot-missing-struct} 
   
   }
   
-  \caption{Summary plot of missing data in the extract of the ETS data used in this thesis. Due to the large size of the dataset, the data has been sub-sampled with only 20\% of the data shown in this figure. Notifications have been ordered by date of notification from left to right. The following subset of variables are shown; year (year), sex (sex), age (age), PHE Centre (phec), Occupation (occat), Ethnic group (ethgrp), UK birth status (ukborn), Time since entry (timesinceent), date of symptom onset (symptonset), date of diagnosis (datediag), started treatment (startedtreat), date of starting treatment (starttreatdate), treatment end date (txenddate), pulmonary or extra-pulmonary TB (pulmextrapulm), culture (culture), sputum smear status (sputsmear), drug resistance (anyres), previous diagnosis (prevdiag), BCG status(bcgvacc), Year of BCG vaccination (bcgvaccyr), overall outcome (overalloutcome), cause of death (tomdeathrelate), socio-economic status quintiles (natquintile), and date of death (dateofdeath). Nested variables have been accounted for (i.e data of death has had an entry added for cases that are known to have not died), so that true missingness for all variables is estimated.}\label{fig:plot-missing-struct}
+  \caption[Summary plot of missing data in the extract of the ETS data used in this thesis.]{Summary plot of missing data in the extract of the ETS data used in this thesis. Due to the large size of the dataset, the data has been sub-sampled with only 20\% of the data shown in this figure. Notifications have been ordered by date of notification from left to right. The following subset of variables are shown; year (year), sex (sex), age (age), PHE Centre (phec), Occupation (occat), Ethnic group (ethgrp), UK birth status (ukborn), Time since entry (timesinceent), date of symptom onset (symptonset), date of diagnosis (datediag), started treatment (startedtreat), date of starting treatment (starttreatdate), treatment end date (txenddate), pulmonary or extra-pulmonary TB (pulmextrapulm), culture (culture), sputum smear status (sputsmear), drug resistance (anyres), previous diagnosis (prevdiag), BCG status(bcgvacc), Year of BCG vaccination (bcgvaccyr), overall outcome (overalloutcome), cause of death (tomdeathrelate), socio-economic status quintiles (natquintile), and date of death (dateofdeath). Nested variables have been accounted for (i.e data of death has had an entry added for cases that are known to have not died), so that true missingness for all variables is estimated.}\label{fig:plot-missing-struct}
   \end{figure}
   \begin{table}[H]
   
-  \caption{\label{tab:missing-var-tabs}Breakdown of missing data from the ETS prior to the web based system (pre 2009) and post (post 2008) by variable, ordered by the  percentage missing for a subset of variables. The following subset of variables are shown; year (year), sex (sex), age (age), PHE Centre (phec), Occupation (occat), Ethnic group (ethgrp), UK birth status (ukborn), Time since entry (timesinceent), date of symptom onset (symptonset), date of diagnosis (datediag), started treatment (startedtreat), date of starting treatment (starttreatdate), treatment end date (txenddate), pulmonary or extra-pulmonary TB (pulmextrapulm), culture (culture), sputum smear status (sputsmear), drug resistance (anyres), previous diagnosis (prevdiag), BCG status(bcgvacc), Year of BCG vaccination (bcgvaccyr), overall outcome (overalloutcome), cause of death (tomdeathrelate), socio-economic status quintiles (natquintile), and date of death (dateofdeath). Nested variables have been accounted for (i.e data of death has had an entry added for cases that are known to have not died), so that true missingness for all variables is estimated.}
+  \caption[Breakdown of missing data from the ETS prior to the web based system (pre 2009) and post (post 2008) by variable, ordered by the  percentage missing for a subset of variables.]{\label{tab:missing-var-tabs}Breakdown of missing data from the ETS prior to the web based system (pre 2009) and post (post 2008) by variable, ordered by the  percentage missing for a subset of variables. The following subset of variables are shown; year (year), sex (sex), age (age), PHE Centre (phec), Occupation (occat), Ethnic group (ethgrp), UK birth status (ukborn), Time since entry (timesinceent), date of symptom onset (symptonset), date of diagnosis (datediag), started treatment (startedtreat), date of starting treatment (starttreatdate), treatment end date (txenddate), pulmonary or extra-pulmonary TB (pulmextrapulm), culture (culture), sputum smear status (sputsmear), drug resistance (anyres), previous diagnosis (prevdiag), BCG status(bcgvacc), Year of BCG vaccination (bcgvaccyr), overall outcome (overalloutcome), cause of death (tomdeathrelate), socio-economic status quintiles (natquintile), and date of death (dateofdeath). Nested variables have been accounted for (i.e data of death has had an entry added for cases that are known to have not died), so that true missingness for all variables is estimated.}
   \centering
   \begin{tabular}{lrlrl}
   \toprule
@@ -1291,7 +1299,7 @@ Date: \emph{placeholder}
   
   \begingroup\fontsize{8}{10}\selectfont
   \begin{longtable}{lll>{\raggedleft\arraybackslash}p{2cm}l>{\raggedright\arraybackslash}p{1.5cm}>{\raggedright\arraybackslash}p{1.5cm}}
-  \caption{\label{tab:bcgvacc-miss}Results from a logistic regression model with data completeness (Complete/Missing) for BCG vaccination as an outcome, adjusted for; year, sex, age (grouped as 0-14 year olds, 15-65 year olds and 65+), ethnic group, UK birth status and socio-economic status (national quintiles). For socio-economic group 1 indicates the most deprived quintile. Notifications from 2010 onwards were included as socio-economic status was not collected before this. Complete case analysis weas used. Odds ratios shown are adjusted for all explanatory variables. The model indicates that BCG status is missing at random for the variables considered.}\\
+  \caption[Results from a logistic regression model with data completeness (Complete/Missing) for BCG vaccination as an outcome, adjusted for; year, sex, age (grouped as 0-14 year olds, 15-65 year olds and 65+), ethnic group, UK birth status and socio-economic status (national quintiles).]{\label{tab:bcgvacc-miss}Results from a logistic regression model with data completeness (Complete/Missing) for BCG vaccination as an outcome, adjusted for; year, sex, age (grouped as 0-14 year olds, 15-65 year olds and 65+), ethnic group, UK birth status and socio-economic status (national quintiles). For socio-economic group 1 indicates the most deprived quintile. Notifications from 2010 onwards were included as socio-economic status was not collected before this. Complete case analysis weas used. Odds ratios shown are adjusted for all explanatory variables. The model indicates that BCG status is missing at random for the variables considered.}\\
   \toprule
   Variable & Category & Missing (N) & Notifications (41659) & Odds Ratio & P value (Wald) & P value (LRT)\\
   \midrule
@@ -1348,12 +1356,12 @@ Date: \emph{placeholder}
   
   \begingroup\fontsize{8}{10}\selectfont
   \begin{longtable}{lll>{\raggedleft\arraybackslash}p{2cm}l>{\raggedright\arraybackslash}p{1.5cm}>{\raggedright\arraybackslash}p{1.5cm}}
-  \caption{\label{tab:bcgvaccyr-miss}Results from a logistic regression model with data completeness (Complete/Missing) for year of BCG vaccination as an outcome, adjusted for; year, sex, age (grouped as 0-14 year olds, 15-65 year olds and 65+), ethnic group, UK birth status and socio-economic status (national quintiles).For socio-economic group 1 indicates the most deprived quintile. Notifications from 2010 onwards were included as socio-economic status was not collected before this. Complete case analysis weas used. Odds ratios shown are adjusted for all explanatory variables. The model indicates that year of BCG vaccination is missing at random for the variables considered.}\\
+  \caption[Results from a logistic regression model with data completeness (Complete/Missing) for year of BCG vaccination as an outcome, adjusted for; year, sex, age (grouped as 0-14 year olds, 15-65 year olds and 65+), ethnic group, UK birth status and socio-economic status (national quintiles).]{\label{tab:bcgvaccyr-miss}Results from a logistic regression model with data completeness (Complete/Missing) for year of BCG vaccination as an outcome, adjusted for; year, sex, age (grouped as 0-14 year olds, 15-65 year olds and 65+), ethnic group, UK birth status and socio-economic status (national quintiles). For socio-economic group 1 indicates the most deprived quintile. Notifications from 2010 onwards were included as socio-economic status was not collected before this. Complete case analysis weas used. Odds ratios shown are adjusted for all explanatory variables. The model indicates that year of BCG vaccination is missing at random for the variables considered.}\\
   \toprule
   Variable & Category & Missing (N) & Notifications (20835) & Odds Ratio & P value (Wald) & P value (LRT)\\
   \midrule
   \endfirsthead
-  \caption[]{\label{tab:bcgvaccyr-miss}Results from a logistic regression model with data completeness (Complete/Missing) for year of BCG vaccination as an outcome, adjusted for; year, sex, age (grouped as 0-14 year olds, 15-65 year olds and 65+), ethnic group, UK birth status and socio-economic status (national quintiles).For socio-economic group 1 indicates the most deprived quintile. Notifications from 2010 onwards were included as socio-economic status was not collected before this. Complete case analysis weas used. Odds ratios shown are adjusted for all explanatory variables. The model indicates that year of BCG vaccination is missing at random for the variables considered. \textit{(continued)}}\\
+  \caption[]{\label{tab:bcgvaccyr-miss}Results from a logistic regression model with data completeness (Complete/Missing) for year of BCG vaccination as an outcome, adjusted for; year, sex, age (grouped as 0-14 year olds, 15-65 year olds and 65+), ethnic group, UK birth status and socio-economic status (national quintiles). For socio-economic group 1 indicates the most deprived quintile. Notifications from 2010 onwards were included as socio-economic status was not collected before this. Complete case analysis weas used. Odds ratios shown are adjusted for all explanatory variables. The model indicates that year of BCG vaccination is missing at random for the variables considered. \textit{(continued)}}\\
   \toprule
   Variable & Category & Missing (N) & Notifications (20835) & Odds Ratio & P value (Wald) & P value (LRT)\\
   \midrule
@@ -1405,7 +1413,7 @@ Date: \emph{placeholder}
   
   \begingroup\fontsize{8}{10}\selectfont
   \begin{longtable}{lll>{\raggedleft\arraybackslash}p{2cm}l>{\raggedright\arraybackslash}p{1.5cm}>{\raggedright\arraybackslash}p{1.5cm}}
-  \caption{\label{tab:dateofdeath-miss}Results from a logistic regression model with data completeness (Complete/Missing) for date of death as an outcome, adjusted for; year, sex, age (grouped as 0-14 year olds, 15-65 year olds and 65+), ethnic group, UK birth status and socio-economic status (national quintiles). For socio-economic group 1 indicates the most deprived quintile. Notifications from 2010 onwards were included as socio-economic status was not collected before this. Complete case analysis weas used. Odds ratios shown are adjusted for all explanatory variables. The model indicates that there is some evidence that date of death is missing at random for ethnic group, with weaker evidence for all other variables.}\\
+  \caption[Results from a logistic regression model with data completeness (Complete/Missing) for date of death as an outcome, adjusted for; year, sex, age (grouped as 0-14 year olds, 15-65 year olds and 65+), ethnic group, UK birth status and socio-economic status (national quintiles).]{\label{tab:dateofdeath-miss}Results from a logistic regression model with data completeness (Complete/Missing) for date of death as an outcome, adjusted for; year, sex, age (grouped as 0-14 year olds, 15-65 year olds and 65+), ethnic group, UK birth status and socio-economic status (national quintiles). For socio-economic group 1 indicates the most deprived quintile. Notifications from 2010 onwards were included as socio-economic status was not collected before this. Complete case analysis weas used. Odds ratios shown are adjusted for all explanatory variables. The model indicates that there is some evidence that date of death is missing at random for ethnic group, with weaker evidence for all other variables.}\\
   \toprule
   Variable & Category & Missing (N) & Notifications (1883) & Odds Ratio & P value (Wald) & P value (LRT)\\
   \midrule
@@ -1462,7 +1470,7 @@ Date: \emph{placeholder}
   
   \begingroup\fontsize{8}{10}\selectfont
   \begin{longtable}{lll>{\raggedleft\arraybackslash}p{2cm}l>{\raggedright\arraybackslash}p{1.5cm}>{\raggedright\arraybackslash}p{1.5cm}}
-  \caption{\label{tab:tomdeathrealat-miss}Results from a logistic regression model with data completeness (Complete/Missing) for cause of death as an outcome, adjusted for; year, sex, age (grouped as 0-14 year olds, 15-65 year olds and 65+), ethnic group, UK birth status and socio-economic status (national quintiles). For socio-economic group 1 indicates the most deprived quintile. Notifications from 2010 onwards were included as socio-economic status was not collected before this. Complete case analysis weas used. Odds ratios shown are adjusted for all explanatory variables. The model indicates that cause of death is missing at random for ethnic group and UK birth status, with little evidence for any other variables}\\
+  \caption[Results from a logistic regression model with data completeness (Complete/Missing) for cause of death as an outcome, adjusted for; year, sex, age (grouped as 0-14 year olds, 15-65 year olds and 65+), ethnic group, UK birth status and socio-economic status (national quintiles).]{\label{tab:tomdeathrealat-miss}Results from a logistic regression model with data completeness (Complete/Missing) for cause of death as an outcome, adjusted for; year, sex, age (grouped as 0-14 year olds, 15-65 year olds and 65+), ethnic group, UK birth status and socio-economic status (national quintiles). For socio-economic group 1 indicates the most deprived quintile. Notifications from 2010 onwards were included as socio-economic status was not collected before this. Complete case analysis weas used. Odds ratios shown are adjusted for all explanatory variables. The model indicates that cause of death is missing at random for ethnic group and UK birth status, with little evidence for any other variables}\\
   \toprule
   Variable & Category & Missing (N) & Notifications (1883) & Odds Ratio & P value (Wald) & P value (LRT)\\
   \midrule
@@ -1519,12 +1527,12 @@ Date: \emph{placeholder}
   
   \begingroup\fontsize{8}{10}\selectfont
   \begin{longtable}{lll>{\raggedleft\arraybackslash}p{2cm}l>{\raggedright\arraybackslash}p{1.5cm}>{\raggedright\arraybackslash}p{1.5cm}}
-  \caption{\label{tab:symptonset-miss}Results from a logistic regression model with data completeness (Complete/Missing) for date of symptom onset as an outcome, adjusted for; year, sex, age (grouped as 0-14 year olds, 15-65 year olds and 65+), ethnic group, UK birth status and socio-economic status (national quintiles).For socio-economic group 1 indicates the most deprived quintile. Notifications from 2010 onwards were included as socio-economic status was not collected before this. Complete case analysis weas used. Odds ratios shown are adjusted for all explanatory variables. The model indicates that date of symptom onset is missing not at random for the variables for all variables considered, except for sex.}\\
+  \caption[Results from a logistic regression model with data completeness (Complete/Missing) for date of symptom onset as an outcome, adjusted for; year, sex, age (grouped as 0-14 year olds, 15-65 year olds and 65+), ethnic group, UK birth status and socio-economic status (national quintiles).]{\label{tab:symptonset-miss}Results from a logistic regression model with data completeness (Complete/Missing) for date of symptom onset as an outcome, adjusted for; year, sex, age (grouped as 0-14 year olds, 15-65 year olds and 65+), ethnic group, UK birth status and socio-economic status (national quintiles). For socio-economic group 1 indicates the most deprived quintile. Notifications from 2010 onwards were included as socio-economic status was not collected before this. Complete case analysis weas used. Odds ratios shown are adjusted for all explanatory variables. The model indicates that date of symptom onset is missing not at random for the variables for all variables considered, except for sex.}\\
   \toprule
   Variable & Category & Missing (N) & Notifications (41659) & Odds Ratio & P value (Wald) & P value (LRT)\\
   \midrule
   \endfirsthead
-  \caption[]{\label{tab:symptonset-miss}Results from a logistic regression model with data completeness (Complete/Missing) for date of symptom onset as an outcome, adjusted for; year, sex, age (grouped as 0-14 year olds, 15-65 year olds and 65+), ethnic group, UK birth status and socio-economic status (national quintiles).For socio-economic group 1 indicates the most deprived quintile. Notifications from 2010 onwards were included as socio-economic status was not collected before this. Complete case analysis weas used. Odds ratios shown are adjusted for all explanatory variables. The model indicates that date of symptom onset is missing not at random for the variables for all variables considered, except for sex. \textit{(continued)}}\\
+  \caption[]{\label{tab:symptonset-miss}Results from a logistic regression model with data completeness (Complete/Missing) for date of symptom onset as an outcome, adjusted for; year, sex, age (grouped as 0-14 year olds, 15-65 year olds and 65+), ethnic group, UK birth status and socio-economic status (national quintiles). For socio-economic group 1 indicates the most deprived quintile. Notifications from 2010 onwards were included as socio-economic status was not collected before this. Complete case analysis weas used. Odds ratios shown are adjusted for all explanatory variables. The model indicates that date of symptom onset is missing not at random for the variables for all variables considered, except for sex. \textit{(continued)}}\\
   \toprule
   Variable & Category & Missing (N) & Notifications (41659) & Odds Ratio & P value (Wald) & P value (LRT)\\
   \midrule
@@ -1576,12 +1584,12 @@ Date: \emph{placeholder}
   
   \begingroup\fontsize{8}{10}\selectfont
   \begin{longtable}{lll>{\raggedleft\arraybackslash}p{2cm}l>{\raggedright\arraybackslash}p{1.5cm}>{\raggedright\arraybackslash}p{1.5cm}}
-  \caption{\label{tab:datediag-miss}Results from a logistic regression model with data completeness (Complete/Missing) for date of diagnosis onset as an outcome, adjusted for; year, sex, age (grouped as 0-14 year olds, 15-65 year olds and 65+), ethnic group, UK birth status and socio-economic status (national quintiles).For socio-economic group 1 indicates the most deprived quintile. Notifications from 2010 onwards were included as socio-economic status was not collected before this. Complete case analysis weas used. Odds ratios shown are adjusted for all explanatory variables. The model indicates that date of diagnosis is missing at random for the variables for all variables considered, except for sex.}\\
+  \caption[Results from a logistic regression model with data completeness (Complete/Missing) for date of diagnosis onset as an outcome, adjusted for; year, sex, age (grouped as 0-14 year olds, 15-65 year olds and 65+), ethnic group, UK birth status and socio-economic status (national quintiles).]{\label{tab:datediag-miss}Results from a logistic regression model with data completeness (Complete/Missing) for date of diagnosis onset as an outcome, adjusted for; year, sex, age (grouped as 0-14 year olds, 15-65 year olds and 65+), ethnic group, UK birth status and socio-economic status (national quintiles). For socio-economic group 1 indicates the most deprived quintile. Notifications from 2010 onwards were included as socio-economic status was not collected before this. Complete case analysis weas used. Odds ratios shown are adjusted for all explanatory variables. The model indicates that date of diagnosis is missing at random for the variables for all variables considered, except for sex.}\\
   \toprule
   Variable & Category & Missing (N) & Notifications (41659) & Odds Ratio & P value (Wald) & P value (LRT)\\
   \midrule
   \endfirsthead
-  \caption[]{\label{tab:datediag-miss}Results from a logistic regression model with data completeness (Complete/Missing) for date of diagnosis onset as an outcome, adjusted for; year, sex, age (grouped as 0-14 year olds, 15-65 year olds and 65+), ethnic group, UK birth status and socio-economic status (national quintiles).For socio-economic group 1 indicates the most deprived quintile. Notifications from 2010 onwards were included as socio-economic status was not collected before this. Complete case analysis weas used. Odds ratios shown are adjusted for all explanatory variables. The model indicates that date of diagnosis is missing at random for the variables for all variables considered, except for sex. \textit{(continued)}}\\
+  \caption[]{\label{tab:datediag-miss}Results from a logistic regression model with data completeness (Complete/Missing) for date of diagnosis onset as an outcome, adjusted for; year, sex, age (grouped as 0-14 year olds, 15-65 year olds and 65+), ethnic group, UK birth status and socio-economic status (national quintiles). For socio-economic group 1 indicates the most deprived quintile. Notifications from 2010 onwards were included as socio-economic status was not collected before this. Complete case analysis weas used. Odds ratios shown are adjusted for all explanatory variables. The model indicates that date of diagnosis is missing at random for the variables for all variables considered, except for sex. \textit{(continued)}}\\
   \toprule
   Variable & Category & Missing (N) & Notifications (41659) & Odds Ratio & P value (Wald) & P value (LRT)\\
   \midrule
@@ -1633,12 +1641,12 @@ Date: \emph{placeholder}
   
   \begingroup\fontsize{8}{10}\selectfont
   \begin{longtable}{lll>{\raggedleft\arraybackslash}p{2cm}l>{\raggedright\arraybackslash}p{1.5cm}>{\raggedright\arraybackslash}p{1.5cm}}
-  \caption{\label{tab:starttreatdate-miss}Results from a logistic regression model with data completeness (Complete/Missing) for date of starting treatment as an outcome, adjusted for; year, sex, age (grouped as 0-14 year olds, 15-65 year olds and 65+), ethnic group, UK birth status and socio-economic status (national quintiles).For socio-economic group 1 indicates the most deprived quintile. Notifications from 2010 onwards were included as socio-economic status was not collected before this. Complete case analysis weas used. Odds ratios shown are adjusted for all explanatory variables. There is little evidence that the missing data for the date of starting treatment is associated with any variable considered, except for year of notification.}\\
+  \caption[Results from a logistic regression model with data completeness (Complete/Missing) for date of starting treatment as an outcome, adjusted for; year, sex, age (grouped as 0-14 year olds, 15-65 year olds and 65+), ethnic group, UK birth status and socio-economic status (national quintiles).]{\label{tab:starttreatdate-miss}Results from a logistic regression model with data completeness (Complete/Missing) for date of starting treatment as an outcome, adjusted for; year, sex, age (grouped as 0-14 year olds, 15-65 year olds and 65+), ethnic group, UK birth status and socio-economic status (national quintiles). For socio-economic group 1 indicates the most deprived quintile. Notifications from 2010 onwards were included as socio-economic status was not collected before this. Complete case analysis weas used. Odds ratios shown are adjusted for all explanatory variables. There is little evidence that the missing data for the date of starting treatment is associated with any variable considered, except for year of notification.}\\
   \toprule
   Variable & Category & Missing (N) & Notifications (40977) & Odds Ratio & P value (Wald) & P value (LRT)\\
   \midrule
   \endfirsthead
-  \caption[]{\label{tab:starttreatdate-miss}Results from a logistic regression model with data completeness (Complete/Missing) for date of starting treatment as an outcome, adjusted for; year, sex, age (grouped as 0-14 year olds, 15-65 year olds and 65+), ethnic group, UK birth status and socio-economic status (national quintiles).For socio-economic group 1 indicates the most deprived quintile. Notifications from 2010 onwards were included as socio-economic status was not collected before this. Complete case analysis weas used. Odds ratios shown are adjusted for all explanatory variables. There is little evidence that the missing data for the date of starting treatment is associated with any variable considered, except for year of notification. \textit{(continued)}}\\
+  \caption[]{\label{tab:starttreatdate-miss}Results from a logistic regression model with data completeness (Complete/Missing) for date of starting treatment as an outcome, adjusted for; year, sex, age (grouped as 0-14 year olds, 15-65 year olds and 65+), ethnic group, UK birth status and socio-economic status (national quintiles). For socio-economic group 1 indicates the most deprived quintile. Notifications from 2010 onwards were included as socio-economic status was not collected before this. Complete case analysis weas used. Odds ratios shown are adjusted for all explanatory variables. There is little evidence that the missing data for the date of starting treatment is associated with any variable considered, except for year of notification. \textit{(continued)}}\\
   \toprule
   Variable & Category & Missing (N) & Notifications (40977) & Odds Ratio & P value (Wald) & P value (LRT)\\
   \midrule
@@ -1690,7 +1698,7 @@ Date: \emph{placeholder}
   
   \begingroup\fontsize{8}{10}\selectfont
   \begin{longtable}{lll>{\raggedleft\arraybackslash}p{2cm}l>{\raggedright\arraybackslash}p{1.5cm}>{\raggedright\arraybackslash}p{1.5cm}}
-  \caption{\label{tab:txenddate-miss}Results from a logistic regression model with data completeness (Complete/Missing) for date of starting treatment as an outcome, adjusted for; year, sex, age (grouped as 0-14 year olds, 15-65 year olds and 65+), ethnic group, UK birth status and socio-economic status (national quintiles). For socio-economic group 1 indicates the most deprived quintile. Notifications from 2010 onwards were included as socio-economic status was not collected before this. Complete case analysis weas used. Odds ratios shown are adjusted for all explanatory variables. There is little evidence that the missing data for the date of starting treatment is associated with any variable considered, except for year of notification.}\\
+  \caption[Results from a logistic regression model with data completeness (Complete/Missing) for date of starting treatment as an outcome, adjusted for; year, sex, age (grouped as 0-14 year olds, 15-65 year olds and 65+), ethnic group, UK birth status and socio-economic status (national quintiles).]{\label{tab:txenddate-miss}Results from a logistic regression model with data completeness (Complete/Missing) for date of starting treatment as an outcome, adjusted for; year, sex, age (grouped as 0-14 year olds, 15-65 year olds and 65+), ethnic group, UK birth status and socio-economic status (national quintiles). For socio-economic group 1 indicates the most deprived quintile. Notifications from 2010 onwards were included as socio-economic status was not collected before this. Complete case analysis weas used. Odds ratios shown are adjusted for all explanatory variables. There is little evidence that the missing data for the date of starting treatment is associated with any variable considered, except for year of notification.}\\
   \toprule
   Variable & Category & Missing (N) & Notifications (33606) & Odds Ratio & P value (Wald) & P value (LRT)\\
   \midrule
@@ -1753,47 +1761,47 @@ Date: \emph{placeholder}
   As seen in the previous section (Section \ref{ets-deep-dive}), many of these variables have a large proportion of missing data, with date of notification and date of starting treatment having the least amount of missing data. The date of notification represents the simplest variable to use to represent when a case can be defined to have occurred as it is complete for all records. Unfortunately, cases may be notified at any stage of active TB, from initially becoming symptomatic to post-mortem diagnosis and notification. Despite this limitation, date of notification can be used as a baseline on which to judge other date variables and some of these limitations may be mitigated by aggregating data by month or by year. Figure \ref{fig:plot-detection-not} a.) shows the number of TB notifications by year and Figure \ref{fig:plot-detection-not} b.) shows the number of TB notifications by month. These figures indicate that aggregating by year, rather than month, reduce the level of noise in the estimates and makes the trend over time easier to identify. This is an acceptable approximation if inference is being drawn on the scale of years. For shorter term processes, such as the duration of treatment which is generally considered to take approximately 6 months (Chapter \ref{background}), aggregating by year would reduce the accuracy of the estimated parameter. There is some evidence of a seasonal trend in notifications (Figure \ref{fig:plot-detection-not} c.)), with a higher proportion of cases notified in the May, June and July than in the rest of the year. This seasonality would have to be accounted for if conducting analysis on a monthly scale and date of notification was being used as the date of first contact with the health system. There is little evidence that date of notification varies by day of the month (Figure \ref{fig:plot-detection-not} d.)).
   \begin{figure}
   
-  {\centering \includegraphics[width=0.8\linewidth]{chapters/tb-epi-england/figures/plot-detection-not} 
+  {\centering \includegraphics[width=0.8\linewidth,]{chapters/tb-epi-england/figures/plot-detection-not} 
   
   }
   
-  \caption{a.) and b.) show notifications over time by date of notification in the ETS, with a.) aggregated by year and  b.) aggregated by month. A trendline has been produced using a locally weighted regression model. Both of these plots show the same overall trend, but b.) contains a large amount of apparent noise. c.) Shows the proportion of cases notified in a given month for each year, with some evidence of a seasonal trend. d.) Shows the proportion of cases notified on a given day for each month, there is little evidence of between day variation in cases notified.}\label{fig:plot-detection-not}
+  \caption[a.) and b.) show notifications over time by date of notification in the ETS, with a.) aggregated by year and  b.) aggregated by month.]{a.) and b.) show notifications over time by date of notification in the ETS, with a.) aggregated by year and  b.) aggregated by month. A trendline has been produced using a locally weighted regression model. Both of these plots show the same overall trend, but b.) contains a large amount of apparent noise. c.) Shows the proportion of cases notified in a given month for each year, with some evidence of a seasonal trend. d.) Shows the proportion of cases notified on a given day for each month, there is little evidence of between day variation in cases notified.}\label{fig:plot-detection-not}
   \end{figure}
   An alternative measure is to use the date of symptom onset, this represents the closest approximation to the date when a case became infectious. Unfortunately there are multiple issues with this measure, the first of which being is that it is only 68.0\% (78054/114820) complete across the data extract. Additionally, completeness changes with time, with 65.7\% (3969/6044) in 2000, 60.4\% (4720/7809) in 2008, and 87.7\% (5677/6472) in 2014 this could lead to spurious trends in the number of cases. Perhaps most importantly the date of symptom onset is highly susceptible to recall bias with the majority of cases becoming symptomatic on the first of each month (Figure \ref{fig:plot-detection-sympton} d.)), with some evidence that a greater number of cases occur in January than would be expected (Figure \ref{fig:plot-detection-sympton} c.)). Another possible measure of the number of cases is the date of diagnosis, this should be a more reliable variable than the date of symptom onset, as it does not rely on the recall of the case. However it is only 51.3\% (58960/114820) complete across the dataset, with strong evidence of increasing completeness going from 11.6\% (699/6044) in 2000, 52.2\% (4078/7809) in 2008, and 89.4\% (5786/6472) in 2014. This trend would be hard to properly account for in any analysis and therefore this variable should not be used as a primary measure.
   \begin{figure}
   
-  {\centering \includegraphics[width=0.8\linewidth]{chapters/tb-epi-england/figures/plot-detection-sympton} 
+  {\centering \includegraphics[width=0.8\linewidth,]{chapters/tb-epi-england/figures/plot-detection-sympton} 
   
   }
   
-  \caption{a.) and b.) show notifications over time by date of symptom onset in the ETS, with a.) aggregated by year and  b.) aggregated by month. A trendline has been produced using a locally weighted regression model. Both of these plots show the same overall trend, but b.) contains a large amount of apparent noise. c.) Shows the proportion of cases notified in a given month for each year, with some evidence of a seasonal trend and a higher proportion of cases reporting symptoms starting in January than would be expected. d.) Shows the proportion of cases notified on a given day for each month, with a much higher proportion of cases reproting symptoms on the first of the month than would be expected. On both the scale of months and years there is some evidence of recall bias, with the first month, or first day, reporting higher proportions of cases than would be expected.}\label{fig:plot-detection-sympton}
+  \caption[a.) and b.) show notifications over time by date of symptom onset in the ETS, with a.) aggregated by year and  b.) aggregated by month.]{a.) and b.) show notifications over time by date of symptom onset in the ETS, with a.) aggregated by year and  b.) aggregated by month. A trendline has been produced using a locally weighted regression model. Both of these plots show the same overall trend, but b.) contains a large amount of apparent noise. c.) Shows the proportion of cases notified in a given month for each year, with some evidence of a seasonal trend and a higher proportion of cases reporting symptoms starting in January than would be expected. d.) Shows the proportion of cases notified on a given day for each month, with a much higher proportion of cases reproting symptoms on the first of the month than would be expected. On both the scale of months and years there is some evidence of recall bias, with the first month, or first day, reporting higher proportions of cases than would be expected.}\label{fig:plot-detection-sympton}
   \end{figure}
   The date of starting treatment should be a more reliable contact date as it records an official contact with the health system. Indeed it was 75.7\% (4464/5899) complete in 2000 which increased year on year to 98.8\% (5612/5680) complete in 2015. This increasing completeness may lead to a temporal bias if not properly adjusted for when evaluating the date of starting treatment over time. As for the data of notification there is some evidence of a seasonal trend for date of starting treatment (Figure \ref{fig:plot-detection-starttreatdate} c.)), with a peak of cases starting treatment in May, June and July. However, this seasonal trend is difficult to identify when cases starting treatment are visualised by month over time (Figure \ref{fig:plot-detection-starttreatdate} b.)). Unlike the date of symptom onset there is little evidence of recall bias by month, or by day (Figure \ref{fig:plot-detection-starttreatdate} c.) and d.)).
   \begin{figure}
   
-  {\centering \includegraphics[width=0.8\linewidth]{chapters/tb-epi-england/figures/plot-detection-starttreatdate} 
+  {\centering \includegraphics[width=0.8\linewidth,]{chapters/tb-epi-england/figures/plot-detection-starttreatdate} 
   
   }
   
-  \caption{a.) and b.) show notifications over time by date of starting treatment in the ETS, with a.) aggregated by year and  b.) aggregated by month. A trendline has been produced using a locally weighted regression model. Both of these plots show the same overall trend, but b.) contains a large amount of apparent noise. c.) Shows the proportion of cases starting treatment in a given month for each year, with some evidence of a seasonal trend. d.) Shows the proportion of cases starting treatment on a given day for each month, with little evidence of between day variation. Data is only shown from 2001 until 2015 and prior to 2001 this variable was not recorded and it is not complete for 2015.}\label{fig:plot-detection-starttreatdate}
+  \caption[a.) and b.) show notifications over time by date of starting treatment in the ETS, with a.) aggregated by year and  b.) aggregated by month.]{a.) and b.) show notifications over time by date of starting treatment in the ETS, with a.) aggregated by year and  b.) aggregated by month. A trendline has been produced using a locally weighted regression model. Both of these plots show the same overall trend, but b.) contains a large amount of apparent noise. c.) Shows the proportion of cases starting treatment in a given month for each year, with some evidence of a seasonal trend. d.) Shows the proportion of cases starting treatment on a given day for each month, with little evidence of between day variation. Data is only shown from 2001 until 2015 and prior to 2001 this variable was not recorded and it is not complete for 2015.}\label{fig:plot-detection-starttreatdate}
   \end{figure}
   The date of ending treatment does not appear to display similar seasonality (Figure \ref{fig:plot-detection-treatend} c.)). This maybe because treatment time varies between individuals and this dilutes the seasonality observed for the date of starting treatment. As noted previously there was some evidence of recall bias when the proportion of those ending treatment was examined on a day of the month basis, with a larger proportion ending treatment on the first of the month than on any other day (Figure \ref{fig:plot-detection-treatend} d.)). The date of ending treatment was not recorded in 2000, or 2001, and was highly missing for the first several years after collection began (45.4\% (2593/5712) complete in 2002 and 58.7\% (3475/5921) complete in 2003). From 2009 it was over 90\% complete, reaching 97.7\% (5359/5486) complete in 2013. As for the other data variables discussed this increasing completeness over time may lead to a bias if not accounted for in future analyses.
   \begin{figure}
   
-  {\centering \includegraphics[width=0.8\linewidth]{chapters/tb-epi-england/figures/plot-detection-treatend} 
+  {\centering \includegraphics[width=0.8\linewidth,]{chapters/tb-epi-england/figures/plot-detection-treatend} 
   
   }
   
-  \caption{a.) and b.) show notifications over time by date of treatment ending in the ETS, with a.) aggregated by year and  b.) aggregated by month. A trendline has been produced using a locally weighted regression model. Both of these plots show the same overall trend, but b.) contains a large amount of apparent noise. c.) Shows the proportion of cases finishing treatment in a given month for each year, with little evidence of a seasonal trend. d.) Shows the proportion of cases finishing treatment on a given day for each month, with a much higher proportion of cases finishing treatment on the first of the month than would be expected. On the scale of months there is some evidence of recall bias, with the first day reporting higher proportions of cases than would be expected. Data is only shown from 2001 until 2015 and prior to 2001 this variable was not recorded and it is not complete for 2015.}\label{fig:plot-detection-treatend}
+  \caption[a.) and b.) show notifications over time by date of treatment ending in the ETS, with a.) aggregated by year and  b.) aggregated by month.]{a.) and b.) show notifications over time by date of treatment ending in the ETS, with a.) aggregated by year and  b.) aggregated by month. A trendline has been produced using a locally weighted regression model. Both of these plots show the same overall trend, but b.) contains a large amount of apparent noise. c.) Shows the proportion of cases finishing treatment in a given month for each year, with little evidence of a seasonal trend. d.) Shows the proportion of cases finishing treatment on a given day for each month, with a much higher proportion of cases finishing treatment on the first of the month than would be expected. On the scale of months there is some evidence of recall bias, with the first day reporting higher proportions of cases than would be expected. Data is only shown from 2001 until 2015 and prior to 2001 this variable was not recorded and it is not complete for 2015.}\label{fig:plot-detection-treatend}
   \end{figure}
   Finally date of death displays little evidence of seasonal variation or recall bias (Figure \ref{fig:plot-detection-dateofdeath} c.) and d.)) but has a strong temporal trend for data completeness, with a year on year increase. Data was not collected in 2000 and was only 11.8\% (199/1689) complete in 2001, data completeness remained below 20\% until 2005 when it increased to 38.3\% (353/921). This can be seen as a discontinuity when deaths are aggregated by year and plotted (Figure \ref{fig:plot-detection-dateofdeath} a.)). Missing data also masks a drop in notified cases that died, which fell from 1451 in 2005 to 921 in 2006. In comparison, only 352 cases in 2005 and 353 cases in 2006 had a date of death. Data completeness has remained below 80\% with increases in data completeness decreasing year on year.
   \begin{figure}
   
-  {\centering \includegraphics[width=0.8\linewidth]{chapters/tb-epi-england/figures/plot-detection-dateofdeath} 
+  {\centering \includegraphics[width=0.8\linewidth,]{chapters/tb-epi-england/figures/plot-detection-dateofdeath} 
   
   }
   
-  \caption{a.) and b.) show notifications over time by date of death in the ETS, with a.) aggregated by year and  b.) aggregated by month. A trendline has been produced using a locally weighted regression model. Both of these plots show the same overall trend, but b.) contains a large amount of apparent noise. c.) Shows the proportion of cases who died in a given month for each year, with no evidence of a seasonal trend. d.) Shows the proportion of cases who died on a given day for each month, with little evidence of between day variation. Data is only shown from 2001 until 2015 and prior to 2001 this variable was not recorded and it is not complete for 2015.}\label{fig:plot-detection-dateofdeath}
+  \caption[a.) and b.) show notifications over time by date of death in the ETS, with a.) aggregated by year and  b.) aggregated by month.]{a.) and b.) show notifications over time by date of death in the ETS, with a.) aggregated by year and  b.) aggregated by month. A trendline has been produced using a locally weighted regression model. Both of these plots show the same overall trend, but b.) contains a large amount of apparent noise. c.) Shows the proportion of cases who died in a given month for each year, with no evidence of a seasonal trend. d.) Shows the proportion of cases who died on a given day for each month, with little evidence of between day variation. Data is only shown from 2001 until 2015 and prior to 2001 this variable was not recorded and it is not complete for 2015.}\label{fig:plot-detection-dateofdeath}
   \end{figure}
   \hypertarget{demographic-data}{%
   \subsection{Demographic data}\label{demographic-data}}
@@ -1814,19 +1822,19 @@ Date: \emph{placeholder}
   Both the mid-year ONS population estimates,{[}54{]} and the LFS are assessed for performance and quality elsewhere.{[}55,56{]} However both have several failing that it is important to note, as they could introduce bias in future analysis. Whilst the ONS mid-year, and LFS estimates compare well when aggregated by age (Figure \ref{fig:plot-overall-pop}) there is more disagreement when they are broken down by 5 year age groups (Figure \ref{fig:plot-age-strat}). For those at working age both data sources are comparable (with approximately a 1\% difference across all years), however for children, young adults, and those who are 85+ the LFS underestimates the total population. This is particularly the case for older adults with between a 5\% and 20\% discrepancy for those aged 85-89 and a 25\% to 45\% discrepancy between those aged 90+. This could be problematic as these age groups often have the most severe outcomes to TB infection. A pragmatic approach to this is to exclude those aged 90+ from future analysis as results for this age group will be subject to large amounts of uncertainty which will be difficult to directly incorporate into the results.
   \begin{figure}
   
-  {\centering \includegraphics[width=0.8\linewidth]{chapters/tb-epi-england/figures/plot-overall-pop} 
+  {\centering \includegraphics[width=0.8\linewidth,]{chapters/tb-epi-england/figures/plot-overall-pop} 
   
   }
   
-  \caption{Overall population estimates derived using Office for National Statistics (ONS) and LFS demographic data. The ONS data is likely to be more reliable as the LFS data is derived using a weighted survey. After accounting for missing UK birth status both datasets provide comparable estimates of the population of England, with a clearly increasing trend over time. However the ONS data indicates a reduction in population from 2000 until 2001 that is not seen in the LFS data. The UK born population has also risen slowly from 2000 until 2015, although the biggest increase has been in the non-UK born population.}\label{fig:plot-overall-pop}
+  \caption[Overall population estimates derived using ONS and LFS demographic data.]{Overall population estimates derived using ONS and LFS demographic data. The ONS data is likely to be more reliable as the LFS data is derived using a weighted survey. After accounting for missing UK birth status both datasets provide comparable estimates of the population of England, with a clearly increasing trend over time. However the ONS data indicates a reduction in population from 2000 until 2001 that is not seen in the LFS data. The UK born population has also risen slowly from 2000 until 2015, although the biggest increase has been in the non-UK born population.}\label{fig:plot-overall-pop}
   \end{figure}
   \begin{figure}
   
-  {\centering \includegraphics[width=0.8\linewidth]{chapters/tb-epi-england/figures/plot-age-strat} 
+  {\centering \includegraphics[width=0.8\linewidth,]{chapters/tb-epi-england/figures/plot-age-strat} 
   
   }
   
-  \caption{Percentage difference between Office for National Statistics (ONS) population estimates and estimates derived from the LFS by 5 year age group. For most age groups there is less than a 2\% difference over time. In older adults (85+) there is a substantially greater difference ranging from 5\% to 40\%.}\label{fig:plot-age-strat}
+  \caption[Percentage difference between ONS population estimates and estimates derived from the LFS by 5 year age group.]{Percentage difference between ONS population estimates and estimates derived from the LFS by 5 year age group. For most age groups there is less than a 2\% difference over time. In older adults (85+) there is a substantially greater difference ranging from 5\% to 40\%.}\label{fig:plot-age-strat}
   \end{figure}
   \hypertarget{tb-notifications-1}{%
   \section{TB notifications}\label{tb-notifications-1}}
@@ -1837,11 +1845,11 @@ Date: \emph{placeholder}
   There were 114,820 notifications between 2000-2015 in England of which 67.6\% (77669/114820) were non-UK born. Over this period notifications increased in the non-UK born from 2000 until 2011, since when they have decreased year on year (Figure \ref{fig:plot-overall-nots}). In the UK born notifications remained relatively stable from 2000 until 2011, since when there has been some small decrease. Notifications with missing UK birth status have decreased year on year, with only 121 in 2015. The majority of cases were aged between 15-44 years old (60.2\% (69106/114820)), with few cases in young children (0-14; 5.1\% (5842/114820)) or older adults (65+; 14.4\% (16538/114820)). Cases are heterogeneously distributed with the majority of cases in London (42.8\% (49142/114820)), with the next highest number of notifications in the West Midlands (12.3\% (14100/114820)). Since 2009, 47.2\% (24354/51645) of notifications have been BCG vaccinated, with 33.2\% (17133/51645) having a missing BCG status. Of cases with a known BCG status66.8\% (34512/51645) were recorded as having been BCG vaccinated. From 2010, when collection of socio-economic status began, 38.6\% (16800/43533) of cases have been in the lowest socio-economic quintile. For a more complete breakdown of notifications in the ETS see the yearly PHE TB report.{[}1{]} It should be noted that these statistics do not take into account changes in population demographics which may mask underlying changes in TB epidemiology, this is addressed in Section \ref{tb-inc-rates-epi}.
   \begin{figure}
   
-  {\centering \includegraphics[width=0.8\linewidth]{chapters/tb-epi-england/figures/plot-overall-nots} 
+  {\centering \includegraphics[width=0.8\linewidth,]{chapters/tb-epi-england/figures/plot-overall-nots} 
   
   }
   
-  \caption{Notifications in England from 2000 to 2015 stratified by UK birth status, sourced from the ETS system. Notifications in the non-UK born doubled from 3329 in 2000 to 6021 in 2011 since when they have decreased year on year. In the UK born notifications have remained comparable over time, with some evidence of a decrease from 2011 until 2015. UK birth status has become increasingly complete over time with notifications without birth status dropping from 885 in 2000 to 121 in 2015.}\label{fig:plot-overall-nots}
+  \caption[Notifications in England from 2000 to 2015 stratified by UK birth status, sourced from the ETS system.]{Notifications in England from 2000 to 2015 stratified by UK birth status, sourced from the ETS system. Notifications in the non-UK born doubled from 3329 in 2000 to 6021 in 2011 since when they have decreased year on year. In the UK born notifications have remained comparable over time, with some evidence of a decrease from 2011 until 2015. UK birth status has become increasingly complete over time with notifications without birth status dropping from 885 in 2000 to 121 in 2015.}\label{fig:plot-overall-nots}
   \end{figure}
   \hypertarget{age-dist-nots}{%
   \subsection{Age distribution of notifications}\label{age-dist-nots}}
@@ -1849,11 +1857,11 @@ Date: \emph{placeholder}
   Notifications in the ETS are heterogeneous distributed by age as well as by UK birth status.{[}1{]} In the non-UK born the majority of cases occur in young adults with few cases in young children or older adults (Figure \ref{fig:age-dist-cases-nots}). Over time the distribution of cases is becoming more uniform with a reduction in the proportion of cases in young adults. In the UK born the distribution of cases is more homogeneous, although there is some evidence of a higher proportion of cases in working age adults as opposed to older adults and children. Unlike the non-UK born population there is little evidence of a change in the distribution of cases over time. 0-4 year old UK born children make up a higher proportion of cases than other UK born children. This spike is not observed in the non-UK born population. These conclusions may be biased by changes in underlying population demographics, this is addressed in Section \ref{tb-inc-rates-epi}.
   \begin{figure}
   
-  {\centering \includegraphics[width=0.8\linewidth]{chapters/tb-epi-england/figures/plot-case-age-dist} 
+  {\centering \includegraphics[width=0.8\linewidth,]{chapters/tb-epi-england/figures/plot-case-age-dist} 
   
   }
   
-  \caption{Proportion of cases by 5 year age group in the ETS system in 2005, 2010 and 2015 stratified by UK birth status. Non-UK born cases have a higher proportion of young adult cases with very few cases in children or in older adults. UK born cases have a more uniform distribution of cases with some evidence of a higher proportion of cases in young adults. In the non-UK born the proportion of cases in young adults has decreased over time, with no evidence of a temporal trend in the UK born. These results are not adjusted for population demographics and therefore may be biased.}\label{fig:age-dist-cases-nots}
+  \caption[Proportion of cases by 5 year age group in the ETS system in 2005, 2010 and 2015 stratified by UK birth status.]{Proportion of cases by 5 year age group in the ETS system in 2005, 2010 and 2015 stratified by UK birth status. Non-UK born cases have a higher proportion of young adult cases with very few cases in children or in older adults. UK born cases have a more uniform distribution of cases with some evidence of a higher proportion of cases in young adults. In the non-UK born the proportion of cases in young adults has decreased over time, with no evidence of a temporal trend in the UK born. These results are not adjusted for population demographics and therefore may be biased.}\label{fig:age-dist-cases-nots}
   \end{figure}
   \hypertarget{pop-dist-england}{%
   \section{Population Demographics in England}\label{pop-dist-england}}
@@ -1863,11 +1871,11 @@ Date: \emph{placeholder}
   The changes in population demographics, for both the UK and non-UK born, from 2000 to 2015 may have directly impacted the number and age distribution of TB notifications. In the previous section, it appeared that a higher proportion of cases were in young adults in the non-UK born than in other age groups. Figure \ref{fig:plot-overall-pop} indicates that this maybe due to a higher proportion of the non-UK born population being young adults. Additionally, Figure \ref{fig:plot-overall-pop} indicates that proportion of the non-UK born population that were young adults has decreased over time, this mirrors the trend in the age distribution of notifications observed in Figure \ref{fig:age-dist-cases-nots} and is likely to be driving part of this trend. In the UK born the population has become older in general, this is not clearly reflected in the age distribution of notifications (Figure \ref{fig:age-dist-cases-nots}). This may indicate changes in the risk of developing TB.
   \begin{figure}
   
-  {\centering \includegraphics[width=0.8\linewidth]{chapters/tb-epi-england/figures/age-dist-pop} 
+  {\centering \includegraphics[width=0.8\linewidth,]{chapters/tb-epi-england/figures/age-dist-pop} 
   
   }
   
-  \caption{The estimate proprotion of the population in each 5 year age group stratified by UK birth status for 2000, 2008, and 2016. The UK born population has become older with a larger segment of the population in late middle age and older in 2016 compared to 2000. In the non-UK born whilst the population as a whole has increased, the majority of the increase is in young adult.}\label{fig:age-dist-pop}
+  \caption[The estimate proprotion of the population in each 5 year age group stratified by UK birth status for 2000, 2008, and 2016.]{The estimate proprotion of the population in each 5 year age group stratified by UK birth status for 2000, 2008, and 2016. The UK born population has become older with a larger segment of the population in late middle age and older in 2016 compared to 2000. In the non-UK born whilst the population as a whole has increased, the majority of the increase is in young adult.}\label{fig:age-dist-pop}
   \end{figure}
   \hypertarget{tb-inc-rates-epi}{%
   \section{TB incidence rates}\label{tb-inc-rates-epi}}
@@ -1893,11 +1901,11 @@ Date: \emph{placeholder}
   Incidence has varied with time, increasing from 11.6 per 100,000 people (95\% CI 11.3, 11.9) in 2000 to a maximum of 15.6 per 100,000 people (95\% CI 15.3, 15.9) in 2011, since when it was decreased to a low of 10.5 per 100,000 people (95\% CI 10.2, 10.8) in 2015 (Figure \ref{fig:plot-overall-inc-rates}). This may indicate that TB control efforts are proving effective in preventing TB outbreaks, or may be driven by changes in the composition of those immigrating to England. It also highlights the lack of progress in reducing TB burden in England over the previous two decades, with little evidence of a decrease in overall incidence rates from 2000 until 2015. In the non-UK born incidence rates increased dramatically from 2000 to 2005, since when they have fallen consistently. In comparison, incidence fell in the UK born from 2000 until 2005 and then increased until 2012, since when they too have decreased year on year. This may indicate that incidence rates in the two populations are linked, with incidence rates in the non-UK born driving incidence rates in the UK born with some time lag. Alternatively it may be that incidence rates in the two populations are only weakly linked, or not linked at all. In this scenario the TB endemic in England would actually be two nearly separate endemics, each with different drivers. These scenarios can be differentiated using trends in age-specific incidence rates, and with statistical (Chapter \ref{direct-eff})) and dynamic modelling (Chapter \ref{model-development}).
   \begin{figure}
   
-  {\centering \includegraphics[width=0.8\linewidth]{chapters/tb-epi-england/figures/plot-overall-inc-rates} 
+  {\centering \includegraphics[width=0.8\linewidth,]{chapters/tb-epi-england/figures/plot-overall-inc-rates} 
   
   }
   
-  \caption{Age standardised incidence rates (by 100,000 population) for all notified TB cases from 2000-2015. Overall incidence rates are shown, along with incidence rates in the UK and non-UK born populations. Point estimates are given along with 95\% confidence intervals for each incidence rate estimate. Trends over time are highlighed by linking points with a line. Incidence rates increased over time from 2000 until 2011, since when they have falled year on year. This appears to be driven by increasing incidence rates in the non-UK born from 2000 until 2005, since when they have fallen year on year. This trend was not observed in the UK born, in which incidence rates fell from 2000 until 2005 and then increased from 2005 until 2012. As in the non-UK born they have since fallen year on year.}\label{fig:plot-overall-inc-rates}
+  \caption[Age standardised incidence rates (by 100,000 population) for all notified TB cases from 2000-2015.]{Age standardised incidence rates (by 100,000 population) for all notified TB cases from 2000-2015. Overall incidence rates are shown, along with incidence rates in the UK and non-UK born populations. Point estimates are given along with 95\% confidence intervals for each incidence rate estimate. Trends over time are highlighed by linking points with a line. Incidence rates increased over time from 2000 until 2011, since when they have falled year on year. This appears to be driven by increasing incidence rates in the non-UK born from 2000 until 2005, since when they have fallen year on year. This trend was not observed in the UK born, in which incidence rates fell from 2000 until 2005 and then increased from 2005 until 2012. As in the non-UK born they have since fallen year on year.}\label{fig:plot-overall-inc-rates}
   \end{figure}
   \hypertarget{age-stratified-incidence-rates}{%
   \subsection{Age stratified incidence rates}\label{age-stratified-incidence-rates}}
@@ -1907,20 +1915,20 @@ Date: \emph{placeholder}
   Further stratifying incidence rates, by both age group and UK birth status, it is clear that the contribution of the non-UK born dominates that of the UK born in adults (15-64) but that the reverse is true in older adults (65+) and trends appear to be similar in children (0-14), regardless of UK birth status (Figure \ref{fig:plot-age-inc-rates}). In the non-UK born, incidence rates have fallen year on year in children but increased from 2000 until 2005 in adults, since when they have decreased. In non-UK born older adults there is less clear evidence of a trend over time, although incidence rates have fallen, as in other populations, from 2011 on-wards. In the UK born, incidence rates increased in children from 2000 until 2008, since when they too have consistently fallen. UK born adults had increasing incidence rates year on year until 2012 but incidence rates have since fallen to pre 2000 levels. In older UK born adults incidence rates have consistently fallen, more rapidly from 2000 until 2008 and since 2014.
   \begin{figure}
   
-  {\centering \includegraphics[width=0.8\linewidth]{chapters/tb-epi-england/figures/plot-age-inc-rates} 
+  {\centering \includegraphics[width=0.8\linewidth,]{chapters/tb-epi-england/figures/plot-age-inc-rates} 
   
   }
   
-  \caption{Incidence rates (by 100,000 population) for all notified TB cases from 2000-2015, stratified by age group (children (0-14), adults (15-64) and older adults (65+)) and UK birth status. Point estimates are given along with 95\% confidence intervals for each incidence rate estimate. Trends over time are highlighed by linking points with a line. Incidence rates declined overall in children over time. In adults incidnce rates incrseased until 2011 and have since fallen. In older adults incidence rates consistently fell. In the non-UK born, incidence rate also fell in childen but peaked earler in adults and showed little evidence of a downwards trends in older adults until 2013. In the UK born, incidence rates increased in children until 2008, since when they havell fallen. Incidence rates also increased over time in UK born adults until 2012 but has consistently fallen in UK born older adults.}\label{fig:plot-age-inc-rates}
+  \caption[Incidence rates (by 100,000 population) for all notified TB cases from 2000-2015, stratified by age group (children (0-14), adults (15-64) and older adults (65+)) and UK birth status.]{Incidence rates (by 100,000 population) for all notified TB cases from 2000-2015, stratified by age group (children (0-14), adults (15-64) and older adults (65+)) and UK birth status. Point estimates are given along with 95\% confidence intervals for each incidence rate estimate. Trends over time are highlighed by linking points with a line. Incidence rates declined overall in children over time. In adults incidnce rates incrseased until 2011 and have since fallen. In older adults incidence rates consistently fell. In the non-UK born, incidence rate also fell in childen but peaked earler in adults and showed little evidence of a downwards trends in older adults until 2013. In the UK born, incidence rates increased in children until 2008, since when they havell fallen. Incidence rates also increased over time in UK born adults until 2012 but has consistently fallen in UK born older adults.}\label{fig:plot-age-inc-rates}
   \end{figure}
   Another approach to explore trends in age stratified incidence rates is to visualise them across 5 year age groups, for a selected subset of years. This can be seen in Figure \ref{fig:plot-age-dist-inc-rates} stratified by UK birth status. This figure indicates that TB incidence in the non-UK born has been driven by high incidence rates in young adults. Incidence rates in this population increased dramatically between 2000 and 2005 and then fell in all age groups, except 20-24 years old by 2010. In 2015 there was little evidence of this peak in young adults but a secondary spike in much older adults (75+) remained. In the UK born, incidence rates increased with age in 2000, this trend has weakened over time, with a secondary peak developing in young adults (with a 5 year lag when compared to the peak observed in non-UK born adults). In 2015, incidence rates in the UK born were largely homogeneous except for a gradual increase in much older adults (75+), and lower incidence rates in children. 0-4 year old children have remained at greater risk of TB, compared to other children across the time period for which data is available. There is some evidence that incidence rates fell in this group after the introduction of BCG vaccination in 2005, with incidence rates in older children (5-9) also having fallen by 2015.
   \begin{figure}
   
-  {\centering \includegraphics[width=0.8\linewidth]{chapters/tb-epi-england/figures/plot-age-dist-inc-rates} 
+  {\centering \includegraphics[width=0.8\linewidth,]{chapters/tb-epi-england/figures/plot-age-dist-inc-rates} 
   
   }
   
-  \caption{Age-specific incidence rates (by 100,000 population) grouped into 5 year age categories for 2000, 2005, 2010 and 2010, stratified by UK birth status. Point estimates are given along with 95\% confidence intervals for each incidence rate estimate. Trends across age distributions are highlighed by linking points with a line. This Figure indicates that TB incidence in the non-UK born has been driven by high incidence rates in young adults. Incidence rates in this population increased dramatically between 2000 and 2005 and then fell in all age groups, except 20-24 years old by 2010. In 2015 there was little evidence of this peak in young adults but a secondary spike in much older adults (75+) remained. In the UK born, incidence rates increased with age in 2000, this trend has weakened over time, with a secondary peak developing in young adults (with a 5 year lag when compared to the peak observed in non-UK born adults). In 2015, incidence rates in the UK born were largely homogeneous except for a gradual increase in much older adults (75+), and lower incidence rates in children. 0-4 year old children have remained at greater risk of TB, compared to other children across the time period for which data is avialable.}\label{fig:plot-age-dist-inc-rates}
+  \caption[Age-specific incidence rates (by 100,000 population) grouped into 5 year age categories for 2000, 2005, 2010 and 2010, stratified by UK birth status.]{Age-specific incidence rates (by 100,000 population) grouped into 5 year age categories for 2000, 2005, 2010 and 2010, stratified by UK birth status. Point estimates are given along with 95\% confidence intervals for each incidence rate estimate. Trends across age distributions are highlighed by linking points with a line. This Figure indicates that TB incidence in the non-UK born has been driven by high incidence rates in young adults. Incidence rates in this population increased dramatically between 2000 and 2005 and then fell in all age groups, except 20-24 years old by 2010. In 2015 there was little evidence of this peak in young adults but a secondary spike in much older adults (75+) remained. In the UK born, incidence rates increased with age in 2000, this trend has weakened over time, with a secondary peak developing in young adults (with a 5 year lag when compared to the peak observed in non-UK born adults). In 2015, incidence rates in the UK born were largely homogeneous except for a gradual increase in much older adults (75+), and lower incidence rates in children. 0-4 year old children have remained at greater risk of TB, compared to other children across the time period for which data is avialable.}\label{fig:plot-age-dist-inc-rates}
   \end{figure}
   \hypertarget{incidence-rates-in-children-as-a-proxy-for-tb-transmission}{%
   \subsection{Incidence rates in children as a proxy for TB transmission}\label{incidence-rates-in-children-as-a-proxy-for-tb-transmission}}
@@ -1949,19 +1957,19 @@ Date: \emph{placeholder}
   From 2000 to 2015 fewer UK born cases died from any cause in the ETS, but the number of non-UK born cases dying remained stable (Figure \ref{fig:plot-all-mort-case-rate}). However, the case all-cause fatality rate indicates that the rate of all-cause deaths has increased over time in both the UK and non-UK born. There is also evidence to suggest that the case all-cause fatality rate is higher in those born in the UK that in the non-born and that it is higher for BCG vaccinated versus unvaccinated cases. The highest case all-cause fatality rate, regardless of UK birth status is observed in those missing UK birth status. In both populations the case all-cause fatality rate increases with age (as might be expected) but also has a secondary peak in early childhood (0-4) (Figure \ref{fig:plot-all-mort-age-dist}). The all-cause case fatality rate is higher in BCG unvaccinated cases, compared to vaccinated cases, from early adulthood until 50 years of age in the UK born but there is less evidence of a difference in the non-UK born. Young non-UK born children missing BCG status are particularly at risk of death from any cause.
   \begin{figure}
   
-  {\centering \includegraphics[width=0.8\linewidth]{chapters/tb-epi-england/figures/plot-all-mort-case-rate} 
+  {\centering \includegraphics[width=0.8\linewidth,]{chapters/tb-epi-england/figures/plot-all-mort-case-rate} 
   
   }
   
-  \caption{a.) Cases that died from any cause by year of notification stratified by UK birth and BCG status, b.) Case all-cause fatality rate stratified by UK birth and BCG status. Point estimates along with 95\% confidence are shown for all estimates. All-cause mortality has reduced over time in the UK born but remained stable in the non-UK born. This is also reflected in the case fatality rate with the UK born having a higher rate regardless of BCG status. The recording of BCG status has improved over time but it appears that for years with data BCG unvaccinated cases have a higher all-cause case fatality rate in both the UK and non-UK born. In both populations those missing UK birth status are more likley to die from any cause.}\label{fig:plot-all-mort-case-rate}
+  \caption[a.) Cases that died from any cause by year of notification stratified by UK birth and BCG status, b.) Case all-cause fatality rate stratified by UK birth and BCG status.]{a.) Cases that died from any cause by year of notification stratified by UK birth and BCG status, b.) Case all-cause fatality rate stratified by UK birth and BCG status. Point estimates along with 95\% confidence are shown for all estimates. All-cause mortality has reduced over time in the UK born but remained stable in the non-UK born. This is also reflected in the case fatality rate with the UK born having a higher rate regardless of BCG status. The recording of BCG status has improved over time but it appears that for years with data BCG unvaccinated cases have a higher all-cause case fatality rate in both the UK and non-UK born. In both populations those missing UK birth status are more likley to die from any cause.}\label{fig:plot-all-mort-case-rate}
   \end{figure}
   \begin{figure}
   
-  {\centering \includegraphics[width=0.8\linewidth]{chapters/tb-epi-england/figures/plot-all-mort-age-dist} 
+  {\centering \includegraphics[width=0.8\linewidth,]{chapters/tb-epi-england/figures/plot-all-mort-age-dist} 
   
   }
   
-  \caption{Age distribution (in 5 year age groups) of the case all-cause mortality rate presented on a square root scale. Estimates are stratified by BCG and UK birth status. Point estimates and 95\%  confidence intervals are shown for each case rate estimate. In both populaitons the case all-case fatality rate increases with age, and has a secondary peak in early childhood (0-4). The all-cause case fatality rate is higher in BCG unvaccinated cases, compared to vaccinated cases, from early adulthood until 50 years of age in the UK born. There is less evidence of a difference in case fatality rates in the non-UK born. Case missing BCG status are more likely to die in both populations, with young non-UK born children being particularly at risk.}\label{fig:plot-all-mort-age-dist}
+  \caption[Age distribution (in 5 year age groups) of the case all-cause mortality rate presented on a square root scale.]{Age distribution (in 5 year age groups) of the case all-cause mortality rate presented on a square root scale. Estimates are stratified by BCG and UK birth status. Point estimates and 95\%  confidence intervals are shown for each case rate estimate. In both populaitons the case all-case fatality rate increases with age, and has a secondary peak in early childhood (0-4). The all-cause case fatality rate is higher in BCG unvaccinated cases, compared to vaccinated cases, from early adulthood until 50 years of age in the UK born. There is less evidence of a difference in case fatality rates in the non-UK born. Case missing BCG status are more likely to die in both populations, with young non-UK born children being particularly at risk.}\label{fig:plot-all-mort-age-dist}
   \end{figure}
   \hypertarget{tb-related-mortality}{%
   \subsection{TB related mortality}\label{tb-related-mortality}}
@@ -1969,19 +1977,19 @@ Date: \emph{placeholder}
   Similarly to all-cause deaths, deaths due to TB declined in the UK born over time but remained stable in the non-UK born (Figure \ref{fig:plot-tb-mort-case-rate}). The case TB fatality rate also increased over time in both populations, with the rate again being higher in the UK born than in the non-UK born. There was still evidence of a higher case rate in those unvaccinated for BCG but the evidence for this was weaker. Comparing case TB fatality rates was difficult due to the large amount of uncertainty (Figure \ref{fig:plot-tb-mort-age-dist}). However, there is some evidence to suggest that those missing BCG status, who were UK born and those who were older were more likely to die from TB.
   \begin{figure}
   
-  {\centering \includegraphics[width=0.8\linewidth]{chapters/tb-epi-england/figures/plot-tb-mort-case-rate} 
+  {\centering \includegraphics[width=0.8\linewidth,]{chapters/tb-epi-england/figures/plot-tb-mort-case-rate} 
   
   }
   
-  \caption{a.) Cases that died from TB by year of notification stratified by UK birth and BCG status, b.) Case TB fatality rate stratified by UK birth and BCG status. Point estimates along with 95\% confidence are shown for all estimates. TB mortality has reduced over time in the UK born but remained stable in the non-UK born. This is also reflected in the case fatality rate with the UK born having a higher rate regardless of BCG status. The recording of BCG status has improved over time but it appears that for years with data BCG unvaccinated cases have a higher TB case fatality rate in both the UK and non-UK born. In both populations those missing UK birth status are more likley to die from TB. These findings match those found for all-cause mortality.}\label{fig:plot-tb-mort-case-rate}
+  \caption[a.) Cases that died from TB by year of notification stratified by UK birth and BCG status, b.) Case TB fatality rate stratified by UK birth and BCG status.]{a.) Cases that died from TB by year of notification stratified by UK birth and BCG status, b.) Case TB fatality rate stratified by UK birth and BCG status. Point estimates along with 95\% confidence are shown for all estimates. TB mortality has reduced over time in the UK born but remained stable in the non-UK born. This is also reflected in the case fatality rate with the UK born having a higher rate regardless of BCG status. The recording of BCG status has improved over time but it appears that for years with data BCG unvaccinated cases have a higher TB case fatality rate in both the UK and non-UK born. In both populations those missing UK birth status are more likley to die from TB. These findings match those found for all-cause mortality.}\label{fig:plot-tb-mort-case-rate}
   \end{figure}
   \begin{figure}
   
-  {\centering \includegraphics[width=0.8\linewidth]{chapters/tb-epi-england/figures/plot-tb-mort-age-dist} 
+  {\centering \includegraphics[width=0.8\linewidth,]{chapters/tb-epi-england/figures/plot-tb-mort-age-dist} 
   
   }
   
-  \caption{Age distribution (in 5 year age groups) of the case TB mortality rate presented on a square root scale. Estimates are stratified by BCG and UK birth status. Point estimates and 95\%  confidence intervals are shown for each case rate estimate. All estimates have a large degree of uncertainty making drawing conclusions difficult. There is no strong evidence to suggest a difference between those were BCG vaccinated and those that were not. Those that were missing BCG status, were UK born and who were older appeared to be at a greater risk than other cases of death from TB.}\label{fig:plot-tb-mort-age-dist}
+  \caption[Age distribution (in 5 year age groups) of the case TB mortality rate presented on a square root scale.]{Age distribution (in 5 year age groups) of the case TB mortality rate presented on a square root scale. Estimates are stratified by BCG and UK birth status. Point estimates and 95\%  confidence intervals are shown for each case rate estimate. All estimates have a large degree of uncertainty making drawing conclusions difficult. There is no strong evidence to suggest a difference between those were BCG vaccinated and those that were not. Those that were missing BCG status, were UK born and who were older appeared to be at a greater risk than other cases of death from TB.}\label{fig:plot-tb-mort-age-dist}
   \end{figure}
   \hypertarget{successful-treatment}{%
   \subsection{Successful treatment}\label{successful-treatment}}
@@ -1989,19 +1997,19 @@ Date: \emph{placeholder}
   Successful treatment within 12 months has increased in both populations over time in terms of cases (Figure \ref{fig:plot-succ-treat-case-rate}). The case successful treatment rate initially decreased for both UK and non-UK born populations but since 2012 has improved in the UK born. There is little evidence to suggest that the successful treatment rate varies by BCG status, or by UK birth status. Successful treatment rates appear to be lowest for young adults and highest for young children (Figure \ref{fig:plot-succ-treat-age-dist}).
   \begin{figure}
   
-  {\centering \includegraphics[width=0.8\linewidth]{chapters/tb-epi-england/figures/plot-succ-treat-case-rate} 
+  {\centering \includegraphics[width=0.8\linewidth,]{chapters/tb-epi-england/figures/plot-succ-treat-case-rate} 
   
   }
   
-  \caption{a.) Cases that were treated successfully within 12 months by year of notification stratified by UK birth and BCG status, b.) Case successful treatment within 12 months rate stratified by UK birth and BCG status. Point estimates along with 95\% confidence are shown for all estimates. Successful treatment within 12 months has increased in both populations over time in terms of cases. The case successful treatment rate initailly decreased for both UK and non-UK born populations but since 2012 has improved in the UK born. There is little evidence to suggest that the case successful treatment rate varies by BCG status.}\label{fig:plot-succ-treat-case-rate}
+  \caption[a.) Cases that were treated successfully within 12 months by year of notification stratified by UK birth and BCG status, b.) Case successful treatment within 12 months rate stratified by UK birth and BCG status.]{a.) Cases that were treated successfully within 12 months by year of notification stratified by UK birth and BCG status, b.) Case successful treatment within 12 months rate stratified by UK birth and BCG status. Point estimates along with 95\% confidence are shown for all estimates. Successful treatment within 12 months has increased in both populations over time in terms of cases. The case successful treatment rate initailly decreased for both UK and non-UK born populations but since 2012 has improved in the UK born. There is little evidence to suggest that the case successful treatment rate varies by BCG status.}\label{fig:plot-succ-treat-case-rate}
   \end{figure}
   \begin{figure}
   
-  {\centering \includegraphics[width=0.8\linewidth]{chapters/tb-epi-england/figures/plot-suc-treat-age-dist} 
+  {\centering \includegraphics[width=0.8\linewidth,]{chapters/tb-epi-england/figures/plot-suc-treat-age-dist} 
   
   }
   
-  \caption{Age distribution (in 5 year age groups) of the case successful treatment within 12 months rate presented on a square root scale. Estimates are stratified by BCG and UK birth status. Point estimates and 95\%  confidence intervals are shown for each case rate estimate. There is little evidence that successful treatment rates differ greatly by BCG or UK birth status when stratified by age. Successful treatment rates appear to be lowest for young adults and highest for young children.}\label{fig:plot-succ-treat-age-dist}
+  \caption[Age distribution (in 5 year age groups) of the case successful treatment within 12 months rate presented on a square root scale.]{Age distribution (in 5 year age groups) of the case successful treatment within 12 months rate presented on a square root scale. Estimates are stratified by BCG and UK birth status. Point estimates and 95\%  confidence intervals are shown for each case rate estimate. There is little evidence that successful treatment rates differ greatly by BCG or UK birth status when stratified by age. Successful treatment rates appear to be lowest for young adults and highest for young children.}\label{fig:plot-succ-treat-age-dist}
   \end{figure}
   \hypertarget{lost-to-follow-up}{%
   \subsection{Lost to follow up}\label{lost-to-follow-up}}
@@ -2009,19 +2017,19 @@ Date: \emph{placeholder}
   As for other outcomes discussed, cases lost to follow up has decreased over time in the UK born, but increased in the non-UK born (with incomplete data for 2015) (Figure \ref{fig:plot-loss-fol-case-rate}). In all populations the case loss to follow up rate has decreased over time, although this may be biased as cases may not have had sufficient time to be classed as lost to follow up. In both populations there is little evidence to suggest variation by BCG status but the loss to follow up was higher in the non-UK born than in the UK born. This was true across all age groups, and there was again little evidence of variation due to BCG status (Figure \ref{fig:plot-loss-fol-age-dist}). Young adults were the most likely to be lost follow up in both populations but this is appeared to be a particular issue in the non-UK born.
   \begin{figure}
   
-  {\centering \includegraphics[width=0.8\linewidth]{chapters/tb-epi-england/figures/plot-loss-fol-case-rate} 
+  {\centering \includegraphics[width=0.8\linewidth,]{chapters/tb-epi-england/figures/plot-loss-fol-case-rate} 
   
   }
   
-  \caption{a.) Cases that were lost to follow up stratified by UK birth and BCG status, b.) Case lost to follow up rate stratified by UK birth and BCG status. Point estimates along with 95\% confidence are shown for all estimates. Loss to follow up has decreased over time in the UK born, but increased in the non-UK born (with incomplete data for 2015). The case loss to follow up rate has decreased over time for the UK born but increased for the non-UK born. In both populations there is little evidence that loss to follow up varies by BCG status.}\label{fig:plot-loss-fol-case-rate}
+  \caption[.) Cases that were lost to follow up stratified by UK birth and BCG status, b.) Case lost to follow up rate stratified by UK birth and BCG status.]{a.) Cases that were lost to follow up stratified by UK birth and BCG status, b.) Case lost to follow up rate stratified by UK birth and BCG status. Point estimates along with 95\% confidence are shown for all estimates. Loss to follow up has decreased over time in the UK born, but increased in the non-UK born (with incomplete data for 2015). The case loss to follow up rate has decreased over time for the UK born but increased for the non-UK born. In both populations there is little evidence that loss to follow up varies by BCG status.}\label{fig:plot-loss-fol-case-rate}
   \end{figure}
   \begin{figure}
   
-  {\centering \includegraphics[width=0.8\linewidth]{chapters/tb-epi-england/figures/plot-loss-fol-age-dist} 
+  {\centering \includegraphics[width=0.8\linewidth,]{chapters/tb-epi-england/figures/plot-loss-fol-age-dist} 
   
   }
   
-  \caption{Age distribution (in 5 year age groups) of the case loss to follow up rate presented on a square root scale. Estimates are stratified by BCG and UK birth status. Point estimates and 95\%  confidence intervals are shown for each case rate estimate. There is little evidence of variation by BCG status but loss to follow up is higher in the non-UK born compared to the UK born across all age groups. Young adults are the most likely to be lost follow up in both populations but this is a particular issue in the non-UK born.}\label{fig:plot-loss-fol-age-dist}
+  \caption[Age distribution (in 5 year age groups) of the case loss to follow up rate presented on a square root scale.]{Age distribution (in 5 year age groups) of the case loss to follow up rate presented on a square root scale. Estimates are stratified by BCG and UK birth status. Point estimates and 95\%  confidence intervals are shown for each case rate estimate. There is little evidence of variation by BCG status but loss to follow up is higher in the non-UK born compared to the UK born across all age groups. Young adults are the most likely to be lost follow up in both populations but this is a particular issue in the non-UK born.}\label{fig:plot-loss-fol-age-dist}
   \end{figure}
   \hypertarget{discussion}{%
   \section{Discussion}\label{discussion}}
@@ -2150,7 +2158,7 @@ Date: \emph{placeholder}
   The model produced results that were comparable with those from {[}37{]} (Table @ref(tab:model\_validation); Table @ref(tab:model\_validation-2)). When estimating the total notifications from ending the BCG schools' scheme at different times in ethnic White UK born adults aged 15-29 years old in England and Wales the model had a median absolute error of 2.03\% (2.5-97.5\% Q: 0.00\% - 3.72\%) and a maximum absolute error of 3.91\% when compared to {[}37{]}. I found that the percentage of cases in the first year was \(f=0.764\) when fitted to the Sutherland et al.~estimates using the least squares method.
   \begin{landscape}\begin{table}[!h]
   
-  \caption{\label{tab:model-validation}Comparison of results published by Sutherland et al. vs. the recreated model. This table shows the total notifications including primary and secondary effects from ending the BCG schools' scheme at various times in ethnic White adults aged 15-29 years old in England and Wales.}
+  \caption[Comparison of results published by Sutherland et al. vs. the recreated model.]{\label{tab:model-validation}Comparison of results published by Sutherland et al. vs. the recreated model. This table shows the total notifications including primary and secondary effects from ending the BCG schools' scheme at various times in ethnic White adults aged 15-29 years old in England and Wales.}
   \centering
   \fontsize{10}{12}\selectfont
   \begin{tabular}{>{\raggedright\arraybackslash}p{2cm}rrrrrrrrr}
@@ -2168,7 +2176,7 @@ Date: \emph{placeholder}
   \end{landscape}
   \begin{landscape}\begin{table}[!h]
   
-  \caption{\label{tab:model-validation-2}Continued: Comparison of results published by Sutherland et al. vs. the recreated model. This table shows the total notifications including primary and secondary effects from ending the BCG schools' scheme at various times in ethnic White adults aged 15-29 years old in England and Wales.}
+  \caption[Continued: Comparison of results published by Sutherland et al. vs. the recreated model.]{\label{tab:model-validation-2}Continued: Comparison of results published by Sutherland et al. vs. the recreated model. This table shows the total notifications including primary and secondary effects from ending the BCG schools' scheme at various times in ethnic White adults aged 15-29 years old in England and Wales.}
   \centering
   \fontsize{10}{12}\selectfont
   \begin{tabular}{>{\raggedright\arraybackslash}p{2cm}rrrrrrrrr}
@@ -2190,11 +2198,11 @@ Date: \emph{placeholder}
   I found that the assumption of a 9\% annual decrease in incidence rates in the ethnic White UK born was not comparable to estimates using either notification data or age-specific incidence rates in the time period studied (Figure \ref{fig:plot-annual-change}). The median annual decrease estimated using notifications was 3.13\% (2.5-97.5\% Quantiles (Q): -8.32\% - 11.45\%), with a maximum of 15.13\% (2.5-97.5\% Q: 14.23\% - 16.04\%) in 1987 and a minimum of -10.18\% (2.5-97.5\% Q: -10.82\% - -9.52\%) in 2005. Using age-specific incidence rates I estimated the median annual decrease in incidence rates for 15-19 year olds was 1.62\% (2.5-97.5\% Q: -40.38\% - 39.89\%), 3.15\% (2.5-97.5\% Q: -33.93\% - 38.25\%) for 20-24 year olds, and 2.66\% (2.5-97.5\% Q: -36.37\% - 37.29\%) for 25-29 year olds. There was substantial variation between years and a high degree of uncertainty.
   \begin{figure}
   
-  {\centering \includegraphics[width=0.8\linewidth]{chapters/evidence-policy-change/plot-annual-change-1} 
+  {\centering \includegraphics[width=0.8\linewidth,]{chapters/evidence-policy-change/plot-annual-change-1} 
   
   }
   
-  \caption{Annual percentage change in ethnic White UK born incidence rates for those aged 15-19, 20-24, and 25-29 years old under different scenarios. For the notification and incidence rate scenarios each line represents the median of 10,000 parameter samples.}\label{fig:plot-annual-change}
+  \caption[Annual percentage change in ethnic White UK born incidence rates for those aged 15-19, 20-24, and 25-29 years old under different scenarios.]{Annual percentage change in ethnic White UK born incidence rates for those aged 15-19, 20-24, and 25-29 years old under different scenarios. For the notification and incidence rate scenarios each line represents the median of 10,000 parameter samples.}\label{fig:plot-annual-change}
   \end{figure}
   \hypertarget{vaccines-required-to-prevent-a-single-notification}{%
   \section{Vaccines required to prevent a single notification}\label{vaccines-required-to-prevent-a-single-notification}}
@@ -2202,11 +2210,11 @@ Date: \emph{placeholder}
   I found that updating parameter values, and incorporating uncertainty, did not alter the number of vaccines required to prevent a single notification within 15 years in a cohort vaccinated at school-age, when the annual decrease in TB incidence rates was assumed to be 9\% (Figure \ref{fig:graph-vacs-to-prev}; Table \ref{tab:vac-prevent-tab}). However, the updated estimate had a wide range (15000 (2.5-97.5\% Q: 12000 - 19000) vaccines required in 2004). As the assumed annual decrease in incidence rates was reduced the number of vaccines required to prevent a single notification also reduced; an estimated 1600 (2.5-97.5\% Q: 1300 - 2100) vaccines were required to prevent a case in 2004 when the annual decrease was assumed to be 1.9\%. Estimates of the number of vaccines required to prevent a notification were comparable but not equivalent when the annual decrease was estimated using notifications (1400 (2.5-97.5\% Q: 1100 - 1700), P: 0.077) and age-specific incidence rates (1500 (2.5-97.5\% Q: 450 - 5000), P: 0.083). The estimate using incidence rates had a high degree of uncertainty Figure \ref{fig:graph-vacs-to-prev}; Table \ref{tab:vac-prevent-tab}). The number of vaccines required increased slightly over time with 1800 (2.5-97.5\% Q: 1500 - 2300) required in 2009, 2000 (2.5-97.5\% Q: 1600 - 2500) required in 2014, and 2200 (2.5-97.5\% Q: 1800 - 2700) required in 2019 when an annual decrease of 1.9\% in incidence rates was assumed.
   \begin{figure}
   
-  {\centering \includegraphics[width=0.8\linewidth]{chapters/evidence-policy-change/graph-vacs-to-prev-1} 
+  {\centering \includegraphics[width=0.8\linewidth,]{chapters/evidence-policy-change/graph-vacs-to-prev-1} 
   
   }
   
-  \caption{Vaccines required in a cohort of those vaccinated at school-age to prevent a single case of TB within 15 years of vaccination in 2004, 2009, 2014, or 2019. The years presented were dictated by the 5 year timestep of the model. The percentage annual decrease scenarios considered were based on those considered by the JVCI BCG subgroup, with the addition of a scenario using aggregate notification data and a scenario using estimates of age-specific incidence rates in the UK born. Each boxplot summarises the output of 10,000 model simulations for each scenario. Outliers have been omitted for clarity.}\label{fig:graph-vacs-to-prev}
+  \caption[Vaccines required in a cohort of those vaccinated at school-age to prevent a single case of TB within 15 years of vaccination in 2004, 2009, 2014, or 2019.]{Vaccines required in a cohort of those vaccinated at school-age to prevent a single case of TB within 15 years of vaccination in 2004, 2009, 2014, or 2019. The years presented were dictated by the 5 year timestep of the model. The percentage annual decrease scenarios considered were based on those considered by the JVCI BCG subgroup, with the addition of a scenario using aggregate notification data and a scenario using estimates of age-specific incidence rates in the UK born. Each boxplot summarises the output of 10,000 model simulations for each scenario. Outliers have been omitted for clarity.}\label{fig:graph-vacs-to-prev}
   \end{figure}
   \begin{landscape}\begin{table}[!h]
   
@@ -2241,11 +2249,11 @@ Date: \emph{placeholder}
   I found that updating parameter values, and incorporating uncertainty, did not alter the average annual additional notifications from stopping the BCG schools' scheme when the annual decrease was assumed to be 9\% (Figure \ref{fig:graph-avg-add-not}; Table \ref{tab:annual-prevent-tab}). There was a large degree of uncertainty in this estimate with 20 (2.5-97.5\% Q: 16 - 25) notifications prevented annually if vaccination was stopped in 2001. As the assumed annual decrease in incidence rates was reduced the annual number of additional notifications prevented increased with 302 (2.5-97.5\% Q: 238 - 369) notifications prevented annually when the annual decrease was assumed to be 1.9\% and vaccination stopping in 2001. There was some evidence that the average annual number of notifications prevented was greater when the annual decrease was estimated using notifications (359 (2.5-97.5\% Q: 282 - 439), P: 0.083) and age-specific incidence rates (359 (2.5-97.5\% Q: 102 - 1332), P: 0.083), compared to an assumed annual decrease of 1.9\% (Figure \ref{fig:graph-avg-add-not}; Table \ref{tab:annual-prevent-tab}). The estimate made using incidence rates again had a high degree of uncertainty. When an annual decrease of 1.9\% was assumed the number of notifications prevented annually reduced with time: 255 (2.5-97.5\% Q: 201 - 313) from ending vaccination in 2006; 196 (2.5-97.5\% Q: 152 - 242) from ending vaccination in 2011, and 120 (2.5-97.5\% Q: 88 - 155) from ending vaccination in 2016.
   \begin{figure}
   
-  {\centering \includegraphics[width=0.8\linewidth]{chapters/evidence-policy-change/graph-avg-add-nots-1} 
+  {\centering \includegraphics[width=0.8\linewidth,]{chapters/evidence-policy-change/graph-avg-add-nots-1} 
   
   }
   
-  \caption{Annual additional notifications in 15-29 year olds from stopping the BCG schools' scheme in 2001, 2006, 2011, and 2016 until 2028. The years presented were dictated by the 5 year timestep of the model. The percentage annual decrease scenarios considered were based on those considered by the JVCI BCG subgroup, with the addition of a scenario using aggregate notification data and a scenario using estimates of age-specific incidence rates in the UK born. Each boxplot summarises the output of 10,000 model simulations for each scenario. Outliers have been omitted for clarity.}\label{fig:graph-avg-add-not}
+  \caption[Annual additional notifications in 15-29 year olds from stopping the BCG schools' scheme in 2001, 2006, 2011, and 2016 until 2028.]{Annual additional notifications in 15-29 year olds from stopping the BCG schools' scheme in 2001, 2006, 2011, and 2016 until 2028. The years presented were dictated by the 5 year timestep of the model. The percentage annual decrease scenarios considered were based on those considered by the JVCI BCG subgroup, with the addition of a scenario using aggregate notification data and a scenario using estimates of age-specific incidence rates in the UK born. Each boxplot summarises the output of 10,000 model simulations for each scenario. Outliers have been omitted for clarity.}\label{fig:graph-avg-add-not}
   \end{figure}
   \begin{landscape}\begin{table}[!h]
   
@@ -2548,7 +2556,7 @@ Date: \emph{placeholder}
   \end{landscape}
   \begin{landscape}\begin{table}[!h]
   
-  \caption{\label{tab:06-yrssincebcg-sum-tab}Summary of associations between years since vaccination and all outcomes in individuals who were vaccinated. The baseline exposure is vaccination $\leq 10$ years before diagnosis compared to vaccination $11+$ years before diagnosis. Deaths due to TB (in those who died) had insufficient data for effect sizes to be estimated in both the univariable and multivariable analysis}
+  \caption[Summary of associations between years since vaccination and all outcomes in individuals who were vaccinated.]{\label{tab:06-yrssincebcg-sum-tab}Summary of associations between years since vaccination and all outcomes in individuals who were vaccinated. The baseline exposure is vaccination $\leq 10$ years before diagnosis compared to vaccination $11+$ years before diagnosis. Deaths due to TB (in those who died) had insufficient data for effect sizes to be estimated in both the univariable and multivariable analysis}
   \centering
   \fontsize{8}{10}\selectfont
   \begin{tabular}{>{\raggedright\arraybackslash}p{2cm}>{\raggedright\arraybackslash}p{2cm}r>{\raggedright\arraybackslash}p{2cm}llr>{\raggedright\arraybackslash}p{2cm}ll}
@@ -2579,7 +2587,7 @@ Date: \emph{placeholder}
   \end{landscape}
   \begin{landscape}\begin{table}[!h]
   
-  \caption{\label{tab:06-ageatvac-sum-tab}Summary of associations between age at vaccination and all outcomes in individuals who were vaccinated - the baseline exposure is vaccination at birth compared to vaccination from 1 to < 12, 12 to < 16, and 16+ years of age.}
+  \caption[Summary of associations between age at vaccination and all outcomes in individuals who were vaccinated.]{\label{tab:06-ageatvac-sum-tab}Summary of associations between age at vaccination and all outcomes in individuals who were vaccinated - the baseline exposure is vaccination at birth compared to vaccination from 1 to < 12, 12 to < 16, and 16+ years of age.}
   \centering
   \fontsize{8}{10}\selectfont
   \begin{tabular}{>{\raggedright\arraybackslash}p{2cm}>{\raggedright\arraybackslash}p{2cm}r>{\raggedright\arraybackslash}p{2cm}llr>{\raggedright\arraybackslash}p{2cm}ll}
@@ -2626,7 +2634,7 @@ Date: \emph{placeholder}
   As discussed in the previous sections, I found that repeating the analysis with an imputed data set had some effect on the results from the complete case analysis. There was a decrease in the accuracy of effect size estimates for BCG vaccination, some increase in p-values (Table \ref{tab:06-imp-bcg}). However, none of the estimated effects changed their direction, and there were no detectable systematic changes in the results.
   \begin{table}[!h]
   
-  \caption{\label{tab:06-imp-bcg}Summary of associations between BCG vaccination and all outcomes, using pooled imputed data.}
+  \caption[Summary of associations between BCG vaccination and all outcomes, using pooled imputed data.]{\label{tab:06-imp-bcg}Summary of associations between BCG vaccination and all outcomes, using pooled imputed data.}
   \centering
   \begin{tabular}{>{\raggedright\arraybackslash}p{3cm}llllll}
   \toprule
@@ -2649,7 +2657,7 @@ Date: \emph{placeholder}
   For the secondary exposure variables (years since vaccination and age at vaccination, (Table \ref{tab:06-imp-yrsincebcg} and Table \ref{tab:06-imp-ageatvac}), I found a change in direction of the point estimate between years since vaccination and all-cause mortality and recurrent TB, but similar results for age at vaccination and outcomes.
   \begin{table}[!h]
   
-  \caption{\label{tab:06-imp-yrsincebcg}Summary of associations between years since vaccination and all outcomes, using pooled imputed data. There was insufficient data to estimate an effect for deaths due to TB (in those who died)}
+  \caption[ummary of associations between years since vaccination and all outcomes, using pooled imputed data.]{\label{tab:06-imp-yrsincebcg}Summary of associations between years since vaccination and all outcomes, using pooled imputed data. There was insufficient data to estimate an effect for deaths due to TB (in those who died)}
   \centering
   \begin{tabular}{>{\raggedright\arraybackslash}p{3cm}llllll}
   \toprule
@@ -2710,7 +2718,7 @@ Date: \emph{placeholder}
   Dropping duplicate recurrent TB notifications increased the magnitude, and precision, of the effect sizes for recurrent TB, all-cause mortality, and deaths due to TB (in those who died) (see Table \ref{tab:06-sens-table}). Restricting the analysis to only cases that were eligible for the BCG schools scheme reduced the sample size of the analysis (from an initial study size of 51645, of which 12832 were UK born, to 9943 cases that would have been eligible for the BCG schools scheme). With this reduced sample size, there was strong evidence in adjusted analyses of an association between BCG vaccination and reduced recurrent TB, and evidence of an association with decreased all-cause mortality (see Table \ref{tab:06-sens-table}).
   \begin{table}[!h]
   
-  \caption{\label{tab:06-sens-table}Summary of associations between BCG vaccination and all outcomes; cases that have no recurrent flag in the ETS (n=50407), and cases that would have been eligible for the BCG schools scheme (n=9943). Those defined to be eligible for the schools scheme are the UK born, that were aged 14 or over in 2004}
+  \caption[Summary of associations between BCG vaccination and all outcomes.]{\label{tab:06-sens-table}Summary of associations between BCG vaccination and all outcomes; cases that have no recurrent flag in the ETS (n=50407), and cases that would have been eligible for the BCG schools scheme (n=9943). Those defined to be eligible for the schools scheme are the UK born, that were aged 14 or over in 2004}
   \centering
   \fontsize{8}{10}\selectfont
   \begin{tabular}{>{\raggedright\arraybackslash}p{3cm}>{\raggedright\arraybackslash}p{3cm}lllll}
@@ -2952,11 +2960,11 @@ Date: \emph{placeholder}
   During the study period there were 114,820 notifications of TB in England, of which 93\% (106765/114820) had their birth status recorded. Of notifications with a known birth status 27\% (29096/106765) were UK born, in comparison to 33\% (2634/8055) in cases with an imputed birth status (see Chapter \ref{data} for details). There were 1729 UK born cases and 2797 non-UK born cases in individuals relevant to the universal schools scheme, and 1431 UK born cases and 238 non-UK born cases relevant to the targeted neonatal scheme, who fit the age criteria during the study period. Univariable evidence for differences between mean incidence rates before and after the change in BCG policy in the UK born was weak. In the non-UK born incidence rates were lower after the change in BCG policy in both the cohort relevant to the universal school-age scheme and the cohort relevant to the targeted neonatal scheme (Figure \ref{fig:07-cohort-summary-plot}).
   \begin{figure}
   
-  {\centering \includegraphics[width=0.8\linewidth]{chapters/direct-eff-bcg-change/figure-1} 
+  {\centering \includegraphics[width=0.8\linewidth,]{chapters/direct-eff-bcg-change/figure-1} 
   
   }
   
-  \caption{Mean incidence rates per 100,000, with 95\% confidence intervals for each retrospective cohort (see Table \\\ref{tab:07-cohorts} for cohort definitions), stratified by the vaccination policy and UK birth status. The top and bottom panels are on different scales in order to highlight trends in incidence rates over time.}\label{fig:07-cohort-summary-plot}
+  \caption[Mean incidence rates per 100,000, with 95\% confidence intervals for each retrospective cohort, stratified by the vaccination policy and UK birth status.]{Mean incidence rates per 100,000, with 95\% confidence intervals for each retrospective cohort (see Table \\\ref{tab:07-cohorts} for cohort definitions), stratified by the vaccination policy and UK birth status. The top and bottom panels are on different scales in order to highlight trends in incidence rates over time.}\label{fig:07-cohort-summary-plot}
   \end{figure}
   Trends in incidence rates varied by age group and UK birth status. From 2000 until 2012 incidence rates in the UK born remained relatively stable but have since fallen year on year. In comparison incidence rates in the non-UK born increased from 2000 until 2005, since when they have also decreased year on year (see Chapter \ref{data}). In 14-19 year old's, who were UK born, incidence rates remained relatively stable throughout the study period, except for the period between 2006 to 2009 in which they increased year on year. This trend was not observed in the non-UK born population aged 14-19, where incidence rates reached a peak in 2003, since when they have consistently declined. In those aged 0-5, who were UK born, incidence rates also increased year on year after the change in BCG policy, until 2008 since when they have declined. This does not match with the observed trend in incidence rates in the non-UK born population, aged 0-5, in which incidence rates declined steeply between 2005 and 2006, since when they have remained relatively stable (Figure \ref{fig:07-inc-rate-summary-plot}).
   \begin{figure}
@@ -2975,7 +2983,7 @@ Date: \emph{placeholder}
   For the comparable non-UK born cohort who were relevant to the universal vaccination there was evidence, in the best fitting model, that ending the scheme was associated with a decrease in incidence rates (IRR: 0.74 (95\%CI 0.61, 0.88)). The best fitting model was a Negative Binomial model which adjusted for the change in policy, age, incidence rates in the non-UK born, and year of eligibility as a random effect (Table \ref{tab:07-universal-tab}). I found that omitting the change in policy from the model resulted in poorer model fit (LOOIC increase of 3.02 (SE 3.52)), suggesting that the policy change was an important factor explaining changes in incidence rates, after adjusting for other covariates. All models that adjusted for incidence rates in the UK born or non-UK born estimated similar IRRs (Table \ref{tab:07-summary-universal-nonukborn}).
   \begin{landscape}\begin{table}[!h]
   
-  \caption{\label{tab:07-summary-universal-ukborn}Comparison of models fitted to incidence rates for the UK born population that were relevant to the universal vaccination programme of those at school-age (14). Models are ordered by the goodness of fit as assessed by LOOIC, the degrees of freedom are used as a tiebreaker.}
+  \caption[Comparison of models fitted to incidence rates for the UK born population that were relevant to the universal vaccination programme of those at school-age (14).]{\label{tab:07-summary-universal-ukborn}Comparison of models fitted to incidence rates for the UK born population that were relevant to the universal vaccination programme of those at school-age (14). Models are ordered by the goodness of fit as assessed by LOOIC, the degrees of freedom are used as a tiebreaker.}
   \centering
   \fontsize{8}{10}\selectfont
   \begin{tabular}{>{\raggedright\arraybackslash}p{3cm}llllllrll}
@@ -3016,7 +3024,7 @@ Date: \emph{placeholder}
   \end{landscape}
   \begin{table}[!h]
   
-  \caption{\label{tab:07-universal-tab}Summary table of incidence rate ratios, in the UK born and non-UK born cohorts relevant to the targeted neonatal scheme, using the best fitting models as determined by comparison of the LOOIC (UK born: Negative binomial model adjusting with fixed effects for the change in policy, age, and incidence rates in the UK born (Model 7 (Negative Binomial)), Non-UK born: Negative binomial model with a random intercept for year of study entry, adjusting with fixed effects for the change in policy, age, and incidence rates in the non-UK born (Model 17 (Negative Binomial))). Model terms which were not included in a given cohort are indicated using a hyphen (-).}
+  \caption[Summary table of incidence rate ratios, in the UK born and non-UK born cohorts relevant to the targeted neonatal scheme, using the best fitting models as determined by comparison of the LOOIC.]{\label{tab:07-universal-tab}Summary table of incidence rate ratios, in the UK born and non-UK born cohorts relevant to the targeted neonatal scheme, using the best fitting models as determined by comparison of the LOOIC (UK born: Negative binomial model adjusting with fixed effects for the change in policy, age, and incidence rates in the UK born (Model 7 (Negative Binomial)), Non-UK born: Negative binomial model with a random intercept for year of study entry, adjusting with fixed effects for the change in policy, age, and incidence rates in the non-UK born (Model 17 (Negative Binomial))). Model terms which were not included in a given cohort are indicated using a hyphen (-).}
   \centering
   \fontsize{8}{10}\selectfont
   \begin{tabular}{lll}
@@ -3065,7 +3073,7 @@ Date: \emph{placeholder}
   \end{table}
   \begin{landscape}\begin{table}[!h]
   
-  \caption{\label{tab:07-summary-universal-nonukborn}Comparison of models fitted to incidence rates for the non-UK born population that were eligible to the universal vaccination programme of those at school-age (14). Models are ordered by the goodness of fit as assessed by LOOIC, the degrees of freedom are used as a tiebreaker.}
+  \caption[Comparison of models fitted to incidence rates for the non-UK born population that were eligible to the universal vaccination programme of those at school-age (14).]{\label{tab:07-summary-universal-nonukborn}Comparison of models fitted to incidence rates for the non-UK born population that were eligible to the universal vaccination programme of those at school-age (14). Models are ordered by the goodness of fit as assessed by LOOIC, the degrees of freedom are used as a tiebreaker.}
   \centering
   \fontsize{8}{10}\selectfont
   \begin{tabular}{>{\raggedright\arraybackslash}p{3cm}llllllrll}
@@ -3112,7 +3120,7 @@ Date: \emph{placeholder}
   For the comparable non-UK born cohort who were relevant to the targeted neonatal vaccination programme there was evidence, across all models, that change in policy was associated with a large decrease in incidence rates (IRR: 0.62 (95\%CI 0.44, 0.88)) (Table \ref{tab:07-targeted-tab} in the best fitting model). The best fitting model was a Negative Binomial model that adjusted for the change in policy, age, and non-UK born incidence rates (Table \ref{tab:07-targeted-tab}). All models which at least adjusted for age estimated comparable effects of the change in policy (Table \ref{tab:07-summary-targeted-nonukborn}).
   \begin{landscape}\begin{table}[!h]
   
-  \caption{\label{tab:07-summary-targeted-ukborn}Comparison of models fitted to incidence rates for the UK born population that were elgible to the targeted vaccination programme of neonates. Models are ordered by the goodness of fit as assessed by LOOIC, the degrees of freedom are used as a tiebreaker.}
+  \caption[Comparison of models fitted to incidence rates for the UK born population that were elgible to the targeted vaccination programme of neonates.]{\label{tab:07-summary-targeted-ukborn}Comparison of models fitted to incidence rates for the UK born population that were elgible to the targeted vaccination programme of neonates. Models are ordered by the goodness of fit as assessed by LOOIC, the degrees of freedom are used as a tiebreaker.}
   \centering
   \fontsize{8}{10}\selectfont
   \begin{tabular}{>{\raggedright\arraybackslash}p{3cm}llllllrll}
@@ -3153,7 +3161,7 @@ Date: \emph{placeholder}
   \end{landscape}
   \begin{table}[!h]
   
-  \caption{\label{tab:07-targeted-tab}Summary table of incidence rate ratios, in the UK born and non-UK born cohorts relevant to the targeted neonatal scheme, using the best fitting models as determined by comparison of the LOOIC (UK born: Poisson model with a random intercept for year of study entry, adjusting with fixed effects for the change in policy, age, and incidence rates in the UK born (Model 16), Non-UK born: Negative binomial model adjusting with fixed effects for the change in policy, age, and incidence rates in the non-UK born (Model 8 (Negative Binomial))). Model terms which were not included in a given cohort are indicated using a hyphen (-).}
+  \caption[Summary table of incidence rate ratios, in the UK born and non-UK born cohorts relevant to the targeted neonatal scheme, using the best fitting models as determined by comparison of the LOOIC.]{\label{tab:07-targeted-tab}Summary table of incidence rate ratios, in the UK born and non-UK born cohorts relevant to the targeted neonatal scheme, using the best fitting models as determined by comparison of the LOOIC (UK born: Poisson model with a random intercept for year of study entry, adjusting with fixed effects for the change in policy, age, and incidence rates in the UK born (Model 16), Non-UK born: Negative binomial model adjusting with fixed effects for the change in policy, age, and incidence rates in the non-UK born (Model 8 (Negative Binomial))). Model terms which were not included in a given cohort are indicated using a hyphen (-).}
   \centering
   \fontsize{8}{10}\selectfont
   \begin{tabular}{lll}
@@ -3202,7 +3210,7 @@ Date: \emph{placeholder}
   \end{table}
   \begin{landscape}\begin{table}[!h]
   
-  \caption{\label{tab:07-summary-targeted-nonukborn}Comparison of models fitted to incidence rates for the non-UK born population that were revelant to the targeted vaccination programme of neonates. Models are ordered by the goodness of fit as assessed by LOOIC, the degrees of freedom are used as a tiebreaker.}
+  \caption[Comparison of models fitted to incidence rates for the non-UK born population that were revelant to the targeted vaccination programme of neonates.]{\label{tab:07-summary-targeted-nonukborn}Comparison of models fitted to incidence rates for the non-UK born population that were revelant to the targeted vaccination programme of neonates. Models are ordered by the goodness of fit as assessed by LOOIC, the degrees of freedom are used as a tiebreaker.}
   \centering
   \fontsize{8}{10}\selectfont
   \begin{tabular}{>{\raggedright\arraybackslash}p{3cm}llllllrll}
@@ -3323,11 +3331,11 @@ Date: \emph{placeholder}
   \end{enumerate}
   \begin{figure}
   
-  {\centering \includegraphics[width=200px]{chapters/model-development/resources/model_diagrams/latency_flow} 
+  {\centering \includegraphics[width=200px,]{chapters/model-development/resources/model_diagrams/latency_flow} 
   
   }
   
-  \caption{Flow diagrams of a.) the serial latency assumption and b.) the parallel latency assumption. The flow diagrams contain the following compartments; Susceptible ($S$), high risk latent ($H$), low risk latent ($L$), and infected ($I$). Solid arrows represent transition rates. Note that in both models repeated transmission to low risk latents is possible. This allows low risk latent cases to become high risk latent cases. For some varients of the parallel latency assumption, where it is assumed being high risk is inherent to individuals, this may not be appropriate.}\label{fig:latency-flow-diag}
+  \caption[Flow diagrams of a.) the serial latency assumption and b.) the parallel latency assumption.]{Flow diagrams of a.) the serial latency assumption and b.) the parallel latency assumption. The flow diagrams contain the following compartments; Susceptible ($S$), high risk latent ($H$), low risk latent ($L$), and infected ($I$). Solid arrows represent transition rates. Note that in both models repeated transmission to low risk latents is possible. This allows low risk latent cases to become high risk latent cases. For some varients of the parallel latency assumption, where it is assumed being high risk is inherent to individuals, this may not be appropriate.}\label{fig:latency-flow-diag}
   \end{figure}
   \begin{enumerate}
   \def\labelenumi{\arabic{enumi}.}
@@ -3393,11 +3401,11 @@ Date: \emph{placeholder}
   The vaccination model is nested into the demographic process model and therefore vaccination is possible upon entry to each modeled age group. The target age group can be varied to represent changing BCG vaccination policy. The vaccinated population is then modeled explicitly throughout all disease compartments. The primary action of the BCG vaccine is to prevent the transition from latent to active disease, this is included for both high and low risk latent cases. Waning vaccination effectiveness has been included by stratifying vaccine effectiveness by age group. The partial protection offered by BCG vaccination against initial infection has been included as a negative modifier on the protection from latent to active disease and as a modifier on the proportion of cases that are initially infected. This allows estimates of the effectiveness of BCG vaccination at preventing active TB disease in the susceptible population to be used, as these estimates have the most robust data sources. It is assumed that latently infected individuals do not gain additional protection from re-infection from the BCG vaccine. The BCG vaccine has been modeled as being partially protective for all individuals rather than as a ``take'' vaccine (i.e all or nothing protection). This assumption simplifies the model and will not impact the dynamics of TB transmission, assuming that protected and unprotected BCG vaccinated individuals obey the mass action assumption (See Chapter \ref{introduction} and {[}6,7{]}).
   \begin{figure}
   
-  {\centering \includegraphics[width=400px]{chapters/model-development/resources/model_diagrams/tb_model_flow} 
+  {\centering \includegraphics[width=400px,]{chapters/model-development/resources/model_diagrams/tb_model_flow} 
   
   }
   
-  \caption{Flow diagram for the dynamic TB disease model with demographics and vaccination described in the text. The TB model contains the following compartments; Susceptible ($S$), high risk latent ($H$), low risk latent ($L$), active cases with pulmonary TB ($P$), active TB cases with extra-pulmonary TB only ($E$), pulmonary cases on treatment ($T_P$), and extra-pulmonary cases on treatment ($T_E$). The vaccinated ($v$) and unvaccinated ($u$) populations are represented by $k$, such that $k = u,v$. Age stratification is represented by $a$ (where $a = 1, 2, ...,11$) in the disease model and the $0, 1, 2, 3$ subscripts in the demographic model. Five year age groups are modelled (i.e $0-4$, $5-9$, $10-14$, ...) up to 49 years old, with a single age group for those aged 50-69 years old and those aged 70-89 years old. Individuals aged $90+$ are not explicitly modelled. In the demographic and vaccination model the A compartment represents the demographic processes modelled in all population compartments except for the vacinated and unvaccinated susceptible populations. Solid arrows represent transition rates within the modelled populations and dashed arrows represent transition rates into, or out of the modelled populations (i.e birth and death processes).}\label{fig:model-flow-diag}
+  \caption[Flow diagram for the dynamic TB disease model with demographics and vaccination described.]{Flow diagram for the dynamic TB disease model with demographics and vaccination described. The TB model contains the following compartments; Susceptible ($S$), high risk latent ($H$), low risk latent ($L$), active cases with pulmonary TB ($P$), active TB cases with extra-pulmonary TB only ($E$), pulmonary cases on treatment ($T_P$), and extra-pulmonary cases on treatment ($T_E$). The vaccinated ($v$) and unvaccinated ($u$) populations are represented by $k$, such that $k = u,v$. Age stratification is represented by $a$ (where $a = 1, 2, ...,11$) in the disease model and the $0, 1, 2, 3$ subscripts in the demographic model. Five year age groups are modelled (i.e $0-4$, $5-9$, $10-14$, ...) up to 49 years old, with a single age group for those aged 50-69 years old and those aged 70-89 years old. Individuals aged $90+$ are not explicitly modelled. In the demographic and vaccination model the A compartment represents the demographic processes modelled in all population compartments except for the vacinated and unvaccinated susceptible populations. Solid arrows represent transition rates within the modelled populations and dashed arrows represent transition rates into, or out of the modelled populations (i.e birth and death processes).}\label{fig:model-flow-diag}
   \end{figure}
   \hypertarget{model-equations}{%
   \subsection{Model equations}\label{model-equations}}
@@ -3497,7 +3505,7 @@ Date: \emph{placeholder}
   Details of the prior distributions used for each disease model parameter are given in Table \ref{tab:disease-model}. Table \ref{tab:sources-tab} contains details of the sources used to parameterise the model. More detail is given in the following sub-sections.
   \begin{landscape}\begingroup\fontsize{8}{10}\selectfont
   \begin{longtable}{>{\raggedright\arraybackslash}p{1.5cm}>{\raggedright\arraybackslash}p{4cm}>{\raggedright\arraybackslash}p{6cm}>{\raggedright\arraybackslash}p{1.5cm}>{\raggedright\arraybackslash}p{6cm}>{\raggedright\arraybackslash}p{1.5cm}}
-  \caption{\label{tab:disease-model}Dynamic disease model parameters, descriptions, prior distributions, units, method used to derive the prior distribution and the type (i.e data derived, literature, assumption). All data based parameters are included. P = pulmonary TB, E = extra-pulmonary TB, v = vaccinated, i = age at vaccination, $\mathcal{U}$ = Uniform, $\mathcal{N}$ = Normal}\\
+  \caption[Dynamic disease model parameters, descriptions, prior distributions, units, method used to derive the prior distribution and the type.]{\label{tab:disease-model}Dynamic disease model parameters, descriptions, prior distributions, units, method used to derive the prior distribution and the type (i.e data derived, literature, assumption). All data based parameters are included. P = pulmonary TB, E = extra-pulmonary TB, v = vaccinated, i = age at vaccination, $\mathcal{U}$ = Uniform, $\mathcal{N}$ = Normal}\\
   \toprule
   Parameter & Description & Distribution & Units & Method & Type\\
   \midrule
@@ -3826,11 +3834,11 @@ Date: \emph{placeholder}
   The rate of recovery from active TB disease was estimated as the reciprocal of the time with active, untreated, disease from the ETS with UK born cases from 2000 until 2012. Cases with a period of time symptomatic that was less than 0 days were removed as these are likely to be spurious. Figure \ref{fig:tb-time-treat} indicates that the distribution of time to treatment differs between children and adults and by pulmonary/extra-pulmonary TB status. There was little evidence that time to treatment differed between adults and older adults. A normal distribution was used for each age group, truncated to be greater than 0 months. Prior to 1952, and the introduction of isoniazid, I have assumed that the time to recovery from active TB disease is 2 years, representing natural recovery or other removal from the infectious population. From 1952 to 1990 the time with active TB is assumed to decrease linearly.
   \begin{figure}
   
-  {\centering \includegraphics[width=0.8\linewidth]{chapters/model-development/resources/figure/time_to_treatment} 
+  {\centering \includegraphics[width=0.8\linewidth,]{chapters/model-development/resources/figure/time_to_treatment} 
   
   }
   
-  \caption{Distribution of time to treatment (days) from the date of reported symptom onset until the date started treatment for the UK born, stratified by age group and pulmonary/extra-pulmonary TB status in the ETS system for notifications between 2000 and 2012. Age is stratified into three groups; children (0-14), adults (15-59) older adults (15-59). The time from symptom onset to starting treatment is shorter for cases with pulmonary TB cases across age groups, with younger cases starting treatment more rapidly than older cases.}\label{fig:tb-time-treat}
+  \caption[Distribution of time to treatment (days) from the date of reported symptom onset until the date started treatment for the UK born, stratified by age group and pulmonary/extra-pulmonary TB status in the ETS system for notifications between 2000 and 2012.]{Distribution of time to treatment (days) from the date of reported symptom onset until the date started treatment for the UK born, stratified by age group and pulmonary/extra-pulmonary TB status in the ETS system for notifications between 2000 and 2012. Age is stratified into three groups; children (0-14), adults (15-59) older adults (15-59). The time from symptom onset to starting treatment is shorter for cases with pulmonary TB cases across age groups, with younger cases starting treatment more rapidly than older cases.}\label{fig:tb-time-treat}
   \end{figure}
   \hypertarget{rate-of-successful-treatment}{%
   \paragraph{Rate of successful treatment}\label{rate-of-successful-treatment}}
@@ -3838,11 +3846,11 @@ Date: \emph{placeholder}
   The rate successful treatment was estimated as the reciprocal of the period of time on treatment using the ETS with UK born cases between 2000 and 2012. Cases with a treatment time less than 1 month were removed as TB treatment is standardised and should take at least several months. There was little evidence that time to treatment completion differed between pulmonary and extra-pulmonary TB cases but there was some evidence that older TB cases were more likely to be on treatment for longer than younger cases (Figure \ref{fig:tb-treat-time-succ}). A normal distribution was used for children, adults and older adults, with each truncated to be greater than 4 months. This truncation was introduced as a faster treatment time than this was considered implausible.
   \begin{figure}
   
-  {\centering \includegraphics[width=0.8\linewidth]{chapters/model-development/resources/figure/time_cure} 
+  {\centering \includegraphics[width=0.8\linewidth,]{chapters/model-development/resources/figure/time_cure} 
   
   }
   
-  \caption{Distribution of time to treatment completion in the UK born successfully treated (days), stratified by age group and pulmonary/extra-pulmonary TB status in the ETS for notifications between 2000 and 2012. Age is stratified into three groups; children (0-14), adults (15-59) older adults (15-59). There is little evidence that the time to successful treatment differs between pulmonary and extra-pulmonary cases only but older cases appear to have a high likelihood of longer treatment times.}\label{fig:tb-treat-time-succ}
+  \caption[Distribution of time to treatment completion in the UK born successfully treated (days), stratified by age group and pulmonary/extra-pulmonary TB status in the ETS for notifications between 2000 and 2012.]{Distribution of time to treatment completion in the UK born successfully treated (days), stratified by age group and pulmonary/extra-pulmonary TB status in the ETS for notifications between 2000 and 2012. Age is stratified into three groups; children (0-14), adults (15-59) older adults (15-59). There is little evidence that the time to successful treatment differs between pulmonary and extra-pulmonary cases only but older cases appear to have a high likelihood of longer treatment times.}\label{fig:tb-treat-time-succ}
   \end{figure}
   \hypertarget{contact-matrix}{%
   \paragraph{Age-stratified contact matrix}\label{contact-matrix}}
@@ -3885,11 +3893,11 @@ Date: \emph{placeholder}
   The final mean contact matrix is visualised in Figure \ref{fig:contact-tile-plot}, along with the normalised standard deviation. It is clear that the POLYMOD mixing is highly assortative with the majority of contacts occurring between those close to the same age. The highest number of contacts were between children and young adults (between 5 and 20), with the number of within age groups contacts reducing as age increased. There was some outside age group mixing for all age groups with a large amount of mixing between children and middle aged adults (i.e parents and children). There was some uncertainty for all contact rates with the minimum normalised standard deviation being 10\% of mean contact rates. Contact rates between older adults and children were highly uncertain and contact rates for older adults were also generally more uncertain.
   \begin{figure}
   
-  {\centering \includegraphics[width=0.8\linewidth]{chapters/model-development/resources/figure/contact_matrix} 
+  {\centering \includegraphics[width=0.8\linewidth,]{chapters/model-development/resources/figure/contact_matrix} 
   
   }
   
-  \caption{a.) Mean contact rates and the b.) normalised standard deviation (\%) of 1000 boostrapped samples of  social contacts from the POLYMOD social contact survey using 5 year age groups up 49 years old and then a single group for 50-69 year olds. Mixing is highly assortative by age with children and young adults representing the majority of contacts. There is also evidence of mixing between children and middle age adults with older children mixing with progressivly older adults. Contact rates in older adults are highly uncertain, with the most uncertainty in mixing between older adults and young children.}\label{fig:contact-tile-plot}
+  \caption[a.) Mean contact rates and the b.) normalised standard deviation (\%) of 1000 boostrapped samples of  social contacts from the POLYMOD social contact survey using 5 year age groups up 49 years old and then a single group for 50-69 year olds.]{a.) Mean contact rates and the b.) normalised standard deviation (\%) of 1000 boostrapped samples of  social contacts from the POLYMOD social contact survey using 5 year age groups up 49 years old and then a single group for 50-69 year olds. Mixing is highly assortative by age with children and young adults representing the majority of contacts. There is also evidence of mixing between children and middle age adults with older children mixing with progressivly older adults. Contact rates in older adults are highly uncertain, with the most uncertainty in mixing between older adults and young children.}\label{fig:contact-tile-plot}
   \end{figure}
   \hypertarget{vaccination-model-parameters}{%
   \subsubsection{Vaccination model parameters}\label{vaccination-model-parameters}}
@@ -3912,7 +3920,7 @@ Date: \emph{placeholder}
   There is strong evidence that the overall effectiveness of the BCG vaccine reduces over time.{[}24,25{]} For this reason the effectiveness of the BCG vaccination overall (\(\alpha^T_a\)) has been stratified by the time since vaccination (by 5 year age groups). This step-wise approach has been chosen as the majority of studies report estimates for these groups and the precise functional form of the reduction in protection is unknown. For 0-5, and 5-10, years since vaccination estimates of the effectiveness of the BCG vaccine were extracted from the MRC trial.{[}22{]} Using the published data, Poisson regression was used to estimate Rate Ratios and 95\% confidence intervals. For 10-29 years after vaccination Rate Ratio estimates from a more recent case control cohort study in the UK born vaccinated at school-age have been used.{[}25{]} Table \ref{tab:bcg-eff-est} details the estimated effectiveness for each five yearly band after initial vaccination. I have assumed that the BCG vaccine is equally effective regardless of when the vaccine is given as there is no evidence that protection reduces when given to older age groups in England.
   \begin{table}[!h]
   
-  \caption{\label{tab:bcg-eff-est}Estimates of the effectiveness of the BCG vaccine at preventing active TB disease stratified by years since vaccination. For 0-9 years since vaccination estimates were derived using Poisson regression from the MRC BCG trial and for 10-29 years since vaccination estimates were extracted from a more recent case control cohort study in the UK born vaccinated at school-age.[@Hart1972; @Mangtani2017] BCG effectiveness at preventing active TB disase used as prior distributions in the model.}
+  \caption[Estimates of the effectiveness of the BCG vaccine at preventing active TB disease stratified by years since vaccination.]{\label{tab:bcg-eff-est}Estimates of the effectiveness of the BCG vaccine at preventing active TB disease stratified by years since vaccination. For 0-9 years since vaccination estimates were derived using Poisson regression from the MRC BCG trial and for 10-29 years since vaccination estimates were extracted from a more recent case control cohort study in the UK born vaccinated at school-age.[@Hart1972; @Mangtani2017] BCG effectiveness at preventing active TB disase used as prior distributions in the model.}
   \centering
   \begin{tabular}{ll}
   \toprule
@@ -3951,7 +3959,7 @@ Date: \emph{placeholder}
   The demographic model parameters are outlined in Table \ref{tab:demo-model-params}, additional details are given in the following section. Table \ref{tab:sources-tab} contains details of the sources used to parameterise the demographic model, again more detail is given in the following section for complex parameters.
   \begin{landscape}\begingroup\fontsize{8}{10}\selectfont
   \begin{longtable}{>{\raggedright\arraybackslash}p{1.5cm}>{\raggedright\arraybackslash}p{4cm}>{\raggedright\arraybackslash}p{6cm}>{\raggedright\arraybackslash}p{1.5cm}>{\raggedright\arraybackslash}p{6cm}>{\raggedright\arraybackslash}p{1.5cm}}
-  \caption{\label{tab:demo-model-params}Demographic model parameters, descriptions, prior distributions, units, method used to derive the prior distribution and the type (i.e data derived, literature, assumption). $\mathcal{U}$ = Uniform and i = age at vaccination.}\\
+  \caption[Demographic model parameters, descriptions, prior distributions, units, method used to derive the prior distribution and the type.]{\label{tab:demo-model-params}Demographic model parameters, descriptions, prior distributions, units, method used to derive the prior distribution and the type (i.e data derived, literature, assumption). $\mathcal{U}$ = Uniform and i = age at vaccination.}\\
   \toprule
   Parameter & Description & Distribution & Units & Method & Type\\
   \midrule
@@ -3978,11 +3986,11 @@ Date: \emph{placeholder}
   Age-stratified and UK birth stratified population estimates for England were estimated using the LFS (Chapter \ref{data}). Figure \ref{fig:age-strat-demo} indicates that the age distribution of the UK born population changed over the study period (2000 to 2015), with an increase in those in late middle age and older and a decrease in those in early middle age. The proportion of young adults and young children also increased. This may have impacted TB incidence as young adults are thought to be responsible for the majority of transmission. Data from the 1931 census was also used to estimate the population of England in 1931 stratified into the modeled age groups.
   \begin{figure}
   
-  {\centering \includegraphics[width=0.8\linewidth]{chapters/model-development/resources/figure/england_demographics} 
+  {\centering \includegraphics[width=0.8\linewidth,]{chapters/model-development/resources/figure/england_demographics} 
   
   }
   
-  \caption{Distribution of the UK born population of England in 2000, 2004, 2008, and 2012. Age is grouped into 5 year age groups from 0 to 49, from 50-69, and from 70 to 89. Those aged 90+ are excluded due to low quality data. The age groups used here represent those used in the model. The figure indicates that the population has skewed older overall over the last two decades, although the proportion of young children has increased in the last 10 years.}\label{fig:age-strat-demo}
+  \caption[Distribution of the UK born population of England in 2000, 2004, 2008, and 2012.]{Distribution of the UK born population of England in 2000, 2004, 2008, and 2012. Age is grouped into 5 year age groups from 0 to 49, from 50-69, and from 70 to 89. Those aged 90+ are excluded due to low quality data. The age groups used here represent those used in the model. The figure indicates that the population has skewed older overall over the last two decades, although the proportion of young children has increased in the last 10 years.}\label{fig:age-strat-demo}
   \end{figure}
   \hypertarget{observed-and-projected-births}{%
   \paragraph{Observed and projected births}\label{observed-and-projected-births}}
@@ -3990,11 +3998,11 @@ Date: \emph{placeholder}
   The number of births is incorporated into the demographic model as a time varying, noisy, parameter (\(\omega(t)\)). It is parameterised from the data published by the Office for National Statistics (ONS), with the available data covering all years modeled. The ONS publishes the recorded number of births in England each year starting from 1929 through to 2015, with projections avaiable through to 2101 (Figure @ref(fig:births\_england)). As there is some uncertainty as to the number of births in each year I included normally distributed noise with a standard deviation of 5\% of annual births.
   \begin{figure}
   
-  {\centering \includegraphics[width=0.8\linewidth]{chapters/model-development/resources/figure/births} 
+  {\centering \includegraphics[width=0.8\linewidth,]{chapters/model-development/resources/figure/births} 
   
   }
   
-  \caption{Estimated and projected live births in England from 1929 until 2101. The red line indicates estimated data and the blue line indicates projected data. Data is sourced from the Office for National Statistics (ONS).}\label{fig:births-england}
+  \caption[Estimated and projected live births in England from 1929 until 2101.]{Estimated and projected live births in England from 1929 until 2101. The red line indicates estimated data and the blue line indicates projected data. Data is sourced from the ONS.}\label{fig:births-england}
   \end{figure}
   \hypertarget{age-specific-mortality-rates}{%
   \paragraph{Age-specific mortality rates}\label{age-specific-mortality-rates}}
@@ -4007,11 +4015,11 @@ Date: \emph{placeholder}
   Where \(\mu_a(t)\) is constrained to be greater than or equal to zero.
   \begin{figure}
   
-  {\centering \includegraphics[width=0.8\linewidth]{chapters/model-development/resources/figure/mortality} 
+  {\centering \includegraphics[width=0.8\linewidth,]{chapters/model-development/resources/figure/mortality} 
   
   }
   
-  \caption{3 year rolling average expected remaining lifespan stratified by age group in England from 2000 to 2014. Age is grouped into 5 year age groups from 0 to 49, from 50-69, and from 70 to 89. Those aged 90+ are excluded due to low quality data. The age groups used here represent those used in the model. Data from this figure was sourced from the Office for National Statistics age-specific mortality rate estimates.}\label{fig:mortality-england}
+  \caption[3 year rolling average expected remaining lifespan stratified by age group in England from 2000 to 2014.]{3 year rolling average expected remaining lifespan stratified by age group in England from 2000 to 2014. Age is grouped into 5 year age groups from 0 to 49, from 50-69, and from 70 to 89. Those aged 90+ are excluded due to low quality data. The age groups used here represent those used in the model. Data from this figure was sourced from the ONS age-specific mortality rate estimates.}\label{fig:mortality-england}
   \end{figure}
   \hypertarget{initialisation}{%
   \section{Initialisation}\label{initialisation}}
@@ -4114,7 +4122,7 @@ Date: \emph{placeholder}
   A potential limitation of this model is that reporting of TB cases is likely to have improved over time. This is especially true of notifications reported prior to the introduction of the ETS in 2000 (see Chapter \ref{data}). A potential improvement to this model would be to introduce seperate systematic reporting errors for notifications pre and post the introduction of the ETS. However, given that I have only included a single point prior to the introduction to the ETS doing so in this instance would lead to overfitting of these parameters. Instead I have assumed that \$ E\_\{\text{noise}\}\$ is doubled for data points prior to the introduction of the ETS.
   \begin{landscape}\begingroup\fontsize{8}{10}\selectfont
   \begin{longtable}{>{\raggedright\arraybackslash}p{1.5cm}>{\raggedright\arraybackslash}p{4cm}>{\raggedright\arraybackslash}p{6cm}>{\raggedright\arraybackslash}p{1.5cm}>{\raggedright\arraybackslash}p{6cm}>{\raggedright\arraybackslash}p{1.5cm}}
-  \caption{\label{tab:measurement-model}Measurement model parameters, descriptions, prior distributions, units, method used to derive the prior distribution and the type (i.e data derived, literature, assumption). $\mathcal{U}$ = Uniform}\\
+  \caption[Measurement model parameters, descriptions, prior distributions, units, method used to derive the prior distribution and the type.]{\label{tab:measurement-model}Measurement model parameters, descriptions, prior distributions, units, method used to derive the prior distribution and the type (i.e data derived, literature, assumption). $\mathcal{U}$ = Uniform}\\
   \toprule
   Parameter & Description & Distribution & Units & Method & Type\\
   \midrule

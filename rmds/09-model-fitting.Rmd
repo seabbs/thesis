@@ -64,7 +64,9 @@ A potential limitation of this model is that reporting of TB cases is likely to 
 ```{r measurement-model}
 measurement_params_table %>% 
   select(Parameter, Description, Distribution, Units, Method, Type) %>% 
-kable(caption = "Measurement model parameters, descriptions, prior distributions, units, method used to derive the prior distribution and the type (i.e data derived, literature, assumption). $\\mathcal{U}$ = Uniform", booktabs = TRUE, longtable = TRUE, escape = FALSE) %>% 
+kable(
+  caption.short = "Measurement model parameters, descriptions, prior distributions, units, method used to derive the prior distribution and the type.",
+  caption = "Measurement model parameters, descriptions, prior distributions, units, method used to derive the prior distribution and the type (i.e data derived, literature, assumption). $\\mathcal{U}$ = Uniform", booktabs = TRUE, longtable = TRUE, escape = FALSE) %>% 
   kable_styling(font_size = 8, latex_options = c("repeat_header")) %>% 
   column_spec(c(5), width = "6cm") %>% 
   column_spec(c(2), width = "4cm") %>%

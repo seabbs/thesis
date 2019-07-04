@@ -160,7 +160,7 @@ BestFitUniversalNonUKBorn <- read_formated("best-universal-nonukborn")
 
 During the study period there were 114,820 notifications of TB in England, of which 93% (106765/114820) had their birth status recorded. Of notifications with a known birth status 27% (29096/106765) were UK born, in comparison to 33% (2634/8055) in cases with an imputed birth status (see Chapter \@ref(data) for details). There were 1729 UK born cases and 2797 non-UK born cases in individuals relevant to the universal schools scheme, and 1431 UK born cases and 238 non-UK born cases relevant to the targeted neonatal scheme, who fit the age criteria during the study period. Univariable evidence for differences between mean incidence rates before and after the change in BCG policy in the UK born was weak. In the non-UK born incidence rates were lower after the change in BCG policy in both the cohort relevant to the universal school-age scheme and the cohort relevant to the targeted neonatal scheme (Figure \@ref(fig:07-cohort-summary-plot)).
 
-```{r 07-cohort-summary-plot, fig.cap = "Mean incidence rates per 100,000, with 95\\% confidence intervals for each retrospective cohort (see Table \\\\@ref(tab:07-cohorts) for cohort definitions), stratified by the vaccination policy and UK birth status. The top and bottom panels are on different scales in order to highlight trends in incidence rates over time."}
+```{r 07-cohort-summary-plot, fig.scap = "Mean incidence rates per 100,000, with 95\\% confidence intervals for each retrospective cohort, stratified by the vaccination policy and UK birth status.", fig.cap = "Mean incidence rates per 100,000, with 95\\% confidence intervals for each retrospective cohort (see Table \\\\@ref(tab:07-cohorts) for cohort definitions), stratified by the vaccination policy and UK birth status. The top and bottom panels are on different scales in order to highlight trends in incidence rates over time.", out.extra = ""}
 knitr::include_graphics("chapters/direct-eff-bcg-change/figure-1.png")
 ```
 
@@ -201,10 +201,17 @@ add_footnote_ref <- function(data) {
    return(data)
 }
 
-make_summary_table <- function(df, caption = NULL) {
+make_summary_table <- function(df, caption = NULL, caption.short = NULL) {
+  
+  if (is.null(caption.short)) {
+   caption.short <- caption 
+  }
+  
   df %>% 
   add_footnote_ref() %>% 
-  kable(caption = caption,
+  kable(
+        caption.short = caption.short,
+        caption = caption,
         booktabs = TRUE) %>% 
   add_footnote(label = ModelsSummaryFooter, notation = "none") %>% 
   add_header_above(c(" " = 2, "Variable" = 5, " " = 3)) %>% 
@@ -215,7 +222,9 @@ make_summary_table <- function(df, caption = NULL) {
 }
 
 read_formated("universal-ukborn-results-summary") %>%  
-  make_summary_table(caption = paste0("Comparison of models fitted to incidence rates for the UK born population that were relevant to the universal vaccination programme of those at school-age (14). " , ModelOrderingString))
+  make_summary_table(
+    caption.short = "Comparison of models fitted to incidence rates for the UK born population that were relevant to the universal vaccination programme of those at school-age (14).",
+    caption = paste0("Comparison of models fitted to incidence rates for the UK born population that were relevant to the universal vaccination programme of those at school-age (14). " , ModelOrderingString))
 ```
 
 ```{r 07-universal-tab}
@@ -243,7 +252,9 @@ df %>%
   mutate(Variable = replace_indents(Variable)) %>% 
   mutate_all(change_italic_to_latex) %>% 
   mutate(Variable = Variable %>% str_replace_all("\u2020", "**")) %>% 
-  kable(caption = paste0("Summary table of incidence rate ratios, in the UK born and non-UK born cohorts relevant to the ", scheme, ", using the best fitting models as determined by comparison of the LOOIC (UK born: ", str_replace(ukborn_model[[2]], "\\.", ""), " (" , ukborn_model[[1]], "), ", "Non-UK born: ", str_replace(nonukborn_model[[2]], "\\.", ""), " (", nonukborn_model[[1]], ")). Model terms which were not included in a given cohort are indicated using a hyphen (-)."), booktabs = TRUE, escape = FALSE) %>% 
+  kable(
+    caption.short = paste0("Summary table of incidence rate ratios, in the UK born and non-UK born cohorts relevant to the ", scheme, ", using the best fitting models as determined by comparison of the LOOIC."), 
+    caption = paste0("Summary table of incidence rate ratios, in the UK born and non-UK born cohorts relevant to the ", scheme, ", using the best fitting models as determined by comparison of the LOOIC (UK born: ", str_replace(ukborn_model[[2]], "\\.", ""), " (" , ukborn_model[[1]], "), ", "Non-UK born: ", str_replace(nonukborn_model[[2]], "\\.", ""), " (", nonukborn_model[[1]], ")). Model terms which were not included in a given cohort are indicated using a hyphen (-)."), booktabs = TRUE, escape = FALSE) %>% 
   add_footnote(label = c("* Incidence Rate Ratio (95% Credible Interval),",
                          paste0("**There was an improvement in the LOOIC score of ", ukborn_model[[5]]$pretty_diff_looic, " from dropping the change in policy from the model in the UK born cohort and a ", nonukborn_model[[5]]$pretty_diff_looic, " improvement in the non-UK born cohort.")), notation = "none") %>%
   add_header_above(c(" " = 1, "IRR (95% CrI)*" = 2)) %>% 
@@ -260,7 +271,9 @@ read_formated("universal-main-results") %>%
 
 ```{r 07-summary-universal-nonukborn, results = "asis"}
 read_formated("universal-nonukborn-results-summary") %>%
-  make_summary_table(caption = paste0("Comparison of models fitted to incidence rates for the non-UK born population that were eligible to the universal vaccination programme of those at school-age (14). ", ModelOrderingString))
+  make_summary_table(
+    caption.short = "Comparison of models fitted to incidence rates for the non-UK born population that were eligible to the universal vaccination programme of those at school-age (14).", 
+    caption = paste0("Comparison of models fitted to incidence rates for the non-UK born population that were eligible to the universal vaccination programme of those at school-age (14). ", ModelOrderingString))
 ```
 
 ### Adjusted estimates of the effect of the change in policy in those relevant to the targeted neonatal programme
@@ -271,7 +284,9 @@ For the comparable non-UK born cohort who were relevant to the targeted neonatal
 
 ```{r 07-summary-targeted-ukborn}
 read_formated("targeted-ukborn-results-summary") %>%  
-  make_summary_table(caption = paste0("Comparison of models fitted to incidence rates for the UK born population that were elgible to the targeted vaccination programme of neonates. ", ModelOrderingString))
+  make_summary_table(
+    caption.short = "Comparison of models fitted to incidence rates for the UK born population that were elgible to the targeted vaccination programme of neonates.", 
+    caption = paste0("Comparison of models fitted to incidence rates for the UK born population that were elgible to the targeted vaccination programme of neonates. ", ModelOrderingString))
 ```
 
     
@@ -279,12 +294,14 @@ read_formated("targeted-ukborn-results-summary") %>%
 read_formated("targeted-main-results")  %>% 
   make_combined_table(scheme = "targeted neonatal scheme",
                       ukborn_model = BestFitTargetedUKBorn,
-                      nonukborn_model =BestFitTargetedNonUKBorn)
+                      nonukborn_model = BestFitTargetedNonUKBorn)
 ```
 
 ```{r 07-summary-targeted-nonukborn, results = "asis"}
 read_formated("targeted-nonukborn-results-summary") %>%      
-   make_summary_table(caption = paste0("Comparison of models fitted to incidence rates for the non-UK born population that were revelant to the targeted vaccination programme of neonates. ", ModelOrderingString))
+   make_summary_table(
+     caption.short = "Comparison of models fitted to incidence rates for the non-UK born population that were revelant to the targeted vaccination programme of neonates.", 
+     caption = paste0("Comparison of models fitted to incidence rates for the non-UK born population that were revelant to the targeted vaccination programme of neonates. ", ModelOrderingString))
 ```
 
 ### Magnitude of the estimated impact of the change in BCG policy

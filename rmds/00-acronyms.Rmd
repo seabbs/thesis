@@ -8,7 +8,9 @@
 
 \textbf{LFS} - Labour Force Survey \par
 
-\textbf{MRSA} Methicillin-resistant Staphylococcus aureus \par
+\textbf{MRSA} - Methicillin-resistant Staphylococcus aureus \par
+
+\textbf{ONS} - Office for National Statistics \par
 
 \textbf{PHE} - Public Health England \par
 
