@@ -25,7 +25,7 @@ resources_path  <- file.path("chapters", "background")
 
 ## Tuberculosis
 
-Tuberculosis (TB) is thought to infect over 1.7 billion people globally, of which 5-15% will develop active TB in their lifetime.[@TheWorldHealthOrganization:2018va] Of this number around 10% are likely to die from TB or TB related causes. TB is preventable and curable, but the majority of cases occur in less economically developed countries and are never diagnosed.[@TheWorldHealthOrganization:2018va] In the following section, the natural history of TB, the risk factors, the treatment, the global impact, and the impact in England and Wales are explored.
+Tuberculosis (TB) is thought to infect over 1.7 billion people globally, of which 5-15% will develop active TB in their lifetime.[@TheWorldHealthOrganization:2018va] Of this number around 10% are likely to die from TB or TB related causes.[@TheWorldHealthOrganization:2018va] TB is preventable and curable, but the majority of cases occur in less economically developed countries and are never diagnosed.[@TheWorldHealthOrganization:2018va] In the following section, the natural history of TB, the risk factors, the treatment, the global impact, and the impact in England and Wales are explored.
 
 ### Natural history of TB
 
