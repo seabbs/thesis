@@ -1,6 +1,6 @@
 Package: tbinenglanddataclean
 Title: Cleans and Munges Tuberculosis and Demographic Data for England
-Version: 0.2.0
+Version: 1.0.0
 Authors@R: person("Sam", "Abbott", email = "contact@samabbott.co.uk",
     role = c("aut", "cre"))
 Description: Cleans and munges available tuberculisis and incidence
@@ -9,7 +9,8 @@ License: GPL-3 | file LICENSE
 Depends: R (>= 2.10)
 Imports: magrittr, haven, dplyr, purrr, readr, ggplot2, tidyr, epiR,
     tibble, readxl, stringr, scales, viridis, ggridges
-Suggests: testthat, knitr, rmarkdown, tidyverse, vdiffr
+Suggests: testthat, knitr, rmarkdown, tidyverse, vdiffr, usethis,
+    devtools, kableExtra, rlang
 Encoding: UTF-8
 LazyData: true
 RoxygenNote: 6.1.1
@@ -18,13 +19,21 @@ URL: http://www.samabbott.co.uk/tbinenglanddataclean,
     https://github.com/seabbs/tbinenglanddataclean
 BugReports: https://github.com/seabbs/tbinenglanddataclean/issues
 VignetteBuilder: knitr
+RemoteType: github
+RemoteHost: api.github.com
+RemoteRepo: tbinenglanddataclean
+RemoteUsername: seabbs
+RemoteRef: master
+RemoteSha: 74e92c715edb33f8d914de230c13431b888cc73b
 GithubRepo: tbinenglanddataclean
 GithubUsername: seabbs
 GithubRef: master
-GithubSHA1: 3ce4ed544043eb4465be67fe40b4144cd384c541
+GithubSHA1: 74e92c715edb33f8d914de230c13431b888cc73b
+NeedsCompilation: no
+Packaged: 2019-07-11 17:19:57 UTC; seabbs
 Author: Sam Abbott [aut, cre]
 Maintainer: Sam Abbott <contact@samabbott.co.uk>
-Built: R 3.5.3; ; 2019-05-03 17:27:23 UTC; unix
+Built: R 3.5.3; ; 2019-07-11 17:19:57 UTC; unix
 InstallAgent: packrat 0.5.0
 InstallSource: github
-Hash: 7ec7632709da9274ac44142d7eeba0d9
+Hash: 41387c1836f5bef2a530e8310f0a3b4d

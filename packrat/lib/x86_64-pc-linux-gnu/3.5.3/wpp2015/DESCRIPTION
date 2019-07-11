@@ -15,6 +15,6 @@ Packaged: 2018-12-21 17:36:14 UTC; hana
 Repository: CRAN
 Date/Publication: 2019-01-07 21:50:15 UTC
 Built: R 3.5.3; ; 2019-05-03 10:24:17 UTC; unix
-InstallAgent: packrat 0.5.0.8
+InstallAgent: packrat 0.5.0
 InstallSource: CRAN
 Hash: 48edb2b0a82c0397d98e1e90e655e6b6

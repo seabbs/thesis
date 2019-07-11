@@ -43,6 +43,6 @@ Maintainer: Jennifer Bryan <jenny@rstudio.com>
 Repository: CRAN
 Date/Publication: 2018-09-16 04:30:09 UTC
 Built: R 3.5.3; ; 2019-05-03 10:33:32 UTC; unix
-InstallAgent: packrat 0.5.0.8
+InstallAgent: packrat 0.5.0
 InstallSource: CRAN
 Hash: b30c7fbcb528a71d7ffcd07c9982589d

@@ -26,6 +26,6 @@ Maintainer: Torsten Hothorn <Torsten.Hothorn@R-project.org>
 Repository: CRAN
 Date/Publication: 2019-03-05 01:00:03 UTC
 Built: R 3.5.3; x86_64-pc-linux-gnu; 2019-05-03 10:17:10 UTC; unix
-InstallAgent: packrat 0.5.0.8
+InstallAgent: packrat 0.5.0
 InstallSource: CRAN
 Hash: 347e9b56bd09c51377966644696be273

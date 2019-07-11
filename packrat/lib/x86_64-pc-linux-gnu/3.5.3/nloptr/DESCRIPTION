@@ -28,6 +28,6 @@ Packaged: 2018-10-03 07:37:01 UTC; ripley
 Repository: CRAN
 Date/Publication: 2018-10-03 08:01:36 UTC
 Built: R 3.5.3; x86_64-pc-linux-gnu; 2019-05-03 10:18:46 UTC; unix
-InstallAgent: packrat 0.5.0.8
+InstallAgent: packrat 0.5.0
 InstallSource: CRAN
 Hash: c2b0475b9a177d3331957e366a7059a0

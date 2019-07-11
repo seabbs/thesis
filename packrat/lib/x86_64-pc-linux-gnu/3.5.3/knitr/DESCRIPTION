@@ -141,6 +141,6 @@ Author: Yihui Xie [aut, cre] (<https://orcid.org/0000-0003-0645-5666>),
 Repository: CRAN
 Date/Publication: 2019-03-08 23:50:03 UTC
 Built: R 3.5.3; ; 2019-05-03 10:25:00 UTC; unix
-InstallAgent: packrat 0.5.0.8
+InstallAgent: packrat 0.5.0
 InstallSource: CRAN
 Hash: d7581079d36fa69f84ff721384355734

@@ -90,6 +90,6 @@ Maintainer: Alex Hayes <alexpghayes@gmail.com>
 Repository: CRAN
 Date/Publication: 2019-04-07 19:52:53 UTC
 Built: R 3.5.3; ; 2019-05-03 10:35:43 UTC; unix
-InstallAgent: packrat 0.5.0.8
+InstallAgent: packrat 0.5.0
 InstallSource: CRAN
 Hash: 2c1abd749c826a39101a156ed0afc9be

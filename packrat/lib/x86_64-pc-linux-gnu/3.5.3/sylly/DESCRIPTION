@@ -46,6 +46,6 @@ Maintainer: Meik Michalke <meik.michalke@hhu.de>
 Repository: CRAN
 Date/Publication: 2018-07-29 14:50:04 UTC
 Built: R 3.5.3; ; 2019-05-03 10:21:18 UTC; unix
-InstallAgent: packrat 0.5.0.8
+InstallAgent: packrat 0.5.0
 InstallSource: CRAN
 Hash: 77308a1bea2b4e919d5cf5fc18c73dd7

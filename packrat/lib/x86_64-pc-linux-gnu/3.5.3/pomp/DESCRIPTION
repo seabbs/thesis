@@ -61,6 +61,6 @@ Maintainer: Aaron A. King <kingaa@umich.edu>
 Repository: CRAN
 Date/Publication: 2018-12-13 23:10:13 UTC
 Built: R 3.5.3; x86_64-pc-linux-gnu; 2019-05-03 10:23:47 UTC; unix
-InstallAgent: packrat 0.5.0.8
+InstallAgent: packrat 0.5.0
 InstallSource: CRAN
 Hash: e0da1e7d2463036e2b151f1b8fb6d1ef

@@ -33,6 +33,6 @@ Maintainer: James Hester <james.hester@rstudio.com>
 Repository: CRAN
 Date/Publication: 2018-01-24 14:50:28 UTC
 Built: R 3.5.3; x86_64-pc-linux-gnu; 2019-05-03 10:22:02 UTC; unix
-InstallAgent: packrat 0.5.0.8
+InstallAgent: packrat 0.5.0
 InstallSource: CRAN
 Hash: 6e643a368e9748966b96332eaa631411

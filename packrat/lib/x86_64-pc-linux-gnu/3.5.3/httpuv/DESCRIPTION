@@ -30,6 +30,6 @@ Packaged: 2019-04-05 20:06:25 UTC; winston
 Repository: CRAN
 Date/Publication: 2019-04-05 22:10:03 UTC
 Built: R 3.5.3; x86_64-pc-linux-gnu; 2019-05-03 10:25:57 UTC; unix
-InstallAgent: packrat 0.5.0.8
+InstallAgent: packrat 0.5.0
 InstallSource: CRAN
 Hash: 5df00050ea4610c9092f0feddca187fa

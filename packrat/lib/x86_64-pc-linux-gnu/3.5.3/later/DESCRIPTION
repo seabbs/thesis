@@ -30,6 +30,6 @@ Maintainer: Joe Cheng <joe@rstudio.com>
 Repository: CRAN
 Date/Publication: 2019-02-11 08:53:37 UTC
 Built: R 3.5.3; x86_64-pc-linux-gnu; 2019-05-03 10:23:22 UTC; unix
-InstallAgent: packrat 0.5.0.8
+InstallAgent: packrat 0.5.0
 InstallSource: CRAN
 Hash: 165df1e83eab768693fc85f375e7f3ec

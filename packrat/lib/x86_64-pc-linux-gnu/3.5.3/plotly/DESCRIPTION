@@ -42,6 +42,6 @@ Maintainer: Carson Sievert <cpsievert1@gmail.com>
 Repository: CRAN
 Date/Publication: 2019-04-10 19:33:05 UTC
 Built: R 3.5.3; ; 2019-05-03 10:36:01 UTC; unix
-InstallAgent: packrat 0.5.0.8
+InstallAgent: packrat 0.5.0
 InstallSource: CRAN
 Hash: 728c69323bb3e8f91f6304d847c034cc

@@ -43,6 +43,6 @@ Maintainer: Nicholas Tierney <nicholas.tierney@gmail.com>
 Repository: CRAN
 Date/Publication: 2019-02-15 15:30:03 UTC
 Built: R 3.5.3; ; 2019-05-03 10:35:49 UTC; unix
-InstallAgent: packrat 0.5.0.8
+InstallAgent: packrat 0.5.0
 InstallSource: CRAN
 Hash: b217279158485f8d3097cfd31d68335d

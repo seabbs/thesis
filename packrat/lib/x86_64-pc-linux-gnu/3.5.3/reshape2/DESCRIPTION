@@ -20,6 +20,6 @@ Packaged: 2017-12-10 22:04:42 UTC; hadley
 Repository: CRAN
 Date/Publication: 2017-12-11 16:47:57 UTC
 Built: R 3.5.3; x86_64-pc-linux-gnu; 2019-05-03 10:25:28 UTC; unix
-InstallAgent: packrat 0.5.0.8
+InstallAgent: packrat 0.5.0
 InstallSource: CRAN
 Hash: 1331df4206d0207838eff5d4324f5919

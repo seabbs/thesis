@@ -28,6 +28,6 @@ Maintainer: Brodie Gaslam <brodie.gaslam@yahoo.com>
 Repository: CRAN
 Date/Publication: 2018-10-05 05:10:12 UTC
 Built: R 3.5.3; x86_64-pc-linux-gnu; 2019-05-03 10:16:33 UTC; unix
-InstallAgent: packrat 0.5.0.8
+InstallAgent: packrat 0.5.0
 InstallSource: CRAN
 Hash: f147621f72b561485bfffcae78c4f5d5

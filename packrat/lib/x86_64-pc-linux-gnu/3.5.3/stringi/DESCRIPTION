@@ -34,6 +34,6 @@ License_is_FOSS: yes
 Repository: CRAN
 Date/Publication: 2019-03-12 23:20:03 UTC
 Built: R 3.5.3; x86_64-pc-linux-gnu; 2019-05-03 10:19:48 UTC; unix
-InstallAgent: packrat 0.5.0.8
+InstallAgent: packrat 0.5.0
 InstallSource: CRAN
 Hash: ed2a82fc7cc668c1345223d938cdfaf2

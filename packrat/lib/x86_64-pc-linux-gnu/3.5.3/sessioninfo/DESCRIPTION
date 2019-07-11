@@ -1,12 +1,12 @@
 Package: sessioninfo
 Title: R Session Information
 Version: 1.1.1
-Author: Gábor Csárdi, R core, Hadley Wickham, Winston Chang,
-    Robert M Flight, Kirill Müller, Jim Hester
+Author: Gábor Csárdi, R core, Hadley Wickham, Winston Chang, Robert M
+    Flight, Kirill Müller, Jim Hester
 Maintainer: Gábor Csárdi <csardi.gabor@gmail.com>
 Description: Query and print information about the current R session.
-    It is similar to 'utils::sessionInfo()', but includes more information
-    about packages, and where they were installed from.
+    It is similar to 'utils::sessionInfo()', but includes more
+    information about packages, and where they were installed from.
 License: GPL-2
 LazyData: true
 URL: https://github.com/r-lib/sessioninfo#readme
@@ -20,3 +20,6 @@ Packaged: 2018-11-05 16:32:45 UTC; gaborcsardi
 Repository: CRAN
 Date/Publication: 2018-11-05 17:20:02 UTC
 Built: R 3.5.3; ; 2019-05-03 10:13:25 UTC; unix
+InstallAgent: packrat 0.5.0
+InstallSource: CRAN
+Hash: 9e50c8458e611f166ba702277cbb5096

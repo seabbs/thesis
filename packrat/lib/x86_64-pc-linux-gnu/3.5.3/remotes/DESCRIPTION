@@ -1,28 +1,24 @@
 Package: remotes
 Title: R Package Installation from Remote Repositories, Including
-        'GitHub'
+    'GitHub'
 Version: 2.0.4
-Authors@R: c(
-    person("Jim", "Hester", , "james.hester@rstudio.com", role = c("aut", "cre")),
-    person("Gábor", "Csárdi", , "csardi.gabor@gmail.com", role = c("aut")),
-    person("Hadley", "Wickham", role = c("aut")),
-    person("Winston", "Chang", role = "aut"),
-    person("RStudio", role = "cph"),
-    person("Martin", "Morgan", role = "aut"),
-    person("Dan", "Tenenbaum", role = "aut"),
-    person("Mango Solutions", role = "cph")
-    )
+Authors@R: c( person("Jim", "Hester", , "james.hester@rstudio.com",
+    role = c("aut", "cre")), person("Gábor", "Csárdi", ,
+    "csardi.gabor@gmail.com", role = c("aut")), person("Hadley",
+    "Wickham", role = c("aut")), person("Winston", "Chang", role =
+    "aut"), person("RStudio", role = "cph"), person("Martin", "Morgan",
+    role = "aut"), person("Dan", "Tenenbaum", role = "aut"),
+    person("Mango Solutions", role = "cph") )
 Description: Download and install R packages stored in 'GitHub',
-    'BitBucket', or plain 'subversion' or 'git' repositories. This package
-    provides the 'install_*' functions in 'devtools'.
-    Indeed most of the code was copied over from 'devtools'.
+    'BitBucket', or plain 'subversion' or 'git' repositories. This
+    package provides the 'install_*' functions in 'devtools'. Indeed
+    most of the code was copied over from 'devtools'.
 License: GPL (>= 2)
 URL: https://github.com/r-lib/remotes#readme
 BugReports: https://github.com/r-lib/remotes/issues
 Imports: methods, stats, tools, utils
 Suggests: brew, callr, curl, covr, git2r (>= 0.23.0), knitr, mockery,
-        pkgbuild (>= 1.0.1), pingr, rmarkdown, rprojroot, testthat,
-        withr
+    pkgbuild (>= 1.0.1), pingr, rmarkdown, rprojroot, testthat, withr
 Depends: R (>= 3.0.0)
 VignetteBuilder: knitr
 RoxygenNote: 6.1.1
@@ -30,15 +26,13 @@ SystemRequirements: Subversion for install_svn, git for install_git
 Encoding: UTF-8
 NeedsCompilation: no
 Packaged: 2019-04-10 14:53:06 UTC; jhester
-Author: Jim Hester [aut, cre],
-  Gábor Csárdi [aut],
-  Hadley Wickham [aut],
-  Winston Chang [aut],
-  RStudio [cph],
-  Martin Morgan [aut],
-  Dan Tenenbaum [aut],
-  Mango Solutions [cph]
+Author: Jim Hester [aut, cre], Gábor Csárdi [aut], Hadley Wickham
+    [aut], Winston Chang [aut], RStudio [cph], Martin Morgan [aut], Dan
+    Tenenbaum [aut], Mango Solutions [cph]
 Maintainer: Jim Hester <james.hester@rstudio.com>
 Repository: CRAN
 Date/Publication: 2019-04-10 16:32:54 UTC
 Built: R 3.5.3; ; 2019-05-03 10:12:23 UTC; unix
+InstallAgent: packrat 0.5.0
+InstallSource: CRAN
+Hash: 0c43ff5305e5ac1fa6d4a5546a8e6d87

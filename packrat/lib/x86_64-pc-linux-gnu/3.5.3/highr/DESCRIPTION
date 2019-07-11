@@ -25,6 +25,6 @@ Author: Christopher Gandrud [ctb], Qiang Li [ctb], Yixuan Qiu [aut],
 Repository: CRAN
 Date/Publication: 2019-03-20 21:10:33 UTC
 Built: R 3.5.3; ; 2019-05-03 10:17:02 UTC; unix
-InstallAgent: packrat 0.5.0.8
+InstallAgent: packrat 0.5.0
 InstallSource: CRAN
 Hash: 16aa2cc98d7b68c9d148c263c8dcdbcd
