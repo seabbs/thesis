@@ -1,7 +1,7 @@
 ---
 author: 'Samuel Abbott'
 date: 'August 2019'
-division: 'Bristol Medical School: Population Health Sciences'
+division: 'Bristol Medical School\: Population Health Sciences'
 advisor: 'Ellen Brooks Pollock'
 altadvisor: 'Hannah Christensen'
 department: 'Faculty of Health Sciences'
@@ -12,19 +12,19 @@ knit: bookdown::render_book
 site: bookdown::bookdown_site
 always_allow_html: yes
 output: 
-  thesisdown::thesis_pdf: default
-  #thesisdown::thesis_gitbook: default
+  #thesisdown::thesis_pdf: default
+  thesisdown::thesis_gitbook: default
   #thesisdown::thesis_word: default
   #thesisdown::thesis_epub: default
-abstract: >
+abstract: |
   `r if(knitr:::is_latex_output()) paste(readLines("00-abstract.Rmd"), collapse = ' ')`
-acknowledgements: >
- `r if(knitr:::is_latex_output()) paste(readLines("00-acknowledgements.Rmd"), collapse = ' ')`
-declaration: >
+acknowledgements: |
+  `r if(knitr:::is_latex_output()) paste(readLines("00-acknowledgements.Rmd"), collapse = ' ')`
+declaration: |
   `r if(knitr:::is_latex_output()) paste(readLines("00-declaration.Rmd"), collapse = ' ')`
-contribution: >
+contribution: |
   `r if(knitr:::is_latex_output()) paste(readLines("00-contribution.Rmd"), collapse = ' ')`
-acronyms: >
+acronyms: |
   `r if(knitr:::is_latex_output()) paste(readLines("00-acronyms.Rmd"), collapse = ' ')`
 bibliography: bib/thesis.bib
 #Download your specific bibliography database file and refer to it in the line above.
@@ -50,6 +50,12 @@ header-includes:
   - \usepackage{threeparttablex}
   - \usepackage[normalem]{ulem}
   - \usepackage{makecell}
+  
+description: "Bacillus Calmette–Guérin (BCG) remains the only licensed vaccine against Tuberculosis (TB). In 2005, England changed from universal vaccination of school-age children to targeted vaccination of high-risk neonates. Little work has been done to assess the impact of this policy change. This thesis evaluates the impact of this change."
+url: https\://samabbott.co.uk/thesis
+github-repo: seabbs/thesis/
+cover-image: img/logo.png
+favicon: img/logo.png
 ---
 
 

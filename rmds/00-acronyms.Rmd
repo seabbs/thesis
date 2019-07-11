@@ -6,12 +6,18 @@
 
 \textbf{ETS} Enhanced Tuberculosis Surveillance System \par
 
+\textbf{HIV} Human Immunodeficiency Viruse \par
+
 \textbf{LFS} - Labour Force Survey \par
 
-\textbf{MRSA} - Methicillin-resistant Staphylococcus aureus \par
+\textbf{MRSA} - Methicillin-resistant *Staphylococcus aureus* \par
 
 \textbf{ONS} - Office for National Statistics \par
 
 \textbf{PHE} - Public Health England \par
 
 \textbf{TB} – Tuberculosis \par
+
+\textbf{TST} - Tuberculin Skin Testing \par
+
+\textbf{WHO} - World Health Organization \par
