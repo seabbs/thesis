@@ -1,7 +1,8 @@
 book_filename: "thesis"
 repo: https://github.com/seabbs/thesis/
 chapter_name: "Chapter "
-rmd_files: ["index.Rmd", ##01 is the introduction
+rmd_files: ["index.Rmd", 
+            "01-introduction.Rmd",
             "02-background.Rmd",
             "03-getTBinR.Rmd",
             "04-tb-epi-england.Rmd",

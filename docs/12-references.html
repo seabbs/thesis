@@ -1,0 +1,860 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 12 References | Modelling BCG vaccination in the UK</title>
+  <meta name="description" content="Bacillus Calmette–Guérin (BCG) remains the only licensed vaccine against Tuberculosis (TB). In 2005, England changed from universal vaccination of school-age children to targeted vaccination of high-risk neonates. Little work has been done to assess the impact of this policy change. This thesis evaluates the impact of this change." />
+  <meta name="generator" content="bookdown  and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 12 References | Modelling BCG vaccination in the UK" />
+  <meta property="og:type" content="book" />
+  <meta property="og:url" content="https://samabbott.co.uk/thesis" />
+  <meta property="og:image" content="https://samabbott.co.uk/thesisimg/logo.png" />
+  <meta property="og:description" content="Bacillus Calmette–Guérin (BCG) remains the only licensed vaccine against Tuberculosis (TB). In 2005, England changed from universal vaccination of school-age children to targeted vaccination of high-risk neonates. Little work has been done to assess the impact of this policy change. This thesis evaluates the impact of this change." />
+  <meta name="github-repo" content="seabbs/thesis" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 12 References | Modelling BCG vaccination in the UK" />
+  
+  <meta name="twitter:description" content="Bacillus Calmette–Guérin (BCG) remains the only licensed vaccine against Tuberculosis (TB). In 2005, England changed from universal vaccination of school-age children to targeted vaccination of high-risk neonates. Little work has been done to assess the impact of this policy change. This thesis evaluates the impact of this change." />
+  <meta name="twitter:image" content="https://samabbott.co.uk/thesisimg/logo.png" />
+
+<meta name="author" content="Samuel Abbott" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  <link rel="shortcut icon" href="img/logo.png" type="image/x-icon" />
+<link rel="prev" href="11-discussion-chapt.html">
+
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./"></a></li>
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a><ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#abstract"><i class="fa fa-check"></i>Abstract</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#acknowledgements"><i class="fa fa-check"></i>Acknowledgements</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="1-introduction.html"><a href="1-introduction.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
+<li class="chapter" data-level="1.1" data-path="1-introduction.html"><a href="1-introduction.html#theoretical-framework"><i class="fa fa-check"></i><b>1.1</b> Theoretical framework</a><ul>
+<li class="chapter" data-level="1.1.1" data-path="1-introduction.html"><a href="1-introduction.html#data-exploration-and-visualisation"><i class="fa fa-check"></i><b>1.1.1</b> Data exploration and visualisation</a></li>
+<li class="chapter" data-level="1.1.2" data-path="1-introduction.html"><a href="1-introduction.html#statistical-modelling"><i class="fa fa-check"></i><b>1.1.2</b> Statistical modelling</a></li>
+<li class="chapter" data-level="1.1.3" data-path="1-introduction.html"><a href="1-introduction.html#mechanistic-modelling"><i class="fa fa-check"></i><b>1.1.3</b> Mechanistic modelling</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="1-introduction.html"><a href="1-introduction.html#aims-and-objectives-of-the-thesis"><i class="fa fa-check"></i><b>1.2</b> Aims and objectives of the thesis</a><ul>
+<li class="chapter" data-level="1.2.1" data-path="1-introduction.html"><a href="1-introduction.html#aim"><i class="fa fa-check"></i><b>1.2.1</b> Aim</a></li>
+<li class="chapter" data-level="1.2.2" data-path="1-introduction.html"><a href="1-introduction.html#objectives"><i class="fa fa-check"></i><b>1.2.2</b> Objectives</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="1-introduction.html"><a href="1-introduction.html#chapter-overview"><i class="fa fa-check"></i><b>1.3</b> Chapter overview</a></li>
+<li class="chapter" data-level="1.4" data-path="1-introduction.html"><a href="1-introduction.html#thesis-output"><i class="fa fa-check"></i><b>1.4</b> Thesis output</a><ul>
+<li class="chapter" data-level="1.4.1" data-path="1-introduction.html"><a href="1-introduction.html#peer-reviewed-papers"><i class="fa fa-check"></i><b>1.4.1</b> Peer reviewed papers</a></li>
+<li class="chapter" data-level="1.4.2" data-path="1-introduction.html"><a href="1-introduction.html#papers-under-review"><i class="fa fa-check"></i><b>1.4.2</b> Papers under review</a></li>
+<li class="chapter" data-level="1.4.3" data-path="1-introduction.html"><a href="1-introduction.html#software"><i class="fa fa-check"></i><b>1.4.3</b> Software</a></li>
+<li class="chapter" data-level="1.4.4" data-path="1-introduction.html"><a href="1-introduction.html#talks"><i class="fa fa-check"></i><b>1.4.4</b> Talks</a></li>
+</ul></li>
+<li class="chapter" data-level="1.5" data-path="1-introduction.html"><a href="1-introduction.html#summary"><i class="fa fa-check"></i><b>1.5</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="2-background.html"><a href="2-background.html"><i class="fa fa-check"></i><b>2</b> Background</a><ul>
+<li class="chapter" data-level="2.1" data-path="2-background.html"><a href="2-background.html#tuberculosis"><i class="fa fa-check"></i><b>2.1</b> Tuberculosis</a><ul>
+<li class="chapter" data-level="2.1.1" data-path="2-background.html"><a href="2-background.html#natural-history-of-tb"><i class="fa fa-check"></i><b>2.1.1</b> Natural history of TB</a></li>
+<li class="chapter" data-level="2.1.2" data-path="2-background.html"><a href="2-background.html#known-risk-factors"><i class="fa fa-check"></i><b>2.1.2</b> Known risk factors</a></li>
+<li class="chapter" data-level="2.1.3" data-path="2-background.html"><a href="2-background.html#treatments"><i class="fa fa-check"></i><b>2.1.3</b> Treatments</a></li>
+<li class="chapter" data-level="2.1.4" data-path="2-background.html"><a href="2-background.html#global-tb"><i class="fa fa-check"></i><b>2.1.4</b> Global TB</a></li>
+<li class="chapter" data-level="2.1.5" data-path="2-background.html"><a href="2-background.html#tb-in-the-england-and-wales"><i class="fa fa-check"></i><b>2.1.5</b> TB in the England and Wales</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="2-background.html"><a href="2-background.html#the-bacillus-calmetteguerin-vaccine"><i class="fa fa-check"></i><b>2.2</b> The Bacillus Calmette–Guérin Vaccine</a><ul>
+<li class="chapter" data-level="2.2.1" data-path="2-background.html"><a href="2-background.html#vaccine-action"><i class="fa fa-check"></i><b>2.2.1</b> Vaccine action</a></li>
+<li class="chapter" data-level="2.2.2" data-path="2-background.html"><a href="2-background.html#vaccine-effectiveness"><i class="fa fa-check"></i><b>2.2.2</b> Vaccine effectiveness</a></li>
+<li class="chapter" data-level="2.2.3" data-path="2-background.html"><a href="2-background.html#duration-of-protection"><i class="fa fa-check"></i><b>2.2.3</b> Duration of protection</a></li>
+<li class="chapter" data-level="2.2.4" data-path="2-background.html"><a href="2-background.html#additional-effects-of-bcg-vaccination"><i class="fa fa-check"></i><b>2.2.4</b> Additional effects of BCG vaccination</a></li>
+<li class="chapter" data-level="2.2.5" data-path="2-background.html"><a href="2-background.html#usage-globally"><i class="fa fa-check"></i><b>2.2.5</b> Usage Globally</a></li>
+<li class="chapter" data-level="2.2.6" data-path="2-background.html"><a href="2-background.html#usage-in-england"><i class="fa fa-check"></i><b>2.2.6</b> Usage in England</a></li>
+<li class="chapter" data-level="2.2.7" data-path="2-background.html"><a href="2-background.html#replacement-vaccines"><i class="fa fa-check"></i><b>2.2.7</b> Replacement vaccines</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="2-background.html"><a href="2-background.html#summary-1"><i class="fa fa-check"></i><b>2.3</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="3-getTBinR.html"><a href="3-getTBinR.html"><i class="fa fa-check"></i><b>3</b> getTBinR: an R package for accessing and summarising the World Health Organization Tuberculosis data</a><ul>
+<li class="chapter" data-level="3.1" data-path="3-getTBinR.html"><a href="3-getTBinR.html#introduction-1"><i class="fa fa-check"></i><b>3.1</b> Introduction</a></li>
+<li class="chapter" data-level="3.2" data-path="3-getTBinR.html"><a href="3-getTBinR.html#installation"><i class="fa fa-check"></i><b>3.2</b> Installation</a></li>
+<li class="chapter" data-level="3.3" data-path="3-getTBinR.html"><a href="3-getTBinR.html#data-extraction-and-variable-look-up"><i class="fa fa-check"></i><b>3.3</b> Data extraction and variable look-up</a></li>
+<li class="chapter" data-level="3.4" data-path="3-getTBinR.html"><a href="3-getTBinR.html#getbinr-vis"><i class="fa fa-check"></i><b>3.4</b> Data visualisation</a><ul>
+<li class="chapter" data-level="3.4.1" data-path="3-getTBinR.html"><a href="3-getTBinR.html#mapping-tb-burden-metrics"><i class="fa fa-check"></i><b>3.4.1</b> Mapping TB burden metrics</a></li>
+<li class="chapter" data-level="3.4.2" data-path="3-getTBinR.html"><a href="3-getTBinR.html#plotting-an-overview-for-a-given-tb-metric"><i class="fa fa-check"></i><b>3.4.2</b> Plotting an overview for a given TB metric</a></li>
+<li class="chapter" data-level="3.4.3" data-path="3-getTBinR.html"><a href="3-getTBinR.html#gettbinr-plot-sum"><i class="fa fa-check"></i><b>3.4.3</b> Plotting a comparison between country, regional and global metric values</a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="3-getTBinR.html"><a href="3-getTBinR.html#plotting-country-level-trends-for-a-given-metric"><i class="fa fa-check"></i><b>3.5</b> Plotting country level trends for a given metric</a></li>
+<li class="chapter" data-level="3.6" data-path="3-getTBinR.html"><a href="3-getTBinR.html#gettbinr-sum"><i class="fa fa-check"></i><b>3.6</b> Data summarisation</a></li>
+<li class="chapter" data-level="3.7" data-path="3-getTBinR.html"><a href="3-getTBinR.html#dashboard"><i class="fa fa-check"></i><b>3.7</b> Dashboard</a></li>
+<li class="chapter" data-level="3.8" data-path="3-getTBinR.html"><a href="3-getTBinR.html#country-report"><i class="fa fa-check"></i><b>3.8</b> Country report</a></li>
+<li class="chapter" data-level="3.9" data-path="3-getTBinR.html"><a href="3-getTBinR.html#package-infrastructure"><i class="fa fa-check"></i><b>3.9</b> Package infrastructure</a></li>
+<li class="chapter" data-level="3.10" data-path="3-getTBinR.html"><a href="3-getTBinR.html#discussion"><i class="fa fa-check"></i><b>3.10</b> Discussion</a></li>
+<li class="chapter" data-level="3.11" data-path="3-getTBinR.html"><a href="3-getTBinR.html#summary-2"><i class="fa fa-check"></i><b>3.11</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="4-data.html"><a href="4-data.html"><i class="fa fa-check"></i><b>4</b> The epidemiology of tuberculosis, and the role of BCG vaccination, in England</a><ul>
+<li class="chapter" data-level="4.1" data-path="4-data.html"><a href="4-data.html#introduction-2"><i class="fa fa-check"></i><b>4.1</b> Introduction</a></li>
+<li class="chapter" data-level="4.2" data-path="4-data.html"><a href="4-data.html#data-sources"><i class="fa fa-check"></i><b>4.2</b> Data sources</a><ul>
+<li class="chapter" data-level="4.2.1" data-path="4-data.html"><a href="4-data.html#ets-deep-dive"><i class="fa fa-check"></i><b>4.2.1</b> Enhanced tuberculosis surveillance system</a></li>
+<li class="chapter" data-level="4.2.2" data-path="4-data.html"><a href="4-data.html#demographic-data"><i class="fa fa-check"></i><b>4.2.2</b> Demographic data</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="4-data.html"><a href="4-data.html#tb-notifications-1"><i class="fa fa-check"></i><b>4.3</b> TB notifications</a><ul>
+<li class="chapter" data-level="4.3.1" data-path="4-data.html"><a href="4-data.html#overview"><i class="fa fa-check"></i><b>4.3.1</b> Overview</a></li>
+<li class="chapter" data-level="4.3.2" data-path="4-data.html"><a href="4-data.html#age-dist-nots"><i class="fa fa-check"></i><b>4.3.2</b> Age distribution of notifications</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="4-data.html"><a href="4-data.html#pop-dist-england"><i class="fa fa-check"></i><b>4.4</b> Population Demographics in England</a></li>
+<li class="chapter" data-level="4.5" data-path="4-data.html"><a href="4-data.html#tb-inc-rates-epi"><i class="fa fa-check"></i><b>4.5</b> TB incidence rates</a><ul>
+<li class="chapter" data-level="4.5.1" data-path="4-data.html"><a href="4-data.html#motivation"><i class="fa fa-check"></i><b>4.5.1</b> Motivation</a></li>
+<li class="chapter" data-level="4.5.2" data-path="4-data.html"><a href="4-data.html#method-1"><i class="fa fa-check"></i><b>4.5.2</b> Method</a></li>
+<li class="chapter" data-level="4.5.3" data-path="4-data.html"><a href="4-data.html#overall-trends-in-tb-incidence-rates"><i class="fa fa-check"></i><b>4.5.3</b> Overall trends in TB incidence rates</a></li>
+<li class="chapter" data-level="4.5.4" data-path="4-data.html"><a href="4-data.html#age-stratified-incidence-rates"><i class="fa fa-check"></i><b>4.5.4</b> Age stratified incidence rates</a></li>
+<li class="chapter" data-level="4.5.5" data-path="4-data.html"><a href="4-data.html#incidence-rates-in-children-as-a-proxy-for-tb-transmission"><i class="fa fa-check"></i><b>4.5.5</b> Incidence rates in children as a proxy for TB transmission</a></li>
+</ul></li>
+<li class="chapter" data-level="4.6" data-path="4-data.html"><a href="4-data.html#tb-outcomes"><i class="fa fa-check"></i><b>4.6</b> TB outcomes</a><ul>
+<li class="chapter" data-level="4.6.1" data-path="4-data.html"><a href="4-data.html#motivation-1"><i class="fa fa-check"></i><b>4.6.1</b> Motivation</a></li>
+<li class="chapter" data-level="4.6.2" data-path="4-data.html"><a href="4-data.html#method-2"><i class="fa fa-check"></i><b>4.6.2</b> Method</a></li>
+<li class="chapter" data-level="4.6.3" data-path="4-data.html"><a href="4-data.html#all-cause-mortality"><i class="fa fa-check"></i><b>4.6.3</b> All-cause mortality</a></li>
+<li class="chapter" data-level="4.6.4" data-path="4-data.html"><a href="4-data.html#tb-related-mortality"><i class="fa fa-check"></i><b>4.6.4</b> TB related mortality</a></li>
+<li class="chapter" data-level="4.6.5" data-path="4-data.html"><a href="4-data.html#successful-treatment"><i class="fa fa-check"></i><b>4.6.5</b> Successful treatment</a></li>
+<li class="chapter" data-level="4.6.6" data-path="4-data.html"><a href="4-data.html#lost-to-follow-up"><i class="fa fa-check"></i><b>4.6.6</b> Lost to follow up</a></li>
+</ul></li>
+<li class="chapter" data-level="4.7" data-path="4-data.html"><a href="4-data.html#discussion-1"><i class="fa fa-check"></i><b>4.7</b> Discussion</a></li>
+<li class="chapter" data-level="4.8" data-path="4-data.html"><a href="4-data.html#summary-3"><i class="fa fa-check"></i><b>4.8</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="5-sutherland.html"><a href="5-sutherland.html"><i class="fa fa-check"></i><b>5</b> Reassessing the evidence for universal school-age Bacillus Calmette Guerin (BCG) vaccination in England and Wales</a><ul>
+<li class="chapter" data-level="5.1" data-path="5-sutherland.html"><a href="5-sutherland.html#introduction-3"><i class="fa fa-check"></i><b>5.1</b> Introduction</a></li>
+<li class="chapter" data-level="5.2" data-path="5-sutherland.html"><a href="5-sutherland.html#background-3"><i class="fa fa-check"></i><b>5.2</b> Background</a></li>
+<li class="chapter" data-level="5.3" data-path="5-sutherland.html"><a href="5-sutherland.html#methods"><i class="fa fa-check"></i><b>5.3</b> Methods</a><ul>
+<li class="chapter" data-level="5.3.1" data-path="5-sutherland.html"><a href="5-sutherland.html#modelling-the-impact-of-ending-the-bcg-schools-scheme"><i class="fa fa-check"></i><b>5.3.1</b> Modelling the impact of ending the BCG schools’ scheme</a></li>
+<li class="chapter" data-level="5.3.2" data-path="5-sutherland.html"><a href="5-sutherland.html#updating-model-parameter-estimates"><i class="fa fa-check"></i><b>5.3.2</b> Updating model parameter estimates</a></li>
+<li class="chapter" data-level="5.3.3" data-path="5-sutherland.html"><a href="5-sutherland.html#statistical-analysis"><i class="fa fa-check"></i><b>5.3.3</b> Statistical analysis</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="5-sutherland.html"><a href="5-sutherland.html#results"><i class="fa fa-check"></i><b>5.4</b> Results</a><ul>
+<li class="chapter" data-level="5.4.1" data-path="5-sutherland.html"><a href="5-sutherland.html#model-validation"><i class="fa fa-check"></i><b>5.4.1</b> Model validation</a></li>
+<li class="chapter" data-level="5.4.2" data-path="5-sutherland.html"><a href="5-sutherland.html#annual-change-in-tb-incidence-rates"><i class="fa fa-check"></i><b>5.4.2</b> Annual change in TB incidence rates</a></li>
+</ul></li>
+<li class="chapter" data-level="5.5" data-path="5-sutherland.html"><a href="5-sutherland.html#vaccines-required-to-prevent-a-single-notification"><i class="fa fa-check"></i><b>5.5</b> Vaccines required to prevent a single notification</a><ul>
+<li class="chapter" data-level="5.5.1" data-path="5-sutherland.html"><a href="5-sutherland.html#average-annual-additional-cases-from-ending-the-bcg-schools-scheme-at-various-dates"><i class="fa fa-check"></i><b>5.5.1</b> Average annual additional cases from ending the BCG schools’ scheme at various dates</a></li>
+</ul></li>
+<li class="chapter" data-level="5.6" data-path="5-sutherland.html"><a href="5-sutherland.html#discussion-2"><i class="fa fa-check"></i><b>5.6</b> Discussion</a></li>
+<li class="chapter" data-level="5.7" data-path="5-sutherland.html"><a href="5-sutherland.html#summary-4"><i class="fa fa-check"></i><b>5.7</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="6-beneficial-bcg-out.html"><a href="6-beneficial-bcg-out.html"><i class="fa fa-check"></i><b>6</b> Exploring the effects of BCG vaccination in patients diagnosed with tuberculosis: observational study using the Enhanced Tuberculosis Surveillance system</a><ul>
+<li class="chapter" data-level="6.1" data-path="6-beneficial-bcg-out.html"><a href="6-beneficial-bcg-out.html#introduction-4"><i class="fa fa-check"></i><b>6.1</b> Introduction</a></li>
+<li class="chapter" data-level="6.2" data-path="6-beneficial-bcg-out.html"><a href="6-beneficial-bcg-out.html#background-4"><i class="fa fa-check"></i><b>6.2</b> Background</a></li>
+<li class="chapter" data-level="6.3" data-path="6-beneficial-bcg-out.html"><a href="6-beneficial-bcg-out.html#method-3"><i class="fa fa-check"></i><b>6.3</b> Method</a><ul>
+<li class="chapter" data-level="6.3.1" data-path="6-beneficial-bcg-out.html"><a href="6-beneficial-bcg-out.html#enhanced-tb-surveillance-ets-system"><i class="fa fa-check"></i><b>6.3.1</b> Enhanced TB Surveillance (ETS) system</a></li>
+<li class="chapter" data-level="6.3.2" data-path="6-beneficial-bcg-out.html"><a href="6-beneficial-bcg-out.html#exposure-variables-relating-to-bcg"><i class="fa fa-check"></i><b>6.3.2</b> Exposure variables relating to BCG</a></li>
+<li class="chapter" data-level="6.3.3" data-path="6-beneficial-bcg-out.html"><a href="6-beneficial-bcg-out.html#statistical-analysis-1"><i class="fa fa-check"></i><b>6.3.3</b> Statistical Analysis</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="6-beneficial-bcg-out.html"><a href="6-beneficial-bcg-out.html#results-1"><i class="fa fa-check"></i><b>6.4</b> Results</a><ul>
+<li class="chapter" data-level="6.4.1" data-path="6-beneficial-bcg-out.html"><a href="6-beneficial-bcg-out.html#description-of-the-data"><i class="fa fa-check"></i><b>6.4.1</b> Description of the data</a></li>
+<li class="chapter" data-level="6.4.2" data-path="6-beneficial-bcg-out.html"><a href="6-beneficial-bcg-out.html#all-cause-mortality-1"><i class="fa fa-check"></i><b>6.4.2</b> All-cause mortality</a></li>
+<li class="chapter" data-level="6.4.3" data-path="6-beneficial-bcg-out.html"><a href="6-beneficial-bcg-out.html#deaths-due-to-tb-in-those-who-died"><i class="fa fa-check"></i><b>6.4.3</b> Deaths due to TB (in those who died)</a></li>
+<li class="chapter" data-level="6.4.4" data-path="6-beneficial-bcg-out.html"><a href="6-beneficial-bcg-out.html#recurrent-tb"><i class="fa fa-check"></i><b>6.4.4</b> Recurrent TB</a></li>
+<li class="chapter" data-level="6.4.5" data-path="6-beneficial-bcg-out.html"><a href="6-beneficial-bcg-out.html#other-outcomes"><i class="fa fa-check"></i><b>6.4.5</b> Other Outcomes</a></li>
+<li class="chapter" data-level="6.4.6" data-path="6-beneficial-bcg-out.html"><a href="6-beneficial-bcg-out.html#sensitivity-analysis-of-the-missing-data-using-multiple-imputation"><i class="fa fa-check"></i><b>6.4.6</b> Sensitivity analysis of the missing data using multiple imputation</a></li>
+<li class="chapter" data-level="6.4.7" data-path="6-beneficial-bcg-out.html"><a href="6-beneficial-bcg-out.html#sensitivity-analysis"><i class="fa fa-check"></i><b>6.4.7</b> Sensitivity analysis</a></li>
+</ul></li>
+<li class="chapter" data-level="6.5" data-path="6-beneficial-bcg-out.html"><a href="6-beneficial-bcg-out.html#discussion-3"><i class="fa fa-check"></i><b>6.5</b> Discussion</a></li>
+<li class="chapter" data-level="6.6" data-path="6-beneficial-bcg-out.html"><a href="6-beneficial-bcg-out.html#summary-5"><i class="fa fa-check"></i><b>6.6</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="7-direct-eff.html"><a href="7-direct-eff.html"><i class="fa fa-check"></i><b>7</b> Estimating the effect of the 2005 change in BCG policy in England: A retrospective cohort study</a><ul>
+<li class="chapter" data-level="7.1" data-path="7-direct-eff.html"><a href="7-direct-eff.html#introduction-5"><i class="fa fa-check"></i><b>7.1</b> Introduction</a></li>
+<li class="chapter" data-level="7.2" data-path="7-direct-eff.html"><a href="7-direct-eff.html#background-5"><i class="fa fa-check"></i><b>7.2</b> Background</a></li>
+<li class="chapter" data-level="7.3" data-path="7-direct-eff.html"><a href="7-direct-eff.html#methods-1"><i class="fa fa-check"></i><b>7.3</b> Methods</a><ul>
+<li class="chapter" data-level="7.3.1" data-path="7-direct-eff.html"><a href="7-direct-eff.html#data-source"><i class="fa fa-check"></i><b>7.3.1</b> Data source</a></li>
+<li class="chapter" data-level="7.3.2" data-path="7-direct-eff.html"><a href="7-direct-eff.html#constructing-retrospective-cohorts"><i class="fa fa-check"></i><b>7.3.2</b> Constructing Retrospective cohorts</a></li>
+</ul></li>
+<li class="chapter" data-level="7.4" data-path="7-direct-eff.html"><a href="7-direct-eff.html#statistical-methods-overview"><i class="fa fa-check"></i><b>7.4</b> Statistical methods overview</a><ul>
+<li class="chapter" data-level="7.4.1" data-path="7-direct-eff.html"><a href="7-direct-eff.html#implementation-overview"><i class="fa fa-check"></i><b>7.4.1</b> Implementation overview</a></li>
+<li class="chapter" data-level="7.4.2" data-path="7-direct-eff.html"><a href="7-direct-eff.html#imp-uk-birth-status"><i class="fa fa-check"></i><b>7.4.2</b> Imputation of UK birth status</a></li>
+<li class="chapter" data-level="7.4.3" data-path="7-direct-eff.html"><a href="7-direct-eff.html#prior-choice"><i class="fa fa-check"></i><b>7.4.3</b> Prior choice</a></li>
+<li class="chapter" data-level="7.4.4" data-path="7-direct-eff.html"><a href="7-direct-eff.html#magnitude-estimation"><i class="fa fa-check"></i><b>7.4.4</b> Estimating the magnitude of the estimated impact of the change in BCG policy</a></li>
+</ul></li>
+<li class="chapter" data-level="7.5" data-path="7-direct-eff.html"><a href="7-direct-eff.html#results-2"><i class="fa fa-check"></i><b>7.5</b> Results</a><ul>
+<li class="chapter" data-level="7.5.1" data-path="7-direct-eff.html"><a href="7-direct-eff.html#descriptive-analysis"><i class="fa fa-check"></i><b>7.5.1</b> Descriptive analysis</a></li>
+<li class="chapter" data-level="7.5.2" data-path="7-direct-eff.html"><a href="7-direct-eff.html#adjusted-estimates-of-the-effects-of-the-change-in-policy-on-school-age-children"><i class="fa fa-check"></i><b>7.5.2</b> Adjusted estimates of the effects of the change in policy on school-age children</a></li>
+<li class="chapter" data-level="7.5.3" data-path="7-direct-eff.html"><a href="7-direct-eff.html#adjusted-estimates-of-the-effect-of-the-change-in-policy-in-those-relevant-to-the-targeted-neonatal-programme"><i class="fa fa-check"></i><b>7.5.3</b> Adjusted estimates of the effect of the change in policy in those relevant to the targeted neonatal programme</a></li>
+<li class="chapter" data-level="7.5.4" data-path="7-direct-eff.html"><a href="7-direct-eff.html#magnitude-of-the-estimated-impact-of-the-change-in-bcg-policy"><i class="fa fa-check"></i><b>7.5.4</b> Magnitude of the estimated impact of the change in BCG policy</a></li>
+</ul></li>
+<li class="chapter" data-level="7.6" data-path="7-direct-eff.html"><a href="7-direct-eff.html#discussion-4"><i class="fa fa-check"></i><b>7.6</b> Discussion</a></li>
+<li class="chapter" data-level="7.7" data-path="7-direct-eff.html"><a href="7-direct-eff.html#summary-6"><i class="fa fa-check"></i><b>7.7</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="8-model-development.html"><a href="8-model-development.html"><i class="fa fa-check"></i><b>8</b> Developing a dynamic transmission model of Tuberculosis</a><ul>
+<li class="chapter" data-level="8.1" data-path="8-model-development.html"><a href="8-model-development.html#introduction-6"><i class="fa fa-check"></i><b>8.1</b> Introduction</a></li>
+<li class="chapter" data-level="8.2" data-path="8-model-development.html"><a href="8-model-development.html#model-just"><i class="fa fa-check"></i><b>8.2</b> Choice of model structure</a></li>
+<li class="chapter" data-level="8.3" data-path="8-model-development.html"><a href="8-model-development.html#tb-disease"><i class="fa fa-check"></i><b>8.3</b> TB disease</a><ul>
+<li class="chapter" data-level="8.3.1" data-path="8-model-development.html"><a href="8-model-development.html#bcg-vaccination"><i class="fa fa-check"></i><b>8.3.1</b> BCG vaccination</a></li>
+</ul></li>
+<li class="chapter" data-level="8.4" data-path="8-model-development.html"><a href="8-model-development.html#a-dynamic-model-of-tb-transmission"><i class="fa fa-check"></i><b>8.4</b> A dynamic model of TB transmission</a><ul>
+<li class="chapter" data-level="8.4.1" data-path="8-model-development.html"><a href="8-model-development.html#model-outline"><i class="fa fa-check"></i><b>8.4.1</b> Model outline</a></li>
+<li class="chapter" data-level="8.4.2" data-path="8-model-development.html"><a href="8-model-development.html#model-equations"><i class="fa fa-check"></i><b>8.4.2</b> Model equations</a></li>
+<li class="chapter" data-level="8.4.3" data-path="8-model-development.html"><a href="8-model-development.html#force-of-infection"><i class="fa fa-check"></i><b>8.4.3</b> Force of infection</a></li>
+</ul></li>
+<li class="chapter" data-level="8.5" data-path="8-model-development.html"><a href="8-model-development.html#parameterisation-and-data-synthesis"><i class="fa fa-check"></i><b>8.5</b> Parameterisation and data synthesis</a><ul>
+<li class="chapter" data-level="8.5.1" data-path="8-model-development.html"><a href="8-model-development.html#data-sources-1"><i class="fa fa-check"></i><b>8.5.1</b> Data sources</a></li>
+<li class="chapter" data-level="8.5.2" data-path="8-model-development.html"><a href="8-model-development.html#model-parameters"><i class="fa fa-check"></i><b>8.5.2</b> Model Parameters</a></li>
+</ul></li>
+<li class="chapter" data-level="8.6" data-path="8-model-development.html"><a href="8-model-development.html#initialisation"><i class="fa fa-check"></i><b>8.6</b> Initialisation</a><ul>
+<li class="chapter" data-level="8.6.1" data-path="8-model-development.html"><a href="8-model-development.html#starting-simulation-date-initial-population-and-changes-over-time."><i class="fa fa-check"></i><b>8.6.1</b> Starting simulation date, initial population and changes over time.</a></li>
+<li class="chapter" data-level="8.6.2" data-path="8-model-development.html"><a href="8-model-development.html#initial-disease-distribution"><i class="fa fa-check"></i><b>8.6.2</b> Initial disease distribution</a></li>
+</ul></li>
+<li class="chapter" data-level="8.7" data-path="8-model-development.html"><a href="8-model-development.html#discussion-5"><i class="fa fa-check"></i><b>8.7</b> Discussion</a></li>
+<li class="chapter" data-level="8.8" data-path="8-model-development.html"><a href="8-model-development.html#summary-7"><i class="fa fa-check"></i><b>8.8</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="9-model-fitting.html"><a href="9-model-fitting.html"><i class="fa fa-check"></i><b>9</b> Fitting a dynamic transmission model of Tuberculosis</a><ul>
+<li class="chapter" data-level="9.1" data-path="9-model-fitting.html"><a href="9-model-fitting.html#introduction-7"><i class="fa fa-check"></i><b>9.1</b> Introduction</a></li>
+<li class="chapter" data-level="9.2" data-path="9-model-fitting.html"><a href="9-model-fitting.html#formulation-as-a-state-space-models"><i class="fa fa-check"></i><b>9.2</b> Formulation as a state-space models</a><ul>
+<li class="chapter" data-level="9.2.1" data-path="9-model-fitting.html"><a href="9-model-fitting.html#observed-data"><i class="fa fa-check"></i><b>9.2.1</b> Observed data</a></li>
+<li class="chapter" data-level="9.2.2" data-path="9-model-fitting.html"><a href="9-model-fitting.html#observational-model"><i class="fa fa-check"></i><b>9.2.2</b> Observational model</a></li>
+<li class="chapter" data-level="9.2.3" data-path="9-model-fitting.html"><a href="9-model-fitting.html#fitted-parameters"><i class="fa fa-check"></i><b>9.2.3</b> Fitted parameters</a></li>
+</ul></li>
+<li class="chapter" data-level="9.3" data-path="9-model-fitting.html"><a href="9-model-fitting.html#fitting-pipeline"><i class="fa fa-check"></i><b>9.3</b> Model fitting pipeline</a><ul>
+<li class="chapter" data-level="9.3.1" data-path="9-model-fitting.html"><a href="9-model-fitting.html#introduction-8"><i class="fa fa-check"></i><b>9.3.1</b> Introduction</a></li>
+<li class="chapter" data-level="9.3.2" data-path="9-model-fitting.html"><a href="9-model-fitting.html#particle-filter"><i class="fa fa-check"></i><b>9.3.2</b> The particle filter</a></li>
+<li class="chapter" data-level="9.3.3" data-path="9-model-fitting.html"><a href="9-model-fitting.html#sequential-monte-carlo"><i class="fa fa-check"></i><b>9.3.3</b> Sequential Monte Carlo</a></li>
+<li class="chapter" data-level="9.3.4" data-path="9-model-fitting.html"><a href="9-model-fitting.html#calibration"><i class="fa fa-check"></i><b>9.3.4</b> Calibration</a></li>
+<li class="chapter" data-level="9.3.5" data-path="9-model-fitting.html"><a href="9-model-fitting.html#model-comparision"><i class="fa fa-check"></i><b>9.3.5</b> Model comparision</a></li>
+<li class="chapter" data-level="9.3.6" data-path="9-model-fitting.html"><a href="9-model-fitting.html#parameter-sensitivity"><i class="fa fa-check"></i><b>9.3.6</b> Parameter sensitivity</a></li>
+<li class="chapter" data-level="9.3.7" data-path="9-model-fitting.html"><a href="9-model-fitting.html#pipeline-overview"><i class="fa fa-check"></i><b>9.3.7</b> Pipeline overview</a></li>
+</ul></li>
+<li class="chapter" data-level="9.4" data-path="9-model-fitting.html"><a href="9-model-fitting.html#results-3"><i class="fa fa-check"></i><b>9.4</b> Results</a><ul>
+<li class="chapter" data-level="9.4.1" data-path="9-model-fitting.html"><a href="9-model-fitting.html#calibration-1"><i class="fa fa-check"></i><b>9.4.1</b> Calibration</a></li>
+<li class="chapter" data-level="9.4.2" data-path="9-model-fitting.html"><a href="9-model-fitting.html#model-comparision-1"><i class="fa fa-check"></i><b>9.4.2</b> Model comparision</a></li>
+<li class="chapter" data-level="9.4.3" data-path="9-model-fitting.html"><a href="9-model-fitting.html#model-fit-to-historic-tb-incidence-rates"><i class="fa fa-check"></i><b>9.4.3</b> Model fit to historic TB incidence rates</a></li>
+<li class="chapter" data-level="9.4.4" data-path="9-model-fitting.html"><a href="9-model-fitting.html#model-fit-to-tb-incidence-rates-from-the-ets"><i class="fa fa-check"></i><b>9.4.4</b> Model Fit to TB incidence rates from the ETS</a></li>
+<li class="chapter" data-level="9.4.5" data-path="9-model-fitting.html"><a href="9-model-fitting.html#model-fit-to-tb-age-distribution"><i class="fa fa-check"></i><b>9.4.5</b> Model fit to TB age distribution</a></li>
+<li class="chapter" data-level="9.4.6" data-path="9-model-fitting.html"><a href="9-model-fitting.html#posterior-parameter-distributions"><i class="fa fa-check"></i><b>9.4.6</b> Posterior parameter distributions</a></li>
+<li class="chapter" data-level="9.4.7" data-path="9-model-fitting.html"><a href="9-model-fitting.html#parameter-sensitivity-1"><i class="fa fa-check"></i><b>9.4.7</b> Parameter Sensitivity</a></li>
+</ul></li>
+<li class="chapter" data-level="9.5" data-path="9-model-fitting.html"><a href="9-model-fitting.html#discussion-6"><i class="fa fa-check"></i><b>9.5</b> Discussion</a></li>
+<li class="chapter" data-level="9.6" data-path="9-model-fitting.html"><a href="9-model-fitting.html#summary-8"><i class="fa fa-check"></i><b>9.6</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="10-model-results.html"><a href="10-model-results.html"><i class="fa fa-check"></i><b>10</b> Investigating the impact of the 2005 change in BCG vaccination policy using a fitted dynamic transmission model of TB</a><ul>
+<li class="chapter" data-level="10.1" data-path="10-model-results.html"><a href="10-model-results.html#introduction-9"><i class="fa fa-check"></i><b>10.1</b> Introduction</a></li>
+<li class="chapter" data-level="10.2" data-path="10-model-results.html"><a href="10-model-results.html#method-4"><i class="fa fa-check"></i><b>10.2</b> Method</a><ul>
+<li class="chapter" data-level="10.2.1" data-path="10-model-results.html"><a href="10-model-results.html#scenarios-considered"><i class="fa fa-check"></i><b>10.2.1</b> Scenarios considered</a></li>
+<li class="chapter" data-level="10.2.2" data-path="10-model-results.html"><a href="10-model-results.html#future-non-uk-born-cases-assumption"><i class="fa fa-check"></i><b>10.2.2</b> Future Non-UK born cases assumption</a></li>
+</ul></li>
+<li class="chapter" data-level="10.3" data-path="10-model-results.html"><a href="10-model-results.html#results-4"><i class="fa fa-check"></i><b>10.3</b> Results</a></li>
+<li class="chapter" data-level="10.4" data-path="10-model-results.html"><a href="10-model-results.html#impact-between-2005-and-2010"><i class="fa fa-check"></i><b>10.4</b> Impact between 2005 and 2010</a></li>
+<li class="chapter" data-level="10.5" data-path="10-model-results.html"><a href="10-model-results.html#non-uk-born-cases-decline-exponentially-over-time"><i class="fa fa-check"></i><b>10.5</b> Non-UK born cases decline exponentially over time</a></li>
+<li class="chapter" data-level="10.6" data-path="10-model-results.html"><a href="10-model-results.html#non-uk-born-cases-stay-at-todays-levels"><i class="fa fa-check"></i><b>10.6</b> Non-UK born cases stay at todays levels</a></li>
+<li class="chapter" data-level="10.7" data-path="10-model-results.html"><a href="10-model-results.html#discussion-7"><i class="fa fa-check"></i><b>10.7</b> Discussion</a></li>
+<li class="chapter" data-level="10.8" data-path="10-model-results.html"><a href="10-model-results.html#summary-9"><i class="fa fa-check"></i><b>10.8</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="11-discussion-chapt.html"><a href="11-discussion-chapt.html"><i class="fa fa-check"></i><b>11</b> Discussion</a><ul>
+<li class="chapter" data-level="11.0.1" data-path="11-discussion-chapt.html"><a href="11-discussion-chapt.html#principal-findings"><i class="fa fa-check"></i><b>11.0.1</b> Principal findings</a></li>
+<li class="chapter" data-level="11.1" data-path="11-discussion-chapt.html"><a href="11-discussion-chapt.html#strengths-and-limitations"><i class="fa fa-check"></i><b>11.1</b> Strengths and limitations</a></li>
+<li class="chapter" data-level="11.2" data-path="11-discussion-chapt.html"><a href="11-discussion-chapt.html#implications-for-policy-makers"><i class="fa fa-check"></i><b>11.2</b> Implications for policy makers</a></li>
+<li class="chapter" data-level="11.3" data-path="11-discussion-chapt.html"><a href="11-discussion-chapt.html#open-reproducible-research"><i class="fa fa-check"></i><b>11.3</b> Open reproducible research</a></li>
+<li class="chapter" data-level="11.4" data-path="11-discussion-chapt.html"><a href="11-discussion-chapt.html#public-engagement"><i class="fa fa-check"></i><b>11.4</b> Public engagement</a></li>
+<li class="chapter" data-level="11.5" data-path="11-discussion-chapt.html"><a href="11-discussion-chapt.html#future-research"><i class="fa fa-check"></i><b>11.5</b> Future research</a></li>
+<li class="chapter" data-level="11.6" data-path="11-discussion-chapt.html"><a href="11-discussion-chapt.html#conclusions"><i class="fa fa-check"></i><b>11.6</b> Conclusions</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="12-references.html"><a href="12-references.html"><i class="fa fa-check"></i><b>12</b> References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Modelling BCG vaccination in the UK</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="references" class="section level1">
+<h1><span class="header-section-number">Chapter 12</span> References</h1>
+<!--
+To remove the indentation of the first entry.
+-->
+<p></p>
+<!--
+To create a hanging indent and spacing between entries.  These three lines may need to be removed for styles that don't require the hanging indent.
+-->
+
+<!--
+This is just for testing with more citations for the bibliography at the end.  Add other entries into the list here if you'd like them to appear in the bibliography even if they weren't explicitly cited in the document.
+-->
+
+<div id="refs" class="references">
+<div>
+<p>1 Public Health England. Tuberculosis in England 2017 report ( presenting data to end of 2016 ) About Public Health England. 2017. </p>
+</div>
+<div>
+<p>2 The World Health Organization. BCG vaccine:WHO position paper. <em>Weekly epidemiological record</em> 2018;1–24.</p>
+</div>
+<div>
+<p>3 Roy a, Eisenhut M, Harris RJ <em>et al.</em> Effect of BCG vaccination against Mycobacterium tuberculosis infection in children: systematic review and meta-analysis. <em>BMJ (Clinical research ed)</em> 2014;<strong>349</strong>:g4643–3.</p>
+</div>
+<div>
+<p>4 Zwerling A, Behr MA, Verma A <em>et al.</em> The BCG world atlas: A database of global BCG vaccination policies and practices. <em>PLoS medicine</em> 2011;<strong>8</strong>:e1001012.</p>
+</div>
+<div>
+<p>5 McElreath, Richard. <em>Statistical Rethinking</em>. 1st ed. Chapman; Hall/CRC 2018. </p>
+</div>
+<div>
+<p>6 Anderson RM, May RM. Infectious Diseases of Humans: Dynamics and Control (Oxford Univ. <em>Press, Oxford</em> 1991.</p>
+</div>
+<div>
+<p>7 Keeling MJ, Rohani P. <em>Modeling Infectious Diseases in Humans and Animals</em>. Epidemiology Department, Ben-Gurion University of the Negev, Beer-Sheva, Israel. rbalicer@netvision.net.il: 2007. </p>
+</div>
+<div>
+<p>8 King A a, Nguyen D, Ionides EL. Statistical Inference for Partially Observed Markov Processes via the R Package pomp. <em>The American Statistician</em> 2015.</p>
+</div>
+<div>
+<p>9 Houben RMGJ, Dodd PJ. The Global Burden of Latent Tuberculosis Infection: A Re-estimation Using Mathematical Modelling. <em>PLoS medicine</em> 2016;<strong>13</strong>:e1002152–13.</p>
+</div>
+<div>
+<p>10 Gideon HP, Flynn JL. Latent tuberculosis: What the host &quot;sees&quot;? <em>Immunologic Research</em> 2011;<strong>50</strong>:202–12.</p>
+</div>
+<div>
+<p>11 Sepkowitz K a. How contagious is tuberculosis? <em>Clinical infectious diseases : an official publication of the Infectious Diseases Society of America</em> 1996;<strong>23</strong>:954–62.</p>
+</div>
+<div>
+<p>12 Rottenberg ME, Pawlowski A, Jansson M <em>et al.</em> Tuberculosis and HIV Co-Infection. <em>PLoS Pathogens</em> 2012;<strong>8</strong>:e1002464.</p>
+</div>
+<div>
+<p>13 Bhatti N, Law MR, Morris JK <em>et al.</em> Increasing incidence of tuberculosis in England and Wales: a study of the likely causes. <em>BMJ (Clinical research ed)</em> 1995;<strong>310</strong>:967–9.</p>
+</div>
+<div>
+<p>14 Narasimhan P, Wood J, Macintyre CR <em>et al.</em> Risk Factors for Tuberculosis. 2013;<strong>2013</strong>.</p>
+</div>
+<div>
+<p>15 Story A, Murad S, Roberts W <em>et al.</em> Tuberculosis in London: the importance of homelessness, problem drug use and prison. <em>Thorax</em> 2007;<strong>62</strong>:667–72.</p>
+</div>
+<div>
+<p>16 World Health Organization. Global Tuberculosis Report. 2016. </p>
+</div>
+<div>
+<p>17 World Health Organisation. Global Tuberculosis Report. 2018. </p>
+</div>
+<div>
+<p>18 PHE. Tuberculosis in England 2016 Report (presenting data to end of 2015). <em>Public Health England</em> 2016;<strong>Version 1.</strong>:173.</p>
+</div>
+<div>
+<p>19 Public Health England. Tuberculosis in England: 2018. 2019;1–218.</p>
+</div>
+<div>
+<p>20 Medicine C. History of BCG Vaccine. 2013;<strong>8</strong>:53–8.</p>
+</div>
+<div>
+<p>21 Rodrigues LC, Diwan VK, Wheeler JG. Protective effect of BCG against tuberculous meningitis and miliary tuberculosis: a meta-analysis. <em>International journal of epidemiology</em> 1993;<strong>22</strong>:1154–8.</p>
+</div>
+<div>
+<p>22 Colditz GA, Brewer TF, Berkey CS <em>et al.</em> Efficacy of BCG Vaccine in the Prevention of Tuberculosis. <em>JAMA</em> 1994;<strong>271</strong>:698.</p>
+</div>
+<div>
+<p>23 Mangtani P, Abubakar I, Ariti C <em>et al.</em> Protection by BCG Vaccine Against Tuberculosis: A Systematic Review of Randomized Controlled Trials. <em>Clinical infectious diseases : an official publication of the Infectious Diseases Society of America</em> 2014;<strong>58</strong>:470–80.</p>
+</div>
+<div>
+<p>24 Hart PDA, Sutherland IAN. BCG and vole bacillus vaccines in the prevention of tuberculosis in adolescence and early adult life. <em>The American Statistician</em> 1972;<strong>46</strong>:371–85.</p>
+</div>
+<div>
+<p>25 Zwerling A, Behr MA, Verma A <em>et al.</em> The BCG World Atlas: a database of global BCG vaccination policies and practices. <em>PLoS medicine</em> 2011;<strong>8</strong>:e1001012.</p>
+</div>
+<div>
+<p>26 Abubakar I, Pimpin L, Ariti C <em>et al.</em> Systematic review and meta-analysis of the current evidence on the duration of protection by bacillus Calmette-Guérin vaccination against tuberculosis. <em>Health technology assessment</em> 2013;<strong>17</strong>:1–372, v–vi.</p>
+</div>
+<div>
+<p>27 Mangtani P, Nguipdop-Djomo P, Keogh RH <em>et al.</em> Original article The duration of protection of school-aged BCG vaccination in England : a population -based case control study. <em>International journal of epidemiology</em> 2017;<strong>0</strong>:1–9.</p>
+</div>
+<div>
+<p>28 Fine P. Stopping routine vaccination for tuberculosis in schools. <em>BMJ (Clinical research ed)</em> 2005;<strong>331</strong>:647–8.</p>
+</div>
+<div>
+<p>29 Teo SSS, Shingadia DV. Does BCG have a role in tuberculosis control and prevention in the United Kingdom? <em>Archives of Disease in Childhood</em> 2006;<strong>91</strong>:529–31.</p>
+</div>
+<div>
+<p>30 Kleinnijenhuis J, Quintin J, Preijers F <em>et al.</em> Bacille Calmette-Guerin induces NOD2-dependent nonspecific protection from reinfection via epigenetic reprogramming of monocytes. <em>Proceedings of the National Academy of Sciences of the United States of America</em> 2012;<strong>109</strong>:17537–42.</p>
+</div>
+<div>
+<p>31 Garly ML, Martins CL, Balé C <em>et al.</em> BCG scar and positive tuberculin reaction associated with reduced child mortality in West Africa: A non-specific beneficial effect of BCG? <em>Vaccine</em> 2003;<strong>21</strong>:2782–90.</p>
+</div>
+<div>
+<p>32 Higgins JPT, Soares-weiser K, López-lópez JA <em>et al.</em> Association of BCG , DTP , and measles containing vaccines with childhood mortality : systematic review. <em>BMJ (Clinical research ed)</em> 2016;i5170.</p>
+</div>
+<div>
+<p>33 Rieckmann A, Villumsen M, Sørup S <em>et al.</em> Vaccinations against smallpox and tuberculosis are associated with better long-term survival: a Danish case-cohort study 19712010. <em>International journal of epidemiology</em> 2016;<strong>0</strong>:1–11.</p>
+</div>
+<div>
+<p>34 Jeremiah K, Praygod G, Faurholt-Jepsen D <em>et al.</em> BCG vaccination status may predict sputum conversion in patients with pulmonary tuberculosis: a new consideration for an old vaccine? <em>Thorax</em> 2010;<strong>65</strong>:1072–6.</p>
+</div>
+<div>
+<p>35 Zimmermann, Petra, Finn, Adam, Curtis, Nigel. Does BCG Vaccination Protect Against Nontuberculous Mycobacterial Infection? A Systematic Review and Meta-Analysis. <em>J Infect Dis</em> 2018;<strong>218</strong>:679–87.</p>
+</div>
+<div>
+<p>36 The World Health Organization. BCG Vaccine. <em>Weekly epidemiological record</em> 2004;<strong>79</strong>:27–48.</p>
+</div>
+<div>
+<p>37 World Health Organization. <em>Global Tuberculosis Report</em>. 2017. </p>
+</div>
+<div>
+<p>38 Mangtani P, Abubakar I, Ariti C <em>et al.</em> Protection by BCG vaccine against tuberculosis: A systematic review of randomized controlled trials. <em>Clinical Infectious Diseases</em> 2014;<strong>58</strong>:470–80.</p>
+</div>
+<div>
+<p>39 Sutherland I, Springett VH. The effects of the scheme for BCG vaccination of schoolchildren in England and Wales and the consequences of discontinuing the scheme at various dates. <em>Journal of epidemiology and community health</em> 1989;<strong>43</strong>:15–24.</p>
+</div>
+<div>
+<p>40 Schrager LK, Harris RC, Vekemans J. Research and development of new tuberculosis vaccines: a review. <em>F1000Research</em> 2018;<strong>7</strong>:1732–32.</p>
+</div>
+<div>
+<p>41 R Core Team. R: a language and environment for statistical computing. 2019.</p>
+</div>
+<div>
+<p>42 Abbott S. seabbs/getTBinR 0.5.7. 2019. </p>
+</div>
+<div>
+<p>43 Abbott S. GetTBinR: An r package for accessing and summarising the world health organisation tuberculosis data. <em>Journal of Open Source Software</em> 2019;<strong>4</strong>:1260. doi:<a href="https://doi.org/10.21105/joss.01260">10.21105/joss.01260</a></p>
+</div>
+<div>
+<p>44 French CE, Antoine D, Gelb D <em>et al.</em> Tuberculosis in non-UK-born persons, England and Wales, 2001-2003. <em>Int J Tuberc Lung Dis</em> 2007;<strong>11</strong>:577–84.</p>
+</div>
+<div>
+<p>45 Kruijshaar M, French C, Anderson C <em>et al.</em> Tuberculosis in the UK, Annual report on tuberculosis surveillance and control in the UK 2007. <em>Thorax</em> 2007;<strong>50</strong>:703–3.</p>
+</div>
+<div>
+<p>46 Public Health England. The Green Book. 2013;391–409.</p>
+</div>
+<div>
+<p>47 Pillaye J, Clarke A. An evaluation of completeness of tuberculosis notification in the United Kingdom. <em>BMC Public Health</em> 2003;<strong>3</strong>:31.</p>
+</div>
+<div>
+<p>48 PHE. Tuberculosis in England 2016 Report (presenting data to end of 2015). 2016. </p>
+</div>
+<div>
+<p>49 Groothuis-oudshoorn K. Journal of Statistical Software MICE : Multivariate Imputation by Chained.;<strong>VV</strong>.</p>
+</div>
+<div>
+<p>50 Sterne JA, Davey Smith G. Sifting the evidence-what’s wrong with significance tests? <em>Bmj</em> 2001;<strong>322</strong>:226–31.</p>
+</div>
+<div>
+<p>51 Benchimol EI, Smeeth L, Guttmann A <em>et al.</em> The REporting of studies Conducted using Observational Routinely-collected health Data (RECORD) Statement. <em>The American Statistician</em> 2016;<strong>115-116</strong>:1–22.</p>
+</div>
+<div>
+<p>52 Fewell Z, Davey Smith G, Sterne JAC. The impact of residual and unmeasured confounding in epidemiologic studies: A simulation study. <em>American Journal of Epidemiology</em> 2007;<strong>166</strong>:646–55.</p>
+</div>
+<div>
+<p>53 Wickham Rstudio H. Tidy Data. <em>JSS Journal of Statistical Software MMMMMM YYYY</em>;<strong>VV</strong>.</p>
+</div>
+<div>
+<p>54 R Core Team. R: A Language and Environment for Statistical Computing. Vienna, Austria: 2016. </p>
+</div>
+<div>
+<p>55 Storey A. Accuracy of official high-age population estimates , in England and Wales : an evaluation. 2016;1–67.</p>
+</div>
+<div>
+<p>56 NHS Trafford CCG Governing Body. Performance and Quality Report. 2015;1–47.</p>
+</div>
+<div>
+<p>57 Date W, Area G, Authority L <em>et al.</em> A comparison of the 2011 Census and the Labour Force Survey ( LFS ) labour market indicators. 2012;1–23.</p>
+</div>
+<div>
+<p>58 Kazuki Yoshida GJAMS with contributions from TNCHJMJSRTJRJR-CPSPS. epiR: Tools for the Analysis of Epidemiological Data. 2016. </p>
+</div>
+<div>
+<p>59 Pilger D, Nguipdop-Djomo P, Abubakar I <em>et al.</em> BCG vaccination in England since 2005: A survey of policy and practice. <em>BMJ Open</em> 2012;<strong>2</strong>:e001303.</p>
+</div>
+<div>
+<p>60 Joint Committee on Vaccination, panel IB. Minutes. 2002. </p>
+</div>
+<div>
+<p>61 Joint Committee on Vaccination, panel IB. Minutes. 2003. </p>
+</div>
+<div>
+<p>62 Sutherland I. Effectiveness of BCG vaccination in England and Wales in 1983. <em>Tubercle</em> 1987;<strong>68</strong>:81–92.</p>
+</div>
+<div>
+<p>63 Springett VH, Darbyshire JH, Nunn AJ <em>et al.</em> Changes in tuberculosis notification rates in the white ethnic group in England and Wales between 1953 and 1983. <em>Journal of epidemiology and community health</em> 1988;<strong>42</strong>:370–6.</p>
+</div>
+<div>
+<p>64 Borgdorff MW, Hof S van den, Kalisvaart N <em>et al.</em> Influence of sampling on clustering and associations with risk factors in the molecular epidemiology of tuberculosis. <em>Am J Epidemiol</em> 2011;<strong>174</strong>:243–51.</p>
+</div>
+<div>
+<p>65 Stevenson M, Nunes T, Heuer C <em>et al.</em> <em>epiR: Tools for the Analysis of Epidemiological Data</em>. 2017. </p>
+</div>
+<div>
+<p>66 Pereira SM, Barreto ML, Pilger D <em>et al.</em> Effectiveness and cost-effectiveness of first BCG vaccination against tuberculosis in school-age children without previous tuberculin test (BCG-REVAC trial): A cluster-randomised trial. <em>Lancet Infectious Diseases</em> 2012;<strong>12</strong>:300–6.</p>
+</div>
+<div>
+<p>67 Barreto ML, Pilger D, Pereira SM <em>et al.</em> Causes of variation in BCG vaccine efficacy: Examining evidence from the BCG REVAC cluster randomized trial to explore the masking and the blocking hypotheses. <em>Vaccine</em> 2014;<strong>32</strong>:3759–64.</p>
+</div>
+<div>
+<p>68 Fine PEM. Variation in protection by BCG: implications of and for heterologous immunity. <em>Lancet</em> 1995;<strong>346</strong>:1339–45.</p>
+</div>
+<div>
+<p>69 Dye C. Making wider use of the world’s most widely used vaccine: Bacille Calmette-Guerin revaccination reconsidered. <em>Journal of The Royal Society Interface</em> 2013;<strong>10</strong>:20130365–5.</p>
+</div>
+<div>
+<p>70 Usher C, Adams R, Schmitz S <em>et al.</em> Evaluating the neonatal BCG vaccination programme in Ireland. <em>Archives of Public Health</em> 2016;<strong>74</strong>:1–12.</p>
+</div>
+<div>
+<p>71 Hersh AL, Tala-Heikkila M, Tala E <em>et al.</em> A cost-effectiveness analysis of universal versus selective immunization with Mycobacterium bovis bacille Calmette-Guérin in Finland. <em>Int J Tuberc Lung Dis</em> 2003;<strong>7</strong>:22–9.</p>
+</div>
+<div>
+<p>72 Romanus V, Svensson Å, Hallander HO. The impact of changing BCG coverage on tuberculosis incidence in Swedish-born children between 1969 and 1989. <em>Tubercle and Lung Disease</em> 1992;<strong>73</strong>:150–61.</p>
+</div>
+<div>
+<p>73 Guthmann JP, Antoine D, Fonteneau L <em>et al.</em> Assessing BCG vaccination coverage and incidence of paediatric tuberculosis following two major changes in BCG vaccination policy in France. 2011;1–6.</p>
+</div>
+<div>
+<p>74 Parslow R, El-Shimy NA, Cundall DB <em>et al.</em> Tuberculosis, deprivation, and ethnicity in Leeds, UK, 1982-1997. <em>Archives of disease in childhood</em> 2001;<strong>84</strong>:109–13.</p>
+</div>
+<div>
+<p>75 Roth A, Sodemann M, Jensen H <em>et al.</em> Tuberculin reaction, BCG scar, and lower female mortality. <em>Epidemiology (Cambridge, Mass)</em> 2006;<strong>17</strong>:562–8.</p>
+</div>
+<div>
+<p>76 Aaby P, Nielsen J, Benn CS <em>et al.</em> Sex-differential and non-specific effects of routine vaccinations in a rural area with low vaccination coverage: An observational study from Senegal. <em>Transactions of the Royal Society of Tropical Medicine and Hygiene</em> 2014;<strong>109</strong>:77–84.</p>
+</div>
+<div>
+<p>77 Teale C, Goldman JM, Pearson SB. The association of age with the presentation and outcome of tuberculosis: a five-year survey. <em>Age and ageing</em> 1993;<strong>22</strong>:289–93.</p>
+</div>
+<div>
+<p>78 Thomas P, Delincée H, Diehl JF. Thin-layer isoelectric focusing of polyphenoloxidase of Sephadex and its detection by the print technique. <em>Analytical biochemistry</em> 1978;<strong>88</strong>:138–48.</p>
+</div>
+<div>
+<p>79 Abubakar I, Laundy MT, French CE <em>et al.</em> Epidemiology and treatment outcome of childhood tuberculosis in England and Wales: 1999-2006. <em>Archives of Disease in Childhood</em> 2008;<strong>93</strong>:1017–21.</p>
+</div>
+<div>
+<p>80 Djuretic T, Herbert J, Drobniewski F <em>et al.</em> Antibiotic resistant tuberculosis in the United Kingdom : 2002;477–82.</p>
+</div>
+<div>
+<p>81 Van Buuren S, Groothuis-Oudshoorn K. Multivariate Imputation by Chained Equations. <em>Journal Of Statistical Software</em> 2011;<strong>45</strong>:1–67.</p>
+</div>
+<div>
+<p>82 Barnard J, Rubin DB. Miscellanea. Small-sample degrees of freedom with multiple imputation. <em>Biometrika</em> 1999;<strong>86</strong>:948–55.</p>
+</div>
+<div>
+<p>83 Roy a, Eisenhut M, Harris RJ <em>et al.</em> Effect of BCG vaccination against Mycobacterium tuberculosis infection in children: systematic review and meta-analysis. <em>BMJ (Clinical research ed)</em> 2014;<strong>349</strong>:g4643–3.</p>
+</div>
+<div>
+<p>84 Kandasamy R, Voysey M, McQuaid F <em>et al.</em> Non-specific immunological effects of selected routine childhood immunisations: systematic review. <em>BMJ (Clinical research ed)</em> 2016;<strong>355</strong>:i5225.</p>
+</div>
+<div>
+<p>85 Pollard AJ, Finn A, Curtis N. Non-specific effects of vaccines: plausible and potentially important, but implications uncertain. <em>Archives of Disease in Childhood</em> 2017;<strong>102</strong>:archdischild–2015–310282.</p>
+</div>
+<div>
+<p>86 Thomas HL, Harris RJ, Muzyamba MC <em>et al.</em> Reduction in tuberculosis incidence in the UK from 2011 to 2015: a population-based study. <em>Thorax</em> 2018;thoraxjnl–2017–211074.</p>
+</div>
+<div>
+<p>87 Parikh SR, Andrews NJ, Beebeejaun K <em>et al.</em> Eff ectiveness and impact of a reduced infant schedule of 4CMenB vaccine against group B meningococcal disease in England : a national observational cohort study. <em>The Lancet</em> 2013;<strong>388</strong>:2775–82.</p>
+</div>
+<div>
+<p>88 Vehtari A, Gelman A, Gabry J. Practical Bayesian model evaluation using leave-one-out cross-validation and WAIC. <em>The American Statistician</em> 2016;<strong>27</strong>:1–20.</p>
+</div>
+<div>
+<p>89 ai H. R Interface for H2O. 2018. </p>
+</div>
+<div>
+<p>90 Bürkner P-C. brms: An R Package for Bayesian Multilevel Models using Stan. <em>Journal Of Statistical Software</em></p>
+</div>
+<div>
+<p>91 Stan Development Team. RStan: the R interface to Stan. 2016. </p>
+</div>
+<div>
+<p>92 Davies R, Jones M, Lloyd-Williams H. Age and Work-Related Health: Insights from the UK Labour Force Survey. <em>British Journal of Industrial Relations</em> 2016;<strong>54</strong>:136–59.</p>
+</div>
+<div>
+<p>93 Lindley J. The over-education of UK immigrants and minority ethnic groups: Evidence from the Labour Force Survey. <em>Economics of Education Review</em> 2009;<strong>28</strong>:80–9.</p>
+</div>
+<div>
+<p>94 Manissero D, Lopalco PL, Levy-Bruhl D <em>et al.</em> Assessing the impact of different BCG vaccination strategies on severe childhood TB in low-intermediate prevalence settings. <em>Vaccine</em> 2008;<strong>26</strong>:2253–9.</p>
+</div>
+<div>
+<p>95 Feiring B, Laake I, Molden T <em>et al.</em> Do selective immunisation against tuberculosis and hepatitis B reach the targeted populations ? A nationwide register-based study evaluating the recommendations in the Norwegian Childhood Immunisation Programme. <em>Vaccine</em> 2016;<strong>34</strong>:2015–20.</p>
+</div>
+<div>
+<p>96 Nguipdop-Djomo P, Mangtani P, Pedrazzoli D <em>et al.</em> Uptake of neonatal BCG vaccination in England: Performance of the current policy recommendations. <em>Thorax</em> 2014;<strong>69</strong>:87–9.</p>
+</div>
+<div>
+<p>97 Brooks-Pollock E, Cohen T, Murray M. The impact of realistic age structure in simple models of tuberculosis transmission. <em>PLoS ONE</em> 2010;<strong>5</strong>:3–8.</p>
+</div>
+<div>
+<p>98 Menzies NA, Wolf E, Connors D <em>et al.</em> Review Progression from latent infection to active disease in dynamic tuberculosis transmission models : a systematic review of the validity of modelling assumptions. <em>Lancet Infect Dis</em> 2018;<strong>3099</strong>.</p>
+</div>
+<div>
+<p>99 Ragonnet R, Trauer JM, Scott N <em>et al.</em> Optimally capturing latency dynamics in models of tuberculosis transmission. <em>Epidemics</em> 2017;<strong>21</strong>:39–47.</p>
+</div>
+<div>
+<p>100 Mathema B, Andrews JR, Cohen T <em>et al.</em> Drivers of Tuberculosis Transmission. <em>J Infect Dis</em> 2018;<strong>216</strong>:S644–53.</p>
+</div>
+<div>
+<p>101 Lefebvre N, Sotgiu G, Falzon D <em>et al.</em> Determinants of site of tuberculosis disease : An analysis of European surveillance data from 2003 to 2014. 2017;1–14.</p>
+</div>
+<div>
+<p>102 SHAW JB, WYNN-WILLIAMS N. Infectivity of pulmonary tuberculosis in relation to sputum status. <em>American review of tuberculosis</em> 1954;<strong>69</strong>:724–32.</p>
+</div>
+<div>
+<p>103 Tostmann A, Kik SV, Kalisvaart NA <em>et al.</em> Tuberculosis Transmission by Patients with Smear- Negative Pulmonary Tuberculosis in a Large Cohort in The Netherlands. <em>Clinical Infectious Diseases</em> 2008;<strong>47</strong>:1135–42.</p>
+</div>
+<div>
+<p>104 Piccini P, Chiappini E, Tortoli E <em>et al.</em> Clinical peculiarities of tuberculosis. 2014;<strong>14</strong>:1–12.</p>
+</div>
+<div>
+<p>105 Houben RMGJ, Lalli M, Sumner T <em>et al.</em> TIME Impact - a new user-friendly tuberculosis (TB) model to inform TB policy decisions. <em>BMC Medicine</em> 2016;<strong>14</strong>:1–10.</p>
+</div>
+<div>
+<p>106 Andrews JR, Lawn SD, Rusu C <em>et al.</em> The cost-effectiveness of routine tuberculosis screening with Xpert MTB/RIF prior to initiation of antiretroviral therapy: a model-based analysis. <em>Aids</em> 2012;<strong>26</strong>:987–95 10.1097/QAD.0b013e3283522d47.</p>
+</div>
+<div>
+<p>107 Vynnycky E, Fine PEM. The natural history of tuberculosis : the implications of age-dependent risks of disease and the role of reinfection. 2018;183–201.</p>
+</div>
+<div>
+<p>108 Houben RM, Lalli M, Sumner T <em>et al.</em> TIME Impact - a new user-friendly tuberculosis (TB) model to inform TB policy decisions. <em>BMC Med</em> 2016;<strong>14</strong>:56.</p>
+</div>
+<div>
+<p>109 Vynnycky E, Fine PE. Interpreting the decline in tuberculosis: the role of secular trends in effective contact. <em>Int J Epidemiol</em> 1999;<strong>28</strong>:327–34.</p>
+</div>
+<div>
+<p>110 Hens N, Jit M, Beutels P <em>et al.</em> Social Contacts and Mixing Patterns Relevant to the Spread of Infectious Diseases. <em>PLoS medicine</em> 2008;<strong>5</strong>:e74.</p>
+</div>
+<div>
+<p>111 Lalor MK, Anderson LF, Hamblion EL <em>et al.</em> Recent household transmission of tuberculosis in England, 2010-2012: Retrospective national cohort study combining epidemiological and molecular strain typing data. <em>BMC Medicine</em> 2017;<strong>15</strong>:1–10.</p>
+</div>
+<div>
+<p>112 Dowdy DW, Dye C, Cohen T. Data needs for evidence-based decisions : a tuberculosis modeler ’ s ‘ wish list ’. <em>International Journal of Tuberculosis and Lung Disease</em> 2013;<strong>17</strong>:866–77.</p>
+</div>
+<div>
+<p>113 Manissero D, Lopalco PL, Levy-Bruhl D <em>et al.</em> Assessing the impact of different BCG vaccination strategies on severe childhood TB in low-intermediate prevalence settings. <em>Vaccine</em> 2008;<strong>26</strong>:2253–9.</p>
+</div>
+<div>
+<p>114 Trunz BB, Fine P, Dye C. Effect of BCG vaccination on childhood tuberculous meningitis and miliary tuberculosis worldwide: a meta-analysis and assessment of cost-effectiveness. <em>Lancet</em> 2006;<strong>367</strong>:1173–80.</p>
+</div>
+<div>
+<p>115 Rahman M, Sekimoto M, Takamatsu I <em>et al.</em> Economic evaluation of universal BCG vaccination of Japanese infants. <em>International journal of epidemiology</em> 2001;<strong>30</strong>:380–5.</p>
+</div>
+<div>
+<p>116 Harris RC, Dodd PJ, White RG. The potential impact of BCG vaccine supply shortages on global paediatric tuberculosis mortality. <em>BMC Med</em> 2016;<strong>14</strong>:138.</p>
+</div>
+<div>
+<p>117 Egbetade S a, Polytechnic T, Ibrahim MO. Modelling The Impact of BCG Vaccines on Tuberculosis Epidemics. 2011;<strong>1</strong>:49–55.</p>
+</div>
+<div>
+<p>118 Bhunu CP, Garira W, Mukandavire Z <em>et al.</em> Modelling the effects of pre-exposure and post-exposure vaccines in tuberculosis control. <em>Journal of Theoretical Biology</em> 2008;<strong>254</strong>:633–49.</p>
+</div>
+<div>
+<p>119 Brooks-Pollock E, Cohen T, Murray M. The impact of realistic age structure in simple models of tuberculosis transmission. <em>PLoS ONE</em> 2010;<strong>5</strong>:3–8.</p>
+</div>
+<div>
+<p>120 Vynnycky E, Fine PE. The natural history of tuberculosis: the implications of age-dependent risks of disease and the role of reinfection. <em>Epidemiology and infection</em> 1997;<strong>119</strong>:183–201.</p>
+</div>
+<div>
+<p>121 Murray LM. Bayesian State-Space Modelling on High-Performance Hardware Using LibBi. <em>Journal of Statistical Software</em> 2015;<strong>67</strong>:1–36.</p>
+</div>
+<div>
+<p>122 Funk S. RBI. 2019.</p>
+</div>
+<div>
+<p>123 Funk S. RBI.helpers. 2019.</p>
+</div>
+<div>
+<p>124 Gelman A. <em>Bayesian Data Analysis: Second Edition</em>. 2004. </p>
+</div>
+<div>
+<p>125 Marino S, Hogue IB, Ray CJ <em>et al.</em> A methodology for performing global uncertainty and sensitivity analysis in systems biology. <em>J Theor Biol</em> 2008;<strong>254</strong>:178–96.</p>
+</div>
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="11-discussion-chapt.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"download": [["thesis.pdf", "PDF"]],
+"toc": {
+"collapse": "section"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(src))
+      src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
