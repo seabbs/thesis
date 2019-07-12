@@ -13,7 +13,7 @@ site: bookdown::bookdown_site
 always_allow_html: yes
 output: 
   #thesisdown::thesis_pdf: default
-  thesisdown::thesis_gitbook: default
+  bookdown::render_book: default
   #thesisdown::thesis_word: default
   #thesisdown::thesis_epub: default
 abstract: |
@@ -26,9 +26,11 @@ contribution: |
   `r if(knitr:::is_latex_output()) paste(readLines("00-contribution.Rmd"), collapse = ' ')`
 acronyms: |
   `r if(knitr:::is_latex_output()) paste(readLines("00-acronyms.Rmd"), collapse = ' ')`
-bibliography: bib/thesis.bib
+bibliography: [bib/thesis.bib]
 #Download your specific bibliography database file and refer to it in the line above.
-csl: csl/bmj.csl
+link-citations: yes
+colorlinks: yes
+csl: [csl/bmj.csl]
 #Download your specific csl file and refer to it in the line above.
 lot: true
 lof: true

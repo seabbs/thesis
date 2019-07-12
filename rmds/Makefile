@@ -9,6 +9,6 @@ build_pdf:
 	
 .PHONY: builds_html
 build_html:
-	Rscript -e "source('.Rprofile'); bookdown::render_book('index.Rmd', 'thesisdown::thesis_gitbook')"
+	Rscript -e "source('.Rprofile'); bookdown::render_book('index.Rmd', 'bookdown::gitbook')"
 	
 		
