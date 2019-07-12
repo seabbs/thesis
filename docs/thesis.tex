@@ -911,11 +911,7 @@ Date: \emph{placeholder}
   
   Developing tools for rapidly accessing and exploring data sets benefits the public health research community by enabling multiple data sets to be combined in a consistent manner, increasing the visibility of key data sets, and providing a framework that can be used to explore key questions of interest. Tooling also reduces the barriers to entry, allowing non-specialists to explore data sets that would otherwise be inaccessible. This widening of access may also lead to new insights and wider interest for key public health issues.
   
-  \texttt{getTBinR} is an R package {[}41{]} to facilitate working with the data {[}17{]} collected by the World Health Organization (WHO) on the country level epidemiology of Tuberculosis (TB). All data is freely available from the \href{https://www.who.int/tb/country/data/download/en/}{WHO} and the package code is archived on Zenodo {[}42{]} and \href{https://www.samabbott.co.uk/getTBinR/}{Github}. The aim of \texttt{getTBinR} is to allow researchers, and other interested individuals, to quickly and easily gain access to a detailed TB data set and to start using it to derive key insights. It provides a consistent set of tools that can be used to rapidly evaluate hypotheses on a widely used data set before they are explored further using more complex methods or more detailed data. The functions provided in this package were developed to have sensible defaults to allow those new to the field to quickly gain key insights but also allow sufficient customisation so that experienced users may rapidly prototype new ideas.
-  
-  The data sourced by \texttt{getBTinR} is collected by the WHO, via member governments, and used to compile the yearly global TB report {[}17{]}. Data collection encompasses TB incidence, TB mortality rates, the age distribution of TB cases, the proportion of drug resistant cases, case detection rates, and treatment rates. For a complete description of the data and data collection process, see {[}17{]}. These data are used by the WHO, governmental organisations and researchers to summarise country level TB epidemiology, as well as the wider global and regional picture.
-  
-  The \texttt{getTBinR} package facilitates downloading the most up-to-date version of multiple TB relevant data sources from the WHO, along with the accompanying data dictionaries. It also contains functions to allow easy exploration of the data via searching data dictionaries, summarising key metrics on a regional and global level, and visualising the data in a variety of highly customisable ways. In addition, it provides both a dashboard and an automated country level report that enables the global, regional, and country level picture to be quickly summarised. An example of a potential use of the package is to explore estimates of the TB case fatality ratio {[}43{]}. In a few lines of code, using only built in package tooling, large regional differences can be discovered. Further insights can then be found by linking to other publicly available data sets or using a model based analysis. See \url{https://www.samabbott.co.uk/getTBinR/} for documentation. The remainder of this chapter outlines the key functionality of \texttt{getTBinR\ 0.6.1} and summarises the current impact.
+  \texttt{getTBinR} is an R package {[}41{]} that I developed to facilitate working with the data {[}17{]} collected by the World Health Organization (WHO) on the country level epidemiology of Tuberculosis (TB). All data is freely available from the WHO\footnote{WHO TB data: \url{https://www.who.int/tb/country/data/download/en/}} and the package code is archived on Zenodo {[}42{]} and Github\^{}{[}GitHub: \url{https://github.com/seabbs/getTBinR/}). The aim of \texttt{getTBinR} is to allow researchers, and other interested individuals, to quickly and easily gain access to a detailed TB data set and to start using it to derive key insights. It provides a consistent set of tools that can be used to rapidly evaluate hypotheses on a widely used data set before they are explored further using more complex methods or more detailed data. The remainder of this chapter outlines the key functionality of \texttt{getTBinR\ 0.6.1} , and summarises the current impact.
   
   \hypertarget{installation}{%
   \section{Installation}\label{installation}}
@@ -935,6 +931,8 @@ Date: \emph{placeholder}
   \end{Shaded}
   \hypertarget{data-extraction-and-variable-look-up}{%
   \section{Data extraction and variable look-up}\label{data-extraction-and-variable-look-up}}
+  
+  The data sourced by \texttt{getBTinR} is collected by the WHO, via member governments, and used to compile the yearly global TB report {[}17{]}. Data collection encompasses TB incidence, TB mortality rates, the age distribution of TB cases, the proportion of drug resistant cases, case detection rates, and treatment rates. For a complete description of the data and data collection process, see {[}17{]}. These data are used by the WHO, governmental organisations and researchers to summarise country level TB epidemiology, as well as the wider global and regional picture.
   
   \texttt{getTBinR} provides a single user facing function for data extraction, \texttt{get\_tb\_burden}. This function downloads multiple data sets from the WHO, cleans variables names where required, and finally joins all data sets together. On top of the core datasets provided by default, \texttt{getTBinR} also supports importing multiple other datasets. These include data on latent TB, HIV surveillance, intervention budgets, and outcomes (see \texttt{?additional\_datasets} for a full list of available datasets). To reduce unnecessary downloads, and improve performance, downloads are cached automatically. \texttt{get\_tb\_burden} is called by all other package functions allowing for a seamless user experience. \texttt{get\_data\_dict} has similar functionality to \texttt{get\_tb\_burden} but extracts data dictionaries rather than the underlying data. It is called by the majority of the package functions in order to provide intelligent labels.
   
@@ -1113,7 +1111,16 @@ Date: \emph{placeholder}
   \hypertarget{package-infrastructure}{%
   \section{Package Infrastructure}\label{package-infrastructure}}
   
-  \texttt{getTBinR} has been developed using R package best practices and as such is thoroughly tested using an automated testing suite that runs against Linux, Windows and MacOS environments. Package documentation is supplied in a searchable website (\url{https://www.samabbott.co.uk/getTBinR/}) and a development environment can be launched with a single button press (\url{https://mybinder.org/v2/gh/seabbs/getTBinR/master?urlpath=rstudio}). Use cases for the package have been outlined using multiple case studies, see the package documentation for details.
+  \texttt{getTBinR} has been developed using R package best practices and as such is thoroughly tested using an automated testing suite that runs against Linux, Windows and MacOS environments. Package documentation is supplied in a searchable website\footnote{Website: \url{https://www.samabbott.co.uk/getTBinR/}} and a development environment can be launched with a single button press\footnote{Binder: \url{https://mybinder.org/v2/gh/seabbs/getTBinR/master?urlpath=rstudio}}. Use cases for the package have been outlined using multiple case studies, see the package documentation for details.
+  
+  \hypertarget{discussion}{%
+  \section{Discussion}\label{discussion}}
+  
+  In this chapter I have introduced the \texttt{getTBinR} R package. \texttt{getTBinR} facilitates downloading the most up-to-date version of multiple TB relevant data sources from the WHO, along with the accompanying data dictionaries. It also contains functions to allow easy exploration of the data via searching data dictionaries, summarising key metrics on a regional and global level, and visualising the data in a variety of highly customisable ways. In addition, it provides both a dashboard and an automated country level report that enables the global, regional, and country level picture to be quickly summarised. It was developed using R package development best practises and has been peer-reviewed.{[}43{]}
+  
+  As of the 1st of August 2019, \texttt{getTBinR} has been released on CRAN for over a year. It has been downloaded over 10,000 times, has a growing user base, no outstanding bug-related issues, and has received multiple updates greatly expanding the functionality available. The standalone dashboard hosted online\footnote{Dashboard: \url{http://www.seabbs.co.uk/shiny/ExploreGlobalTB/}} has had over 3000 unique users. It has been used as a teaching aid, as an example of open science, to facilate exploratory data analysis and to provide context for other research. In this thesis it has been used extensively in Chapter \ref{background} to provide context and was also used as a hypothesis generating tool in all other chapters. Outside of the work presented in this thesis I have used \texttt{getTBinR} extensively as a data analysis tool\footnote{Blog: \url{https://www.samabbott.co.uk/tags/who/}}, to widen the appreciation of TB as a global health problem\textsuperscript{{[}Twitter:\url{https://twitter.com/search?q=getTBinR\&src=typd}{]}}{[}Reddit: \url{https://www.reddit.com/user/seabbs/posts/}{]}, and to provide contextual information for other research\footnote{Presentation: \url{https://www.samabbott.co.uk/what-do-we-really-know-about-bcg/presentation.html\#1}}.
+  
+  Whilst \texttt{getTBinR} is feature complete, and stable, development work continues. Future projects include: using the \texttt{shinymeta} R package to provide downloadable R code to users of the interactive application; iterating on the current automated report to improve formating and to increase the amount of information displayed. As additional WHO TB data are released they will be added to \texttt{getTBinR}.
   
   \hypertarget{summary-2}{%
   \section{Summary}\label{summary-2}}
@@ -1123,7 +1130,7 @@ Date: \emph{placeholder}
   \item
     I have outlined the need for data access packages in general - more specifically explaining the purpose of \texttt{getTBinR}, detailing the package functionality and outlining the package infrastructure used.
   \item
-    As of the 1st of July 2019, \texttt{getTBinR} has been released on CRAN for over a year. It has been downloaded over 9000 times, has no outstanding bug-related issues, and has received multiple updates greatly expanding the functionality available. The standalone dashboard hosted online (\url{http://www.seabbs.co.uk/shiny/ExploreGlobalTB/}) has had over 3000 unique users.
+    The current impact and future direction of \texttt{getTBinR} has also be detailed.
   \end{itemize}
   \hypertarget{data}{%
   \chapter{The epidemiology of tuberculosis, and the role of BCG vaccination, in England}\label{data}}
@@ -2063,8 +2070,8 @@ Date: \emph{placeholder}
   
   \caption[Age distribution (in 5 year age groups) of the case loss to follow up rate presented on a square root scale.]{Age distribution (in 5 year age groups) of the case loss to follow up rate presented on a square root scale. Estimates are stratified by BCG and UK birth status. Point estimates and 95\%  confidence intervals are shown for each case rate estimate. There is little evidence of variation by BCG status but loss to follow up is higher in the non-UK born compared to the UK born across all age groups. Young adults are the most likely to be lost follow up in both populations but this is a particular issue in the non-UK born.}\label{fig:plot-loss-fol-age-dist}
   \end{figure}
-  \hypertarget{discussion}{%
-  \section{Discussion}\label{discussion}}
+  \hypertarget{discussion-1}{%
+  \section{Discussion}\label{discussion-1}}
   
   In this chapter I have explored the epidemiology of TB in England using routine data-sets, with a particular focus on the impact of missing data, the mechanisms underlying that missing date, seasonal trends, the role of age, UK birth status and BCG status. I have also estimated incidence rates, stratified by UK birth status and age, which I then used to identify trends in TB incidence over time. Finally I explored TB outcomes in England using case rates, again stratified by BCG status and UK birth status.
   
@@ -2313,8 +2320,8 @@ Date: \emph{placeholder}
   \end{tabular}
   \end{table}
   \end{landscape}
-  \hypertarget{discussion-1}{%
-  \section{Discussion}\label{discussion-1}}
+  \hypertarget{discussion-2}{%
+  \section{Discussion}\label{discussion-2}}
   
   The existing method for estimating the impact of the BCG schools' scheme produced uncertain estimates of the impact of ending the scheme in all years evaluated when parameter uncertainty and measurement error were included. Updating the annual decrease in TB notifications based on both notifications and using age-specific incidence rates resulted in increased TB cases due to ending universal school-age vaccination in all years considered. This resulted in fewer vaccines required to prevent a single notification in those vaccinated and an increase in the number of annual additional notifications from ending the scheme. A scenario with a 1.9\% annual decrease in incidence rates was most comparable to the results based on notifications.
   
@@ -2793,8 +2800,8 @@ Date: \emph{placeholder}
   \multicolumn{7}{l}{\textsuperscript{} * Death due to TB in those who died and where cause of death was known}\\
   \end{tabular}
   \end{table}
-  \hypertarget{discussion-2}{%
-  \section{Discussion}\label{discussion-2}}
+  \hypertarget{discussion-3}{%
+  \section{Discussion}\label{discussion-3}}
   
   Using TB surveillance data collected in England I found that BCG vaccination, prior to the development of active TB, was associated with reduced all-cause mortality and fewer recurrent TB cases, although the evidence for this association was weaker. There was some suggestion that the association with all-cause mortality was due to reduced deaths due to TB (in those who died), though the study was underpowered to definitively assess this. I did not find evidence of an association between BCG status and positive smear status or pulmonary TB. Analysis with multiply imputed data indicated that notification 10+ years after vaccination was associated with increased all-cause mortality. In separate analyses, there was some evidence that vaccination at birth, compared to at any other age, was associated with reduced all-cause mortality, and increased deaths due to TB (in those who died).
   
@@ -3309,8 +3316,8 @@ Date: \emph{placeholder}
   \multicolumn{4}{l}{2005}\\
   \end{tabular}
   \end{table}
-  \hypertarget{discussion-3}{%
-  \section{Discussion}\label{discussion-3}}
+  \hypertarget{discussion-4}{%
+  \section{Discussion}\label{discussion-4}}
   
   In the non-UK born I found evidence of an association between the change in BCG policy and a decrease in TB incidence rates in both those at school-age and neonates, after 5 years of follow up. I found some evidence that the change in BCG policy was associated with a modest increase in incidence rates in the UK born population who were relevant to the universal school-age scheme and weaker evidence of a small decrease in incidence rates in the UK born population relevant to the targeted neonatal scheme. Overall, I found that the change in policy was associated with preventing 385 (95\%CI -105, 881) cases in the study population, from 2005 until the end of the study period, with the majority of the cases prevented in the non-UK born.
   
@@ -4070,8 +4077,8 @@ Date: \emph{placeholder}
   
   All initial disease compartments, excepting the low risk latent compartment, are distributed based on the age distribution of observed UK born cases in 2000. To account for possible measurement error a normal distribution is sampled around the assumed population in each compartment with a standard deviation of 5\% of the reported cases.
   
-  \hypertarget{discussion-4}{%
-  \section{Discussion}\label{discussion-4}}
+  \hypertarget{discussion-5}{%
+  \section{Discussion}\label{discussion-5}}
   
   In this chapter, I have outlined the requirements for a dynamic transmission model of TB in order for it to be able to answer policy relevant questions relating to BCG vaccination in England. I then outlined, and gave the equations for, a semi-stochastic model that met these requirements and made best use of the data available. Finally, I outlined prior distributions for each model parameter and initialisation conditions. I detailed the data sources used for parameterisation, approximations required to make best use of the available data, and the scenario analyses needed to explore model, parameterisation and initialisation assumptions.
   
@@ -4460,8 +4467,8 @@ Date: \emph{placeholder}
   \item
     Comment on parameter sensitivity in light of strength of data
   \end{itemize}
-  \hypertarget{discussion-5}{%
-  \section{Discussion}\label{discussion-5}}
+  \hypertarget{discussion-6}{%
+  \section{Discussion}\label{discussion-6}}
   
   In this chapter I have formulated the disease transmission model developed in the previous chapter as a state-space model, developed a model fitting pipeline to fit this model to observed data, and presented the results of this fitted model.
   \begin{itemize}
@@ -4582,8 +4589,8 @@ Date: \emph{placeholder}
   \item
     Comparision of age distribution of deaths
   \end{itemize}
-  \hypertarget{discussion-6}{%
-  \section{Discussion}\label{discussion-6}}
+  \hypertarget{discussion-7}{%
+  \section{Discussion}\label{discussion-7}}
   \begin{itemize}
   \tightlist
   \item
@@ -4783,7 +4790,7 @@ Date: \emph{placeholder}
   42 Abbott S. seabbs/getTBinR 0.5.7. 2019.
   
   \leavevmode\hypertarget{ref-Abbott:2018}{}%
-  43 Abbott S. Exploring Estimates of the Tuberculosis Case Fatality Ratio - with getTBinR. 2018.
+  43 Abbott S. GetTBinR: An r package for accessing and summarising the world health organisation tuberculosis data. \emph{Journal of Open Source Software} 2019;\textbf{4}:1260. doi:\href{https://doi.org/10.21105/joss.01260}{10.21105/joss.01260}
   
   \leavevmode\hypertarget{ref-French2007}{}%
   44 French CE, Antoine D, Gelb D \emph{et al.} Tuberculosis in non-UK-born persons, England and Wales, 2001-2003. \emph{Int J Tuberc Lung Dis} 2007;\textbf{11}:577--84.
