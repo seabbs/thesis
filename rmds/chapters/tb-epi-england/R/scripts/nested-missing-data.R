@@ -45,7 +45,9 @@ missing_stru <- nest_filt_ets %>%
   vis_miss(warn_large_data = FALSE, sort_miss = TRUE,
            show_perc = TRUE, cluster = FALSE) +
   coord_flip() +
-  theme(legend.position = "bottom")
+  theme(legend.position = "bottom") +
+  theme(axis.text.x = element_text(angle = 0, hjust = 1),
+        text = element_text(size = 18))
 
 ggsave("chapters/tb-epi-england/figures/plot-missing-struct.png", 
        missing_stru, dpi = 320, width = 8, height = 12)

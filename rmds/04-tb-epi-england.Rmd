@@ -186,6 +186,7 @@ kable(model_miss_results[["bcgvacc"]],
       caption = "Results from a logistic regression model with data completeness (Complete/Missing) for BCG vaccination as an outcome, adjusted for; year, sex, age (grouped as 0-14 year olds, 15-65 year olds and 65+), ethnic group, UK birth status and socio-economic status (national quintiles). For socio-economic group 1 indicates the most deprived quintile. Notifications from 2010 onwards were included as socio-economic status was not collected before this. Complete case analysis weas used. Odds ratios shown are adjusted for all explanatory variables. The model indicates that BCG status is missing at random for the variables considered.", booktabs = TRUE, longtable = TRUE) %>% 
   kable_styling(font_size = 8, 
                 latex_options = c("repeat_header")) %>% 
+  column_spec(c(1), width = "1.5cm") %>% 
   column_spec(c(4), width = "2cm") %>% 
   column_spec(c(6, 7), width = "1.5cm") %>% 
   kable_styling(latex_options = "hold_position")
@@ -200,6 +201,7 @@ kable(model_miss_results[["bvcvaccyr"]], format = "latex",
       caption.short = "Results from a logistic regression model with data completeness (Complete/Missing) for year of BCG vaccination as an outcome, adjusted for; year, sex, age (grouped as 0-14 year olds, 15-65 year olds and 65+), ethnic group, UK birth status and socio-economic status (national quintiles).",
       caption = "Results from a logistic regression model with data completeness (Complete/Missing) for year of BCG vaccination as an outcome, adjusted for; year, sex, age (grouped as 0-14 year olds, 15-65 year olds and 65+), ethnic group, UK birth status and socio-economic status (national quintiles). For socio-economic group 1 indicates the most deprived quintile. Notifications from 2010 onwards were included as socio-economic status was not collected before this. Complete case analysis weas used. Odds ratios shown are adjusted for all explanatory variables. The model indicates that year of BCG vaccination is missing at random for the variables considered.", booktabs = TRUE, longtable = TRUE) %>% 
   kable_styling(font_size = 8, latex_options = c("repeat_header")) %>% 
+  column_spec(c(1), width = "1.5cm") %>% 
   column_spec(c(4), width = "2cm") %>% 
   column_spec(c(6, 7), width = "1.5cm")
 ```
@@ -213,6 +215,7 @@ kable(model_miss_results[["dateofdeath"]],
       caption.short = "Results from a logistic regression model with data completeness (Complete/Missing) for date of death as an outcome, adjusted for; year, sex, age (grouped as 0-14 year olds, 15-65 year olds and 65+), ethnic group, UK birth status and socio-economic status (national quintiles).",
       caption = "Results from a logistic regression model with data completeness (Complete/Missing) for date of death as an outcome, adjusted for; year, sex, age (grouped as 0-14 year olds, 15-65 year olds and 65+), ethnic group, UK birth status and socio-economic status (national quintiles). For socio-economic group 1 indicates the most deprived quintile. Notifications from 2010 onwards were included as socio-economic status was not collected before this. Complete case analysis weas used. Odds ratios shown are adjusted for all explanatory variables. The model indicates that there is some evidence that date of death is missing at random for ethnic group, with weaker evidence for all other variables.", booktabs = TRUE, longtable = TRUE) %>% 
   kable_styling(font_size = 8, latex_options = c("repeat_header")) %>% 
+  column_spec(c(1), width = "1.5cm") %>% 
   column_spec(c(4), width = "2cm") %>% 
   column_spec(c(6, 7), width = "1.5cm") %>% 
   kable_styling(latex_options = "hold_position")
@@ -227,6 +230,7 @@ kable(model_miss_results[["tomdeathrealat"]],
       caption.short = "Results from a logistic regression model with data completeness (Complete/Missing) for cause of death as an outcome, adjusted for; year, sex, age (grouped as 0-14 year olds, 15-65 year olds and 65+), ethnic group, UK birth status and socio-economic status (national quintiles).",
       caption = "Results from a logistic regression model with data completeness (Complete/Missing) for cause of death as an outcome, adjusted for; year, sex, age (grouped as 0-14 year olds, 15-65 year olds and 65+), ethnic group, UK birth status and socio-economic status (national quintiles). For socio-economic group 1 indicates the most deprived quintile. Notifications from 2010 onwards were included as socio-economic status was not collected before this. Complete case analysis weas used. Odds ratios shown are adjusted for all explanatory variables. The model indicates that cause of death is missing at random for ethnic group and UK birth status, with little evidence for any other variables", booktabs = TRUE, longtable = TRUE) %>% 
   kable_styling(font_size = 8, latex_options = c("repeat_header")) %>% 
+  column_spec(c(1), width = "1.5cm") %>% 
   column_spec(c(4), width = "2cm") %>% 
   column_spec(c(6, 7), width = "1.5cm") %>% 
   kable_styling(latex_options = "hold_position")
@@ -241,6 +245,7 @@ kable(model_miss_results[["symptonset"]],
       caption.short = "Results from a logistic regression model with data completeness (Complete/Missing) for date of symptom onset as an outcome, adjusted for; year, sex, age (grouped as 0-14 year olds, 15-65 year olds and 65+), ethnic group, UK birth status and socio-economic status (national quintiles).",
       caption = "Results from a logistic regression model with data completeness (Complete/Missing) for date of symptom onset as an outcome, adjusted for; year, sex, age (grouped as 0-14 year olds, 15-65 year olds and 65+), ethnic group, UK birth status and socio-economic status (national quintiles). For socio-economic group 1 indicates the most deprived quintile. Notifications from 2010 onwards were included as socio-economic status was not collected before this. Complete case analysis weas used. Odds ratios shown are adjusted for all explanatory variables. The model indicates that date of symptom onset is missing not at random for the variables for all variables considered, except for sex.", booktabs = TRUE, longtable = TRUE) %>% 
   kable_styling(font_size = 8, latex_options = c("repeat_header")) %>% 
+  column_spec(c(1), width = "1.5cm") %>% 
   column_spec(c(4), width = "2cm") %>% 
   column_spec(c(6, 7), width = "1.5cm") %>% 
   kable_styling(latex_options = "hold_position")
@@ -255,6 +260,7 @@ kable(model_miss_results[["datediag"]],
       caption.short = "Results from a logistic regression model with data completeness (Complete/Missing) for date of diagnosis onset as an outcome, adjusted for; year, sex, age (grouped as 0-14 year olds, 15-65 year olds and 65+), ethnic group, UK birth status and socio-economic status (national quintiles).", 
       caption = "Results from a logistic regression model with data completeness (Complete/Missing) for date of diagnosis onset as an outcome, adjusted for; year, sex, age (grouped as 0-14 year olds, 15-65 year olds and 65+), ethnic group, UK birth status and socio-economic status (national quintiles). For socio-economic group 1 indicates the most deprived quintile. Notifications from 2010 onwards were included as socio-economic status was not collected before this. Complete case analysis weas used. Odds ratios shown are adjusted for all explanatory variables. The model indicates that date of diagnosis is missing at random for the variables for all variables considered, except for sex.", booktabs = TRUE, longtable = TRUE) %>% 
   kable_styling(font_size = 8, latex_options = c("repeat_header")) %>% 
+  column_spec(c(1), width = "1.5cm") %>% 
   column_spec(c(4), width = "2cm") %>% 
   column_spec(c(6, 7), width = "1.5cm") %>% 
   kable_styling(latex_options = "hold_position")
@@ -269,6 +275,7 @@ kable(model_miss_results[["starttreatdate"]],
       caption.short = "Results from a logistic regression model with data completeness (Complete/Missing) for date of starting treatment as an outcome, adjusted for; year, sex, age (grouped as 0-14 year olds, 15-65 year olds and 65+), ethnic group, UK birth status and socio-economic status (national quintiles).", 
       caption = "Results from a logistic regression model with data completeness (Complete/Missing) for date of starting treatment as an outcome, adjusted for; year, sex, age (grouped as 0-14 year olds, 15-65 year olds and 65+), ethnic group, UK birth status and socio-economic status (national quintiles). For socio-economic group 1 indicates the most deprived quintile. Notifications from 2010 onwards were included as socio-economic status was not collected before this. Complete case analysis weas used. Odds ratios shown are adjusted for all explanatory variables. There is little evidence that the missing data for the date of starting treatment is associated with any variable considered, except for year of notification.", booktabs = TRUE, longtable = TRUE) %>% 
   kable_styling(font_size = 8, latex_options = c("repeat_header")) %>% 
+  column_spec(c(1), width = "1.5cm") %>%   
   column_spec(c(4), width = "2cm") %>% 
   column_spec(c(6, 7), width = "1.5cm") %>% 
   kable_styling(latex_options = "hold_position")
@@ -284,6 +291,7 @@ kable(model_miss_results[["txenddate"]],
       caption.short = "Results from a logistic regression model with data completeness (Complete/Missing) for date of starting treatment as an outcome, adjusted for; year, sex, age (grouped as 0-14 year olds, 15-65 year olds and 65+), ethnic group, UK birth status and socio-economic status (national quintiles).",
       caption = "Results from a logistic regression model with data completeness (Complete/Missing) for date of starting treatment as an outcome, adjusted for; year, sex, age (grouped as 0-14 year olds, 15-65 year olds and 65+), ethnic group, UK birth status and socio-economic status (national quintiles). For socio-economic group 1 indicates the most deprived quintile. Notifications from 2010 onwards were included as socio-economic status was not collected before this. Complete case analysis weas used. Odds ratios shown are adjusted for all explanatory variables. There is little evidence that the missing data for the date of starting treatment is associated with any variable considered, except for year of notification.", booktabs = TRUE, longtable = TRUE) %>% 
   kable_styling(font_size = 8, latex_options = c("repeat_header")) %>% 
+  column_spec(c(1), width = "1.5cm") %>% 
   column_spec(c(4), width = "2cm") %>% 
   column_spec(c(6, 7), width = "1.5cm") %>% 
   kable_styling(latex_options = "hold_position")
@@ -441,7 +449,7 @@ Age-specific incidence rates were calculated as follows:
   (\#eq:incEq)
 \end{equation} 
 
-Age-standardised rates were calculated using the `r 'epiR'` package for R,[@Stevenson2016] using the average age distribution of England, and Wales from 2000-2015 as the standard population to allow comparison between years. Those aged 90+ were excluded as demographic data for this population was unreliable. The code used to calculate incidence rates is available online as an R package ([https://www.samabbott.co.uk/tbinenglanddataclean/reference/clean_munge_ets_2016.html](https://www.samabbott.co.uk/tbinenglanddataclean/reference/clean_munge_ets_2016.html)).
+Age-standardised rates were calculated using the `r 'epiR'` package for R,[@Stevenson2016] using the average age distribution of England, and Wales from 2000-2015 as the standard population to allow comparison between years. Those aged 90+ were excluded as demographic data for this population was unreliable. The code used to calculate incidence rates is available online as an R package (`tbinenglanddataclean`; see Chapter \@ref(introduction)).
 
 ### Overall trends in TB incidence rates
 
@@ -602,7 +610,7 @@ Findings from this chapter are used throughout the later chapters of this thesis
 
 - TB incidence rates stratified by age and UK birth status have been calculated, along with case rates for TB outcomes. These estimates were then to extensively explore trends in TB in England, identifying possible analysis questions to be addressed later in this thesis. 
 
-- The code used in this chapter to import, clean and manipulate the data sources has been made accessible separately as an R package ([https://www.samabbott.co.uk/tbinenglanddataclean/](https://www.samabbott.co.uk/tbinenglanddataclean/)), along with extensive documentation of the required data sources and package functions. If interested in completely reproducing this work please see this documentation for details.
+- The code used in this chapter to import, clean and manipulate the data sources has been made accessible separately as an R package (`tbinenglanddataclean`; see Chapter \@ref(introduction)), along with extensive documentation of the required data sources and package functions. If interested in completely reproducing this work please see this documentation for details.
 
 
 - Findings from this chapter are used throughout the later chapters of this thesis; to inform analysis questions (Chapter  \@ref(benefical-bcg-out) and \@ref(direct-eff)), identify variables for which missing data must be imputed (Chapter  \@ref(benefical-bcg-out) and \@ref(direct-eff)), to parameterise a dynamic TB transmission model (Chapter \@ref(model-development)), and to fit a dynamic TB transmission model (Chapter \@ref(model-fitting)).

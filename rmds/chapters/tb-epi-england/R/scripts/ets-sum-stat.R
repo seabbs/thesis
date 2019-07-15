@@ -12,7 +12,8 @@ plot_overall_nots <- ets %>%
   guides(label = FALSE) +
   labs(y = "Notifications") +
   scale_colour_viridis_d(end = 0.8) +
-  theme(legend.position = "top")
+  theme(legend.position = "top") +
+  guides(col = guide_legend(title = "UK birth status"))
 
 ggsave("chapters/tb-epi-england/figures/plot-overall-nots.png", 
        plot_overall_nots, dpi = 320, width = 8, height = 8)
