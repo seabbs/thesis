@@ -57,7 +57,7 @@ walk(rda_files, read_rda)
 
 Bacillus Calmette–Guérin (BCG) primarily reduces the progression from infection to disease, however there is evidence that BCG may provide additional benefits. In this Chapter I aimed to investigate whether there is evidence in routinely-collected surveillance data (see Chapter \@ref(data)) that BCG vaccination impacts outcomes for tuberculosis (TB) cases in England. Any impact on TB outcomes could add additional weight to vaccination policies with wider population coverage, as these policies would have benefits beyond reducing TB incidence rates. 
 
-To conduct this study, I first obtained all TB notifications for 2009-2015 in England from the Enhanced Tuberculosis surveillance (ETS) system (see Chapter \@ref(data)). I then considered five outcomes: All-cause mortality, death due to TB (in those who died), recurrent TB, pulmonary disease, and sputum smear status. I used logistic regression, with complete case analysis, to investigate each outcome with BCG vaccination, years since vaccination and age at vaccination, adjusting for potential confounders. All analyses were repeated using multiply imputed data. This work was supervised by Hannah Christensen and Ellen Brooks-Pollock. Collaborators at Public Health England including, Maeve K Lalor, Dominik Zenner, Colin Campbell, and Mary E Ramsay provided the data and commented on multiple versions of this work. 
+To conduct this study, I first obtained all TB notifications for 2009-2015 in England from the Enhanced Tuberculosis surveillance (ETS) system (see Chapter \@ref(data)). I then considered five outcomes: All-cause mortality, death due to TB (in those who died), recurrent TB, pulmonary disease, and sputum smear status. I used logistic regression, with complete case analysis, to investigate each outcome with BCG vaccination, years since vaccination and age at vaccination, adjusting for potential confounders. All analyses were repeated using multiply imputed data. This work was adapted from [@Abbott:2019ir] (also available as a preprint^[Preprint: https://doi.org/10.1101/366476]) supervised by Hannah Christensen and Ellen Brooks-Pollock. Collaborators at Public Health England including, Maeve K Lalor, Dominik Zenner, Colin Campbell, and Mary E Ramsay provided the data and commented on multiple versions of this paper. 
 
 ## Background
 
@@ -91,7 +91,7 @@ R was used for all statistical analysis.[@R] The analysis was conducted in two s
 
 In the multivariable models, I adjusted for sex,[@Parslow2001; @Roth2006a; @Aaby2014] age,[@Teale1993] Index of Multiple Deprivation (2010) categorised into five groups for England (IMD rank),[@DCLG2011; @Bhatti1995] ethnicity,[@Parslow2001; @Abubakar2008] UK birth status,[@French2007; @Djuretic2002] and year of notification. As the relationship between age and outcomes was non-linear, I modelled age using a natural cubic spline with knots at the 25%, 50% and 75% quantiles.
 
-I conducted sensitivity analyses to assess the robustness of the results, by dropping each confounding variable in turn and assessing the effect on the adjusted Odds Ratios (aORs) of the exposure variable. I repeated the analysis excluding duplicate recurrent cases, and restricting the study population to those eligible for the BCG schools scheme (defined as UK born cases that were aged 14 or over in 2004) to assess the comparability of the BCG vaccinated and unvaccinated populations. To mitigate the impact of missing data I used multiple imputation, with the MICE package.[@VanBuuren2011] I imputed 50 data sets (for 20 iterations) using ) using all outcome and explanatory variables included in the analysis as predictors along with Public Health England centre. The model results were pooled using the small sample method,[@Barnard1999] and effect sizes compared with those from the main analysis.
+I conducted sensitivity analyses to assess the robustness of the results, by dropping each confounding variable in turn and assessing the effect on the adjusted Odds Ratios (aORs) of the exposure variable. I repeated the analysis excluding duplicate recurrent cases, and restricting the study population to those eligible for the BCG schools scheme (defined as UK born cases that were aged 14 or over in 2004) to assess the comparability of the BCG vaccinated and unvaccinated populations. To mitigate the impact of missing data I used multiple imputation, with the MICE package.[@VanBuuren2011] I imputed 50 data sets (for 20 iterations) using all outcome and explanatory variables included in the analysis as predictors along with Public Health England centre. The model results were pooled using the small sample method,[@Barnard1999] and effect sizes compared with those from the main analysis. All code for this analysis is available online^[Code: https://github.com/seabbs/ExploreBCGOnOutcomes].
 
 ## Results
 
@@ -122,10 +122,10 @@ outcome_demo_tab_bcg %>%
   set_names(., c("Outcome", names(.)[-1])) %>% 
   kable(caption = "Outcomes for individuals in England notified with TB between 2009-2015,  stratified by BCG vaccination status.",
          booktabs = TRUE, escape = TRUE) %>% 
-    column_spec(c(1), width = "2cm") %>% 
+    column_spec(c(1), width = "3cm") %>% 
     add_indent(indents) %>% 
     kable_styling(font_size = 8) %>% 
-    kable_styling(latex_options = "hold_position")%>% 
+    kable_styling(latex_options = "HOLD_position")%>% 
     add_header_above(c(" " = 2, "BCG status" = 3)) %>% 
     add_footnote(label = c("{% all cases}(% complete within vaccine status)[% complete within category]",
  "* Death due to TB in those who died and where cause of death was known"
@@ -142,10 +142,10 @@ demo_tab_bcg %>%
   set_names(., c("Confounder", names(.)[-1])) %>% 
   kable(caption = "Confounders for individuals in England notified with TB between 2009-2015,  stratified by BCG vaccination status.",
          booktabs = TRUE, escape = TRUE) %>% 
-    column_spec(c(1), width = "2cm") %>% 
+    column_spec(c(1), width = "3cm") %>% 
     add_indent(indents) %>% 
     kable_styling(font_size = 8) %>% 
-    kable_styling(latex_options = "hold_position") %>% 
+    kable_styling(latex_options = "HOLD_position") %>% 
     add_header_above(c(" " = 2, "BCG status" = 3)) %>% 
     add_footnote(label = c("{% all cases}(% complete within vaccine status)[% complete within category]",
  "* Death due to TB in those who died and where cause of death was known"
@@ -173,8 +173,8 @@ bcg_mortality_tab  %>%
               "aOR (95% CI)", "P-value")) %>% 
     kable(caption = "Summary of logistic regression model output with BCG vaccination as the exposure and all-cause mortality as the outcome.",
          booktabs = TRUE, escape = TRUE) %>% 
-    kable_styling(latex_options = "hold_position") %>% 
-    column_spec(c(1), width = "2cm") %>% 
+    kable_styling(latex_options = "HOLD_position") %>% 
+    column_spec(c(1), width = "3cm") %>% 
     add_indent(indents) %>% 
     kable_styling(font_size = 8) %>% 
     add_header_above(c(" " = 3, "Univariable" = 2, "Multivariable" = 2)) %>% 
@@ -220,7 +220,7 @@ table_var_outs[[1]] %>%
     column_spec(c(1, 2, 4, 8), width = "2cm") %>% 
     add_header_above(c(" " = 2, "Univariable" = 4, "Multivariable" = 4)) %>% 
     kable_styling(font_size = 8) %>% 
-    kable_styling(latex_options = "hold_position") %>% 
+    kable_styling(latex_options = "HOLD_position") %>% 
     add_footnote(label = c("OR (95% CI): unadjusted odds ratio with 95% confidence intervals",
                            "aOR (95% CI): adjusted odds ratios with 95% confidence intervals", 
                            "* Death due to TB in those who died and where cause of death was known",
@@ -247,7 +247,7 @@ table_var_outs[[2]] %>%
     column_spec(c(1, 2, 4, 8), width = "2cm") %>%  
     add_header_above(c(" " = 2, "Univariable" = 4, "Multivariable" = 4)) %>% 
     kable_styling(font_size = 8) %>% 
-    kable_styling(latex_options = "hold_position") %>% 
+    kable_styling(latex_options = "HOLD_position") %>% 
     add_footnote(label = c("OR (95% CI): unadjusted odds ratio with 95% confidence intervals",
                            "aOR (95% CI): adjusted odds ratios with 95% confidence intervals", 
                            "* Death due to TB in those who died and where cause of death was known",
@@ -273,7 +273,7 @@ table_var_outs[[3]] %>%
     column_spec(c(1, 2, 4, 8), width = "2cm") %>% 
     add_header_above(c(" " = 2, "Univariable" = 4, "Multivariable" = 4)) %>% 
     kable_styling(font_size = 8) %>% 
-    kable_styling(latex_options = "hold_position") %>% 
+    kable_styling(latex_options = "HOLD_position") %>% 
     add_footnote(label = c("OR (95% CI): unadjusted odds ratio with 95% confidence intervals",
                            "aOR (95% CI): adjusted odds ratios with 95% confidence intervals", 
                             "* Death due to TB in those who died and where cause of death was known",
@@ -306,7 +306,7 @@ imp_tab_gen <- function(df = NULL, caption = NULL, caption.short = NULL, escape 
                          "fmi: fraction of missing information",
                          "* Death due to TB in those who died and where cause of death was known"),
                notation = "none") %>% 
-  kable_styling(latex_options = "hold_position")
+  kable_styling(latex_options = "HOLD_position")
 }
 
 
@@ -350,7 +350,7 @@ bcg_ass_main %>%
     caption.short = "Summary of associations between BCG vaccination and all outcomes.", 
     caption = "Summary of associations between BCG vaccination and all outcomes; cases that have no recurrent flag in the ETS (n=50407), and cases that would have been eligible for the BCG schools scheme (n=9943). Those defined to be eligible for the schools scheme are the UK born, that were aged 14 or over in 2004", booktabs = TRUE) %>% 
     column_spec(c(1:2), width = "3cm") %>% 
-    kable_styling(latex_options = "hold_position") %>%
+    kable_styling(latex_options = "HOLD_position") %>%
     add_footnote(label = c("OR: odds ratio with 95% confidence intervals", "aOR: adjusted odds ratio with 95% confidence intervals",
                          "fmi: fraction of missing information",
                          "* Death due to TB in those who died and where cause of death was known"),
