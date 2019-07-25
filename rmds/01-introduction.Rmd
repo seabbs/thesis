@@ -84,7 +84,7 @@ This thesis has produced: peer reviewed papers; preprints; talks at academic con
 * Abbott S. *getTBinR: an R package for accessing and summarising the World Health Organisation Tuberculosis data*,
 Journal of Open Source Software, 2019, 4(34), 1260., doi: https://doi.org/10.21105/joss.01260
 
-* Abbott S, Christensen H, Lalor MK, Zenner D,Campbell C, Ramsay M, Brooks-Pollock E. *Exploring the effects of BCG vaccination in patients diagnosed with tuberculosis: observational study using the Enhanced Tuberculosis Surveillance system*, doi: https://doi.org/10.1101/366476
+* Abbott, S., Christensen, H., Lalor, M. K., Zenner, D., Campbell, C., Ramsay, M. E., & Brooks-Pollock, E. (2019). *Exploring the effects of BCG vaccination in patients diagnosed with tuberculosis: Observational study using the Enhanced Tuberculosis Surveillance system*. Vaccine, 1–6. doi: http://doi.org/10.1016/j.vaccine.2019.06.056 (preprint: https://doi.org/10.1101/366476)
 
 ### Papers under review
 
@@ -100,7 +100,7 @@ Journal of Open Source Software, 2019, 4(34), 1260., doi: https://doi.org/10.211
 
 * **`tbinenglanddataclean`**: An R package that contains the functions and documentation required to reproduce all data import and munging used in this thesis. This package provides a workflow to facilitate reproducing all analyses in this thesis and to expedite the work of others using data from the Enhanced Surveillance System (ETS) (Chapter \@ref(data)). Available from GitHub using `devtools::install_github("seabbs/tbinenglanddataclean")`. Link: https://www.samabbott.co.uk/tbinenglanddataclean/
 
-* **`idmodelr`**: An R package that contains a library  of infectious disease models as well as modelling utilities. It provides tooling that includes: example SEI/SEIR/SHLIR/SHLITR model code, a model solving wrapper; a model summary function; a scenario analysis function). Used by the explore infectious disease model dashboard (http://seabbs.co.uk/shiny/exploreidmodels/) for all functionality. Available from GitHub using `devtools::install_github("seabbs/idmodelr")`. Link: https://www.samabbott.co.uk/idmodelr/
+* **`idmodelr`**: An R package that contains a library  of infectious disease models as well as modelling utilities. It provides tooling that includes: example SEI/SEIR/SHLIR/SHLITR model code, a model solving wrapper; a model summary function; a scenario analysis function). Used by the explore infectious disease model dashboard (http://seabbs.co.uk/shiny/exploreidmodels/) for all functionality. Available from CRAN using `install.packages("idmodelr")` or install the development version from GitHub with `devtools::install_github("seabbs/idmodelr")`. Link: https://www.samabbott.co.uk/idmodelr/
 
 * **`prettypublisher`**: An R package that improves the R based reproducible research workflow. It provides tooling that includes: paper and figure referencing; effect size reporting; percentage reporting; P value reporting; and produces a table ready for further word processing. Used throughout this thesis. Available from GitHub using `devtools::install_github("seabbs/prettypublisher")`. Link: https://www.samabbott.co.uk/prettypublisher/
 

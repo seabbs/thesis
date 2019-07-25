@@ -1,20 +1,3 @@
-# getTBinR 0.5.8
-
-## Feature updates
-
-## Package updates
-
-* Added package information to license file - suggested during review for JOSS submission by @[rrrlw](/rrrlw).
-* Updated README introduction to better explain package aim -  suggested during review for JOSS submission by @[strengejacke](/strengejacke)
-* Improved package DESCRIPTION for CRAN only users - suggested during review for JOSS submission by @[rrrlw](/rrrlw).
-* Used `usethis::use_tidy_description` to improve DESCRIPTION formatting.
-* Added development documentation badge to the README + website.
-* Moved to automated pkgdown deployment using travis. Based on [this](https://pkgdown.r-lib.org/reference/deploy_site_github.html) and the [dplyr](https://github.com/tidyverse/dplyr/blob/master/.travis.yml) implementation.
-* Expanded travis testing grid based on [dplyr](https://github.com/tidyverse/dplyr/blob/master/.travis.yml) implementation.
-* Updated earliest supported R version based on travis testing - now `3.2.0`. 
-* Used `usethis::use_tidy_versions()` to set package to dependent on package versions used during development work. Added this to makefile to make automated.
-* Added a git commit step to the `Makefile` use with `make message="your commit message". This will automatically run all build steps that are required and then commit any changes. 
-
 # getTBinR 0.5.7
 
 ## Feature updates
@@ -35,7 +18,7 @@ summary plotting. Inspired by [this](https://www.samabbott.co.uk/getTBinR/articl
 
 * Added script to generate hexsticker
 * Added hexsticker to README
-* Added DOI link to Zenodo.
+* Added DOI link to Zenodo. (to do on CRAN release).
 * Updated tests to account for `dplyr` 8.0 release and `vdiffr` updates.
 * Added `itdepends` to package report functionality.
 

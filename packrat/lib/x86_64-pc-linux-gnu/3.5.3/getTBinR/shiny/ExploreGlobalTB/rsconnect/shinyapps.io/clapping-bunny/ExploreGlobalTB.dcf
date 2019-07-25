@@ -1,0 +1,12 @@
+name: ExploreGlobalTB
+title: ExploreGlobalTB
+username:
+account: clapping-bunny
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 659761
+bundleId: 1830147
+url: https://clapping-bunny.shinyapps.io/ExploreGlobalTB/
+when: 1548192062.15805
+asMultiple: FALSE
+asStatic: FALSE

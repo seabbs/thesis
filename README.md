@@ -41,7 +41,10 @@ Links to external chapter resources are given below.
 
 ##### Chapter 6 - Exploring the effects of BCG vaccination in patients diagnosed with tuberculosis: observational study using the Enhanced Tuberculosis Surveillance system
 
-[![Paper](https://img.shields.io/badge/Paper-10.1101/366476-lightgrey.svg)](https://doi.org/10.1101/366476) [![DOI](https://zenodo.org/badge/127124135.svg)](https://zenodo.org/badge/latestdoi/127124135)
+[![badge](https://img.shields.io/badge/Launch-Analysis-lightblue.svg)](https://mybinder.org/v2/gh/seabbs/ExploreBCGOnOutcomes/master?urlpath=rstudio)
+[![Paper](https://img.shields.io/badge/Paper-10.1016/j.vaccine.2019.06.056-lightgreen.svg)](https://doi.org/10.1016/j.vaccine.2019.06.056)
+[![Preprint](https://img.shields.io/badge/Preprint-10.1101/366476-lightgrey.svg)](https://doi.org/10.1101/366476)
+[![DOI](https://zenodo.org/badge/127124135.svg)](https://zenodo.org/badge/latestdoi/127124135)
 
 ##### Chapter 7 - Estimating the effect of the 2005 change in BCG policy in England: A retrospective cohort study
 

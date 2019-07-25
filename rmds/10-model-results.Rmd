@@ -23,40 +23,43 @@ resources_path <- file.path("chapters", "model_results")
 
 ## Introduction
 
-* Why
-* What did I do in the last chapter and how does this extend it
-* What I did summary
+In the previous chapter I outlined a model fitting pipeline and discussed the results from using it on the model developed in Chapter \@ref(model-development). Whilst this fitted model may be used to explore the epidemiology of tuberculosis (TB) in the early 2000's it does not - as currently stands - explore the impact of the 2005 change in BCG vaccination policy (Chapter \@ref(background)). 
 
-## Method
+This chapter details the approach used to extrapolate the findings from the previous chapter beyond the change in BCG policy in 2005 and into the future. It first outlines the scenarios considered, then details the assumptions used to expand the time horizon of the model. Finally the impact of each scenario is explored over multiple time horizons. As discussed in the previous chapter these findings are preliminary in nature, meaning quantative conclusions cannot be drawn and qualative conclusions must be appropriately caveated.
+
+## Methods
 
 ### Scenarios considered
 
-* Outline scenarios considered
+I considered three scenarios from 2005 onwards. These were:
 
-### Future Non-UK born cases assumption
+* Universal BCG vaccination of those at school-age continued with the same coverage as previously.
+* Universal BCG vaccination of those at school-age was phased out in 2005 and replaced with universal BCG vaccination of neonates with the same coverage levels as assumed for the BCG schools scheme.
+* Universal BCG vaccination of those at school-age was phased out in 2005. 
 
-* Exponential decay
-* Remain constant
-* Compare and constrast what these mean at different timelines
+Universal vaccination of neonates was used as a proxy for targeted vaccination of high risk neonates. This was necessary because the high risk population was not modelled in the model developed in Chapter \@ref(model-development) due to the lack of data on which to base key assumptions. No vaccination was used as a baseline in order to explore the absolute impact of vaccination. Vaccination coverage was assumed to be constant across all scenarios as there was little data on which to base between assumption variation. Regardless of the scenario considered it was assumed that school-age vaccination was in place from 1953 through to 2004.
+
+### Forecasting assumptions
+
+Data on non-UK born cases, which were imported into the model via the force of infection (Chapter \@ref(model-development)), were not avialable beyond 2015. To account for this an, age and year adjusted, poisson regression model was used to forecast future TB incidence in the non-UK born with age treated as a categorical variable. As for years with data uncertainty was introduced into these forecasts by assuming that non-UK born incidence rates were scaled using the fitted measurement error and normally distributed with a standard distribution based on the fitted measurement standard error (Chapter \@ref(model-fitting)).
+
+As outlined in Chapter \@ref(model-development), births from 2015 onwards were based on projections from the Office for National Statistics (ONS). Age-specific mortality rates were estimated for 2016 onwards using ONS estimates from 1981-2015, and an exponential model (Chapter \@ref(model-development). Both births and age-specific mortality rates were assumed to have a normal distribution with a standard deviation of 5% of the proect value. It was assumed that all other parameters were unchanged from the values estimated for 2000-2004 (Chapter \@ref(model-fitting).
+
+### Analytical methods
+
+The estimated age-stratified, and aggregated, TB incidence rates were compared both visually and numerically from 2005 through to 2040 for each scenario. From 2005-2015 observed data were also compared to the estimates from each scenario. Multiple time horizons were evaluated as intitially the impact of any policy change may be masked by the large resevoir of vaccinated individuals in the populations and because of the impact of the assumed decrease in non-UK born cases over time.  
 
 ## Results
-  
-## Impact between 2005 and 2010
+ 
+The results presented in the following section should be considered preliminary because of the low quality of fit achieved in Chapter \@ref(model-fitting). This means that quantative estimates are unlikely to be accurate. However, the underlying changes in dynamics caused by vaccination may be used for insight into the likely impact of each scenario and therefore there is still value in exploring these results. 
 
-  * Comparision of cases at multiple time horizons.
-  * Comparision of age distribution of cases.
-  * Comparision of deaths at multiple time horizons.
+## Comparing vaccination scenarios with observed data
+
+  * Comparision of cases.
   * Comparision of age distribution of deaths.
   * All in reflection of reality.
   
-## Non-UK born cases decline exponentially over time
-
-  * Comparision of cases at multiple time horizons (10 and 25 years).
-  * Comparision of age distribution of cases.
-  * Comparision of deaths at multiple time horizons (10 and 25 years).
-  * Comparision of age distribution of deaths
-  
-## Non-UK born cases stay at todays levels
+## Forecasting the long-term impact of each vaccination scenario.
 
   * Comparision of cases at multiple time horizons (10 and 25 years).
   * Comparision of age distribution of cases.
@@ -70,11 +73,35 @@ resources_path <- file.path("chapters", "model_results")
 * Summary of work from chapter
 * Strengths and weaknesses
 * Literature comparisions
-* Concliusions
+* Further work
+* Conclusions
 
+
+### Summary
+
+The preliminary results presented in this chapter indicate that continuing BCG vaccination of those at school-age would have ...
+
+They also indicate that universal neonatal vaccination would have ... 
+
+In comparison stopping all BCG vaccination would have resulted in ...
+
+Over the longer term these results indicate that school-age BCG vaccination would have ... in comparison to neonatal vaccination. Both scenarios in *placeholder* in comparison to no vaccination.
+
+### Strengths and weaknesses
+
+The model developed in Chapter \@ref(model-development) was motivated by existing theory and robustly parameterised to the available data. It represents the only open-source model of TB transmission and BCG vaccination. However the model fitting pipeline developed in Chapter \@ref(model-fitting) did not produce a good fit to the observed data. Ad-hoc model calibration (as discussed in Chapter \@ref(model-fitting)) failed to significantly improve on this fit. This means that the findings presented in this chapter can be considered as indictative only. However, these findings still represent the only modelling study of TB dynamics after a large scale change in BCG vaccination policy. The lack of data to support modelling the high-risk TB population population meant that targeted vaccination of high-risk neonates could not be considered as a scenario. This means that the results presented in this chapter do not contain the vaccination policy that is currently in place and so findings from the model cannot be directly compared to observed incidence data. However, only considering scenarios that alter the age of those vaccinated, rather than both the age of those vaccinated and the targeting of the vaccine, make understanding the impact of changes in vaccination policy easier to determine. The forecasts presented in this chapter are highly sensitive to the forecasted number of non-UK born TB cases. Whilst the regression method outlined in this chapter extrapolates based on current age-stratified trends it may be the case that this extrapolation breaks down over the long - or short - term. To a lesser extent the forecasts presented here are sensitive to the projected number of births and mortality rates. This is particularly the case for incidence rates in neonates and in older adults. 
+
+### Literature + Thesis comparisons
+
+
+
+### Further work
+
+Further work is need to improve the fit of the model to observed data. This will result in improved forecasts. In addition additional vaccination coverage scenarios could be considered that explored the impact of vaccinating a reduced proportion of both those at school-age and neonates. It additional data becomes available, or with the appropriate assumptions, the inclusion of the high-risk population into the model would allow the evaluate of targeted high-risk neonatal vaccination in comparison to the other scenarios considered here. The extrapolation of the trend non-UK born cases is a limitation of this model and as such should be further explored using other assumptions such as constant non-UK born cases, incidence rates based on expert opinion and estimates based on other global modelling studies.  
+
+### Conclusions
 
 ## Summary
 
 * Best vaccination scenario according to model
 * Implications for actual policy
-* 

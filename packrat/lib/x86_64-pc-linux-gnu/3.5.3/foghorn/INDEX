@@ -1,0 +1,8 @@
+check_cran_results      Deprecated functions
+cran_details            Get details about the CRAN check results for
+                        packages
+cran_incoming           List packages in CRAN incoming queue.
+cran_results            Table of the CRAN check results
+foghorn                 CRAN check results at the terminal
+summary_cran_results    Summary of the CRAN check results
+visit_cran_check        Visit the CRAN check results page

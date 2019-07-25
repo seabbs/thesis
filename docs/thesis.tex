@@ -573,7 +573,7 @@ Date: \emph{placeholder}
     Abbott S. \emph{getTBinR: an R package for accessing and summarising the World Health Organisation Tuberculosis data},
     Journal of Open Source Software, 2019, 4(34), 1260., doi: \url{https://doi.org/10.21105/joss.01260}
   \item
-    Abbott S, Christensen H, Lalor MK, Zenner D,Campbell C, Ramsay M, Brooks-Pollock E. \emph{Exploring the effects of BCG vaccination in patients diagnosed with tuberculosis: observational study using the Enhanced Tuberculosis Surveillance system}, doi: \url{https://doi.org/10.1101/366476}
+    Abbott, S., Christensen, H., Lalor, M. K., Zenner, D., Campbell, C., Ramsay, M. E., \& Brooks-Pollock, E. (2019). \emph{Exploring the effects of BCG vaccination in patients diagnosed with tuberculosis: Observational study using the Enhanced Tuberculosis Surveillance system}. Vaccine, 1--6. doi: \url{http://doi.org/10.1016/j.vaccine.2019.06.056} (preprint: \url{https://doi.org/10.1101/366476})
   \end{itemize}
   \hypertarget{papers-under-review}{%
   \subsection{Papers under review}\label{papers-under-review}}
@@ -594,7 +594,7 @@ Date: \emph{placeholder}
   \item
     \textbf{\texttt{tbinenglanddataclean}}: An R package that contains the functions and documentation required to reproduce all data import and munging used in this thesis. This package provides a workflow to facilitate reproducing all analyses in this thesis and to expedite the work of others using data from the Enhanced Surveillance System (ETS) (Chapter \ref{data}). Available from GitHub using \texttt{devtools::install\_github("seabbs/tbinenglanddataclean")}. Link: \url{https://www.samabbott.co.uk/tbinenglanddataclean/}
   \item
-    \textbf{\texttt{idmodelr}}: An R package that contains a library of infectious disease models as well as modelling utilities. It provides tooling that includes: example SEI/SEIR/SHLIR/SHLITR model code, a model solving wrapper; a model summary function; a scenario analysis function). Used by the explore infectious disease model dashboard (\url{http://seabbs.co.uk/shiny/exploreidmodels/}) for all functionality. Available from GitHub using \texttt{devtools::install\_github("seabbs/idmodelr")}. Link: \url{https://www.samabbott.co.uk/idmodelr/}
+    \textbf{\texttt{idmodelr}}: An R package that contains a library of infectious disease models as well as modelling utilities. It provides tooling that includes: example SEI/SEIR/SHLIR/SHLITR model code, a model solving wrapper; a model summary function; a scenario analysis function). Used by the explore infectious disease model dashboard (\url{http://seabbs.co.uk/shiny/exploreidmodels/}) for all functionality. Available from CRAN using \texttt{install.packages("idmodelr")} or install the development version from GitHub with \texttt{devtools::install\_github("seabbs/idmodelr")}. Link: \url{https://www.samabbott.co.uk/idmodelr/}
   \item
     \textbf{\texttt{prettypublisher}}: An R package that improves the R based reproducible research workflow. It provides tooling that includes: paper and figure referencing; effect size reporting; percentage reporting; P value reporting; and produces a table ready for further word processing. Used throughout this thesis. Available from GitHub using \texttt{devtools::install\_github("seabbs/prettypublisher")}. Link: \url{https://www.samabbott.co.uk/prettypublisher/}
   \end{itemize}
@@ -4103,7 +4103,7 @@ Date: \emph{placeholder}
   \bottomrule
   \end{tabular}
   \end{table}
-  This chapter has outlined a realistic dynamic transmission model of TB that includes key features required to investigate BCG vaccination policy and is robustly parameterised from an extensive, and previously unused in a TB model, routine surveillance data-set. Transformations, and approximations, of parameters have been used to make the best use of available data. However, there are several key limitations. Firstly, the model presented here does not explicitly model TB transmission in the non-UK born. This means that in order to initialise the model assumptions must be made about the historic number of non-UK born cases and the future incidence in the non-UK born must also be assumed in order to produce projections of future TB incidence. However, this simplification allows many complexities of TB in the non-UK born to be discounted, such as the rate of case importation, heterogeneity amongst the non-UK born from different countries, and mixing within the non-UK born. Secondly, the model presented here does not include high and low risk stratification within the UK born. Individuals that are from countries with incidence above 40 per 100,000, or that have parents/grandparents from countries with incidence above 40 per 100,000, are considered at higher risk of TB.{[}\protect\hyperlink{ref-PublicHealthEngland2011a}{46}{]} In addition, individuals living in areas of the UK with incidence above this threshold are also considered at higher risk. Current BCG vaccination policy targets high risk neonates for vaccination, with low risk neonates not being vaccinated. Ideally, this high/low risk stratification would be included as it would allow the evaluation of the current BCG vaccination policy. This has not been possible as there is little data from which to extrapolate either the number of high risk notifications in the ETS, or the size of the high risk population. There is also little evidence to suggest the degree of mixing between the non-UK born, the high risk UK born population and the low risk non-UK born population. It is likely that introducing this structure into the model, without the data outlined above, would lead to the model being poorly specified and therefore failing to fit to the observed data. Instead, in the final chapter in this thesis, the high risk neonatal programme will be proxied by a universal neonatal programme. This will allow for a comparison to be made between school-age and neonatal vaccination but does not allow for the impact of targeting high risk individuals to be evaluated. Finally, the model presented here does not include the full complexity of TB epidemiology. Drug resistant TB may have more severe outcomes, standard TB treatment may fail resulting in a longer period on treatment, and TB outcomes may vary by risk group.{[}\protect\hyperlink{ref-PHE2017}{1}{]} However, drug resistant TB cases are known to make up a small fraction of TB cases in England in the UK born, and variable treatment times have been included in the prior distribution of treatment times and TB outcomes. Model parameters have also been stratified by pulmonary status and age group where appropriate. Additionally, complexity has been included for the action of the BCG vaccine, with realistic waning in effectiveness. Observed age-specific mortality rates and the number of live births has also been included, allowing for realistic population demographics. This means that estimates of the impact of the change in vaccination policy are likely to be more accurate, whereas a more complex model of the epidemiology of TB would likely have little impact on these results.
+  This chapter has outlined a realistic dynamic transmission model of TB that includes key features required to investigate BCG vaccination policy and is robustly parameterised from an extensive, and previously unused in a TB model, routine surveillance data-set. Transformations, and approximations, of parameters have been used to make the best use of available data. However, there are several key limitations. Firstly, the model presented here does not explicitly model TB transmission in the non-UK born. This means that in order to initialise the model assumptions must be made about the historic number of non-UK born cases and the future incidence in the non-UK born must also be assumed in order to produce projections of future TB incidence. However, this simplification allows many complexities of TB in the non-UK born to be discounted, such as the rate of case importation, heterogeneity amongst the non-UK born from different countries, and mixing within the non-UK born. Secondly, the model presented here does not include high and low risk stratification within the UK born. Individuals that are from countries with incidence above 40 per 100,000, or that have parents/grandparents from countries with incidence above 40 per 100,000, are considered at higher risk of TB.{[}\protect\hyperlink{ref-PublicHealthEngland2011a}{46}{]} In addition, individuals living in areas of the UK with incidence above this threshold are also considered at higher risk. Current BCG vaccination policy targets high risk neonates for vaccination, with low risk neonates not being vaccinated. Ideally, this high/low risk stratification would be included as it would allow the evaluation of the current BCG vaccination policy. This has not been possible as there is little data from which to extrapolate either the number of high risk notifications in the ETS,{[}\protect\hyperlink{ref-PHE2018}{19}{]} or the size of the high risk population. There is also little evidence to suggest the degree of mixing between the non-UK born, the high risk UK born population and the low risk non-UK born population. It is likely that introducing this structure into the model, without the data outlined above, would lead to the model being poorly specified and therefore failing to fit to the observed data. Instead, in the final chapter in this thesis, the high risk neonatal programme will be proxied by a universal neonatal programme. This will allow for a comparison to be made between school-age and neonatal vaccination but does not allow for the impact of targeting high risk individuals to be evaluated. Finally, the model presented here does not include the full complexity of TB epidemiology. Drug resistant TB may have more severe outcomes, standard TB treatment may fail resulting in a longer period on treatment, and TB outcomes may vary by risk group.{[}\protect\hyperlink{ref-PHE2017}{1}{]} However, drug resistant TB cases are known to make up a small fraction of TB cases in England in the UK born, and variable treatment times have been included in the prior distribution of treatment times and TB outcomes. Model parameters have also been stratified by pulmonary status and age group where appropriate. Additionally, complexity has been included for the action of the BCG vaccine, with realistic waning in effectiveness. Observed age-specific mortality rates and the number of live births has also been included, allowing for realistic population demographics. This means that estimates of the impact of the change in vaccination policy are likely to be more accurate, whereas a more complex model of the epidemiology of TB would likely have little impact on these results.
   
   There are several key differences between the model presented here and others that have been previously been published that modeled TB transmission in low incidence settings or evaluated BCG vaccination policy. These are: the inclusion of dynamic TB transmission; robust parameterisation from an extensive surveillance data-set; realistic population demographics; and detailed modelling of the action of the BCG vaccine. Several previous studies have evaluated the role of BCG vaccination at a population level and estimated the impact of targeting different age groups and populations. Manissero et al.~estimated the impact of various BCG vaccination strategies in low-intermediate incidence settings using an annual risk of infection model based on an approach previously published by Trunz et al. {[}\protect\hyperlink{ref-Manissero2008a}{114},\protect\hyperlink{ref-Trunz2006}{115}{]} This approach estimates the number of new cases generated by a single smear positive case per year in a birth cohort. Only a single year of data was used to parameterise the model and age structure, the duration of protection from BCG vaccination and the different types of protection conferred by BCG vaccination were not considered. Rahman et al.~compared the cost effectiveness of universal BCG vaccination to no vaccination using a cohort model of Japanese infants.{[}\protect\hyperlink{ref-Rahman2001a}{116}{]} Their model did not include TB transmission and used an estimated duration of protection from BCG of 10 years. Similarly Usher et al.~used a decision analytical model to follow a birth cohort to compare universal, selective or no BCG vaccination.{[}\protect\hyperlink{ref-Usher2016}{70}{]} As in the previous study, TB transmission was not included. The model I have presented here includes TB transmission and uses more recent estimates of the effectiveness of the BCG vaccine to capture the full benefits of vaccination.
   
@@ -4513,69 +4513,59 @@ Date: \emph{placeholder}
   
   \hypertarget{introduction-9}{%
   \section{Introduction}\label{introduction-9}}
-  \begin{itemize}
-  \tightlist
-  \item
-    Why
-  \item
-    What did I do in the last chapter and how does this extend it
-  \item
-    What I did summary
-  \end{itemize}
-  \hypertarget{method-4}{%
-  \section{Method}\label{method-4}}
+  
+  In the previous chapter I outlined a model fitting pipeline and discussed the results from using it on the model developed in Chapter \ref{model-development}. Whilst this fitted model may be used to explore the epidemiology of tuberculosis (TB) in the early 2000's it does not - as currently stands - explore the impact of the 2005 change in BCG vaccination policy (Chapter \ref{background}).
+  
+  This chapter details the approach used to extrapolate the findings from the previous chapter beyond the change in BCG policy in 2005 and into the future. It first outlines the scenarios considered, then details the assumptions used to expand the time horizon of the model. Finally the impact of each scenario is explored over multiple time horizons. As discussed in the previous chapter these findings are preliminary in nature, meaning quantative conclusions cannot be drawn and qualative conclusions must be appropriately caveated.
+  
+  \hypertarget{methods-2}{%
+  \section{Methods}\label{methods-2}}
   
   \hypertarget{scenarios-considered}{%
   \subsection{Scenarios considered}\label{scenarios-considered}}
+  
+  I considered three scenarios from 2005 onwards. These were:
   \begin{itemize}
   \tightlist
   \item
-    Outline scenarios considered
+    Universal BCG vaccination of those at school-age continued with the same coverage as previously.
+  \item
+    Universal BCG vaccination of those at school-age was phased out in 2005 and replaced with universal BCG vaccination of neonates with the same coverage levels as assumed for the BCG schools scheme.
+  \item
+    Universal BCG vaccination of those at school-age was phased out in 2005.
   \end{itemize}
-  \hypertarget{future-non-uk-born-cases-assumption}{%
-  \subsection{Future Non-UK born cases assumption}\label{future-non-uk-born-cases-assumption}}
-  \begin{itemize}
-  \tightlist
-  \item
-    Exponential decay
-  \item
-    Remain constant
-  \item
-    Compare and constrast what these mean at different timelines
-  \end{itemize}
+  Universal vaccination of neonates was used as a proxy for targeted vaccination of high risk neonates. This was necessary because the high risk population was not modelled in the model developed in Chapter \ref{model-development} due to the lack of data on which to base key assumptions. No vaccination was used as a baseline in order to explore the absolute impact of vaccination. Vaccination coverage was assumed to be constant across all scenarios as there was little data on which to base between assumption variation. Regardless of the scenario considered it was assumed that school-age vaccination was in place from 1953 through to 2004.
+  
+  \hypertarget{forecasting-assumptions}{%
+  \subsection{Forecasting assumptions}\label{forecasting-assumptions}}
+  
+  Data on non-UK born cases, which were imported into the model via the force of infection (Chapter \ref{model-development}), were not avialable beyond 2015. To account for this an, age and year adjusted, poisson regression model was used to forecast future TB incidence in the non-UK born with age treated as a categorical variable. As for years with data uncertainty was introduced into these forecasts by assuming that non-UK born incidence rates were scaled using the fitted measurement error and normally distributed with a standard distribution based on the fitted measurement standard error (Chapter \ref{model-fitting}).
+  
+  As outlined in Chapter \ref{model-development}, births from 2015 onwards were based on projections from the Office for National Statistics (ONS). Age-specific mortality rates were estimated for 2016 onwards using ONS estimates from 1981-2015, and an exponential model (Chapter \ref{model-development}. Both births and age-specific mortality rates were assumed to have a normal distribution with a standard deviation of 5\% of the proect value. It was assumed that all other parameters were unchanged from the values estimated for 2000-2004 (Chapter \ref{model-fitting}.
+  
+  \hypertarget{analytical-methods}{%
+  \subsection{Analytical methods}\label{analytical-methods}}
+  
+  The estimated age-stratified, and aggregated, TB incidence rates were compared both visually and numerically from 2005 through to 2040 for each scenario. From 2005-2015 observed data were also compared to the estimates from each scenario. Multiple time horizons were evaluated as intitially the impact of any policy change may be masked by the large resevoir of vaccinated individuals in the populations and because of the impact of the assumed decrease in non-UK born cases over time.
+  
   \hypertarget{results-4}{%
   \section{Results}\label{results-4}}
   
-  \hypertarget{impact-between-2005-and-2010}{%
-  \section{Impact between 2005 and 2010}\label{impact-between-2005-and-2010}}
+  The results presented in the following section should be considered preliminary because of the low quality of fit achieved in Chapter \ref{model-fitting}. This means that quantative estimates are unlikely to be accurate. However, the underlying changes in dynamics caused by vaccination may be used for insight into the likely impact of each scenario and therefore there is still value in exploring these results.
+  
+  \hypertarget{comparing-vaccination-scenarios-with-observed-data}{%
+  \section{Comparing vaccination scenarios with observed data}\label{comparing-vaccination-scenarios-with-observed-data}}
   \begin{itemize}
   \tightlist
   \item
-    Comparision of cases at multiple time horizons.
-  \item
-    Comparision of age distribution of cases.
-  \item
-    Comparision of deaths at multiple time horizons.
+    Comparision of cases.
   \item
     Comparision of age distribution of deaths.
   \item
     All in reflection of reality.
   \end{itemize}
-  \hypertarget{non-uk-born-cases-decline-exponentially-over-time}{%
-  \section{Non-UK born cases decline exponentially over time}\label{non-uk-born-cases-decline-exponentially-over-time}}
-  \begin{itemize}
-  \tightlist
-  \item
-    Comparision of cases at multiple time horizons (10 and 25 years).
-  \item
-    Comparision of age distribution of cases.
-  \item
-    Comparision of deaths at multiple time horizons (10 and 25 years).
-  \item
-    Comparision of age distribution of deaths
-  \end{itemize}
-  \hypertarget{non-uk-born-cases-stay-at-todays-levels}{%
-  \section{Non-UK born cases stay at todays levels}\label{non-uk-born-cases-stay-at-todays-levels}}
+  \hypertarget{forecasting-the-long-term-impact-of-each-vaccination-scenario.}{%
+  \section{Forecasting the long-term impact of each vaccination scenario.}\label{forecasting-the-long-term-impact-of-each-vaccination-scenario.}}
   \begin{itemize}
   \tightlist
   \item
@@ -4598,16 +4588,45 @@ Date: \emph{placeholder}
   \item
     Literature comparisions
   \item
-    Concliusions
+    Further work
+  \item
+    Conclusions
   \end{itemize}
   \hypertarget{summary-9}{%
-  \section{Summary}\label{summary-9}}
+  \subsection{Summary}\label{summary-9}}
+  
+  The preliminary results presented in this chapter indicate that continuing BCG vaccination of those at school-age would have \ldots{}
+  
+  They also indicate that universal neonatal vaccination would have \ldots{}
+  
+  In comparison stopping all BCG vaccination would have resulted in \ldots{}
+  
+  Over the longer term these results indicate that school-age BCG vaccination would have \ldots{} in comparison to neonatal vaccination. Both scenarios in \emph{placeholder} in comparison to no vaccination.
+  
+  \hypertarget{strengths-and-weaknesses}{%
+  \subsection{Strengths and weaknesses}\label{strengths-and-weaknesses}}
+  
+  The model developed in Chapter \ref{model-development} was motivated by existing theory and robustly parameterised to the available data. It represents the only open-source model of TB transmission and BCG vaccination. However the model fitting pipeline developed in Chapter \ref{model-fitting} did not produce a good fit to the observed data. Ad-hoc model calibration (as discussed in Chapter \ref{model-fitting}) failed to significantly improve on this fit. This means that the findings presented in this chapter can be considered as indictative only. However, these findings still represent the only modelling study of TB dynamics after a large scale change in BCG vaccination policy. The lack of data to support modelling the high-risk TB population population meant that targeted vaccination of high-risk neonates could not be considered as a scenario. This means that the results presented in this chapter do not contain the vaccination policy that is currently in place and so findings from the model cannot be directly compared to observed incidence data. However, only considering scenarios that alter the age of those vaccinated, rather than both the age of those vaccinated and the targeting of the vaccine, make understanding the impact of changes in vaccination policy easier to determine. The forecasts presented in this chapter are highly sensitive to the forecasted number of non-UK born TB cases. Whilst the regression method outlined in this chapter extrapolates based on current age-stratified trends it may be the case that this extrapolation breaks down over the long - or short - term. To a lesser extent the forecasts presented here are sensitive to the projected number of births and mortality rates. This is particularly the case for incidence rates in neonates and in older adults.
+  
+  \hypertarget{literature-thesis-comparisons}{%
+  \subsection{Literature + Thesis comparisons}\label{literature-thesis-comparisons}}
+  
+  \hypertarget{further-work}{%
+  \subsection{Further work}\label{further-work}}
+  
+  Further work is need to improve the fit of the model to observed data. This will result in improved forecasts. In addition additional vaccination coverage scenarios could be considered that explored the impact of vaccinating a reduced proportion of both those at school-age and neonates. It additional data becomes available, or with the appropriate assumptions, the inclusion of the high-risk population into the model would allow the evaluate of targeted high-risk neonatal vaccination in comparison to the other scenarios considered here. The extrapolation of the trend non-UK born cases is a limitation of this model and as such should be further explored using other assumptions such as constant non-UK born cases, incidence rates based on expert opinion and estimates based on other global modelling studies.
+  
+  \hypertarget{conclusions}{%
+  \subsection{Conclusions}\label{conclusions}}
+  
+  \hypertarget{summary-10}{%
+  \section{Summary}\label{summary-10}}
   \begin{itemize}
+  \tightlist
   \item
     Best vaccination scenario according to model
   \item
     Implications for actual policy
-  \item
   \end{itemize}
   \hypertarget{discussion-chapt}{%
   \chapter{Discussion}\label{discussion-chapt}}
@@ -4637,15 +4656,15 @@ Date: \emph{placeholder}
   \hypertarget{public-engagement}{%
   \section{Public engagement}\label{public-engagement}}
   
-  Public engagement has also been a primary focus of this thesis. This is closely linked with the previous aim of open and reproducible research. Effort has been taken so that all peer reviewed content is available for the wider public, with Twitter used disseminate findings. Where appropriate, interactive applications have been developed that seek to explore some of the key findings of this thesis, as well as teaching more theoretical concepts used throughout (see Chapter \ref{introduction}). Numerous case studies have also been produced that outline these theoretical concepts using some of the open source tools developed alongside this thesis\footnote{See my personal site: \url{https://www.samabbott.co.uk}}. These tools were themselves developed to lower the barrier of entry to infectious disease research. One of these tools, \texttt{idmodelr}, has been released to CRAN and peer reviewed by JOSS. Finally, in 2017 I spent a week at the Green Man Festival exploring the mathematics of vaccination with the general public. This made use of several simple games, as well as an interactive online tool\footnote{Available here: \url{https://github.com/seabbs/prettypublisher}}.
+  Public engagement has also been a primary focus of this thesis. This is closely linked with the previous aim of open and reproducible research. Effort has been taken so that all peer reviewed content is available for the wider public, with Twitter used disseminate findings. Where appropriate, interactive applications have been developed that seek to explore some of the key findings of this thesis, as well as teaching more theoretical concepts used throughout (see Chapter \ref{introduction}). Numerous case studies have also been produced that outline these theoretical concepts using some of the open source tools developed alongside this thesis\footnote{See my personal site: \url{https://www.samabbott.co.uk}}. These tools were themselves developed to lower the barrier of entry to infectious disease research. One of these tools, \texttt{idmodelr}, has been released to CRAN. Finally, in 2017 I spent a week at the Green Man Festival exploring the mathematics of vaccination with the general public. This made use of several simple games, as well as an interactive online tool\footnote{Available here: \url{https://github.com/seabbs/prettypublisher}}.
   
   \hypertarget{future-research}{%
   \section{Future research}\label{future-research}}
   
   The finding that BCG vaccination may reduce mortality in TB cases from Chapter \ref{beneficial-bcg-out} require validation in other data sources and settings. A larger sample size may be required in order to unpick the association between BCG vaccination and the cause of mortality. These findings could also be included in a cost effectiveness study of the BCG vaccine. The dynamic model developed in Chapter \ref{model-development} and fitted in \ref{model-fitting} does not currently include targeted vaccination of neonates and is only fitted to data up to 2004. In order to be able to more accurately explore current, and future, vaccination policy the extension of the model to the present data would be required. This would potentially be of great use for policy makers. An alternative would be to develop a comparable models in different settings. This would allow the generalisability of the findings to be explored. The dynamic model could also be further generalised to include hypothetical future vaccines with differing characteristics. This would allow vaccine characteristics and optimal deployment strategies to be explored, via simulations, ahead of further development. Both \texttt{getTBinR} and \texttt{idmodelr} have active user bases and further developments are planned. This includes: additional tooling, documentation, and case studies. Further development of several of the interactive tools discussed in Chapter \ref{introduction} is also planned.
   
-  \hypertarget{conclusions}{%
-  \section{Conclusions}\label{conclusions}}
+  \hypertarget{conclusions-1}{%
+  \section{Conclusions}\label{conclusions-1}}
   
   This thesis has provided new evidence concerning the 2005 change in BCG policy in England. A simulation study that was used as part of the quantitative evidence for the change in policy was recreated and updated. The results from this updated model suggested that the change in policy was likely to have a greater impact on the UK born, at school-age, than previously thought. This finding was supported by a regression modelling study on the impact on TB incidence rates from the policy change. However, this study also found that the change in policy was associated with some benefits in UK born neonates and a much larger reduction in TB incidence rates in both non-UK born neonates and those at school-age. An additional regression study looking at the possible link between BCG vaccination and improved TB outcomes found some evidence that BCG vaccination was associated with reduced all-cause mortality, with little evidence of any other benefits. This result strengthens the case for wider vaccination. Additionally, a dynamic model of TB transmission was developed to provide a more detailed tool for evaluating the impact of the change in policy. Using this model it was found that \emph{placeholder}. These findings suggest a stronger case for the use of the BCG vaccine in school-age populations; in areas with an equivalent level of TB transmission to England; and where the effectiveness of the BCG vaccine has been shown to not reduce with age. They also indicate that a future vaccine, without the reduced effectiveness observed in some geographic areas, may be more effectively targeted at those at school-age that at neonates. However, this depends on the potential duration of protection inferred by vaccination. The findings from this thesis may be of use to policy-makers to inform vaccine usage both in the UK and globally. As a by-product of the work conducted in this thesis several open source tools have been developed. These tools maybe used as learning resources, for public engangement, and as part of other research projects.
   
