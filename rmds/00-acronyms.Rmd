@@ -10,11 +10,19 @@
 
 \textbf{LFS} - Labour Force Survey \par
 
+\textbf{MCMC} - Markov Chain Monte Carlo \par
+
 \textbf{MRSA} - Methicillin-resistant *Staphylococcus aureus* \par
 
 \textbf{ONS} - Office for National Statistics \par
 
 \textbf{PHE} - Public Health England \par
+
+\textbf{PMCMC} - Particle Markov Chain Monte Carlo \par
+
+\textbf{PRCC} - Partial Rank Correlation Coefficient \par
+
+\textbf{SMC} - Sequential Monte Carlo \par
 
 \textbf{TB} – Tuberculosis \par
 

@@ -245,10 +245,33 @@ The full model fitting pipeline can be summarised as follows^[Code: https://gith
 
 ## Results
 
-### Calibration 
+The pipeline outlined above resulted in a poor fit to the observed data. The SMC^2 algorithm had a low effective sample size for each iteration, and a low acceptance rate for particle reuvernation steps. This resulted in spuriously tight priors. Ad-hoc calibration (detailed in the following section) failed to improve the quality of this fit or find a subset of the model - or parameters - that fit the observed data to an acceptable degree whilst remaining computationally feasible. The results presented in the following section are therefore preliminary and any conclusions drawn from them must be appropriately caveated. 
 
-* Report on proposal acceptance rate and number of particles selected in main scenario
-* Report on run time and feasibilty
+### Ad-hoc calibration
+
+Minor alterations to the model fitting pipeline had little impact on the quality of the fit. To attempt to improve the quality of the model fit I used a combination of ad-hoc approaches. As a first step I introduced a calibration model with variation allowed only in the fitted parameters with all other parameters using point estimates. This allowed a reduced number of particles to be used to estimate the marginal likelihood and hence dramatically decreased compute cost and runtimes. This reduced model was then used for the following tests:
+
+* Increasing the number of particles used in the outer SMC loop at the expense of reducing the number of particles used for marginal likelihood estimation.
+* Increasing the number of particles used for marginal likelihood estimation. 
+* Sequentially decreasing model complexity by fixing fitted parameters to manually tuned point estimates.
+* Increasing the number of parameters fitted to rather than used as fixed distributions.
+* Varying the  size of the proposal distribution, rejuvernation thresold, number of particles and rcejuvernation steps.
+* Varying the fitted observed data. This took 3 main forms:
+    * Aggregation: fitting to overall incidence only; fitting to incidence grouped by large age groups (i.e children, adults, older adults);  fitting to only age groups of interest (i.e children). 
+    * Reducing the timespan of the fitted data. This included simplifying down to a single year of data but also included using various combinations of time points.
+    *  Exploring additional observed data. This included attempting to fit to observed pulmonary TB case from 1980 onwards. This approach sought to constrain the parameter space to give a more realistic age distribution of cases. 
+* Changing the functional form for the decay in the historic contact rate. This involved exploring linear decay with the decay gradient dictated by the year that the current contact rate takes effect and the year that the historic contact rate begain to decay.
+* Exploring using time dependent modifiers on the transmission probability and non-UK born mixing. 
+* Exploring using modifiers for children, adults, and older adults for both the transmission probability and non-UK born mixing. This was essentially an extension of the original scenarios considered using the model fitting pipeline. 
+* Exploring widening and narrowing the prior distributions of fitted parameters beyond realistic ranges. 
+* Exploring varying the size of the initial high, and low, risk latent populations. This included starting with no latent cases, starting with a reduced proportion of latent cases and starting with a much larger latent population to simulate a historically more widespread disease.
+
+
+None of these approaches dramatically improved model fit to the point that more robust inference could be drawn. Reducing the number of parameters, and time points, fitted too decreased the computational cost of the pipeline and improved acceptance rates. However, model fits remained poor until a single timepoint and aggregated incidence were fitted too using a single varying parameter (effective contact rate) with all others manually tuned. Unfortanately, this simplifed the model to the extent that it could not be used to generate meaningful results. The introduction of multiple timepoints led to poor model fits regardless of the observational data used. This effect may be attributed to particle degradation from but was not resolved by the addition of more particles in for either marginal likelihood estimation or for the outer SMC step.[@Murray2015] The use of pre-ETS pulmonary TB data worsened the quality of the model fit. This may be attributed to the data including UK born cases and therefore making the model fit more sensitive to the assumption used for the number of non-UK born notifications prior to 2000. Using manual prior tuning, transmission and mixing modifiers allowed a relatively close fit to the observed data but additional parameters, beyond those specified in the model fitting pipeline did little to improve on this. The quality of the model fit using the model fitting pipeline was poor regardless of the number of modifier parameters used. Varying the initial latent populations resulted in higher than previously estimated historic effective contacts but again did little to improve the quality of the model fit. 
+
+[@Murray2015] suggests that increasing the number of particles used in SMC may improve the quality of the model fit. Unfortunately as `LibBi` stores SMC particle paths in Random access memory (RAM) the number of particles was restricted. An additional limitation is that each rejuvernation steps also need to be stored in RAM. Attempts to increase the amount of avaialble RAM (64 GB) using a 500GB SWAP (virtual memory) drive increased the upper limit on the number of particles but gains from this were restricted due to thrashing^[Thrashing: https://en.wikipedia.org/wiki/Thrashing_(computer_science)]. A major cause of the high RAM requirements of the model was that `LibBi` stores all parameters defined as initial conditions across every time point in the model, regardless of the settings used. Attempting to reduce the RAM footprint by fitting a greater number of parameters allowed for a greater number of parameters to be used but also increased the model degrees of freedom and hence upped the required number of particles required by a greater amount than provided by fitting the parameter. Reducing the number of particles used to estimate the marginal likelihood allowed a greater number of particles to be used in the outer SMC step but this resulted in highly inaccurate estimates of the likelihood. These highly inaccurate likelihood estimates resulted in the SMC^2 algorithm focussing on parameter sets that had a low likelihood estimate yet fit the data poorly - ultimately leading to even poor model fits. 
+
+Varying the proposal size, rejuvernation thresold, and number of rejuvernation steps showed some promise at improving the quality of the model fit but ultimately computational constraints limited how much progress could be made using this approach. It is possible that a much longer runtime could result in an improved fit to data with no other model changes. Alternatively this results may driven by the model being too complex for an SMC^2 approach to viable in this framework.  
 
 ### Model comparision
 
@@ -289,12 +312,10 @@ The full model fitting pipeline can be summarised as follows^[Code: https://gith
 In this chapter I have formulated the disease transmission model developed in the previous chapter as a state-space model, developed a model fitting pipeline to fit this model to observed data, and presented the results of this fitted model. 
 
 * Summary of work from chapter
-
 * Method strengths and weaknesses
 * Software strengths and weaknesses
-
 * Strengths and weaknesses
-* Next chapter
+* Further work
 * Conclusions
 
 
@@ -303,6 +324,7 @@ In this chapter I have formulated the disease transmission model developed in th
 * Defined the disease transmission model from the previous chapter as a state-space model. 
 * Outlined the observed data and defined an appropriate measurement model for this data. 
 * Developed a model fitting pipeline based on SMC^2 to fit the previously defined state-space model to TB notification data.
+* Discussed ad-hoc approaches used to improve model fit. 
 * Evaluated the various scenarios discussed in the previous chapter using DIC and discussed the implications of these findings. 
 * Presented the model fit to data from the best fitting scenario as established using the DIC. 
 * Discussed the posterior distributions of the fitted parameters and compared these distributions to the prior distributions.

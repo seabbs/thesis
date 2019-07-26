@@ -314,7 +314,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="9.3.7" data-path="9-model-fitting.html"><a href="9-model-fitting.html#pipeline-overview"><i class="fa fa-check"></i><b>9.3.7</b> Pipeline overview</a></li>
 </ul></li>
 <li class="chapter" data-level="9.4" data-path="9-model-fitting.html"><a href="9-model-fitting.html#results-3"><i class="fa fa-check"></i><b>9.4</b> Results</a><ul>
-<li class="chapter" data-level="9.4.1" data-path="9-model-fitting.html"><a href="9-model-fitting.html#calibration-1"><i class="fa fa-check"></i><b>9.4.1</b> Calibration</a></li>
+<li class="chapter" data-level="9.4.1" data-path="9-model-fitting.html"><a href="9-model-fitting.html#ad-hoc-calibration"><i class="fa fa-check"></i><b>9.4.1</b> Ad-hoc calibration</a></li>
 <li class="chapter" data-level="9.4.2" data-path="9-model-fitting.html"><a href="9-model-fitting.html#model-comparision-1"><i class="fa fa-check"></i><b>9.4.2</b> Model comparision</a></li>
 <li class="chapter" data-level="9.4.3" data-path="9-model-fitting.html"><a href="9-model-fitting.html#model-fit-to-historic-tb-incidence-rates"><i class="fa fa-check"></i><b>9.4.3</b> Model fit to historic TB incidence rates</a></li>
 <li class="chapter" data-level="9.4.4" data-path="9-model-fitting.html"><a href="9-model-fitting.html#model-fit-to-tb-incidence-rates-from-the-ets"><i class="fa fa-check"></i><b>9.4.4</b> Model Fit to TB incidence rates from the ETS</a></li>
@@ -603,12 +603,31 @@ Where <span class="math inline">\(\bar{\theta}\)</span> is the expectation of <s
 </div>
 <div id="results-3" class="section level2">
 <h2><span class="header-section-number">9.4</span> Results</h2>
-<div id="calibration-1" class="section level3">
-<h3><span class="header-section-number">9.4.1</span> Calibration</h3>
+<p>The pipeline outlined above resulted in a poor fit to the observed data. The SMC^2 algorithm had a low effective sample size for each iteration, and a low acceptance rate for particle reuvernation steps. This resulted in spuriously tight priors. Ad-hoc calibration (detailed in the following section) failed to improve the quality of this fit or find a subset of the model - or parameters - that fit the observed data to an acceptable degree whilst remaining computationally feasible. The results presented in the following section are therefore preliminary and any conclusions drawn from them must be appropriately caveated.</p>
+<div id="ad-hoc-calibration" class="section level3">
+<h3><span class="header-section-number">9.4.1</span> Ad-hoc calibration</h3>
+<p>Minor alterations to the model fitting pipeline had little impact on the quality of the fit. To attempt to improve the quality of the model fit I used a combination of ad-hoc approaches. As a first step I introduced a calibration model with variation allowed only in the fitted parameters with all other parameters using point estimates. This allowed a reduced number of particles to be used to estimate the marginal likelihood and hence dramatically decreased compute cost and runtimes. This reduced model was then used for the following tests:</p>
 <ul>
-<li>Report on proposal acceptance rate and number of particles selected in main scenario</li>
-<li>Report on run time and feasibilty</li>
+<li>Increasing the number of particles used in the outer SMC loop at the expense of reducing the number of particles used for marginal likelihood estimation.</li>
+<li>Increasing the number of particles used for marginal likelihood estimation.</li>
+<li>Sequentially decreasing model complexity by fixing fitted parameters to manually tuned point estimates.</li>
+<li>Increasing the number of parameters fitted to rather than used as fixed distributions.</li>
+<li>Varying the size of the proposal distribution, rejuvernation thresold, number of particles and rcejuvernation steps.</li>
+<li>Varying the fitted observed data. This took 3 main forms:
+<ul>
+<li>Aggregation: fitting to overall incidence only; fitting to incidence grouped by large age groups (i.e children, adults, older adults); fitting to only age groups of interest (i.e children).</li>
+<li>Reducing the timespan of the fitted data. This included simplifying down to a single year of data but also included using various combinations of time points.</li>
+<li>Exploring additional observed data. This included attempting to fit to observed pulmonary TB case from 1980 onwards. This approach sought to constrain the parameter space to give a more realistic age distribution of cases.</li>
+</ul></li>
+<li>Changing the functional form for the decay in the historic contact rate. This involved exploring linear decay with the decay gradient dictated by the year that the current contact rate takes effect and the year that the historic contact rate begain to decay.</li>
+<li>Exploring using time dependent modifiers on the transmission probability and non-UK born mixing.</li>
+<li>Exploring using modifiers for children, adults, and older adults for both the transmission probability and non-UK born mixing. This was essentially an extension of the original scenarios considered using the model fitting pipeline.</li>
+<li>Exploring widening and narrowing the prior distributions of fitted parameters beyond realistic ranges.</li>
+<li>Exploring varying the size of the initial high, and low, risk latent populations. This included starting with no latent cases, starting with a reduced proportion of latent cases and starting with a much larger latent population to simulate a historically more widespread disease.</li>
 </ul>
+<p>None of these approaches dramatically improved model fit to the point that more robust inference could be drawn. Reducing the number of parameters, and time points, fitted too decreased the computational cost of the pipeline and improved acceptance rates. However, model fits remained poor until a single timepoint and aggregated incidence were fitted too using a single varying parameter (effective contact rate) with all others manually tuned. Unfortanately, this simplifed the model to the extent that it could not be used to generate meaningful results. The introduction of multiple timepoints led to poor model fits regardless of the observational data used. This effect may be attributed to particle degradation from but was not resolved by the addition of more particles in for either marginal likelihood estimation or for the outer SMC step.<span class="citation">[<a href="#ref-Murray2015">122</a>]</span> The use of pre-ETS pulmonary TB data worsened the quality of the model fit. This may be attributed to the data including UK born cases and therefore making the model fit more sensitive to the assumption used for the number of non-UK born notifications prior to 2000. Using manual prior tuning, transmission and mixing modifiers allowed a relatively close fit to the observed data but additional parameters, beyond those specified in the model fitting pipeline did little to improve on this. The quality of the model fit using the model fitting pipeline was poor regardless of the number of modifier parameters used. Varying the initial latent populations resulted in higher than previously estimated historic effective contacts but again did little to improve the quality of the model fit.</p>
+<p><span class="citation">[<a href="#ref-Murray2015">122</a>]</span> suggests that increasing the number of particles used in SMC may improve the quality of the model fit. Unfortunately as <code>LibBi</code> stores SMC particle paths in Random access memory (RAM) the number of particles was restricted. An additional limitation is that each rejuvernation steps also need to be stored in RAM. Attempts to increase the amount of avaialble RAM (64 GB) using a 500GB SWAP (virtual memory) drive increased the upper limit on the number of particles but gains from this were restricted due to thrashing<a href="#fn30" class="footnote-ref" id="fnref30"><sup>30</sup></a>. A major cause of the high RAM requirements of the model was that <code>LibBi</code> stores all parameters defined as initial conditions across every time point in the model, regardless of the settings used. Attempting to reduce the RAM footprint by fitting a greater number of parameters allowed for a greater number of parameters to be used but also increased the model degrees of freedom and hence upped the required number of particles required by a greater amount than provided by fitting the parameter. Reducing the number of particles used to estimate the marginal likelihood allowed a greater number of particles to be used in the outer SMC step but this resulted in highly inaccurate estimates of the likelihood. These highly inaccurate likelihood estimates resulted in the SMC^2 algorithm focussing on parameter sets that had a low likelihood estimate yet fit the data poorly - ultimately leading to even poor model fits.</p>
+<p>Varying the proposal size, rejuvernation thresold, and number of rejuvernation steps showed some promise at improving the quality of the model fit but ultimately computational constraints limited how much progress could be made using this approach. It is possible that a much longer runtime could result in an improved fit to data with no other model changes. Alternatively this results may driven by the model being too complex for an SMC^2 approach to viable in this framework.</p>
 </div>
 <div id="model-comparision-1" class="section level3">
 <h3><span class="header-section-number">9.4.2</span> Model comparision</h3>
@@ -661,12 +680,12 @@ Where <span class="math inline">\(\bar{\theta}\)</span> is the expectation of <s
 <h2><span class="header-section-number">9.5</span> Discussion</h2>
 <p>In this chapter I have formulated the disease transmission model developed in the previous chapter as a state-space model, developed a model fitting pipeline to fit this model to observed data, and presented the results of this fitted model.</p>
 <ul>
-<li><p>Summary of work from chapter</p></li>
+<li>Summary of work from chapter</li>
 <li>Method strengths and weaknesses</li>
-<li><p>Software strengths and weaknesses</p></li>
+<li>Software strengths and weaknesses</li>
 <li>Strengths and weaknesses</li>
-<li>Next chapter</li>
-<li><p>Conclusions</p></li>
+<li>Further work</li>
+<li>Conclusions</li>
 </ul>
 </div>
 <div id="summary-8" class="section level2">
@@ -675,6 +694,7 @@ Where <span class="math inline">\(\bar{\theta}\)</span> is the expectation of <s
 <li>Defined the disease transmission model from the previous chapter as a state-space model.</li>
 <li>Outlined the observed data and defined an appropriate measurement model for this data.</li>
 <li>Developed a model fitting pipeline based on SMC^2 to fit the previously defined state-space model to TB notification data.</li>
+<li>Discussed ad-hoc approaches used to improve model fit.</li>
 <li>Evaluated the various scenarios discussed in the previous chapter using DIC and discussed the implications of these findings.</li>
 <li>Presented the model fit to data from the best fitting scenario as established using the DIC.</li>
 <li>Discussed the posterior distributions of the fitted parameters and compared these distributions to the prior distributions.</li>
@@ -717,6 +737,7 @@ Where <span class="math inline">\(\bar{\theta}\)</span> is the expectation of <s
 <li id="fn27"><p>Code: <a href="https://github.com/seabbs/ModelTBBCGEngland/blob/master/R/plot_sensitivity.R" class="uri">https://github.com/seabbs/ModelTBBCGEngland/blob/master/R/plot_sensitivity.R</a><a href="9-model-fitting.html#fnref27" class="footnote-back">↩</a></p></li>
 <li id="fn28"><p>Code: <a href="https://github.com/seabbs/ModelTBBCGEngland/blob/master/R/fit_model.R" class="uri">https://github.com/seabbs/ModelTBBCGEngland/blob/master/R/fit_model.R</a><a href="9-model-fitting.html#fnref28" class="footnote-back">↩</a></p></li>
 <li id="fn29"><p>Model code: <a href="https://github.com/seabbs/ModelTBBCGEngland/blob/master/inst/bi/BaseLineModel.bi" class="uri">https://github.com/seabbs/ModelTBBCGEngland/blob/master/inst/bi/BaseLineModel.bi</a><a href="9-model-fitting.html#fnref29" class="footnote-back">↩</a></p></li>
+<li id="fn30"><p>Thrashing: <a href="https://en.wikipedia.org/wiki/Thrashing_(computer_science)" class="uri">https://en.wikipedia.org/wiki/Thrashing_(computer_science)</a><a href="9-model-fitting.html#fnref30" class="footnote-back">↩</a></p></li>
 </ol>
 </div>
             </section>
