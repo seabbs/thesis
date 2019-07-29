@@ -291,6 +291,10 @@ Date: \emph{placeholder}
 
 \par
 
+\textbf{SMC-SMC} Sequential Monte Carlo - Sequential Monte Carlo
+
+\par
+
 \textbf{TB} -- Tuberculosis
 
 \par
@@ -485,6 +489,10 @@ Date: \emph{placeholder}
       \par
       
       \textbf{SMC} - Sequential Monte Carlo
+      
+      \par
+      
+      \textbf{SMC-SMC} Sequential Monte Carlo - Sequential Monte Carlo
       
       \par
       
@@ -4214,7 +4222,7 @@ Date: \emph{placeholder}
   
   Fitting dynamic transmisson models is complex and requires the use of specialist statistical techniques. There are a variety of these tools available. Ranging for tried and tested to cutting edge. Historically many modellers have used maximum likelihood methods to fit deterministic models. Unfortunately, whilst computationally efficient, these methods only provide point estimates and are limited to relatively simple models. More recently Bayesian methods have become popular. These have numerous benefits including: explicit inclusion of prior knowledge via prior distributions for all parameters; ability to handle complex stochastic models; and provide parameter distributions (posterior distribution) of best fitting parameters rather than single point estimates. Unfortunately these methods also require calibration prior to use. This section outlines the theoretical justification, and implementation details, of an automated model fitting pipeline used to calibrate, and fit, the previously detailed state space model of TB tranmission in England.
   
-  Libbi was used for all model fitting.{[}\protect\hyperlink{ref-Murray2015}{122}{]} LibBi is a software package for state-space modelling and Bayesian inference. It uses a domain specifc language for model specification, which is then optimised and compiled to provide highly efficient model code. It focusses on full information model fitting approaches including: particle Markov chain Monte Carlo (PMCMC), and SMC\^{}2 methods for parameter estimation. All fitting algorithms are highly efficient and scalable across mutliple CPUs or GPUs. \texttt{RBI} and \texttt{RBI.helpers} were used to interface with LibBi from R.{[}\protect\hyperlink{ref-Funk:2019ud}{123},\protect\hyperlink{ref-Funk:2019uw}{124}{]} \texttt{RBI.helpers} was also used to optimise the model fitting pipeline as detailed in the calibration section. As model fitting using \texttt{LibBi} is compute intensive a workstation was built, and overclocked, with these compute requirements in mind\footnote{See these blog posts for details: \url{https://www.samabbott.co.uk/post/building-an-rstats-workstation/}, \url{https://www.samabbott.co.uk/post/benchmarking-workstation-xgboost/}, \url{https://www.samabbott.co.uk/post/benchmarking-workstation-benchmarkme/}}. All model fitting code is available on GitHub as an R package\footnote{See here for details: \url{https://github.com/seabbs/ModelTBBCGEngland}}.
+  Libbi was used for all model fitting.{[}\protect\hyperlink{ref-Murray2015}{122}{]} LibBi is a software package for state-space modelling and Bayesian inference. It uses a domain specifc language for model specification, which is then optimised and compiled to provide highly efficient model code. It focusses on full information model fitting approaches including: particle Markov chain Monte Carlo (PMCMC), and SMC-SMC methods for parameter estimation. All fitting algorithms are highly efficient and scalable across mutliple CPUs or GPUs. \texttt{RBI} and \texttt{RBI.helpers} were used to interface with LibBi from R.{[}\protect\hyperlink{ref-Funk:2019ud}{123},\protect\hyperlink{ref-Funk:2019uw}{124}{]} \texttt{RBI.helpers} was also used to optimise the model fitting pipeline as detailed in the calibration section. As model fitting using \texttt{LibBi} is compute intensive a workstation was built, and overclocked, with these compute requirements in mind\footnote{See these blog posts for details: \url{https://www.samabbott.co.uk/post/building-an-rstats-workstation/}, \url{https://www.samabbott.co.uk/post/benchmarking-workstation-xgboost/}, \url{https://www.samabbott.co.uk/post/benchmarking-workstation-benchmarkme/}}. All model fitting code is available on GitHub as an R package\footnote{See here for details: \url{https://github.com/seabbs/ModelTBBCGEngland}}.
   
   \hypertarget{particle-filter}{%
   \subsection{The particle filter}\label{particle-filter}}
@@ -4256,7 +4264,7 @@ Date: \emph{placeholder}
     \item
       \emph{Propagation:} The model is simulated to the next observed data point.
     \item
-      \emph{Weighting:} Parameter particles are weighted using the marginal likelihood. In principle this could be computed exactly, but is most commonly estimated using a nested particle filter for each state particle (i.e as outlined in the previous section). For a subset of models a Kalman filter maybe used instead.{[}\protect\hyperlink{ref-Murray2015}{122}{]} The marginal likelihood may also be estimated using other partial information techniques such as approximate bayesian computation. In the case where a particle filter is used the full algorithm is known as Sequential Monte Carlo\^{}2 (SMC\^{}2). This algorithm is used for all dynamic model fitting in this thesis.
+      \emph{Weighting:} Parameter particles are weighted using the marginal likelihood. In principle this could be computed exactly, but is most commonly estimated using a nested particle filter for each state particle (i.e as outlined in the previous section). For a subset of models a Kalman filter maybe used instead.{[}\protect\hyperlink{ref-Murray2015}{122}{]} The marginal likelihood may also be estimated using other partial information techniques such as approximate bayesian computation. In the case where a particle filter is used the full algorithm is known as Sequential Monte Carlo - Sequential Monte Carlo (SMC-SMC). This algorithm is used for all dynamic model fitting in this thesis.
     \end{itemize}
   \end{enumerate}
   \begin{itemize}
@@ -4298,7 +4306,7 @@ Date: \emph{placeholder}
   \hypertarget{proposal-calibration}{%
   \subsubsection{Proposal calibration}\label{proposal-calibration}}
   
-  When using an MCMC alogorithm a proposal distribution is required to provide new parameter samples to evaluate. For SMC\^{}2 a proposal distribution is required to inform the MCMC sampler that is run during the rejuvernation step. By default if no proposal distribution is provided Libbi uses the prior distribution.{[}\protect\hyperlink{ref-Murray2015}{122}{]} The prior distribution can be an inefficient proposal distribution as it is likely to have a low acceptance rate (from the MCMC sampler).{[}\protect\hyperlink{ref-Murray2015}{122}{]} Having a low acceptance rates means that many more MCMC steps are required to generate a successful parameter sample. This results in slow mixing and computationally expensive MCMC steps may make model fitting intractable.
+  When using an MCMC alogorithm a proposal distribution is required to provide new parameter samples to evaluate. For SMC-SMC a proposal distribution is required to inform the MCMC sampler that is run during the rejuvernation step. By default if no proposal distribution is provided Libbi uses the prior distribution.{[}\protect\hyperlink{ref-Murray2015}{122}{]} The prior distribution can be an inefficient proposal distribution as it is likely to have a low acceptance rate (from the MCMC sampler).{[}\protect\hyperlink{ref-Murray2015}{122}{]} Having a low acceptance rates means that many more MCMC steps are required to generate a successful parameter sample. This results in slow mixing and computationally expensive MCMC steps may make model fitting intractable.
   
   A more efficient approach is to specify a proposal distribution that draws parameter samples that are closer to the current state of the MCMC chain than the overall prior distribution. There is an extensive literature examing how to optimise the proposal distribution to achieve an good acceptance rate. In practise it has been shown that a rate of between 10\% and 20\% is optimal for upwards of 5 parameters.{[}\protect\hyperlink{ref-Murray2015}{122}{]} This strikes a balance between allowing the chain to fully explore the posterior distribution whilst still being as efficient as possible.
   
@@ -4306,7 +4314,7 @@ Date: \emph{placeholder}
   
   In this model fitting pipeline I have used a maximum of 5 iterations of, manual, independent proposal adaption, drawing 250 samples in each iteration, starting with the prior distributions and halfing the scale each time. The proposal distribution is also truncated so that parameter samples cannot be drawn from areas without support from the prior distributions. As for the particle calibration, I initially used a maximum likelihood method to provide a point estimate of the best fitting parameter set, followed by 1000 PMCMC steps, using a 256 particle filter. This means that the proposal distribution is adapted near to the posterior mean rather than in the tails of the posterior distribution.
   
-  I chose to use, manual, independent proposal adaption method for several reasons. Firstly, when developing this pipeline the approaches implemented in \texttt{rbi.helpers} produced multiple transient errors in other \texttt{rbi} and \texttt{rbi.helpers} code. Secondly, the resulting dependent proposal distribution was highly complex, slow to compute, and diffult to debug. Finally, for SMC\^{}2 efficient exploration of the proposal distribution is less important than when using MCMC alone as SMC\^{}2 is initialised with multiple samples from the prior distribution. This means that multiple local maximas can be efficiently explored regardless of the proposal distribution used. The MCMC rejuvernation step then serves to provide additional samples from these local maximas. Proposal adaption was only carried out for the main model scenario with all other scenarios using this proposal distribution.
+  I chose to use, manual, independent proposal adaption method for several reasons. Firstly, when developing this pipeline the approaches implemented in \texttt{rbi.helpers} produced multiple transient errors in other \texttt{rbi} and \texttt{rbi.helpers} code. Secondly, the resulting dependent proposal distribution was highly complex, slow to compute, and diffult to debug. Finally, for SMC-SMC efficient exploration of the proposal distribution is less important than when using MCMC alone as SMC-SMC is initialised with multiple samples from the prior distribution. This means that multiple local maximas can be efficiently explored regardless of the proposal distribution used. The MCMC rejuvernation step then serves to provide additional samples from these local maximas. Proposal adaption was only carried out for the main model scenario with all other scenarios using this proposal distribution.
   
   \hypertarget{model-comparision}{%
   \subsection{Model comparision}\label{model-comparision}}
@@ -4357,7 +4365,7 @@ Date: \emph{placeholder}
   \end{enumerate}
   A limitation of PRCC is that it whilst it can capture non-lnear relationships between outputs and inputs these relationships must be monotonic.{[}\protect\hyperlink{ref-Marino2009a}{126}{]} For relationships that are non-monotic methods that rely on the decompositon of model output variance, such as the extended Fourier amplitude sensitivity test,{[}\protect\hyperlink{ref-Marino2009a}{126}{]} are more appropriate. However, these approaches are computationally demanding as they typically require mutliple iterations of model simulation. Additionally, they cannot be used on a previous parameter samples, instead needing to sample and simulate the model within the parameter sensitivity algorithmn. This means that they cannot be used for ``free'' (i.e with neglible additional compute cost), unlike PRCC which can be estimated using a sample from the posterior distribution. For this reason these approaches have not been further explored in this thesis.
   
-  I have implemented PRCC using the \texttt{epiR} R package\footnote{Code: \url{https://github.com/seabbs/ModelTBBCGEngland/blob/master/R/test_sensitivity.R}},{[}\protect\hyperlink{ref-EpiR}{65}{]} using the samples from the posterior distribution of the model calculated during the SMC\^{}2 step. Parameter sensitivity measures such as PRCC must be calculated seperately for each output time point. I calculated the PRCC for each fitted parameter, at the final time point with fitted data (2004), for overall TB incidence rates. These results are then summarised by plotting the absolute PRCC values, indicating the direction of correlation using colour\footnote{Code: \url{https://github.com/seabbs/ModelTBBCGEngland/blob/master/R/plot_sensitivity.R}}.
+  I have implemented PRCC using the \texttt{epiR} R package\footnote{Code: \url{https://github.com/seabbs/ModelTBBCGEngland/blob/master/R/test_sensitivity.R}},{[}\protect\hyperlink{ref-EpiR}{65}{]} using the samples from the posterior distribution of the model calculated during the SMC-SMC step. Parameter sensitivity measures such as PRCC must be calculated seperately for each output time point. I calculated the PRCC for each fitted parameter, at the final time point with fitted data (2004), for overall TB incidence rates. These results are then summarised by plotting the absolute PRCC values, indicating the direction of correlation using colour\footnote{Code: \url{https://github.com/seabbs/ModelTBBCGEngland/blob/master/R/plot_sensitivity.R}}.
   
   \hypertarget{pipeline-overview}{%
   \subsection{Pipeline overview}\label{pipeline-overview}}
@@ -4378,7 +4386,7 @@ Date: \emph{placeholder}
   \item
     Manual independent proposal adaption at the approximate mean of the posterior distribution. The size of the proposal distribution is halved each iteration, with at most 5 iterations of adaption. The minimum target acceptance rate specified was 10\% and the maximum was 20\%. 250 PMCMC samples were used each time to estimate the acceptance rate. Proposal adaption was only carried out for the main model scenario, with other scenarios using this proposal.
   \item
-    SMC\^{}2 model fitting with 2000 initial parameter particles. Particle rejuvernation was set to trigger when the effective sample size decreased below 25\%, with 5 MCMC steps used each time.
+    SMC-SMC model fitting with 2000 initial parameter particles. Particle rejuvernation was set to trigger when the effective sample size decreased below 25\%, with 5 MCMC steps used each time.
   \item
     For each sample from the posterior distribution the model was then simulated for all time points.
   \item
@@ -4389,7 +4397,7 @@ Date: \emph{placeholder}
   \hypertarget{results-3}{%
   \section{Results}\label{results-3}}
   
-  The pipeline outlined above resulted in a poor fit to the observed data. The SMC\^{}2 algorithm had a low effective sample size for each iteration, and a low acceptance rate for particle rejuvernation steps. This resulted in spuriously tight priors. Ad-hoc calibration (detailed in the following section) failed to improve the quality of this fit or find a subset of the model - or parameters - that fit the observed data to an acceptable degree whilst remaining computationally feasible. The results presented in the following section are therefore preliminary and any conclusions drawn from them must be appropriately caveated.
+  The pipeline outlined above resulted in a poor fit to the observed data. The SMC-SMC algorithm had a low effective sample size for each iteration, and a low acceptance rate for particle rejuvernation steps. This resulted in spuriously tight priors. Ad-hoc calibration (detailed in the following section) failed to improve the quality of this fit or find a subset of the model - or parameters - that fit the observed data to an acceptable degree whilst remaining computationally feasible. The results presented in the following section are therefore preliminary and any conclusions drawn from them must be appropriately caveated.
   
   \hypertarget{ad-hoc-calibration}{%
   \subsection{Ad-hoc calibration}\label{ad-hoc-calibration}}
@@ -4431,9 +4439,9 @@ Date: \emph{placeholder}
   \end{itemize}
   None of these approaches dramatically improved model fit to the point that more robust inference could be drawn. Reducing the number of parameters, and time points, fitted too decreased the computational cost of the pipeline and improved acceptance rates. However, model fits remained poor until a single timepoint and aggregated incidence were fitted too using a single varying parameter (effective contact rate) with all others manually tuned. Unfortanately, this simplifed the model to the extent that it could not be used to generate meaningful results. The introduction of multiple timepoints led to poor model fits regardless of the observational data used. This effect may be attributed to particle degradation from but was not resolved by the addition of more particles in for either marginal likelihood estimation or for the outer SMC step.{[}\protect\hyperlink{ref-Murray2015}{122}{]} The use of pre-ETS pulmonary TB data worsened the quality of the model fit. This may be attributed to the data including UK born cases and therefore making the model fit more sensitive to the assumption used for the number of non-UK born notifications prior to 2000. Using manual prior tuning, transmission and mixing modifiers allowed a relatively close fit to the observed data but additional parameters, beyond those specified in the model fitting pipeline did little to improve on this. The quality of the model fit using the model fitting pipeline was poor regardless of the number of modifier parameters used. Varying the initial latent populations resulted in higher than previously estimated historic effective contacts but again did little to improve the quality of the model fit.
   
-  {[}\protect\hyperlink{ref-Murray2015}{122}{]} suggests that increasing the number of particles used in SMC may improve the quality of the model fit. Unfortunately as \texttt{LibBi} stores SMC particle paths in Random access memory (RAM) the number of particles was restricted. An additional limitation is that each rejuvernation steps also need to be stored in RAM. Attempts to increase the amount of avaialble RAM (64 GB) using a 500GB SWAP (virtual memory) drive increased the upper limit on the number of particles but gains from this were restricted due to thrashing\footnote{Thrashing: \url{https://en.wikipedia.org/wiki/Thrashing_(computer_science)}}. A major cause of the high RAM requirements of the model was that \texttt{LibBi} stores all parameters defined as initial conditions across every time point in the model, regardless of the settings used. Attempting to reduce the RAM footprint by fitting a greater number of parameters allowed for a greater number of parameters to be used but also increased the model degrees of freedom and hence upped the required number of particles required by a greater amount than provided by fitting the parameter. Reducing the number of particles used to estimate the marginal likelihood allowed a greater number of particles to be used in the outer SMC step but this resulted in highly inaccurate estimates of the likelihood. These highly inaccurate likelihood estimates resulted in the SMC\^{}2 algorithm focussing on parameter sets that had a low likelihood estimate yet fit the data poorly - ultimately leading to even poor model fits.
+  {[}\protect\hyperlink{ref-Murray2015}{122}{]} suggests that increasing the number of particles used in SMC may improve the quality of the model fit. Unfortunately as \texttt{LibBi} stores SMC particle paths in Random access memory (RAM) the number of particles was restricted. An additional limitation is that each rejuvernation steps also need to be stored in RAM. Attempts to increase the amount of avaialble RAM (64 GB) using a 500GB SWAP (virtual memory) drive increased the upper limit on the number of particles but gains from this were restricted due to thrashing\footnote{Thrashing: \url{https://en.wikipedia.org/wiki/Thrashing_(computer_science)}}. A major cause of the high RAM requirements of the model was that \texttt{LibBi} stores all parameters defined as initial conditions across every time point in the model, regardless of the settings used. Attempting to reduce the RAM footprint by fitting a greater number of parameters allowed for a greater number of parameters to be used but also increased the model degrees of freedom and hence upped the required number of particles required by a greater amount than provided by fitting the parameter. Reducing the number of particles used to estimate the marginal likelihood allowed a greater number of particles to be used in the outer SMC step but this resulted in highly inaccurate estimates of the likelihood. These highly inaccurate likelihood estimates resulted in the SMC-SMC algorithm focussing on parameter sets that had a low likelihood estimate yet fit the data poorly - ultimately leading to even poor model fits.
   
-  Varying the proposal size, rejuvernation thresold, and number of rejuvernation steps showed some promise at improving the quality of the model fit but ultimately computational constraints limited how much progress could be made using this approach. It is possible that a much longer runtime could result in an improved fit to data with no other model changes. Alternatively this results may driven by the model being too complex for an SMC\^{}2 approach to viable in this framework.
+  Varying the proposal size, rejuvernation thresold, and number of rejuvernation steps showed some promise at improving the quality of the model fit but ultimately computational constraints limited how much progress could be made using this approach. It is possible that a much longer runtime could result in an improved fit to data with no other model changes. Alternatively this results may driven by the model being too complex for an SMC-SMC approach to viable in this framework.
   
   \hypertarget{particle-and-proposal-calibration}{%
   \subsection{Particle and proposal calibration}\label{particle-and-proposal-calibration}}
@@ -4496,24 +4504,53 @@ Date: \emph{placeholder}
   \hypertarget{discussion-6}{%
   \section{Discussion}\label{discussion-6}}
   
-  In this chapter I have formulated the disease transmission model developed in the previous chapter as a state-space model, developed a model fitting pipeline to fit this model to observed data, and presented the results of this fitted model.
+  \hypertarget{summary-8}{%
+  \subsection{Summary}\label{summary-8}}
+  
+  In this chapter I have formulated the disease transmission model developed in the previous chapter as a state-space model, developed a model fitting pipeline to fit this model to observed data, discussed the approaches taken to try and improve the quality of the model fit, and presented preliminary results from the model fitting pipeline.
+  
+  \hypertarget{pipeline-strengths-and-weaknesses}{%
+  \subsection{Pipeline strengths and weaknesses}\label{pipeline-strengths-and-weaknesses}}
+  \begin{itemize}
+  \item
+    This chapter showcased the use of SMC a highly optimised tool for fitting a complex models using plug and play approaches.
+  \item
+    Unfortunately the quality of the model fit was very poor and the complexity of \texttt{LibBi} makes understanding the root cause very difficult. It is very possible that the model developed in the last chapter is too complex to be fitted using this approach - at least without the use of several orders of magnitude greater compute resources (or compute time).{[}\protect\hyperlink{ref-Murray2015}{122}{]} However, it is also possible that even with these resources this pipeline may not have produced a high quality model fit as the model developed in the previous chapter was clearly much more complex than those envisioned by the developers of the software.{[}\protect\hyperlink{ref-Murray2015}{122}{]} \texttt{LibBi}, \texttt{rbi} and \texttt{rbi.helpers} have great potential as a standardised toolbox for modellers. However, in their current state they are difficult to use beyond relatively simple use cases. This difficulty is compounded by sporadic, inconsistent, documentation of both the underlying software and it's \texttt{R} interface. On top of this, both \texttt{LibBi} itself and the R libraries that support it have multiple apparent bugs that can be extremly diffult to debug due to the layered nature of the software. \texttt{rbi} and \texttt{rbi.helpers} are under development and it is likely that many of these issues will be dealt with over time. However, \texttt{LibBi} itself has not had a major release since 2016, the community around it is largely inactive, and it's complex nature makes it diffcult for newcomers to help towards its development.
+  \end{itemize}
+  \hypertarget{comparison-to-other-methods}{%
+  \subsection{Comparison to other methods}\label{comparison-to-other-methods}}
   \begin{itemize}
   \tightlist
   \item
-    Summary of work from chapter
+    SMC-ABC
   \item
-    Method strengths and weaknesses
+    PMCMC
   \item
-    Software strengths and weaknesses
+    Iterated filtering
   \item
-    Strengths and weaknesses
-  \item
-    Further work
-  \item
-    Conclusions
+    Maximum likelihood
   \end{itemize}
-  \hypertarget{summary-8}{%
-  \section{Summary}\label{summary-8}}
+  \hypertarget{comparison-to-other-software}{%
+  \subsection{Comparison to other software}\label{comparison-to-other-software}}
+  
+  There are several other software tools available within the \texttt{R} ecosystem for fitting infectious disease models. These include \texttt{pomp}, \texttt{easyABC}, \texttt{EpiModel}, and \texttt{odin}.
+  
+  In developing the work presented here, and in the previous chapter, a simpler model was developed using \texttt{pomp}. This work was not included in this thesis as it was not sufficiently developed. However, it highlight similar issues with the \texttt{pomp} package to those observed when using \texttt{LibBi}. Whilst \texttt{pomp}'s documentation, stability, and testing were much improved over \texttt{LibBi} it had similar limitations when it came to complex models. This was to such an extent that I developed numerous helper functions to deal with both the input and output of \texttt{pomp} models\footnote{idmodelr: \url{https://github.com/seabbs/idmodelr}}. \texttt{pomp} also offered only a limited subset of fitting techniques with a heavy focus on iterated filtering.
+  
+  Each of the packages discussed has several issues, with all suffering either from a lack of continued development (excepting \texttt{pomp}) or maturity. This may mean that for highly complex models more work is needed on the available open-source tools
+  
+  \hypertarget{futher-work}{%
+  \subsection{Futher work}\label{futher-work}}
+  
+  Whilst the results presented here are not encouraging it may be the case that with a greatly extended runtime a much better fitting model may be found. The first step to testing this is to rerun the pipeline using several orders of magnitude more rejuvernation steps - as these have no RAM overhead. Even if the resulting model fits are still poor this may indicate areas for improvement - in either the model fitting pipeline or the model itself. An alternative option is to recode the model developed in the last chapter into a more generic form (i.e C) and to attempt to fit the model using other techniques that are less compute intensive and more robust - such as SMC-ABC. A final option would be to reimplement the model in the form required by another modelling package - such as \texttt{pomp}. However, this would mean running the risk of again getting stuck within a framework that is difficult to debug and may not be working as expected.
+  
+  \hypertarget{conclusions}{%
+  \subsection{Conclusions}\label{conclusions}}
+  
+  The model fitting pipeline developed here was theoretically robust, and highly reproducible, but in practise did not produce a high quality model fit. It is difficult to determine whether this was caused by the complexity of the model combined with the high compute requirements of SMC-SMC or if the software implementation itself was at fault. However, \texttt{LibBi}'s high barrier to entry and difficulty of use made both implementing the model, and assessing whether the model fitting was working as expected more difficult. It is likely that a more generic model implementation coupled with a less compute intensive fitting approach would produce more useful results. This work does still have some merit as it pushed both \texttt{LibBi} and SMC-SMC to it's limits helping to define what the limitations of this approach, and specialised modelling packages more generally, may be. It is possible that with an extended runtime model fits may become more reliable and hence more usable.
+  
+  \hypertarget{summary-9}{%
+  \section{Summary}\label{summary-9}}
   \begin{itemize}
   \tightlist
   \item
@@ -4521,7 +4558,7 @@ Date: \emph{placeholder}
   \item
     Outlined the observed data and defined an appropriate measurement model for this data.
   \item
-    Developed a model fitting pipeline based on SMC\^{}2 to fit the previously defined state-space model to TB notification data.
+    Developed a model fitting pipeline based on SMC-SMC to fit the previously defined state-space model to TB notification data.
   \item
     Discussed ad-hoc approaches used to improve model fit.
   \item
@@ -4602,8 +4639,8 @@ Date: \emph{placeholder}
   \item
     Comparision of age distribution of deaths
   \end{itemize}
-  \hypertarget{summary-9}{%
-  \subsection{Summary}\label{summary-9}}
+  \hypertarget{summary-10}{%
+  \subsection{Summary}\label{summary-10}}
   
   The preliminary results presented in this chapter indicate that continuing BCG vaccination of those at school-age would have \ldots{}
   
@@ -4635,13 +4672,13 @@ Date: \emph{placeholder}
   
   Further work is need to improve the fit of the model to observed data (Chapter \ref{model-fit}). This will result in improved forecasts and more reliable results. In addition additional vaccination coverage scenarios could be considered that explored the impact of vaccinating a reduced proportion of both those at school-age and neonates. If additional data becomes available, or with the appropriate assumptions, the inclusion of the high-risk population into the model would allow the evaluationb of targeted high-risk neonatal vaccination in comparison to the other scenarios considered here. The extrapolation of the trend in non-UK born cases is a limitation of this model and as such should be further explored using other assumptions such as constant non-UK born cases, incidence rates based on expert opinion and estimates based on other global modelling studies.
   
-  \hypertarget{conclusions}{%
-  \subsection{Conclusions}\label{conclusions}}
+  \hypertarget{conclusions-1}{%
+  \subsection{Conclusions}\label{conclusions-1}}
   
   The results presented here indicate that changing from a school-age BCG vaccination programme to a neonatal BCG programme leads to an overall increase in incidence rates, with increases concentrated in the young adults, and to a lesser degree, in older adults. Neonatal vaccination led to a decrease in incidence rates in children both in the short - and long term. This indicates that direct vaccination provides the best protection for children rather than indirect protection via reduced transmission. This finding is likely to be depedent on the degree of background transmission and so further modelling studies are needed in diverse settings before conclusions can be generalised. No vaccination was shown to lead to increased incidence in all age-groups when compared to school-age vaccination and in children only when compared to neonatal vaccination. The impact of any vaccination programme on older adults was small. These results are preliminary in nature as the model on which they are based fitted poorly to the observed data.
   
-  \hypertarget{summary-10}{%
-  \section{Summary}\label{summary-10}}
+  \hypertarget{summary-11}{%
+  \section{Summary}\label{summary-11}}
   \begin{itemize}
   \tightlist
   \item
@@ -4688,8 +4725,8 @@ Date: \emph{placeholder}
   
   The finding that BCG vaccination may reduce mortality in TB cases from Chapter \ref{beneficial-bcg-out} require validation in other data sources and settings. A larger sample size may be required in order to unpick the association between BCG vaccination and the cause of mortality. These findings could also be included in a cost effectiveness study of the BCG vaccine. The dynamic model developed in Chapter \ref{model-development} and fitted in \ref{model-fitting} does not currently include targeted vaccination of neonates and is only fitted to data up to 2004. In order to be able to more accurately explore current, and future, vaccination policy the extension of the model to the present data would be required. This would potentially be of great use for policy makers. An alternative would be to develop a comparable models in different settings. This would allow the generalisability of the findings to be explored. The dynamic model could also be further generalised to include hypothetical future vaccines with differing characteristics. This would allow vaccine characteristics and optimal deployment strategies to be explored, via simulations, ahead of further development. Both \texttt{getTBinR} and \texttt{idmodelr} have active user bases and further developments are planned. This includes: additional tooling, documentation, and case studies. Further development of several of the interactive tools discussed in Chapter \ref{introduction} is also planned.
   
-  \hypertarget{conclusions-1}{%
-  \section{Conclusions}\label{conclusions-1}}
+  \hypertarget{conclusions-2}{%
+  \section{Conclusions}\label{conclusions-2}}
   
   This thesis has provided new evidence concerning the 2005 change in BCG policy in England. A simulation study that was used as part of the quantitative evidence for the change in policy was recreated and updated. The results from this updated model suggested that the change in policy was likely to have a greater impact on the UK born, at school-age, than previously thought. This finding was supported by a regression modelling study on the impact on TB incidence rates from the policy change. However, this study also found that the change in policy was associated with some benefits in UK born neonates and a much larger reduction in TB incidence rates in both non-UK born neonates and those at school-age. An additional regression study looking at the possible link between BCG vaccination and improved TB outcomes found some evidence that BCG vaccination was associated with reduced all-cause mortality, with little evidence of any other benefits. This result strengthens the case for wider vaccination. Additionally, a dynamic model of TB transmission was developed to provide a more detailed tool for evaluating the impact of the change in policy. Using this model it was found that \emph{placeholder}. These findings suggest a stronger case for the use of the BCG vaccine in school-age populations; in areas with an equivalent level of TB transmission to England; and where the effectiveness of the BCG vaccine has been shown to not reduce with age. They also indicate that a future vaccine, without the reduced effectiveness observed in some geographic areas, may be more effectively targeted at those at school-age that at neonates. However, this depends on the potential duration of protection inferred by vaccination. The findings from this thesis may be of use to policy-makers to inform vaccine usage both in the UK and globally. As a by-product of the work conducted in this thesis several open source tools have been developed. These tools maybe used as learning resources, for public engangement, and as part of other research projects.
   

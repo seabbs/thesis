@@ -24,6 +24,8 @@
 
 \textbf{SMC} - Sequential Monte Carlo \par
 
+\textbf{SMC-SMC}  Sequential Monte Carlo - Sequential Monte Carlo \par
+
 \textbf{TB} – Tuberculosis \par
 
 \textbf{TST} - Tuberculin Skin Testing \par
