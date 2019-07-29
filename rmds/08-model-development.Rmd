@@ -196,12 +196,12 @@ sgn(x) := \begin{cases}
 The force of infection ($\lambda^k_a$) is the rate at which susceptible individuals are infected. Here it is defined using the law of mass action which assumes that infectious cases and susceptible cases randomly mix with the rate of mixing being determined by the fraction of the population that are susceptible, the transmission probability, and the contact rate.[@Anderson1991; @Keeling2007] It is age stratified ($a$, $A = \text{max}(a)$) by contact rates, by the proportion of cases that are smear positive in a given age group, by the transmission probability of each case, and by the rate of starting treatment. Stratification by vaccine status ($k$) is introduced by the number of current pulmonary TB cases. It can be defined as follows,
 
 \begin{equation}
-\lambda^k_a = \frac{\beta_a}{N} \sum\limits_{i=1}^{A} \rho_i C_{ai}\left(\frac{M\iota_i}{\nu_a^P} + \sum\limits_{j = u,v}P^j_i\right)
+\lambda^k_a = \frac{\beta_a}{N} \sum\limits_{i=1}^{A} \rho_i C_{ai}\left(\frac{M_{a}\iota_i}{\nu_a^P} + \sum\limits_{j = u,v}P^j_i\right)
   (\#eq:force-of-infection)
 \end{equation}
 
 
-Where $\iota_a$ is the age stratified number of non-UK born pulmonary cases notified in a given year, $P^{u,v}_a$ is the number of vaccinated, and unvaccinated, pulmonary TB cases, $\rho_a$ is the age-specific proportion of cases that are smear positive, $\nu^P_a$ is the age-specific rate of starting treatment for active pulmonary TB, $C_{ai}$ is the age-stratified contact matrix (Section \@ref(contact-matrix)), $\beta_a$ is the age-stratified transmission probability, and $M$ is the mixing rate between the UK born and non-UK born population. 
+Where $\iota_a$ is the age stratified number of non-UK born pulmonary cases notified in a given year, $P^{u,v}_a$ is the number of vaccinated, and unvaccinated, pulmonary TB cases, $\rho_a$ is the age-specific proportion of cases that are smear positive, $\nu^P_a$ is the age-specific rate of starting treatment for active pulmonary TB, $C_{ai}$ is the age-stratified contact matrix (Section \@ref(contact-matrix)), $\beta_a$ is the age-stratified transmission probability, and $M_a$ is the age-stratified mixing rate between the UK born and non-UK born population. 
 
 ## Parameterisation and data synthesis
 
@@ -223,7 +223,7 @@ Yearly population estimates, stratified by age and UK birth status, were extract
 
 Details of the prior distributions used for each disease model parameter are given in Table \@ref(tab:disease-model). Table \@ref(tab:sources-tab) contains details of the sources used to parameterise the model. More detail is given in the following sub-sections. 
 
-```{r disease-model}
+```{r disease-model, eval = FALSE}
 disease_params_table %>% 
   select(Parameter, Description, Distribution, Units, Method, Type) %>% 
 kable(
@@ -273,7 +273,7 @@ sources_table %>%
 Non-UK born pulmonary cases was estimated using the ETS (see Chapter \@ref(data)) for each age-group included in the model from 2000 until 2015. Prior to 2000, incidence in the non-UK born are unavailable and the relationship to transmission in UK-born cases is unknown. To account for this, importation of non-UK born cases in the model begins in 1960 and then is scaled up through to 2000. As the form of this relationship is unknown the following functional form was used to scale cases based on those observed in 2000,
 
 \begin{equation}
-\text{Non UK-born scaling} = \frac{e^{\left(\frac{t - 1960}{\text{ln}(2) * \iota_{\text{scale}}}\right)} - 1}{e^{\left(\frac{2000 - 1960}{\text{ln}(2) * \iota_{\text{scale}}}\right)} - 1}
+\text{Non UK-born scaling} = \frac{e^{\left(\frac{t - 1960}{\text{ln}(2) * (-1) * \iota_{\text{scale}}}\right)} - 1}{e^{\left(\frac{2000 - 1960}{\text{ln}(2) * (-1) * \iota_{\text{scale}}}\right)} - 1}
   (\#eq:non-uk-born-scale)
 \end{equation}
 
@@ -287,12 +287,11 @@ The probability of transmission can be defined as the probability that a single 
 
 \begin{equation}
 C^{\text{scaled}}_{\text{eff}} = \begin{cases}
-C^{\text{hist}}_{\text{eff}} & \text{if } t < 1950, \\
-C_{\text{eff}} + \left(C^{\text{hist}}_{\text{eff}} -  C_{\text{eff}} \right) \left(1 - \frac{t-1950}{C^{\text{year}}_{\text{eff}}-1950}\right) & \text{if } 1950 \leq t \leq 1990, \\
-C_{\text{eff}} & \text{if } t > 1990. \end{cases}
+C^{\text{hist}}_{\text{eff}} & \text{if } t < 1935, \\
+C_{\text{eff}} + \left(C^{\text{hist}}_{\text{eff}} -  C_{\text{eff}} \right) \left(\frac{t-1935}{C^{\text{half-life}}_{\text{eff}}}\right)^{1/2} & \text{if } 1935 \leq t \leq 1980, \\
+C_{\text{eff}} & \text{if } t > 1980. \end{cases}
   (\#eq:scaled-contacts)
 \end{equation}
-
 
 \begin{equation}
 \beta_a = \frac{(\nu_{\text{avg}}^{P} + \mu_{\text{avg}}) C^{\text{scaled}}_{\text{eff}}}{C_{\text{actual}}}
@@ -307,7 +306,7 @@ t_{hist}  := \begin{cases}
 0 & \text{if } t >= 1990. \end{cases}
 \end{equation}
 
-Vynnycky et al. found that the effective contact rate (i.e the transmission probability times the contact rate) for TB was approximately 22 in 1900 and fell to approximately 1 in 1990.[@Vynnycky1999] Incidence rates have increased since 1990 (Chapter \@ref(data)) and it is unclear what impact this has had on the effective contact rate. I have assumed that the effective contact rate is normally distributed with a mean of 1 and a standard deviation of 0.5. Similarly, for the historic effective contact rate I have assumed a normal distribution between with a mean of 10 and a standard deviation of 2.5. I have also assumed that the historic contact rate declines linearly over time, starting in 1950, reducing to 0 by $C^{\text{year}}_{\text{eff}}$. The prior for this year has been assumed to be normally distributed with a mean of 1985, and a standard deviation of 5 years. It has been truncated so that the lower bound is 1975 and the upper bound is 1995. Additional age stratification of $\beta$ is explored by including modifiers for certain age-groups. The baseline scenario is that no modification is required, with variation between children and adults ($\beta_{\text{child}}$) and between children, adults and older adults ($\beta_{\text{child}}$ and $\beta_{\text{older-adults}}$) also being considered. The priors for these modifiers are normally distributed around 1 with a standard deviation of 0.5 (truncated to be greater than 0). The contact rate is estimated by averaging the total age-specific contact rates estimated from POLYMOD data (Section \@ref(contact-matrix)) on an annual basis.
+Vynnycky et al. found that the effective contact rate (i.e the transmission probability times the contact rate) for TB was approximately 22 in 1900 and fell to approximately 1 in 1990.[@Vynnycky1999] Incidence rates have increased since the early 1980's (Chapter \@ref(data)) and it is unclear what impact this has had on the effective contact rate. I have assumed that the effective contact rate is normally distributed with a mean of 1 and a standard deviation of 0.5. For the historic effective contact rate I have assumed a uniform distribution with a lower bound of the current effective contact rate and an upper bound of 20. I have also assumed that the historic contact rate declines over time, starting in 1935, reducing to the current effective contact rate in 1980. The speed of this decay is set by defining a half-life ($C^{\text{half-life}}_{\text{eff}}$). The prior for the half-life is assumed to be normally distributed with a mean of 5 years and a standard deviation of 5 (truncated to be greater than 0). This prior is based on the observed trend in notifications. Additional age stratification of $\beta$ is explored by including modifiers for certain age-groups. The baseline scenario is that no modification is required, with variation explored for young adults (15-29; $\beta_{\text{young adult}}$) as a scenario. The priors for this modifier was assumed to be uniform, bounded by 0 and 10. The contact rate is estimated by averaging the total age-specific contact rates estimated from POLYMOD data (Section \@ref(contact-matrix)) on an annual basis.
 
 ##### Rate of recovery from active disease
 
@@ -487,11 +486,11 @@ Dynamics transmission models are susceptible to the conditions under which they 
 
 ### Starting simulation date, initial population and changes over time.
 
-Model simulations were begun in 1931 due to the availability of population data from the 1931 census and because data on live births was only available from 1929. The demographic model is initialised using the age grouped 1931 census data, with the assumption that the entirety of the population is UK born. Initially it is assumed that there is no BCG vaccination and no TB treatment. TB treatment is assumed to begin in 1952 with the discovery of isoniazid and BCG vaccination begins at school-age (15 years old) in 1953. BCG vaccination coverage is assumed to vary randomly over the time horizon of the model but to have the same distribution at all time points. The assumed distribution is normal with a mean of 80% and a standard deviation of 5%. The duration with active TB is assumed to decrease from the introduction of treatment in 1952 through to 1990 when it is assumed that detection rates were equivalent to those seen today. 
+Model simulations were begun in 1931 due to the availability of population data from the 1931 census and because data on live births was only available from 1929. The demographic model is initialised using the age grouped 1931 census data, with the assumption that the entirety of the population is UK born. Initially it is assumed that there is no BCG vaccination and recovery from active TB takes 2 years. TB treatment is assumed to begin in 1952 with the discovery of isoniazid and BCG vaccination begins at school-age (15 years old) in 1953. BCG vaccination coverage is assumed to vary randomly over the time horizon of the model but to have the same distribution at all time points. The assumed distribution is normal with a mean of 75% and a standard deviation of 5%. The duration with active TB is assumed to decrease from the introduction of treatment in 1952 through to 1990 when it is assumed that detection rates were equivalent to those seen today. 
 
 ### Initial disease distribution
 
-The model is initialised with the number of pulmonary and extra-pulmonary cases reported in 1931. The high risk latent population is initialised by scaling the number of observed cases in 1931 by the proportion of high risk latent cases that develop active TB, the duration that these cases are high risk and then dividing by the infectious period. The low risk latent population is then initialised by scaling the high risk latent population by the cumulative sum of the age distribution of UK born cases in 2000. Finally, the initial susceptible population is based on the population estimate from the 1931 census minus the assumed initial latent cases. 
+The model is initialised with the number of pulmonary and extra-pulmonary cases reported in 1931. The high risk latent population is initialised by scaling the number of observed cases in 1931 by the proportion of high risk latent cases that develop active TB, the duration that these cases are high risk and then dividing by the infectious period. The low risk latent population is then initialised by scaling the high risk latent population by the cumulative sum of the age distribution of UK born cases in 2000, reduced by 50% to account for mortality. Finally, the initial susceptible population is based on the population estimate from the 1931 census minus the assumed initial latent cases. 
 
 All initial disease compartments, excepting the low risk latent compartment, are distributed based on the age distribution of observed UK born cases in 2000. To account for possible measurement error a normal distribution is sampled around the assumed population in each compartment with a standard deviation of 5% of the reported cases.
 
@@ -501,7 +500,7 @@ In this chapter, I have outlined the requirements for a dynamic transmission mod
 
 All dynamic transmission models require a series of assumptions to be made. These assumptions fall into two categories: structural assumptions and parameter assumptions.[@Dowdy2012] Structural assumptions, such as the choice of serial latency in the model presented here, maybe difficult to test as they require the development of a parallel model structure. In the model presented here I have chosen to base the model structure on the known epidemiology of TB in England and the effects of the BCG vaccine. Structural assumptions have been discussed as have their potential impacts but a full scenario analysis of all potential model structures is beyond the scope of this work. Instead, I have focused on parameter assumptions which are more likely to directly impact the evaluation of BCG vaccination. 
 
-In the next chapter, I will consider the evidence for modifying the transmission probability by age using three distinct scenarios (Table \@ref(tab:summary-scenarios)). Identifying if the transmission probablity varies with age is important as it may alter the distribution and number of TB cases. This would impact the observed effects of the BCG vaccine and is therefore of primary importance.
+In the next chapter, I will consider the evidence for modifying the transmission probability, and non-UK born mixing, by age using three distinct scenarios (Table \@ref(tab:summary-scenarios)). Identifying if the transmission probablity, or non-UK born mixing, varies with age is important as it may alter the distribution and number of TB cases. This would impact the observed effects of the BCG vaccine and is therefore of primary importance.
 
 ```{r summary-scenarios}
 kable(scenarios_table, caption = "Summary of planned scenario analyses to be carried out in the next chapter as part of model fitting by comparision of the goodness of fit to the data.", booktabs = TRUE, escape = FALSE) %>% 
@@ -520,7 +519,7 @@ Vynnycky et al. modeled the long term dynamics of pulmonary TB, in England and W
 
 Dowdy et al. presented a data wish list for evidence base decision making using TB models, which may be used to assess the usefulness of a TB model for policy makers. The data requirements included: the rate of TB transmission; probability of developing active disease after an initial infection; the rate of activation amongst cases with risk factors; protection afforded by latent TB infection; the duration of infectiousness; treatment success; and the rate of spontaneous recovery. The model presented here fulfills the majority of these criteria. The rate of TB transmission is parameterised using previously published estimates of the effective contact rate in England,[@Vynnycky1999] this parameterisation will be refined in the following chapter using incidence data from the ETS. The probability of developing active TB has been sourced from recently published modelling work that fit a model of TB transmission to contact data in low incidence countries,[@Ragonnet2017] and is stratified by age as considered important by Dowdy et al. The rate of activation amongst cases with risk factors has not been included as it has been assumed that the proportion of UK born cases in the ETS with risk factors such as HIV is low. The duration of infectiousness, and treatment success have been parameterised using the ETS, although this approach is limited by possible reporting biases in the data available. The rate of spontaneous recovery has not been modeled as it is assumed that individuals are likely to be notified before clearing TB and are also likely to rapidly be started on TB treatment. This assumptions is likely to be valid as England has a robust national health service and a strong notification framework for TB. The protection afforded by latent TB infection has been included using the most recent literature sources available. All other parameters have been parameterised using the ETS where possible and otherwise from the most robust literature sources available. In particular the effectiveness of the BCG vaccine has been parameterised using data from studies that took place in England, where available, and both the protection from initial infection and the protection from developing active disease in those latently infected has been included along with estimates of the reduction in protection over time.
 
-The semi-stochastic transmission dynamic model of TB transmission and BCG vaccination presented in this chapter provides a detailed overview of the features required to reproduce the observed epidemiology of TB in England. The model was robustly parameterised using routine surveillance data where available and otherwise using literature sources. The assumptions required by the model can be explored by fitting the model to observed data and assessing the goodness of fit. This is the focus of the next chapter. In addition the model may also be used to explore the impact of current and historic BCG vaccination policy, both in the observed data and projected into the future. This is explored in the final two chapters of this thesis.
+The semi-stochastic transmission dynamic model of TB transmission and BCG vaccination presented in this chapter provides a detailed overview of the features required to reproduce the observed epidemiology of TB in England. The model was robustly parameterised using routine surveillance data where available and otherwise using literature sources. The assumptions required by the model can be explored by fitting the model to observed data and assessing the goodness of fit. This is the focus of the next chapter. In addition the model may also be used to explore the impact of current and historic BCG vaccination policy, both in the observed data and projected into the future. This is explored in the final chapter of this thesis.
 
 
 ## Summary
