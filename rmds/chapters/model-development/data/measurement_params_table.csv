@@ -1,0 +1,3 @@
+Parameter,Description,Distribution,Units,Source,Type,Method,Setting,Fitted,URL
+$E_{\text{syst}}$,Systematic reporting error of incident TB cases,"$\mathcal{N}(0.9, 0.05)$ truncated to be greater than 0.8 and lower than 1.",Proportion,Assumption,Assumption,"Assumption is that underreporting of TB cases is more likely that exact, or over reporting.",England,Yes,-
+$E_{\text{noise}}$,Magnitude of reporting noise for incidence TB cases.,"$\mathcal{U}(0, 0.05)$.",Proportion,Assumption,Assumption,It is likely that reporting accuracy varies each year. An upper bound of 5% is used as this means that approximately 95% of observations will be within 20% of each other.,England,Yes,-

@@ -1,0 +1,5 @@
+pulmextrapulm,age_stage,mean,sd
+Extra-pulmonary only,child,0.306,0.602
+Extra-pulmonary only,adult,0.48,0.866
+"Pulmonary, with or without EP",child,0.181,0.31
+"Pulmonary, with or without EP",adult,0.328,0.447
