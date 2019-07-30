@@ -318,9 +318,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="9.4.2" data-path="9-model-fitting.html"><a href="9-model-fitting.html#particle-and-proposal-calibration"><i class="fa fa-check"></i><b>9.4.2</b> Particle and proposal calibration</a></li>
 <li class="chapter" data-level="9.4.3" data-path="9-model-fitting.html"><a href="9-model-fitting.html#model-comparision-1"><i class="fa fa-check"></i><b>9.4.3</b> Model comparision</a></li>
 <li class="chapter" data-level="9.4.4" data-path="9-model-fitting.html"><a href="9-model-fitting.html#model-fit-to-tb-incidence-rates-from-the-ets"><i class="fa fa-check"></i><b>9.4.4</b> Model Fit to TB incidence rates from the ETS</a></li>
-<li class="chapter" data-level="9.4.5" data-path="9-model-fitting.html"><a href="9-model-fitting.html#model-fit-to-tb-age-distribution"><i class="fa fa-check"></i><b>9.4.5</b> Model fit to TB age distribution</a></li>
-<li class="chapter" data-level="9.4.6" data-path="9-model-fitting.html"><a href="9-model-fitting.html#posterior-parameter-distributions"><i class="fa fa-check"></i><b>9.4.6</b> Posterior parameter distributions</a></li>
-<li class="chapter" data-level="9.4.7" data-path="9-model-fitting.html"><a href="9-model-fitting.html#parameter-sensitivity-1"><i class="fa fa-check"></i><b>9.4.7</b> Parameter Sensitivity</a></li>
+<li class="chapter" data-level="9.4.5" data-path="9-model-fitting.html"><a href="9-model-fitting.html#posterior-parameter-distributions"><i class="fa fa-check"></i><b>9.4.5</b> Posterior parameter distributions</a></li>
+<li class="chapter" data-level="9.4.6" data-path="9-model-fitting.html"><a href="9-model-fitting.html#parameter-sensitivity-1"><i class="fa fa-check"></i><b>9.4.6</b> Parameter Sensitivity</a></li>
 </ul></li>
 <li class="chapter" data-level="9.5" data-path="9-model-fitting.html"><a href="9-model-fitting.html#discussion-6"><i class="fa fa-check"></i><b>9.5</b> Discussion</a><ul>
 <li class="chapter" data-level="9.5.1" data-path="9-model-fitting.html"><a href="9-model-fitting.html#summary-8"><i class="fa fa-check"></i><b>9.5.1</b> Summary</a></li>
@@ -601,7 +600,7 @@ Where <span class="math inline">\(\bar{\theta}\)</span> is the expectation of <s
 <li><p>1000 PMCMC steps, with 256 particles used in the particle filter. This provides a better estimate of the mean of the posterior distribution.</p></li>
 <li><p>Particle adaption via <code>rbi.helpers</code> at the approximate mean of the posterior distribution.<span class="citation">[<a href="#ref-Funk:2019uw">124</a>]</span> A minimum of 64 particles and a maximum of 256 particles are assessed with the target of a log-likelihood variance of less than 5. 250 PMCMC steps were used at each stage to estimate the log-likelihood variance.</p></li>
 <li><p>Manual independent proposal adaption at the approximate mean of the posterior distribution. The size of the proposal distribution is halved each iteration, with at most 5 iterations of adaption. The minimum target acceptance rate specified was 10% and the maximum was 20%. 250 PMCMC samples were used each time to estimate the acceptance rate. Proposal adaption was only carried out for the main model scenario, with other scenarios using this proposal.</p></li>
-<li><p>SMC-SMC model fitting with 2000 initial parameter particles. Particle rejuvernation was set to trigger when the effective sample size decreased below 25%, with 5 MCMC steps used each time.</p></li>
+<li><p>SMC-SMC model fitting with 2000 initial parameter particles. Particle rejuvernation was set to trigger when the effective sample size decreased below 25%, with 10 MCMC steps used each time.</p></li>
 <li><p>For each sample from the posterior distribution the model was then simulated for all time points.</p></li>
 <li><p>The model DIC was computed using <code>rbi.helpers</code>.<span class="citation">[<a href="#ref-Funk:2019uw">124</a>]</span> This gives a model agnostic approach to evaluate the fit to the observed data.</p></li>
 <li><p>Parameter sensitivity was estimated by calculating the partial rank correlation coffecient (PRCC) for each model parameter, for the final time point fitted too (2004), foroveral l TB incidence rates. Results were then plotted in order of the absolute magnitude of the correlation, with the direction of the correlation determined using colour. The <code>epiR</code> package was used to compute the PRCC.<span class="citation">[<a href="#ref-EpiR">65</a>]</span></p></li>
@@ -639,41 +638,177 @@ Where <span class="math inline">\(\bar{\theta}\)</span> is the expectation of <s
 <div id="particle-and-proposal-calibration" class="section level3">
 <h3><span class="header-section-number">9.4.2</span> Particle and proposal calibration</h3>
 <p>After development of the model fitting pipeline but before results could be produced both the <code>optimise</code> (from <code>rbi</code>) and <code>adapt_particle</code> (from <code>rbi.helpers</code>) began to error with a difficult to debug <code>LibBi</code> error message. This meant that steps 3-5 of the model fitting pipeline could not be used with the final model. As a work around the maximum permitted number of particles (256) was then used for all model fitting (increasing the number of particles was also explored as detailed in the previous section).</p>
-<p>As discussed, there were multiple issues with fitting the final model and this made it diffult to determine what the mean of posterior distribution was. This made manually tuning the proposal distribution challenging and so instead a standard deviation of 10% was used. This value was chosen as it increased the acceptance rate by limiting each rejuvernation step to a relatively small subset of the prior distribution whilst not preventing the exploration of new parameter space in scenarios when model fits from the initial particle sample were poor.</p>
+<p>As discussed, there were multiple issues with fitting the final model and this made it diffult to determine what the mean of posterior distribution was. This made manually tuning the proposal distribution challenging and so instead a standard deviation of 2.5% was used. This value was chosen as it increased the acceptance rate by limiting each rejuvernation step to a relatively small subset of the prior distribution whilst not preventing the exploration of new parameter space in scenarios when model fits from the initial particle sample were poor.</p>
 </div>
 <div id="model-comparision-1" class="section level3">
 <h3><span class="header-section-number">9.4.3</span> Model comparision</h3>
 <ul>
 <li>Compare Scenarios using DIC and discuss results.</li>
-<li>Table of DIC results with scenarios</li>
 </ul>
 </div>
 <div id="model-fit-to-tb-incidence-rates-from-the-ets" class="section level3">
 <h3><span class="header-section-number">9.4.4</span> Model Fit to TB incidence rates from the ETS</h3>
 <ul>
-<li>Plot of TB data and fit</li>
-<li>Table of data and fit</li>
 <li>Comment on fit</li>
 </ul>
+<div class="figure" style="text-align: center"><span id="fig:09-age-strat-incidence"></span>
+<img src="chapters/model-fitting/plots/overview-states-1990-age-1.png" alt="Observed and predicted TB incidence stratified by model age group (0-11). 0-9 refers to 5 year age groups from 0-4 years old to 45-49 years old. 10 refers to those aged between 50 and 69 and 11 refers to those aged 70+. The model underpredicted incidence in all age groups fitted too with older adults have the best fit." width="80%" />
+<p class="caption">
+Figure 9.1: Observed and predicted TB incidence stratified by model age group (0-11). 0-9 refers to 5 year age groups from 0-4 years old to 45-49 years old. 10 refers to those aged between 50 and 69 and 11 refers to those aged 70+. The model underpredicted incidence in all age groups fitted too with older adults have the best fit.
+</p>
 </div>
-<div id="model-fit-to-tb-age-distribution" class="section level3">
-<h3><span class="header-section-number">9.4.5</span> Model fit to TB age distribution</h3>
-<ul>
-<li>Age group plot over time + fit</li>
-<li>Age distribution over time + fit</li>
-<li>Comment on fit</li>
-</ul>
 </div>
 <div id="posterior-parameter-distributions" class="section level3">
-<h3><span class="header-section-number">9.4.6</span> Posterior parameter distributions</h3>
+<h3><span class="header-section-number">9.4.5</span> Posterior parameter distributions</h3>
 <ul>
-<li>Plot of Posterior Parameter distributions</li>
-<li>Table of Posterior Parameter distributions</li>
 <li>Comment on posteriors</li>
 </ul>
+<div class="figure" style="text-align: center"><span id="fig:09-fig-prior-params"></span>
+<img src="chapters/model-fitting/plots/prior-posterior-overview-1.png" alt="Prior and posterior distributions for fitted model parameters. Parameter names in figure are in their coded form. They can be interpreted using the following: beta_young_adult - $\beta_{\text{young adult}}$, c_eff - $c_{\text{eff}}$, c_hist - $c^{\text{hist}}_{\text{eff}}$, c_hist_half - $c^{\text{hist}}_{\text{half}}$, M - $M$, M_young_adult - $M_{\text{young adult}}$, meas_error - $E_{\text{syst}}$, meas_std - $E_{\text{noise}}$, non_uk_scaling - $\iota_{\text{scale}}$, older_adult_activation_scaling - $\epsilon^{\text{older-adult}}_L$" width="80%" />
+<p class="caption">
+Figure 9.2: Prior and posterior distributions for fitted model parameters. Parameter names in figure are in their coded form. They can be interpreted using the following: beta_young_adult - <span class="math inline">\(\beta_{\text{young adult}}\)</span>, c_eff - <span class="math inline">\(c_{\text{eff}}\)</span>, c_hist - <span class="math inline">\(c^{\text{hist}}_{\text{eff}}\)</span>, c_hist_half - <span class="math inline">\(c^{\text{hist}}_{\text{half}}\)</span>, M - <span class="math inline">\(M\)</span>, M_young_adult - <span class="math inline">\(M_{\text{young adult}}\)</span>, meas_error - <span class="math inline">\(E_{\text{syst}}\)</span>, meas_std - <span class="math inline">\(E_{\text{noise}}\)</span>, non_uk_scaling - <span class="math inline">\(\iota_{\text{scale}}\)</span>, older_adult_activation_scaling - <span class="math inline">\(\epsilon^{\text{older-adult}}_L\)</span>
+</p>
+</div>
+<table class="table" style="margin-left: auto; margin-right: auto;">
+<caption>
+<span id="tab:09-prior-posterior">Table 9.2: </span>Observerd versus predicted overall TB incidence for years that the model was fitted too. The model underpredicted incidence for all years fitted too. The upper credible interval of the model predictions was substantially lower than the observed data.
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+Parameter
+</th>
+<th style="text-align:left;">
+Prior (95%CI)**
+</th>
+<th style="text-align:left;">
+Posterior (95%CI)**
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+<span class="math inline">\(\beta_{\text{young adult}}\)</span>
+</td>
+<td style="text-align:left;">
+5.06 (0.22, 9.77)
+</td>
+<td style="text-align:left;">
+8.23 (8.23, 8.23)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<span class="math inline">\(c_{\text{eff}}\)</span>
+</td>
+<td style="text-align:left;">
+1.22 (0.07, 3.09)
+</td>
+<td style="text-align:left;">
+0.07 (0.07, 0.07)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<span class="math inline">\(c^{\text{hist}}_{\text{eff}}\)</span>
+</td>
+<td style="text-align:left;">
+10.42 (1.43, 19.54)
+</td>
+<td style="text-align:left;">
+0.99 (0.99, 0.99)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<span class="math inline">\(c^{\text{hist}}_{\text{half}}\)</span>
+</td>
+<td style="text-align:left;">
+5.98 (0.33, 15.26)
+</td>
+<td style="text-align:left;">
+12.84 (12.84, 12.84)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<span class="math inline">\(M\)</span>
+</td>
+<td style="text-align:left;">
+1.21 (0.11, 2.92)
+</td>
+<td style="text-align:left;">
+1.97 (1.97, 1.97)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<span class="math inline">\(M_{\text{young adult}}\)</span>
+</td>
+<td style="text-align:left;">
+4.72 (0.30, 9.72)
+</td>
+<td style="text-align:left;">
+2.43 (2.43, 2.43)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<span class="math inline">\(E_{\text{syst}}\)</span>
+</td>
+<td style="text-align:left;">
+0.90 (0.82, 0.98)
+</td>
+<td style="text-align:left;">
+0.85 (0.85, 0.85)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<span class="math inline">\(E_{\text{noise}}\)</span>
+</td>
+<td style="text-align:left;">
+0.01 (0.00, 0.02)
+</td>
+<td style="text-align:left;">
+0.02 (0.02, 0.02)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<span class="math inline">\(\iota_{\text{scale}}\)</span>
+</td>
+<td style="text-align:left;">
+96.28 (5.23, 194.75)
+</td>
+<td style="text-align:left;">
+199.84 (199.84, 199.84)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<span class="math inline">\(\epsilon^{\text{older-adult}}_L\)</span>
+</td>
+<td style="text-align:left;">
+2.00 (1.18, 2.99)
+</td>
+<td style="text-align:left;">
+1.97 (1.97, 1.97)
+</td>
+</tr>
+</tbody>
+<tfoot>
+<tr>
+<td style="padding: 0; border:0;" colspan="100%">
+<sup></sup> * 95% credible interval estimated using the 2.5% quantile and the 97.5% quantile.
+</td>
+</tr>
+</tfoot>
+</table>
 </div>
 <div id="parameter-sensitivity-1" class="section level3">
-<h3><span class="header-section-number">9.4.7</span> Parameter Sensitivity</h3>
+<h3><span class="header-section-number">9.4.6</span> Parameter Sensitivity</h3>
 <ul>
 <li>Plot parameter sensitivty</li>
 <li>Comment on parameter sensitivity in light of strength of data</li>

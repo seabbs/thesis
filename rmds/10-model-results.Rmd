@@ -15,10 +15,45 @@ knitr::opts_chunk$set(echo = FALSE, dpi = 320,
 
 ##packages
 library(tidyverse)
+library(purrr)
 library(kableExtra)
 library(pander)
+library(fs)
+
 ## Resources path
-resources_path <- file.path("chapters", "model_results")
+resources_path <- file.path("chapters", "model-fitting")
+
+
+## Path to plots
+plots_path <- file.path(resources_path, "plots")
+
+## Read in model fits from https://github.com/seabbs/vignettes/results/final-fit
+files <- fs::dir_ls("chapters/model-fitting/data")
+
+load_rds <- function(file) {
+  name <- basename(file) %>%
+    stringr::str_replace("\\.rds", "")
+  
+  assign(name, readRDS(file), envir = globalenv())
+}
+
+walk(files, load_rds)
+
+## Function to handle variable names
+replace_code_with_form <- function(param) {
+  param %>%
+    str_replace("beta_young_adult", "$\\\\beta_{\\\\text{young adult}}$") %>%
+    str_replace("M_young_adult", "$M_{\\\\text{young adult}}$") %>% 
+    str_replace("M", "$M$") %>%
+    str_replace("\\$M\\$_", "M_") %>% 
+    str_replace("meas_error", "$E_{\\\\text{syst}}$") %>% 
+    str_replace("meas_std", "$E_{\\\\text{noise}}$") %>% 
+    str_replace("c_eff", "$c_{\\\\text{eff}}$") %>% 
+    str_replace("c_hist_half", "$c^{\\\\text{hist}}_{\\\\text{half}}$") %>% 
+    str_replace("c_hist", "$c^{\\\\text{hist}}_{\\\\text{eff}}$") %>% 
+    str_replace("non_uk_scaling", "$\\\\iota_{\\\\text{scale}}$") %>% 
+    str_replace("older_adult_activation_scaling", "$\\\\epsilon^{\\\\text{older-adult}}_L$")
+}
 ```
 
 ## Introduction
@@ -59,6 +94,11 @@ The results presented in the following section should be considered preliminary 
   * Comparision of age distribution of deaths.
   * All in reflection of reality.
   
+  
+```{r 10-overview-fig, fig.scap = "Observed and predicted TB incidence stratified by model age group", fig.cap = "Observed and predicted TB incidence stratified by model age group (0-11). 0-9 refers to 5 year age groups from 0-4 years old to 45-49 years old. 10 refers to those aged between 50 and 69 and 11 refers to those aged 70+. The model underpredicted incidence in all age groups fitted too with older adults have the best fit.", eval = FALSE}
+knitr::include_graphics(file.path(plots_path, "overview-scenarios-2000-obs-1.png"))
+```
+
 ## Forecasting the long-term impact of each vaccination scenario.
 
   * Comparision of cases at multiple time horizons (10 and 25 years).

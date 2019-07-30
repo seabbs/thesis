@@ -4386,7 +4386,7 @@ Date: \emph{placeholder}
   \item
     Manual independent proposal adaption at the approximate mean of the posterior distribution. The size of the proposal distribution is halved each iteration, with at most 5 iterations of adaption. The minimum target acceptance rate specified was 10\% and the maximum was 20\%. 250 PMCMC samples were used each time to estimate the acceptance rate. Proposal adaption was only carried out for the main model scenario, with other scenarios using this proposal.
   \item
-    SMC-SMC model fitting with 2000 initial parameter particles. Particle rejuvernation was set to trigger when the effective sample size decreased below 25\%, with 5 MCMC steps used each time.
+    SMC-SMC model fitting with 2000 initial parameter particles. Particle rejuvernation was set to trigger when the effective sample size decreased below 25\%, with 10 MCMC steps used each time.
   \item
     For each sample from the posterior distribution the model was then simulated for all time points.
   \item
@@ -4448,7 +4448,7 @@ Date: \emph{placeholder}
   
   After development of the model fitting pipeline but before results could be produced both the \texttt{optimise} (from \texttt{rbi}) and \texttt{adapt\_particle} (from \texttt{rbi.helpers}) began to error with a difficult to debug \texttt{LibBi} error message. This meant that steps 3-5 of the model fitting pipeline could not be used with the final model. As a work around the maximum permitted number of particles (256) was then used for all model fitting (increasing the number of particles was also explored as detailed in the previous section).
   
-  As discussed, there were multiple issues with fitting the final model and this made it diffult to determine what the mean of posterior distribution was. This made manually tuning the proposal distribution challenging and so instead a standard deviation of 10\% was used. This value was chosen as it increased the acceptance rate by limiting each rejuvernation step to a relatively small subset of the prior distribution whilst not preventing the exploration of new parameter space in scenarios when model fits from the initial particle sample were poor.
+  As discussed, there were multiple issues with fitting the final model and this made it diffult to determine what the mean of posterior distribution was. This made manually tuning the proposal distribution challenging and so instead a standard deviation of 2.5\% was used. This value was chosen as it increased the acceptance rate by limiting each rejuvernation step to a relatively small subset of the prior distribution whilst not preventing the exploration of new parameter space in scenarios when model fits from the initial particle sample were poor.
   
   \hypertarget{model-comparision-1}{%
   \subsection{Model comparision}\label{model-comparision-1}}
@@ -4456,42 +4456,60 @@ Date: \emph{placeholder}
   \tightlist
   \item
     Compare Scenarios using DIC and discuss results.
-  \item
-    Table of DIC results with scenarios
   \end{itemize}
   \hypertarget{model-fit-to-tb-incidence-rates-from-the-ets}{%
   \subsection{Model Fit to TB incidence rates from the ETS}\label{model-fit-to-tb-incidence-rates-from-the-ets}}
   \begin{itemize}
   \tightlist
   \item
-    Plot of TB data and fit
-  \item
-    Table of data and fit
-  \item
     Comment on fit
   \end{itemize}
-  \hypertarget{model-fit-to-tb-age-distribution}{%
-  \subsection{Model fit to TB age distribution}\label{model-fit-to-tb-age-distribution}}
-  \begin{itemize}
-  \tightlist
-  \item
-    Age group plot over time + fit
-  \item
-    Age distribution over time + fit
-  \item
-    Comment on fit
-  \end{itemize}
+  \begin{figure}
+  
+  {\centering \includegraphics[width=0.8\linewidth]{chapters/model-fitting/plots/overview-states-1990-age-1} 
+  
+  }
+  
+  \caption[Observed and predicted TB incidence stratified by model age group]{Observed and predicted TB incidence stratified by model age group (0-11). 0-9 refers to 5 year age groups from 0-4 years old to 45-49 years old. 10 refers to those aged between 50 and 69 and 11 refers to those aged 70+. The model underpredicted incidence in all age groups fitted too with older adults have the best fit.}\label{fig:09-age-strat-incidence}
+  \end{figure}
   \hypertarget{posterior-parameter-distributions}{%
   \subsection{Posterior parameter distributions}\label{posterior-parameter-distributions}}
   \begin{itemize}
   \tightlist
   \item
-    Plot of Posterior Parameter distributions
-  \item
-    Table of Posterior Parameter distributions
-  \item
     Comment on posteriors
   \end{itemize}
+  \textbackslash{}begin\{figure\}
+  
+  \{\centering \includegraphics[width=0.8\linewidth]{chapters/model-fitting/plots/prior-posterior-overview-1}
+  
+  \}
+  
+  \textbackslash{}caption{[}Prior and posterior distributions for fitted model parameters.{]}\{Prior and posterior distributions for fitted model parameters. Parameter names in figure are in their coded form. They can be interpreted using the following: beta\_young\_adult - \(\beta_{\text{young adult}}\), c\_eff - \(c_{\text{eff}}\), c\_hist - \(c^{\text{hist}}_{\text{eff}}\), c\_hist\_half - \(c^{\text{hist}}_{\text{half}}\), M - \(M\), M\_young\_adult - \(M_{\text{young adult}}\), meas\_error - \(E_{\text{syst}}\), meas\_std - \(E_{\text{noise}}\), non\_uk\_scaling - \(\iota_{\text{scale}}\), older\_adult\_activation\_scaling - \(\epsilon^{\text{older-adult}}_L\)\}\label{fig:09-fig-prior-params}
+  \textbackslash{}end\{figure\}
+  \begin{verbatim}
+  Warning in add_footnote(., label = c("* 95% credible interval estimated
+  using the 2.5% quantile and the 97.5% quantile."), : Notation is set to
+  'number' and other formats are not supported.
+  \end{verbatim}
+  \begin{longtable}{lll}
+  \caption[Observerd versus predicted overall TB incidence for years that the model was fitted too.]{\label{tab:09-prior-posterior}Observerd versus predicted overall TB incidence for years that the model was fitted too. The model underpredicted incidence for all years fitted too. The upper credible interval of the model predictions was substantially lower than the observed data. }\\
+  \toprule
+  Parameter & Prior (95\%CI)** & Posterior (95\%CI)**\\
+  \midrule
+  \$\textbackslash{}beta\_\{\textbackslash{}text\{young adult\}\}\$ & 5.06 (0.22, 9.77) & 8.23 (8.23, 8.23)\\
+  \$c\_\{\textbackslash{}text\{eff\}\}\$ & 1.22 (0.07, 3.09) & 0.07 (0.07, 0.07)\\
+  \$c\textasciicircum{}\{\textbackslash{}text\{hist\}\}\_\{\textbackslash{}text\{eff\}\}\$ & 10.42 (1.43, 19.54) & 0.99 (0.99, 0.99)\\
+  \$c\textasciicircum{}\{\textbackslash{}text\{hist\}\}\_\{\textbackslash{}text\{half\}\}\$ & 5.98 (0.33, 15.26) & 12.84 (12.84, 12.84)\\
+  \$M\$ & 1.21 (0.11, 2.92) & 1.97 (1.97, 1.97)\\
+  \addlinespace
+  \$M\_\{\textbackslash{}text\{young adult\}\}\$ & 4.72 (0.30, 9.72) & 2.43 (2.43, 2.43)\\
+  \$E\_\{\textbackslash{}text\{syst\}\}\$ & 0.90 (0.82, 0.98) & 0.85 (0.85, 0.85)\\
+  \$E\_\{\textbackslash{}text\{noise\}\}\$ & 0.01 (0.00, 0.02) & 0.02 (0.02, 0.02)\\
+  \$\textbackslash{}iota\_\{\textbackslash{}text\{scale\}\}\$ & 96.28 (5.23, 194.75) & 199.84 (199.84, 199.84)\\
+  \$\textbackslash{}epsilon\textasciicircum{}\{\textbackslash{}text\{older-adult\}\}\_L\$ & 2.00 (1.18, 2.99) & 1.97 (1.97, 1.97)\\
+  \bottomrule
+  \end{longtable}
   \hypertarget{parameter-sensitivity-1}{%
   \subsection{Parameter Sensitivity}\label{parameter-sensitivity-1}}
   \begin{itemize}

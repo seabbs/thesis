@@ -15,7 +15,7 @@ knitr::opts_chunk$set(echo = FALSE, dpi = 320,
                       out.width = "80%", fig.align = 'center')
 ```
 
-```{r setup, include = FALSE, eval = TRUE}
+```{r 06-setup, include = FALSE, eval = TRUE}
 ## Word count: 3869
 ## Packages
 library(tidyverse)
