@@ -38,22 +38,6 @@ load_rds <- function(file) {
 }
 
 walk(files, load_rds)
-
-## Function to handle variable names
-replace_code_with_form <- function(param) {
-  param %>%
-    str_replace("beta_young_adult", "$\\\\beta_{\\\\text{young adult}}$") %>%
-    str_replace("M_young_adult", "$M_{\\\\text{young adult}}$") %>% 
-    str_replace("M", "$M$") %>%
-    str_replace("\\$M\\$_", "M_") %>% 
-    str_replace("meas_error", "$E_{\\\\text{syst}}$") %>% 
-    str_replace("meas_std", "$E_{\\\\text{noise}}$") %>% 
-    str_replace("c_eff", "$c_{\\\\text{eff}}$") %>% 
-    str_replace("c_hist_half", "$c^{\\\\text{hist}}_{\\\\text{half}}$") %>% 
-    str_replace("c_hist", "$c^{\\\\text{hist}}_{\\\\text{eff}}$") %>% 
-    str_replace("non_uk_scaling", "$\\\\iota_{\\\\text{scale}}$") %>% 
-    str_replace("older_adult_activation_scaling", "$\\\\epsilon^{\\\\text{older-adult}}_L$")
-}
 ```
 
 ## Introduction
@@ -122,7 +106,7 @@ The model developed in Chapter \@ref(model-development) was motivated by existin
 
 ### Literature + Thesis comparisons
 
-There are no other dynamic modelling studies evaluating the use of the BCG vaccine in low burden settings that include a comparable level of detail and that are robustly parameterised based on the latest evidence. See Chapter \@ref(model-development) for a discussion of the strengths and weaknesses of the model used here in comparison with others used in the literature. However, Harris et al. recently reviewed mathematical models that explored the epidemiological impacts of future TB vaccines.[@Harris2016] They found that vaccines targeted at all-ages or at adolescents/adults were more effective at eradicating TB than neonatal programmes when vaccine effectiveness was not assumed to degrade with age. These findings agree with those presented in this Chapter, with fewer overall cases observed when vaccination continued in those at school-age, compared to neonatal vaccination. However vaccination in neonates did lead to a decrease in incidence in children both over the long - and short term - in comparison to vaccination at school-age. 
+To my knowledge, there are no other dynamic modelling studies evaluating the use of the BCG vaccine in low burden settings that include a comparable level of detail and that are robustly parameterised based on the latest evidence. See Chapter \@ref(model-development) for a discussion of the strengths and weaknesses of the model used here in comparison with others used in the literature. However, Harris et al. recently reviewed mathematical models that explored the epidemiological impacts of future TB vaccines.[@Harris2016] They found that vaccines targeted at all-ages or at adolescents/adults were more effective at eradicating TB than neonatal programmes when vaccine effectiveness was not assumed to degrade with age. These findings agree with those presented in this Chapter, with fewer overall cases observed when vaccination continued in those at school-age, compared to neonatal vaccination. However vaccination in neonates did lead to a decrease in incidence in children both over the long - and short term - in comparison to vaccination at school-age. 
 
 * Compare findings to those from Chapter \@ref(sutherland). Both analyses included transmission but the results presented here are based on a more detailed and realistic model. The findings presented in Chapter \@ref(sutherland) also relied on a series of historic assumptions that may no longer be valid. However, the results from this chapter are based on a model that fit the data poorly.
 
@@ -133,7 +117,7 @@ There are no other dynamic modelling studies evaluating the use of the BCG vacci
 
 ### Further work
 
-Further work is need to improve the fit of the model to observed data (Chapter \@ref(model-fit)). This will result in improved forecasts and more reliable results. In addition additional vaccination coverage scenarios could be considered that explored the impact of vaccinating a reduced proportion of both those at school-age and neonates. If additional data becomes available, or with the appropriate assumptions, the inclusion of the high-risk population into the model would allow the evaluationb of targeted high-risk neonatal vaccination in comparison to the other scenarios considered here. The extrapolation of the trend in non-UK born cases is a limitation of this model and as such should be further explored using other assumptions such as constant non-UK born cases, incidence rates based on expert opinion and estimates based on other global modelling studies.  
+Further work is need to improve the fit of the model to observed data (Chapter \@ref(model-fit)). This will result in improved forecasts and more reliable results. In addition additional vaccination coverage scenarios could be considered that explored the impact of vaccinating a reduced proportion of both those at school-age and neonates. If additional data becomes available, or with the appropriate assumptions, the inclusion of the high-risk population into the model would allow the evaluation of targeted high-risk neonatal vaccination in comparison to the other scenarios considered here. The extrapolation of the trend in non-UK born cases is a limitation of this model and as such should be further explored using other assumptions such as constant non-UK born cases, incidence rates based on expert opinion and estimates based on other global modelling studies.  
 
 ### Conclusions
 
