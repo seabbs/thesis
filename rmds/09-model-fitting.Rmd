@@ -320,7 +320,7 @@ kable(
   {.}
 ```
 
-```{r 09-age-strat-incidence, fig.scap = "Observed and predicted TB incidence stratified by model age group", fig.cap = "Observed and predicted TB incidence stratified by model age group (0-11). 0-9 refers to 5 year age groups from 0-4 years old to 45-49 years old. 10 refers to those aged between 50 and 69 and 11 refers to those aged 70+. The darker ribbon identifies the interquartile range, whilst the lighter ribbon indicates the 2.5% and 97.5% quantiles. The line represents the median."}
+```{r 09-age-strat-incidence, fig.scap = "Observed and predicted TB incidence stratified by model age group", fig.cap = "Observed and predicted TB incidence stratified by model age group (0-11). 0-9 refers to 5 year age groups from 0-4 years old to 45-49 years old. 10 refers to those aged between 50 and 69 and 11 refers to those aged 70+. The darker ribbon identifies the interquartile range, whilst the lighter ribbon indicates the 2.5\\% and 97.5\\% quantiles. The line represents the median."}
 knitr::include_graphics(file.path(plots_path, "overview-states-1990-age-1.png"))
 ```
 
