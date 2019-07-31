@@ -44,13 +44,13 @@ walk(files, load_rds)
 
 In the previous chapter I outlined a model fitting pipeline and discussed the results from using it on the model developed in Chapter \@ref(model-development). Whilst this fitted model may be used to explore the epidemiology of tuberculosis (TB) in the early 2000's it does not - as currently stands - explore the impact of the 2005 change in BCG vaccination policy (Chapter \@ref(background)). 
 
-This chapter details the approach used to extrapolate the findings from the previous chapter beyond the change in BCG policy in 2005 and into the future. It first outlines the scenarios considered, then details the assumptions used to expand the time horizon of the model. Finally the impact of each scenario is explored over multiple time horizons. As discussed in the previous chapter these findings are preliminary in nature, meaning quantative conclusions cannot be drawn and qualative conclusions must be appropriately caveated.
+This chapter details the approach used to extrapolate the findings from the previous chapter beyond the change in BCG policy in 2005 and into the future. It first outlines the scenarios considered, then details the assumptions used to expand the time horizon of the model. Finally the impact of each scenario is explored over multiple time horizons. As discussed in the previous chapter these findings are preliminary in nature, meaning quantitative conclusions cannot be drawn and qualitative conclusions must be appropriately caveat-ed.
 
 ## Methods
 
 ### Scenarios considered
 
-I considered three scenarios from 2005 onwards. These were:
+I considered three scenarios from 2005 on-wards. These were:
 
 * Universal BCG vaccination of those at school-age continued with the same coverage as previously.
 * Universal BCG vaccination of those at school-age was phased out in 2005 and replaced with universal BCG vaccination of neonates with the same coverage levels as assumed for the BCG schools scheme.
@@ -60,25 +60,21 @@ Universal vaccination of neonates was used as a proxy for targeted vaccination o
 
 ### Forecasting assumptions
 
-Data on non-UK born cases, which were imported into the model via the force of infection (Chapter \@ref(model-development)), were not avialable beyond 2015. To account for this an, age and year adjusted, poisson regression model was used to forecast future TB incidence in the non-UK born with age treated as a categorical variable. As for years with data uncertainty was introduced into these forecasts by assuming that non-UK born incidence rates were scaled using the fitted measurement error and normally distributed with a standard distribution based on the fitted measurement standard error (Chapter \@ref(model-fitting)).
+Data on non-UK born cases, which were imported into the model via the force of infection (Chapter \@ref(model-development)), were not available beyond 2015. To account for this an, age and year adjusted, Poisson regression model was used to forecast future TB incidence in the non-UK born with age treated as a categorical variable. As for years with data uncertainty was introduced into these forecasts by assuming that non-UK born incidence rates were scaled using the fitted measurement error and normally distributed with a standard distribution based on the fitted measurement standard error (Chapter \@ref(model-fitting)).
 
-As outlined in Chapter \@ref(model-development), births from 2015 onwards were based on projections from the Office for National Statistics (ONS). Age-specific mortality rates were estimated for 2016 onwards using ONS estimates from 1981-2015, and an exponential model (Chapter \@ref(model-development). Both births and age-specific mortality rates were assumed to have a normal distribution with a standard deviation of 5% of the proect value. It was assumed that all other parameters were unchanged from the values estimated for 2000-2004 (Chapter \@ref(model-fitting).
+As outlined in Chapter \@ref(model-development), births from 2015 on-wards were based on projections from the Office for National Statistics (ONS). Age-specific mortality rates were estimated for 2016 on-wards using ONS estimates from 1981-2015, and an exponential model (Chapter \@ref(model-development). Both births and age-specific mortality rates were assumed to have a normal distribution with a standard deviation of 5% of the predicted value. It was assumed that all other parameters were unchanged from the values estimated for 2000-2004 (Chapter \@ref(model-fitting).
 
 ### Analytical methods
 
-The estimated age-stratified, and aggregated, TB incidence rates were compared both visually and numerically from 2005 through to 2040 for each scenario. From 2005-2015 observed data were also compared to the estimates from each scenario. Multiple time horizons were evaluated as intitially the impact of any policy change may be masked by the large resevoir of vaccinated individuals in the populations and because of the impact of the assumed decrease in non-UK born cases over time.  
+The estimated age-stratified, and aggregated, TB incidence rates were compared both visually and numerically from 2005 through to 2040 for each scenario. From 2005-2015 observed data were also compared to the estimates from each scenario. Multiple time horizons were evaluated as initially the impact of any policy change may be masked by the large reservoir of vaccinated individuals in the populations and because of the impact of the assumed decrease in non-UK born cases over time.  
 
 ## Results
  
-The results presented in the following section should be considered preliminary because of the low quality of fit achieved in Chapter \@ref(model-fitting). This means that quantative estimates are unlikely to be accurate. However, the underlying changes in dynamics caused by vaccination may be used for insight into the likely impact of each scenario and therefore there is still value in exploring these results. 
+The results presented in the following section should be considered preliminary because of the low quality of fit achieved in Chapter \@ref(model-fitting). This means that quantitative estimates are unlikely to be accurate. However, the underlying changes in dynamics caused by vaccination may be used for insight into the likely impact of each scenario and therefore there is still some value in exploring these results. 
 
 ## Forecasting the long-term impact of each vaccination scenario.
 
-  * Comparision of cases at multiple time horizons (10 and 25 years).
-  
-```{r 10-overall-scenarios-fig, fig.scap = "Forecast TB incidence for each scenario evaluated from 2005 to 2040", fig.cap = "Forecast TB incidence for each scenario evaluated from 2005 to 2040. Scenarios are differentiated by colour. The darker ribbon for each colour identifies the interquartile range, whilst the lighter ribbon indicates the 2.5\\% and 97.5\\% quantiles. The line represents the median."}
-knitr::include_graphics(file.path(plots_path, "overview-scenarios-future-1.png"))
-```
+Continuing with school-age vaccination resulted in the fewest number of cases regardless of the time-span considered (Table \@ref(tab:10-table-future-incidence). However, the difference between vaccination scenarios was consistently small when compared to the overall number of cases. In all scenarios TB incidence was forecast to decrease over time in line with the decreases assumed in non-UK born TB incidence. The lower bounds for each scenario were relatively comparable, with the upper bounds being being higher for both neonatal BCG vaccination and no BCG vaccination when compared to school-age BCG vaccination.
 
 ```{r 10-table-future-incidence}
 sum_scenario %>% filter(Year %% 5 == 0) %>% 
@@ -90,19 +86,13 @@ kable(
   kable_styling(latex_options = c("hold_position"))
 ```
 
-
-  * Comparision of age distribution of cases.
+As expected the neonatal vaccination resulted in a dramatic drop in TB incidence rates in 0-4 year olds and a smaller but still large reduction in 5-9 year olds (Figure \@ref(fig:10-age-scenarios-fig)). There was a light reduction in 10-15 year olds. School-age vaccination resulted in the lower incidence rates in all adult populations when compared to any other scenario, except in adults over 45 where all scenarios were comparable. Neonatal vaccination resulted in a slight decrease in TB incidence rates when compared to no vaccination in young adults.
   
 ```{r 10-age-scenarios-fig, fig.scap = "Forecast TB incidence for each scenario evaluated from 2005 to 2040, stratified by age group.", fig.cap = "Forecast TB incidence for each scenario evaluated from 2005 to 2040, stratified by age group (0-11). 0-9 refers to 5 year age groups from 0-4 years old to 45-49 years old. 10 refers to those aged between 50 and 69 and 11 refers to those aged 70+. Scenarios are differentiated by colour. The darker ribbon for each colour identifies the interquartile range, whilst the lighter ribbon indicates the 2.5\\% and 97.5\\% quantiles. The line represents the median."}
 knitr::include_graphics(file.path(plots_path, "overview-scenarios-future-age-1.png"))
 ```
 
-  * Comparision of deaths at multiple time horizons (10 and 25 years).
-  
-```{r 10-scenarios-deaths-fig, fig.scap = "Forecast TB mortality for each scenario evaluated from 2005 to 2040, stratified by age group.", fig.cap = "Forecast TB mortality for each scenario evaluated from 2005 to 2040, stratified by age group. Scenarios are differentiated by colour. The darker ribbon for each colour identifies the interquartile range, whilst the lighter ribbon indicates the 2.5\\% and 97.5\\% quantiles. The line represents the median."}
-knitr::include_graphics(file.path(plots_path, "overview-scenarios-deaths-future-1.png"))
-```
-
+As estimates of TB mortality were low (significantly lower than estimated using the observed data) the impact of any vaccination scenario was minimal (Table \@ref(tab:10-table-deaths-preds); Figure \@ref(fig:10-age-scenarios-deaths-fig)). Continuing school-age BCG vaccination resulted in a very small reduction in TB mortality compared to any other scenario (Table \@ref(tab:10-table-deaths-preds)). The age distributed impact of each scenario on TB mortality was comparable to that observed for TB incidence (Figure \@ref(fig:10-age-scenarios-deaths-fig)).
 
 ```{r 10-table-deaths-preds}
 sum_deaths_scenario %>% filter(Year %% 5 == 0) %>% 
@@ -114,49 +104,29 @@ kable(
   kable_styling(latex_options = c("hold_position"))
 ```
 
-  * Comparision of age distribution of deaths
   
 ```{r 10-age-scenarios-deaths-fig, fig.scap = "Forecast TB mortality for each scenario evaluated from 2005 to 2040, stratified by age group, stratified by age group.", fig.cap = "Forecast TB mortality for each scenario evaluated from 2005 to 2040, stratified by age group (0-11). 0-9 refers to 5 year age groups from 0-4 years old to 45-49 years old. 10 refers to those aged between 50 and 69 and 11 refers to those aged 70+. Scenarios are differentiated by colour. The darker ribbon for each colour identifies the interquartile range, whilst the lighter ribbon indicates the 2.5\\% and 97.5\\% quantiles. The line represents the median."}
 knitr::include_graphics(file.path(plots_path, "overview-scenarios-deaths-future-age-1.png"))
 ```
 ### Summary
 
-The preliminary results presented in this chapter indicate that continuing BCG vaccination of those at school-age would have ...
+In this chapter I outlined 3 vaccination scenarios to explore: continuing school-age BCG vaccination; universal neonatal vaccination; and no further vaccination. For each scenario I forecast TB incidence and TB mortality from 2005 through to 2040 assuming that non-UK born incidence rates would follow the same age stratified trends observed between 2010 and 2015. Although the results presented here are only preliminary, due to the quality of the model fit, it appears that continuing school-age BCG vaccination would have resulted in slightly reduced TB incidence across all time-points considered compared to any other scenario. Neonatal BCG vaccination resulted in significantly reduced TB incidence and mortality in young children but had little impact later in life, with a comparable effect to no vaccination. School-age vaccination had no impact on young children but did reduce TB incidence and mortality for all adults up to 45 years old. Beyond 45 years old no scenario impacted TB incidence or mortality.
 
-They also indicate that universal neonatal vaccination would have ... 
-
-In comparison stopping all BCG vaccination would have resulted in ...
-
-Over the longer term these results indicate that school-age BCG vaccination would have ... in comparison to neonatal vaccination. Both scenarios in *placeholder* in comparison to no vaccination.
-
-### Strengths and weaknesses
-
-The model developed in Chapter \@ref(model-development) was motivated by existing theory and robustly parameterised to the available data. It represents the only (known) open-source model of TB transmission and BCG vaccination. However the model fitting pipeline developed in Chapter \@ref(model-fitting) did not produce a good fit to the observed data. Ad-hoc model calibration (as discussed in Chapter \@ref(model-fitting)) failed to significantly improve on this fit. This means that the findings presented in this chapter can be considered as indictative only. However, these findings still represent the only modelling study of TB dynamics after a large scale change in BCG vaccination policy. The lack of data to support modelling the high-risk TB population population meant that targeted vaccination of high-risk neonates could not be considered as a scenario. This means that the results presented in this chapter do not contain the vaccination policy that is currently in place and so findings from the model cannot be directly compared to observed incidence data. However, only considering scenarios that alter the age of those vaccinated, rather than both the age of those vaccinated and the targeting of the vaccine, make understanding the impact of changes in vaccination policy easier to determine. The forecasts presented in this chapter are highly sensitive to the forecasted number of non-UK born TB cases. Whilst the regression method outlined in this chapter extrapolates based on current age-stratified trends it may be the case that this extrapolation breaks down over the long - or short - term. To a lesser extent the forecasts presented here are sensitive to the projected number of births and mortality rates. This is particularly the case for incidence rates in neonates and in older adults. 
-
-### Literature + Thesis comparisons
+The model developed in Chapter \@ref(model-development) was motivated by existing theory and robustly parameterised to the available data. It represents the only (known) open-source model of TB transmission and BCG vaccination. However the model fitting pipeline developed in Chapter \@ref(model-fitting) did not produce a good fit to the observed data. Ad-hoc model calibration (as discussed in Chapter \@ref(model-fitting)) failed to significantly improve on this fit. This means that the findings presented in this chapter can be considered as indicative only. However, these findings still represent the only modelling study of TB dynamics after a large scale change in BCG vaccination policy. The lack of data to support modelling the high-risk TB population population meant that targeted vaccination of high-risk neonates could not be considered as a scenario. This means that the results presented in this chapter do not contain the vaccination policy that is currently in place and so findings from the model cannot be directly compared to observed incidence data. However, only considering scenarios that alter the age of those vaccinated, rather than both the age of those vaccinated and the targeting of the vaccine, make understanding the impact of changes in vaccination policy easier to determine. The forecasts presented in this chapter are highly sensitive to the forecasted number of non-UK born TB cases. Whilst the regression method outlined in this chapter extrapolates based on current age-stratified trends it may be the case that this extrapolation breaks down over the long - or short - term. To a lesser extent the forecasts presented here are sensitive to the projected number of births and mortality rates. This is particularly the case for incidence rates in neonates and in older adults. 
 
 To my knowledge, there are no other dynamic modelling studies evaluating the use of the BCG vaccine in low burden settings that include a comparable level of detail and that are robustly parameterised based on the latest evidence. See Chapter \@ref(model-development) for a discussion of the strengths and weaknesses of the model used here in comparison with others used in the literature. However, Harris et al. recently reviewed mathematical models that explored the epidemiological impacts of future TB vaccines.[@Harris2016] They found that vaccines targeted at all-ages or at adolescents/adults were more effective at eradicating TB than neonatal programmes when vaccine effectiveness was not assumed to degrade with age. These findings agree with those presented in this Chapter, with fewer overall cases observed when vaccination continued in those at school-age, compared to neonatal vaccination. However vaccination in neonates did lead to a decrease in incidence in children both over the long - and short term - in comparison to vaccination at school-age. 
 
-* Compare findings to those from Chapter \@ref(sutherland). Both analyses included transmission but the results presented here are based on a more detailed and realistic model. The findings presented in Chapter \@ref(sutherland) also relied on a series of historic assumptions that may no longer be valid. However, the results from this chapter are based on a model that fit the data poorly.
 
-* In Chapter \@ref(beneficial-bcg-out) I found some evidence that BCG vaccination may decrease all-cause mortality in TB cases and some evidence that indicated that this may be related to reduced TB mortality. If either of these associations were causal then they would increase the benefit of vaccination scenarios compared to no vaccination.
-
-* Chapter \@ref(direct-eff) captured the impact of the change in vaccination policy in those directly impacted by it rather than in the whole population as in this Chapter. In the directly impacted population there was some evidence that changing to neonatal vaccination was associated with a small increase in incidence rates in those who were school-age and UK born. There was less evidence of a reduction in incidence rates in UK born neonates. Unlike the findings presented here the causal mechanism behind these findings is unknown and potentially other policy changes that occurred within the same timeframe may have masked - or blocked - the impact of the change in policy. The advantage of the results presented 
-
-
-### Further work
+The results presented in this chapter generally agree with other findings from this thesis. In Chapter \@ref(direct-eff), which estimated the impact of the change in vaccination policy in those directly impacted by it, there was some evidence that changing to neonatal vaccination was associated with a small increase in incidence rates in those who were school-age. There was less evidence of a reduction in incidence rates in UK born neonates. The first of these results matches the findings presented here. However, this chapter estimated a rapid reduction in TB incidence in young children which was not seen in this previous work. Chapter \@ref(sutherland), which recreated a previously published transmission chain model estimated an initial impact from ending school-age BCG vaccination but that this impact would decline with time. The results presented here agree with this findings as long as it is assumed that non-UK born incidence will decrease over time. However, here the impact of the scheme was estimated to continue beyond the 15 year time horizon estimated in Chapter \@ref(sutherland). In Chapter \@ref(beneficial-bcg-out) I found some evidence that BCG vaccination may decrease all-cause mortality in TB cases and some evidence that indicated that this may be related to reduced TB mortality. If either of these associations were causal then they would increase the benefit of vaccination scenarios compared to no vaccination but would not alter the trade-offs between neonatal and school-age vaccination. 
 
 Further work is need to improve the fit of the model to observed data (Chapter \@ref(model-fit)). This will result in improved forecasts and more reliable results. In addition additional vaccination coverage scenarios could be considered that explored the impact of vaccinating a reduced proportion of both those at school-age and neonates. If additional data becomes available, or with the appropriate assumptions, the inclusion of the high-risk population into the model would allow the evaluation of targeted high-risk neonatal vaccination in comparison to the other scenarios considered here. The extrapolation of the trend in non-UK born cases is a limitation of this model and as such should be further explored using other assumptions such as constant non-UK born cases, incidence rates based on expert opinion and estimates based on other global modelling studies.  
-
-### Conclusions
-
-The results presented here indicate that changing from a school-age BCG vaccination programme to a neonatal BCG programme leads to an overall increase in incidence rates, with increases concentrated in the young adults, and to a lesser degree, in older adults. Neonatal vaccination led to a decrease in incidence rates in children both in the short - and long term. This indicates that direct vaccination provides the best protection for children rather than indirect protection via reduced transmission. This finding is likely to be depedent on the degree of background transmission and so further modelling studies are needed in diverse settings before conclusions can be generalised. No vaccination was shown to lead to increased incidence in all age-groups when compared to school-age vaccination and in children only when compared to neonatal vaccination. The impact of any vaccination programme on older adults was small. These results are preliminary in nature as the model on which they are based fitted poorly to the observed data. 
+The results presented here indicate that changing from a school-age BCG vaccination programme to a neonatal BCG programme leads to an overall increase in incidence rates, with increases concentrated in the young adults, and to a lesser degree, in older adults. Neonatal vaccination led to a decrease in incidence rates in children both in the short - and long term. This indicates that direct vaccination provides the best protection for children rather than indirect protection via reduced transmission. This finding is likely to be dependent on the degree of background transmission and so further modelling studies are needed in diverse settings before conclusions can be generalised. No vaccination was shown to lead to increased incidence in all age-groups when compared to school-age vaccination and in children only when compared to neonatal vaccination. The impact of any vaccination programme on older adults was small. These results are preliminary in nature as the model on which they are based fitted poorly to the observed data. 
 
 
 ## Summary
 
 * Continuing school-age vaccination results in lower overall incidence rates compared to both neonatal vaccination, and no vaccination. 
 * Neonatal vaccination resulted in low incidence in children compared to any other scenario. 
-* No vaccination led to higher incidence in all age groups when compared to school-age vaccination and in children only when comapred to neonatal vaccination.
-* The impact of any vaccination on cases in older adults was small.
+* No vaccination led to higher incidence in all age groups when compared to school-age vaccination and in children only when compared to neonatal vaccination.
+* The impact of any vaccination on cases in older adults (50+) was small.
 * These results are indicative only due to poor quality of model fit achieved in the previous chapter (Chapter \@ref(model-fitting)).
