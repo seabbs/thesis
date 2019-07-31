@@ -4464,11 +4464,6 @@ Date: \emph{placeholder}
   \item
     Comment on fit
   \end{itemize}
-  \begin{verbatim}
-  Warning in add_footnote(., label = "* 95% credible interval estimated using
-  the 2.5% quantile and the 97.5% quantile."): Notation is set to 'number'
-  and other formats are not supported.
-  \end{verbatim}
   \begin{longtable}{rrl}
   \caption[Observed versus predicted overall TB incidence for years that the model was fitted too.]{\label{tab:09-table-incidence-preds}Observed versus predicted overall TB incidence for years that the model was fitted too. The model underpredicted incidence for all years fitted too. The upper credible interval of the model predictions was substantially lower than the observed data.}\\
   \toprule
@@ -4496,18 +4491,18 @@ Date: \emph{placeholder}
   \item
     Comment on posteriors
   \end{itemize}
-  \textbackslash{}begin\{figure\}
+  \begin{figure}
   
-  \{\centering \includegraphics[width=0.8\linewidth]{chapters/model-fitting/plots/prior-posterior-overview-1}
+  {\centering \includegraphics[width=0.8\linewidth]{chapters/model-fitting/plots/prior-posterior-overview-1} 
   
-  \}
+  }
   
-  \textbackslash{}caption{[}Prior and posterior distributions for fitted model parameters.{]}\{Prior and posterior distributions for fitted model parameters. Parameter names in figure are in their coded form. They can be interpreted using the following: beta\_young\_adult\}\label{fig:09-fig-prior-params}
-  \textbackslash{}end\{figure\}
+  \caption[Prior and posterior distributions for fitted model parameters.]{Prior and posterior distributions for fitted model parameters. Parameter names in figure are in their coded form. They can be interpreted using the following:  $\beta_{\text{young adult}}$}\label{fig:09-fig-prior-params}
+  \end{figure}
   \begin{longtable}{lll}
   \caption[Observerd versus predicted overall TB incidence for years that the model was fitted too.]{\label{tab:09-prior-posterior}Observerd versus predicted overall TB incidence for years that the model was fitted too. The model underpredicted incidence for all years fitted too. The upper credible interval of the model predictions was substantially lower than the observed data. }\\
   \toprule
-  Parameter & Prior (95\\%CI)\\*\\* & Posterior (95\\%CI)\\*\\*\\
+  Parameter & Prior (95\%CI)\*\* & Posterior (95\%CI)\*\*\\
   \midrule
   $\beta_{\text{young adult}}$ & 4.88 (0.35, 9.74) & 5.72 (5.72, 5.72)\\
   $c_{\text{eff}}$ & 1.22 (0.09, 3.13) & 0.06 (0.06, 0.06)\\

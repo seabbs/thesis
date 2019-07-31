@@ -299,7 +299,8 @@ tibble(Scenario = names(scenario_dics) %>% str_split("_") %>%
   str_to_sentence()) %>% 
 mutate(DIC = round(DIC, 0)) %>% 
 kable(
-  caption = "DIC values for each scenario evaluated during model fitting - arranged from best to worst model fit.", booktabs = TRUE, longtable = TRUE) %>% 
+  caption = "DIC values for each scenario evaluated during model fitting - arranged from best to worst model fit.",
+  booktabs = TRUE, longtable = TRUE) %>% 
   kable_styling(latex_options = c("hold_position")) %>% 
   column_spec(c(1), width = "10cm")
 ```
@@ -308,15 +309,15 @@ kable(
 
 * Comment on fit
 
-```{r 09-table-incidence-preds}
+```{r 09-table-incidence-preds, message = FALSE, warning = FALSE}
 sum_obs_table %>% 
   set_names(., nm = c(names(.)[-ncol(.)], "Predicted Incidence (95% CI)*")) %>% 
   select(-Observation) %>% 
 kable(
   caption.short = "Observed versus predicted overall TB incidence for years that the model was fitted too.", 
-  caption = "Observed versus predicted overall TB incidence for years that the model was fitted too. The model underpredicted incidence for all years fitted too. The upper credible interval of the model predictions was substantially lower than the observed data.", booktabs = TRUE, longtable = TRUE, escape = TRUE) %>% 
+  caption = "Observed versus predicted overall TB incidence for years that the model was fitted too. The model underpredicted incidence for all years fitted too. The upper credible interval of the model predictions was substantially lower than the observed data.", booktabs = TRUE, longtable = TRUE) %>% 
   kable_styling(latex_options = c("hold_position")) %>% 
-  add_footnote(label = "* 95% credible interval estimated using the 2.5% quantile and the 97.5% quantile.") %>% 
+  add_footnote(label = "* 95% credible interval estimated using the 2.5% quantile and the 97.5% quantile.", notation = "none") %>% 
   {.}
 ```
 
@@ -326,18 +327,17 @@ knitr::include_graphics(file.path(plots_path, "overview-states-1990-age-1.png"))
 
 ### Posterior parameter distributions
 
-
 * Comment on posteriors
 
-```{r 09-fig-prior-params, fig.scap = "Prior and posterior distributions for fitted model parameters.", fig.cap = "Prior and posterior distributions for fitted model parameters. Parameter names in figure are in their coded form. They can be interpreted using the following: beta_young_adult"}
+```{r 09-fig-prior-params, fig.scap = "Prior and posterior distributions for fitted model parameters.", fig.cap = "Prior and posterior distributions for fitted model parameters. Parameter names in figure are in their coded form. They can be interpreted using the following:  $\\beta_{\\text{young adult}}$"}
 knitr::include_graphics(file.path(plots_path, "prior-posterior-overview-1.png"))
 ```
 
 
-```{r 09-prior-posterior, warning = FALSE}
+```{r 09-prior-posterior, warning = FALSE, message = FALSE}
 sum_prior_posterior %>% 
   set_names(., nm = . %>% 
-              str_replace("or", "or (95\\\\\\\\%CI)\\\\\\\\*\\\\\\\\*")) %>%
+              str_replace("or", "or (95\\\\%CI)\\\\*\\\\*")) %>%
   mutate(Parameter = latex_param) %>% 
   select(-latex_param) %>% 
 kable(
@@ -345,7 +345,8 @@ kable(
   caption = "Observerd versus predicted overall TB incidence for years that the model was fitted too. The model underpredicted incidence for all years fitted too. The upper credible interval of the model predictions was substantially lower than the observed data. ",
   booktabs = TRUE, longtable = TRUE, escape = FALSE) %>% 
   kable_styling(latex_options = c("hold_position")) %>% 
-  add_footnote(label = c("* 95% credible interval estimated using the 2.5% quantile and the 97.5% quantile."), notation = "none") %>% 
+  add_footnote(label = c("* 95% credible interval estimated using the 2.5% quantile and the 97.5% quantile."),
+               notation = "none") %>% 
   {.}
 ```
 
