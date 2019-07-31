@@ -173,7 +173,7 @@ A more efficient approach is to specify a proposal distribution that draws param
 
 A simple approach to setting the proposal is to run a series of MCMC steps and then calculate the acceptence rate. Based on the acceptence rate the width of the proposal distributions can then be adapted. By repeating these steps multiple times a proposal distribution which gives an acceptance rate within the desired bounds can be arrived at. This adaption can either be independent for each parameter or dependent (taking into account empirical correlations). The `adapt_proposal` function, from the `rbi.helpers` R package,[@Funk:2019uw] implements this approach and is used in this model fitting pipeline. In many models parameters are likely to have strong correlations (i.e between UK and Non-UK born mixing rate and effective contact rate) and in these scenarios it is likely that a dependent strategy for adapting the proposal distribution will more efficiently explore the posterior distribution. However, the downside of adapting the proposal distribution using dependent methods is that the resulting proposal is highly complex, is computationally expensive to compute and may breakdown in some areas of the posterior distribution.
 
-In this model fitting pipeline I have used a maximum of 5 iterations of, manual, independent proposal adaption, drawing 250 samples in each iteration, starting with the prior distributions and halfing the scale each time. The proposal distribution is also truncated so that parameter samples cannot be drawn from areas without support from the prior distributions. As for the particle calibration, I initially used a maximum likelihood method to provide a point estimate of the best fitting parameter set, followed by 1000 PMCMC steps, using a 256 particle filter. This means that the proposal distribution is adapted near to the posterior mean rather than in the tails of the posterior distribution. 
+In this model fitting pipeline I have used a maximum of 5 iterations of, manual, independent proposal adaption, drawing 250 samples in each iteration, starting with guassian distributions for each parameter, truncated by the range of the prior, with the mean based on the current parameter value. The standard deviation for each parameter was assumed to be the standard deviation of the prior if it was guassian and otherwise assumed to be the range of the prior if it was uniform. For each iteration I halved the  size of the standard deviation of each parameter. As for the particle calibration, I initially used a maximum likelihood method to provide a point estimate of the best fitting parameter set, followed by 1000 PMCMC steps, using a 256 particle filter. This means that the proposal distribution is adapted near to the posterior mean rather than in the tails of the posterior distribution. 
 
 I chose to use, manual, independent proposal adaption method for several reasons. Firstly, when developing this pipeline the approaches implemented in `rbi.helpers` produced multiple transient errors in other `rbi` and `rbi.helpers` code. Secondly, the resulting dependent proposal distribution was highly complex, slow to compute, and diffult to debug. Finally, for SMC-SMC efficient exploration of the proposal distribution is less important than when using MCMC alone as SMC-SMC is initialised with multiple samples from the prior distribution. This means that multiple local maximas can be efficiently explored regardless of the proposal distribution used. The MCMC rejuvernation step then serves to provide additional samples from these local maximas. Proposal adaption was only carried out for the main model scenario with all other scenarios using this proposal distribution. 
 
@@ -236,7 +236,7 @@ The full model fitting pipeline can be summarised as follows^[Code: https://gith
 
 5. Particle adaption via `rbi.helpers` at the approximate mean of the posterior distribution.[@Funk:2019uw] A minimum of 64 particles and a maximum of 256 particles are assessed with the target of a log-likelihood variance of less than 5. 250 PMCMC steps were used at each stage to estimate the log-likelihood variance.
 
-6. Manual independent proposal adaption at the approximate mean of the posterior distribution. The size of the proposal distribution is halved each iteration, with at most 5 iterations of adaption. The minimum target acceptance rate specified was 10% and the maximum was 20%. 250 PMCMC samples were used each time to estimate the acceptance rate. Proposal adaption was only carried out for the main model scenario, with other scenarios using this proposal. 
+6. Manual independent proposal adaption at the approximate mean of the posterior distribution. It is assumed that the proposal for each parameter is guassian, truncated by the range of the prior with the mean based on the current parameter value. The standard deviation of the proposal distribution is halved each iteration, with at most 5 iterations of adaption. The minimum target acceptance rate specified was 10% and the maximum was 20%. 250 PMCMC samples were used each time to estimate the acceptance rate. Proposal adaption was only carried out for the main model scenario, with other scenarios using this proposal. 
 
 7. SMC-SMC model fitting with 1000 initial parameter particles. Particle rejuvernation was set to trigger when the effective sample size decreased below 25%, with 10 MCMC steps used each time. 
 
@@ -274,7 +274,7 @@ None of these approaches dramatically improved model fit to the point that more 
 
 [@Murray2015] suggests that increasing the number of particles used in SMC may improve the quality of the model fit. Unfortunately as `LibBi` stores SMC particle paths in Random access memory (RAM) the number of particles was restricted. An additional limitation is that each rejuvernation steps also need to be stored in RAM. Attempts to increase the amount of avaialble RAM (64 GB) using a 500GB SWAP (virtual memory) drive increased the upper limit on the number of particles but gains from this were restricted due to thrashing^[Thrashing: https://en.wikipedia.org/wiki/Thrashing_(computer_science)]. Thrashing occurs when too much data is written to SWAP memory in a short period of time and usually results in a system crash.  A major cause of the high RAM requirements of the model was that `LibBi` stores all parameters defined as initial conditions across every time point in the model, regardless of the settings used. Attempting to reduce the RAM footprint by fitting a greater number of parameters allowed for a greater number of particles to be used but also increased the model degrees of freedom and hence upped the required number of particles required by a greater amount than provided by fitting the parameter. Reducing the number of particles used to estimate the marginal likelihood allowed a greater number of particles to be used in the outer SMC step but this resulted in highly inaccurate estimates of the likelihood. These highly inaccurate likelihood estimates resulted in the SMC-SMC algorithm focussing on parameter sets that had a low likelihood estimate yet fit the data poorly - ultimately leading to even poorer model fits. 
 
-Varying the proposal size, rejuvernation thresold, and number of rejuvernation steps showed some promise at improving the quality of the model fit but ultimately computational constraints limited how much progress could be made using this approach. It is possible that a much longer runtime could result in an improved fit to data with no other model changes. Alternatively these results may driven by the model being too complex for an SMC-SMC approach to viable in this framework.  
+Varying the proposal size, rejuvernation thresold, and number of rejuvernation steps showed some promise at improving the quality of the model fit but ultimately computational constraints limited how much progress could be made using this approach. It is possible that a much longer runtime could result in an improved fit to data with no other model changes. Alternatively these results may driven by the model being too complex for an SMC-SMC approach to be viable in this framework.  
 
 ### Particle and proposal calibration
 
@@ -286,7 +286,7 @@ As discussed, there were multiple issues with fitting the final model and this m
 
 * Compare Scenarios using DIC and discuss results.
 
-```{r 09-scenarios-table, eval = FALSE}
+```{r 09-scenarios-table}
 tibble(Scenario = names(scenario_dics) %>% str_split("_") %>% 
          map_chr(~paste(., collapse = " ")), 
        DIC = unlist(transpose(scenario_dics)$dic)) %>% 
@@ -307,15 +307,16 @@ kable(
 
 * Comment on fit
 
-```{r 09-table-incidence-preds, eval = FALSE}
+```{r 09-table-incidence-preds}
 sum_obs_table %>% 
   set_names(., nm = c(names(.)[-ncol(.)], "Predicted Incidence (95% CI)*")) %>% 
   select(-Observation) %>% 
 kable(
   caption.short = "Observed versus predicted overall TB incidence for years that the model was fitted too.", 
-  caption = "Observed versus predicted overall TB incidence for years that the model was fitted too. The model underpredicted incidence for all years fitted too. The upper credible interval of the model predictions was substantially lower than the observed data. ", booktabs = TRUE, longtable = TRUE) %>% 
+  caption = "Observed versus predicted overall TB incidence for years that the model was fitted too. The model underpredicted incidence for all years fitted too. The upper credible interval of the model predictions was substantially lower than the observed data. ", booktabs = TRUE, longtable = TRUE, escape = TRUE) %>% 
   kable_styling(latex_options = c("hold_position")) %>% 
-  add_footnote(label = "* 95% credible interval estimated using the 2.5% quantile and the 97.5% quantile.", notation = "none")
+  add_footnote(label = "* 95% credible interval estimated using the 2.5% quantile and the 97.5% quantile.", 
+               notation = "none")
 ```
 
 ```{r 09-age-strat-incidence, fig.scap = "Observed and predicted TB incidence stratified by model age group", fig.cap = "Observed and predicted TB incidence stratified by model age group (0-11). 0-9 refers to 5 year age groups from 0-4 years old to 45-49 years old. 10 refers to those aged between 50 and 69 and 11 refers to those aged 70+. The model underpredicted incidence in all age groups fitted too with older adults have the best fit."}

@@ -80,7 +80,7 @@ The results presented in the following section should be considered preliminary 
 knitr::include_graphics(file.path(plots_path, "overview-scenarios-future-1.png"))
 ```
 
-```{r 10-table-future-incidence, eval = FALSE}
+```{r 10-table-future-incidence}
 sum_scenario %>% filter(Year %% 5 == 0) %>% 
   set_names(., nm = names(.) %>% str_replace_all("BCG", "BCG (95% CI)\\*")) %>% 
   select(-Observation) %>% 
@@ -105,7 +105,7 @@ knitr::include_graphics(file.path(plots_path, "overview-scenarios-deaths-future-
 ```
 
 
-```{r 10-table-deaths-preds, eval = FALSE}
+```{r 10-table-deaths-preds}
 sum_deaths_scenario %>% filter(Year %% 5 == 0) %>% 
   set_names(., nm = names(.) %>% str_replace_all("BCG", "BCG (95% CI)\\*")) %>% 
   select(-Observation) %>% 
