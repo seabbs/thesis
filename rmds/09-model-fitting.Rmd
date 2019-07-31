@@ -329,7 +329,7 @@ knitr::include_graphics(file.path(plots_path, "overview-states-1990-age-1.png"))
 
 * Comment on posteriors
 
-```{r 09-fig-prior-params, fig.scap = "Prior and posterior distributions for fitted model parameters.", fig.cap = "Prior and posterior distributions for fitted model parameters. Parameter names in figure are in their coded form. They can be interpreted using the following: beta_young_adult - $\\beta_{\\text{young adult}}$"}
+```{r 09-fig-prior-params, fig.scap = "Prior and posterior distributions for fitted model parameters.", fig.cap = "Prior and posterior distributions for fitted model parameters. Parameter names in figure are in their coded form. They can be interpreted using the following: beta_young_adult"}
 knitr::include_graphics(file.path(plots_path, "prior-posterior-overview-1.png"))
 ```
 
