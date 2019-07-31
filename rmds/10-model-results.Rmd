@@ -72,24 +72,55 @@ The estimated age-stratified, and aggregated, TB incidence rates were compared b
  
 The results presented in the following section should be considered preliminary because of the low quality of fit achieved in Chapter \@ref(model-fitting). This means that quantative estimates are unlikely to be accurate. However, the underlying changes in dynamics caused by vaccination may be used for insight into the likely impact of each scenario and therefore there is still value in exploring these results. 
 
-## Comparing vaccination scenarios with observed data
-
-  * Comparision of cases.
-  * Comparision of age distribution of deaths.
-  * All in reflection of reality.
-  
-  
-```{r 10-overview-fig, fig.scap = "Observed and predicted TB incidence stratified by model age group", fig.cap = "Observed and predicted TB incidence stratified by model age group (0-11). 0-9 refers to 5 year age groups from 0-4 years old to 45-49 years old. 10 refers to those aged between 50 and 69 and 11 refers to those aged 70+. The model underpredicted incidence in all age groups fitted too with older adults have the best fit.", eval = FALSE}
-knitr::include_graphics(file.path(plots_path, "overview-scenarios-2000-obs-1.png"))
-```
-
 ## Forecasting the long-term impact of each vaccination scenario.
 
   * Comparision of cases at multiple time horizons (10 and 25 years).
+  
+```{r 10-overall-scenarios-fig, fig.scap = "", fig.cap = ""}
+knitr::include_graphics(file.path(plots_path, "overview-scenarios-future-1.png"))
+```
+
+```{r 10-table-future-incidence, eval = FALSE}
+sum_scenario %>% filter(Year %% 5 == 0) %>% 
+  set_names(., nm = names(.) %>% str_replace_all("BCG", "BCG (95% CI)\\*")) %>% 
+  select(-Observation) %>% 
+kable(
+  caption.short = "", 
+  caption = "", booktabs = TRUE, longtable = TRUE) %>% 
+  kable_styling(latex_options = c("hold_position")) %>% 
+  add_footnote(label = "* 95% credible interval estimated using the 2.5% quantile and the 97.5% quantile.", notation = "none")
+```
+
+
   * Comparision of age distribution of cases.
+  
+```{r 10-age-scenarios-fig, fig.scap = "", fig.cap = ""}
+knitr::include_graphics(file.path(plots_path, "overview-scenarios-future-age-1.png"))
+```
+
   * Comparision of deaths at multiple time horizons (10 and 25 years).
+  
+```{r 10-scenarios-deaths-fig, fig.scap = "", fig.cap = ""}
+knitr::include_graphics(file.path(plots_path, "overview-scenarios-deaths-future-1.png"))
+```
+
+
+```{r 10-table-deaths-preds, eval = FALSE}
+sum_deaths_scenario %>% filter(Year %% 5 == 0) %>% 
+  set_names(., nm = names(.) %>% str_replace_all("BCG", "BCG (95% CI)\\*")) %>% 
+  select(-Observation) %>% 
+kable(
+  caption.short = "", 
+  caption = "", booktabs = TRUE, longtable = TRUE) %>% 
+  kable_styling(latex_options = c("hold_position")) %>% 
+  add_footnote(label = "* 95% credible interval estimated using the 2.5% quantile and the 97.5% quantile.", notation = "none")
+```
+
   * Comparision of age distribution of deaths
   
+```{r 10-age-scenarios-deaths-fig, fig.scap = "", fig.cap = ""}
+knitr::include_graphics(file.path(plots_path, "overview-scenarios-deaths-future-age-1.png"))
+```
 ### Summary
 
 The preliminary results presented in this chapter indicate that continuing BCG vaccination of those at school-age would have ...
@@ -130,3 +161,4 @@ The results presented here indicate that changing from a school-age BCG vaccinat
 * Neonatal vaccination resulted in low incidence in children compared to any other scenario. 
 * No vaccination led to higher incidence in all age groups when compared to school-age vaccination and in children only when comapred to neonatal vaccination.
 * The impact of any vaccination on cases in older adults was small.
+* These results are indicative only due to poor quality of model fit achieved in the previous chapter (Chapter \@ref(model-fitting)).
