@@ -4464,11 +4464,6 @@ Date: \emph{placeholder}
   \item
     Comment on fit
   \end{itemize}
-  \begin{verbatim}
-  Warning in add_footnote(., label = "* 95% credible interval estimated using
-  the 2.5% quantile and the 97.5% quantile.", : Notation is set to 'number'
-  and other formats are not supported.
-  \end{verbatim}
   \begin{longtable}{rrl}
   \caption[Observed versus predicted overall TB incidence for years that the model was fitted too.]{\label{tab:09-table-incidence-preds}Observed versus predicted overall TB incidence for years that the model was fitted too. The model underpredicted incidence for all years fitted too. The upper credible interval of the model predictions was substantially lower than the observed data. }\\
   \toprule
@@ -4504,27 +4499,22 @@ Date: \emph{placeholder}
   
   \textbackslash{}caption{[}Prior and posterior distributions for fitted model parameters.{]}\{Prior and posterior distributions for fitted model parameters. Parameter names in figure are in their coded form. They can be interpreted using the following: beta\_young\_adult - \(\beta_{\text{young adult}}\), c\_eff - \(c_{\text{eff}}\), c\_hist - \(c^{\text{hist}}_{\text{eff}}\), c\_hist\_half - \(c^{\text{hist}}_{\text{half}}\), M - \(M\), M\_young\_adult - \(M_{\text{young adult}}\), meas\_error - \(E_{\text{syst}}\), meas\_std - \(E_{\text{noise}}\), non\_uk\_scaling - \(\iota_{\text{scale}}\), older\_adult\_activation\_scaling - \(\epsilon^{\text{older-adult}}_L\)\}\label{fig:09-fig-prior-params}
   \textbackslash{}end\{figure\}
-  \begin{verbatim}
-  Warning in add_footnote(., label = c("* 95% credible interval estimated
-  using the 2.5% quantile and the 97.5% quantile."), : Notation is set to
-  'number' and other formats are not supported.
-  \end{verbatim}
   \begin{longtable}{lll}
   \caption[Observerd versus predicted overall TB incidence for years that the model was fitted too.]{\label{tab:09-prior-posterior}Observerd versus predicted overall TB incidence for years that the model was fitted too. The model underpredicted incidence for all years fitted too. The upper credible interval of the model predictions was substantially lower than the observed data. }\\
   \toprule
-  Parameter & Prior (95\%CI)** & Posterior (95\%CI)**\\
+  Parameter & Prior (95\%CI)\*\* & Posterior (95\%CI)\*\*\\
   \midrule
-  \$\textbackslash{}beta\_\{\textbackslash{}text\{young adult\}\}\$ & 4.88 (0.35, 9.74) & 5.72 (5.72, 5.72)\\
-  \$c\_\{\textbackslash{}text\{eff\}\}\$ & 1.22 (0.09, 3.13) & 0.06 (0.06, 0.06)\\
-  \$c\textasciicircum{}\{\textbackslash{}text\{hist\}\}\_\{\textbackslash{}text\{eff\}\}\$ & 10.50 (1.38, 19.36) & 1.28 (1.28, 1.28)\\
-  \$c\textasciicircum{}\{\textbackslash{}text\{hist\}\}\_\{\textbackslash{}text\{half\}\}\$ & 5.95 (0.53, 15.80) & 4.34 (4.34, 4.34)\\
-  \$M\$ & 1.22 (0.08, 3.07) & 0.71 (0.71, 0.71)\\
+  $\beta_{\text{young adult}}$ & 4.88 (0.35, 9.74) & 5.72 (5.72, 5.72)\\
+  $c_{\text{eff}}$ & 1.22 (0.09, 3.13) & 0.06 (0.06, 0.06)\\
+  $c^{\text{hist}}_{\text{eff}}$ & 10.50 (1.38, 19.36) & 1.28 (1.28, 1.28)\\
+  $c^{\text{hist}}_{\text{half}}$ & 5.95 (0.53, 15.80) & 4.34 (4.34, 4.34)\\
+  $M$ & 1.22 (0.08, 3.07) & 0.71 (0.71, 0.71)\\
   \addlinespace
-  \$M\_\{\textbackslash{}text\{young adult\}\}\$ & 5.19 (0.23, 9.76) & 9.98 (9.98, 9.98)\\
-  \$E\_\{\textbackslash{}text\{syst\}\}\$ & 0.90 (0.82, 0.98) & 0.90 (0.90, 0.90)\\
-  \$E\_\{\textbackslash{}text\{noise\}\}\$ & 0.01 (0.00, 0.02) & 0.02 (0.02, 0.02)\\
-  \$\textbackslash{}iota\_\{\textbackslash{}text\{scale\}\}\$ & 100.27 (3.34, 196.54) & 192.90 (192.90, 192.90)\\
-  \$\textbackslash{}epsilon\textasciicircum{}\{\textbackslash{}text\{older-adult\}\}\_L\$ & 2.01 (1.18, 2.98) & 2.19 (2.19, 2.19)\\
+  $M_{\text{young adult}}$ & 5.19 (0.23, 9.76) & 9.98 (9.98, 9.98)\\
+  $E_{\text{syst}}$ & 0.90 (0.82, 0.98) & 0.90 (0.90, 0.90)\\
+  $E_{\text{noise}}$ & 0.01 (0.00, 0.02) & 0.02 (0.02, 0.02)\\
+  $\iota_{\text{scale}}$ & 100.27 (3.34, 196.54) & 192.90 (192.90, 192.90)\\
+  $\epsilon^{\text{older-adult}}_L$ & 2.01 (1.18, 2.98) & 2.19 (2.19, 2.19)\\
   \bottomrule
   \end{longtable}
   \hypertarget{parameter-sensitivity-1}{%
@@ -4542,7 +4532,9 @@ Date: \emph{placeholder}
   
   \textbackslash{}caption{[}Partial rank correlation coefficients for each parameter fitted too.{]}\{Partial rank correlation coefficients for each parameter fitted too. Parameter names in figure are in their coded form. They can be interpreted using the following: beta\_young\_adult - \(\beta_{\text{young adult}}\), c\_eff - \(c_{\text{eff}}\), c\_hist - \(c^{\text{hist}}_{\text{eff}}\), c\_hist\_half - \(c^{\text{hist}}_{\text{half}}\), M - \(M\), M\_young\_adult - \(M_{\text{young adult}}\), meas\_error - \(E_{\text{syst}}\), meas\_std - \(E_{\text{noise}}\), non\_uk\_scaling - \(\iota_{\text{scale}}\), older\_adult\_activation\_scaling - \(\epsilon^{\text{older-adult}}_L\)\}\label{fig:09-fig-sens}
   \textbackslash{}end\{figure\}
-  \#\# Discussion
+  
+  \hypertarget{discussion-6}{%
+  \section{Discussion}\label{discussion-6}}
   
   \hypertarget{summary-8}{%
   \subsection{Summary}\label{summary-8}}
