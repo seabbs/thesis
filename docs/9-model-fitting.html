@@ -649,7 +649,7 @@ DIC
 </thead>
 <tbody>
 <tr>
-<td style="text-align:left;">
+<td style="text-align:left;width: 10cm; ">
 Transmission variable in young adults (15-29) and non-uk born mixing variable in young adults (15-29)
 </td>
 <td style="text-align:right;">
@@ -657,7 +657,7 @@ Transmission variable in young adults (15-29) and non-uk born mixing variable in
 </td>
 </tr>
 <tr>
-<td style="text-align:left;">
+<td style="text-align:left;width: 10cm; ">
 Transmission variable in young adults (15-29)
 </td>
 <td style="text-align:right;">
@@ -665,7 +665,7 @@ Transmission variable in young adults (15-29)
 </td>
 </tr>
 <tr>
-<td style="text-align:left;">
+<td style="text-align:left;width: 10cm; ">
 Non-uk born mixing variable in young adults (15-29)
 </td>
 <td style="text-align:right;">
@@ -673,7 +673,7 @@ Non-uk born mixing variable in young adults (15-29)
 </td>
 </tr>
 <tr>
-<td style="text-align:left;">
+<td style="text-align:left;width: 10cm; ">
 Baseline
 </td>
 <td style="text-align:right;">
@@ -762,6 +762,13 @@ Predicted Incidence (95% CI)*
 </td>
 </tr>
 </tbody>
+<tfoot>
+<tr>
+<td style="padding: 0; border:0;" colspan="100%">
+<sup>a</sup> * 95% credible interval estimated using the 2.5% quantile and the 97.5% quantile.
+</td>
+</tr>
+</tfoot>
 </table>
 <div class="figure" style="text-align: center"><span id="fig:09-age-strat-incidence"></span>
 <img src="chapters/model-fitting/plots/overview-states-1990-age-1.png" alt="Observed and predicted TB incidence stratified by model age group (0-11). 0-9 refers to 5 year age groups from 0-4 years old to 45-49 years old. 10 refers to those aged between 50 and 69 and 11 refers to those aged 70+. The model underpredicted incidence in all age groups fitted too with older adults have the best fit." width="80%" />
@@ -776,9 +783,9 @@ Figure 9.1: Observed and predicted TB incidence stratified by model age group (0
 <li>Comment on posteriors</li>
 </ul>
 <div class="figure" style="text-align: center"><span id="fig:09-fig-prior-params"></span>
-<img src="chapters/model-fitting/plots/prior-posterior-overview-1.png" alt="Prior and posterior distributions for fitted model parameters. Parameter names in figure are in their coded form. They can be interpreted using the following: beta_young_adult - $\beta_{\text{young adult}}$, c_eff - $c_{\text{eff}}$, c_hist - $c^{\text{hist}}_{\text{eff}}$, c_hist_half - $c^{\text{hist}}_{\text{half}}$, M - $M$, M_young_adult - $M_{\text{young adult}}$, meas_error - $E_{\text{syst}}$, meas_std - $E_{\text{noise}}$, non_uk_scaling - $\iota_{\text{scale}}$, older_adult_activation_scaling - $\epsilon^{\text{older-adult}}_L$" width="80%" />
+<img src="chapters/model-fitting/plots/prior-posterior-overview-1.png" alt="Prior and posterior distributions for fitted model parameters. Parameter names in figure are in their coded form. They can be interpreted using the following: beta_young_adult - $\beta_{\text{young adult}}$" width="80%" />
 <p class="caption">
-Figure 9.2: Prior and posterior distributions for fitted model parameters. Parameter names in figure are in their coded form. They can be interpreted using the following: beta_young_adult - <span class="math inline">\(\beta_{\text{young adult}}\)</span>, c_eff - <span class="math inline">\(c_{\text{eff}}\)</span>, c_hist - <span class="math inline">\(c^{\text{hist}}_{\text{eff}}\)</span>, c_hist_half - <span class="math inline">\(c^{\text{hist}}_{\text{half}}\)</span>, M - <span class="math inline">\(M\)</span>, M_young_adult - <span class="math inline">\(M_{\text{young adult}}\)</span>, meas_error - <span class="math inline">\(E_{\text{syst}}\)</span>, meas_std - <span class="math inline">\(E_{\text{noise}}\)</span>, non_uk_scaling - <span class="math inline">\(\iota_{\text{scale}}\)</span>, older_adult_activation_scaling - <span class="math inline">\(\epsilon^{\text{older-adult}}_L\)</span>
+Figure 9.2: Prior and posterior distributions for fitted model parameters. Parameter names in figure are in their coded form. They can be interpreted using the following: beta_young_adult - <span class="math inline">\(\beta_{\text{young adult}}\)</span>
 </p>
 </div>
 <table class="table" style="margin-left: auto; margin-right: auto;">
@@ -791,10 +798,10 @@ Figure 9.2: Prior and posterior distributions for fitted model parameters. Param
 Parameter
 </th>
 <th style="text-align:left;">
-Prior (95%CI)**
+Prior (95\%CI)\<em>\</em>
 </th>
 <th style="text-align:left;">
-Posterior (95%CI)**
+Posterior (95\%CI)\<em>\</em>
 </th>
 </tr>
 </thead>
@@ -910,6 +917,13 @@ Posterior (95%CI)**
 </td>
 </tr>
 </tbody>
+<tfoot>
+<tr>
+<td style="padding: 0; border:0;" colspan="100%">
+<sup></sup> * 95% credible interval estimated using the 2.5% quantile and the 97.5% quantile.
+</td>
+</tr>
+</tfoot>
 </table>
 </div>
 <div id="parameter-sensitivity-1" class="section level3">
