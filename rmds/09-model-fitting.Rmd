@@ -311,13 +311,12 @@ kable(
 
 ```{r 09-table-incidence-preds, message = FALSE, warning = FALSE}
 sum_obs_table %>% 
-  set_names(., nm = c(names(.)[-ncol(.)], "Predicted Incidence (95% CI)*")) %>% 
+  set_names(., nm = c(names(.)[-ncol(.)], "Predicted Incidence (95% CI)")) %>% 
   select(-Observation) %>% 
 kable(
   caption.short = "Observed versus predicted overall TB incidence for years that the model was fitted too.", 
-  caption = "Observed versus predicted overall TB incidence for years that the model was fitted too. The model underpredicted incidence for all years fitted too. The upper credible interval of the model predictions was substantially lower than the observed data.", booktabs = TRUE, longtable = TRUE) %>% 
+  caption = "Observed versus predicted overall TB incidence for years that the model was fitted too. The model underpredicted incidence for all years fitted too. The upper credible interval of the model predictions was substantially lower than the observed data. (95\\% CI): 95\\% credible interval estimated using the 2.5\\% quantile and the 97.5\\% quantile.", booktabs = TRUE, longtable = TRUE) %>% 
   kable_styling(latex_options = c("hold_position")) %>% 
-  add_footnote(label = "* 95% credible interval estimated using the 2.5% quantile and the 97.5% quantile.", notation = "none") %>% 
   {.}
 ```
 
@@ -329,7 +328,7 @@ knitr::include_graphics(file.path(plots_path, "overview-states-1990-age-1.png"))
 
 * Comment on posteriors
 
-```{r 09-fig-prior-params, fig.scap = "Prior and posterior distributions for fitted model parameters.", fig.cap = "Prior and posterior distributions for fitted model parameters. Parameter names in figure are in their coded form. They can be interpreted using the following:  $\\beta_{\\text{young adult}}$"}
+```{r 09-fig-prior-params, fig.scap = "Prior and posterior distributions for fitted model parameters.", fig.cap = "Prior and posterior distributions for fitted model parameters. Parameter names in figure are in their coded form. They can be interpreted using the following:  $\\beta_{\\text{young adult}}$,$c_{\\text{eff}}$, $c^{\\text{hist}}_{\\text{eff}}$, $c^{\\text{hist}}_{\\text{half}}$, $M$, $M_{\\text{young adult}}$, $E_{\\text{syst}}$, $E_{\\text{noise}}$, $\\iota_{\\text{scale}}$, and $\\epsilon^{\\text{older-adult}}_L$"}
 knitr::include_graphics(file.path(plots_path, "prior-posterior-overview-1.png"))
 ```
 
@@ -337,16 +336,14 @@ knitr::include_graphics(file.path(plots_path, "prior-posterior-overview-1.png"))
 ```{r 09-prior-posterior, warning = FALSE, message = FALSE}
 sum_prior_posterior %>% 
   set_names(., nm = . %>% 
-              str_replace("or", "or (95\\\\%CI)\\\\*\\\\*")) %>%
+              str_replace("or", "or (95\\\\%CI)")) %>%
   mutate(Parameter = latex_param) %>% 
   select(-latex_param) %>% 
 kable(
-  caption.short = "Observerd versus predicted overall TB incidence for years that the model was fitted too.", 
-  caption = "Observerd versus predicted overall TB incidence for years that the model was fitted too. The model underpredicted incidence for all years fitted too. The upper credible interval of the model predictions was substantially lower than the observed data. ",
+  caption.short = "Observed versus predicted overall TB incidence for years that the model was fitted too.", 
+  caption = "Observerd versus predicted overall TB incidence for years that the model was fitted too. The model underpredicted incidence for all years fitted too. The upper credible interval of the model predictions was substantially lower than the observed data. (95\\% CI): 95\\% credible interval estimated using the 2.5\\% quantile and the 97.5\\% quantile.",
   booktabs = TRUE, longtable = TRUE, escape = FALSE) %>% 
   kable_styling(latex_options = c("hold_position")) %>% 
-  add_footnote(label = c("* 95% credible interval estimated using the 2.5% quantile and the 97.5% quantile."),
-               notation = "none") %>% 
   {.}
 ```
 
@@ -354,7 +351,7 @@ kable(
 
 * Comment on parameter sensitivity in light of strength of data
 
-```{r 09-fig-sens, fig.scap = "Partial rank correlation coefficients for each parameter fitted too.", fig.cap = "Partial rank correlation coefficients for each parameter fitted too. Parameter names in figure are in their coded form. They can be interpreted using the following: beta_young_adult - $\\beta_{\\text{young adult}}$, c_eff - $c_{\\text{eff}}$, c_hist - $c^{\\text{hist}}_{\\text{eff}}$, c_hist_half - $c^{\\text{hist}}_{\\text{half}}$, M - $M$, M_young_adult - $M_{\\text{young adult}}$, meas_error - $E_{\\text{syst}}$, meas_std - $E_{\\text{noise}}$, non_uk_scaling - $\\iota_{\\text{scale}}$, older_adult_activation_scaling - $\\epsilon^{\\text{older-adult}}_L$"}
+```{r 09-fig-sens, fig.scap = "Partial rank correlation coefficients for each parameter fitted too.", fig.cap = "Partial rank correlation coefficients for each parameter fitted too. Parameter names in figure are in their coded form. They can be interpreted as the following parameters:  $\\beta_{\\text{young adult}}$, $c_{\\text{eff}}$, $c^{\\text{hist}}_{\\text{eff}}$, $c^{\\text{hist}}_{\\text{half}}$, $M$, $M_{\\text{young adult}}$, $E_{\\text{syst}}$, $E_{\\text{noise}}$, $\\iota_{\\text{scale}}$, and $\\epsilon^{\\text{older-adult}}_L$", out.width = "200px"}
 knitr::include_graphics(file.path(plots_path, "incidence-sensitivity-1.png"))
 ```
 

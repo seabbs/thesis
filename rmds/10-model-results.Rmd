@@ -82,13 +82,12 @@ knitr::include_graphics(file.path(plots_path, "overview-scenarios-future-1.png")
 
 ```{r 10-table-future-incidence}
 sum_scenario %>% filter(Year %% 5 == 0) %>% 
-  set_names(., nm = names(.) %>% str_replace_all("BCG", "BCG (95% CI)\\*")) %>% 
+  set_names(., nm = names(.) %>% str_replace_all("BCG", "BCG (95% CI)")) %>% 
   select(-Observation) %>% 
 kable(
   caption.short = "", 
-  caption = "", booktabs = TRUE, longtable = TRUE) %>% 
-  kable_styling(latex_options = c("hold_position")) %>% 
-  add_footnote(label = "* 95% credible interval estimated using the 2.5% quantile and the 97.5% quantile.", notation = "none")
+  caption = "(95\\% CI): 95\\% credible interval estimated using the 2.5\\% quantile and the 97.5\\% quantile.", booktabs = TRUE, longtable = TRUE) %>% 
+  kable_styling(latex_options = c("hold_position"))
 ```
 
 
@@ -107,13 +106,12 @@ knitr::include_graphics(file.path(plots_path, "overview-scenarios-deaths-future-
 
 ```{r 10-table-deaths-preds}
 sum_deaths_scenario %>% filter(Year %% 5 == 0) %>% 
-  set_names(., nm = names(.) %>% str_replace_all("BCG", "BCG (95% CI)\\*")) %>% 
+  set_names(., nm = names(.) %>% str_replace_all("BCG", "BCG (95% CI)")) %>% 
   select(-Observation) %>% 
 kable(
   caption.short = "", 
-  caption = "", booktabs = TRUE, longtable = TRUE) %>% 
-  kable_styling(latex_options = c("hold_position")) %>% 
-  add_footnote(label = "* 95% credible interval estimated using the 2.5% quantile and the 97.5% quantile.", notation = "none")
+  caption = "(95\\% CI): 95\\% credible interval estimated using the 2.5\\% quantile and the 97.5\\% quantile.", booktabs = TRUE, longtable = TRUE) %>% 
+  kable_styling(latex_options = c("hold_position"))
 ```
 
   * Comparision of age distribution of deaths

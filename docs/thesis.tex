@@ -4465,9 +4465,9 @@ Date: \emph{placeholder}
     Comment on fit
   \end{itemize}
   \begin{longtable}{rrl}
-  \caption[Observed versus predicted overall TB incidence for years that the model was fitted too.]{\label{tab:09-table-incidence-preds}Observed versus predicted overall TB incidence for years that the model was fitted too. The model underpredicted incidence for all years fitted too. The upper credible interval of the model predictions was substantially lower than the observed data.}\\
+  \caption[Observed versus predicted overall TB incidence for years that the model was fitted too.]{\label{tab:09-table-incidence-preds}Observed versus predicted overall TB incidence for years that the model was fitted too. The model underpredicted incidence for all years fitted too. The upper credible interval of the model predictions was substantially lower than the observed data. (95\% CI): 95\% credible interval estimated using the 2.5\% quantile and the 97.5\% quantile.}\\
   \toprule
-  Year & Observed Incidence & Predicted Incidence (95\% CI)*\\
+  Year & Observed Incidence & Predicted Incidence (95\% CI)\\
   \midrule
   2000 & 1803 & 373 (134, 645)\\
   2001 & 1866 & 364 (132, 626)\\
@@ -4497,12 +4497,12 @@ Date: \emph{placeholder}
   
   }
   
-  \caption[Prior and posterior distributions for fitted model parameters.]{Prior and posterior distributions for fitted model parameters. Parameter names in figure are in their coded form. They can be interpreted using the following:  $\beta_{\text{young adult}}$}\label{fig:09-fig-prior-params}
+  \caption[Prior and posterior distributions for fitted model parameters.]{Prior and posterior distributions for fitted model parameters. Parameter names in figure are in their coded form. They can be interpreted using the following:  $\beta_{\text{young adult}}$,$c_{\text{eff}}$, $c^{\text{hist}}_{\text{eff}}$, $c^{\text{hist}}_{\text{half}}$, $M$, $M_{\text{young adult}}$, $E_{\text{syst}}$, $E_{\text{noise}}$, $\iota_{\text{scale}}$, and $\epsilon^{\text{older-adult}}_L$}\label{fig:09-fig-prior-params}
   \end{figure}
   \begin{longtable}{lll}
-  \caption[Observerd versus predicted overall TB incidence for years that the model was fitted too.]{\label{tab:09-prior-posterior}Observerd versus predicted overall TB incidence for years that the model was fitted too. The model underpredicted incidence for all years fitted too. The upper credible interval of the model predictions was substantially lower than the observed data. }\\
+  \caption[Observed versus predicted overall TB incidence for years that the model was fitted too.]{\label{tab:09-prior-posterior}Observerd versus predicted overall TB incidence for years that the model was fitted too. The model underpredicted incidence for all years fitted too. The upper credible interval of the model predictions was substantially lower than the observed data. (95\% CI): 95\% credible interval estimated using the 2.5\% quantile and the 97.5\% quantile.}\\
   \toprule
-  Parameter & Prior (95\%CI)\*\* & Posterior (95\%CI)\*\*\\
+  Parameter & Prior (95\%CI) & Posterior (95\%CI)\\
   \midrule
   $\beta_{\text{young adult}}$ & 4.88 (0.35, 9.74) & 5.72 (5.72, 5.72)\\
   $c_{\text{eff}}$ & 1.22 (0.09, 3.13) & 0.06 (0.06, 0.06)\\
@@ -4524,15 +4524,14 @@ Date: \emph{placeholder}
   \item
     Comment on parameter sensitivity in light of strength of data
   \end{itemize}
-  \textbackslash{}begin\{figure\}
+  \begin{figure}
   
-  \{\centering \includegraphics[width=0.8\linewidth]{chapters/model-fitting/plots/incidence-sensitivity-1}
+  {\centering \includegraphics[width=200px]{chapters/model-fitting/plots/incidence-sensitivity-1} 
   
-  \}
+  }
   
-  \textbackslash{}caption{[}Partial rank correlation coefficients for each parameter fitted too.{]}\{Partial rank correlation coefficients for each parameter fitted too. Parameter names in figure are in their coded form. They can be interpreted using the following: beta\_young\_adult - \(\beta_{\text{young adult}}\), c\_eff - \(c_{\text{eff}}\), c\_hist - \(c^{\text{hist}}_{\text{eff}}\), c\_hist\_half - \(c^{\text{hist}}_{\text{half}}\), M - \(M\), M\_young\_adult - \(M_{\text{young adult}}\), meas\_error - \(E_{\text{syst}}\), meas\_std - \(E_{\text{noise}}\), non\_uk\_scaling - \(\iota_{\text{scale}}\), older\_adult\_activation\_scaling - \(\epsilon^{\text{older-adult}}_L\)\}\label{fig:09-fig-sens}
-  \textbackslash{}end\{figure\}
-  
+  \caption[Partial rank correlation coefficients for each parameter fitted too.]{Partial rank correlation coefficients for each parameter fitted too. Parameter names in figure are in their coded form. They can be interpreted as the following parameters:  $\beta_{\text{young adult}}$, $c_{\text{eff}}$, $c^{\text{hist}}_{\text{eff}}$, $c^{\text{hist}}_{\text{half}}$, $M$, $M_{\text{young adult}}$, $E_{\text{syst}}$, $E_{\text{noise}}$, $\iota_{\text{scale}}$, and $\epsilon^{\text{older-adult}}_L$}\label{fig:09-fig-sens}
+  \end{figure}
   \hypertarget{discussion-6}{%
   \section{Discussion}\label{discussion-6}}
   
@@ -4641,15 +4640,10 @@ Date: \emph{placeholder}
   }
   
   \end{figure}
-  \begin{verbatim}
-  Warning in add_footnote(., label = "* 95% credible interval estimated using
-  the 2.5% quantile and the 97.5% quantile.", : Notation is set to 'number'
-  and other formats are not supported.
-  \end{verbatim}
   \begin{longtable}{rlll}
-  \caption{\label{tab:10-table-future-incidence}}\\
+  \caption{\label{tab:10-table-future-incidence}(95\% CI): 95\% credible interval estimated using the 2.5\% quantile and the 97.5\% quantile.}\\
   \toprule
-  Year & School-age BCG (95\% CI)* & Neonatal BCG (95\% CI)* & No BCG (95\% CI)*\\
+  Year & School-age BCG (95\% CI) & Neonatal BCG (95\% CI) & No BCG (95\% CI)\\
   \midrule
   2005 & 331 (132, 555) & 322 (125, 553) & 332 (132, 551)\\
   2010 & 281 (115, 472) & 295 (123, 494) & 312 (141, 506)\\
@@ -4686,15 +4680,10 @@ Date: \emph{placeholder}
   }
   
   \end{figure}
-  \begin{verbatim}
-  Warning in add_footnote(., label = "* 95% credible interval estimated using
-  the 2.5% quantile and the 97.5% quantile.", : Notation is set to 'number'
-  and other formats are not supported.
-  \end{verbatim}
   \begin{longtable}{rlll}
-  \caption{\label{tab:10-table-deaths-preds}}\\
+  \caption{\label{tab:10-table-deaths-preds}(95\% CI): 95\% credible interval estimated using the 2.5\% quantile and the 97.5\% quantile.}\\
   \toprule
-  Year & School-age BCG (95\% CI)* & Neonatal BCG (95\% CI)* & No BCG (95\% CI)*\\
+  Year & School-age BCG (95\% CI) & Neonatal BCG (95\% CI) & No BCG (95\% CI)\\
   \midrule
   2005 & 21 (6, 38) & 22 (6, 39) & 21 (7, 40)\\
   2010 & 18 (5, 32) & 19 (6, 34) & 19 (7, 35)\\
