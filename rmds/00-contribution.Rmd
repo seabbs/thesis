@@ -9,7 +9,7 @@ Abbott S, Christensen H, Brooks-Pollock E. *Reassessing the evidence for univers
 
 SA, HC, and EBP conceived and designed the work. SA undertook the analysis with advice from all other authors. All authors contributed to the interpretation of the data. SA wrote the first draft of the paper and all authors contributed to subsequent drafts. All authors approve the work for publication and agree to be accountable for the work. \par
 
-Abbott S, Christensen H, Lalor MK, Zenner D,Campbell C, Ramsay M, Brooks-Pollock E. *Exploring the effects of BCG vaccination in patients diagnosed with tuberculosis: observational study using the Enhanced Tuberculosis Surveillance system*, doi: https://doi.org/10.1101/366476 \par
+Abbott, S., Christensen, H., Lalor, M. K., Zenner, D., Campbell, C., Ramsay, M. E., & Brooks-Pollock, E. (2019). *Exploring the effects of BCG vaccination in patients diagnosed with tuberculosis: Observational study using the Enhanced Tuberculosis Surveillance system*. Vaccine, 1–6. doi: http://doi.org/10.1016/j.vaccine.2019.06.056 (preprint: https://doi.org/10.1101/366476) \par
 
 SA, HC, and EBP conceived and designed the work. SA undertook the analysis with advice from all other authors. All authors contributed to the interpretation of the data. SA wrote the first draft of the paper and all authors contributed to subsequent drafts. All authors approve the work for publication and agree to be accountable for the work. \par
 
