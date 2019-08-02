@@ -358,7 +358,7 @@ Finally date of death displays little evidence of seasonal variation or recall b
 knitr::include_graphics("chapters/tb-epi-england/figures/plot-detection-dateofdeath.png")
 ```
 
-### Demographic data
+### Demographic data {#demographic-data}
 
 #### Background
 
