@@ -238,7 +238,7 @@ kable(model_miss_results[["tomdeathrealat"]],
 
 ##### Date of symptom onset
 
-For date of symptom onset there was strong evidence of an MNAR mechanism for all variables considered, except for sex (Table \@ref(tab:symptonset-miss)). As found previously, the likelihood of date of symptom onset being missing reduced with year of notification. Children (0-14 years old) were more likely to have a missing date of symptom onset than any other age group as were those in any socio-economic quintile when compared to the poorest group. UK born cases were more likely to have a complete date of symptom onset than non-UK born cases, with the White ethnic group being more likely to have a missing date of symptom onset than most other ethnic groups.
+For date of symptom onset there was strong evidence of an MAR mechanism for all variables considered, except for sex (Table \@ref(tab:symptonset-miss)). As found previously, the likelihood of date of symptom onset being missing reduced with year of notification. Children (0-14 years old) were more likely to have a missing date of symptom onset than any other age group as were those in any socio-economic quintile when compared to the poorest group. UK born cases were more likely to have a complete date of symptom onset than non-UK born cases, with the White ethnic group being more likely to have a missing date of symptom onset than most other ethnic groups.
 
 ```{r symptonset-miss}
 kable(model_miss_results[["symptonset"]],
