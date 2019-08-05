@@ -75,13 +75,14 @@ ggplot2::theme_set(PaperTheme)
 `r if(!knitr:::is_latex_output()) '# Preface {-}'`
 
 
-`r if(!knitr:::is_latex_output()) 'A dissertation submitted to the University of Bristol in ac- cordance with the requirements of the degree of Doctor of Philosophy in the Faculty of Health Sciences.'`
+`r if(!knitr:::is_latex_output()) 'A dissertation submitted to the University of Bristol in accordance with the requirements of the degree of Doctor of Philosophy in the Faculty of Health Sciences.'`
 
 `r if(!knitr:::is_latex_output()) '## Abstract {-}'`
 
-`r if(!knitr:::is_latex_output()) knitr::knit_child("00-abstract.Rmd", quiet=TRUE)`
+```{r abstract, child = "00-abstract.Rmd", eval = !knitr:::is_latex_output()}
+```
 
 `r if(!knitr:::is_latex_output()) '## Acknowledgements {-}'`
 
-`r if(!knitr:::is_latex_output()) knitr::knit_child("00-acknowledgements.Rmd", quiet=TRUE)`
-
+```{r acknowledgements, child = "00-acknowledgements.Rmd", eval = !knitr:::is_latex_output()}
+```
