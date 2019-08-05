@@ -1842,6 +1842,33 @@ Date:
   
   \hypertarget{date-variables-in-the-ets}{%
   \subsubsection{Date variables in the ETS}\label{date-variables-in-the-ets}}
+  \begin{verbatim}
+  Warning: count_() is deprecated. 
+  Please use count() instead
+  
+  The 'programming' vignette or the tidyeval book can help you
+  to program with count() : https://tidyeval.tidyverse.org
+  This warning is displayed once per session.
+  \end{verbatim}
+  \begin{verbatim}
+  Warning: `data_frame()` is deprecated, use `tibble()`.
+  This warning is displayed once per session.
+  \end{verbatim}
+  \begin{verbatim}
+  Warning: `as_data_frame()` is deprecated, use `as_tibble()` (but mind the new semantics).
+  This warning is displayed once per session.
+  \end{verbatim}
+  \begin{center}\includegraphics[width=0.8\linewidth]{thesis_files/figure-latex/tb-case-detection-1} \end{center}
+  \begin{center}\includegraphics[width=0.8\linewidth]{thesis_files/figure-latex/tb-case-detection-2} \end{center}
+  \begin{center}\includegraphics[width=0.8\linewidth]{thesis_files/figure-latex/tb-case-detection-3} \end{center}
+  \begin{verbatim}
+  Warning: Removed 184 rows containing non-finite values (stat_ydensity).
+  \end{verbatim}
+  \begin{verbatim}
+  Warning: Removed 184 rows containing missing values (geom_point).
+  \end{verbatim}
+  \begin{center}\includegraphics[width=0.8\linewidth]{thesis_files/figure-latex/tb-case-detection-4} \end{center}
+  \begin{center}\includegraphics[width=0.8\linewidth]{thesis_files/figure-latex/tb-case-detection-5} \end{center}
   
   For analyses that aim to reproduce temporal trends in TB incidence, such as dynamic modelling studies, it is important to understand which variables represent the most accurate date of contact with the health system and more generally on what scale date variables can be considered reliable. In the ETS extract used in this thesis there are several date variables that encode useful information including: the date of notification, the date of symptom onset, the date of diagnosis, the date of starting treatment, the date of completing treatment, and the date of death. In the following section I explore these variables using counts and proportions aggregated to then nearest year, month and day.
   

@@ -61,7 +61,7 @@ plot_age_dist_inc_rates <- age_grouped_incidence %>%
   theme(axis.text.x = element_text(angle = 90),
         legend.position = "top") +
   facet_grid(CoB ~ Year, scales = 'free_y') +
-  guides(col=guide_legend(title="UK birth status"))
+  guides(col=guide_legend(title = "UK birth status"))
 
 ggsave("chapters/tb-epi-england/figures/plot-age-dist-inc-rates.png", 
        plot_age_dist_inc_rates, dpi = 320, width = 8, height = 8)
