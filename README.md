@@ -2,29 +2,28 @@
 
 
 [![badge](https://img.shields.io/badge/Development-Environment-lightblue.svg)](https://mybinder.org/v2/gh/seabbs/thesis/master?urlpath=rstudio)
-[![Documentation](https://img.shields.io/badge/Website-click here!-lightgrey.svg?style=flat)](https://www.samabbott.co.uk/thesis)
+[![Website](https://img.shields.io/badge/Website-click here!-lightgrey.svg?style=flat)](https://www.samabbott.co.uk/thesis)
 [![DOI](https://zenodo.org/badge/65387003.svg)](https://zenodo.org/badge/latestdoi/65387003)
 
 [Sam Abbott](https://www.samabbott.co.uk)
-Supervised by: Hannah Christensen, and Ellen Brooks-Pollock
 
-A dissertation submitted to the University of Bristol in accordance with the requirements for award of the degree of Doctor of Philosophy in the Faculty of Health Sciences on the *placeholder*.
+Supervised by: [Hannah Christensen](https://research-information.bristol.ac.uk/en/persons/hannah-christensen(cea299d9-5ef7-4c68-a931-28415798e10e).html), [and Ellen Brooks-Pollock](https://research-information.bristol.ac.uk/en/persons/ellen-brooks-pollock(9ffd9ff9-0949-49c4-97f7-bae51aa23d51).html)
+
+A dissertation submitted to the University of Bristol in accordance with the requirements for award of the degree of Doctor of Philosophy in the Faculty of Health Sciences on the 9th of August 2019.
 
 ## Abstract 
 
-Bacillus Calmette–Guérin (BCG) remains the only licensed vaccine against Tuberculosis. In 2005, England changed from universal vaccination of school-age children to targeted vaccination of high-risk neonates. Little work has been done to assess the impact of this policy change. This thesis evaluates the impact of this change.  
+Bacillus Calmette–Guérin (BCG) remains the only licensed vaccine against Tuberculosis (TB). In 2005, England changed from universal vaccination of school-age children to targeted vaccination of high-risk neonates. Little work has been done to assess the impact of this policy change. This thesis evaluates the impact of this change.
 
+Whilst the characteristics of TB in England have been reported elsewhere, little attention has been given to the role of BCG. Consequently, I explored and combined, the available data sources. Reporting on data quality issues, trends in incidence rates and differences in outcomes stratified by BCG status. 
 
-Whilst the characteristics of Tuberculosis in England have been reported elsewhere, little attention has been given to the role of BCG. Consequently, I explored and combined, the available data sources. Reporting on data quality issues, trends in incidence rates and differences in outcomes stratified by BCG status. 
+Prior to the change in policy, several studies were carried out to assess the impact. I recreated one such study and found that there was a greater impact than previously thought. 
 
-Prior to the change in policy, several studies were carried out to assess the impact. The strength of this evidence has not been reassessed. I recreated one such study and found that there was a greater impact than previously thought.
+Determining the benefits of being BCG vaccinated is necessary to properly assess the impact of the policy change. I evaluated the evidence that vaccination may improve outcomes for TB cases in England and found that there was some evidence of an association between vaccination and reduced mortality. 
 
+Surveillance data can help assess whether changes in vaccination policy have influenced incidence rates. I used surveillance data to determine whether those at school-age, or neonates, were directly affected by the policy change. I found the policy change was associated with increased notifications in the UK born but this was outweighed by a reduction in notifications in the non-UK born. 
 
-Determining the benefits of being BCG vaccinated is necessary to properly assess the impact of the policy change. I evaluated the evidence that vaccination may improve outcomes for Tuberculosis cases in England and found that there was some evidence of an association between vaccination and reduced mortality. 
-
-Surveillance data can help assess whether changes in vaccination policy have influenced incidence rates. I used surveillance data to determine whether those at school-age, or neonates, were directly affected by the policy change. I found the policy change was associated with increased notifications in the UK born but this was outweighed by a reduction in notifications in the non-UK born.
-
-Statistical modelling is restricted by the available data. Incorporating non-linear and indirect effects can also be complex. Therefore, I developed a dynamic model of Tuberculosis, fitting to available data, and forecast the long term and indirect effects of the policy change. I found that school-age vaccination *placeholder* Tuberculosis incidence rates compared with neonatal or no vaccination.
+Statistical modelling is restricted by the available data. Therefore, I developed a dynamic model of TB, fit to available data, to forecast the impact of the policy change. Although the fit to the data was poor the forecasts suggested that continuing school-age vaccination reduced TB incidence compared with neonatal vaccination. Neonatal vaccination reduced incidence in children but had little impact on other age groups.
 
 ## Chapters
 
@@ -54,7 +53,6 @@ Links to external chapter resources are given below.
 
 All links for Chapter 8 also apply to Chapters 9 and 10 as well.
 
-
 ## Citing
 
 Please cite the individual chapter papers/resources as appropriate if used in your work.
@@ -75,7 +73,6 @@ This repository has the following structure:
 
 All chapters can be built using the data available in this repository. However the raw data cannot be shared freely. See [`tbinenglanddataclean`](https://www.samabbott.co.uk/tbinenglanddataclean/) for instructions as to the data sources that need to be applied for to reproduce each chapter in this thesis completely. The results in analysis chapters have been ported from their original, fully reproducible repositories. See these repositories for details.
 
-
 ### Manual install
 
 - Install R (analysis run with `3.5.3`) and Rstudio (alternatively use Docker as outlined below).
@@ -89,6 +86,7 @@ git clone https://github.com/seabbs/thesis.git
 - Once this has been downloaded click on the project file (`thesis.Rproj`).
 
 - Install thesis dependencies using the following. 
+
 ``` r 
 #install.packages("packrat")
 packrat::restore()
