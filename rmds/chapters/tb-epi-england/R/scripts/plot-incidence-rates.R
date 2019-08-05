@@ -54,7 +54,8 @@ plot_age_dist_inc_rates <- age_grouped_incidence %>%
   geom_linerange(aes(ymin = Inc_LCI, ymax = Inc_UCI)) +
   geom_point(size = 1.4) +
   geom_line(aes(group = CoB), size = 1.2, alpha = 0.6) +
-  labs(y = "Incidence rate (per 100,000 people)") +
+  labs(y = "Incidence rate (per 100,000 people)",
+       x = "Age group") +
   scale_colour_viridis_d(end = 0.9) +
   theme_minimal() +
   theme(axis.text.x = element_text(angle = 90),

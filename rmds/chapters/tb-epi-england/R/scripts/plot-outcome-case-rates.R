@@ -25,8 +25,9 @@ plot_case_rate = function(df, RateVar) {
     scale_colour_viridis_d(end = 0.9) +
     theme_minimal() +
     theme(axis.text.x = element_text(angle = 90, hjust = 1),
-          legend.position = "none") +
-    facet_wrap(~ ukborn)
+          legend.position = "top") +
+    facet_wrap(~ ukborn) +
+    guides(colour = guide_legend(title = "BCG vaccination"), point = guide_legend(title = "BCG vaccination"))
   
   ## case rate - dropped BCG vaccination rates prior to 2008 due to uncertainty in the estimates as data was not nationally collected
   p2 <- df %>% 
@@ -48,11 +49,11 @@ plot_case_rate = function(df, RateVar) {
     scale_fill_viridis_d(end = 0.9) +
     theme_minimal() +
     theme(axis.text.x = element_text(angle = 90, hjust = 1),
-          legend.position = "bottom") +
+          legend.position = "none") +
     facet_wrap(~ CoB)
   
   
-  plot <- grid.arrange(p1 + ggtitle('a.)'), p2 + ggtitle('b.)'), ncol = 1, heights = c(0.45, 0.55))
+  plot <- grid.arrange(p1 + ggtitle('a.)'), p2 + ggtitle('b.)'), ncol = 1, heights = c(0.55, 0.45))
   
   return(plot)
 }
@@ -90,7 +91,9 @@ plot_age_year_case_rate <- function(df, RateVar, year_strat = NULL, min_y = 0,  
     theme(axis.text.x = element_text(angle = 90, hjust = 1),
           legend.position = "top") +
     facet_wrap(~ CoB) +
-    labs(y = "Case rate (square root shown)")
+    labs(y = "Case rate (square root shown)", 
+         x = "Age group") +
+    guides(fill = guide_legend(title = "BCG vaccination"), colour = guide_legend(title = "BCG vaccination"))
 
 return(p3)
 }

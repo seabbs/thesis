@@ -101,7 +101,7 @@ plot_detection_metric <- function(df, metric) {
     theme_minimal() +
     labs(title = "c.)",
          x = "Month",
-         y = "Proportion of that years notifications")
+         y = "Percentage of annual notifications")
   
   ## Plot normalised incidencce by day
   sum_day_plot <- df_expanded %>% 
@@ -117,7 +117,7 @@ plot_detection_metric <- function(df, metric) {
     theme_minimal() +
     labs(title = "d.)",
          x = "Day of the month",
-         y = "Proportion of that months notifications")
+         y = "Percentage of monthly notifications")
   
   grid_plot <- grid.arrange(overall_plot, month_plot, sum_month_plot, sum_day_plot, nrow = 2)
   

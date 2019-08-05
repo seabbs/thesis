@@ -19,7 +19,7 @@ age_dist_pop <- demographics %>%
   scale_color_viridis_d(end = 0.9) +
   scale_y_continuous(labels = percent) +
   theme_minimal() +
-  labs(y = "Proportion of the population") +
+  labs(y = "Percentage of the total population") +
   theme(axis.text.x = element_text(angle = 90)) +
   theme(plot.title = element_text(hjust = 0),
         legend.position = "top")
@@ -38,7 +38,9 @@ overall_pop <- demographics %>%
   scale_y_continuous(labels = comma) +
   scale_colour_viridis_d() +
   theme_minimal() +
-  theme(plot.title = element_text(hjust = 0), legend.position = 'top')
+  theme(plot.title = element_text(hjust = 0), legend.position = 'top') +
+  guides(fill = guide_legend(title = "Population (dataset)"),
+         colour = guide_legend(title = "Population (dataset)"))
 
 ggsave("chapters/tb-epi-england/figures/plot-overall-pop.png", 
        overall_pop, dpi = 320, width = 8, height = 8)
@@ -58,7 +60,7 @@ age_strat <- demographics %>%
   facet_wrap(~`Age group`, scale = "free_y") +
   theme_minimal() +
   theme(legend.position = "none") +
-  labs(y = "Percentage difference (ONS estimate - LFS estimate)")
+  labs(y = "Percentage difference (ONS - LFS) / ONS")
   
 ggsave("chapters/tb-epi-england/figures/plot-age-strat.png", 
        age_strat , dpi = 320, width = 8, height = 8)

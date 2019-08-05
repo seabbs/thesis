@@ -21,7 +21,7 @@ plot_case_age_dist <- ets %>%
   theme_minimal() +
   theme(axis.text.x = element_text(angle = 90)) +
   theme(legend.position = "top") +
-  labs(y = "Proportion of notifications",
+  labs(y = "Percentage of total notifications",
        x = "Age group") +
   facet_wrap(~`UK birth status`, ncol = 1)
 
