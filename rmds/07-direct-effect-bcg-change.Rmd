@@ -22,7 +22,7 @@ library(kableExtra)
 ## See https://github.com/seabbs/DirectEffBCGPolicyChange/blob/master/vignettes/paper.Rmd
 ## for code required to reproduce 
 ## Chapter is an edited version of the orginal reproducible document.
-##Wordcount: 4410
+##Wordcount: 4504
 read_formated <- function(name) {
   path <- file.path("chapters/direct-eff-bcg-change", paste0(name, ".rds"))
   

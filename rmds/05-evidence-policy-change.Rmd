@@ -27,7 +27,7 @@ library(kableExtra)
 ## Chapter is an edited version of the orginal reproducible document.
 ## Original results found at: https://github.com/seabbs/AssessBCGPolicyChange/blob/master/vignettes/results/paper
 ## Original figures found at: https://github.com/seabbs/AssessBCGPolicyChange/blob/master/docs/articles/paper_files/figure-html
-##Wordcount: 4249
+##Wordcount: 4274
 
 
 ## Functions for results read in

@@ -2,6 +2,10 @@
 output: html_document
 ---
 
+```{r, include = FALSE}
+## Wordcount: 2941
+```
+
 # Introduction {#introduction}
 
 Tuberculosis (TB) is one of the oldest human diseases, with recorded cases in ancient Egypt, renaissance Europe, and in the modern day across the globe. It is thought that roughly one-third of the world’s population has been infected with TB, with 1% of the world’s population being infected annually. However, the vast majority of these cases will never develop active disease. This reservoir of disease presents a challenge for control and eradication as, even if transmission can be halted, new cases will still occur for many years to come. While many people might consider TB to be a problem of the past in England, in 2017 there were 5,900 notified cases, the majority of which occurred in vulnerable communities; where incidence rates can be as much as 15 times higher than in the general population.[@PHE2017] Globally TB remains the leading cause of death from infectious disease.[@TheWorldHealthOrganization:2018va]
