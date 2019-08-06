@@ -135,6 +135,7 @@ Where $C^i_P$ is the predicted number of cases prevented using the mean ($e$), 2
 
 \[ C^i_P =  C_0\left(\frac{1}{I^i } - 1\right),\ \text{Where}\ i = e,\ l,\ u.\]
 
+\newpage
 
 ## Results
 
