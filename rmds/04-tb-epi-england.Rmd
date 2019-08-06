@@ -5,7 +5,7 @@ output:
 # The epidemiology of tuberculosis and the role of BCG vaccination in England {#data}
 
 ```{r tb-epi-setup, include=FALSE}
-regen_results <- TRUE
+regen_results <- FALSE
 knitr::opts_chunk$set(echo = FALSE, warnings = FALSE,
                       fig.width = 8, fig.height = 8,
                       out.width = "80%", fig.align = 'center')
