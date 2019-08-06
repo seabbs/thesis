@@ -294,6 +294,8 @@ As discussed in the previous sections, I found that repeating the analysis with 
 
 For the secondary exposure variables (years since vaccination and age at vaccination, (Table \@ref(tab:06-imp-yrsincebcg) and Table \@ref(tab:06-imp-ageatvac)), I found a change in direction of the point estimate between years since vaccination and all-cause mortality and recurrent TB, but similar results for age at vaccination and outcomes.
 
+\newpage
+
 ```{r 06-imp-bcg}
 imp_tab_gen <- function(df = NULL, caption = NULL, caption.short = NULL, escape = TRUE) {
   
@@ -337,7 +339,8 @@ sum_imp_ageatvac$`Age group (years)` <- str_replace(sum_imp_ageatvac$`Age group 
 sum_imp_ageatvac %>% 
   set_names( c('Outcome', 'Age group', 'OR (95\\% CI)', 'P-value', 'fmi', 'aOR (95\\% CI)', 'P-value', 'fmi')) %>% 
   imp_tab_gen(caption = 'Summary of associations between age at vaccination and all outcomes, using pooled imputed data (reference is vaccination at <1 year).', escape = FALSE) %>% 
-  add_header_above(c(" " = 2, "Univariable" = 3, "Multivariable" = 3))
+  add_header_above(c(" " = 2, "Univariable" = 3, "Multivariable" = 3)) %>% 
+  kable_styling(font_size = 8)
 ```
 
 
@@ -352,7 +355,7 @@ bcg_ass_main %>%
     caption.short = "Summary of associations between BCG vaccination and all outcomes.", 
     caption = "Summary of associations between BCG vaccination and all outcomes; cases that have no recurrent flag in the ETS (n=50407), and cases that would have been eligible for the BCG schools scheme (n=9943). Those defined to be eligible for the schools scheme are the UK born, that were aged 14 or over in 2004", booktabs = TRUE) %>% 
     column_spec(c(1:2), width = "3cm") %>% 
-    kable_styling(latex_options = "HOLD_position") %>%
+    kable_styling(font_size = 8, latex_options = "HOLD_position") %>%
     add_footnote(label = c("OR: odds ratio with 95% confidence intervals", "aOR: adjusted odds ratio with 95% confidence intervals",
                          "fmi: fraction of missing information",
                          "* Death due to TB in those who died and where cause of death was known"),
