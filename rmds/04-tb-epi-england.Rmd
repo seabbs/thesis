@@ -225,6 +225,8 @@ kable(model_miss_results[["dateofdeath"]],
 
 For cause of death there is less evidence of an MAR mechanism, with little evidence of an association for year, sex, age, or socio-economic group (Table \@ref(tab:tomdeathrealat-miss)). There was, however, strong evidence of an association with ethnic group and very weak evidence of an association with UK birth status. The White ethnic group was less likely to have an incomplete cause of death when compared to the majority of other identified ethnic groups but there was evidence to suggest that cause of death was more likely to be missing in those identifying as being of Black-Caribbean, Black-Other, Indian and Bangladeshi descent. The confidence intervals for these estimates were wide, indicating that these estimates may not be reliable. There was again some weak evidence to suggest that the UK born were more likely to be missing a cause of death than the non-UK born, which reverses the trend observed in the other variables explored. The reduction in the levels of evidence found for case of death may be linked to the reduction in power for this outcome, as mortality is a rare outcome.
 
+\newpage
+
 ```{r tomdeathrealat-miss}
 kable(model_miss_results[["tomdeathrealat"]],
       caption.short = "Results from a logistic regression model with data completeness (Complete/Missing) for cause of death as an outcome, adjusted for: year, sex, age (grouped as 0-14 year olds, 15-65 year olds and 65+), ethnic group, UK birth status and socio-economic status (national quintiles).",
