@@ -770,7 +770,7 @@ Figure 8.4: Distribution of time to treatment completion in the UK born successf
 </div>
 <div id="generation-of-the-symmetric-contact-matrix" class="section level6">
 <h6><span class="header-section-number">8.4.2.1.5.2</span> Generation of the symmetric contact matrix</h6>
-<p>As the POLYMOD contact data was collected using a survey there is likely to be measurement error and missing data for the number of contacts reported and the age that contacts were reported to be. Some participants also recorded contacts with an estimated age range rather than with a point estimate. In addition, as the survey had a relatively low sample size (1,011) in the UK, the estimated contact matrices contain considerable uncertainty. These considerations are often not considered in modelling studies but may introduce significant bias. Here the <code>socialmixr</code> R package<a href="#fn26" class="footnote-ref" id="fnref26"><sup>26</sup></a> is used to generate 1000 bootstrapped contact matrix samples using the following steps,</p>
+<p>As the POLYMOD contact data was collected using a survey there is likely to be measurement error and missing data for the number of contacts reported and the age that contacts were reported to be. Some participants also recorded contacts with an estimated age range rather than with a point estimate. In addition, as the survey had a relatively low sample size (1,011) in the UK, the estimated contact matrices contain considerable uncertainty. These considerations are often not considered in modelling studies but may introduce significant bias. Here the <code>socialmixr</code> R package<a href="#fn27" class="footnote-ref" id="fnref27"><sup>27</sup></a> is used to generate 1000 bootstrapped contact matrix samples using the following steps,</p>
 <ol style="list-style-type: decimal">
 <li><p>Missing or estimated ages are sampled from the appropriate ranges.</p></li>
 <li><p>Using data on the participants of the POLYMOD study, and the contacts that they recorded, participants are randomly sampled (with replacement) and the mean number of contacts is then calculated from each age group (using 5 year age groups from 0-5 to 49, 50-69, and then 70+).</p></li>
@@ -1264,8 +1264,8 @@ Variable in young adults (15-29)
 </div>
 <div class="footnotes">
 <hr />
-<ol start="26">
-<li id="fn26"><p><code>socialmixr</code>: <a href="https://github.com/sbfnk/socialmixr" class="uri">https://github.com/sbfnk/socialmixr</a><a href="8-model-development.html#fnref26" class="footnote-back">↩</a></p></li>
+<ol start="27">
+<li id="fn27"><p><code>socialmixr</code>: <a href="https://github.com/sbfnk/socialmixr" class="uri">https://github.com/sbfnk/socialmixr</a><a href="8-model-development.html#fnref27" class="footnote-back">↩</a></p></li>
 </ol>
 </div>
             </section>

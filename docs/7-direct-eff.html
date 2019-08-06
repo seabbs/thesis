@@ -370,7 +370,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="introduction-5" class="section level2">
 <h2><span class="header-section-number">7.1</span> Introduction</h2>
 <p>In 2005, England changed from universal Bacillus Calmette–Guérin (BCG) vaccination of school-age children to targeted BCG vaccination of high-risk children at birth. In this Chapter I aimed to assess the effects of this change in vaccination policy on the populations targeted by each vaccination scheme.</p>
-<p>I combined notification data from the Enhanced TB Surveillance (ETS) system, with demographic data from the Labour Force Survey (LFS) to construct retrospective cohorts of individuals in England relevant to both the universal, and targeted vaccination programmes between Jan 1, 2000 and Dec 31, 2010. For each cohort, I estimated incidence rates over a 5 year follow-up period and used Poisson and Negative Binomial regression models in order to estimate the impact of the change in policy on TB. This work was adapted from a preprint<a href="#fn23" class="footnote-ref" id="fnref23"><sup>23</sup></a> supervised by Hannah Christensen and Ellen Brooks-Pollock. Nicky Welton provided guidance on the statistical methods used.</p>
+<p>I combined notification data from the Enhanced TB Surveillance (ETS) system, with demographic data from the Labour Force Survey (LFS) to construct retrospective cohorts of individuals in England relevant to both the universal, and targeted vaccination programmes between Jan 1, 2000 and Dec 31, 2010. For each cohort, I estimated incidence rates over a 5 year follow-up period and used Poisson and Negative Binomial regression models in order to estimate the impact of the change in policy on TB. This work was adapted from a preprint<a href="#fn24" class="footnote-ref" id="fnref24"><sup>24</sup></a> supervised by Hannah Christensen and Ellen Brooks-Pollock. Nicky Welton provided guidance on the statistical methods used.</p>
 </div>
 <div id="background-5" class="section level2">
 <h2><span class="header-section-number">7.2</span> Background</h2>
@@ -803,7 +803,7 @@ Poisson model with a random intercept for year of study entry, adjusting with fi
 </table>
 <div id="implementation-overview" class="section level3">
 <h3><span class="header-section-number">7.4.1</span> Implementation overview</h3>
-<p>R <code>3.5.0</code> was used for all analysis.<span class="citation">[<a href="#ref-R">55</a>]</span> Reproducibility was ensured by using <code>R</code> package infrastructure<a href="#fn24" class="footnote-ref" id="fnref24"><sup>24</sup></a>. Missing data imputation using a GBM was implemented using the <code>h2o</code> package (see Section <a href="7-direct-eff.html#imp-uk-birth-status">7.4.2</a>).<span class="citation">[<a href="#ref-h2o2018">91</a>]</span> Incidence rates, with 95% confidence intervals, were calculated using the <code>epiR</code> package (see Chapter <a href="4-data.html#data">4</a>).<span class="citation">[<a href="#ref-EpiR">66</a>]</span> The <code>brms</code> package,<span class="citation">[<a href="#ref-Burkner">92</a>]</span> and STAN,<span class="citation">[<a href="#ref-StanDevelopmentTeam2016">93</a>]</span> was used to perform MCMC. Models were run until convergence (4 chains with a burn in of 10,000, and 10,000 sampled iterations each), with convergence being assessed using trace plots and the R hat diagnostic.<span class="citation">[<a href="#ref-StanDevelopmentTeam2016">93</a>]</span> All numeric confounders were centered and scaled by their standard deviation, and age was adjusted for using single year of age categories.</p>
+<p>R <code>3.5.0</code> was used for all analysis.<span class="citation">[<a href="#ref-R">55</a>]</span> Reproducibility was ensured by using <code>R</code> package infrastructure<a href="#fn25" class="footnote-ref" id="fnref25"><sup>25</sup></a>. Missing data imputation using a GBM was implemented using the <code>h2o</code> package (see Section <a href="7-direct-eff.html#imp-uk-birth-status">7.4.2</a>).<span class="citation">[<a href="#ref-h2o2018">91</a>]</span> Incidence rates, with 95% confidence intervals, were calculated using the <code>epiR</code> package (see Chapter <a href="4-data.html#data">4</a>).<span class="citation">[<a href="#ref-EpiR">66</a>]</span> The <code>brms</code> package,<span class="citation">[<a href="#ref-Burkner">92</a>]</span> and STAN,<span class="citation">[<a href="#ref-StanDevelopmentTeam2016">93</a>]</span> was used to perform MCMC. Models were run until convergence (4 chains with a burn in of 10,000, and 10,000 sampled iterations each), with convergence being assessed using trace plots and the R hat diagnostic.<span class="citation">[<a href="#ref-StanDevelopmentTeam2016">93</a>]</span> All numeric confounders were centered and scaled by their standard deviation, and age was adjusted for using single year of age categories.</p>
 </div>
 <div id="imp-uk-birth-status" class="section level3">
 <h3><span class="header-section-number">7.4.2</span> Imputation of UK birth status</h3>
@@ -4505,7 +4505,7 @@ Non-UK born
 <li><p>I found some evidence that the change in BCG policy was associated with a increase in incidence rates in the UK born school-age population (IRR: 1.08 (95%CI 0.97, 1.19)) and weaker evidence of an association with a reduction in incidence rates in UK born neonates (IRR: 0.96 (95%CI 0.82, 1.14)).</p></li>
 <li><p>Overall, we found that the change in BCG policy was associated with directly preventing 385 (95% CI -105, 881) TB cases.</p></li>
 <li><p>Withdrawing universal vaccination at school-age and targeting BCG vaccination towards high-risk neonates was associated with reduced incidence of TB in England. This was largely driven by reductions in the non-UK born. There was a slight increase in UK born school-age cases.</p></li>
-<li><p>The code for the analysis contained in this Chapter can be found at: <a href="doi.org/10.5281/zenodo.2583056">doi.org/10.5281/zenodo.2583056</a><a href="#fn25" class="footnote-ref" id="fnref25"><sup>25</sup></a></p></li>
+<li><p>The code for the analysis contained in this Chapter can be found at: <a href="doi.org/10.5281/zenodo.2583056">doi.org/10.5281/zenodo.2583056</a><a href="#fn26" class="footnote-ref" id="fnref26"><sup>26</sup></a></p></li>
 </ul>
 
 </div>
@@ -4602,10 +4602,10 @@ Non-UK born
 </div>
 <div class="footnotes">
 <hr />
-<ol start="23">
-<li id="fn23"><p>Preprint: <a href="https://doi.org/10.1101/567511" class="uri">https://doi.org/10.1101/567511</a><a href="7-direct-eff.html#fnref23" class="footnote-back">↩</a></p></li>
-<li id="fn24"><p>Analysis R package DOI: <a href="https://zenodo.org/badge/latestdoi/93072437">10.5281/zenodo.2551554</a><a href="7-direct-eff.html#fnref24" class="footnote-back">↩</a></p></li>
-<li id="fn25"><p>Alternatively available from: <a href="https://github.com/seabbs/DirectEffBCGPolicyChange" class="uri">https://github.com/seabbs/DirectEffBCGPolicyChange</a><a href="7-direct-eff.html#fnref25" class="footnote-back">↩</a></p></li>
+<ol start="24">
+<li id="fn24"><p>Preprint: <a href="https://doi.org/10.1101/567511" class="uri">https://doi.org/10.1101/567511</a><a href="7-direct-eff.html#fnref24" class="footnote-back">↩</a></p></li>
+<li id="fn25"><p>Analysis R package DOI: <a href="https://zenodo.org/badge/latestdoi/93072437">10.5281/zenodo.2551554</a><a href="7-direct-eff.html#fnref25" class="footnote-back">↩</a></p></li>
+<li id="fn26"><p>Alternatively available from: <a href="https://github.com/seabbs/DirectEffBCGPolicyChange" class="uri">https://github.com/seabbs/DirectEffBCGPolicyChange</a><a href="7-direct-eff.html#fnref26" class="footnote-back">↩</a></p></li>
 </ol>
 </div>
             </section>
