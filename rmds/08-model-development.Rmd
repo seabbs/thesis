@@ -46,7 +46,7 @@ This chapter presents the development and parameterisation of a, semi-stochastic
 
 When developing an infectious disease dynamic model there is a trade-off between reproducing reality and interpretability.[@Anderson1991] A model that includes all known features of a disease may not be able to answer questions of interest as it is too complex to interpret or because data does not exist to calibrate many of its parameters. A highly complex model, or indeed an overly simplistic one, may also be at risk of bias. The optimal model is therefore as parsimonious as possible, whilst still capturing the key features of a disease and making best use of all available data.[@Anderson1991] In this section the key features of TB, and BCG vaccination, that must be captured in order to produce meaningful output are discussed, as well as the features that can be excluded for this study question. Data from the ETS (Chapter \@ref(data)) is used to support evidence from the literature. Further background information can be found in Chapter \@ref(background) and Chapter \@ref(data). 
 
-## TB disease
+### TB disease
 
 The key features of TB transmission in England which must be captured in order to develop a methodologically sound model, are as follows:
 

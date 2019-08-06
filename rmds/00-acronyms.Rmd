@@ -4,9 +4,9 @@
 
 \textbf{DOTS} - Directly Observed Treatment Short-course \par
 
-\textbf{ETS} Enhanced Tuberculosis Surveillance System \par
+\textbf{ETS} - Enhanced Tuberculosis Surveillance System \par
 
-\textbf{HIV} Human Immunodeficiency Viruse \par
+\textbf{HIV} - Human Immunodeficiency Viruse \par
 
 \textbf{LFS} - Labour Force Survey \par
 
