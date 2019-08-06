@@ -51,7 +51,8 @@ plot_case_rate = function(df, RateVar) {
     theme_minimal() +
     theme(axis.text.x = element_text(angle = 90, hjust = 1),
           legend.position = "none") +
-    facet_wrap(~ CoB)
+    facet_wrap(~ CoB) +
+    labs(y = "Case rate")
   
   
   plot <- grid.arrange(p1 + ggtitle('a.)'), p2 + ggtitle('b.)'), ncol = 1, heights = c(0.55, 0.45))
