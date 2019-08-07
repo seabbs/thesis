@@ -362,6 +362,8 @@ Figure \@ref(fig:09-fig-sens) shows the partial rank correlation coefficients fo
 knitr::include_graphics(file.path(plots_path, "incidence-sensitivity-1.png"))
 ```
 
+\newpage
+
 ## Discussion
 
 In this chapter I have formulated the disease transmission model developed in the previous chapter as a state-space model, developed a model fitting pipeline to fit this model to observed data, discussed the approaches taken to try and improve the quality of the model fit, and presented preliminary results from the model fitting pipeline. The model fit the observed data poorly using the approach layed out here. Whilst multiple ad-hoc approaches were used to try and improve the quality of the model fit these did little to improve it. The model consistently under-predicted overall TB incidence and also failed to reproduce the observed age distribution. There was little evidence of a good fit to trends over time in the observed data. Model comparison showed that models that included modifying parameters for the transmission probability, and non-UK born mixing in young adults fitted the observed data better than those that did not. The estimated posterior distributions for all parameters were spuriously tight in comparison to the prior distributions. This may be evidence of poor mixing meaning that any conclusions drawn about the parameter sets selected may be incorrect.  Parameters that contributed to TB transmission across the time-span of the model dominated those that only contributed to recent TB transmission in the parameter sensitivity analysis. 
