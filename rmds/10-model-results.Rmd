@@ -20,7 +20,7 @@ library(kableExtra)
 library(pander)
 library(fs)
 
-## Wordcount: 2293 
+## Wordcount: 2292
 
 ## Resources path
 resources_path <- file.path("chapters", "model-fitting")

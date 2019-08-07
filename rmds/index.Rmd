@@ -7,7 +7,7 @@ altadvisor: 'Hannah Christensen'
 department: 'Faculty of Health Sciences'
 title: 'Modelling BCG vaccination in the UK'
 subtitle: 'What is the impact of changing policy?'
-wordcount: "54,957"
+wordcount: "55,024"
 knit: "bookdown::render_book"
 site: "bookdown::bookdown_site"
 always_allow_html: yes

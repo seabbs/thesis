@@ -9,7 +9,7 @@ regen_results <- FALSE
 knitr::opts_chunk$set(echo = FALSE, warnings = FALSE,
                       fig.width = 8, fig.height = 8,
                       out.width = "80%", fig.align = 'center')
-##Wordcount: 8577
+##Wordcount: 8554
 ```
 
 ```{r analysis-packages, include=FALSE}
