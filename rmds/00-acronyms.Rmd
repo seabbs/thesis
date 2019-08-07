@@ -8,6 +8,8 @@
 
 \textbf{HIV} - Human Immunodeficiency Viruse \par
 
+\textbf{JCVI} - Joint Committee on Vaccination and Immunisation \par
+
 \textbf{LFS} - Labour Force Survey \par
 
 \textbf{MCMC} - Markov Chain Monte Carlo \par
