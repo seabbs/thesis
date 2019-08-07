@@ -418,7 +418,7 @@ Where <span class="math inline">\(d\)</span> is the percentage decay in notifica
 <p><span class="math display">\[ N^{Current} = P T  f  x \]</span>
 <span class="math display">\[ N^{Projected} = (PT - N^{Current})(1 - d)^{L-Z} \]</span>
 <span class="math display">\[ N_i^{Total} = N^{Current}_i + N^{Projected}_{i-1} \]</span></p>
-<p>Where <span class="math inline">\(P\)</span> is the number of primary notifications, <span class="math inline">\(i\)</span> is the year of interest, <span class="math inline">\(N^{Current}\)</span> is the number of secondary cases in the current year, <span class="math inline">\(N^{Projected}\)</span> is the number of secondary cases in the subsequent timestep, and <span class="math inline">\(L\)</span> is the model timestep (here set to be 5).</p>
+<p>Where <span class="math inline">\(P\)</span> is the number of primary notifications, <span class="math inline">\(i\)</span> is the year of interest, <span class="math inline">\(N^{Current}\)</span> is the number of secondary cases in the current year, <span class="math inline">\(N^{Projected}\)</span> is the number of secondary cases in the subsequent timestep, and <span class="math inline">\(L\)</span> is the model timestep (set to be 5 years).</p>
 <p>I fitted this parameter using least squares to the original estimates of the total notifications due to ending the scheme under several scenarios, for several years. I validated the fitted model by comparing the results with those from the original implementation. Using the mean absolute percentage error, normalised by the orginal estimate.</p>
 </div>
 </div>

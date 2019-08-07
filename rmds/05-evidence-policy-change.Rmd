@@ -121,7 +121,7 @@ $$ N^{Current} = P T  f  x $$
 $$ N^{Projected} = (PT - N^{Current})(1 - d)^{L-Z} $$ 
 $$ N_i^{Total} = N^{Current}_i + N^{Projected}_{i-1} $$
 
-Where $P$ is the number of primary notifications, $i$ is the year of interest, $N^{Current}$ is the number of secondary cases in the current  year, $N^{Projected}$ is the number of secondary cases in the subsequent timestep, and $L$ is the model timestep (here set to be 5).
+Where $P$ is the number of primary notifications, $i$ is the year of interest, $N^{Current}$ is the number of secondary cases in the current  year, $N^{Projected}$ is the number of secondary cases in the subsequent timestep, and $L$ is the model timestep (set to be 5 years).
 
 I fitted this parameter using least squares to the original estimates of the total notifications due to ending the scheme under several scenarios, for several years. I validated the fitted model by comparing the results with those from the original implementation. Using the mean absolute percentage error, normalised by the orginal estimate.
 
