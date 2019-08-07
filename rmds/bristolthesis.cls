@@ -297,7 +297,7 @@
   \else
     \@restonecolfalse
   \fi
-  \chapter*{Contributiorship statements}
+  \chapter*{Contributorship statements}
   \fontsize{12}{14}\selectfont
 }{\clearpage \if@restonecol\twocolumn\fi}%
 
