@@ -410,8 +410,10 @@ Where <span class="math inline">\(d\)</span> is the percentage decay in notifica
 </ol>
 <p><span class="math display">\[ T=x+x^2+x^3+ . . = \frac{x}{1-x} \]</span>
 3. Estimate the expected average interval between each primary notification and all secondary notifications (<span class="math inline">\(Z\)</span>). This is defined to be the sum of time to all notifications, weighted by the fraction in each generation, divided by the sum of all notifications. Mathematically this is,</p>
-<p><span class="math display">\[ Z = \frac{xz + x^{2}2z + x^{3}3z + . .}{x+x^2+x^3+ . . }= \frac{z}{1-x} \]</span>
-#### Transmission chain model additions</p>
+<p><span class="math display">\[ Z = \frac{xz + x^{2}2z + x^{3}3z + . .}{x+x^2+x^3+ . . }= \frac{z}{1-x} \]</span></p>
+</div>
+<div id="transmission-chain-model-additions" class="section level4">
+<h4><span class="header-section-number">5.3.1.4</span> Transmission chain model additions</h4>
 <p>Implementing the model required several assumptions not detailed in <span class="citation">[<a href="#ref-Sutherland1989">39</a>]</span>. Firstly, as incidence rates for those ineligible for the BCG schools scheme are not published, I assumed that they were equal to those in the unvaccinated population. In addition, in order to reproduce the distribution of cases over time reported in Sutherland et al. I introduced an additional model step and parameter; the percentage of secondary cases due to a primary case in the first year after activation (<span class="math inline">\(f\)</span>). The distribution of secondary cases (<span class="math inline">\(N\)</span>) was then modelled by first estimating the number of secondary cases that occurred in the current year and then estimating how many secondary cases occurred 5 years later (due to the 5 year timestep). This iterative process can be summarised as follows,</p>
 <p><span class="math display">\[ N^{Current} = P T  f  x \]</span>
 <span class="math display">\[ N^{Projected} = (PT - N^{Current})(1 - d)^{L-Z} \]</span>
