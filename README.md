@@ -11,16 +11,19 @@ A dissertation submitted to the University of Bristol in accordance with the req
 
 ## Abstract 
 
-Bacillus Calmette–Guérin (BCG) remains the only licensed vaccine against Tuberculosis (TB). In 2005, England changed from universal vaccination of school-age children to targeted vaccination of high-risk neonates. Little work has been done to assess the impact of this policy change. This thesis evaluates the impact of this change.
+Bacillus Calmette–Guérin (BCG) remains the only licensed vaccine against Tuberculosis (TB). In 2005, England changed from universal vaccination of school-age children to targeted vaccination of high-risk neonates. Little work has been done to assess the impact of this policy change. This thesis evaluates the impact of this change. 
+
 
 Whilst the characteristics of TB in England have been reported elsewhere, little attention has been given to the role of BCG. Consequently, I explored and combined, the available data sources. Reporting on data quality issues, trends in incidence rates and differences in outcomes stratified by BCG status. 
 
 Prior to the change in policy, several studies were carried out to assess the impact. I recreated one such study and found that there was a greater impact than previously thought. 
+
+
 Determining the benefits of being BCG vaccinated is necessary to properly assess the impact of the policy change. I evaluated the evidence that vaccination may improve outcomes for TB cases in England and found that there was some evidence of an association between vaccination and reduced mortality. 
 
-Surveillance data can help assess whether changes in vaccination policy have influenced incidence rates. I used surveillance data to determine whether those at school-age, or neonates, were directly affected by the policy change. I found the policy change was associated with increased notifications in the UK born but this was outweighed by a reduction in notifications in the non-UK born. 
+Surveillance data can help assess whether changes in vaccination policy have influenced incidence rates. I used surveillance data to determine whether those at school-age, or neonates, were affected by the policy change. I found that the policy change was associated with increased notifications in the UK born but this was outweighed by a reduction in notifications in the non-UK born. 
 
-Statistical modelling is restricted by the available data. Therefore, I developed a dynamic model of TB, fit to available data, to forecast the impact of the policy change. Although the fit to the data was poor the forecasts suggested that continuing school-age vaccination reduced TB incidence compared with neonatal vaccination. Neonatal vaccination reduced incidence in children but had little impact on other age groups.
+Statistical modelling is restricted by the available data. Therefore, I developed a dynamic model of TB, fit to available data, to forecast the impact of the policy change. Although the fit to the data was poor, the forecasts suggested that continuing school-age vaccination reduced TB incidence in the UK born compared with neonatal vaccination. Neonatal vaccination reduced incidence in UK born children but had little impact on other age groups.
 
 ## Chapters
 
