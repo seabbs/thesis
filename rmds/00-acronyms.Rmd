@@ -1,5 +1,7 @@
 
 
+\textbf{ABC} - Approximate Bayesian Computation \par
+
 \textbf{BCG} - Bacillus Calmette–Guérin \par
 
 \textbf{DOTS} - Directly Observed Treatment Short-course \par

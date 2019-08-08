@@ -278,7 +278,7 @@ sources_table %>%
 Non-UK born pulmonary cases was estimated using the ETS for each age-group included in the model from 2000 until 2015. Prior to 2000, incidence in the non-UK born are unavailable and the relationship to transmission in UK-born cases is unknown. To account for this, importation of non-UK born cases in the model begins in 1960 and then is scaled up through to 2000. As the form of this relationship is unknown the following functional form was used to scale cases based on those observed in 2000,
 
 \begin{equation}
-\text{Non UK-born cases (time = t)} = \frac{\text{exp}\left(\frac{t - 1960}{\text{ln}(2) * (-1) * \iota_{\text{scale}}}\right) - 1}{\text{exp}\left(\frac{2000 - 1960}{\text{ln}(2) * (-1) * \iota_{\text{scale}}}\right) - 1} * \text{Non UK born cases (t = 2000)}
+\text{Non UK-born cases (time = t)} = \left(\frac{\text{exp}\left(\frac{t - 1960}{\text{ln}(2) (-1) \iota_{\text{scale}}}\right) - 1}{\text{exp}\left(\frac{2000 - 1960}{\text{ln}(2) (-1) \iota_{\text{scale}}}\right) - 1}\right) \text{Non UK-born cases (t = 2000)}
   (\#eq:non-uk-born-scale)
 \end{equation}
 
@@ -308,6 +308,8 @@ Vynnycky et al. found that the effective contact rate for TB was approximately 2
 
 
 The rate of recovery from active TB disease was estimated as the reciprocal of the time with active, untreated, disease from the ETS with UK born cases from 2000 until 2012. Cases with a period of time symptomatic that was less than 0 days were removed as these are likely to be spurious. Figure \@ref(fig:tb-time-treat) indicates that the distribution of time to treatment differs between children and adults and by pulmonary/extra-pulmonary TB status. There was little evidence that time to treatment differed between adults and older adults. A normal distribution was used for each age group, truncated to be greater than 0 months. Prior to 1952, and the introduction of isoniazid, I have assumed that the time to recovery from active TB disease is 2 years, representing natural recovery or other removal from the infectious population. From 1952 to 1990 the time with active TB is assumed to decrease linearly. 
+
+\newpage
 
 ```{r tb-time-treat, fig.scap = "Distribution of time to treatment (days) from the date of reported symptom onset until the date started treatment for the UK born, stratified by age group and pulmonary/extra-pulmonary TB status in the ETS system for notifications between 2000 and 2012.", fig.cap = "Distribution of time to treatment (days) from the date of reported symptom onset until the date started treatment for the UK born, stratified by age group and pulmonary/extra-pulmonary TB status in the ETS system for notifications between 2000 and 2012. Age is stratified into three groups; children (0-14), adults (15-69) older adults (70-89). The time from symptom onset to starting treatment is shorter for cases with pulmonary TB cases across age groups, with younger cases starting treatment more rapidly than older cases. Vertical lines indicate the 2.5\\%, 25\\%, 50\\%, 75\\%, and 97.5\\% quantiles.", out.extra = ""}
 knitr::include_graphics(file.path(resources_path, "resources", "figure", "time_to_treatment.png"))
