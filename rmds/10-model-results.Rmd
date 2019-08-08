@@ -83,8 +83,8 @@ sum_scenario %>% filter(Year %% 5 == 0) %>%
   set_names(., nm = names(.) %>% str_replace_all("BCG", "BCG (95% CI)")) %>% 
   select(-Observation) %>% 
 kable(
-  caption.short = "Forecast overall TB incidence for each scenario evaluated from 2005 to 2040.", 
-  caption = "Forecast overall TB incidence for each scenario evaluated from 2005 to 2040. For brevity only 5 year intervals are shown. (95\\% CI): 95\\% credible interval estimated using the 2.5\\% quantile and the 97.5\\% quantile.", booktabs = TRUE, longtable = TRUE) %>% 
+  caption.short = "Forecast of overall TB incidence for each scenario evaluated from 2005 to 2040.", 
+  caption = "Forecast of overall TB incidence for each scenario evaluated from 2005 to 2040. For brevity only 5 year intervals are shown. (95\\% CI): 95\\% credible interval estimated using the 2.5\\% quantile and the 97.5\\% quantile.", booktabs = TRUE, longtable = TRUE) %>% 
   kable_styling(latex_options = c("hold_position"))
 ```
 
@@ -92,7 +92,7 @@ As expected neonatal vaccination resulted in a rapid decline in TB incidence in 
   
 \newpage
 
-```{r 10-age-scenarios-fig, fig.scap = "Forecast TB incidence for each scenario evaluated from 2005 to 2040, stratified by age group.", fig.cap = "Forecast TB incidence for each scenario evaluated from 2005 to 2040, stratified by age group (0-11). 0-9 refers to 5 year age groups from 0-4 years old to 45-49 years old. 10 refers to those aged between 50 and 69 and 11 refers to those aged 70+. Scenarios are differentiated by colour. The darker ribbon for each colour identifies the interquartile range, whilst the lighter ribbon indicates the 2.5\\% and 97.5\\% quantiles. The line represents the median."}
+```{r 10-age-scenarios-fig, fig.scap = "Forecast of TB incidence for each scenario evaluated from 2005 to 2040, stratified by age group.", fig.cap = "Forecast of TB incidence for each scenario evaluated from 2005 to 2040, stratified by age group (0-11). 0-9 refers to 5 year age groups from 0-4 years old to 45-49 years old. 10 refers to those aged between 50 and 69 and 11 refers to those aged 70+. Scenarios are differentiated by colour. The darker ribbon for each colour identifies the interquartile range, whilst the lighter ribbon indicates the 2.5\\% and 97.5\\% quantiles. The line represents the median."}
 knitr::include_graphics(file.path(plots_path, "overview-scenarios-future-age-1.png"))
 ```
 
@@ -105,13 +105,13 @@ sum_deaths_scenario %>% filter(Year %% 5 == 0) %>%
   set_names(., nm = names(.) %>% str_replace_all("BCG", "BCG (95% CI)")) %>% 
   select(-Observation) %>% 
 kable(
-  caption.short = "Forecast overall TB mortality for each scenario evaluated from 2005 to 2040.", 
-  caption = "Forecast overall TB mortality for each scenario evaluated from 2005 to 2040. For brevity only 5 year intervals are shown.(95\\% CI): 95\\% credible interval estimated using the 2.5\\% quantile and the 97.5\\% quantile.", booktabs = TRUE, longtable = TRUE) %>% 
+  caption.short = "Forecast of overall TB mortality for each scenario evaluated from 2005 to 2040.", 
+  caption = "Forecast of overall TB mortality for each scenario evaluated from 2005 to 2040. For brevity only 5 year intervals are shown.(95\\% CI): 95\\% credible interval estimated using the 2.5\\% quantile and the 97.5\\% quantile.", booktabs = TRUE, longtable = TRUE) %>% 
   kable_styling(latex_options = c("hold_position"))
 ```
 
   
-```{r 10-age-scenarios-deaths-fig, fig.scap = "Forecast TB mortality for each scenario evaluated from 2005 to 2040, stratified by age group, stratified by age group.", fig.cap = "Forecast TB mortality for each scenario evaluated from 2005 to 2040, stratified by age group (0-11). 0-9 refers to 5 year age groups from 0-4 years old to 45-49 years old. 10 refers to those aged between 50 and 69 and 11 refers to those aged 70+. Scenarios are differentiated by colour. The darker ribbon for each colour identifies the interquartile range, whilst the lighter ribbon indicates the 2.5\\% and 97.5\\% quantiles. The line represents the median."}
+```{r 10-age-scenarios-deaths-fig, fig.scap = "Forecast of TB mortality for each scenario evaluated from 2005 to 2040, stratified by age group, stratified by age group.", fig.cap = "Forecast of TB mortality for each scenario evaluated from 2005 to 2040, stratified by age group (0-11). 0-9 refers to 5 year age groups from 0-4 years old to 45-49 years old. 10 refers to those aged between 50 and 69 and 11 refers to those aged 70+. Scenarios are differentiated by colour. The darker ribbon for each colour identifies the interquartile range, whilst the lighter ribbon indicates the 2.5\\% and 97.5\\% quantiles. The line represents the median."}
 knitr::include_graphics(file.path(plots_path, "overview-scenarios-deaths-future-age-1.png"))
 ```
 
