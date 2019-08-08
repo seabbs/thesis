@@ -302,14 +302,6 @@ C_{\text{eff}} & \text{if } t > 1980. \end{cases}
   (\#eq:scaled-contacts)
 \end{equation}
 
-Where, 
-
-\begin{equation}
-t_{hist}  := \begin{cases}
-1 & \text{if } t < 1990, \\
-0 & \text{if } t >= 1990. \end{cases}
-\end{equation}
-
 Vynnycky et al. found that the effective contact rate for TB was approximately 22 in 1900 and fell to approximately 1 in 1990.[@Vynnycky1999] Incidence rates have increased since the early 1980s and it is unclear what impact this has had on the effective contact rate. I have assumed that the effective contact rate is normally distributed with a mean of 1 and a standard deviation of 0.5. For the historic effective contact rate I have assumed a uniform distribution with a lower bound of the current effective contact rate and an upper bound of 20. I have also assumed that the historic contact rate declines over time, starting in 1935, reducing to the current effective contact rate in 1980. The speed of this decay is set by defining a half-life ($C^{\text{half-life}}_{\text{eff}}$). The prior for the half-life is assumed to be normally distributed with a mean of 5 years and a standard deviation of 5 (truncated to be greater than 0). This prior is based on the observed trend in notifications. Additional age stratification of $\beta$ is explored by including modifiers for certain age-groups. The baseline scenario is that no modification is required, with variation explored for young adults (15-29; $\beta_{\text{young adult}}$) as a scenario. The prior for this modifier was assumed to be uniform, bounded by 0 and 10. The contact rate is estimated by averaging the total age-specific contact rates estimated from POLYMOD data (Section \@ref(contact-matrix)) on an annual basis.
 
 ##### Rate of recovery from active disease

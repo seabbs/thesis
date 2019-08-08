@@ -1206,12 +1206,6 @@ C_{\text{eff}} + \left(C^{\text{hist}}_{\text{eff}} -  C_{\text{eff}} \right) \l
 C_{\text{eff}} &amp; \text{if } t &gt; 1980. \end{cases}
   \tag{8.16}
 \end{equation}\]</span></p>
-<p>Where,</p>
-<p><span class="math display">\[\begin{equation}
-t_{hist}  := \begin{cases}
-1 &amp; \text{if } t &lt; 1990, \\
-0 &amp; \text{if } t &gt;= 1990. \end{cases}
-\end{equation}\]</span></p>
 <p>Vynnycky et al. found that the effective contact rate for TB was approximately 22 in 1900 and fell to approximately 1 in 1990.<span class="citation">[<a href="#ref-Vynnycky1999">111</a>]</span> Incidence rates have increased since the early 1980s and it is unclear what impact this has had on the effective contact rate. I have assumed that the effective contact rate is normally distributed with a mean of 1 and a standard deviation of 0.5. For the historic effective contact rate I have assumed a uniform distribution with a lower bound of the current effective contact rate and an upper bound of 20. I have also assumed that the historic contact rate declines over time, starting in 1935, reducing to the current effective contact rate in 1980. The speed of this decay is set by defining a half-life (<span class="math inline">\(C^{\text{half-life}}_{\text{eff}}\)</span>). The prior for the half-life is assumed to be normally distributed with a mean of 5 years and a standard deviation of 5 (truncated to be greater than 0). This prior is based on the observed trend in notifications. Additional age stratification of <span class="math inline">\(\beta\)</span> is explored by including modifiers for certain age-groups. The baseline scenario is that no modification is required, with variation explored for young adults (15-29; <span class="math inline">\(\beta_{\text{young adult}}\)</span>) as a scenario. The prior for this modifier was assumed to be uniform, bounded by 0 and 10. The contact rate is estimated by averaging the total age-specific contact rates estimated from POLYMOD data (Section <a href="8-model-development.html#contact-matrix">8.4.2.1.5</a>) on an annual basis.</p>
 </div>
 <div id="rate-of-recovery-from-active-disease" class="section level5">
