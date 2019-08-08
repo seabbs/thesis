@@ -68,6 +68,7 @@ This repository has the following structure:
 - `plan`: Initial aims and objectives + in progress planning.
 - `packrat`: All R packages required.
 
+See individual chapter text and Rmd documents for additional reproducibility information.
 
 ### Data
 
