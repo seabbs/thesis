@@ -70,6 +70,7 @@ This repository has the following structure:
 - `docs`: Formatted PhD thesis (`html` + `pdf`).
 - `plan`: Initial aims and objectives + in progress planning.
 - `packrat`: All R packages required.
+- `projects`: A backup of all analysis code used for this PhD. Not present on GitHub this folder can be restored using `bash bin/grab_projects.sh`. Details of all analysis projects can be found in the introduction to the thesis
 
 See individual chapter text and Rmd documents for additional reproducibility information.
 
