@@ -12,7 +12,8 @@ cd $1
 # Declare an array of projects
 declare -a projects=("DirectEffBCGPolicyChange" "ETSMissing"
                      "AssessBCGPolicyChange" "ModelTBBCGEngland"
-                     "tbinenglanddataclean" "ExploreBCGOnOutcomes")
+                     "tbinenglanddataclean" "ExploreBCGOnOutcomes"
+                     "getTBinR")
 
 
 # Iterate the projects array using for loop
