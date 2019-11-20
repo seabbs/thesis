@@ -29,6 +29,8 @@ README.html
 ## Ignore private data
 rmds/thesis.*
 data/tbinenglanddataclean
+data/tb_data
+data/*.7z
 
 ##ignore projects code repos
 projects
