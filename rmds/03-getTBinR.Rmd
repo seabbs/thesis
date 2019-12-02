@@ -5,7 +5,7 @@ output:
   word_document: default
 ---
 
-# getTBinR: an R package for accessing and summarising the World Health Organization Tuberculosis data {#getTBinR}
+# getTBinR: an R package for accessing and summarising World Health Organization Tuberculosis data {#getTBinR}
 
 
 ```{r gettbinr-setup, include=FALSE, echo = FALSE}

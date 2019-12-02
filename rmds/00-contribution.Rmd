@@ -5,15 +5,15 @@ Journal of Open Source Software, 2019, 4(34), 1260., doi: https://doi.org/10.211
 
 SA conceived, designed, and undertook the work. SA wrote the paper and approved the work for publication. \par
 
-Abbott S, Christensen H, Brooks-Pollock E. *Reassessing the evidence for universal school-age Bacillus Calmette Guerin (BCG) vaccination in England and Wales*, doi: https://doi.org/10.1101/567511 \par
+Abbott S., Christensen H., Brooks-Pollock E. *Reassessing the evidence for universal school-age Bacillus Calmette Guerin (BCG) vaccination in England and Wales*, doi: https://doi.org/10.1101/567511 \par
 
 SA, HC, and EBP conceived and designed the work. SA undertook the analysis with advice from all other authors. All authors contributed to the interpretation of the data. SA wrote the first draft of the paper and all authors contributed to subsequent drafts. All authors approve the work for publication and agree to be accountable for the work. \par
 
-Abbott, S., Christensen, H., Lalor, M. K., Zenner, D., Campbell, C., Ramsay, M. E., & Brooks-Pollock, E. (2019). *Exploring the effects of BCG vaccination in patients diagnosed with tuberculosis: Observational study using the Enhanced Tuberculosis Surveillance system*. Vaccine, 1–6. doi: http://doi.org/10.1016/j.vaccine.2019.06.056 (preprint: https://doi.org/10.1101/366476) \par
+Abbott S., Christensen H., Lalor M. K., Zenner D., Campbell C., Ramsay M. E., & Brooks-Pollock, E. (2019). *Exploring the effects of BCG vaccination in patients diagnosed with tuberculosis: Observational study using the Enhanced Tuberculosis Surveillance system*. Vaccine, 1–6. doi: http://doi.org/10.1016/j.vaccine.2019.06.056 (preprint: https://doi.org/10.1101/366476) \par
 
 SA, HC, and EBP conceived and designed the work. SA undertook the analysis with advice from all other authors. All authors contributed to the interpretation of the data. SA wrote the first draft of the paper and all authors contributed to subsequent drafts. All authors approve the work for publication and agree to be accountable for the work. \par
 
-Abbott S, Christensen H, Welton NJ, Brooks-Pollock E. *Estimating the effect of the 2005 change in BCG policy in England: A retrospective cohort study*, doi: https://doi.org/10.1101/567511 \par
+Abbott S., Christensen H., Welton N.J., Brooks-Pollock E. *Estimating the effect of the 2005 change in BCG policy in England: A retrospective cohort study*, doi: https://doi.org/10.1101/567511 \par
 
 SA, HC, and EBP conceived and designed the work. NJW provided guidance on the statistical methods used. SA undertook the analysis with advice from all other authors. All authors contributed to the interpretation of the data. SA wrote the first draft of the paper and all authors contributed to subsequent drafts. All authors approve the work for publication and agree to be accountable for the work. \par
 
