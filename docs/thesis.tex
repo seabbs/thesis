@@ -245,7 +245,187 @@ Date:
 }
 
 \Acronyms{
-\texttt{\{r,\ eval\ =\ TRUE,\ echo\ =\ FALSE\}\ \#\#\ Load\ packages\ library(tibble)\ library(dplyr)\ \ \#\#\ Structure\ latex\ latex\_abr\ \textless{}-\ function(abr,\ desc)\ \{\ \ \ paste0("\textbackslash{}textbf\{",\ abr,\ "\}\ -\ ",\ desc,\ "\ \textbackslash{}\textbackslash{}par")\ \}\ \ \ \#\#\ Define\ acronyms\ abr\_df\ \textless{}-\ tibble::tribble(\ \ \ \textasciitilde{}abr,\ \textasciitilde{}desc,\ \ \ "AIC",\ "",\ \ \ "DIC",\ "",\ \ \ "POLYMOD",\ "",\ \ \ "MNAR",\ "",\ \ \ "MCAR",\ "",\ \ \ "MAR",\ "",\ \ \ "AVC",\ "",\ \ \ "PMEC",\ "",\ \ \ "IRR",\ "",\ \ \ "SE",\ "",\ \ \ "RR",\ "",\ \ \ "COVER",\ "",\ \ \ "MRC",\ "",\ \ \ "UK",\ "",\ \ \ "aHR",\ "",\ \ \ "IMD",\ "",\ \ \ "CI",\ "",\ \ \ "IQR",\ "",\ \ \ "MDR",\ "",\ \ \ "CRAN",\ "",\ \ \ "OR",\ "",\ \ \ "aOR",\ "",\ \ \ "DHSS",\ "",\ \ \ "LOOIC",\ "",\ \ \ "SD",\ "",\ \ \ "LRT",\ "",\ \ \ "LEOSS",\ "",\ \ \ "ABC",\ "Approximate\ Bayesian\ Computation",\ \ \ "BCG",\ "Bacillus\ Calmette–Guérin",\ \ \ "DOTS",\ "Directly\ Observed\ Treatment\ Short-course",\ \ \ "ETS",\ \ "Enhanced\ Tuberculosis\ Surveillance\ System",\ \ \ "HIV",\ \ "Human\ Immunodeficiency\ Viruse",\ \ \ "JCVI",\ "Joint\ Committee\ on\ Vaccination\ and\ Immunisation",\ \ \ "LFS",\ \ "Labour\ Force\ Survey",\ \ \ "MCMC",\ "Markov\ Chain\ Monte\ Carlo",\ \ \ "MRSA",\ "Methicillin-resistant\ *Staphylococcus\ aureus*",\ \ \ "ONS",\ \ "Office\ for\ National\ Statistics",\ \ \ \ "PHE",\ \ "Public\ Health\ England",\ \ \ "PMCMC",\ "Particle\ Markov\ Chain\ Monte\ Carlo",\ \ \ "PRCC",\ "Partial\ Rank\ Correlation\ Coefficient",\ \ \ "SMC",\ "Sequential\ Monte\ Carlo",\ \ \ \ "SMC-SMC",\ "Sequential\ Monte\ Carlo\ -\ Sequential\ Monte\ Carlo",\ \ \ "TB",\ "Tuberculosis",\ \ \ "TST",\ "Tuberculin\ Skin\ Testing",\ \ \ "WHO",\ "World\ Health\ Organization"\ )\ \ \#\#\ Order\ by\ A-Z\ abr\_df\ \textless{}-\ abr\_df{[}order(abr\_df\$abr),\ {]}\ \ \#\#\ Add\ latex\ formating\ to\ each\ entry\ abr\_df\ \textless{}-\ dplyr::mutate(abr\_df,\ latex\ =\ latex\_abr(abr,\ desc))} \texttt{r\ paste(abr\_df\$latex,\ collapse\ =\ "\ ")}
+\textbf{ABC} - Approximate Bayesian Computation
+
+\par
+
+\textbf{aHR} - adjusted Hazard Ratio
+
+\par
+
+\textbf{AIC} - Akaike Information Criterion
+
+\par
+
+\textbf{aOR} - adjusted Odds Ratio
+
+\par
+
+\textbf{AVC} -
+
+\par
+
+\textbf{BCG} - Bacillus Calmette--Guérin
+
+\par
+
+\textbf{CI} - Confidence Interval/Credible Interval
+
+\par
+
+\textbf{COVER} -
+
+\par
+
+\textbf{CRAN} -
+
+\par
+
+\textbf{DHSS} -
+
+\par
+
+\textbf{DIC} - Deviance Information Criterion
+
+\par
+
+\textbf{DOTS} - Directly Observed Treatment Short-course
+
+\par
+
+\textbf{ETS} - Enhanced Tuberculosis Surveillance System
+
+\par
+
+\textbf{HIV} - Human Immunodeficiency Viruse
+
+\par
+
+\textbf{IMD} -
+
+\par
+
+\textbf{IQR} - Inter-Quartile Range
+
+\par
+
+\textbf{IRR} - Incidence Rate Ratio
+
+\par
+
+\textbf{JCVI} - Joint Committee on Vaccination and Immunisation
+
+\par
+
+\textbf{LEOSS} -
+
+\par
+
+\textbf{LFS} - Labour Force Survey
+
+\par
+
+\textbf{LOOIC} - Leave One Out Information Criterion
+
+\par
+
+\textbf{LRT} - Likelihood Ratio Test
+
+\par
+
+\textbf{MAR} - Missing At Random
+
+\par
+
+\textbf{MCAR} - Missing Completely At Random
+
+\par
+
+\textbf{MCMC} - Markov Chain Monte Carlo
+
+\par
+
+\textbf{MDR} -
+
+\par
+
+\textbf{MNAR} - Missing Not At Random
+
+\par
+
+\textbf{MRC} -
+
+\par
+
+\textbf{MRSA} - Methicillin-resistant \emph{Staphylococcus aureus}
+
+\par
+
+\textbf{ONS} - Office for National Statistics
+
+\par
+
+\textbf{OR} - Odds Ratio
+
+\par
+
+\textbf{PHE} - Public Health England
+
+\par
+
+\textbf{PMCMC} - Particle Markov Chain Monte Carlo
+
+\par
+
+\textbf{PMEC} -
+
+\par
+
+\textbf{POLYMOD} -
+
+\par
+
+\textbf{PRCC} - Partial Rank Correlation Coefficient
+
+\par
+
+\textbf{RR} - Risk Ratio
+
+\par
+
+\textbf{SD} - Standard Deviation
+
+\par
+
+\textbf{SE} - Standard Error
+
+\par
+
+\textbf{SMC} - Sequential Monte Carlo
+
+\par
+
+\textbf{SMC-SMC} - Sequential Monte Carlo - Sequential Monte Carlo
+
+\par
+
+\textbf{TB} - Tuberculosis
+
+\par
+
+\textbf{TST} - Tuberculin Skin Testing
+
+\par
+
+\textbf{UK} - United Kingdom
+
+\par
+
+\textbf{WHO} - World Health Organization
+
+\par
+
+, FALSE\\
 }
 
 	\usepackage{booktabs}
@@ -386,7 +566,187 @@ Date:
   
       \listoffigures
       \begin{acronyms}
-      \texttt{\{r,\ eval\ =\ TRUE,\ echo\ =\ FALSE\}\ \#\#\ Load\ packages\ library(tibble)\ library(dplyr)\ \ \#\#\ Structure\ latex\ latex\_abr\ \textless{}-\ function(abr,\ desc)\ \{\ \ \ paste0("\textbackslash{}textbf\{",\ abr,\ "\}\ -\ ",\ desc,\ "\ \textbackslash{}\textbackslash{}par")\ \}\ \ \ \#\#\ Define\ acronyms\ abr\_df\ \textless{}-\ tibble::tribble(\ \ \ \textasciitilde{}abr,\ \textasciitilde{}desc,\ \ \ "AIC",\ "",\ \ \ "DIC",\ "",\ \ \ "POLYMOD",\ "",\ \ \ "MNAR",\ "",\ \ \ "MCAR",\ "",\ \ \ "MAR",\ "",\ \ \ "AVC",\ "",\ \ \ "PMEC",\ "",\ \ \ "IRR",\ "",\ \ \ "SE",\ "",\ \ \ "RR",\ "",\ \ \ "COVER",\ "",\ \ \ "MRC",\ "",\ \ \ "UK",\ "",\ \ \ "aHR",\ "",\ \ \ "IMD",\ "",\ \ \ "CI",\ "",\ \ \ "IQR",\ "",\ \ \ "MDR",\ "",\ \ \ "CRAN",\ "",\ \ \ "OR",\ "",\ \ \ "aOR",\ "",\ \ \ "DHSS",\ "",\ \ \ "LOOIC",\ "",\ \ \ "SD",\ "",\ \ \ "LRT",\ "",\ \ \ "LEOSS",\ "",\ \ \ "ABC",\ "Approximate\ Bayesian\ Computation",\ \ \ "BCG",\ "Bacillus\ Calmette–Guérin",\ \ \ "DOTS",\ "Directly\ Observed\ Treatment\ Short-course",\ \ \ "ETS",\ \ "Enhanced\ Tuberculosis\ Surveillance\ System",\ \ \ "HIV",\ \ "Human\ Immunodeficiency\ Viruse",\ \ \ "JCVI",\ "Joint\ Committee\ on\ Vaccination\ and\ Immunisation",\ \ \ "LFS",\ \ "Labour\ Force\ Survey",\ \ \ "MCMC",\ "Markov\ Chain\ Monte\ Carlo",\ \ \ "MRSA",\ "Methicillin-resistant\ *Staphylococcus\ aureus*",\ \ \ "ONS",\ \ "Office\ for\ National\ Statistics",\ \ \ \ "PHE",\ \ "Public\ Health\ England",\ \ \ "PMCMC",\ "Particle\ Markov\ Chain\ Monte\ Carlo",\ \ \ "PRCC",\ "Partial\ Rank\ Correlation\ Coefficient",\ \ \ "SMC",\ "Sequential\ Monte\ Carlo",\ \ \ \ "SMC-SMC",\ "Sequential\ Monte\ Carlo\ -\ Sequential\ Monte\ Carlo",\ \ \ "TB",\ "Tuberculosis",\ \ \ "TST",\ "Tuberculin\ Skin\ Testing",\ \ \ "WHO",\ "World\ Health\ Organization"\ )\ \ \#\#\ Order\ by\ A-Z\ abr\_df\ \textless{}-\ abr\_df{[}order(abr\_df\$abr),\ {]}\ \ \#\#\ Add\ latex\ formating\ to\ each\ entry\ abr\_df\ \textless{}-\ dplyr::mutate(abr\_df,\ latex\ =\ latex\_abr(abr,\ desc))} \texttt{r\ paste(abr\_df\$latex,\ collapse\ =\ "\ ")}
+      \textbf{ABC} - Approximate Bayesian Computation
+      
+      \par
+      
+      \textbf{aHR} - adjusted Hazard Ratio
+      
+      \par
+      
+      \textbf{AIC} - Akaike Information Criterion
+      
+      \par
+      
+      \textbf{aOR} - adjusted Odds Ratio
+      
+      \par
+      
+      \textbf{AVC} -
+      
+      \par
+      
+      \textbf{BCG} - Bacillus Calmette--Guérin
+      
+      \par
+      
+      \textbf{CI} - Confidence Interval/Credible Interval
+      
+      \par
+      
+      \textbf{COVER} -
+      
+      \par
+      
+      \textbf{CRAN} -
+      
+      \par
+      
+      \textbf{DHSS} -
+      
+      \par
+      
+      \textbf{DIC} - Deviance Information Criterion
+      
+      \par
+      
+      \textbf{DOTS} - Directly Observed Treatment Short-course
+      
+      \par
+      
+      \textbf{ETS} - Enhanced Tuberculosis Surveillance System
+      
+      \par
+      
+      \textbf{HIV} - Human Immunodeficiency Viruse
+      
+      \par
+      
+      \textbf{IMD} -
+      
+      \par
+      
+      \textbf{IQR} - Inter-Quartile Range
+      
+      \par
+      
+      \textbf{IRR} - Incidence Rate Ratio
+      
+      \par
+      
+      \textbf{JCVI} - Joint Committee on Vaccination and Immunisation
+      
+      \par
+      
+      \textbf{LEOSS} -
+      
+      \par
+      
+      \textbf{LFS} - Labour Force Survey
+      
+      \par
+      
+      \textbf{LOOIC} - Leave One Out Information Criterion
+      
+      \par
+      
+      \textbf{LRT} - Likelihood Ratio Test
+      
+      \par
+      
+      \textbf{MAR} - Missing At Random
+      
+      \par
+      
+      \textbf{MCAR} - Missing Completely At Random
+      
+      \par
+      
+      \textbf{MCMC} - Markov Chain Monte Carlo
+      
+      \par
+      
+      \textbf{MDR} -
+      
+      \par
+      
+      \textbf{MNAR} - Missing Not At Random
+      
+      \par
+      
+      \textbf{MRC} -
+      
+      \par
+      
+      \textbf{MRSA} - Methicillin-resistant \emph{Staphylococcus aureus}
+      
+      \par
+      
+      \textbf{ONS} - Office for National Statistics
+      
+      \par
+      
+      \textbf{OR} - Odds Ratio
+      
+      \par
+      
+      \textbf{PHE} - Public Health England
+      
+      \par
+      
+      \textbf{PMCMC} - Particle Markov Chain Monte Carlo
+      
+      \par
+      
+      \textbf{PMEC} -
+      
+      \par
+      
+      \textbf{POLYMOD} -
+      
+      \par
+      
+      \textbf{PRCC} - Partial Rank Correlation Coefficient
+      
+      \par
+      
+      \textbf{RR} - Risk Ratio
+      
+      \par
+      
+      \textbf{SD} - Standard Deviation
+      
+      \par
+      
+      \textbf{SE} - Standard Error
+      
+      \par
+      
+      \textbf{SMC} - Sequential Monte Carlo
+      
+      \par
+      
+      \textbf{SMC-SMC} - Sequential Monte Carlo - Sequential Monte Carlo
+      
+      \par
+      
+      \textbf{TB} - Tuberculosis
+      
+      \par
+      
+      \textbf{TST} - Tuberculin Skin Testing
+      
+      \par
+      
+      \textbf{UK} - United Kingdom
+      
+      \par
+      
+      \textbf{WHO} - World Health Organization
+      
+      \par
+      
+      , FALSE\\
     \end{acronyms}
   \mainmatter % here the regular arabic numbering starts
   \pagestyle{fancyplain} % turns page numbering back on

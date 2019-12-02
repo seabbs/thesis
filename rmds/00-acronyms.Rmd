@@ -1,8 +1,4 @@
 
-```{r, eval = TRUE, echo = FALSE}
-## Load packages
-library(tibble)
-library(dplyr)
 
 ## Structure latex
 latex_abr <- function(abr, desc) {
@@ -13,32 +9,32 @@ latex_abr <- function(abr, desc) {
 ## Define acronyms
 abr_df <- tibble::tribble(
   ~abr, ~desc,
-  "AIC", "",
-  "DIC", "",
+  "AIC", "Akaike Information Criterion",
+  "DIC", "Deviance Information Criterion",
   "POLYMOD", "",
-  "MNAR", "",
-  "MCAR", "",
-  "MAR", "",
+  "MNAR", "Missing Not At Random",
+  "MCAR", "Missing Completely At Random",
+  "MAR", "Missing At Random",
   "AVC", "",
   "PMEC", "",
-  "IRR", "",
-  "SE", "",
-  "RR", "",
+  "IRR", "Incidence Rate Ratio",
+  "SE", "Standard Error",
+  "RR", "Risk Ratio",
   "COVER", "",
   "MRC", "",
-  "UK", "",
-  "aHR", "",
+  "UK", "United Kingdom",
+  "aHR", "adjusted Hazard Ratio",
   "IMD", "",
-  "CI", "",
-  "IQR", "",
+  "CI", "Confidence Interval/Credible Interval",
+  "IQR", "Inter-Quartile Range",
   "MDR", "",
   "CRAN", "",
-  "OR", "",
-  "aOR", "",
+  "OR", "Odds Ratio",
+  "aOR", "adjusted Odds Ratio",
   "DHSS", "",
-  "LOOIC", "",
-  "SD", "",
-  "LRT", "",
+  "LOOIC", "Leave One Out Information Criterion",
+  "SD", "Standard Deviation",
+  "LRT", "Likelihood Ratio Test",
   "LEOSS", "",
   "ABC", "Approximate Bayesian Computation",
   "BCG", "Bacillus Calmette–Guérin",
@@ -65,7 +61,6 @@ abr_df <- abr_df[order(abr_df$abr), ]
 
 ## Add latex formating to each entry
 abr_df <- dplyr::mutate(abr_df, latex = latex_abr(abr, desc))
-```
 
 
-`r paste(abr_df$latex, collapse = " ")`
+paste(abr_df$latex, collapse = " ")
