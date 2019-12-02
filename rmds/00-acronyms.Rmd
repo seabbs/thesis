@@ -1,5 +1,5 @@
 
-```{r, eval = FALSE, echo = FALSE}
+```{r, eval = TRUE, echo = FALSE}
 ## Load packages
 library(tibble)
 library(dplyr)
@@ -66,3 +66,6 @@ abr_df <- abr_df[order(abr_df$abr), ]
 ## Add latex formating to each entry
 abr_df <- dplyr::mutate(abr_df, latex = latex_abr(abr, desc))
 ```
+
+
+`r paste(abr_df$latex, collapse = " ")`
