@@ -7,4 +7,4 @@ declaration: |
 contribution: |
   `r if(knitr:::is_latex_output()) paste(readLines("00-contribution.Rmd"), collapse = ' ')`
 acronyms: |
-  `r if(knitr:::is_latex_output()) source("00-acronyms.R")`
+  `r if(knitr:::is_latex_output()) paste(source("00-acronyms.R"), collapse = ' ')`
