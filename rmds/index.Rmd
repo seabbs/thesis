@@ -1,14 +1,4 @@
 ---
-abstract: |
-  `r if(knitr:::is_latex_output()) paste(readLines("00-abstract.Rmd"), collapse = ' ')`
-acknowledgements: |
-  `r if(knitr:::is_latex_output()) paste(readLines("00-acknowledgements.Rmd"), collapse = ' ')`
-declaration: |
-  `r if(knitr:::is_latex_output()) paste(readLines("00-declaration.Rmd"), collapse = ' ')`
-contribution: |
-  `r if(knitr:::is_latex_output()) paste(readLines("00-contribution.Rmd"), collapse = ' ')`
-acronyms: |
-  `r if(knitr:::is_latex_output()) paste(readLines("00-acronyms.Rmd"), collapse = ' ')`
 author: 'Samuel Abbott'
 date: 'August 2019'
 division: 'Bristol Medical School\: Population Health Sciences'
