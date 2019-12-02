@@ -1,0 +1,88 @@
+---
+author: 'Samuel Abbott'
+date: 'August 2019'
+division: 'Bristol Medical School\: Population Health Sciences'
+advisor: 'Ellen Brooks Pollock'
+altadvisor: 'Hannah Christensen'
+department: 'Faculty of Health Sciences'
+title: 'Modelling BCG vaccination in the UK'
+subtitle: 'What is the impact of changing policy?'
+wordcount: "55,287"
+knit: "bookdown::render_book"
+site: "bookdown::bookdown_site"
+always_allow_html: yes
+output: 
+  ##Thesis can only be fully built for pdf using the makefile
+  #thesisdown::thesis_pdf: default
+  thesisdown::thesis_gitbook: default
+  #thesisdown::thesis_word: default
+  #thesisdown::thesis_epub: default
+bibliography: ["bib/thesis.bib"]
+#Download your specific bibliography database file and refer to it in the line above.
+link-citations: yes
+colorlinks: yes
+csl: ["csl/bmj.csl"]
+#Download your specific csl file and refer to it in the line above.
+lot: true
+lof: true
+space_between_paragraphs: true
+#Delete the # at the beginning of the previous line if you'd like
+#to have a blank new line between each paragraph
+header-includes:
+  - \usepackage{booktabs}
+  - \usepackage{longtable}
+  - \usepackage{array}
+  - \usepackage{multirow}
+  - \usepackage[table]{xcolor}
+  - \usepackage{wrapfig}
+  - \usepackage{float}
+  - \usepackage{colortbl}
+  - \usepackage{pdflscape}
+  - \usepackage{tabu}
+  - \usepackage{threeparttable}
+  - \usepackage{threeparttablex}
+  - \usepackage[normalem]{ulem}
+  - \usepackage{makecell}
+  
+description: "Bacillus Calmette–Guérin (BCG) remains the only licensed vaccine against Tuberculosis (TB). In 2005, England changed from universal vaccination of school-age children to targeted vaccination of high-risk neonates. Little work has been done to assess the impact of this policy change. This thesis evaluates the impact of this change."
+url: https\://samabbott.co.uk/thesis
+github-repo: seabbs/thesis
+cover-image: img/logo.png
+favicon: img/logo.png
+---
+
+
+```{r knitr-options, include = FALSE}
+knitr::opts_chunk$set(echo = FALSE, dpi = 320, 
+                      fig.width = 8, fig.height = 8,
+                      out.width = "80%", fig.align = 'center')
+```
+
+```{r include_packages, include = FALSE}
+if (!require(devtools))
+  install.packages("devtools", repos = "http://cran.rstudio.com")
+if (!require(thesisdown))
+  devtools::install_github("ismayc/thesisdown")
+library(thesisdown)
+if (!require(tidyverse))
+  install.packages("tidyverse", repos = "http://cran.rstudio.com")
+PaperTheme <- ggplot2::theme_minimal() +
+  theme(legend.position = "top")
+ggplot2::theme_set(PaperTheme)
+```
+
+
+`r if(!knitr:::is_latex_output()) '# Preface {-}'`
+
+
+`r if(!knitr:::is_latex_output()) 'A dissertation submitted to the University of Bristol in accordance with the requirements of the degree of Doctor of Philosophy in the Faculty of Health Sciences.'`
+
+`r if(!knitr:::is_latex_output()) '## Abstract {-}'`
+
+```{r abstract, child = "00-abstract.Rmd", eval = !knitr:::is_latex_output()}
+```
+
+`r if(!knitr:::is_latex_output()) '## Acknowledgements {-}'`
+
+```{r acknowledgements, child = "00-acknowledgements.Rmd", eval = !knitr:::is_latex_output()}
+```

@@ -1,37 +1,68 @@
 
+```{r, eval = FALSE, echo = FALSE}
+## Load packages
+library(tibble)
+library(dplyr)
 
-\textbf{ABC} - Approximate Bayesian Computation \par
+## Structure latex
+latex_abr <- function(abr, desc) {
+  paste0("\textbf{", abr, "} - ", desc, " \\par")
+}
 
-\textbf{BCG} - Bacillus Calmette–Guérin \par
 
-\textbf{DOTS} - Directly Observed Treatment Short-course \par
+## Define acronyms
+abr_df <- tibble::tribble(
+  ~abr, ~desc,
+  "AIC", "",
+  "DIC", "",
+  "POLYMOD", "",
+  "MNAR", "",
+  "MCAR", "",
+  "MAR", "",
+  "AVC", "",
+  "PMEC", "",
+  "IRR", "",
+  "SE", "",
+  "RR", "",
+  "COVER", "",
+  "MRC", "",
+  "UK", "",
+  "aHR", "",
+  "IMD", "",
+  "CI", "",
+  "IQR", "",
+  "MDR", "",
+  "CRAN", "",
+  "OR", "",
+  "aOR", "",
+  "DHSS", "",
+  "LOOIC", "",
+  "SD", "",
+  "LRT", "",
+  "LEOSS", "",
+  "ABC", "Approximate Bayesian Computation",
+  "BCG", "Bacillus Calmette–Guérin",
+  "DOTS", "Directly Observed Treatment Short-course",
+  "ETS",  "Enhanced Tuberculosis Surveillance System",
+  "HIV",  "Human Immunodeficiency Viruse",
+  "JCVI", "Joint Committee on Vaccination and Immunisation",
+  "LFS",  "Labour Force Survey",
+  "MCMC", "Markov Chain Monte Carlo",
+  "MRSA", "Methicillin-resistant *Staphylococcus aureus*",
+  "ONS",  "Office for National Statistics", 
+  "PHE",  "Public Health England",
+  "PMCMC", "Particle Markov Chain Monte Carlo",
+  "PRCC", "Partial Rank Correlation Coefficient",
+  "SMC", "Sequential Monte Carlo", 
+  "SMC-SMC", "Sequential Monte Carlo - Sequential Monte Carlo",
+  "TB", "Tuberculosis",
+  "TST", "Tuberculin Skin Testing",
+  "WHO", "World Health Organization"
+)
 
-\textbf{ETS} - Enhanced Tuberculosis Surveillance System \par
+## Order by A-Z
+abr_df <- abr_df[order(abr_df$abr), ]
 
-\textbf{HIV} - Human Immunodeficiency Viruse \par
-
-\textbf{JCVI} - Joint Committee on Vaccination and Immunisation \par
-
-\textbf{LFS} - Labour Force Survey \par
-
-\textbf{MCMC} - Markov Chain Monte Carlo \par
-
-\textbf{MRSA} - Methicillin-resistant *Staphylococcus aureus* \par
-
-\textbf{ONS} - Office for National Statistics \par
-
-\textbf{PHE} - Public Health England \par
-
-\textbf{PMCMC} - Particle Markov Chain Monte Carlo \par
-
-\textbf{PRCC} - Partial Rank Correlation Coefficient \par
-
-\textbf{SMC} - Sequential Monte Carlo \par
-
-\textbf{SMC-SMC}  Sequential Monte Carlo - Sequential Monte Carlo \par
-
-\textbf{TB} – Tuberculosis \par
-
-\textbf{TST} - Tuberculin Skin Testing \par
-
-\textbf{WHO} - World Health Organization \par
+## Add latex formating to each entry
+abr_df <- dplyr::mutate(abr_df, latex = latex_abr(abr, desc))
+```
