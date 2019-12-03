@@ -52,7 +52,8 @@ abr_df <- tibble::tribble(
   "SMC-SMC", "Sequential Monte Carlo - Sequential Monte Carlo",
   "TB", "Tuberculosis",
   "TST", "Tuberculin Skin Testing",
-  "WHO", "World Health Organization"
+  "WHO", "World Health Organization",
+  "NTM", "Non-Tuberculosis Mycobacteria"
 )
 
 ## Order by A-Z
