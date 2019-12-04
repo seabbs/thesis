@@ -129,9 +129,9 @@ Default weakly informative priors were used based on those provided by the `brms
 
 I estimated the magnitude of the estimated impact from the change in BCG policy by applying the IRR estimates from the best fitting model for each cohort to the observed number of notifications from 2005 until 2015 in the study population. For the cohorts relevant to the universal school-age vaccination scheme I estimated the number of prevented cases by first aggregating cases ($C_0$) and then using the following equation,
 
-\[ C^i_P = C_0 * (1 - I^i),\ \text{Where}\ i = e,\ l,\ u.\]
+\[ C^i_P = C_0 (1 - I^i),\ \text{Where}\ i = e,\ l,\ u.\]
 
-Where $C^i_P$ is the predicted number of cases prevented using the mean ($e$), 2.5% bound ($l$) and 97.5% bound ($u$) of the IRR estimate ($I^i$). For the cohorts relevant to the targeted high-risk neonatal scheme I used a related equation, adjusting for the fact that the populations were exposed to the scheme and I therefore had to first estimate the number of cases that would have been observed had the scheme not been implemented. After simplification this results in the following equation,
+Where $C^i_P$ is the predicted number of cases prevented using the median ($e$), 2.5% bound ($l$) and 97.5% bound ($u$) of the IRR estimate ($I^i$). For the cohorts relevant to the targeted high-risk neonatal scheme I used a related equation, adjusting for the fact that the populations were exposed to the scheme and I therefore had to first estimate the number of cases that would have been observed had the scheme not been implemented. After simplification this results in the following equation,
 
 \[ C^i_P =  C_0\left(\frac{1}{I^i } - 1\right),\ \text{Where}\ i = e,\ l,\ u.\]
 
