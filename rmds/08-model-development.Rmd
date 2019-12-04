@@ -124,7 +124,7 @@ knitr::include_graphics(file.path(resources_path, "resources", "model_diagrams",
 In order to simplify the model equations the disease (d) and demographic and vaccination models (p) have been separated such that (where $C = S,\ H,\ L,\ P,\ E,\ T_P,\ T_E$), 
 
 \begin{equation}
-\frac{dC}{dt} =  \frac{dC^{d}}{dt} + \frac{dC^{p}}{dt} \\
+\frac{dC}{dt} =  \frac{dC^{d}}{dt} + \frac{dC^{p}}{dt}
   (\#eq:split-models)
 \end{equation}
 
