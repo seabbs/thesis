@@ -481,7 +481,7 @@ Age-specific incidence rates were calculated as follows:
   (\#eq:incEq)
 \end{equation} 
 
-Age-standardised rates were calculated using the `r 'epiR'` package for R,[@Stevenson2016] using the average age distribution of England from 2000-2015 as the standard population to allow comparison between years. Those aged 90+ were excluded as demographic data for this population were unreliable. The code used to calculate incidence rates is available online as an R package (`tbinenglanddataclean`^[`tbinenglanddataclean`: https://github.com/seabbs/tbinenglanddataclean]; see Chapter \@ref(introduction)).
+Age-standardised rates were calculated using the `r 'epiR'` package for R,[@EpiR] using the average age distribution of England from 2000-2015 as the standard population to allow comparison between years. Those aged 90+ were excluded as demographic data for this population were unreliable. The code used to calculate incidence rates is available online as an R package (`tbinenglanddataclean`^[`tbinenglanddataclean`: https://github.com/seabbs/tbinenglanddataclean]; see Chapter \@ref(introduction)).
 
 ### Overall trends in TB incidence rates
 
