@@ -46,7 +46,7 @@ walk(files, load_rds)
 
 In the previous chapter I outlined a model fitting pipeline and discussed the results from using it on the model developed in Chapter \@ref(model-development). Whilst this fitted model may be used to explore the epidemiology of tuberculosis (TB) in the early 2000's it does not - as currently stands - explore the impact of the 2005 change in BCG vaccination policy (Chapter \@ref(background)). Models are useful in this context as dynamic model forecasts can be derived for multiple scenarios that may only exist on paper and so have little to no data to support them. These forecasts may then be used by policy makers as indicators of the likely impact of these scenarios.
 
-This chapter details the approach used to extrapolate the findings from the previous chapter beyond the change in BCG policy in 2005 and into the future. It first outlines the scenarios considered, then details the assumptions used to expand the time horizon of the model. Finally the impact of each scenario is explored over multiple time horizons. As discussed in the previous chapter these findings are preliminary in nature, meaning quantitative conclusions cannot be drawn and qualitative conclusions must be appropriately caveat-ed.
+This chapter details the approach used to extrapolate the findings from the previous chapter beyond the change in BCG policy in 2005 and into the future. It first outlines the scenarios considered, then details the assumptions used to expand the time horizon of the model. Finally the impact of each scenario is explored over multiple time horizons. As discussed in the previous chapter these findings are preliminary in nature, meaning quantitative conclusions cannot be drawn and qualitative conclusions must be appropriately caveated.
 
 ## Methods
 
@@ -80,11 +80,11 @@ Continuing with school-age vaccination resulted in the fewest number of cases re
 
 ```{r 10-table-future-incidence}
 sum_scenario %>% filter(Year %% 5 == 0) %>% 
-  set_names(., nm = names(.) %>% str_replace_all("BCG", "BCG (95% CI)")) %>% 
+  set_names(., nm = names(.) %>% str_replace_all("BCG", "BCG (95% CrI)")) %>% 
   select(-Observation) %>% 
 kable(
   caption.short = "Forecast of overall TB incidence for each scenario evaluated from 2005 to 2040.", 
-  caption = "Forecast of overall TB incidence for each scenario evaluated from 2005 to 2040. For brevity only 5 year intervals are shown. (95\\% CI): 95\\% credible interval estimated using the 2.5\\% quantile and the 97.5\\% quantile.", booktabs = TRUE, longtable = TRUE) %>% 
+  caption = "Forecast of overall TB incidence for each scenario evaluated from 2005 to 2040. For brevity only 5 year intervals are shown. (95\\% CrI): 95\\% credible interval estimated using the 2.5\\% quantile and the 97.5\\% quantile.", booktabs = TRUE, longtable = TRUE) %>% 
   kable_styling(latex_options = c("hold_position"))
 ```
 
@@ -102,11 +102,11 @@ As estimates of TB mortality were low (significantly lower than estimated using 
 
 ```{r 10-table-deaths-preds}
 sum_deaths_scenario %>% filter(Year %% 5 == 0) %>% 
-  set_names(., nm = names(.) %>% str_replace_all("BCG", "BCG (95% CI)")) %>% 
+  set_names(., nm = names(.) %>% str_replace_all("BCG", "BCG (95% CrI)")) %>% 
   select(-Observation) %>% 
 kable(
   caption.short = "Forecast of overall TB mortality for each scenario evaluated from 2005 to 2040.", 
-  caption = "Forecast of overall TB mortality for each scenario evaluated from 2005 to 2040. For brevity only 5 year intervals are shown.(95\\% CI): 95\\% credible interval estimated using the 2.5\\% quantile and the 97.5\\% quantile.", booktabs = TRUE, longtable = TRUE) %>% 
+  caption = "Forecast of overall TB mortality for each scenario evaluated from 2005 to 2040. For brevity only 5 year intervals are shown.(95\\% CrI): 95\\% credible interval estimated using the 2.5\\% quantile and the 97.5\\% quantile.", booktabs = TRUE, longtable = TRUE) %>% 
   kable_styling(latex_options = c("hold_position"))
 ```
 

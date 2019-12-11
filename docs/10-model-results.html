@@ -314,7 +314,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="9.3.6" data-path="9-model-fitting.html"><a href="9-model-fitting.html#pipeline-overview"><i class="fa fa-check"></i><b>9.3.6</b> Pipeline overview</a></li>
 </ul></li>
 <li class="chapter" data-level="9.4" data-path="9-model-fitting.html"><a href="9-model-fitting.html#results-3"><i class="fa fa-check"></i><b>9.4</b> Results</a><ul>
-<li class="chapter" data-level="9.4.1" data-path="9-model-fitting.html"><a href="9-model-fitting.html#ad-hoc-calibration"><i class="fa fa-check"></i><b>9.4.1</b> Ad-hoc calibration</a></li>
+<li class="chapter" data-level="9.4.1" data-path="9-model-fitting.html"><a href="9-model-fitting.html#ad-hoc-calibration"><i class="fa fa-check"></i><b>9.4.1</b> Ad hoc calibration</a></li>
 <li class="chapter" data-level="9.4.2" data-path="9-model-fitting.html"><a href="9-model-fitting.html#particle-and-proposal-calibration"><i class="fa fa-check"></i><b>9.4.2</b> Particle and proposal calibration</a></li>
 <li class="chapter" data-level="9.4.3" data-path="9-model-fitting.html"><a href="9-model-fitting.html#model-comparison-1"><i class="fa fa-check"></i><b>9.4.3</b> Model comparison</a></li>
 <li class="chapter" data-level="9.4.4" data-path="9-model-fitting.html"><a href="9-model-fitting.html#model-fit-to-tb-incidence-from-the-ets"><i class="fa fa-check"></i><b>9.4.4</b> Model Fit to TB incidence from the ETS</a></li>
@@ -371,7 +371,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="introduction-8" class="section level2">
 <h2><span class="header-section-number">10.1</span> Introduction</h2>
 <p>In the previous chapter I outlined a model fitting pipeline and discussed the results from using it on the model developed in Chapter <a href="8-model-development.html#model-development">8</a>. Whilst this fitted model may be used to explore the epidemiology of tuberculosis (TB) in the early 2000’s it does not - as currently stands - explore the impact of the 2005 change in BCG vaccination policy (Chapter <a href="2-background.html#background">2</a>). Models are useful in this context as dynamic model forecasts can be derived for multiple scenarios that may only exist on paper and so have little to no data to support them. These forecasts may then be used by policy makers as indicators of the likely impact of these scenarios.</p>
-<p>This chapter details the approach used to extrapolate the findings from the previous chapter beyond the change in BCG policy in 2005 and into the future. It first outlines the scenarios considered, then details the assumptions used to expand the time horizon of the model. Finally the impact of each scenario is explored over multiple time horizons. As discussed in the previous chapter these findings are preliminary in nature, meaning quantitative conclusions cannot be drawn and qualitative conclusions must be appropriately caveat-ed.</p>
+<p>This chapter details the approach used to extrapolate the findings from the previous chapter beyond the change in BCG policy in 2005 and into the future. It first outlines the scenarios considered, then details the assumptions used to expand the time horizon of the model. Finally the impact of each scenario is explored over multiple time horizons. As discussed in the previous chapter these findings are preliminary in nature, meaning quantitative conclusions cannot be drawn and qualitative conclusions must be appropriately caveated.</p>
 </div>
 <div id="methods-2" class="section level2">
 <h2><span class="header-section-number">10.2</span> Methods</h2>
@@ -403,7 +403,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Continuing with school-age vaccination resulted in the fewest number of cases regardless of the time-span considered (Table <a href="10-model-results.html#tab:10-table-future-incidence">10.1</a>). However, the difference between vaccination scenarios was consistently small when compared to the overall number of cases. In all scenarios TB incidence was forecast to decrease over time in line with the decreases assumed in non-UK born TB incidence. The lower bounds for each scenario were relatively comparable, with the upper bounds being being higher for both neonatal BCG vaccination and no BCG vaccination when compared to school-age BCG vaccination.</p>
 <table class="table" style="margin-left: auto; margin-right: auto;">
 <caption>
-<span id="tab:10-table-future-incidence">Table 10.1: </span>Forecast of overall TB incidence for each scenario evaluated from 2005 to 2040. For brevity only 5 year intervals are shown. (95% CI): 95% credible interval estimated using the 2.5% quantile and the 97.5% quantile.
+<span id="tab:10-table-future-incidence">Table 10.1: </span>Forecast of overall TB incidence for each scenario evaluated from 2005 to 2040. For brevity only 5 year intervals are shown. (95% CrI): 95% credible interval estimated using the 2.5% quantile and the 97.5% quantile.
 </caption>
 <thead>
 <tr>
@@ -411,13 +411,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 Year
 </th>
 <th style="text-align:left;">
-School-age BCG (95% CI)
+School-age BCG (95% CrI)
 </th>
 <th style="text-align:left;">
-Neonatal BCG (95% CI)
+Neonatal BCG (95% CrI)
 </th>
 <th style="text-align:left;">
-No BCG (95% CI)
+No BCG (95% CrI)
 </th>
 </tr>
 </thead>
@@ -548,7 +548,7 @@ Figure 10.1: Forecast of TB incidence for each scenario evaluated from 2005 to 2
 <p>As estimates of TB mortality were low (significantly lower than estimated using the observed data) the impact of any vaccination scenario was minimal (Table <a href="10-model-results.html#tab:10-table-deaths-preds">10.2</a>; Figure <a href="10-model-results.html#fig:10-age-scenarios-deaths-fig">10.2</a>). Continuing school-age BCG vaccination resulted in a very small reduction in TB mortality compared to any other scenario (Table <a href="10-model-results.html#tab:10-table-deaths-preds">10.2</a>). The age distributed impact of each scenario on TB mortality was comparable to that observed for TB incidence (Figure <a href="10-model-results.html#fig:10-age-scenarios-deaths-fig">10.2</a>).</p>
 <table class="table" style="margin-left: auto; margin-right: auto;">
 <caption>
-<span id="tab:10-table-deaths-preds">Table 10.2: </span>Forecast of overall TB mortality for each scenario evaluated from 2005 to 2040. For brevity only 5 year intervals are shown.(95% CI): 95% credible interval estimated using the 2.5% quantile and the 97.5% quantile.
+<span id="tab:10-table-deaths-preds">Table 10.2: </span>Forecast of overall TB mortality for each scenario evaluated from 2005 to 2040. For brevity only 5 year intervals are shown.(95% CrI): 95% credible interval estimated using the 2.5% quantile and the 97.5% quantile.
 </caption>
 <thead>
 <tr>
@@ -556,13 +556,13 @@ Figure 10.1: Forecast of TB incidence for each scenario evaluated from 2005 to 2
 Year
 </th>
 <th style="text-align:left;">
-School-age BCG (95% CI)
+School-age BCG (95% CrI)
 </th>
 <th style="text-align:left;">
-Neonatal BCG (95% CI)
+Neonatal BCG (95% CrI)
 </th>
 <th style="text-align:left;">
-No BCG (95% CI)
+No BCG (95% CrI)
 </th>
 </tr>
 </thead>
