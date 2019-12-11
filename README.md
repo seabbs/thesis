@@ -48,7 +48,7 @@ Links to external chapter resources are given below.
 
 ###### Local code: `projects/ETSMissing`
 
-##### Chapter 5 - Reassessing the Evidence for Universal School-age Bacillus Calmette Guerin (BCG) Vaccination in England and Wales
+##### Chapter 5 - Reassessing the Evidence for Universal School-age BCG Vaccination in England and Wales
 
 [![badge](https://img.shields.io/badge/Launch-Analysis-lightblue.svg)](https://mybinder.org/v2/gh/seabbs/AssessBCGPolicyChange/master?urlpath=rstudio) [![Documentation](https://img.shields.io/badge/Documentation-click%20here!-lightgrey.svg?style=flat)](https://www.samabbott.co.uk/AssessBCGPolicyChange) [![Paper](https://img.shields.io/badge/Paper-10.1101/567511-lightgreen.svg)](https://doi.org/10.1101/567511) [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.2635687.svg)](https://doi.org/10.5281/zenodo.2635687)
 

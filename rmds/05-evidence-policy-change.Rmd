@@ -3,7 +3,7 @@ output:
   pdf_document: default
   html_document: default
 ---
-# Reassessing the evidence for universal school-age Bacillus Calmette Guerin (BCG) vaccination in England and Wales {#sutherland}
+# Reassessing the evidence for universal school-age BCG vaccination in England and Wales {#sutherland}
 
 
 ```{r 05-knitr-options, include = FALSE}
