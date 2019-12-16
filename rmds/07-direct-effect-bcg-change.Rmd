@@ -38,9 +38,9 @@ pretty_per_effect <- partial(prettypublisher::pretty_per_effect, sep = ", ", not
 ## Introduction
 
 
-In 2005, England changed from universal Bacillus Calmette–Guérin (BCG) vaccination of school-age children to targeted BCG vaccination of high-risk children at birth. In this Chapter I aimed to assess the effects of this change in vaccination policy on the populations targeted by each vaccination scheme.
+In 2005, England changed from universal Bacillus Calmette–Guérin (BCG) vaccination of school-age children to targeted BCG vaccination of high-risk children at birth. In this chapter I aimed to assess the effects of this change in vaccination policy on the populations targeted by each vaccination scheme.
 
-I combined notification data from the Enhanced TB Surveillance (ETS) system, with demographic data from the Labour Force Survey (LFS) to construct retrospective cohorts of individuals in England relevant to both the universal, and targeted vaccination programmes between Jan 1, 2000 and Dec 31, 2010. For each cohort, I estimated incidence rates over a 5 year follow-up period and used Poisson and negative binomial regression models in order to estimate the impact of the change in policy on TB. This work was adapted from a paper^[Paper: https://doi.org/10.2807/1560-7917.ES.2019.24.49.1900220 Preprint: https://doi.org/10.1101/567511] supervised by Hannah Christensen and Ellen Brooks-Pollock.[@Abbott567511] Nicky Welton provided guidance on the statistical methods used.
+I combined notification data from the Enhanced TB Surveillance (ETS) system, with demographic data from the Labour Force Survey (LFS) to construct retrospective cohorts of individuals in England relevant to both the universal, and targeted vaccination programmes between Jan 1, 2000 and Dec 31, 2010. For each cohort, I estimated incidence rates over a 5 year follow-up period and used Poisson and negative binomial regression models in order to estimate the impact of the change in policy on TB. This work was adapted from [@Abbott567511]^[Paper: https://doi.org/10.2807/1560-7917.ES.2019.24.49.1900220 Preprint: https://doi.org/10.1101/567511] supervised by Hannah Christensen and Ellen Brooks-Pollock.[@Abbott567511] Nicky Welton provided guidance on the statistical methods used.
 
 ## Background
 
@@ -129,11 +129,27 @@ Default weakly informative priors were used based on those provided by the `brms
 
 I estimated the magnitude of the estimated impact from the change in BCG policy by applying the IRR estimates from the best fitting model for each cohort to the observed number of notifications from 2005 until 2015 in the study population. For the cohorts relevant to the universal school-age vaccination scheme I estimated the number of prevented cases by first aggregating cases ($C_0$) and then using the following equation,
 
-\[ C^i_P = C_0 (1 - I^i),\ \text{Where}\ i = e,\ l,\ u.\]
+\begin{equation}
+C^i_P = C_0 (1 - I^i),\ \text{Where}\ i = e,\ l,\ u.
+\end{equation}
 
-Where $C^i_P$ is the predicted number of cases prevented using the median ($e$), 2.5% bound ($l$) and 97.5% bound ($u$) of the IRR estimate ($I^i$). For the cohorts relevant to the targeted high-risk neonatal scheme I used a related equation, adjusting for the fact that the populations were exposed to the scheme and I therefore had to first estimate the number of cases that would have been observed had the scheme not been implemented. After simplification this results in the following equation,
+Where $C^i_P$ is the predicted number of cases prevented using the median ($e$), 2.5% bound ($l$) and 97.5% bound ($u$) of the IRR estimate ($I^i$). For the cohorts relevant to the targeted high-risk neonatal scheme I used a related equation,
 
-\[ C^i_P =  C_0\left(\frac{1}{I^i } - 1\right),\ \text{Where}\ i = e,\ l,\ u.\]
+\begin{equation}
+C^i_P = C_{UE}(1 - I^i),\ \text{Where}\ i = e,\ l,\ u.
+\end{equation}
+
+where $C_{UE}$ is the number of cases observed assuming that the cohort was not exposed to targeted high-risk neonatal vaccination. As from 2005 onwards this cohort were in fact exposed to this vaccination scheme an additional step was required. This first required calculating the number of cases that would be expected if the cohort had not been exposed to the scheme,
+
+\begin{equation}
+C_{UE} = \frac{C_0}{I^i}
+\end{equation}
+
+and then combining this with the previous equation so that $C^i_P$ can be estimated with observed data ($C_0$).
+
+\begin{equation}
+C^i_P =  \frac{C_0(1 - I^i)}{I^i},\ \text{Where}\ i = e,\ l,\ u.
+\end{equation}
 
 \newpage
 
@@ -351,5 +367,5 @@ It is well established that interventions against infectious diseases, such as T
 
 * Withdrawing universal vaccination at school-age and targeting BCG vaccination towards high-risk neonates was associated with reduced incidence of TB in England. This was largely driven by reductions in the non-UK born. There was a slight increase in UK born school-age cases.
 
-* The code for the analysis contained in this Chapter can be found at: [doi.org/10.5281/zenodo.2583056](doi.org/10.5281/zenodo.2583056)^[Alternatively code link: https://github.com/seabbs/DirectEffBCGPolicyChange]
+* The code for the analysis contained in this chapter can be found at: [doi.org/10.5281/zenodo.2583056](doi.org/10.5281/zenodo.2583056)^[Alternatively code link: https://github.com/seabbs/DirectEffBCGPolicyChange]
 

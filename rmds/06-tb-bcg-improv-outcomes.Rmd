@@ -54,7 +54,7 @@ walk(rda_files, read_rda)
 
 ## Introduction
 
-Bacillus Calmette–Guérin (BCG) primarily reduces the progression from infection to disease, however there is evidence that BCG may provide additional benefits. In this Chapter I aimed to investigate whether there is evidence in routinely-collected surveillance data (see Chapter \@ref(data)) that BCG vaccination impacts outcomes for tuberculosis (TB) cases in England. Any impact on TB outcomes could add additional weight to vaccination policies with wider population coverage, as these policies would have benefits beyond reducing TB incidence rates. 
+Bacillus Calmette–Guérin (BCG) primarily reduces the progression from infection to disease, however there is evidence that BCG may provide additional benefits. In this chapter I aimed to investigate whether there is evidence in routinely-collected surveillance data (see Chapter \@ref(data)) that BCG vaccination impacts outcomes for tuberculosis (TB) cases in England. Any impact on TB outcomes could add additional weight to vaccination policies with wider population coverage, as these policies would have benefits beyond reducing TB incidence rates. 
 
 To conduct this study, I first obtained all TB notifications for 2009-2015 in England from the Enhanced Tuberculosis surveillance (ETS) system (see Chapter \@ref(data)). I then considered five outcomes: All-cause mortality, death due to TB (in those who died), recurrent TB, pulmonary disease, and sputum smear status. I used logistic regression, with complete case analysis, to investigate each outcome with BCG vaccination, years since vaccination and age at vaccination, adjusting for potential confounders. All analyses were repeated using multiply imputed data. This work was adapted from [@Abbott:2019ir]^[Paper: https://doi.org/10.1016/j.vaccine.2019.06.056] (also available as a preprint^[Preprint: https://doi.org/10.1101/366476]) supervised by Hannah Christensen and Ellen Brooks-Pollock. Collaborators at Public Health England including Maeve K Lalor, Dominik Zenner, Colin Campbell, and Mary E Ramsay provided the data and commented on multiple versions of this paper. 
 
@@ -385,5 +385,5 @@ Further work is required to determine whether years since vaccination and age at
 
 * There was little evidence for other associations.
 
-* The code for the analysis contained in this Chapter can be found at: [doi.org/10.5281/zenodo.1213799](doi.org/10.5281/zenodo.1213799)^[Alternatively available from: https://github.com/seabbs/ExploreBCGOnOutcomes]
+* The code for the analysis contained in this chapter can be found at: [doi.org/10.5281/zenodo.1213799](doi.org/10.5281/zenodo.1213799)^[Alternatively available from: https://github.com/seabbs/ExploreBCGOnOutcomes]
 

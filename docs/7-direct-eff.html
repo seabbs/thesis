@@ -369,8 +369,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h1><span class="header-section-number">Chapter 7</span> Estimating the effect of the 2005 change in BCG policy in England: A retrospective cohort study</h1>
 <div id="introduction-5" class="section level2">
 <h2><span class="header-section-number">7.1</span> Introduction</h2>
-<p>In 2005, England changed from universal Bacillus Calmette–Guérin (BCG) vaccination of school-age children to targeted BCG vaccination of high-risk children at birth. In this Chapter I aimed to assess the effects of this change in vaccination policy on the populations targeted by each vaccination scheme.</p>
-<p>I combined notification data from the Enhanced TB Surveillance (ETS) system, with demographic data from the Labour Force Survey (LFS) to construct retrospective cohorts of individuals in England relevant to both the universal, and targeted vaccination programmes between Jan 1, 2000 and Dec 31, 2010. For each cohort, I estimated incidence rates over a 5 year follow-up period and used Poisson and negative binomial regression models in order to estimate the impact of the change in policy on TB. This work was adapted from a paper<a href="#fn24" class="footnote-ref" id="fnref24"><sup>24</sup></a> supervised by Hannah Christensen and Ellen Brooks-Pollock.<span class="citation">[<a href="#ref-Abbott567511">76</a>]</span> Nicky Welton provided guidance on the statistical methods used.</p>
+<p>In 2005, England changed from universal Bacillus Calmette–Guérin (BCG) vaccination of school-age children to targeted BCG vaccination of high-risk children at birth. In this chapter I aimed to assess the effects of this change in vaccination policy on the populations targeted by each vaccination scheme.</p>
+<p>I combined notification data from the Enhanced TB Surveillance (ETS) system, with demographic data from the Labour Force Survey (LFS) to construct retrospective cohorts of individuals in England relevant to both the universal, and targeted vaccination programmes between Jan 1, 2000 and Dec 31, 2010. For each cohort, I estimated incidence rates over a 5 year follow-up period and used Poisson and negative binomial regression models in order to estimate the impact of the change in policy on TB. This work was adapted from <span class="citation">[<a href="#ref-Abbott567511">76</a>]</span><a href="#fn24" class="footnote-ref" id="fnref24"><sup>24</sup></a> supervised by Hannah Christensen and Ellen Brooks-Pollock.<span class="citation">[<a href="#ref-Abbott567511">76</a>]</span> Nicky Welton provided guidance on the statistical methods used.</p>
 </div>
 <div id="background-5" class="section level2">
 <h2><span class="header-section-number">7.2</span> Background</h2>
@@ -917,9 +917,21 @@ Non-UK Born
 <div id="magnitude-estimation" class="section level3">
 <h3><span class="header-section-number">7.4.4</span> Estimating the magnitude of the estimated impact of the change in BCG policy</h3>
 <p>I estimated the magnitude of the estimated impact from the change in BCG policy by applying the IRR estimates from the best fitting model for each cohort to the observed number of notifications from 2005 until 2015 in the study population. For the cohorts relevant to the universal school-age vaccination scheme I estimated the number of prevented cases by first aggregating cases (<span class="math inline">\(C_0\)</span>) and then using the following equation,</p>
-<p><span class="math display">\[ C^i_P = C_0 (1 - I^i),\ \text{Where}\ i = e,\ l,\ u.\]</span></p>
-<p>Where <span class="math inline">\(C^i_P\)</span> is the predicted number of cases prevented using the median (<span class="math inline">\(e\)</span>), 2.5% bound (<span class="math inline">\(l\)</span>) and 97.5% bound (<span class="math inline">\(u\)</span>) of the IRR estimate (<span class="math inline">\(I^i\)</span>). For the cohorts relevant to the targeted high-risk neonatal scheme I used a related equation, adjusting for the fact that the populations were exposed to the scheme and I therefore had to first estimate the number of cases that would have been observed had the scheme not been implemented. After simplification this results in the following equation,</p>
-<p><span class="math display">\[ C^i_P =  C_0\left(\frac{1}{I^i } - 1\right),\ \text{Where}\ i = e,\ l,\ u.\]</span></p>
+<p><span class="math display">\[\begin{equation}
+C^i_P = C_0 (1 - I^i),\ \text{Where}\ i = e,\ l,\ u.
+\end{equation}\]</span></p>
+<p>Where <span class="math inline">\(C^i_P\)</span> is the predicted number of cases prevented using the median (<span class="math inline">\(e\)</span>), 2.5% bound (<span class="math inline">\(l\)</span>) and 97.5% bound (<span class="math inline">\(u\)</span>) of the IRR estimate (<span class="math inline">\(I^i\)</span>). For the cohorts relevant to the targeted high-risk neonatal scheme I used a related equation,</p>
+<p><span class="math display">\[\begin{equation}
+C^i_P = C_{UE}(1 - I^i),\ \text{Where}\ i = e,\ l,\ u.
+\end{equation}\]</span></p>
+<p>where <span class="math inline">\(C_{UE}\)</span> is the number of cases observed assuming that the cohort was not exposed to targeted high-risk neonatal vaccination. As from 2005 onwards this cohort were in fact exposed to this vaccination scheme an additional step was required. This first required calculating the number of cases that would be expected if the cohort had not been exposed to the scheme,</p>
+<p><span class="math display">\[\begin{equation}
+C_{UE} = \frac{C_0}{I^i}
+\end{equation}\]</span></p>
+<p>and then combining this with the previous equation so that <span class="math inline">\(C^i_P\)</span> can be estimated with observed data (<span class="math inline">\(C_0\)</span>).</p>
+<p><span class="math display">\[\begin{equation}
+C^i_P =  \frac{C_0(1 - I^i)}{I^i},\ \text{Where}\ i = e,\ l,\ u.
+\end{equation}\]</span></p>
 
 </div>
 </div>
@@ -4506,7 +4518,7 @@ Non-UK born
 <li><p>I found some evidence that the change in BCG policy was associated with a increase in incidence rates in the UK born school-age population (IRR: 1.08 (95%CI 0.97, 1.19)) and weaker evidence of an association with a reduction in incidence rates in UK born neonates (IRR: 0.96 (95%CI 0.82, 1.14)).</p></li>
 <li><p>Overall, I found that the change in BCG policy was associated with directly preventing 385 (95% CI -105, 881) TB cases.</p></li>
 <li><p>Withdrawing universal vaccination at school-age and targeting BCG vaccination towards high-risk neonates was associated with reduced incidence of TB in England. This was largely driven by reductions in the non-UK born. There was a slight increase in UK born school-age cases.</p></li>
-<li><p>The code for the analysis contained in this Chapter can be found at: <a href="doi.org/10.5281/zenodo.2583056">doi.org/10.5281/zenodo.2583056</a><a href="#fn26" class="footnote-ref" id="fnref26"><sup>26</sup></a></p></li>
+<li><p>The code for the analysis contained in this chapter can be found at: <a href="doi.org/10.5281/zenodo.2583056">doi.org/10.5281/zenodo.2583056</a><a href="#fn26" class="footnote-ref" id="fnref26"><sup>26</sup></a></p></li>
 </ul>
 
 </div>
