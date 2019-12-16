@@ -220,12 +220,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.2" data-path="5-sutherland.html"><a href="5-sutherland.html#background-3"><i class="fa fa-check"></i><b>5.2</b> Background</a></li>
 <li class="chapter" data-level="5.3" data-path="5-sutherland.html"><a href="5-sutherland.html#methods"><i class="fa fa-check"></i><b>5.3</b> Methods</a><ul>
 <li class="chapter" data-level="5.3.1" data-path="5-sutherland.html"><a href="5-sutherland.html#modelling-the-impact-of-ending-the-bcg-schools-scheme"><i class="fa fa-check"></i><b>5.3.1</b> Modelling the impact of ending the BCG schools scheme</a></li>
-<li class="chapter" data-level="5.3.2" data-path="5-sutherland.html"><a href="5-sutherland.html#updating-model-parameter-estimates"><i class="fa fa-check"></i><b>5.3.2</b> Updating model parameter estimates</a></li>
+<li class="chapter" data-level="5.3.2" data-path="5-sutherland.html"><a href="5-sutherland.html#updating-model-parameter-estimates-and-incorporating-parameter-uncertainty"><i class="fa fa-check"></i><b>5.3.2</b> Updating model parameter estimates and incorporating parameter uncertainty</a></li>
 <li class="chapter" data-level="5.3.3" data-path="5-sutherland.html"><a href="5-sutherland.html#statistical-analysis"><i class="fa fa-check"></i><b>5.3.3</b> Statistical analysis</a></li>
 </ul></li>
 <li class="chapter" data-level="5.4" data-path="5-sutherland.html"><a href="5-sutherland.html#results"><i class="fa fa-check"></i><b>5.4</b> Results</a><ul>
-<li class="chapter" data-level="5.4.1" data-path="5-sutherland.html"><a href="5-sutherland.html#model-validation"><i class="fa fa-check"></i><b>5.4.1</b> Model validation</a></li>
-<li class="chapter" data-level="5.4.2" data-path="5-sutherland.html"><a href="5-sutherland.html#annual-change-in-tb-incidence-rates"><i class="fa fa-check"></i><b>5.4.2</b> Annual change in TB incidence rates</a></li>
+<li class="chapter" data-level="5.4.1" data-path="5-sutherland.html"><a href="5-sutherland.html#annual-change-in-tb-incidence-rates"><i class="fa fa-check"></i><b>5.4.1</b> Annual change in TB incidence rates</a></li>
 </ul></li>
 <li class="chapter" data-level="5.5" data-path="5-sutherland.html"><a href="5-sutherland.html#vaccines-required-to-prevent-a-single-notification"><i class="fa fa-check"></i><b>5.5</b> Vaccines required to prevent a single notification</a><ul>
 <li class="chapter" data-level="5.5.1" data-path="5-sutherland.html"><a href="5-sutherland.html#average-annual-additional-cases-from-ending-the-bcg-schools-scheme-at-various-dates"><i class="fa fa-check"></i><b>5.5.1</b> Average annual additional cases from ending the BCG schools scheme at various dates</a></li>
@@ -375,67 +374,70 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="background-3" class="section level2">
 <h2><span class="header-section-number">5.2</span> Background</h2>
-<p>The Bacillus Calmette–Guérin (BCG) vaccine remains the only licensed vaccine for use against Tuberculosis (TB), although its use globally is controversial due to evidence of variable effectiveness,<span class="citation">[<a href="#ref-Mangtani2014a">25</a>]</span> and waning protection 10-15 years after vaccination.<span class="citation">[<a href="#ref-Abubakar2013">28</a>]</span> Global usage of the BCG varies between no vaccination, universal vaccination, and high-risk group vaccination and may target either neonates or school-aged children.<span class="citation">[<a href="#ref-Zwerling2011a">5</a>,<a href="#ref-Pilger2012b">61</a>]</span> The World Health Organization (WHO) recommends vaccination for all neonates as early as possible after birth in high burden settings, with vaccination in low burden settings being dependent on the country specific epidemiology of TB.<span class="citation">[<a href="#ref-WHO2017">39</a>]</span> This recommendation is based on the strong evidence that the BCG is highly protective in children,<span class="citation">[<a href="#ref-Rodrigues1993">23</a>,<a href="#ref-Colditz1994">24</a>]</span> whilst its effectiveness has been shown to vary with latitude when given later in life (see Chapter <a href="2-background.html#background">2</a>).<span class="citation">[<a href="#ref-Mangtani2014">40</a>]</span></p>
-<p>In England and Wales, universal school-aged (at 13-14 years old) vaccination was introduced after a MRC trial in the 1950s estimated BCG’s effectiveness at 78% in the ethnic White UK born population.<span class="citation">[<a href="#ref-Hart1972">26</a>]</span> The policy remained in place until 2005, when England and Wales changed to targeted vaccination of high risk neonates. The 2005 change in BCG vaccination policy was motivated by evidence of decreased transmission of TB, an increasing proportion of TB cases occurring in the non-UK born,<span class="citation">[<a href="#ref-PHE2017">2</a>]</span> and modelling evidence that suggested stopping the BCG schools scheme would have minimal long term effects on incidence rates.<span class="citation">[<a href="#ref-Sutherland1989">41</a>]</span> Due to the complex nature of both TB and the BCG vaccine, the ongoing impact of this change in policy is hard to directly estimate, with decision makers relying on expert opinion, evidence from surveillance data, and insight from modelling studies.</p>
-<p>In 1987, an assessment of the school-age vaccination program was carried out in England and Wales.<span class="citation">[<a href="#ref-Sutherland1989">41</a>]</span> This study was used, combined with a sensitivity analysis of notification rates, as supporting evidence by the JCVI BCG subgroup for the change in vaccination policy.<span class="citation">[<a href="#ref-JVCIBCG2002">62</a>,<a href="#ref-JVCIBCG2003">63</a>]</span> This chapter aims to re-evaluate this modelling, and re-estimate the predicted impact of stopping the schools scheme.</p>
+<p>The Bacillus Calmette–Guérin (BCG) vaccine remains the only licensed vaccine for use against Tuberculosis (TB), although its use globally is controversial due to evidence of variable effectiveness,<span class="citation">[<a href="#ref-Mangtani2014a">25</a>]</span> and waning protection 10-15 years after vaccination.<span class="citation">[<a href="#ref-Abubakar2013">28</a>]</span> Global usage of the BCG varies between no vaccination, universal vaccination, and high-risk group vaccination and may target either neonates or school-aged children.<span class="citation">[<a href="#ref-Zwerling2011a">5</a>,<a href="#ref-Pilger2012b">61</a>]</span> The World Health Organization (WHO) recommends vaccination for all neonates as early as possible after birth in high burden settings, with vaccination in low burden settings being dependent on the country specific epidemiology of TB.<span class="citation">[<a href="#ref-WHO2017">39</a>]</span> This recommendation is based on the strong evidence that the BCG is highly protective in children,<span class="citation">[<a href="#ref-Rodrigues1993">23</a>,<a href="#ref-Colditz1994">24</a>]</span> whilst its effectiveness has been shown to vary with latitude when given later in life.<span class="citation">[<a href="#ref-Mangtani2014">40</a>]</span></p>
+<p>In England and Wales, universal school-aged (at 13-14 years old) vaccination (hereafter referred to as the BCG schools scheme) was introduced after a MRC trial in the 1950s estimated BCG’s effectiveness at 80% in the ethnic White UK born population.<span class="citation">[<a href="#ref-Hart1972">26</a>]</span> The policy remained in place until 2005, when England and Wales changed to targeted vaccination of high-risk neonates. The 2005 change in BCG vaccination policy was motivated by evidence of decreased transmission of TB, an increasing proportion of TB cases occurring in the non-UK born,<span class="citation">[<a href="#ref-PHE2017">2</a>]</span> and modelling evidence that suggested stopping the BCG schools scheme would have minimal long term effects on incidence rates.<span class="citation">[<a href="#ref-Sutherland1989">41</a>]</span> Due to the complex nature of both TB and the BCG vaccine, the ongoing impact of this change in policy is hard to directly estimate, with decision makers relying on expert opinion, evidence from surveillance data, and insight from modelling studies.</p>
+<p>In 1987, an assessment of the school-age vaccination program was carried out in England and Wales.<span class="citation">[<a href="#ref-Sutherland1989">41</a>]</span> This study was used, combined with a sensitivity analysis of notification rates, as supporting evidence by the Joint Committee on Vaccination and Immunisation (JCVI) BCG subgroup for the change in vaccination policy.<span class="citation">[<a href="#ref-JVCIBCG2002">62</a>,<a href="#ref-JVCIBCG2003">63</a>]</span> This chapter aims to re-evaluate this modelling, and re-estimate the predicted impact of stopping the schools scheme. Re-evaluating this work allows for the strength of the evidence used in decision making to be assessed and may highlight any issues with the approach used.</p>
 </div>
 <div id="methods" class="section level2">
 <h2><span class="header-section-number">5.3</span> Methods</h2>
 <div id="modelling-the-impact-of-ending-the-bcg-schools-scheme" class="section level3">
 <h3><span class="header-section-number">5.3.1</span> Modelling the impact of ending the BCG schools scheme</h3>
-<p>I implemented Sutherland et al.’s model for estimating the impact of ending the BCG schools scheme.<span class="citation">[<a href="#ref-Sutherland1989">41</a>]</span> This model was based on data from TB notification surveys conducted in 1973, 1978, and 1983.<span class="citation">[<a href="#ref-Sutherland1987a">64</a>]</span> These were used to estimate incidence rates, stratified by BCG vaccination status (vaccinated, unvaccinated, and ineligible), in the ethnic White UK born population of England and Wales aged 15-19 years old, 20-24 years old and 25-29 years old. Future incidence rates were forecast by assuming an annual decrease in incidence rates, which was based on historic trends.<span class="citation">[<a href="#ref-Sutherland1989">41</a>,<a href="#ref-Springett1988">65</a>]</span> Primary impacts from ending the schools scheme were estimated by calculating the difference in incidence rates between the vaccinated and unvaccinated populations. Additional notifications from TB transmission were then calculated using a transmission chain model. Based on data availability the model used a 5 year timestep. More detail is given in the following sections.</p>
-<div id="estimating-notification-rates" class="section level4">
-<h4><span class="header-section-number">5.3.1.1</span> Estimating notification rates</h4>
-<p>The effectiveness of the BCG vaccine was originally estimated by an MRC trial in 1953 at 78% in the United Kingdom.<span class="citation">[<a href="#ref-Hart1972">26</a>]</span> As a follow up to this trial members of the MRC bio-statistics unit conducted a series of notification surveys attempting to ascertain any change in effectiveness, as well as acting as an estimate of notification rates across different demographics.<span class="citation">[<a href="#ref-Sutherland1987a">64</a>]</span> Notification surveys were carried out at 5 year intervals in 1973, 1978 and 1983; looking at those aged 15-24 years old in England and Wales. For the 1983 survey records of BCG status, Tuberculin status and ethnicity were extracted from the records of notifying physicians and the records of the local health and education authorities. Totals, across the study period, were then aggregated for the following groups: Tuberculin negative and BCG positive, Tuberculin negative and BCG negative, Tuberculin positive and not vaccinated and those who did not participate. These totals were then combined with the population estimates for each cohort at 13 years of age to estimate the ethnic make up of the population, and to construct notification rates for each category. Data were drawn from a range of sources including: Office of National Statistics data; annual local authority returns for total tuberculin test results; BCG vaccinations in the schools scheme; and the Labour force survey (1983).</p>
-<p>For 1983 this corresponded with 874 notifications in the ethnic White UK born in England and Wales, between 15-24, with participation at 80%. As the number of Tuberculin negative subjects not given BCG was unreported this was estimated at 1.9% of those vaccinated with the BCG. Allowances were also made for those already vaccinated prior to the schools scheme. See <span class="citation">[<a href="#ref-Sutherland1987a">64</a>]</span> for full details of the survey construction and the additional assumptions used to give similar estimates for both the 1973 and 1978 surveys. The findings of these surveys were as follows: in the ethnic White population notification rates had fallen by an annual average of 9% and BCG efficacy had remained high.<span class="citation">[<a href="#ref-Sutherland1989">41</a>,<a href="#ref-Springett1988">65</a>]</span></p>
-<p>Evidence suggests that the BCG vaccine has a high efficacy for at least the first 15 years after vaccination, therefore the authors extrapolated from the data on the 20-24 cohort to a theoretical 25-29 year old cohort. Data on the notifications for the first 6 months of the 1983 survey was available and this was then scaled using the ratio of notifications from this age group against the total number of notifications recorded in that year. Population estimates from the 20-24 cohort were adjusted for all causes of mortality (0.34%). Migration was ignored. The tuberculin positive cohort had a sharp decline in the previous two cohorts, therefore it was assumed that this continued. Lastly, the efficacy was estimated as being that seen in the 20-24 cohort but with the same decline in protection seen between the last two cohorts. These assumptions allowed notification rates to be estimated for the 25-29 year old population, resulting in a complete cohort over the projected 15 years of BCG effectiveness.</p>
+<p>I implemented, and updated, Sutherland et al.’s model for estimating the impact of ending the BCG schools scheme, which is outlined briefly below.<span class="citation">[<a href="#ref-Sutherland1989">41</a>]</span> This model was based on data from TB notification surveys conducted in 1973, 1978, and 1983.<span class="citation">[<a href="#ref-Sutherland1987a">64</a>]</span> These were used to estimate incidence rates, stratified by BCG vaccination status, in the ethnic White UK born population of England and Wales aged 15-19 years old, 20-24 years old and 25-29 years old. Future incidence rates were forecast by assuming an annual decrease in incidence rates, which was based on historic trends.<span class="citation">[<a href="#ref-Sutherland1989">41</a>,<a href="#ref-Springett1988">65</a>]</span> Primary impacts from ending the schools scheme, including the number of vaccines required to prevent a single notification, were estimated by calculating the difference in incidence rates between the vaccinated and unvaccinated populations. Additional notifications from TB transmission were then calculated using a transmission chain model and combined with the primary impact estimates, to calculate the number of annual additional notifications due to ending BCG vaccination. Based on data availability, the model used a 5-year time step.</p>
+<div id="original-estimation-of-notification-rates" class="section level4">
+<h4><span class="header-section-number">5.3.1.1</span> Original estimation of notification rates</h4>
+<p>The effectiveness of the BCG vaccine was originally estimated by an MRC trial in 1953 at 78% in the United Kingdom.<span class="citation">[<a href="#ref-Hart1972">26</a>]</span> As a follow up to this trial members of the MRC bio-statistics unit conducted a series of notification surveys attempting to ascertain any change in effectiveness, as well as acting as an estimate of notification rates across different demographics.<span class="citation">[<a href="#ref-Sutherland1987a">64</a>]</span> Surveys of those aged 15-24 years were carried out at 5-year intervals in 1973, 1978 and 1983 in England and Wales. For the 1983 survey records of BCG status, Tuberculin status and ethnicity were extracted from the records of notifying physicians and the records of the local health and education authorities. Total notifications across the study period were then aggregated for the following groups: Tuberculin negative and BCG vaccinated, Tuberculin negative and BCG unvaccinated, Tuberculin positive and not vaccinated and those who did not participate. These totals were then combined with the population estimates for each cohort at 13 years of age to estimate the ethnic make up of the population, and to construct notification rates for each category. Data were drawn from a range of sources including: Office of National Statistics data; annual local authority returns for total Tuberculin test results; BCG vaccinations in the schools scheme; and the Labour force survey (1983).</p>
+<p>For 1983, there were 874 notifications recorded in 15-24 year old ethnic White UK born persons in England and Wales; survey participation was 80%. As the number of Tuberculin negative subjects not given BCG was unreported the number of notifications was estimated at 1.9% of those vaccinated with the BCG.<span class="citation">[<a href="#ref-Sutherland1987a">64</a>]</span> See <span class="citation">[<a href="#ref-Sutherland1987a">64</a>]</span> for full details of the survey and the additional assumptions used to give similar estimates for both the 1973 and 1978 surveys. The findings of these surveys were as follows: in the ethnic White population notification rates had fallen by an annual average of 9% and BCG efficacy had remained high.<span class="citation">[<a href="#ref-Sutherland1989">41</a>,<a href="#ref-Springett1988">65</a>]</span></p>
+<p>Evidence suggests that the BCG vaccine has a high efficacy for at least the first 15 years after vaccination, therefore Sutherland et al. extrapolated from the data on the 20-24 cohort to a theoretical 25-29 year old cohort. Data on the notifications in 25-29 year olds was available for the first 6 months of the 1983 survey and this was then scaled up to a yearly estimate using the ratio of notifications from this age group against the total number of notifications recorded in that year. Population estimates for the 25-29 year old cohort were based on data from the 20-24 cohort adjusted for all causes of mortality (0.34%). Migration was ignored. The Tuberculin positive cohort had a sharp decline in the previous two age cohorts, therefore it was assumed that this continued. Lastly, the efficacy was estimated as being that seen in the 20-24 cohort but with the same decline in protection seen between the last two cohorts. These assumptions allowed notification rates to be estimated for the 25-29 year old population, resulting in a complete cohort over the projected 15 years of BCG effectiveness.</p>
 </div>
-<div id="construction-of-forward-estimates" class="section level4">
-<h4><span class="header-section-number">5.3.1.2</span> Construction of forward estimates</h4>
-<p>Based on these estimated notification rates Sutherland et al. then sought to quantify the ongoing risk of developing notified TB, projected forward in time, for both the vaccinated and unvaccinated populations. To construct these estimates several key assumptions, based on the results seen in the previous surveys, were made. Firstly, it was assumed that efficacy was not degrading within the ethnic White population and therefore historic estimates would continue to apply into the future. Additionally, it was assumed that the decay of 9% in notification rates, across all ethnic White populations, would continue indefinitely.</p>
-<p>These assumptions allow the notification rates in both the BCG vaccinated and unvaccinated groups to be projected forward in time. By assuming that the schools scheme is responsible for the observed variation between vaccinated and unvaccinated rates the rate of prevented cases can then be estimated. By scaling this against a cohort of 100,000 13 year olds the number of prevented cases over a 15 year period can be projected for each cohort. By dividing the total number in a given cohort by the number of prevented cases the estimated number of vaccines required to prevent a single case in the 15 year period can then be calculated.</p>
-<p>To estimate the total number of prevented notifications, for each cohort, in England and Wales the total number receiving the BCG and the coverage of the schools scheme was required. The coverage of the BCG schools scheme was estimated from annual reports of the DHSS and was assumed to be 75% for all years. The number of BCG vaccines given each year was estimated from the DHSS returns for the years 1967 to 1981, it was then taken as 75% of the estimated ethnic White population aged 13 years from 1982-1996, for each 5 year period thereafter it was assumed to be 2.1 million.</p>
-<p>Using this information and the projected differences between vaccinated and unvaccinated notification rates allows the number of prevented notifications for each age group to be found for each year. This can then be combined to give the total number of prevented notifications for those aged between 15-29. To understand these estimates, estimates of the projected yearly notifications if the scheme continues are required. These totals were derived from the vaccinated and unvaccinated rates supplemented with similar projections from the tuberculin positive or otherwise ineligible sourced from the 1983 BCG survey.<span class="citation">[<a href="#ref-Sutherland1987a">64</a>]</span></p>
+<div id="original-construction-of-forward-estimates" class="section level4">
+<h4><span class="header-section-number">5.3.1.2</span> Original construction of forward estimates</h4>
+<p>Based on these estimated notification rates, Sutherland et al. then sought to quantify the ongoing risk of developing notified TB, projected forward in time, for both the vaccinated and unvaccinated populations. To construct these estimates several key assumptions, based on the results seen in the previous surveys, were made. Firstly, it was assumed that efficacy was not degrading within the ethnic White population and therefore historic estimates would continue to apply into the future. Additionally, it was assumed that the annual decay of 9% in notification rates, across all ethnic White populations, would continue indefinitely.</p>
+<p>These assumptions allowed the notification rates in both the BCG vaccinated and unvaccinated groups to be projected forward in time. By assuming that the schools scheme is responsible for the observed variation between vaccinated and unvaccinated rates the rate of prevented cases can then be estimated. By scaling this against a cohort of 100,000 13 year old individuals, the number of prevented cases over a 15-year period can be projected for each cohort. By dividing the total number in a given cohort by the number of prevented cases the estimated number of vaccines required to prevent a single case in the 15-year period can then be calculated.</p>
+<p>To estimate the total number of prevented notifications, for each cohort, in England and Wales the total number receiving the BCG and the coverage of the schools scheme was required. The coverage of the BCG schools scheme was estimated from annual reports of the Department of Health and Social Security (DHSS) and was assumed to be 75% for all years. The number of BCG vaccines given each year was estimated from the DHSS returns for the years 1967 to 1981, it was then taken as 75% of the estimated ethnic White population aged 13 years from 1982-1996, for each 5-year period thereafter it was assumed to be 2.1 million.</p>
+<p>Using the data on BCG coverage, the number of vaccines given each year, and the projected differences between vaccinated and unvaccinated notification rates allowed the number of prevented notifications, due to vaccination, for each age group to be found for each year. These estimates can then be used to give the total number of prevented notifications for those aged between 15-29 years. To understand these estimates, estimates of the projected yearly notifications if the scheme continues were required. These totals were derived from the vaccinated and unvaccinated rates supplemented with similar projections from the Tuberculin positive or otherwise ineligible sourced from the 1983 BCG survey.<span class="citation">[<a href="#ref-Sutherland1987a">64</a>]</span></p>
 </div>
-<div id="transmission-chain-model" class="section level4">
-<h4><span class="header-section-number">5.3.1.3</span> Transmission chain model</h4>
-<p>The TB transmission model is defined as follows (reproduced from Sutherland et al.):</p>
+<div id="original-transmission-chain-model" class="section level4">
+<h4><span class="header-section-number">5.3.1.3</span> Original transmission chain model</h4>
+<p>Sutherland et al. defined their TB transmission model as follows:</p>
 <ol style="list-style-type: decimal">
-<li>Estimate the total expected number of secondary notifications (<span class="math inline">\(T\)</span>) arising from any single primary notification using the following,</li>
+<li>The total expected number of secondary notifications (<span class="math inline">\(T\)</span>) arising from any single primary notification was estimated as,</li>
 </ol>
-<p><span class="math display">\[ T = (1-d)^z &lt; 1 \]</span>
-Where <span class="math inline">\(d\)</span> is the percentage decay in notification rates, and <span class="math inline">\(z\)</span> is the average interval between the notification of any individual and the notification of the patient who infected them.</p>
+<p><span class="math display">\[ T = (1-d)^z &lt; 1 \]</span></p>
+<p>Where <span class="math inline">\(d\)</span> is the percentage annual decay in notification rates, and <span class="math inline">\(z\)</span> is the average interval between the notification of any individual and the notification of the patient who infected them.</p>
 <ol start="2" style="list-style-type: decimal">
-<li>Relate <span class="math inline">\(T\)</span> to the number of notifications in each generation using the initial generation size (<span class="math inline">\(x\)</span>) with the following power series,</li>
+<li>The total expected number of secondary notifications arising from any single primary notification (<span class="math inline">\(T\)</span>) is related to the number of notifications in each generation using the relative generation size (<span class="math inline">\(x\)</span>) with the following power series,</li>
 </ol>
-<p><span class="math display">\[ T=x+x^2+x^3+ . . = \frac{x}{1-x} \]</span>
-3. Estimate the expected average interval between each primary notification and all secondary notifications (<span class="math inline">\(Z\)</span>). This is defined to be the sum of time to all notifications, weighted by the fraction in each generation, divided by the sum of all notifications. Mathematically this is,</p>
+<p><span class="math display">\[ T=x+x^2+x^3+ . . = \frac{x}{1-x} \]</span></p>
+<ol start="3" style="list-style-type: decimal">
+<li>The expected average interval between each primary notification and all secondary notifications (<span class="math inline">\(Z\)</span>) is defined to be the sum of time to all notifications, weighted by the fraction in each generation, divided by the sum of all notifications.</li>
+</ol>
 <p><span class="math display">\[ Z = \frac{xz + x^{2}2z + x^{3}3z + . .}{x+x^2+x^3+ . . }= \frac{z}{1-x} \]</span></p>
+<p>Both 2. and 3. are only valid when <span class="math inline">\(x &lt; 1\)</span>.</p>
 </div>
-<div id="transmission-chain-model-additions" class="section level4">
-<h4><span class="header-section-number">5.3.1.4</span> Transmission chain model additions</h4>
-<p>Implementing the model required several assumptions not detailed in <span class="citation">[<a href="#ref-Sutherland1989">41</a>]</span>. Firstly, as incidence rates for those ineligible for the BCG schools scheme are not published, I assumed that they were equal to those in the unvaccinated population. In addition, in order to reproduce the distribution of cases over time reported in Sutherland et al. I introduced an additional model step and parameter; the percentage of secondary cases due to a primary case in the first year after activation (<span class="math inline">\(f\)</span>). The distribution of secondary cases (<span class="math inline">\(N\)</span>) was then modelled by first estimating the number of secondary cases that occurred in the current year and then estimating how many secondary cases occurred 5 years later (due to the 5 year timestep). This iterative process can be summarised as follows,</p>
+<div id="updating-the-transmission-chain-model" class="section level4">
+<h4><span class="header-section-number">5.3.1.4</span> Updating the transmission chain model</h4>
+<p>If we assume a constant decay rate of <span class="math inline">\(d\)</span>% per year and that the next generation of secondary cases are notified <span class="math inline">\(z\)</span> years after the person who infected them, then 1 notification in year 0 will result in <span class="math inline">\((1-d)^z\)</span> secondary notifications <span class="math inline">\(z\)</span> years later. This is therefore the relative generation size (<span class="math inline">\(x\)</span>), not the <em>total</em> number of secondary notifications (<span class="math inline">\(T\)</span>), as (incorrectly) stated by Sutherland et al. Therefore, to correct this I revised 1. to the following in our updated model,</p>
+<p><span class="math display">\[ x = (1-d)^z &lt; 1 \]</span></p>
+<p>The Sutherland et al. model required several additional assumptions.<span class="citation">[<a href="#ref-Sutherland1989">41</a>]</span> Firstly, as incidence rates for those ineligible for the BCG schools scheme are not published, I assumed that they were equal to those in the unvaccinated population. In addition, in order to reproduce the distribution of cases annually (rather than by generation or overall) reported in Sutherland et al. I introduced an additional model step and parameter; the proportion of secondary cases in the first generation that occurred in the first year (<span class="math inline">\(f\)</span>). This modelling step is only required to reproduce the final table from <span class="citation">[<a href="#ref-Sutherland1989">41</a>]</span> and does not impact estimates of the impact of ending the BCG schools scheme. It is included only for validation purposes.</p>
+<p>The annual distribution of secondary notifications (<span class="math inline">\(N\)</span>) was modelled by first estimating the number of secondary notifications that occurred in the current year (<span class="math inline">\(i\)</span>) due to primary notifications in that year (<span class="math inline">\(N^{Current}\)</span>) and then estimating how many secondary notifications occurred 5 years later (<span class="math inline">\(N^{Projected}\)</span>). <span class="math inline">\(N^{Current}\)</span> was estimated using the number of primary notifications (<span class="math inline">\(P\)</span>) multiplied by the number of total expected number of secondary notifications per primary notification (<span class="math inline">\(T\)</span>), the proportion of secondary cases in the first generation that occurred in the first year (<span class="math inline">\(f\)</span>), and the relative size of the first generation (<span class="math inline">\(x\)</span>). <span class="math inline">\(N^{Projected}\)</span> was then estimated by assuming that it was equal to the number of secondary notifications, minus notifications occurring in the first year, that occurred <span class="math inline">\(Z\)</span> (the expected average interval between each primary notification and all secondary notifications) years ago. As this used the overall number of notifications from the previous time step a decay of <span class="math inline">\((1 - d)^{5-Z}\)</span> was applied. This approach can be summarised as follows,</p>
 <p><span class="math display">\[ N^{Current} = P T  f  x \]</span>
-<span class="math display">\[ N^{Projected} = (PT - N^{Current})(1 - d)^{L-Z} \]</span>
-<span class="math display">\[ N_i^{Total} = N^{Current}_i + N^{Projected}_{i-1} \]</span></p>
-<p>Where <span class="math inline">\(P\)</span> is the number of primary notifications, <span class="math inline">\(i\)</span> is the year of interest, <span class="math inline">\(N^{Current}\)</span> is the number of secondary cases in the current year, <span class="math inline">\(N^{Projected}\)</span> is the number of secondary cases in the subsequent timestep, and <span class="math inline">\(L\)</span> is the model timestep (set to be 5 years).</p>
-<p>I fitted this parameter using least squares to the original estimates of the total notifications due to ending the scheme under several scenarios, for several years. I validated the fitted model by comparing the results with those from the original implementation. Using the mean absolute percentage error, normalised by the orginal estimate.</p>
+<span class="math display">\[ N^{Projected} = (PT - N^{Current})(1 - d)^{5-Z} \]</span>
+<span class="math display">\[ N_i = N^{Current}_i + N^{Projected}_{i-1} \]</span></p>
+<p>I fitted the proportion of secondary cases in the first generation that occurred in the first year (<span class="math inline">\(f\)</span>) using least squares to the original estimates of the total notifications due to ending the scheme under several scenarios, for several years. I validated the fitted model by comparing the results with those from the original implementation using the mean absolute percentage error, normalised by the original estimate, as the performance metric.</p>
 </div>
 </div>
-<div id="updating-model-parameter-estimates" class="section level3">
-<h3><span class="header-section-number">5.3.2</span> Updating model parameter estimates</h3>
-<p>Incidence rates were included as point estimates in <span class="citation">[<a href="#ref-Sutherland1989">41</a>]</span>; in the updated model I included uncertainty in these rates. I estimated notifications for 1973, 1978, and 1983, using published incidence rates and population estimates. Samples were then generated using a Poisson distribution.<span class="citation">[<a href="#ref-Sutherland1989">41</a>,<a href="#ref-Sutherland1987a">64</a>]</span> These samples were then used to estimate a distribution of incidence rates. Sutherland et al. assumed a serial interval of 2 years between linked infections. I updated this assumption using, the currently best available estimate, of 1.44 (95% CI 1.29 to 1.63) years.<span class="citation">[<a href="#ref-Borgdorff2011">66</a>]</span></p>
-<p>I considered the original assumption of a 9% annual decrease in incidence rates as well as three scenarios based on those considered by the JCVI BCG subgroup:<span class="citation">[<a href="#ref-JVCIBCG2002">62</a>,<a href="#ref-JVCIBCG2003">63</a>]</span> these were a 3.9% decrease, a 1.9% decrease, and no change annual in incidence rates. I also estimated the annual decrease in incidence rates in the ethnic White UK born using two proxy measures. The first proxy measure was the annual change in notifications in England and Wales, which was estimated using data from Public Health England (PHE). The standard deviation (SD) of this measure was then calculated using the <code>prop.test</code> function in R.<span class="citation">[<a href="#ref-R2015">67</a>]</span> The second proxy used was the annual decrease in the UK born age-specific incidence rates in the English population. These were calculated using notification data from the Enhanced TB surveillance system (ETS) and the June Labour Force Survey (see Chapter <a href="4-data.html#data">4</a>).<span class="citation">[<a href="#ref-PHE2017">2</a>]</span> Incidence rates (with SDs) were estimated using the epiR package.<span class="citation">[<a href="#ref-EpiR">60</a>]</span> Uncertainty was incorporated by sampling from a normal distribution for both proxy measures. Data collection for the ETS began in 2000, I therefore estimated incidence rates between 1984 and 1999, and for the years between notifications surveys (1974-1977 and 1979-1892), using LEOSS regression for each sample fitted to the incidence rates published in <span class="citation">[<a href="#ref-Sutherland1989">41</a>]</span>, and the estimated incidence rates from 2000 on-wards. LOESS (locally estimated scatterplot smoothing) is a local regression method.<span class="citation">[<a href="#ref-FoxSnow:2019">68</a>]</span> It combines multiple regression models in a k-nearest neighbours meta-model. This approach allows nonlinear trends to be fitted to using a series of linear models. For years prior to 1973 the annual decreases were assumed to be the mean of the previous 3 years of data. For both proxy measures the annual decreases in incidence rates post 2016 were assumed to be the average of the estimates in 2013, 2014, and 2015.</p>
+<div id="updating-model-parameter-estimates-and-incorporating-parameter-uncertainty" class="section level3">
+<h3><span class="header-section-number">5.3.2</span> Updating model parameter estimates and incorporating parameter uncertainty</h3>
+<p>Incidence rates were included as point estimates in <span class="citation">[<a href="#ref-Sutherland1989">41</a>]</span>; in the updated model I included uncertainty in these rates. I did this by first estimating notifications for 1973, 1978, and 1983, using published incidence rates and population estimates. Samples were then generated using a Poisson distribution.<span class="citation">[<a href="#ref-Sutherland1989">41</a>,<a href="#ref-Sutherland1987a">64</a>]</span> These samples were then used to estimate a distribution of incidence rates to replace the point estimates used in the original analysis. Sutherland et al. assumed a serial interval (<span class="math inline">\(z\)</span>) of 2 years between linked notifications. Using a newly available literature source I updated this assumption with an estimate of 1.44 (95% CI 1.29 to 1.63) years.<span class="citation">[<a href="#ref-Borgdorff2011">66</a>]</span></p>
+<p>I considered the original assumption of a 9% annual decrease in incidence rates as well as three scenarios based on those considered by the JCVI BCG subgroup:<span class="citation">[<a href="#ref-JVCIBCG2002">62</a>,<a href="#ref-JVCIBCG2003">63</a>]</span> these were a 3.9% decrease, a 1.9% decrease, and no change annual in incidence rates. Data on the annual decrease in incidence rates in the ethnic White UK population were not available so I used two proxy measures. The first proxy measure was the annual change in notifications in England and Wales, which was estimated using data from Public Health England (PHE). The standard deviation of this measure was then calculated using the <code>prop.test</code> function in R.<span class="citation">[<a href="#ref-R">56</a>]</span> The second proxy used was the annual decrease in the UK born age-specific incidence rates in the English population. These were calculated using notification data from the Enhanced TB surveillance system (ETS) and the June Labour Force Survey.<span class="citation">[<a href="#ref-PHE2017">2</a>]</span> Incidence rates were estimated using the epiR package.<span class="citation">[<a href="#ref-EpiR">60</a>]</span> Uncertainty was incorporated by sampling from a normal distribution for both proxy measures. Data collection for the ETS began in 2000 and prior to this notification data was only available in years with notifications surveys (1973, 1978, and 1983). I therefore estimated incidence rates between 1984 and 1999, and for the years between notifications surveys (1974-1977 and 1979-1982), using locally estimated scatter plot smoothing (LOESS) regression fitted to incidence rates published in [11] and the estimated incidence rates from 2000 on-wards. LOESS is a local regression method that combines multiple regression models in a k-nearest neighbours meta-model.<span class="citation">[<a href="#ref-FoxSnow:2019">67</a>]</span> This approach allows nonlinear trends to be fitted using a series of linear models. For years prior to 1973 the annual decreases were assumed to be the mean of the annual decreases from the previous 3 years. For both proxy measures the annual decreases in incidence rates post 2016 were assumed to be the average of the estimates in 2013-2015.</p>
 </div>
 <div id="statistical-analysis" class="section level3">
 <h3><span class="header-section-number">5.3.3</span> Statistical analysis</h3>
-<p>For each scenario, I ran the model until 2028 with 10,000 parameter samples. I tested the difference between scenarios using the Mann-Whitney test for both the number of vaccines needed to prevent a single case in 15 years after vaccination for a cohort aged 13-14 years old at vaccination and the total number of additional notifications caused by ending the BCG schools scheme. As in <span class="citation">[<a href="#ref-Sutherland1989">41</a>]</span> a 15 year time horizon was used with 5 year intervals. The year closest to the year of the change in vaccination policy (2005), which had model estimates, was used as the baseline. The code for this analysis is available online<a href="#fn18" class="footnote-ref" id="fnref18"><sup>18</sup></a>.</p>
+<p>For each scenario, I ran the model for 69 years (1969-2028) with 10,000 parameter samples. I tested the difference between scenarios using the Mann-Whitney test for the number of vaccines needed to prevent a single case in 15 years after vaccination for a cohort aged 13-14 years old at vaccination. As in <span class="citation">[<a href="#ref-Sutherland1989">41</a>]</span> a 15-year time horizon was used with 5-year intervals. The year closest to the year of the change in vaccination policy (2005), which had model estimates, was used as the baseline. The code for this analysis is available online<a href="#fn18" class="footnote-ref" id="fnref18"><sup>18</sup></a>.</p>
 </div>
 </div>
 <div id="results" class="section level2">
 <h2><span class="header-section-number">5.4</span> Results</h2>
-<div id="model-validation" class="section level3">
-<h3><span class="header-section-number">5.4.1</span> Model validation</h3>
 <p>The model produced results that were comparable with those from <span class="citation">[<a href="#ref-Sutherland1989">41</a>]</span> (Table <a href="5-sutherland.html#tab:model-validation">5.1</a>; Table <a href="5-sutherland.html#tab:model-validation-2">5.2</a>). When estimating the total notifications from ending the BCG schools scheme at different times in ethnic White UK born adults aged 15-29 years old in England and Wales the model had a median absolute error of 2.03% (2.5-97.5% Q: 0.00% - 3.72%) and a maximum absolute error of 3.91% when compared to <span class="citation">[<a href="#ref-Sutherland1989">41</a>]</span>. I found that the percentage of cases in the first year was <span class="math inline">\(f=0.764\)</span> when fitted to the Sutherland et al. estimates using the least squares method.</p>
 <table class="table table" style="margin-left: auto; margin-right: auto; font-size: 10px; margin-left: auto; margin-right: auto;">
 <caption style="font-size: initial !important;">
@@ -749,12 +751,11 @@ Difference
 </tr>
 </tbody>
 </table>
-</div>
 <div id="annual-change-in-tb-incidence-rates" class="section level3">
-<h3><span class="header-section-number">5.4.2</span> Annual change in TB incidence rates</h3>
+<h3><span class="header-section-number">5.4.1</span> Annual change in TB incidence rates</h3>
 <p>I found that the assumption of a 9% annual decrease in incidence rates in the ethnic White UK born was not comparable to estimates using either notification data or age-specific incidence rates in the time period studied (Figure <a href="5-sutherland.html#fig:plot-annual-change">5.1</a>). The median annual decrease estimated using notifications was 3.13% (2.5-97.5% Quantiles (Q): -8.32% - 11.45%), with a maximum of 15.13% (2.5-97.5% Q: 14.23% - 16.04%) in 1987 and a minimum of -10.18% (2.5-97.5% Q: -10.82% - -9.52%) in 2005. Using age-specific incidence rates I estimated the median annual decrease in incidence rates for 15-19 year olds was 1.62% (2.5-97.5% Q: -40.38% - 39.89%), 3.15% (2.5-97.5% Q: -33.93% - 38.25%) for 20-24 year olds, and 2.66% (2.5-97.5% Q: -36.37% - 37.29%) for 25-29 year olds. There was substantial variation between years and a high degree of uncertainty.</p>
 <div class="figure" style="text-align: center"><span id="fig:plot-annual-change"></span>
-<img src="chapters/evidence-policy-change/plot-annual-change-1.png" alt="Annual percentage change in ethnic White UK born incidence rates for those aged 15-19, 20-24, and 25-29 years old under different scenarios. For the notification and incidence rate scenarios each line represents the median of 10,000 parameter samples." width="80%"  />
+<img src="chapters/evidence-policy-change/fig-1.png" alt="Annual percentage change in ethnic White UK born incidence rates for those aged 15-19, 20-24, and 25-29 years old under different scenarios. For the notification and incidence rate scenarios each line represents the median of 10,000 parameter samples." width="80%"  />
 <p class="caption">
 Figure 5.1: Annual percentage change in ethnic White UK born incidence rates for those aged 15-19, 20-24, and 25-29 years old under different scenarios. For the notification and incidence rate scenarios each line represents the median of 10,000 parameter samples.
 </p>
@@ -763,11 +764,11 @@ Figure 5.1: Annual percentage change in ethnic White UK born incidence rates for
 </div>
 <div id="vaccines-required-to-prevent-a-single-notification" class="section level2">
 <h2><span class="header-section-number">5.5</span> Vaccines required to prevent a single notification</h2>
-<p>I found that updating parameter values, and incorporating uncertainty, did not alter the number of vaccines required to prevent a single notification within 15 years in a cohort vaccinated at school-age, when the annual decrease in TB incidence rates was assumed to be 9% (Figure <a href="5-sutherland.html#fig:graph-vacs-to-prev">5.2</a>; Table <a href="5-sutherland.html#tab:vac-prevent-tab">5.3</a>). However, the updated estimate had a wide range (15000 (2.5-97.5% Q: 12000 - 19000) vaccines required in 2004). As the assumed annual decrease in incidence rates was reduced the number of vaccines required to prevent a single notification also reduced; an estimated 1600 (2.5-97.5% Q: 1300 - 2100) vaccines were required to prevent a case in 2004 when the annual decrease was assumed to be 1.9%. Estimates of the number of vaccines required to prevent a notification were comparable but not equivalent when the annual decrease was estimated using notifications (1400 (2.5-97.5% Q: 1100 - 1700), P: 0.077) and age-specific incidence rates (1500 (2.5-97.5% Q: 450 - 5000), P: 0.083). The estimate using incidence rates had a high degree of uncertainty (Figure <a href="5-sutherland.html#fig:graph-vacs-to-prev">5.2</a>; Table <a href="5-sutherland.html#tab:vac-prevent-tab">5.3</a>). The number of vaccines required increased slightly over time with 1800 (2.5-97.5% Q: 1500 - 2300) required in 2009, 2000 (2.5-97.5% Q: 1600 - 2500) required in 2014, and 2200 (2.5-97.5% Q: 1800 - 2700) required in 2019 when an annual decrease of 1.9% in incidence rates was assumed.</p>
+<p>I found that incorporating uncertainty, did not alter the number of vaccines required to prevent a single notification within 15 years in a cohort vaccinated at school-age, when the annual decrease in incidence rates was assumed to be 9% (Figure <a href="5-sutherland.html#fig:graph-vacs-to-prev">5.2</a>; Table <a href="5-sutherland.html#tab:vac-prevent-tab">5.3</a>). However, the updated estimate had a wide range (15000 (2.5-97.5% Q: 12000 - 19000) vaccines required in 2004). As the assumed annual decrease in incidence rates was reduced the number of vaccines required to prevent a single notification also reduced. Assuming an annual decrease of 1.9% (one of the scenarios evaluated by the JCVI) resulted in an estimate of 1600 (2.5-97.5% Q: 1300 - 2100) vaccines required to a prevent a single notification in 2004. This assumption was the most comparable, although not equivalent, to estimates derived using notifications (1400 (2.5-97.5% Q: 1100 - 1700), P: 0.077) and age-specific incidence rates (1500 (2.5-97.5% Q: 450 - 5000), P: 0.083). The estimate using incidence rates had a high degree of uncertainty (Figure <a href="5-sutherland.html#fig:graph-vacs-to-prev">5.2</a>; Table <a href="5-sutherland.html#tab:vac-prevent-tab">5.3</a>). The number of vaccines required increased slightly over time with 1800 (2.5-97.5% Q: 1500 - 2300) required in 2009, 2000 (2.5-97.5% Q: 1600 - 2500) required in 2014, and 2200 (2.5-97.5% Q: 1800 - 2700) required in 2019 when an annual decrease of 1.9% in incidence rates was assumed.</p>
 <div class="figure" style="text-align: center"><span id="fig:graph-vacs-to-prev"></span>
-<img src="chapters/evidence-policy-change/graph-vacs-to-prev-1.png" alt="Vaccines required in a cohort of those vaccinated at school-age to prevent a single case of TB within 15 years of vaccination in 2004, 2009, 2014, or 2019. The years presented were dictated by the 5 year timestep of the model. The percentage annual decrease scenarios considered were based on those considered by the JCVI BCG subgroup, with the addition of a scenario using aggregate notification data and a scenario using estimates of age-specific incidence rates in the UK born. Each boxplot summarises the output of 10,000 model simulations for each scenario. Outliers have been omitted for clarity." width="80%"  />
+<img src="chapters/evidence-policy-change/fig-2.png" alt="Vaccines required in a cohort of those vaccinated at school-age to prevent a single case of Tuberculosis within 15 years of vaccination in 2004, 2009, 2014, or 2019. The years presented were dictated by the 5-year timestep of the model. The percentage annual decrease scenarios considered were based on those considered by the JCVI BCG subgroup, with the addition of a scenario using aggregate notification data and a scenario using estimates of age-specific incidence rates in the UK born. Each boxplot summarises the output of 10,000 model simulations for each scenario." width="80%"  />
 <p class="caption">
-Figure 5.2: Vaccines required in a cohort of those vaccinated at school-age to prevent a single case of TB within 15 years of vaccination in 2004, 2009, 2014, or 2019. The years presented were dictated by the 5 year timestep of the model. The percentage annual decrease scenarios considered were based on those considered by the JCVI BCG subgroup, with the addition of a scenario using aggregate notification data and a scenario using estimates of age-specific incidence rates in the UK born. Each boxplot summarises the output of 10,000 model simulations for each scenario. Outliers have been omitted for clarity.
+Figure 5.2: Vaccines required in a cohort of those vaccinated at school-age to prevent a single case of Tuberculosis within 15 years of vaccination in 2004, 2009, 2014, or 2019. The years presented were dictated by the 5-year timestep of the model. The percentage annual decrease scenarios considered were based on those considered by the JCVI BCG subgroup, with the addition of a scenario using aggregate notification data and a scenario using estimates of age-specific incidence rates in the UK born. Each boxplot summarises the output of 10,000 model simulations for each scenario.
 </p>
 </div>
 <table class="table table" style="margin-left: auto; margin-right: auto; font-size: 8px; margin-left: auto; margin-right: auto;">
@@ -811,22 +812,22 @@ Incidence Rates
 460
 </td>
 <td style="text-align:left;">
-460 (390 - 550)
+460 (390, 540)
 </td>
 <td style="text-align:left;">
-460 (390 - 550)
+460 (390, 540)
 </td>
 <td style="text-align:left;">
-460 (390 - 550)
+460 (390, 540)
 </td>
 <td style="text-align:left;">
-460 (390 - 550)
+460 (390, 540)
 </td>
 <td style="text-align:left;">
-460 (390 - 550)
+460 (390, 540)
 </td>
 <td style="text-align:left;">
-460 (390 - 550)
+460 (390, 540)
 </td>
 </tr>
 <tr>
@@ -837,22 +838,22 @@ Incidence Rates
 940
 </td>
 <td style="text-align:left;">
-940 (780 - 1200)
+940 (780, 1200)
 </td>
 <td style="text-align:left;">
-880 (730 - 1100)
+880 (720, 1100)
 </td>
 <td style="text-align:left;">
-860 (710 - 1100)
+850 (700, 1100)
 </td>
 <td style="text-align:left;">
-830 (680 - 1000)
+830 (680, 1000)
 </td>
 <td style="text-align:left;">
-860 (710 - 1100)
+860 (710, 1100)
 </td>
 <td style="text-align:left;">
-870 (640 - 1100)
+860 (640, 1100)
 </td>
 </tr>
 <tr>
@@ -863,22 +864,22 @@ Incidence Rates
 1400
 </td>
 <td style="text-align:left;">
-1400 (1100 - 1800)
+1400 (1100, 1800)
 </td>
 <td style="text-align:left;">
-1100 (910 - 1400)
+1100 (910, 1400)
 </td>
 <td style="text-align:left;">
-1000 (820 - 1300)
+1000 (820, 1300)
 </td>
 <td style="text-align:left;">
-910 (740 - 1200)
+900 (740, 1100)
 </td>
 <td style="text-align:left;">
-1000 (860 - 1300)
+1000 (860, 1300)
 </td>
 <td style="text-align:left;">
-1100 (660 - 1700)
+1100 (680, 1700)
 </td>
 </tr>
 <tr>
@@ -889,22 +890,22 @@ Incidence Rates
 2200
 </td>
 <td style="text-align:left;">
-2300 (1800 - 2900)
+2200 (1800, 2900)
 </td>
 <td style="text-align:left;">
-1400 (1100 - 1700)
+1300 (1100, 1700)
 </td>
 <td style="text-align:left;">
-1100 (900 - 1400)
+1100 (900, 1400)
 </td>
 <td style="text-align:left;">
-910 (740 - 1200)
+900 (740, 1100)
 </td>
 <td style="text-align:left;">
-1600 (1300 - 2000)
+1600 (1300, 2000)
 </td>
 <td style="text-align:left;">
-1500 (730 - 2900)
+1400 (730, 2900)
 </td>
 </tr>
 <tr>
@@ -915,22 +916,22 @@ Incidence Rates
 3600
 </td>
 <td style="text-align:left;">
-3600 (2900 - 4600)
+3600 (2900, 4600)
 </td>
 <td style="text-align:left;">
-1700 (1300 - 2100)
+1600 (1300, 2100)
 </td>
 <td style="text-align:left;">
-1200 (990 - 1500)
+1200 (990, 1500)
 </td>
 <td style="text-align:left;">
-910 (740 - 1200)
+900 (740, 1100)
 </td>
 <td style="text-align:left;">
-1800 (1500 - 2300)
+1800 (1500, 2200)
 </td>
 <td style="text-align:left;">
-1700 (760 - 4000)
+1700 (760, 3800)
 </td>
 </tr>
 <tr>
@@ -941,22 +942,22 @@ Incidence Rates
 5800
 </td>
 <td style="text-align:left;">
-5800 (4700 - 7400)
+5800 (4700, 7300)
 </td>
 <td style="text-align:left;">
-2000 (1600 - 2600)
+2000 (1600, 2500)
 </td>
 <td style="text-align:left;">
-1300 (1100 - 1700)
+1300 (1100, 1700)
 </td>
 <td style="text-align:left;">
-910 (740 - 1200)
+900 (740, 1100)
 </td>
 <td style="text-align:left;">
-1700 (1400 - 2200)
+1700 (1400, 2200)
 </td>
 <td style="text-align:left;">
-1600 (630 - 4200)
+1600 (640, 4200)
 </td>
 </tr>
 <tr>
@@ -967,22 +968,22 @@ Incidence Rates
 9300
 </td>
 <td style="text-align:left;">
-9300 (7600 - 12000)
+9200 (7600, 12000)
 </td>
 <td style="text-align:left;">
-2500 (2000 - 3100)
+2500 (2000, 3100)
 </td>
 <td style="text-align:left;">
-1500 (1200 - 1900)
+1500 (1200, 1900)
 </td>
 <td style="text-align:left;">
-910 (740 - 1200)
+900 (740, 1100)
 </td>
 <td style="text-align:left;">
-1600 (1300 - 2000)
+1600 (1300, 2000)
 </td>
 <td style="text-align:left;">
-1500 (510 - 4200)
+1500 (510, 4200)
 </td>
 </tr>
 <tr>
@@ -993,22 +994,22 @@ Incidence Rates
 15000
 </td>
 <td style="text-align:left;">
-15000 (12000 - 19000)
+15000 (12000, 19000)
 </td>
 <td style="text-align:left;">
-3000 (2500 - 3800)
+3000 (2400, 3800)
 </td>
 <td style="text-align:left;">
-1600 (1300 - 2100)
+1600 (1300, 2000)
 </td>
 <td style="text-align:left;">
-910 (740 - 1200)
+900 (740, 1100)
 </td>
 <td style="text-align:left;">
-1400 (1100 - 1700)
+1400 (1100, 1700)
 </td>
 <td style="text-align:left;">
-1500 (450 - 5000)
+1500 (460, 4900)
 </td>
 </tr>
 <tr>
@@ -1019,22 +1020,22 @@ Incidence Rates
 24000
 </td>
 <td style="text-align:left;">
-24000 (19000 - 30000)
+24000 (19000, 30000)
 </td>
 <td style="text-align:left;">
-3700 (3000 - 4600)
+3600 (3000, 4600)
 </td>
 <td style="text-align:left;">
-1800 (1500 - 2300)
+1800 (1500, 2200)
 </td>
 <td style="text-align:left;">
-910 (740 - 1200)
+900 (740, 1100)
 </td>
 <td style="text-align:left;">
-1200 (960 - 1500)
+1200 (960, 1500)
 </td>
 <td style="text-align:left;">
-1200 (330 - 4300)
+1200 (350, 4300)
 </td>
 </tr>
 <tr>
@@ -1045,22 +1046,22 @@ Incidence Rates
 38000
 </td>
 <td style="text-align:left;">
-38000 (31000 - 49000)
+38000 (31000, 48000)
 </td>
 <td style="text-align:left;">
-4500 (3600 - 5700)
+4500 (3600, 5600)
 </td>
 <td style="text-align:left;">
-2000 (1600 - 2500)
+2000 (1600, 2500)
 </td>
 <td style="text-align:left;">
-910 (740 - 1200)
+900 (740, 1100)
 </td>
 <td style="text-align:left;">
-1500 (1200 - 1900)
+1500 (1200, 1900)
 </td>
 <td style="text-align:left;">
-1500 (370 - 6000)
+1500 (390, 6000)
 </td>
 </tr>
 <tr>
@@ -1071,22 +1072,22 @@ Incidence Rates
 61000
 </td>
 <td style="text-align:left;">
-61000 (50000 - 78000)
+61000 (50000, 78000)
 </td>
 <td style="text-align:left;">
-5400 (4500 - 6900)
+5400 (4400, 6900)
 </td>
 <td style="text-align:left;">
-2200 (1800 - 2700)
+2200 (1800, 2700)
 </td>
 <td style="text-align:left;">
-910 (740 - 1200)
+900 (740, 1100)
 </td>
 <td style="text-align:left;">
-2200 (1800 - 2700)
+2100 (1800, 2700)
 </td>
 <td style="text-align:left;">
-2300 (470 - 10000)
+2300 (470, 11000)
 </td>
 </tr>
 <tr>
@@ -1097,36 +1098,36 @@ Incidence Rates
 98000
 </td>
 <td style="text-align:left;">
-98000 (80000 - 130000)
+98000 (80000, 120000)
 </td>
 <td style="text-align:left;">
-6600 (5400 - 8400)
+6600 (5400, 8400)
 </td>
 <td style="text-align:left;">
-2400 (1900 - 3000)
+2400 (1900, 3000)
 </td>
 <td style="text-align:left;">
-910 (740 - 1200)
+900 (740, 1100)
 </td>
 <td style="text-align:left;">
-3200 (2600 - 4100)
+3200 (2600, 4100)
 </td>
 <td style="text-align:left;">
-3300 (530 - 18000)
+3300 (550, 18000)
 </td>
 </tr>
 </tbody>
 </table>
 <div id="average-annual-additional-cases-from-ending-the-bcg-schools-scheme-at-various-dates" class="section level3">
 <h3><span class="header-section-number">5.5.1</span> Average annual additional cases from ending the BCG schools scheme at various dates</h3>
-<p>I found that updating parameter values, and incorporating uncertainty, did not alter the average annual additional notifications from stopping the BCG schools scheme when the annual decrease was assumed to be 9% (Figure <a href="5-sutherland.html#fig:graph-avg-add-not">5.3</a>; Table <a href="5-sutherland.html#tab:annual-prevent-tab">5.4</a>). There was a large degree of uncertainty in this estimate with 20 (2.5-97.5% Q: 16 - 25) notifications prevented annually if vaccination was stopped in 2001. As the assumed annual decrease in incidence rates was reduced the annual number of additional notifications prevented increased with 302 (2.5-97.5% Q: 238 - 369) notifications prevented annually when the annual decrease was assumed to be 1.9% and vaccination stopping in 2001. There was some evidence that the average annual number of notifications prevented was greater when the annual decrease was estimated using notifications (359 (2.5-97.5% Q: 282 - 439), P: 0.083) and age-specific incidence rates (359 (2.5-97.5% Q: 102 - 1332), P: 0.083), compared to an assumed annual decrease of 1.9% (Figure <a href="5-sutherland.html#fig:graph-avg-add-not">5.3</a>; Table <a href="5-sutherland.html#tab:annual-prevent-tab">5.4</a>). The estimate made using incidence rates again had a high degree of uncertainty. When an annual decrease of 1.9% was assumed the number of notifications prevented annually reduced with time: 255 (2.5-97.5% Q: 201 - 313) from ending vaccination in 2006; 196 (2.5-97.5% Q: 152 - 242) from ending vaccination in 2011, and 120 (2.5-97.5% Q: 88 - 155) from ending vaccination in 2016.</p>
+<p>I found that updating parameter values, and incorporating uncertainty, did not alter the average annual primary additional notifications from stopping the BCG schools scheme when the annual decrease was assumed to be 9%. However, when these changes were combined with the updated transmission model we found that the impact of ending BCG vaccination was greater than previously reported with an increase in the number of estimated cases due to onwards transmission (Figure <a href="5-sutherland.html#fig:graph-avg-add-not">5.3</a>; Table <a href="5-sutherland.html#tab:annual-prevent-tab">5.4</a>). These estimates were uncertain with 20 (2.5-97.5% Q: 16 - 25) additional annual notifications if vaccination was stopped in 2001. As the assumed annual decrease in incidence rates was reduced the annual number of additional notifications increased with 302 (2.5-97.5% Q: 238 - 369) notifications when the annual decrease was assumed to be 1.9% and vaccination stopped in 2001. The number of annual notifications reduced with time: 255 (2.5-97.5% Q: 201 - 313) from ending vaccination in 2006; 196 (2.5-97.5% Q: 152 - 242) from ending vaccination in 2011, and 120 (2.5-97.5% Q: 88 - 155) from ending vaccination in 2016 (Figure <a href="5-sutherland.html#fig:graph-avg-add-not">5.3</a>; Table <a href="5-sutherland.html#tab:annual-prevent-tab">5.4</a>).</p>
 <div class="figure" style="text-align: center"><span id="fig:graph-avg-add-not"></span>
-<img src="chapters/evidence-policy-change/graph-avg-add-nots-1.png" alt="Annual additional notifications in 15-29 year olds from stopping the BCG schools scheme in 2001, 2006, 2011, and 2016 until 2028. The years presented were dictated by the 5 year timestep of the model. The percentage annual decrease scenarios considered were based on those considered by the JCVI BCG subgroup, with the addition of a scenario using aggregate notification data and a scenario using estimates of age-specific incidence rates in the UK born. Each boxplot summarises the output of 10,000 model simulations for each scenario. Outliers have been omitted for clarity." width="80%"  />
+<img src="chapters/evidence-policy-change/fig-3.png" alt="Annual additional (stratified into primary and secondary) notifications in 15-29 year olds from stopping the BCG schools scheme in 2006, and 2011 until 2028. The years presented were dictated by the 5-year timestep of the model. The percentage annual decrease scenarios considered were based on those considered by the JCVI BCG subgroup. Data based scenarios and the JCVI 0% decrease scenario were not presented here as the updated transmission model could not support these scenarios. Each boxplot summarises the output of 10,000 model simulations for each scenario. Secondary notifications are reported assuming they occurred in the same year as the primary notifications that caused them." width="80%"  />
 <p class="caption">
-Figure 5.3: Annual additional notifications in 15-29 year olds from stopping the BCG schools scheme in 2001, 2006, 2011, and 2016 until 2028. The years presented were dictated by the 5 year timestep of the model. The percentage annual decrease scenarios considered were based on those considered by the JCVI BCG subgroup, with the addition of a scenario using aggregate notification data and a scenario using estimates of age-specific incidence rates in the UK born. Each boxplot summarises the output of 10,000 model simulations for each scenario. Outliers have been omitted for clarity.
+Figure 5.3: Annual additional (stratified into primary and secondary) notifications in 15-29 year olds from stopping the BCG schools scheme in 2006, and 2011 until 2028. The years presented were dictated by the 5-year timestep of the model. The percentage annual decrease scenarios considered were based on those considered by the JCVI BCG subgroup. Data based scenarios and the JCVI 0% decrease scenario were not presented here as the updated transmission model could not support these scenarios. Each boxplot summarises the output of 10,000 model simulations for each scenario. Secondary notifications are reported assuming they occurred in the same year as the primary notifications that caused them.
 </p>
 </div>
-<table class="table table" style="margin-left: auto; margin-right: auto; font-size: 8px; margin-left: auto; margin-right: auto;">
+<table class="table table" style="margin-left: auto; margin-right: auto; font-size: 10px; margin-left: auto; margin-right: auto;">
 <caption style="font-size: initial !important;">
 <span id="tab:annual-prevent-tab">Table 5.4: </span>The median number (with the 2.5% and 97.5% quantiles) of additional annual notifications due to ending the BCG schools scheme in selected years.
 </caption>
@@ -1147,15 +1148,6 @@ Year Ending Scheme
 <th style="text-align:left;">
 1.9% decrease
 </th>
-<th style="text-align:left;">
-0% decrease
-</th>
-<th style="text-align:left;">
-Notifications
-</th>
-<th style="text-align:left;">
-Incidence Rates
-</th>
 </tr>
 </thead>
 <tbody>
@@ -1164,25 +1156,16 @@ Incidence Rates
 1971
 </td>
 <td style="text-align:left;width: 2cm; ">
-204
+111
 </td>
 <td style="text-align:left;">
-203 (162 - 247)
+111 (88, 135)
 </td>
 <td style="text-align:left;">
-391 (310 - 476)
+204 (161, 249)
 </td>
 <td style="text-align:left;">
-557 (440 - 678)
-</td>
-<td style="text-align:left;">
-827 (652 - 1009)
-</td>
-<td style="text-align:left;">
-531 (421 - 646)
-</td>
-<td style="text-align:left;">
-548 (273 - 1254)
+286 (226, 350)
 </td>
 </tr>
 <tr>
@@ -1190,25 +1173,16 @@ Incidence Rates
 1976
 </td>
 <td style="text-align:left;width: 2cm; ">
-158
+90
 </td>
 <td style="text-align:left;">
-157 (123 - 193)
+90 (71, 110)
 </td>
 <td style="text-align:left;">
-350 (276 - 428)
+187 (148, 229)
 </td>
 <td style="text-align:left;">
-525 (414 - 643)
-</td>
-<td style="text-align:left;">
-816 (642 - 998)
-</td>
-<td style="text-align:left;">
-497 (391 - 607)
-</td>
-<td style="text-align:left;">
-520 (236 - 1282)
+276 (219, 337)
 </td>
 </tr>
 <tr>
@@ -1216,25 +1190,16 @@ Incidence Rates
 1981
 </td>
 <td style="text-align:left;width: 2cm; ">
-97
+55
 </td>
 <td style="text-align:left;">
-97 (76 - 119)
+55 (44, 68)
 </td>
 <td style="text-align:left;">
-282 (223 - 346)
+152 (120, 185)
 </td>
 <td style="text-align:left;">
-462 (364 - 565)
-</td>
-<td style="text-align:left;">
-767 (604 - 938)
-</td>
-<td style="text-align:left;">
-434 (341 - 531)
-</td>
-<td style="text-align:left;">
-462 (181 - 1275)
+244 (193, 298)
 </td>
 </tr>
 <tr>
@@ -1242,25 +1207,16 @@ Incidence Rates
 1986
 </td>
 <td style="text-align:left;width: 2cm; ">
-61
+35
 </td>
 <td style="text-align:left;">
-61 (48 - 75)
+35 (28, 43)
 </td>
 <td style="text-align:left;">
-231 (182 - 283)
+125 (99, 152)
 </td>
 <td style="text-align:left;">
-410 (323 - 501)
-</td>
-<td style="text-align:left;">
-724 (570 - 886)
-</td>
-<td style="text-align:left;">
-406 (319 - 496)
-</td>
-<td style="text-align:left;">
-427 (151 - 1282)
+218 (172, 266)
 </td>
 </tr>
 <tr>
@@ -1268,25 +1224,16 @@ Incidence Rates
 1991
 </td>
 <td style="text-align:left;width: 2cm; ">
-43
+25
 </td>
 <td style="text-align:left;">
-43 (34 - 53)
+25 (19, 30)
 </td>
 <td style="text-align:left;">
-200 (158 - 245)
+109 (86, 133)
 </td>
 <td style="text-align:left;">
-378 (298 - 462)
-</td>
-<td style="text-align:left;">
-703 (554 - 859)
-</td>
-<td style="text-align:left;">
-399 (313 - 487)
-</td>
-<td style="text-align:left;">
-419 (138 - 1336)
+203 (161, 247)
 </td>
 </tr>
 <tr>
@@ -1294,25 +1241,16 @@ Incidence Rates
 1996
 </td>
 <td style="text-align:left;width: 2cm; ">
-30
+17
 </td>
 <td style="text-align:left;">
-30 (23 - 36)
+17 (13, 21)
 </td>
 <td style="text-align:left;">
-170 (134 - 208)
+93 (74, 114)
 </td>
 <td style="text-align:left;">
-341 (269 - 418)
-</td>
-<td style="text-align:left;">
-668 (526 - 817)
-</td>
-<td style="text-align:left;">
-384 (301 - 469)
-</td>
-<td style="text-align:left;">
-397 (122 - 1354)
+185 (147, 225)
 </td>
 </tr>
 <tr>
@@ -1320,25 +1258,16 @@ Incidence Rates
 2001
 </td>
 <td style="text-align:left;width: 2cm; ">
-20
+12
 </td>
 <td style="text-align:left;">
-20 (16 - 25)
+12 (9, 15)
 </td>
 <td style="text-align:left;">
-141 (111 - 173)
+79 (62, 96)
 </td>
 <td style="text-align:left;">
-302 (238 - 369)
-</td>
-<td style="text-align:left;">
-620 (489 - 758)
-</td>
-<td style="text-align:left;">
-359 (282 - 439)
-</td>
-<td style="text-align:left;">
-359 (102 - 1332)
+166 (132, 203)
 </td>
 </tr>
 <tr>
@@ -1346,25 +1275,16 @@ Incidence Rates
 2006
 </td>
 <td style="text-align:left;width: 2cm; ">
-14
+8
 </td>
 <td style="text-align:left;">
-14 (11 - 17)
+8 (6, 10)
 </td>
 <td style="text-align:left;">
-113 (89 - 139)
+65 (51, 79)
 </td>
 <td style="text-align:left;">
-255 (201 - 313)
-</td>
-<td style="text-align:left;">
-550 (433 - 673)
-</td>
-<td style="text-align:left;">
-311 (244 - 380)
-</td>
-<td style="text-align:left;">
-314 (84 - 1265)
+145 (115, 177)
 </td>
 </tr>
 <tr>
@@ -1372,25 +1292,16 @@ Incidence Rates
 2011
 </td>
 <td style="text-align:left;width: 2cm; ">
-9
+6
 </td>
 <td style="text-align:left;">
-9 (6 - 11)
+5 (4, 7)
 </td>
 <td style="text-align:left;">
-82 (64 - 102)
+50 (39, 62)
 </td>
 <td style="text-align:left;">
-196 (152 - 242)
-</td>
-<td style="text-align:left;">
-440 (343 - 542)
-</td>
-<td style="text-align:left;">
-215 (167 - 265)
-</td>
-<td style="text-align:left;">
-215 (51 - 1026)
+118 (92, 145)
 </td>
 </tr>
 <tr>
@@ -1398,25 +1309,16 @@ Incidence Rates
 2016
 </td>
 <td style="text-align:left;width: 2cm; ">
-5
+3
 </td>
 <td style="text-align:left;">
-5 (3 - 5)
+3 (2, 4)
 </td>
 <td style="text-align:left;">
-49 (35 - 63)
+32 (23, 40)
 </td>
 <td style="text-align:left;">
-120 (88 - 155)
-</td>
-<td style="text-align:left;">
-280 (205 - 358)
-</td>
-<td style="text-align:left;">
-109 (80 - 140)
-</td>
-<td style="text-align:left;">
-103 (15 - 755)
+78 (58, 99)
 </td>
 </tr>
 <tr>
@@ -1424,25 +1326,16 @@ Incidence Rates
 2021
 </td>
 <td style="text-align:left;width: 2cm; ">
-2
+1
 </td>
 <td style="text-align:left;">
-2 (1 - 3)
+1 (1, 2)
 </td>
 <td style="text-align:left;">
-20 (13 - 29)
+15 (9, 21)
 </td>
 <td style="text-align:left;">
-52 (33 - 74)
-</td>
-<td style="text-align:left;">
-126 (78 - 176)
-</td>
-<td style="text-align:left;">
-39 (24 - 54)
-</td>
-<td style="text-align:left;">
-41 (3 - 491)
+39 (24, 54)
 </td>
 </tr>
 </tbody>
@@ -1451,22 +1344,20 @@ Incidence Rates
 </div>
 <div id="discussion-2" class="section level2">
 <h2><span class="header-section-number">5.6</span> Discussion</h2>
-<p>The existing method for estimating the impact of the BCG schools scheme produced uncertain estimates of the impact of ending the scheme in all years evaluated when parameter uncertainty for incidence rates were included. Incorperating an improved estimate for the serial interval of TB resulted in increased uncertainty in model results. Updating the annual decrease in TB notifications based on both notifications and using age-specific incidence rates resulted in increased TB cases due to ending universal school-age vaccination in all years considered. These updates resulted in fewer vaccines required to prevent a single notification in those vaccinated and an increase in the number of annual additional notifications from ending the scheme. A scenario with a 1.9% annual decrease in incidence rates was most comparable to the results based on notifications. The 9% annual decrease used by Sutherland et al. was shown to substantially overestimate the number of vaccines needed to prevent a single case and underestimate the number of additional TB cases from ending the schools scheme.</p>
-<p>This chapter reassesses a key piece of the quantitative evidence used to motivate the change in BCG vaccination policy in 2005. The results provide new insights into the uncertainty of the previously published model predictions by including parameter uncertainty and measurement error. Updating the model with data based on notifications and incidence rates showed that the historic estimates of the impact of ending the BCG scheme were overly optimistic. A limitation of this approach was that data on incidence rates in the ethnic White UK born in England and Wales were not available. However, I considered two approaches to proxy them, and investigated multiple scenarios based on those explored by the JCVI BCG subgroup. The simulation approach used here is not the most accurate method for estimating the impact of ending the BCG schools’ scheme as it relies on numerous assumptions based on the available knowledge in 1987. The strength of this work is that the estimates were based on the framework used to inform policy making. This allowed the strength of model used in the decision-making process to be assessed once parameter uncertainty had been incorperated. This would not have been possible if the impact had been assessed using only the observed data. It also allowed estimates based on updated data to be compared to historic estimates within the same framework. If a different framework had been used then these estimates would not have been comparable. An additional weakness of the modelling framework used in this chapter is that it did not include the whole population or age groups outside those directly affected by vaccination. Furthermore, heterogeneous mixing between these groups is likely to be important. The exclusion of these factors means that the results are conservative. A final limitation is that this chapter only considers the impact of ending the BCG schools scheme and not the impact of the introduction of the targeted neonatal vaccination program. This should be considered when evaluating the change in policy as a whole.</p>
-<p>Little work has been done - beyond this thesis - to assess the impact of the 2005 change in BCG vaccination policy or to assess the quantitative evidence used in decision making. However, multiple studies have evaluated the cost effectiveness of various BCG programs and the impact of switching between them. A cluster-randomised trial in Brazil found that BCG vaccination of those at school-age was cheaper than treatment and would prevent one TB case per 381 vaccinations even with a vaccine effectiveness of only 34% (8-53%).<span class="citation">[<a href="#ref-Pereira2012">69</a>]</span> This is substantially fewer than the estimate of 2000 (2.5-97.5% Q: 1600 - 2500) vaccines required to prevent a single notification within 15 years in 2014 (this was the most comparable year from the model). However, the same trial found that for regions close to the equator BCG effectiveness was low in school-age children but unchanged in neonates,<span class="citation">[<a href="#ref-Barreto2014a">70</a>]</span> highlighting the importance of considering the BCG vaccines reduced effectiveness near the equator when determining vaccination policy.<span class="citation">[<a href="#ref-Fine1995">71</a>]</span> There is also some research which supports universal re-vaccination of those at school-age, in countries with high incidence and universal vaccination of neonates, as it may be cost effective when BCG effectiveness is moderate to high.<span class="citation">[<a href="#ref-Barreto2014a">70</a>,<a href="#ref-Dye2013a">72</a>]</span> There is some evidence that targeted vaccination of high risk neonates maybe more cost effective than universal vaccination of neonates.<span class="citation">[<a href="#ref-Usher2016">73</a>,<a href="#ref-Hersh2003">74</a>]</span> However, a study in Sweden found that incidence rates in Swedish-born children increased slightly after universal vaccination of neonates was discontinued in favour of targeted vaccination.<span class="citation">[<a href="#ref-Romanus1992">75</a>]</span> In France, which switched from universal vaccination of neonates to targeted vaccination in 2007, it has also been shown that targeted vaccination reduced coverage in those most at risk.<span class="citation">[<a href="#ref-Guthmann2011">76</a>]</span> Targeted vaccination may not be more cost effective that universal vaccination when possible reductions in transmission are considered. This chapter indicates that a substantial number of cases due to transmission may be preventable if universal school-age BCG vaccination was still in place. This result is dependent on the effectiveness of BCG vaccination when given later in life, for which there is good evidence in the ethnic White UK born.<span class="citation">[<a href="#ref-Hart1972">26</a>]</span> I did not consider neonatal vaccination which would be less impacted by BCG’s effectiveness reducing when given later in life, but would also be less likely to result in the same reductions in ongoing transmission.</p>
-<p>This chapter indicates that some of the evidence used to justify the 2005 change in BCG vaccination policy may have underestimated the impact of ending the scheme. It highlights the importance of including both parameter and measurement error, as excluding these sources of variation may lead to spuriously precise results. This is problematic for policy makers as the worst case scenario often needs to be considered. In addition, my exploration of the assumptions used to estimate the annual change in TB incidence rates in the ethnic White UK born illustrates the structural impact of assuming an annual decrease in TB incidence rates. More realistic estimates of the annual decrease in incidence rates resulted in a greatly increased impact of ending the BCG schools scheme. Policy makers should consider these updated estimates when assessing the role of BCG vaccination in those at school-age. However, decisions regarding vaccine policy require economic evaluation, which discounts costs and benefits in the future; discounting has not been applied in this study which estimates the epidemiolgical impact of vaccination only.</p>
-<p>This Chapter has reassessed some of the evidence previously used in decision making, updating the approach with new data. However, as 15 years of detailed surveillance data have been collected since the ending of the BCG schools scheme it is now possible to use regression-based approaches to estimate the direct impact on incidence rates of ending the BCG schools scheme (see Chapter <a href="7-direct-eff.html#direct-eff">7</a>). These approaches could also be used to estimate the impact of vaccinating high-risk neonates, which may outweigh any negative impacts of ending the BCG schools scheme. In addition, the development (see Chapter <a href="8-model-development.html#model-development">8</a>), and use, of a transmission dynamic model would allow the more accurate estimation of indirect effects and the forecasting of long-term impacts (see Chapter <a href="10-model-results.html#model-results">10</a>).</p>
+<p>The existing method for estimating the impact of the BCG schools scheme produced uncertain estimates of the impact of ending the scheme in all years evaluated when parameter uncertainty was included. The approach used to estimate additional notifications due to transmission was found to be incorrect. Once corrected, the transmission model produced much higher estimates of additional notifications caused by ending BCG vaccination than previously reported. Further updating the model with the annual decrease in TB notifications based on both notifications and using age-specific incidence rates resulted in a decrease in the number of vaccines needed to prevent a single case in all years considered. A scenario with a 1.9% annual decrease in incidence rates was most comparable to our results based on notifications. Using this scenario, I found that the number of TB notifications arising from ending school age BCG vaccination was much greater than originally estimated using the scenario considered in Sutherland et al.</p>
+<p>In addition to identifying that the public health impact of the change in vaccine policy was likely much larger than originally estimated, my results also provide new insights into the uncertainty of the previously published model predictions by including parameter uncertainty and measurement error and updates these predictions using newly available data. As historical data on incidence rates in the ethnic White UK born in England and Wales were not available, I considered two approaches to proxy them and investigated multiple scenarios based on those explored by the JCVI BCG subgroup. The simulation approach used here, although updated where possible, is not the most accurate method for estimating the impact of ending the BCG schools scheme as it relies on numerous assumptions based on the available knowledge in 1987 and does not account for the role of non-White and non-UK born cases. However, the strength of this work is that the estimates are based on the framework used to inform policy making. This allowed the strength of the model used in the decision-making process to be assessed once parameter uncertainty had been incorporated and for flaws in the model to be identified. This would not have been possible if the impact had been assessed using only the observed data or with an alternative model. It also allowed estimates based on updated data to be compared to historic estimates within the same framework. This would also not have been possible if a different framework had been used. As mentioned, a weakness of the model used in this study is that it did not include the whole population or age groups outside those directly affected by vaccination. Heterogeneous mixing between these groups is also likely to be an important consideration. The exclusion of these factors means that my results are likely underestimate the impact of ending the BCG schools scheme. A final limitation is that this study only considers the impact of ending the BCG schools scheme and not the impact of the introduction of the targeted neonatal vaccination program. This should be considered when evaluating the change in policy as a whole.</p>
+<p>Little work has been done to assess the impact of the 2005 change in BCG vaccination policy or to assess the quantitative evidence used in decision making. However, multiple studies have evaluated the cost effectiveness of various BCG programs and the impact of switching between them. A cluster-randomised trial in Brazil found that BCG vaccination of those at school-age was cheaper than treatment and would prevent one TB case per 381 vaccinations even with a vaccine effectiveness of only 34% (8-53%).<span class="citation">[<a href="#ref-Pereira2012">68</a>]</span> This is substantially fewer than my estimate of 2000 (2.5-97.5% Q: 1600 - 2500) (the most comparable year from our study). However, the same trial found that for regions close to the equator BCG effectiveness was low in school-age children but unchanged in neonates,<span class="citation">[<a href="#ref-Barreto2014a">69</a>]</span> highlighting the importance of considering the BCG vaccines reduced effectiveness near the equator when determining vaccination policy.<span class="citation">[<a href="#ref-Fine1995">70</a>]</span> There is also some research which supports universal re-vaccination of those at school-age, in countries with high incidence and universal vaccination of neonates, as it may be cost effective when BCG effectiveness is moderate to high.<span class="citation">[<a href="#ref-Barreto2014a">69</a>,<a href="#ref-Dye2013a">71</a>]</span> There is some evidence that targeted vaccination of high risk neonates maybe more cost effective than universal vaccination of neonates.<span class="citation">[<a href="#ref-Usher2016">72</a>,<a href="#ref-Hersh2003">73</a>]</span> However, a study in Sweden found that incidence rates in Swedish-born children increased slightly after universal vaccination of neonates was discontinued in favour of targeted vaccination.<span class="citation">[<a href="#ref-Romanus1992">74</a>]</span> In France, which switched from universal vaccination of neonates to targeted vaccination in 2007, it has also been shown that targeted vaccination reduced coverage in those most at risk.<span class="citation">[<a href="#ref-Guthmann2011">75</a>]</span> Targeted vaccination may not be more cost effective than universal vaccination when possible reductions in transmission are considered. This chapter indicated that a substantial number of cases due to transmission may be preventable if universal school-age BCG vaccination was still in place. This result is dependent on the effectiveness of BCG vaccination when given later in life, for which there is good evidence in the ethnic White UK born.<span class="citation">[<a href="#ref-Hart1972">26</a>]</span> I did not consider neonatal vaccination which would be less impacted by BCG’s effectiveness reducing when given later in life, but may also be less likely to result in the same reductions in ongoing transmission.</p>
+<p>This chapter indicates that some of the evidence used to justify the 2005 change in BCG vaccination policy may have depended on a methodologically flawed model, resulting in the impact of ending BCG vaccination being underestimated. Modelling evidence can often be complex and difficult to reproduce, it is important that policy makers, or those who work with them, have the skills to assess its quality. This study also highlights the importance of including both parameter and measurement error, as excluding these sources of variation may lead to spuriously precise results. Spurious precision is problematic for policy makers as the worst-case scenario often needs to be considered when making policy decisions. In addition, my exploration of the assumptions used to estimate the annual change in TB incidence rates in the ethnic White UK born illustrates the structural impact of assuming an annual decrease in TB incidence rates. More realistic estimates of the annual decrease in incidence rates resulted in a greatly increased impact of ending the BCG schools scheme. Policy makers should consider these updated estimates when assessing the role of BCG vaccination in those at school-age. However, decisions regarding vaccine policy in the UK require economic evaluation, which discounts costs and benefits in the future; discounting has not been applied in this study which estimates the epidemiological impact of vaccination only.</p>
+<p>This chaoter has reassessed some of the evidence previously used in decision making, correcting the transmission model used, and updating the approach with new data. However, as 15 years of detailed surveillance data have been collected since the ending of the BCG schools scheme it is now possible to use regression-based approaches to estimate the direct impact on incidence rates of ending the BCG schools scheme (see Chapter <a href="7-direct-eff.html#direct-eff">7</a>).<span class="citation">[<a href="#ref-Abbott567511">76</a>]</span> These approaches could also be used to estimate the impact of vaccinating high-risk neonates, which may outweigh any negative impacts of ending the BCG schools scheme. In addition, the development (see Chapter <a href="8-model-development.html#model-development">8</a>), and use, of a transmission dynamic model would allow the more accurate estimation of indirect effects and the forecasting of long-term impacts (see Chapter <a href="10-model-results.html#model-results">10</a>).</p>
 
 </div>
 <div id="summary-4" class="section level2">
 <h2><span class="header-section-number">5.7</span> Summary</h2>
 <ul>
-<li><p>I found a 1.9% annual decrease in TB incidence rates best matched estimates from notifications.</p></li>
-<li><p>I estimate that 1600 (2.5-97.5% quantiles (Q): 1300 - 2100) vaccines would have been required to prevent a single notification in 2004.</p></li>
-<li><p>If the scheme had ended in 2001, 302 (2.5-97.5% Q: 238 - 369) additional annual notifications would have occurred compared to if the scheme had continued. If the scheme ended in 2016, 120 (2.5-97.5% Q: 88 - 155) additional annual notifications would have occurred.</p></li>
-<li><p>The estimates of the impact of ending the BCG schools scheme were highly sensitive to the annual decrease in incidence rates.</p></li>
-<li><p>The impact of ending the BCG schools scheme was found to be greater than previously thought when parameter values were updated and notifications were used.</p></li>
-<li><p>The results highlight the importance of including uncertainty when forecasting the impact of changes in vaccination policy.</p></li>
+<li><p>This chapter reevaluates a key piece of the quantitative evidence used to motivate the change in BCG vaccination policy in 2005, correcting a methodological flaw in the original model.</p></li>
+<li><p>The inclusion of parameter uncertainty, and measurement error, allowed the uncertainty in the final estimates to be presented. Previously published estimates may have been spuriously precise.</p></li>
+<li><p>As this study used a historical approach the model used is not the accurate method for assessing the impact of ending the BCG schools scheme. However, it provides an estimate that is based on the available data and on the framework used to inform policy making. This allowed the strength of some the quantitative evidence used in the decision-making process to be assessed.</p></li>
+<li><p>The impact of ending the BCG schools scheme was found to be greater than previously thought when notification data were used. These results highlight the importance of independent evaluations of modelling evidence, including uncertainty, and evaluating multiple scenarios when forecasting the impact of changes in vaccination policy.</p></li>
 <li><p>The code for the analysis contained in this Chapter can be found at:
 <a href="https://doi.org/10.5281/zenodo.2583056">doi.org/10.5281/zenodo.2583056</a><a href="#fn19" class="footnote-ref" id="fnref19"><sup>19</sup></a></p></li>
 </ul>
@@ -1505,6 +1396,9 @@ Incidence Rates
 <div id="ref-Sutherland1989">
 <p>41 Sutherland I, Springett VH. The effects of the scheme for BCG vaccination of schoolchildren in England and Wales and the consequences of discontinuing the scheme at various dates. <em>Journal of epidemiology and community health</em> 1989;<strong>43</strong>:15–24.</p>
 </div>
+<div id="ref-R">
+<p>56 R Core Team. R: A Language and Environment for Statistical Computing. Vienna, Austria: 2016. </p>
+</div>
 <div id="ref-EpiR">
 <p>60 Stevenson M, Nunes T, Heuer C <em>et al.</em> <em>epiR: Tools for the Analysis of Epidemiological Data</em>. 2017. </p>
 </div>
@@ -1526,35 +1420,35 @@ Incidence Rates
 <div id="ref-Borgdorff2011">
 <p>66 Borgdorff MW, Hof S van den, Kalisvaart N <em>et al.</em> Influence of sampling on clustering and associations with risk factors in the molecular epidemiology of tuberculosis. <em>Am J Epidemiol</em> 2011;<strong>174</strong>:243–51.</p>
 </div>
-<div id="ref-R2015">
-<p>67 R Core Team. <em>R: A language and environment for statistical computing</em>. Vienna, Austria:: R Foundation for Statistical Computing 2019. <a href="https://www.R-project.org/">https://www.R-project.org/</a></p>
-</div>
 <div id="ref-FoxSnow:2019">
-<p>68 Fox J, Weisberg S. <em>An R companion to applied regression</em>. Third. Thousand Oaks CA:: Sage 2019. <a href="https://socialsciences.mcmaster.ca/jfox/Books/Companion/">https://socialsciences.mcmaster.ca/jfox/Books/Companion/</a></p>
+<p>67 Fox J, Weisberg S. <em>An R companion to applied regression</em>. Third. Thousand Oaks CA:: Sage 2019. <a href="https://socialsciences.mcmaster.ca/jfox/Books/Companion/">https://socialsciences.mcmaster.ca/jfox/Books/Companion/</a></p>
 </div>
 <div id="ref-Pereira2012">
-<p>69 Pereira SM, Barreto ML, Pilger D <em>et al.</em> Effectiveness and cost-effectiveness of first BCG vaccination against tuberculosis in school-age children without previous tuberculin test (BCG-REVAC trial): A cluster-randomised trial. <em>Lancet Infectious Diseases</em> 2012;<strong>12</strong>:300–6.</p>
+<p>68 Pereira SM, Barreto ML, Pilger D <em>et al.</em> Effectiveness and cost-effectiveness of first BCG vaccination against tuberculosis in school-age children without previous tuberculin test (BCG-REVAC trial): A cluster-randomised trial. <em>Lancet Infectious Diseases</em> 2012;<strong>12</strong>:300–6.</p>
 </div>
 <div id="ref-Barreto2014a">
-<p>70 Barreto ML, Pilger D, Pereira SM <em>et al.</em> Causes of variation in BCG vaccine efficacy: Examining evidence from the BCG REVAC cluster randomized trial to explore the masking and the blocking hypotheses. <em>Vaccine</em> 2014;<strong>32</strong>:3759–64.</p>
+<p>69 Barreto ML, Pilger D, Pereira SM <em>et al.</em> Causes of variation in BCG vaccine efficacy: Examining evidence from the BCG REVAC cluster randomized trial to explore the masking and the blocking hypotheses. <em>Vaccine</em> 2014;<strong>32</strong>:3759–64.</p>
 </div>
 <div id="ref-Fine1995">
-<p>71 Fine PEM. Variation in protection by BCG: implications of and for heterologous immunity. <em>Lancet</em> 1995;<strong>346</strong>:1339–45.</p>
+<p>70 Fine PEM. Variation in protection by BCG: implications of and for heterologous immunity. <em>Lancet</em> 1995;<strong>346</strong>:1339–45.</p>
 </div>
 <div id="ref-Dye2013a">
-<p>72 Dye C. Making wider use of the world’s most widely used vaccine: Bacille Calmette-Guerin revaccination reconsidered. <em>Journal of The Royal Society Interface</em> 2013;<strong>10</strong>:20130365–5.</p>
+<p>71 Dye C. Making wider use of the world’s most widely used vaccine: Bacille Calmette-Guerin revaccination reconsidered. <em>Journal of The Royal Society Interface</em> 2013;<strong>10</strong>:20130365–5.</p>
 </div>
 <div id="ref-Usher2016">
-<p>73 Usher C, Adams R, Schmitz S <em>et al.</em> Evaluating the neonatal BCG vaccination programme in Ireland. <em>Archives of Public Health</em> 2016;<strong>74</strong>:1–12.</p>
+<p>72 Usher C, Adams R, Schmitz S <em>et al.</em> Evaluating the neonatal BCG vaccination programme in Ireland. <em>Archives of Public Health</em> 2016;<strong>74</strong>:1–12.</p>
 </div>
 <div id="ref-Hersh2003">
-<p>74 Hersh AL, Tala-Heikkila M, Tala E <em>et al.</em> A cost-effectiveness analysis of universal versus selective immunization with Mycobacterium bovis bacille Calmette-Guérin in Finland. <em>Int J Tuberc Lung Dis</em> 2003;<strong>7</strong>:22–9.</p>
+<p>73 Hersh AL, Tala-Heikkila M, Tala E <em>et al.</em> A cost-effectiveness analysis of universal versus selective immunization with Mycobacterium bovis bacille Calmette-Guérin in Finland. <em>Int J Tuberc Lung Dis</em> 2003;<strong>7</strong>:22–9.</p>
 </div>
 <div id="ref-Romanus1992">
-<p>75 Romanus V, Svensson Å, Hallander HO. The impact of changing BCG coverage on tuberculosis incidence in Swedish-born children between 1969 and 1989. <em>Tubercle and Lung Disease</em> 1992;<strong>73</strong>:150–61.</p>
+<p>74 Romanus V, Svensson Å, Hallander HO. The impact of changing BCG coverage on tuberculosis incidence in Swedish-born children between 1969 and 1989. <em>Tubercle and Lung Disease</em> 1992;<strong>73</strong>:150–61.</p>
 </div>
 <div id="ref-Guthmann2011">
-<p>76 Guthmann JP, Antoine D, Fonteneau L <em>et al.</em> Assessing BCG vaccination coverage and incidence of paediatric tuberculosis following two major changes in BCG vaccination policy in France. 2011;1–6.</p>
+<p>75 Guthmann JP, Antoine D, Fonteneau L <em>et al.</em> Assessing BCG vaccination coverage and incidence of paediatric tuberculosis following two major changes in BCG vaccination policy in France. 2011;1–6.</p>
+</div>
+<div id="ref-Abbott567511">
+<p>76 Abbott S, Christensen H, Welton NJ <em>et al.</em> Estimating the effect of the 2005 change in bcg policy in england: A retrospective cohort study, 2000 to 2015. <em>Eurosurveillance</em> 2019;<strong>24</strong>:1900220. doi:<a href="https://doi.org/10.2807/1560-7917.ES.2019.24.49.1900220">10.2807/1560-7917.ES.2019.24.49.1900220</a></p>
 </div>
 </div>
 <div class="footnotes">

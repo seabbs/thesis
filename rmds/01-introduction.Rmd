@@ -90,11 +90,11 @@ Journal of Open Source Software, 2019, 4(34), 1260., doi: https://doi.org/10.211
 
 * Abbott, S., Christensen, H., Lalor, M. K., Zenner, D., Campbell, C., Ramsay, M. E., & Brooks-Pollock, E. (2019). *Exploring the effects of BCG vaccination in patients diagnosed with tuberculosis: Observational study using the Enhanced Tuberculosis Surveillance system*. Vaccine, 1–6. doi: http://doi.org/10.1016/j.vaccine.2019.06.056 (preprint: https://doi.org/10.1101/366476)
 
+* Abbott S., Christensen H., Welton N.J., Brooks-Pollock E. (2019) *Estimating the effect of the 2005 change in BCG policy in England: a retrospective cohort study, 2000 to 2015*. Eurosurveillance, 49(24). doi: https://doi.org/10.2807/1560-7917.ES.2019.24.49.1900220 (preprint: https://doi.org/10.1101/567511)
+
 ### Papers under review
 
 * Abbott S., Christensen H., Brooks-Pollock E. *Reassessing the evidence for universal school-age BCG vaccination in England and Wales*, doi: https://doi.org/10.1101/567511 
-
-* Abbott S., Christensen H., Welton N.J., Brooks-Pollock E.. *Estimating the effect of the 2005 change in BCG policy in England: A retrospective cohort study*, doi: https://doi.org/10.1101/567511
 
 ### Software
 
