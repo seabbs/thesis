@@ -54,7 +54,8 @@ abr_df <- tibble::tribble(
   "TST", "Tuberculin Skin Testing",
   "WHO", "World Health Organization",
   "NTM", "Non-Tuberculosis Mycobacteria",
-  "AUC", "Area Under the Curve"
+  "AUC", "Area Under the Curve",
+  "QALY", "Quality-adjusted Life-Year"
 )
 
 ## Order by A-Z

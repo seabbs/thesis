@@ -69,7 +69,7 @@ There are three major considerations to account for when developing an observed 
 
 $$O = \mathcal{N}\left(E_{\text{syst}}A, E_{\text{noise}}A\right)$$
 
-Where $O$ are the observed notifications, $A$ are the incident cases of disease as forecast by the disease transmission model, $E_{\text{syst}}$ is the systematic reporting error, $E_{\text{noise}}$ is the reporting noise, and $\mathcal{N}$ represents the Gaussian (normal) distribution. The priors for the model are defined in Table \@ref(tab:measurement-model). The prior for systematic reporting error is based on the assumption that underreporting is more likely than over-reporting. The prior for the reporting noise is based on the observed variation between years. This observation model is also used when incorporating non-UK born incidence rates into the models force of infection (Chapter \@ref(model-development)). This allows the uncertain in these observations to be properly accounted for in the incidence estimates produced by the fitted model. 
+Where $O$ are the observed notifications, $A$ are the incident cases of disease as forecast by the disease transmission model, $E_{\text{syst}}$ is the systematic reporting error, $E_{\text{noise}}$ is the reporting noise, and $\mathcal{N}$ represents the Gaussian (normal) distribution. The priors for the model are defined in Table \@ref(tab:measurement-model). The prior for systematic reporting error is based on the assumption that underreporting is more likely than over-reporting. The prior for the reporting noise is based on the observed variation between years. This observation model is also used when incorporating non-UK born incidence rates into the models force of infection (Chapter \@ref(model-development)). This allows the uncertainty in these observations to be properly accounted for in the incidence estimates produced by the fitted model. 
 
 A potential limitation of this model is that reporting of TB cases is likely to have improved over time. This is especially true of notifications reported prior to the introduction of the ETS in 2000. A potential improvement to this model would be to introduce separate systematic reporting errors for notifications pre- and post- the introduction of the ETS. However, this may result in over-fitting and so has not been implemented here.
 
@@ -109,7 +109,7 @@ In addition for scenarios with age variable transmission probabilities or non-UK
 
 ### Stochastic parameters {#stochastic-parameters}
 
-Several key data inputs such as incidence in the non-UK born population, coverage of the BCG vaccination program, births, deaths and the contact rate are not perfectly observed, or recorded, and may vary across time. For this reason these parameters are included into the model developed in the last chapter as noise terms. This means that they are resampled for each timestep and so vary stochastically over time. This results in a model that is semi-stochastic rather than being fully deterministic (Chapter \@ref(introduction)). A semi-stochastic model can be defined as a deterministic model that incoperates stochastic elements but that is still solved as a determinsitc system within a given timestep. It is a modelling approach that has been used prevously in the literature when key parameters are uncertain and potentially time varying.[@Funk2016a] For further details of the stochastic parameters included in the model see Chapter \@ref(model-development).
+Several key data inputs such as incidence in the non-UK born population, coverage of the BCG vaccination program, births, deaths and the contact rate are not perfectly observed, or recorded, and may vary across time. For these reasons, these parameters are included in the model developed in the last chapter as noise terms. This means that they are resampled for each timestep and so vary stochastically over time. This results in a model that is semi-stochastic rather than being fully deterministic (Chapter \@ref(introduction)). A semi-stochastic model can be defined as a deterministic model that incoperates stochastic elements but that is still solved as a determinsitc system within a given timestep. It is a modelling approach that has been used prevously in the literature when key parameters are uncertain and potentially time varying.[@Funk2016a] For further details of the stochastic parameters included in the model see Chapter \@ref(model-development).
 
 
 ## Model fitting pipeline {#fitting-pipeline}
@@ -305,7 +305,7 @@ tibble(Scenario = names(scenario_dics) %>% str_split("_") %>%
     ) %>% 
 mutate(DIC = round(DIC, 0)) %>% 
 kable(
-  caption = "DIC values for each scenario evaluated during model fitting - arranged from best to worst model fit. Using 1000 samples from the posterior distribution of the fitted model for each scenario",
+  caption = "DIC values for each scenario evaluated during model fitting - arranged from best to worst model fit. Using 1000 samples from the posterior distribution of the fitted model for each scenario.",
   booktabs = TRUE, longtable = TRUE) %>% 
   kable_styling(latex_options = c("hold_position")) %>% 
   column_spec(c(1), width = "10cm")
