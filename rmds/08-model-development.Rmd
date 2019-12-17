@@ -415,7 +415,7 @@ kable(eff_bcg, booktabs = TRUE, escape = TRUE,
 Using the literature derived estimates for the Risk Ratio (RR) of the BCG vaccine at different periods after vaccination, the log normal approximation for the distribution of Risk Ratios, and the relationship between vaccination effectiveness and the Risk Ratio (Effectiveness = 1 - Risk Ratio) I derived a prior distribution - which can be sampled from - for the overall effectiveness of the BCG vaccine ($\alpha^T_a$). This can be summarised by the following equation,
 
 \begin{equation}
-  \alpha^T_a = 1 - e^{\left(\mathcal{N}(\text{ln}(RR_{t_v}), SE_{t_v})\right)}
+  \alpha^T_a \sim 1 - e^{\left(\mathcal{N}(\text{ln}(RR_{t_v}), SE_{t_v})\right)}
   (\#eq:rr-to-alpha)
 \end{equation}
 
