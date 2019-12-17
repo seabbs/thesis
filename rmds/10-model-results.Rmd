@@ -46,7 +46,7 @@ walk(files, load_rds)
 
 In the previous chapter I outlined a model fitting pipeline and discussed the results from using it on the model developed in Chapter \@ref(model-development). Whilst this fitted model may be used to explore the epidemiology of tuberculosis (TB) in the early 2000's it does not - as currently stands - explore the impact of the 2005 change in BCG vaccination policy (Chapter \@ref(background)). Models are useful in this context as dynamic model forecasts can be derived for multiple scenarios that may only exist on paper and so have little to no data to support them. These forecasts may then be used by policy makers as indicators of the likely impact of these scenarios.
 
-This chapter details the approach used to extrapolate the findings from the previous chapter beyond the change in BCG policy in 2005 and into the future. It first outlines the scenarios considered, then details the assumptions used to expand the time horizon of the model. Finally the impact of each scenario is explored over multiple time horizons. As discussed in the previous chapter these findings are preliminary in nature, meaning quantitative conclusions cannot be drawn and qualitative conclusions must be appropriately caveated.
+This chapter details the approach used to extrapolate 1000 samples from the posterior distribution of the fitted model from the previous chapter (for the best fitting scenario with variability in both transmission and non-UK born mixing) beyond the change in BCG policy in 2005 and into the future. It first outlines the scenarios considered, then details the assumptions used to expand the time horizon of the model. Finally the impact of each scenario is explored over multiple time horizons. As discussed in the previous chapter these findings are preliminary in nature, meaning quantitative conclusions cannot be drawn and qualitative conclusions must be appropriately caveated.
 
 ## Methods
 
@@ -71,8 +71,8 @@ As outlined in Chapter \@ref(model-development), births from 2015 on-wards were 
 Estimated age-stratified, and aggregated, TB incidence, and mortality were compared both visually and numerically from 2005 through to 2040 for each scenario. Multiple time horizons were evaluated across this timespan as initially the impact of any policy change may be masked by the large reservoir of vaccinated individuals in the population and because of the impact of the assumed decrease in non-UK born cases over time.  
 
 ## Results
- 
-The results presented in the following section should be considered preliminary because of the low quality of fit achieved in Chapter \@ref(model-fitting). This means that quantitative estimates are unlikely to be accurate. However, the underlying changes in dynamics caused by vaccination may be used for insight into the likely impact of each scenario and therefore there is still some value in exploring these results. 
+
+All results presented in the following section are based on 1000 samples from the posterior distribution of the fitted model from the previous chapter (for the best fitting scenario with variability in both transmission and non-UK born mixing) extended beyond the change in BCG policy in 2005 using the assumptions detailed in the previous section. These results should be considered preliminary because of the low quality of fit achieved in Chapter \@ref(model-fitting). This means that quantitative estimates are unlikely to be accurate. However, the underlying changes in dynamics caused by vaccination may be used for insight into the likely impact of each scenario and therefore there is still some value in exploring these results. 
 
 ### Forecasting the long-term impact of each vaccination scenario.
 
@@ -84,7 +84,7 @@ sum_scenario %>% filter(Year %% 5 == 0) %>%
   select(-Observation) %>% 
 kable(
   caption.short = "Forecast of overall TB incidence for each scenario evaluated from 2005 to 2040.", 
-  caption = "Forecast of overall TB incidence for each scenario evaluated from 2005 to 2040. For brevity only 5 year intervals are shown. (95\\% CrI): 95\\% credible interval estimated using the 2.5\\% quantile and the 97.5\\% quantile.", booktabs = TRUE, longtable = TRUE) %>% 
+  caption = "Forecast of overall TB incidence for each scenario evaluated from 2005 to 2040. For brevity only 5 year intervals are shown. (95\\% CrI): 95\\% credible interval estimated using the 2.5\\% quantile and the 97.5\\% quantile. Using 1000 samples from the posterior distribution of the fitted model for the scenario with variability in both transmission and non-UK born mixing.", booktabs = TRUE, longtable = TRUE) %>% 
   kable_styling(latex_options = c("hold_position"))
 ```
 
@@ -92,7 +92,7 @@ As expected neonatal vaccination resulted in a rapid decline in TB incidence in 
   
 \newpage
 
-```{r 10-age-scenarios-fig, fig.scap = "Forecast of TB incidence for each scenario evaluated from 2005 to 2040, stratified by age group.", fig.cap = "Forecast of TB incidence for each scenario evaluated from 2005 to 2040, stratified by age group (0-11). 0-9 refers to 5 year age groups from 0-4 years old to 45-49 years old. 10 refers to those aged between 50 and 69 and 11 refers to those aged 70+. Scenarios are differentiated by colour. The darker ribbon for each colour identifies the interquartile range, whilst the lighter ribbon indicates the 2.5\\% and 97.5\\% quantiles. The line represents the median."}
+```{r 10-age-scenarios-fig, fig.scap = "Forecast of TB incidence for each scenario evaluated from 2005 to 2040, stratified by age group.", fig.cap = "Forecast of TB incidence for each scenario evaluated from 2005 to 2040, stratified by age group (0-11). 0-9 refers to 5 year age groups from 0-4 years old to 45-49 years old. 10 refers to those aged between 50 and 69 and 11 refers to those aged 70+. Scenarios are differentiated by colour. The darker ribbon for each colour identifies the interquartile range, whilst the lighter ribbon indicates the 2.5\\% and 97.5\\% quantiles. The line represents the median. Using 1000 samples from the posterior distribution of the fitted model for the scenario with variability in both transmission and non-UK born mixing."}
 knitr::include_graphics(file.path(plots_path, "overview-scenarios-future-age-1.png"))
 ```
 
@@ -106,12 +106,12 @@ sum_deaths_scenario %>% filter(Year %% 5 == 0) %>%
   select(-Observation) %>% 
 kable(
   caption.short = "Forecast of overall TB mortality for each scenario evaluated from 2005 to 2040.", 
-  caption = "Forecast of overall TB mortality for each scenario evaluated from 2005 to 2040. For brevity only 5 year intervals are shown.(95\\% CrI): 95\\% credible interval estimated using the 2.5\\% quantile and the 97.5\\% quantile.", booktabs = TRUE, longtable = TRUE) %>% 
+  caption = "Forecast of overall TB mortality for each scenario evaluated from 2005 to 2040. For brevity only 5 year intervals are shown.(95\\% CrI): 95\\% credible interval estimated using the 2.5\\% quantile and the 97.5\\% quantile. Using 1000 samples from the posterior distribution of the fitted model for the scenario with variability in both transmission and non-UK born mixing.", booktabs = TRUE, longtable = TRUE) %>% 
   kable_styling(latex_options = c("hold_position"))
 ```
 
   
-```{r 10-age-scenarios-deaths-fig, fig.scap = "Forecast of TB mortality for each scenario evaluated from 2005 to 2040, stratified by age group, stratified by age group.", fig.cap = "Forecast of TB mortality for each scenario evaluated from 2005 to 2040, stratified by age group (0-11). 0-9 refers to 5 year age groups from 0-4 years old to 45-49 years old. 10 refers to those aged between 50 and 69 and 11 refers to those aged 70+. Scenarios are differentiated by colour. The darker ribbon for each colour identifies the interquartile range, whilst the lighter ribbon indicates the 2.5\\% and 97.5\\% quantiles. The line represents the median."}
+```{r 10-age-scenarios-deaths-fig, fig.scap = "Forecast of TB mortality for each scenario evaluated from 2005 to 2040, stratified by age group, stratified by age group.", fig.cap = "Forecast of TB mortality for each scenario evaluated from 2005 to 2040, stratified by age group (0-11). 0-9 refers to 5 year age groups from 0-4 years old to 45-49 years old. 10 refers to those aged between 50 and 69 and 11 refers to those aged 70+. Scenarios are differentiated by colour. The darker ribbon for each colour identifies the interquartile range, whilst the lighter ribbon indicates the 2.5\\% and 97.5\\% quantiles. The line represents the median. Using 1000 samples from the posterior distribution of the fitted model for the scenario with variability in both transmission and non-UK born mixing."}
 knitr::include_graphics(file.path(plots_path, "overview-scenarios-deaths-future-age-1.png"))
 ```
 

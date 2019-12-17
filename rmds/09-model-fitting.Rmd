@@ -51,7 +51,7 @@ load_rds("chapters/model-fitting/scenario_dics.rds")
 
 In the previous chapter I outlined a mechanistic model of Tuberculosis (TB) transmission. Whilst this model made use of the best available evidence there remains a large degree of uncertainty regarding it's structure and parameterisation. The majority of this uncertainty relates to the amount of TB transmission occurring in England. In order to use this model to understand TB transmission, and the impact of different BCG vaccination policies (Chapter \@ref(model-results)) this uncertainty needs to be reduced and the parameter space tightened to reflect more realistic ranges. An approach to deal with this uncertainty is to fit the model to available observed data. Model fitting involves optimising over the available parameter space to return parameter sets that fit the data in some quantitative way "better" than other parameter sets. An alternative to model fitting is using a model parameterised with expert knowledge only for inference. This approach is not appropriate here due to the large amount of uncertainty for many of the model parameters. Any inference based on just the parametisation from the previous chapter would have large credible intervals, reflect reality poorly, and likely be biased in multiple areas. 
 
-This chapter details an approach to fitting a infectious disease model to data using the state-space model formulation and Bayesian model fitting techniques. It first outlines the infectious disease model discussed in the previous chapter as a state-space model, as well as detailing the data used for fitting the model, and the parameters that are fitted. It then outlines the theoretical, and practical, justification for the model fitting pipeline used to calibrate and fit this state space model. Finally it discusses the quality of the model fit, ad hoc techniques used to improve model fit, strengths and limitations of the approach, and areas for further work.
+This chapter details an approach to fitting a infectious disease model to data using the state-space model formulation and Bayesian model fitting techniques. It first outlines the infectious disease model discussed in the previous chapter as a state-space model, as well as detailing the data used for fitting the model, the parameters that are fitted, and the parameters that are modelled stochastically. It then outlines the theoretical, and practical, justification for the model fitting pipeline used to calibrate and fit this state space model. Finally it discusses the quality of the model fit, ad hoc techniques used to improve model fit, strengths and limitations of the approach, and areas for further work.
 
 ## Formulation as a state-space models
 
@@ -59,7 +59,7 @@ State space models (SSMs) may be used to model dynamic systems that are partiall
 
 ### Observed data {#observed-data}
 
-The primary data source for the model is the reported, age-stratified, UK born TB notifications from 2000 to 2004 as recorded in the Enhanced TB Surveillance (ETS) system (see Chapter \@ref(data)). 2000 to 2004 are the years for which notifications are stratified by UK birth status with universal school-age BCG vaccination. Data were grouped using the age groups present in the dynamic model (5 year age groups up to 49 and then a group from 50-69 and a 70+ group). Using age-stratified incidence data, versus aggregated data, allows for more complex trends to be identified. 
+The primary data source for the model is the reported, age-stratified, UK born TB notifications from 2000 to 2004 as recorded in the Enhanced TB Surveillance (ETS) system (see Chapter \@ref(data)). 2000 to 2004 are the years for which notifications are stratified by UK birth status with universal school-age BCG vaccination. Data were grouped using the age groups present in the dynamic model (5 year age groups up to 49 and then a group from 50-69 and a 70+ group). Using age-stratified incidence data, versus aggregated data, allows for more complex trends to be identified. Non-UK born TB notifications were extracted from the same source for use as an input to the models force of infection (Chapter \@ref(model-development)).
 
 Additional datasets were considered during initial model fitting and during later model calibration. These were a condensed version of the age stratified data discussed above with a reduced number of age groups (children (aged 0-14 years old), adults (15-69 years old), and older adults (70-89 years old)) and a dataset of historic pulmonary TB notifications. The advantage of condensing age groups was that the number of notifications in each group increased. This reduced the impact of stochastic noise, making fitting the model easier as trends in the data are more consistent. Secondly, reducing the number of data points, whilst still capturing the important age dynamics, reduces the compute requirements of the model (see Section \@ref(particle-filter)). As will be discussed in Section \@ref(fitting-pipeline) this was a major consideration as the model fitting approach used was highly compute intensive. The downside of this approach is that potentially important information may be lost when data is condensed into fewer groups. Historic pulmonary TB notifications (including both UK born and non-UK born cases) from 1990, 1994, and 1998 were considered as using data from the decade prior to the time period of interest allows the long term trends to be fitted to. A subset of the available data was used as this limited the impact on the compute time of the fitting pipeline. These data were originally collected in the Statutory Notifications of Infectious Diseases (NOIDS) dataset with notifications from 1913 to 1999. These data were sourced from Public Health England,[@PHE2017] and made available in R using `tbinenglanddataclean`^[Historic TB notification data via `tbinenglanddataclean`: https://www.samabbott.co.uk/tbinenglanddataclean/]. Downsides of using these data are that reporting standards may have changed over time so a single measurement model may not be appropriate and non-UK born cases are included in these data making fitting to this data dependent on the number of non-UK born cases pre 2000 which are themselves estimated during model fitting. 
 
@@ -69,7 +69,7 @@ There are three major considerations to account for when developing an observed 
 
 $$O = \mathcal{N}\left(E_{\text{syst}}A, E_{\text{noise}}A\right)$$
 
-Where $O$ are the observed notifications, $A$ are the incident cases of disease as forecast by the disease transmission model, $E_{\text{syst}}$ is the systematic reporting error, $E_{\text{noise}}$ is the reporting noise, and $\mathcal{N}$ represents the Gaussian (normal) distribution. The priors for the model are defined in Table \@ref(tab:measurement-model). The prior for systematic reporting error is based on the assumption that underreporting is more likely than over-reporting. The prior for the reporting noise is based on the observed variation between years.
+Where $O$ are the observed notifications, $A$ are the incident cases of disease as forecast by the disease transmission model, $E_{\text{syst}}$ is the systematic reporting error, $E_{\text{noise}}$ is the reporting noise, and $\mathcal{N}$ represents the Gaussian (normal) distribution. The priors for the model are defined in Table \@ref(tab:measurement-model). The prior for systematic reporting error is based on the assumption that underreporting is more likely than over-reporting. The prior for the reporting noise is based on the observed variation between years. This observation model is also used when incorporating non-UK born incidence rates into the models force of infection (Chapter \@ref(model-development)). This allows the uncertain in these observations to be properly accounted for in the incidence estimates produced by the fitted model. 
 
 A potential limitation of this model is that reporting of TB cases is likely to have improved over time. This is especially true of notifications reported prior to the introduction of the ETS in 2000. A potential improvement to this model would be to introduce separate systematic reporting errors for notifications pre- and post- the introduction of the ETS. However, this may result in over-fitting and so has not been implemented here.
 
@@ -107,8 +107,12 @@ In addition for scenarios with age variable transmission probabilities or non-UK
 * Transmission probability modifier for young adults ($\beta_{\text{young adult}}$).
 * Non-UK born mixing modifier for young adults ($M_{\text{young adult}}$).
 
-## Model fitting pipeline {#fitting-pipeline}
+### Stochastic parameters {#stochastic-parameters}
 
+Several key data inputs such as incidence in the non-UK born population, coverage of the BCG vaccination program, births, deaths and the contact rate are not perfectly observed, or recorded, and may vary across time. For this reason these parameters are included into the model developed in the last chapter as noise terms. This means that they are resampled for each timestep and so vary stochastically over time. This results in a model that is semi-stochastic rather than being fully deterministic (Chapter \@ref(introduction)). A semi-stochastic model can be defined as a deterministic model that incoperates stochastic elements but that is still solved as a determinsitc system within a given timestep. It is a modelling approach that has been used prevously in the literature when key parameters are uncertain and potentially time varying.[@Funk2016a] For further details of the stochastic parameters included in the model see Chapter \@ref(model-development).
+
+
+## Model fitting pipeline {#fitting-pipeline}
 
 Fitting dynamic transmission models is complex and requires the use of specialist statistical techniques. There are a variety of these tools available. Ranging from tried and tested to cutting edge. Historically many modellers have used maximum likelihood methods to fit deterministic models. More recently Bayesian methods have become popular. These have numerous benefits including: explicit inclusion of prior knowledge via prior distributions for all parameters; ability to handle complex stochastic models; and provide parameter distributions (posterior distribution) of best fitting parameters rather than single point estimates (or interval estimates).[@Murray2015] Unfortunately, many of these methods also require tuning prior to use. This section outlines the theoretical justification, and implementation details, of an automated model fitting pipeline used to fit the previously detailed state space model.
 
@@ -246,7 +250,7 @@ The full model fitting pipeline can be summarised as follows^[Model fitting code
 
 ## Results
 
-The pipeline outlined above resulted in a poor fit to the observed data. The SMC-SMC algorithm had a low effective sample size for each iteration, and a low acceptance rate for particle rejuvenation steps in all scenarios evaluated. This resulted in spuriously tight posterior distributions. Ad hoc calibration (detailed in the following section) failed to improve the quality of this fit or find a subset of the model - or parameters - that fit the observed data to an acceptable degree whilst remaining computationally feasible. The results presented in the following section are therefore preliminary and indicative only. 
+The pipeline outlined above resulted in a poor fit to the observed data. The SMC-SMC algorithm had a low effective sample size for each iteration, and a low acceptance rate for particle rejuvenation steps in all scenarios evaluated. This resulted in spuriously tight posterior distributions. Ad hoc calibration (detailed in the following section) failed to improve the quality of this fit or find a subset of the model - or parameters - that fit the observed data to an acceptable degree whilst remaining computationally feasible. All results presented in the following section are based on posterior distributions produced by the model fitting pipeline using the prior distributions specified in the previous chapter. The results are preliminary and indicative only.
 
 ### Ad hoc calibration
 
@@ -301,7 +305,7 @@ tibble(Scenario = names(scenario_dics) %>% str_split("_") %>%
     ) %>% 
 mutate(DIC = round(DIC, 0)) %>% 
 kable(
-  caption = "DIC values for each scenario evaluated during model fitting - arranged from best to worst model fit.",
+  caption = "DIC values for each scenario evaluated during model fitting - arranged from best to worst model fit. Using 1000 samples from the posterior distribution of the fitted model for each scenario",
   booktabs = TRUE, longtable = TRUE) %>% 
   kable_styling(latex_options = c("hold_position")) %>% 
   column_spec(c(1), width = "10cm")
@@ -319,12 +323,12 @@ sum_obs_table %>%
   select(-Observation) %>% 
 kable(
   caption.short = "Observed versus predicted overall TB cases for years that the model was fitted to.", 
-  caption = "Observed versus predicted overall TB cases for years that the model was fitted to. (95\\% CrI): 95\\% credible interval estimated using the 2.5\\% quantile and the 97.5\\% quantile.", booktabs = TRUE, longtable = TRUE) %>% 
+  caption = "Observed versus predicted overall TB cases for years that the model was fitted to. (95\\% CrI): 95\\% credible interval estimated using the 2.5\\% quantile and the 97.5\\% quantile. Using 1000 samples from the posterior distribution of the fitted model for the scenario with variability in both transmission and non-UK born mixing.", booktabs = TRUE, longtable = TRUE) %>% 
   kable_styling(latex_options = c("hold_position")) %>% 
   {.}
 ```
 
-```{r 09-age-strat-incidence, fig.scap = "Observed and predicted TB incidence stratified by model age group", fig.cap = "Observed and predicted annaul TB incidence stratified by model age group (0-11). 0-9 refers to 5 year age groups from 0-4 years old to 45-49 years old. 10 refers to those aged between 50 and 69 and 11 refers to those aged 70+. The darker ribbon identifies the interquartile range, whilst the lighter ribbon indicates the 2.5\\% and 97.5\\% quantiles. The line represents the median."}
+```{r 09-age-strat-incidence, fig.scap = "Observed and predicted TB incidence stratified by model age group", fig.cap = "Observed and predicted annaul TB incidence stratified by model age group (0-11). 0-9 refers to 5 year age groups from 0-4 years old to 45-49 years old. 10 refers to those aged between 50 and 69 and 11 refers to those aged 70+. The darker ribbon identifies the interquartile range, whilst the lighter ribbon indicates the 2.5\\% and 97.5\\% quantiles. The line represents the median. Using 1000 samples from the posterior distribution of the fitted model for the scenario with variability in both transmission and non-UK born mixing."}
 knitr::include_graphics(file.path(plots_path, "overview-states-1990-age-1.png"))
 ```
 
@@ -343,14 +347,14 @@ sum_prior_posterior %>%
   select(-latex_param) %>% 
 kable(
   caption.short = "Prior and posterior medians for fitted model parameters", 
-  caption = "Prior and posterior medians for fitted model parameters. (95\\% CrI): 95\\% credible interval estimated using the 2.5\\% quantile and the 97.5\\% quantile.",
+  caption = "Prior and posterior medians for fitted model parameters. (95\\% CrI): 95\\% credible interval estimated using the 2.5\\% quantile and the 97.5\\% quantile. Using 1000 samples from the posterior distribution of the fitted model for the scenario with variability in both transmission and non-UK born mixing.",
   booktabs = TRUE, longtable = TRUE, escape = FALSE) %>% 
   kable_styling(latex_options = c("HOLD_position")) %>% 
   {.}
 ```
 
 
-```{r 09-fig-prior-params, fig.scap = "Prior and posterior distributions for fitted model parameters.", fig.cap = "Prior and posterior distributions for fitted model parameters. Parameter names in figure are in their coded form. They can be interpreted as the following parameters:  $\\beta_{\\text{young adult}}$,$c_{\\text{eff}}$, $c^{\\text{hist}}_{\\text{eff}}$, $c^{\\text{hist}}_{\\text{half}}$, $M$, $M_{\\text{young adult}}$, $E_{\\text{syst}}$, $E_{\\text{noise}}$, $\\iota_{\\text{scale}}$, and $\\epsilon^{\\text{older-adult}}_L$"}
+```{r 09-fig-prior-params, fig.scap = "Prior and posterior distributions for fitted model parameters.", fig.cap = "Prior and posterior distributions for fitted model parameters. Parameter names in figure are in their coded form. They can be interpreted as the following parameters:  $\\beta_{\\text{young adult}}$,$c_{\\text{eff}}$, $c^{\\text{hist}}_{\\text{eff}}$, $c^{\\text{hist}}_{\\text{half}}$, $M$, $M_{\\text{young adult}}$, $E_{\\text{syst}}$, $E_{\\text{noise}}$, $\\iota_{\\text{scale}}$, and $\\epsilon^{\\text{older-adult}}_L$. Using 1000 samples from the posterior distribution of the fitted model for the scenario with variability in both transmission and non-UK born mixing."}
 knitr::include_graphics(file.path(plots_path, "prior-posterior-overview-1.png"))
 ```
 
@@ -360,7 +364,7 @@ Figure \@ref(fig:09-fig-sens) shows the partial rank correlation coefficients fo
 
 \newpage
 
-```{r 09-fig-sens, fig.scap = "Partial rank correlation coefficients for each parameter fitted too.", fig.cap = "Partial rank correlation coefficients for each parameter fitted too. Parameter names in figure are in their coded form. They can be interpreted as the following parameters:  $\\beta_{\\text{young adult}}$, $c_{\\text{eff}}$, $c^{\\text{hist}}_{\\text{eff}}$, $c^{\\text{hist}}_{\\text{half}}$, $M$, $M_{\\text{young adult}}$, $E_{\\text{syst}}$, $E_{\\text{noise}}$, $\\iota_{\\text{scale}}$, and $\\epsilon^{\\text{older-adult}}_L$", out.width = "250px"}
+```{r 09-fig-sens, fig.scap = "Partial rank correlation coefficients for each parameter fitted too.", fig.cap = "Partial rank correlation coefficients for each parameter fitted too. Parameter names in figure are in their coded form. They can be interpreted as the following parameters:  $\\beta_{\\text{young adult}}$, $c_{\\text{eff}}$, $c^{\\text{hist}}_{\\text{eff}}$, $c^{\\text{hist}}_{\\text{half}}$, $M$, $M_{\\text{young adult}}$, $E_{\\text{syst}}$, $E_{\\text{noise}}$, $\\iota_{\\text{scale}}$, and $\\epsilon^{\\text{older-adult}}_L$. Using 1000 samples from the posterior distribution of the fitted model for the scenario with variability in both transmission and non-UK born mixing.", out.width = "250px"}
 knitr::include_graphics(file.path(plots_path, "incidence-sensitivity-1.png"))
 ```
 
