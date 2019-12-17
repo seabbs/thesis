@@ -516,7 +516,7 @@ Figure 8.2: Flow diagram for the dynamic TB disease model with demographics and 
 </div>
 <div id="parameterisation-and-data-synthesis" class="section level2">
 <h2><span class="header-section-number">8.5</span> Parameterisation and data synthesis</h2>
-<p>Parameters distributions were either estimated from the available data or assumed based on common values found in the literature. Where no comparable estimates were found in the literature a largely uninformative distribution has been used. The discussion of model parameters has been split into disease model parameters, vaccination model parameters, and demographic model parameters. The data sources used to estimate model parameters have been detailed although for the ETS and the LFS more detail is provided elsewhere (Chapter <a href="4-data.html#data">4</a>).</p>
+<p>Parameters distributions were either estimated from the available data, assumed based on common values found in the literature, or based on expert opinion. Parameter distributions were assumed to be normal unless otherwise stated. Where no comparable estimates were found in the literature, and data was not available, a largely uninformative distribution was used, informed by expert opinion. Normal distributions were extrapolated based on the published confidence/credible intervals. All prior distributions were truncated to be greater than or equal to 0 with proportions further truncated to be less than or equal to 1. Prior distributions are first summarised in tables stratified by submodel, with additional details on their derivation given in the following sections. Code for all prior derivations is available online<a href="#fn28" class="footnote-ref" id="fnref28"><sup>28</sup></a>. The data sources used to estimate model parameters have been detailed although for the ETS and the LFS more detail is provided elsewhere (Chapter <a href="4-data.html#data">4</a>).</p>
 <div id="data-sources-1" class="section level3">
 <h3><span class="header-section-number">8.5.1</span> Data sources</h3>
 <div id="enhanced-tb-surveillance-system" class="section level4">
@@ -535,7 +535,7 @@ Figure 8.2: Flow diagram for the dynamic TB disease model with demographics and 
 <p>Details of the prior distributions used for each disease model parameter are given in Table <a href="8-model-development.html#tab:disease-model">8.1</a>. Table <a href="8-model-development.html#tab:sources-tab">8.2</a> contains details of the sources used to parameterise the model. More detail is given in the following sub-sections.</p>
 <table class="table" style="font-size: 8px; margin-left: auto; margin-right: auto;">
 <caption style="font-size: initial !important;">
-<span id="tab:disease-model">Table 8.1: </span>Dynamic disease model parameters, descriptions, prior distributions, units, method used to derive the prior distribution and the type (i.e data derived, literature, assumption). All data based parameters are included. P = pulmonary TB, E = extra-pulmonary TB, v = vaccinated, i = age at vaccination, <span class="math inline">\(\mathcal{U}\)</span> = Uniform, <span class="math inline">\(\mathcal{N}\)</span> = Normal
+<span id="tab:disease-model">Table 8.1: </span>Dynamic disease model parameters, descriptions, prior distributions, units, method used to derive the prior distribution and the type (i.e data derived, literature, assumption). All data based parameters are included. All prior distributions were truncated to be greater than or equal to 0 with proportions further truncated to be less than or equal to 1. Additional detail for each prior derivation can be found in the following sections. P = pulmonary TB, E = extra-pulmonary TB, v = vaccinated, i = age at vaccination, <span class="math inline">\(\mathcal{U}\)</span> = Uniform, <span class="math inline">\(\mathcal{N}\)</span> = Normal
 </caption>
 <thead>
 <tr>
@@ -1244,7 +1244,7 @@ Figure 8.4: Distribution of time to treatment completion in the UK born successf
 </div>
 <div id="generation-of-the-symmetric-contact-matrix" class="section level6">
 <h6><span class="header-section-number">8.5.2.1.5.2</span> Generation of the symmetric contact matrix</h6>
-<p>As the POLYMOD contact data was collected using a survey there is likely to be measurement error and missing data for the number of contacts reported and the age that contacts were reported to be. Some participants also recorded contacts with an estimated age range rather than with a point estimate. In addition, as the survey had a relatively low sample size (1,011) in the UK, the estimated contact matrices contain considerable uncertainty. These considerations are often not considered in modelling studies but may introduce significant bias. Here the <code>socialmixr</code> R package<a href="#fn28" class="footnote-ref" id="fnref28"><sup>28</sup></a> is used to generate 1000 bootstrapped contact matrix samples using the following steps,</p>
+<p>As the POLYMOD contact data was collected using a survey there is likely to be measurement error and missing data for the number of contacts reported and the age that contacts were reported to be. Some participants also recorded contacts with an estimated age range rather than with a point estimate. In addition, as the survey had a relatively low sample size (1,011) in the UK, the estimated contact matrices contain considerable uncertainty. These considerations are often not considered in modelling studies but may introduce significant bias. Here the <code>socialmixr</code> R package<a href="#fn29" class="footnote-ref" id="fnref29"><sup>29</sup></a> is used to generate 1000 bootstrapped contact matrix samples using the following steps,</p>
 <ol style="list-style-type: decimal">
 <li><p>Missing or estimated ages are sampled from the appropriate ranges.</p></li>
 <li><p>Using data on the participants of the POLYMOD study, and the contacts that they recorded, participants are randomly sampled (with replacement) and the mean number of contacts is then calculated from each age group (using 5 year age groups from 0-5 to 49, 50-69, and then 70+).</p></li>
@@ -1376,7 +1376,7 @@ Effectiveness (%)
 <p>The demographic model parameters are outlined in Table <a href="8-model-development.html#tab:demo-model-params">8.4</a>, additional details are given in the following section. Table <a href="8-model-development.html#tab:sources-tab">8.2</a> contains details of the sources used to parameterise the demographic model, again more detail is given in the following section for complex parameters.</p>
 <table class="table" style="font-size: 8px; margin-left: auto; margin-right: auto;">
 <caption style="font-size: initial !important;">
-<span id="tab:demo-model-params">Table 8.4: </span>Demographic model parameters, descriptions, prior distributions, units, method used to derive the prior distribution and the type (i.e data derived, literature, assumption). <span class="math inline">\(\mathcal{N}\)</span> = Normal and i = age at vaccination.
+<span id="tab:demo-model-params">Table 8.4: </span>Demographic model parameters, descriptions, prior distributions, units, method used to derive the prior distribution and the type (i.e data derived, literature, assumption). All prior distributions were truncated to be greater than or equal to 0 with proportions further truncated to be less than or equal to 1. Additional detail for each prior derivation can be found in the following sections. <span class="math inline">\(\mathcal{N}\)</span> = Normal and i = age at vaccination.
 </caption>
 <thead>
 <tr>
@@ -1603,7 +1603,7 @@ Variable in young adults (15-29)
 <div id="summary-7" class="section level2">
 <h2><span class="header-section-number">8.9</span> Summary</h2>
 <ul>
-<li><p>This chapter presents a transmission dynamic model of TB transmission and BCG vaccination. The model includes; age structure, pulmonary and extra-pulmonary TB, re-infection and re-activation, serial latency, TB treatment, treatment failure, TB mortality, non-UK born cases and details of the historic TB endemic. Code for this model is available online.<a href="#fn29" class="footnote-ref" id="fnref29"><sup>29</sup></a></p></li>
+<li><p>This chapter presents a transmission dynamic model of TB transmission and BCG vaccination. The model includes; age structure, pulmonary and extra-pulmonary TB, re-infection and re-activation, serial latency, TB treatment, treatment failure, TB mortality, non-UK born cases and details of the historic TB endemic. Code for this model is available online.<a href="#fn30" class="footnote-ref" id="fnref30"><sup>30</sup></a></p></li>
 <li><p>The model has been robustly parameterised to a rich routine surveillance data set, which has allowed more complex features to be modelled than in previously published models. Parameter transformation and approximations, that make the best use of the available data, have been detailed.</p></li>
 <li><p>The assumptions required by the model have been explored in detail, with the required sensitivity analyses listed. These sensitivity analyses will be explored in the following chapter by comparing the goodness of fit of the model to the available data.</p></li>
 <li><p>The strengths and weaknesses of the model have been discussed as well as its context within the literature. It appears that few models are parameterised to a comparably rich surveillance data source, that few models capture the full complexity of BCG vaccination and that few models include realistic population demographics to the same extent as included in the model presented in this chapter.</p></li>
@@ -1745,8 +1745,9 @@ Variable in young adults (15-29)
 <hr />
 <ol start="27">
 <li id="fn27"><p>Model code: <a href="https://github.com/seabbs/ModelTBBCGEngland/blob/master/inst/bi/BaseLineModel.bi" class="uri">https://github.com/seabbs/ModelTBBCGEngland/blob/master/inst/bi/BaseLineModel.bi</a><a href="8-model-development.html#fnref27" class="footnote-back">↩</a></p></li>
-<li id="fn28"><p><code>socialmixr</code>: <a href="https://github.com/sbfnk/socialmixr" class="uri">https://github.com/sbfnk/socialmixr</a><a href="8-model-development.html#fnref28" class="footnote-back">↩</a></p></li>
-<li id="fn29"><p>Model code: <a href="https://github.com/seabbs/ModelTBBCGEngland/blob/master/inst/bi/BaseLineModel.bi" class="uri">https://github.com/seabbs/ModelTBBCGEngland/blob/master/inst/bi/BaseLineModel.bi</a><a href="8-model-development.html#fnref29" class="footnote-back">↩</a></p></li>
+<li id="fn28"><p><a href="https://github.com/seabbs/ModelTBBCGEngland/tree/master/data-raw" class="uri">https://github.com/seabbs/ModelTBBCGEngland/tree/master/data-raw</a><a href="8-model-development.html#fnref28" class="footnote-back">↩</a></p></li>
+<li id="fn29"><p><code>socialmixr</code>: <a href="https://github.com/sbfnk/socialmixr" class="uri">https://github.com/sbfnk/socialmixr</a><a href="8-model-development.html#fnref29" class="footnote-back">↩</a></p></li>
+<li id="fn30"><p>Model code: <a href="https://github.com/seabbs/ModelTBBCGEngland/blob/master/inst/bi/BaseLineModel.bi" class="uri">https://github.com/seabbs/ModelTBBCGEngland/blob/master/inst/bi/BaseLineModel.bi</a><a href="8-model-development.html#fnref30" class="footnote-back">↩</a></p></li>
 </ol>
 </div>
             </section>

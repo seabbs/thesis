@@ -215,7 +215,7 @@ Where $\iota_i$ is the age stratified number of non-UK born pulmonary cases noti
 
 ## Parameterisation and data synthesis
 
-Parameters distributions were either estimated from the available data or assumed based on common values found in the literature. Where no comparable estimates were found in the literature a largely uninformative distribution has been used. The discussion of model parameters has been split into disease model parameters, vaccination model parameters, and demographic model parameters. The data sources used to estimate model parameters have been detailed although for the ETS and the LFS more detail is provided elsewhere (Chapter \@ref(data)).
+Parameters distributions were either estimated from the available data, assumed based on common values found in the literature, or based on expert opinion. Parameter distributions were assumed to be normal unless otherwise stated. Where no comparable estimates were found in the literature, and data was not available, a largely uninformative distribution was used, informed by expert opinion. Normal distributions were extrapolated based on the published confidence/credible intervals. All prior distributions were truncated to be greater than or equal to 0 with proportions further truncated to be less than or equal to 1. Prior distributions are first summarised in tables stratified by submodel, with additional details on their derivation given in the following sections. Code for all prior derivations is available online^[https://github.com/seabbs/ModelTBBCGEngland/tree/master/data-raw]. The data sources used to estimate model parameters have been detailed although for the ETS and the LFS more detail is provided elsewhere (Chapter \@ref(data)).
 
 ### Data sources
 
@@ -238,7 +238,7 @@ disease_params_table %>%
   select(Parameter, Description, Distribution, Units, Method, Type) %>% 
 kable(
   caption.short = "Dynamic disease model parameters, descriptions, prior distributions, units, method used to derive the prior distribution and the type.", 
-  caption = "Dynamic disease model parameters, descriptions, prior distributions, units, method used to derive the prior distribution and the type (i.e data derived, literature, assumption). All data based parameters are included. P = pulmonary TB, E = extra-pulmonary TB, v = vaccinated, i = age at vaccination, $\\mathcal{U}$ = Uniform, $\\mathcal{N}$ = Normal", booktabs = TRUE, longtable = TRUE, escape = FALSE) %>% 
+  caption = "Dynamic disease model parameters, descriptions, prior distributions, units, method used to derive the prior distribution and the type (i.e data derived, literature, assumption). All data based parameters are included. All prior distributions were truncated to be greater than or equal to 0 with proportions further truncated to be less than or equal to 1. Additional detail for each prior derivation can be found in the following sections. P = pulmonary TB, E = extra-pulmonary TB, v = vaccinated, i = age at vaccination, $\\mathcal{U}$ = Uniform, $\\mathcal{N}$ = Normal", booktabs = TRUE, longtable = TRUE, escape = FALSE) %>% 
   kable_styling(font_size = 8, latex_options = c("repeat_header", "hold_position")) %>% 
   column_spec(c(5), width = "6cm") %>% 
   column_spec(c(2), width = "4cm") %>%
@@ -445,7 +445,7 @@ demographic_params_table %>%
   select(Parameter, Description, Distribution, Units, Method, Type) %>% 
 kable(
   caption.short = "Demographic model parameters, descriptions, prior distributions, units, method used to derive the prior distribution and the type.", 
-  caption = "Demographic model parameters, descriptions, prior distributions, units, method used to derive the prior distribution and the type (i.e data derived, literature, assumption).  $\\mathcal{N}$ = Normal and i = age at vaccination.", booktabs = TRUE, longtable = TRUE, escape = FALSE) %>% 
+  caption = "Demographic model parameters, descriptions, prior distributions, units, method used to derive the prior distribution and the type (i.e data derived, literature, assumption).  All prior distributions were truncated to be greater than or equal to 0 with proportions further truncated to be less than or equal to 1. Additional detail for each prior derivation can be found in the following sections. $\\mathcal{N}$ = Normal and i = age at vaccination.", booktabs = TRUE, longtable = TRUE, escape = FALSE) %>% 
   kable_styling(font_size = 8, latex_options = c("repeat_header", "hold_position")) %>% 
   column_spec(c(5), width = "6cm") %>% 
   column_spec(c(2), width = "4cm") %>%
