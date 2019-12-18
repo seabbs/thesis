@@ -94,6 +94,7 @@ This repository has the following structure:
 - `packrat`: All R packages required.
 - `projects`: A backup of all analysis code used for this PhD. Not present on GitHub this folder can be restored using `bash bin/grab_projects.sh projects`. Details of all analysis projects can be found in the thesis introduction.
 - `data`: If using the local version of this thesis all data can be found zipped in this folder. If using a remote version then see the individual chapters for data sources and the following section for further details.
+- `review`: Examiner comments and my responses from my viva.
 
 See individual chapter text and Rmd documents for additional reproducibility information.
 

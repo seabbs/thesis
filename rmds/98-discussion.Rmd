@@ -3,7 +3,7 @@ output: html_document
 ---
 
 ```{r}
-##Wordcount: 2293
+##Wordcount: 2847
 ```
 
 # Discussion {#discussion-chapt}

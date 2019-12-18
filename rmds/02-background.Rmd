@@ -7,7 +7,7 @@ knitr::opts_chunk$set(echo = FALSE, dpi = 320, cache = TRUE,
                       fig.width = 8, fig.height = 8,
                       out.width = "80%", fig.align = 'center')
 
-## Wordcount: 3668
+## Wordcount: 3651
 ##packages
 ##Install via 
 ##Dev Version:: devtools::install_github("seabbs/tbinenglanddataclean")

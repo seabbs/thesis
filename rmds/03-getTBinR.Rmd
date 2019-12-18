@@ -12,7 +12,7 @@ output:
 knitr::opts_chunk$set(echo = TRUE, dpi = 320, cache = TRUE,
                       fig.width = 8, fig.height = 8,
                       out.width = "80%", fig.align = 'center')
-## Wordcount:2124
+## Wordcount:2114
 ##packages
 ## Install via 
 ## CRAN: install.packages("getTBinR")

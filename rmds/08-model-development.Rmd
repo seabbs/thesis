@@ -11,7 +11,7 @@ knitr::opts_chunk$set(echo = FALSE, dpi = 320,
                       fig.width = 8, fig.height = 8,
                       out.width = "80%", fig.align = 'center')
 
-## Wordcount: 11089
+## Wordcount: 11631
 ##packages
 library(tidyverse)
 library(kableExtra)

@@ -3,7 +3,7 @@ output: html_document
 ---
 
 ```{r, include = FALSE}
-## Wordcount: 2934
+## Wordcount: 2946
 ```
 
 # Introduction {#introduction}
