@@ -14,7 +14,7 @@ abr_df <- tibble::tribble(
   "POLYMOD", "Improving Public Health Policy in Europe through the Modelling and Economic Evaluation of Interventions for the Control of Infectious Diseases",
   "MNAR", "Missing Not at Random",
   "MCAR", "Missing Completely at Random",
-  "MAR", "Missinga at Random",
+  "MAR", "Missing at Random",
   "IRR", "Incidence Rate Ratio",
   "SE", "Standard Error",
   "RR", "Risk Ratio",
