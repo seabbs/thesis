@@ -568,7 +568,7 @@ Type
 The assumed effective number of contacts per infectious TB case.
 </td>
 <td style="text-align:left;width: 6cm; ">
-<span class="math inline">\(\mathcal{N}(1, 1)\)</span> truncated to be greater than 0.
+<span class="math inline">\(\mathcal{N}(1, 1)\)</span>
 </td>
 <td style="text-align:left;width: 1.5cm; ">
 <ul>
@@ -605,10 +605,10 @@ Vynnycky et al.
 <span class="math inline">\(C^{\text{half-life}}_{\text{eff}}\)</span>
 </td>
 <td style="text-align:left;width: 4cm; ">
-It is assumed that the historic effective contact rate decays from 1935 to 1980 with a half-life of <span class="math inline">\(C^{\text{half-life}}_{\text{eff}}\)</span>.
+It is assumed that the historic effective contact rate decays from 1935 to 1980 with a rate of <span class="math inline">\(C^{\text{half-life}}_{\text{eff}}\)</span>.
 </td>
 <td style="text-align:left;width: 6cm; ">
-<span class="math inline">\(\mathcal{N}(5, 5)\)</span> truncated to be greater than 0.
+<span class="math inline">\(\mathcal{N}(5, 5)\)</span>
 </td>
 <td style="text-align:left;width: 1.5cm; ">
 <ul>
@@ -648,7 +648,7 @@ Assumption
 The age-specific proportion of cases that have pulmonary TB
 </td>
 <td style="text-align:left;width: 6cm; ">
-<span class="math inline">\(\Upsilon_{0-14,15-59,60-89} = \mathcal{N}(0.629, 0.00101)\)</span>, <span class="math inline">\(\mathcal{N}(0.706, 0.00411)\)</span>, <span class="math inline">\(\mathcal{N}(0.750, 0.00569)\)</span>
+<span class="math inline">\(\Upsilon_{0-14} = \mathcal{N}(0.629, 0.00101)\)</span>, <span class="math inline">\(\Upsilon_{15-59} = \mathcal{N}(0.706, 0.00411)\)</span>, <span class="math inline">\(\Upsilon_{60-89} = \mathcal{N}(0.750, 0.00569)\)</span>
 </td>
 <td style="text-align:left;width: 1.5cm; ">
 Proportion
@@ -668,7 +668,7 @@ ETS
 The age-specific proportion of pulmonary TB cases that are smear positive
 </td>
 <td style="text-align:left;width: 6cm; ">
-<span class="math inline">\(\rho_{0-14,15-59,60-89} = \mathcal{N}(0.302, 0.0189)\)</span>, <span class="math inline">\(\mathcal{N}(0.652, 0.00518)\)</span>, <span class="math inline">\(\mathcal{N}(0.536, 0.00845)\)</span>
+<span class="math inline">\(\rho_{0-14} = \mathcal{N}(0.302, 0.0189)\)</span>, <span class="math inline">\(\rho_{15-59} = \mathcal{N}(0.652, 0.00518)\)</span>, <span class="math inline">\(\rho_{60-89} =\mathcal{N}(0.536, 0.00845)\)</span>
 </td>
 <td style="text-align:left;width: 1.5cm; ">
 Proportion
@@ -748,7 +748,7 @@ Assumption
 The proportion of mixing between the UK born and non-UK born population.
 </td>
 <td style="text-align:left;width: 6cm; ">
-<span class="math inline">\(\mathcal{N}(1, 1)\)</span> truncated to be greater than 0
+<span class="math inline">\(\mathcal{N}(1, 1)\)</span>
 </td>
 <td style="text-align:left;width: 1.5cm; ">
 Proportion
@@ -794,7 +794,7 @@ Age-specific protection from infection with TB due to BCG vaccination
 Proportion
 </td>
 <td style="text-align:left;width: 6cm; ">
-A meta-analysis of the protection from infection due to BCG vaccinatiion in children. It has been assumed that there is no reduction in protection in UK born adults.
+A meta-analysis of the protection from infection due to BCG vaccinatiion in children. It has been assumed that there is no reduction in protection in UK born adults. Distribution derived by the assumption of a normal distribution based on published 95% confidence intervals.
 </td>
 <td style="text-align:left;width: 1.5cm; ">
 Roy et al.
@@ -808,13 +808,13 @@ Roy et al.
 The age-specific rate of transition to active disease during high risk latent period.
 </td>
 <td style="text-align:left;width: 6cm; ">
-<span class="math inline">\(\epsilon_H^{0-4,5-14,15-89} = \mathcal{N}(0.00695, 0.00130)\)</span>, <span class="math inline">\(\mathcal{N}(0.0028, 0.000561)\)</span>, <span class="math inline">\(\mathcal{N}(0.000335, 0.0000893)\)</span>
+<span class="math inline">\(\epsilon_H^{0-4} = \mathcal{N}(0.00695, 0.00130)\)</span>, <span class="math inline">\(\epsilon_H^{5-14} = \mathcal{N}(0.0028, 0.000561)\)</span>, <span class="math inline">\(\epsilon_H^{15-89} = \mathcal{N}(0.000335, 0.0000893)\)</span>
 </td>
 <td style="text-align:left;width: 1.5cm; ">
 <span class="math inline">\(days^{-1}\)</span>
 </td>
 <td style="text-align:left;width: 6cm; ">
-From fitting a similar model to contact data in Australia, and Holland. Distribution derived by the assumption of a normal distribution based on 95% credible intervals.
+From fitting a similar model to contact data in Australia, and Holland. Distribution derived by the assumption of a normal distribution based on published 95% credible intervals.
 </td>
 <td style="text-align:left;width: 1.5cm; ">
 Ragonnet et al.
@@ -828,13 +828,13 @@ Ragonnet et al.
 The reciprocal of the age-specific average high risk latent period.
 </td>
 <td style="text-align:left;width: 6cm; ">
-<span class="math inline">\(\kappa^{0-4,5-14,15-89} = \mathcal{N}(0.0133, 0.00242)\)</span>, <span class="math inline">\(\mathcal{N}(0.0120, 0.00207)\)</span>, <span class="math inline">\(\mathcal{N}(0.00725, 0.00191)\)</span>
+<span class="math inline">\(\kappa^{0-4} = \mathcal{N}(0.0133, 0.00242)\)</span>, <span class="math inline">\(\kappa^{5-14} = \mathcal{N}(0.0120, 0.00207)\)</span>, <span class="math inline">\(\kappa^{15-89} = \mathcal{N}(0.00725, 0.00191)\)</span>
 </td>
 <td style="text-align:left;width: 1.5cm; ">
 <span class="math inline">\(days^{-1}\)</span>
 </td>
 <td style="text-align:left;width: 6cm; ">
-From fitting a similar model to contact data in Australia, and Holland. Distribution derived by the assumption of a normal distribution based on 95% credible intervals.
+From fitting a similar model to contact data in Australia, and Holland. Distribution derived by the assumption of a normal distribution based on published 95% credible intervals.
 </td>
 <td style="text-align:left;width: 1.5cm; ">
 Ragonnet et al.
@@ -848,13 +848,13 @@ Ragonnet et al.
 The reciprocal of the age-specific average low risk latent period.
 </td>
 <td style="text-align:left;width: 6cm; ">
-<span class="math inline">\(\epsilon_L^{0-4,5-14,15-89} = \mathcal{N}(8.00e^{-6}, 4.08e^{-6})\)</span>, <span class="math inline">\(\mathcal{N}(9.84e^{-6}, 4.67e^{-6})\)</span>, <span class="math inline">\(\mathcal{N}(5.95e^{-6}, 2.07e^{-6})\)</span>
+<span class="math inline">\(\epsilon_L^{0-4} = \mathcal{N}(8.00e^{-6}, 4.08e^{-6})\)</span>, <span class="math inline">\(\epsilon_L^{5-14} = \mathcal{N}(9.84e^{-6}, 4.67e^{-6})\)</span>, <span class="math inline">\(\epsilon_L^{15-89} = \mathcal{N}(5.95e^{-6}, 2.07e^{-6})\)</span>
 </td>
 <td style="text-align:left;width: 1.5cm; ">
 <span class="math inline">\(days^{-1}\)</span>
 </td>
 <td style="text-align:left;width: 6cm; ">
-From fitting a similar model to contact data in Australia, and Holland. Distribution derived by the assumption of a normal distribution based on 95% credible intervals.
+From fitting a similar model to contact data in Australia, and Holland. Distribution derived by the assumption of a normal distribution based on published 95% credible intervals.
 </td>
 <td style="text-align:left;width: 1.5cm; ">
 Ragonnet et al.
@@ -868,7 +868,7 @@ Ragonnet et al.
 This parameter modifies the activation rate of low risk latent cases who are 70+ and reduces the activaton rate for other adults so that the mean activation rate is <span class="math inline">\(\epsilon_L^{15-89}\)</span>
 </td>
 <td style="text-align:left;width: 6cm; ">
-<span class="math inline">\(\mathcal{N}(2, 0.5)\)</span> truncated to be at least 1.
+<span class="math inline">\(\mathcal{N}(2, 0.5)\)</span>
 </td>
 <td style="text-align:left;width: 1.5cm; ">
 <ul>
@@ -888,7 +888,7 @@ Horsburgh, Jr. et al.
 The BCG vaccine effectiveness at preventing the development of active TB disease in a TB free population
 </td>
 <td style="text-align:left;width: 6cm; ">
-<span class="math inline">\(\alpha^T_{i,i+5,i+10,i+15,i+20,i+25} = 1 - e^{\alpha^{\text{ln}(T)}_{i,i+5,i+10,i+15,i+20,i+25}}\)</span>, where <span class="math inline">\(\alpha^{\text{ln}(T)}_{i,i+5,i+10,i+15,i+20,i+25} = \mathcal{N}(-1.86, 0.22)\)</span>, <span class="math inline">\(\mathcal{N}(-1.19, 0.24)\)</span>, <span class="math inline">\(\mathcal{N}(-0.84, 0.22)\)</span>, <span class="math inline">\(\mathcal{N}(-0.84, 0.2)\)</span>, <span class="math inline">\(\mathcal{N}(-0.28, 0.19)\)</span>, <span class="math inline">\(\mathcal{N}(-0.23, 0.29))\)</span> and <span class="math inline">\(i\)</span> is the age group vaccinated
+<span class="math inline">\(\alpha^T_{j} = 1 - e^{\alpha^{\text{ln}(T)}_{j}}\)</span>, where <span class="math inline">\(\alpha^{\text{ln}(T)}_{j = i} = \mathcal{N}(-1.86, 0.22)\)</span>, <span class="math inline">\(\alpha^{\text{ln}(T)}_{j = i+5} = \mathcal{N}(-1.19, 0.24)\)</span>, <span class="math inline">\(\alpha^{\text{ln}(T)}_{j = i+10} = \mathcal{N}(-0.84, 0.22)\)</span>, <span class="math inline">\(\alpha^{\text{ln}(T)}_{j = i+15} = \mathcal{N}(-0.84, 0.2)\)</span>, <span class="math inline">\(\alpha^{\text{ln}(T)}_{j = i+20} = \mathcal{N}(-0.28, 0.19)\)</span>, $ ^{(T)}_{j = i+25} = (-0.23, 0.29))$ and <span class="math inline">\(i\)</span> is the age group vaccinated
 </td>
 <td style="text-align:left;width: 1.5cm; ">
 Proportion
@@ -914,7 +914,7 @@ Reduction in susceptibilty to infection for low risk latent cases.
 Proportion
 </td>
 <td style="text-align:left;width: 6cm; ">
-A review of prospective cohort studies of persons exposed to individuals with infectious tuberculosis that was published prior to the widespread treatment of latent tuberculosis.
+A review of prospective cohort studies of persons exposed to individuals with infectious tuberculosis that was published prior to the widespread treatment of latent tuberculosis. Distribution derived by the assumption of a normal distribution based on published 95% confidence intervals.
 </td>
 <td style="text-align:left;width: 1.5cm; ">
 Andrews et al.
@@ -928,13 +928,13 @@ Andrews et al.
 The reciprocal of the average infectious period
 </td>
 <td style="text-align:left;width: 6cm; ">
-<span class="math inline">\(\nu^P_{(0-14,15-89)} = \mathcal{N}(0.181, 0.310)^{-1}\)</span>, <span class="math inline">\(\mathcal{N}(0.328, 0.447)^{-1}\)</span>, <span class="math inline">\(\nu^E_{(0-14, 15-89)} = \mathcal{N}(0.306, 0.602 )^{-1}\)</span>, <span class="math inline">\(\mathcal{N}(0.480, 0.866)^{-1}\)</span>
+<span class="math inline">\(\nu^P_{0-14} = \mathcal{N}(0.181, 0.310)^{-1}\)</span>, <span class="math inline">\(\nu^P_{15-89} = \mathcal{N}(0.328, 0.447)^{-1}\)</span>, <span class="math inline">\(\nu^E_{0-14} = \mathcal{N}(0.306, 0.602 )^{-1}\)</span>, <span class="math inline">\(\nu^E_{15-89} = \mathcal{N}(0.480, 0.866)^{-1}\)</span>
 </td>
 <td style="text-align:left;width: 1.5cm; ">
 <span class="math inline">\(years^{-1}\)</span>
 </td>
 <td style="text-align:left;width: 6cm; ">
-Estimated based on the time from initial symptoms to starting treatment
+Estimated based on the time from initial symptoms to starting treatment.
 </td>
 <td style="text-align:left;width: 1.5cm; ">
 ETS
@@ -945,10 +945,10 @@ ETS
 <span class="math inline">\(\phi\)</span>
 </td>
 <td style="text-align:left;width: 4cm; ">
-The reciprocal of the time to succesful treatment completion
+The reciprocal of the time to successful treatment completion
 </td>
 <td style="text-align:left;width: 6cm; ">
-<span class="math inline">\(\phi_{0-14,15-69,70-89} = \mathcal{N}(0.606,0.237)^{-1}\)</span>, <span class="math inline">\(\mathcal{N}(0.645, 0.290)^{-1}\)</span>, <span class="math inline">\(\mathcal{N}(0.616, 0.265)^{-1}\)</span> and truncated to be greater than 4 months
+<span class="math inline">\(\phi_{0-14} = \mathcal{N}(0.606,0.237)^{-1}\)</span>, <span class="math inline">\(\phi_{15-69} = \mathcal{N}(0.645, 0.290)^{-1}\)</span>, <span class="math inline">\(\phi_{70-89} = \mathcal{N}(0.616, 0.265)^{-1}\)</span>
 </td>
 <td style="text-align:left;width: 1.5cm; ">
 <span class="math inline">\(years^{-1}\)</span>
@@ -968,7 +968,7 @@ ETS
 Rate of age-specific pulmonary/extra-pulmonary TB mortality
 </td>
 <td style="text-align:left;width: 6cm; ">
-<span class="math inline">\(\mu_{0-14,15-59,60-89} = \mathcal{N}(0.0039, 0.018)\)</span>, <span class="math inline">\(\mathcal{N}(0.0226, 0.00787)\)</span>, <span class="math inline">\(\mathcal{N}(0.117, 0.0165)\)</span> truncated to be greater than 0.
+<span class="math inline">\(\mu_{0-14} = \mathcal{N}(0.0039, 0.018)\)</span>, <span class="math inline">\(\mu_{15-59} = \mathcal{N}(0.0226, 0.00787)\)</span>, <span class="math inline">\(\mu_{60-89} = \mathcal{N}(0.117, 0.0165)\)</span>
 </td>
 <td style="text-align:left;width: 1.5cm; ">
 <span class="math inline">\(years^{-1}\)</span>
@@ -988,7 +988,7 @@ ETS
 Rate of loss to follow up
 </td>
 <td style="text-align:left;width: 6cm; ">
-<span class="math inline">\(\zeta_{0-14,15-59,60-89} = \mathcal{N}(0.00976, 0.0179)\)</span>, <span class="math inline">\(\mathcal{N}(0.0304, 0.00764)\)</span>, <span class="math inline">\(\mathcal{N}(0.00614, 0.0159)\)</span>, truncated to be greater than 0.
+<span class="math inline">\(\zeta_{0-14} = \mathcal{N}(0.00976, 0.0179)\)</span>, <span class="math inline">\(\zeta_{15-59}= \mathcal{N}(0.0304, 0.00764)\)</span>, <span class="math inline">\(\zeta_{60-89} = \mathcal{N}(0.00614, 0.0159)\)</span>
 </td>
 <td style="text-align:left;width: 1.5cm; ">
 <span class="math inline">\(years^{-1}\)</span>
@@ -1071,7 +1071,7 @@ study</td>
 1990</td>
 <td align="center">Used a dynamic model of tuberculosis, robustly
 parameterised to the available evidence and
-including realistic population demographis to
+including realistic population demographics to
 estimate the effective contact rate of TB over
 time until the 1990’s in the UK born white male
 population.</td>
@@ -1104,10 +1104,10 @@ meta-analysis</td>
 2014</td>
 <td align="center">A meta-analysis; conducted with the aim of
 determining whether BCG vaccination protects
-against Mycobacterium tuberculosis infection as
-assessed by interferon <span class="math inline">\(\gamma\)</span> release assays
-(IGRA) in children. Estimated both protection from
-initial latent infection and active TB disease.</td>
+against tuberculosis infection as assessed by
+interferon <span class="math inline">\(\gamma\)</span> release assays (IGRA) in
+children. Estimated both protection from initial
+latent infection and active TB disease.</td>
 <td align="center"><span class="citation">[<a href="#ref-Roy2014">4</a>]</span></td>
 </tr>
 <tr class="even">
@@ -1137,7 +1137,7 @@ trial</td>
 at preventing TB disease when given at what as
 then school-leaving age. Followed the cohort over
 15 years and estimated the effectiveness of the
-BCG vaccien in 2.5 year intervals from
+BCG vaccine in 2.5 year intervals from
 vaccination.</td>
 <td align="center"><span class="citation">[<a href="#ref-Hart1972">26</a>]</span></td>
 </tr>
@@ -1150,7 +1150,7 @@ study</td>
 <td align="center">England</td>
 <td align="center">2002-2014</td>
 <td align="center">Recruited UK-born White subjects with TB and
-randomly smapled White community controls. Cox
+randomly sampled White community controls. Cox
 regression was used to adjusted for known
 confounders and the effectiveness of the BCG
 vaccine was estimated from 10 years after

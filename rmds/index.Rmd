@@ -13,8 +13,8 @@ site: "bookdown::bookdown_site"
 always_allow_html: yes
 output: 
   ##Thesis can only be fully built for pdf using the makefile
-  #thesisdown::thesis_pdf: default
-  thesisdown::thesis_gitbook: default
+  thesisdown::thesis_pdf: default
+  #thesisdown::thesis_gitbook: default
   #thesisdown::thesis_word: default
   #thesisdown::thesis_epub: default
 bibliography: ["bib/thesis.bib"]

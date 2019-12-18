@@ -3480,7 +3480,7 @@ Date:
   Model 8 & 0.79 (0.73, 0.86) & Yes & Yes & No & Yes & No & 8 & -239 & 507 (20)\\
   Model 9 & 0.79 (0.72, 0.86) & Yes & Yes & Yes & Yes & No & 9 & -238 & 511 (20)\\
   Model 11 & 0.64 (0.52, 0.78) & Yes & No & No & No & Yes & 14 & -241 & 522 (22)\\
-  Model 10 & 0.00 (0.00, 0.00) & No & No & No & No & Yes & 13 & -241 & 523 (22)\\
+  Model 10 & 1.00 (1.00, 1.00) & No & No & No & No & Yes & 13 & -241 & 523 (22)\\
   Model 12 & 0.64 (0.53, 0.79) & Yes & No & Yes & No & Yes & 15 & -241 & 525 (22)\\
   \addlinespace
   Model 13 & 0.64 (0.52, 0.79) & Yes & No & No & Yes & Yes & 15 & -241 & 526 (23)\\
@@ -3492,7 +3492,7 @@ Date:
   Model 5 & 0.70 (0.64, 0.76) & Yes & No & Yes & Yes & No & 4 & -270 & 559 (31)\\
   Model 2 & 0.65 (0.61, 0.69) & Yes & No & No & No & No & 2 & -275 & 561 (33)\\
   Model 3 & 0.65 (0.61, 0.69) & Yes & No & Yes & No & No & 3 & -273 & 561 (32)\\
-  Model 1 & 0.00 (0.00, 0.00) & No & No & No & No & No & 1 & -341 & 692 (51)\\
+  Model 1 & 1.00 (1.00, 1.00) & No & No & No & No & No & 1 & -341 & 692 (51)\\
   \bottomrule
   \multicolumn{10}{l}{\textsuperscript{} * Incidence Rate Ratio, with 95\% credible intervals,}\\
   \multicolumn{10}{l}{\textsuperscript{} ** Degrees of Freedom,}\\
@@ -3536,9 +3536,9 @@ Date:
   Model 3 & 0.97 (0.89, 1.06) & Yes & No & Yes & No & No & 3 & -219 & 450 (19)\\
   Model 13 & 1.14 (0.97, 1.35) & Yes & No & No & Yes & Yes & 15 & -211 & 452 (16)\\
   \addlinespace
-  Model 1 & 0.00 (0.00, 0.00) & No & No & No & No & No & 1 & -229 & 462 (21)\\
+  Model 1 & 1.00 (1.00, 1.00) & No & No & No & No & No & 1 & -229 & 462 (21)\\
   Model 2 & 0.95 (0.87, 1.03) & Yes & No & No & No & No & 2 & -228 & 463 (20)\\
-  Model 10 & 0.00 (0.00, 0.00) & No & No & No & No & Yes & 13 & -220 & 466 (19)\\
+  Model 10 & 1.00 (1.00, 1.00) & No & No & No & No & Yes & 13 & -220 & 466 (19)\\
   Model 11 & 0.95 (0.83, 1.09) & Yes & No & No & No & Yes & 14 & -219 & 467 (19)\\
   \bottomrule
   \multicolumn{10}{l}{\textsuperscript{} * Incidence Rate Ratio, with 95\% credible intervals,}\\
@@ -3628,8 +3628,8 @@ Date:
   \addlinespace
   Model 2 & 0.49 (0.40, 0.61) & Yes & No & No & No & No & 2 & -156 & 319 (22)\\
   Model 11 & 0.49 (0.37, 0.65) & Yes & No & No & No & Yes & 14 & -152 & 322 (23)\\
-  Model 10 & 0.00 (0.00, 0.00) & No & No & No & No & Yes & 13 & -150 & 330 (25)\\
-  Model 1 & 0.00 (0.00, 0.00) & No & No & No & No & No & 1 & -171 & 346 (27)\\
+  Model 10 & 1.00 (1.00, 1.00) & No & No & No & No & Yes & 13 & -150 & 330 (25)\\
+  Model 1 & 1.00 (1.00, 1.00) & No & No & No & No & No & 1 & -171 & 346 (27)\\
   \bottomrule
   \multicolumn{10}{l}{\textsuperscript{} * Incidence Rate Ratio, with 95\% credible intervals,}\\
   \multicolumn{10}{l}{\textsuperscript{} ** Degrees of Freedom,}\\
@@ -3917,32 +3917,32 @@ Date:
   \endfoot
   \bottomrule
   \endlastfoot
-  $C_{\text{eff}}$ & The assumed effective number of contacts per infectious TB case. & $\mathcal{N}(1, 1)$ truncated to be greater than 0. & - & Estimated using a dynamic model of TB transmission in England which found an effective contact rate of 1 in 1990. A conservative interval has then been applied. & Vynnycky et al.\\
+  $C_{\text{eff}}$ & The assumed effective number of contacts per infectious TB case. & $\mathcal{N}(1, 1)$ & - & Estimated using a dynamic model of TB transmission in England which found an effective contact rate of 1 in 1990. A conservative interval has then been applied. & Vynnycky et al.\\
   $C^{\text{hist}}_{\text{eff}}$ & The assumed historic effective number of contacts per infectious TB case. & $\mathcal{U}(C_{\text{eff}}, 20)$ & - & Estimated using a dynamic model of TB transmission in England which found an effective contact rate of 1 in 1990 and 20 in 1901. A conservative interval has been chosen to represent the parameter uncertainty. It has been assumed that the historic contact rate is bounded below by the current contact rate. & Vynnycky et al.\\
-  $C^{\text{half-life}}_{\text{eff}}$ & It is assumed that the historic effective contact rate decays from 1935 to 1980 with a half-life of $C^{\text{half-life}}_{\text{eff}}$. & $\mathcal{N}(5, 5)$ truncated to be greater than 0. & - & The prior distribution is informed by historic TB notifications. & Assumption\\
+  $C^{\text{half-life}}_{\text{eff}}$ & It is assumed that the historic effective contact rate decays from 1935 to 1980 with a rate of $C^{\text{half-life}}_{\text{eff}}$. & $\mathcal{N}(5, 5)$ & - & The prior distribution is informed by historic TB notifications. & Assumption\\
   $\beta_{\text{young-adult}}$ & This parameter modifies the effective contact rate in scenarios when the transmission probability is modified for young adults (15-24). & $\mathcal{U}(0, 10)$ & - & An uninformative prior has been used bounded above to restrict the transmission probability in young adults to be no greater than 10 times that in other age-groups. & Assumption\\
-  $\Upsilon$ & The age-specific proportion of cases that have pulmonary TB & $\Upsilon_{0-14,15-59,60-89} = \mathcal{N}(0.629, 0.00101)$, $\mathcal{N}(0.706, 0.00411)$, $\mathcal{N}(0.750, 0.00569)$ & Proportion & Estimated using the age-specific proportion of cases that had pulmonary TB in the ETS. & ETS\\
+  $\Upsilon$ & The age-specific proportion of cases that have pulmonary TB & $\Upsilon_{0-14} = \mathcal{N}(0.629, 0.00101)$, $\Upsilon_{15-59} = \mathcal{N}(0.706, 0.00411)$, $\Upsilon_{60-89} = \mathcal{N}(0.750, 0.00569)$ & Proportion & Estimated using the age-specific proportion of cases that had pulmonary TB in the ETS. & ETS\\
   \addlinespace
-  $\rho$ & The age-specific proportion of pulmonary TB cases that are smear positive & $\rho_{0-14,15-59,60-89} = \mathcal{N}(0.302, 0.0189)$, $\mathcal{N}(0.652, 0.00518)$, $\mathcal{N}(0.536, 0.00845)$ & Proportion & Estimated using the age-specific proportion of pulmonary TB cases that were smear postive in the ETS. & ETS\\
+  $\rho$ & The age-specific proportion of pulmonary TB cases that are smear positive & $\rho_{0-14} = \mathcal{N}(0.302, 0.0189)$, $\rho_{15-59} = \mathcal{N}(0.652, 0.00518)$, $\rho_{60-89} =\mathcal{N}(0.536, 0.00845)$ & Proportion & Estimated using the age-specific proportion of pulmonary TB cases that were smear postive in the ETS. & ETS\\
   $C$ & Matrix of contact rates between each age group & - & Non-unique yearly contacts. & For each parameter sample a contact matrix was bootstrapped from the POLYMOD survey data, standardised using the UK born population in 2005, and then averaged to provided a symmetric contact matrix. & Mossong et al.\\
   $\iota(t)$ & The age-specific number of non-UK born pulmonary TB cases in England each year & - & Cases & The number of pulmonary non-UK born cases for each year were extracted from the ETS and grouped by age. & ETS\\
   $\iota_{\text{scale}}$ & Scaling parameter for the importation of non-UK born cases between 1960 and 2000. & $\mathcal{U}(0, 200)$ & - & This largely uninformative prior range was chosen so that non-UK born scaling can vary between approximately linear to approximately constant. & Assumption\\
-  $M$ & The proportion of mixing between the UK born and non-UK born population. & $\mathcal{N}(1, 1)$ truncated to be greater than 0 & Proportion & Any degree of mixing is allowed as there is little data on which to base this estimate. Mixing greater than 1 is allowed as this is used to represent non-UK born cases being in some way more infectious than non-UK born cases. & Assumption\\
+  $M$ & The proportion of mixing between the UK born and non-UK born population. & $\mathcal{N}(1, 1)$ & Proportion & Any degree of mixing is allowed as there is little data on which to base this estimate. Mixing greater than 1 is allowed as this is used to represent non-UK born cases being in some way more infectious than non-UK born cases. & Assumption\\
   \addlinespace
   $M_{\text{young-adult}}$ & This parameter modifies the non-UK born mixing rate in scenarios when $M$ is modified for young adults (15-24). & $\mathcal{U}(0, 10)$ & - & An uninformative prior has been used bounded above to restrict non-UK born mixing in young adults to be no greater than 10 times that in other age-groups. & Assumption\\
-  $\chi$ & Age-specific protection from infection with TB due to BCG vaccination & $\chi^v_{i} = \mathcal{N}(0.185$, $0.0536)$, where $i$ is the age group vaccinated. & Proportion & A meta-analysis of the protection from infection due to BCG vaccinatiion in children. It has been assumed that there is no reduction in protection in UK born adults. & Roy et al.\\
-  $\epsilon_H$ & The age-specific rate of transition to active disease during high risk latent period. & $\epsilon_H^{0-4,5-14,15-89} = \mathcal{N}(0.00695, 0.00130)$, $\mathcal{N}(0.0028, 0.000561)$, $\mathcal{N}(0.000335, 0.0000893)$ & $days^{-1}$ & From fitting a similar model to contact data in Australia, and Holland. Distribution derived by the assumption of a normal distribution based on 95\% credible intervals. & Ragonnet et al.\\
-  $\kappa$ & The reciprocal of the age-specific average high risk latent period. & $\kappa^{0-4,5-14,15-89} = \mathcal{N}(0.0133, 0.00242)$, $\mathcal{N}(0.0120, 0.00207)$, $\mathcal{N}(0.00725, 0.00191)$ & $days^{-1}$ & From fitting a similar model to contact data in Australia, and Holland. Distribution derived by the assumption of a normal distribution based on 95\% credible intervals. & Ragonnet et al.\\
-  $\epsilon_L$ & The reciprocal of the age-specific average low risk latent period. & $\epsilon_L^{0-4,5-14,15-89} = \mathcal{N}(8.00e^{-6}, 4.08e^{-6})$, $\mathcal{N}(9.84e^{-6}, 4.67e^{-6})$, $\mathcal{N}(5.95e^{-6}, 2.07e^{-6})$ & $days^{-1}$ & From fitting a similar model to contact data in Australia, and Holland. Distribution derived by the assumption of a normal distribution based on 95\% credible intervals. & Ragonnet et al.\\
+  $\chi$ & Age-specific protection from infection with TB due to BCG vaccination & $\chi^v_{i} = \mathcal{N}(0.185$, $0.0536)$, where $i$ is the age group vaccinated. & Proportion & A meta-analysis of the protection from infection due to BCG vaccinatiion in children. It has been assumed that there is no reduction in protection in UK born adults. Distribution derived by the assumption of a normal distribution based on published 95\% confidence intervals. & Roy et al.\\
+  $\epsilon_H$ & The age-specific rate of transition to active disease during high risk latent period. & $\epsilon_H^{0-4} = \mathcal{N}(0.00695, 0.00130)$, $\epsilon_H^{5-14}  = \mathcal{N}(0.0028, 0.000561)$, $\epsilon_H^{15-89} = \mathcal{N}(0.000335, 0.0000893)$ & $days^{-1}$ & From fitting a similar model to contact data in Australia, and Holland. Distribution derived by the assumption of a normal distribution based on published 95\% credible intervals. & Ragonnet et al.\\
+  $\kappa$ & The reciprocal of the age-specific average high risk latent period. & $\kappa^{0-4} = \mathcal{N}(0.0133, 0.00242)$, $\kappa^{5-14} = \mathcal{N}(0.0120, 0.00207)$, $\kappa^{15-89} = \mathcal{N}(0.00725, 0.00191)$ & $days^{-1}$ & From fitting a similar model to contact data in Australia, and Holland. Distribution derived by the assumption of a normal distribution based on published 95\% credible intervals. & Ragonnet et al.\\
+  $\epsilon_L$ & The reciprocal of the age-specific average low risk latent period. & $\epsilon_L^{0-4} = \mathcal{N}(8.00e^{-6}, 4.08e^{-6})$, $\epsilon_L^{5-14} = \mathcal{N}(9.84e^{-6}, 4.67e^{-6})$, $\epsilon_L^{15-89} = \mathcal{N}(5.95e^{-6}, 2.07e^{-6})$ & $days^{-1}$ & From fitting a similar model to contact data in Australia, and Holland. Distribution derived by the assumption of a normal distribution based on published 95\% credible intervals. & Ragonnet et al.\\
   \addlinespace
-  $\epsilon^{\text{older-adult}}_L$ & This parameter modifies the activation rate of low risk latent cases who are 70+ and reduces the activaton rate for other adults so that the mean activation rate is $\epsilon_L^{15-89}$ & $\mathcal{N}(2, 0.5)$ truncated to be at least 1. & - & Evidence suggests that activation risk increases when individuals enter old age. A largely uninformative prior has been used centred around an increase in risk of double the average rate. & Horsburgh, Jr. et al.\\
-  $\alpha_i^T$ & The BCG vaccine effectiveness at preventing the development of active TB disease in a TB free population & $\alpha^T_{i,i+5,i+10,i+15,i+20,i+25} = 1 - e^{\alpha^{\text{ln}(T)}_{i,i+5,i+10,i+15,i+20,i+25}}$, where $\alpha^{\text{ln}(T)}_{i,i+5,i+10,i+15,i+20,i+25} = \mathcal{N}(-1.86, 0.22)$, $\mathcal{N}(-1.19, 0.24)$, $\mathcal{N}(-0.84, 0.22)$, $\mathcal{N}(-0.84, 0.2)$, $\mathcal{N}(-0.28, 0.19)$, $\mathcal{N}(-0.23, 0.29))$ and $i$ is the age group vaccinated & Proportion & Poisson regression used to calculate Risk Ratios from literature values. A distribution is then found using the log normal approximation. Effectiveness estimates are caculated using 1 minus the exponentiated log normal distribution. & Hart et al. and Mangtani et al.\\
-  $\delta$ & Reduction in susceptibilty to infection for low risk latent cases. & $\mathcal{N}(0.78$, $0.0408)$ & Proportion & A review of prospective cohort studies of persons exposed to individuals with infectious tuberculosis that was published prior to the widespread treatment of latent tuberculosis. & Andrews et al.\\
-  $\nu^{P, E}$ & The reciprocal of the average infectious period & $\nu^P_{(0-14,15-89)} = \mathcal{N}(0.181, 0.310)^{-1}$, $\mathcal{N}(0.328, 0.447)^{-1}$, $\nu^E_{(0-14, 15-89)} = \mathcal{N}(0.306, 0.602   )^{-1}$, $\mathcal{N}(0.480, 0.866)^{-1}$ & $years^{-1}$ & Estimated based on the time from initial symptoms to starting treatment & ETS\\
-  $\phi$ & The reciprocal of the time to succesful treatment completion & $\phi_{0-14,15-69,70-89} = \mathcal{N}(0.606,0.237)^{-1}$, $\mathcal{N}(0.645, 0.290)^{-1}$, $\mathcal{N}(0.616, 0.265)^{-1}$ and truncated to be greater than 4 months & $years^{-1}$ & Estimated based on the time from starting treatment to treatment completion. & ETS\\
+  $\epsilon^{\text{older-adult}}_L$ & This parameter modifies the activation rate of low risk latent cases who are 70+ and reduces the activaton rate for other adults so that the mean activation rate is $\epsilon_L^{15-89}$ & $\mathcal{N}(2, 0.5)$ & - & Evidence suggests that activation risk increases when individuals enter old age. A largely uninformative prior has been used centred around an increase in risk of double the average rate. & Horsburgh, Jr. et al.\\
+  $\alpha_i^T$ & The BCG vaccine effectiveness at preventing the development of active TB disease in a TB free population & $\alpha^T_{j} = 1 - e^{\alpha^{\text{ln}(T)}_{j}}$, where $\alpha^{\text{ln}(T)}_{j = i} = \mathcal{N}(-1.86, 0.22)$, $\alpha^{\text{ln}(T)}_{j = i+5} = \mathcal{N}(-1.19, 0.24)$, $\alpha^{\text{ln}(T)}_{j = i+10} = \mathcal{N}(-0.84, 0.22)$, $\alpha^{\text{ln}(T)}_{j = i+15} = \mathcal{N}(-0.84, 0.2)$, $\alpha^{\text{ln}(T)}_{j = i+20} = \mathcal{N}(-0.28, 0.19)$, $ \alpha^{\text{ln}(T)}_{j = i+25} = \mathcal{N}(-0.23, 0.29))$ and $i$ is the age group vaccinated & Proportion & Poisson regression used to calculate Risk Ratios from literature values. A distribution is then found using the log normal approximation. Effectiveness estimates are caculated using 1 minus the exponentiated log normal distribution. & Hart et al. and Mangtani et al.\\
+  $\delta$ & Reduction in susceptibilty to infection for low risk latent cases. & $\mathcal{N}(0.78$, $0.0408)$ & Proportion & A review of prospective cohort studies of persons exposed to individuals with infectious tuberculosis that was published prior to the widespread treatment of latent tuberculosis. Distribution derived by the assumption of a normal distribution based on published 95\% confidence intervals. & Andrews et al.\\
+  $\nu^{P, E}$ & The reciprocal of the average infectious period & $\nu^P_{0-14} = \mathcal{N}(0.181, 0.310)^{-1}$, $\nu^P_{15-89} = \mathcal{N}(0.328, 0.447)^{-1}$, $\nu^E_{0-14} = \mathcal{N}(0.306, 0.602    )^{-1}$, $\nu^E_{15-89} = \mathcal{N}(0.480, 0.866)^{-1}$ & $years^{-1}$ & Estimated based on the time from initial symptoms to starting treatment. & ETS\\
+  $\phi$ & The reciprocal of the time to successful treatment completion & $\phi_{0-14} = \mathcal{N}(0.606,0.237)^{-1}$, $\phi_{15-69} = \mathcal{N}(0.645, 0.290)^{-1}$, $\phi_{70-89} = \mathcal{N}(0.616, 0.265)^{-1}$ & $years^{-1}$ & Estimated based on the time from starting treatment to treatment completion. & ETS\\
   \addlinespace
-  $\mu$ & Rate of age-specific pulmonary/extra-pulmonary TB mortality & $\mu_{0-14,15-59,60-89} = \mathcal{N}(0.0039, 0.018)$, $\mathcal{N}(0.0226, 0.00787)$, $\mathcal{N}(0.117, 0.0165)$ truncated to be greater than 0. & $years^{-1}$ & Estimated based on outcomes at 12 months where cause of death was known, including all-cause deaths in the denominator. & ETS\\
-  $\zeta$ & Rate of loss to follow up & $\zeta_{0-14,15-59,60-89} = \mathcal{N}(0.00976, 0.0179)$, $\mathcal{N}(0.0304, 0.00764)$, $\mathcal{N}(0.00614, 0.0159)$, truncated to be greater than 0. & $years^{-1}$ & Estimated based on outcomes at 12 months for TB cases & ETS\\*
+  $\mu$ & Rate of age-specific pulmonary/extra-pulmonary TB mortality & $\mu_{0-14} = \mathcal{N}(0.0039, 0.018)$, $\mu_{15-59} = \mathcal{N}(0.0226, 0.00787)$, $\mu_{60-89} = \mathcal{N}(0.117, 0.0165)$ & $years^{-1}$ & Estimated based on outcomes at 12 months where cause of death was known, including all-cause deaths in the denominator. & ETS\\
+  $\zeta$ & Rate of loss to follow up & $\zeta_{0-14} = \mathcal{N}(0.00976, 0.0179)$, $\zeta_{15-59}= \mathcal{N}(0.0304, 0.00764)$, $\zeta_{60-89} = \mathcal{N}(0.00614, 0.0159)$ & $years^{-1}$ & Estimated based on outcomes at 12 months for TB cases & ETS\\*
   \end{longtable}
   \endgroup{}
   \end{landscape}
@@ -4033,7 +4033,7 @@ Date:
   \end{minipage} & \begin{minipage}[t]{0.31\columnwidth}\centering
   Used a dynamic model of tuberculosis, robustly
   parameterised to the available evidence and
-  including realistic population demographis to
+  including realistic population demographics to
   estimate the effective contact rate of TB over
   time until the 1990's in the UK born white male
   population.\strut
@@ -4076,10 +4076,10 @@ Date:
   \end{minipage} & \begin{minipage}[t]{0.31\columnwidth}\centering
   A meta-analysis; conducted with the aim of
   determining whether BCG vaccination protects
-  against Mycobacterium tuberculosis infection as
-  assessed by interferon \(\gamma\) release assays
-  (IGRA) in children. Estimated both protection from
-  initial latent infection and active TB disease.\strut
+  against tuberculosis infection as assessed by
+  interferon \(\gamma\) release assays (IGRA) in
+  children. Estimated both protection from initial
+  latent infection and active TB disease.\strut
   \end{minipage} & \begin{minipage}[t]{0.10\columnwidth}\centering
   {[}\protect\hyperlink{ref-Roy2014}{4}{]}\strut
   \end{minipage}\tabularnewline
@@ -4119,7 +4119,7 @@ Date:
   at preventing TB disease when given at what as
   then school-leaving age. Followed the cohort over
   15 years and estimated the effectiveness of the
-  BCG vaccien in 2.5 year intervals from
+  BCG vaccine in 2.5 year intervals from
   vaccination.\strut
   \end{minipage} & \begin{minipage}[t]{0.10\columnwidth}\centering
   {[}\protect\hyperlink{ref-Hart1972}{26}{]}\strut
@@ -4137,7 +4137,7 @@ Date:
   2002-2014\strut
   \end{minipage} & \begin{minipage}[t]{0.31\columnwidth}\centering
   Recruited UK-born White subjects with TB and
-  randomly smapled White community controls. Cox
+  randomly sampled White community controls. Cox
   regression was used to adjusted for known
   confounders and the effectiveness of the BCG
   vaccine was estimated from 10 years after

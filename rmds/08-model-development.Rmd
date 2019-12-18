@@ -1,8 +1,6 @@
 ---
 output:
-  html_document: default
   pdf_document: default
-  word_document: default
 ---
 
 # Developing a dynamic transmission model of Tuberculosis {#model-development}
@@ -29,6 +27,8 @@ load_formated <- function(name) {
   load(path, envir = globalenv())
 }
 
+
+## Load updated tables
 load_formated("disease_params_table")
 load_formated("demographic_params_table")
 load_formated("sources_table")
