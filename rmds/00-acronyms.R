@@ -14,7 +14,7 @@ abr_df <- tibble::tribble(
   "POLYMOD", "Improving Public Health Policy in Europe through the Modelling and Economic Evaluation of Interventions for the Control of Infectious Diseases",
   "MNAR", "Missing Not at Random",
   "MCAR", "Missing Completely at Random",
-  "MAR", "MissingaAt Random",
+  "MAR", "Missinga at Random",
   "IRR", "Incidence Rate Ratio",
   "SE", "Standard Error",
   "RR", "Risk Ratio",
@@ -53,7 +53,7 @@ abr_df <- tibble::tribble(
   "TB", "Tuberculosis",
   "TST", "Tuberculin Skin Testing",
   "WHO", "World Health Organization",
-  "NTM", "Non-Tuberculosis Mycobacteria",
+  "NTM", "*Non-Tuberculosis Mycobacteria*",
   "AUC", "Area Under the Curve",
   "QALY", "Quality-adjusted Life-Year"
 )

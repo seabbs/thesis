@@ -1,5 +1,5 @@
 ---
-title: "Review responses"
+title: "Thesis corrections"
 output: pdf_document
 ---
 
@@ -7,68 +7,73 @@ output: pdf_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
+## Summary
+
+I have made all minor (minor) corrections and the majority of major (minor) corrections suggested by the examiners. Where I have not fully adopted the corrections suggested by the examiners I have given justification below. More detail on my actions for each correction is also available below. A full git log of all corrections is available here: https://github.com/seabbs/thesis/pull/12/files. Since my thesis was examined Chapter 7 has been published (https://doi.org/10.2807/1560-7917.ES.2019.24.49.1900220). Revisions from peer review were then incorporated into Chapter 7 and the paper has been linked to from the introduction of the thesis. Additionaly, Chapter 5 has had another round of peer review (including Pete Dodd as a reviewer) and these review changes have been included. All corrections have improved this thesis - thank you again for taking the time to examine it.
 
 
-## Major Corrections
+## Minor corrections
 
-### TB Epi
+I have made all corrections suggested in the marked up thesis provided by Alan Champneys and listed by Pete Dodd as typographical errors. I have also made all the changes, excepting those related to `getTBinR` and removing tables from Chapter 4, suggested by Pete Dodd in the points for discussion and minor issues sections of his comments. The `getTBinR` issue is a bug with an upstream dependency that I have not yet been able to resolve and I feel all tables in Chapter 4 are needed for completeness.
 
-- [x] Please explain violin plots before they are first used and how some points seem to hit 100% in fig 4.5
-		- Added a clarification of what a violin plots is at the beginning of the section
-		- Also added several sentences highlighting the extreme outlier months with all notifications reported as ending treatment on the same day. 
 
-### Sutherland
+## Major corrections
 
-- [x] Please write a proper critique of the Sutherland model on page 86 and how this compares with the model you have implemented on page 87. An attempt should be made to reinterpret Sutherland’s original exposition in consistent modern terminology and explain what it is doing (in terms of inputs and outputs and interpretation). If this is not possible, the presentation of Sutherland’s original model must be explicitly framed as deficient to avoid readers inferring that they should be able to follow it. The model as coded must be precisely described mathematically.
-		- Extensively updated this chapter based on recent peer review feedback (including from Pete Dodd). These updates included updating the model description, correcting a flaw with the originally published model, and updating the metrics used to assess the impact of the change in policy. 
-- [x] Please explain the final two columns of tables 5.3 and 5.4 on pages 93 and 95 and how this relates to Fig 5.1
-		- As part of the review changes mentioned above I have updated the description of the scenarios explored in the methods section. It should now be clearer that notifications and incidence rates refer to scenarios.
-		- I have also added additional context for these scenarios to the table caption. Note that Table 5.4 no longer includes these columns as the updated model cannot be used with these scenarios (as discussed in the text and in the table caption). 
+I have made all major corrections suggested by the examiners, except for updating equation 8.19. A detailed list of my actions for each correction is below (in italics) along with the relevant examiners comment. For several corrections I supplied further clarification around the issue (also in italics). I also give justification for why I believe equation 8.19 to be correct.
 
-### Direct effects
+-  Please explain violin plots before they are first used and how some points seem to hit 100% in fig 4.5
+		- *Added a clarification of what a violin plots is at the beginning of the section.*
+		- *Also added several sentences highlighting the extreme outlier months with all notifications reported as ending treatment on the same day.* 
 
-- [x] Please consider the second equation on page 123 carefully, should this be C_O (1- I^i)/I^I ? And explain the derivation. Also please check whether ‘e’ refers to mean or median. If the former (as stated), this equation is defective since f(mean(x)) != mean(f(x)) here.
-		- Corrected notation.
-		- Corrected mean -> median.
-		- Updated the second equation on page 123 for clarity.
-		- Added an explanation of the derivation.
-- [x] Explain a bit more carefully at the start of section 7.5.3 how the UK cohort relevant to the targeted neonatal programme is defined
-		- Added a link back to the cohort definition in 7.3.2
-		- Updated and expanded the cohort definition in 7.3.2
 
-### Model development
+-  Please write a proper critique of the Sutherland model on page 86 and how this compares with the model you have implemented on page 87. An attempt should be made to reinterpret Sutherland’s original exposition in consistent modern terminology and explain what it is doing (in terms of inputs and outputs and interpretation). If this is not possible, the presentation of Sutherland’s original model must be explicitly framed as deficient to avoid readers inferring that they should be able to follow it. The model as coded must be precisely described mathematically.
 
-- [x] At the start of chapter 8 please include a very brief discussion of previous modelling approaches (with reference to systematic reviews) and contrasting them with the approach that is about to be undertaken here. 
-		- Added a paragraph outlining some of the previous modelling approaches - with reference to the literature - and contrasted these approaches to the model developed in this chapter. Linked to the more extensive discussion of the literature in comparison to the model that is present in the discussion. 
-- [x] Please look carefully at the way equations (8.1)-(8.13) are written (see preliminary report). Look very carefully at (8.13) and (8.15), fixing the typos and checking the dimensions of each of the variables, which currently appear inconsistent. The undefined variable N in equation (8.13) should probably have a subscript ‘I’ and appear within the summation. The lhs of equation (8.13) does not need a superscript ‘k’.
-		- Reviewed equations and corrected typos.
-		- Included age stratification for N and added a definition to the text below.
-		- Dropped ‘k’ superscript from lhs 8.13.
-		- Added additional explanation to 8.13 and 8.15.  
-		- Addressed abuse of notation in 8.1.
-		- Addressed usage of the signum function.
-		- Checked dimensions for all equations and made corrections as needed.
-- [x] Please explain generically, and if necessary in special cases how the parameters defining the priors were derived from the cited evidence. Also please be more complete in describing truncation of distributions which can yield non-sensical values.
-		- Updated Table 8.1 and 8.2 in light of minor corrections from Pete Dodd
-		- Extended the method section in table 8.1 for parameters from the literature to explicitly state that normal distributions were extrapolated based on published confidence intervals (or credible intervals).
-		- Removed references to standard truncation (considered truncation to be above zero) and moved this to a statement in the table caption. Statement: All prior distributions were truncated to be greater than or equal to 0 with proportions further truncated to be less than or equal to 1. Additional detail for each prior derivation can be found in the following sections.  
-		- Added additional detail to the start of the model parameterisation section highlighting the following: parameters estimated from the literature were assumed to be normal unless otherwise stated, normal distributions were extrapolated based on published confidence/credible intervals, all priors were truncated to be equal to or greater than 0, priors for proportions were further truncated to less than or equal to 1, priors are briefly summarised in the following table and then more detail is given in the following sections, and code for all prior derivations can be found online. 
-- [x] The treatment of total protection from BCG an protection against infection and progression on pp.160-161 is interesting but not I think correct as it stands. The risk ratios for infection and protection should multiply to give total protection rather than as in equation (8.19). I would suggest modelling these as additive on a log scale. There is then an interesting evidence synthesis problem, namely that the total will have smaller variance than each term that sums to it (it the poorly known log(RR) for infection, and the unknown log(RR) for progression). My suggestion is that this implies the summand RRs must be modelled as correlated, ie via a bivariate normal. My suspicion is that this should be possible analytically, but could also be approached using Stan or similar. Equation (8.22) would also need revisiting and an assumption made about waning for each sub-protection that is consistent with observations for the total protection. Also equation (8.21) includes a bracket typo, but in any case abuses notation, and leaves us suspicious the assumption has been made that the mean-log equals the log-mean in parametrising it. 
-		* My understanding of equation 8.19 is as follows: BCG vaccination gives a proportion of the population protection from infection (the first term) for those who were not protected (the first part of the second term) BCG vaccination provides some additional protection from developing active disease (the second part of the second term). A potential source for confusion here is that alpha, chi and alpha T are all effectiveness estimates (1 - Risk ratio) and not risk ratios. I agree that if the risk ratio of the overall protection was being estimated (and all terms were RRs) then the correct equation would be alpha^T = chi * alpha. Using 1 - RR this equation can be expanded to 8.19.
-		- I agree that sampling of the priors for protection from infection and protection for active TB disease (once infected) likely needs to be done assuming some correlation for it to be efficient. This is an area I will explore in the future once I have simplified the model as discussed during the viva. 
-		- 	Updated 8.21 to use the mathematical exponential rather than the exp. Also updated the equation to make it clear that rhs is the distribution of the lhs rather than equalling it. 
-		- 8.22 assumes that the waning for each sub-protection follows the same functional form as waning for total protection as there is little other evidence on which to base this.  As estimates are only available for the total protection and for the initial protection from infection these are the only parameters used as prior distributions with the partial protection from active disease being calculated within the model for each sample using 8.20. 
+		- *Extensively updated this chapter based on recent peer review feedback (including from Pete Dodd). These updates included updating the model description, correcting a flaw with the originally published model, and updating the metrics used to assess the impact of the change in policy.*
+		
+-  Please explain the final two columns of tables 5.3 and 5.4 on pages 93 and 95 and how this relates to Fig 5.1
+		- *As part of the review changes mentioned above I have updated the description of the scenarios explored in the methods section. It should now be clearer that notifications and incidence rates refer to scenarios.*
+		- *I have also added additional context for these scenarios to the table caption. Note that Table 5.4 no longer includes these columns as the updated model cannot be used with these scenarios (as discussed in the text and in the table caption).* 
 
-### Model fitting
+-  Please consider the second equation on page 123 carefully, should this be C_O (1- I^i)/I^I ? And explain the derivation. Also please check whether ‘e’ refers to mean or median. If the former (as stated), this equation is defective since f(mean(x)) != mean(f(x)) here.
+		- *Corrected notation.*
+		- *Corrected mean -> median.*
+		- *Updated the second equation on page 123 for clarity.*
+		- *Added an explanation of the derivation.*
+		
+-  Explain a bit more carefully at the start of section 7.5.3 how the UK cohort relevant to the targeted neonatal programme is defined
+		- *Added a link back to the cohort definition in 7.3.2*
+		- *Updated and expanded the cohort definition in 7.3.2*
 
-- [x] In chapters 9 and 10 please explain the choice of model parameters used in the final simulation and consider (but we do not insist) running the model with other parameter choices just to illustrate whether the conclusions are particularly sensitive to parameter choice. Be sure also to explain what elements of the model are stochastic and why, and to define or drop the term ‘semi-stochastic’.
-		- Model parameters used in the final simulations are drawn from the posterior distribution of the best (but still poorly) fitting scenario. Edits have been made to both Chapters 9 and 10 to highlight this. Edits include adding an explanatory sentence at the beginning of each results section and adding a sentence to each figure and table.
+-  At the start of chapter 8 please include a very brief discussion of previous modelling approaches (with reference to systematic reviews) and contrasting them with the approach that is about to be undertaken here. 
+		- *Added a paragraph outlining some of the previous modelling approaches - with reference to the literature - and contrasted these approaches to the model developed in this chapter. Linked to the more extensive discussion of the literature in comparison to the model that is present in the discussion.* 
+		
+- Please look carefully at the way equations (8.1)-(8.13) are written (see preliminary report). Look very carefully at (8.13) and (8.15), fixing the typos and checking the dimensions of each of the variables, which currently appear inconsistent. The undefined variable N in equation (8.13) should probably have a subscript ‘I’ and appear within the summation. The lhs of equation (8.13) does not need a superscript ‘k’.
+		- *Reviewed equations and corrected typos.*
+		- *Included age stratification for N and added a definition to the text below.*
+		- *Dropped ‘k’ superscript from lhs 8.13.*
+		- *Added additional explanation to 8.13 and 8.15.* 
+		- *Addressed abuse of notation in 8.1.*
+		- *Addressed usage of the signum function.*
+		- *Checked dimensions for all equations and made corrections as needed.*
+		
+-  Please explain generically, and if necessary in special cases how the parameters defining the priors were derived from the cited evidence. Also please be more complete in describing truncation of distributions which can yield non-sensical values.
+		- *Updated Table 8.1 and 8.2 in light of minor corrections from Pete Dodd*
+		- *Extended the method section in table 8.1 for parameters from the literature to explicitly state that normal distributions were extrapolated based on published confidence intervals (or credible intervals).*
+		- *Removed references to standard truncation (considered truncation to be above zero) and moved this to a statement in the table caption. Statement: All prior distributions were truncated to be greater than or equal to 0 with proportions further truncated to be less than or equal to 1. Additional detail for each prior derivation can be found in the following sections.*
+		- *Added additional detail to the start of the model parameterisation section highlighting the following: parameters estimated from the literature were assumed to be normal unless otherwise stated, normal distributions were extrapolated based on published confidence/credible intervals, all priors were truncated to be equal to or greater than 0, priors for proportions were further truncated to less than or equal to 1, priors are briefly summarised in the following table and then more detail is given in the following sections, and code for all prior derivations can be found online.* 
+		
+-  The treatment of total protection from BCG an protection against infection and progression on pp.160-161 is interesting but not I think correct as it stands. The risk ratios for infection and protection should multiply to give total protection rather than as in equation (8.19). I would suggest modelling these as additive on a log scale. There is then an interesting evidence synthesis problem, namely that the total will have smaller variance than each term that sums to it (it the poorly known log(RR) for infection, and the unknown log(RR) for progression). My suggestion is that this implies the summand RRs must be modelled as correlated, ie via a bivariate normal. My suspicion is that this should be possible analytically, but could also be approached using Stan or similar. Equation (8.22) would also need revisiting and an assumption made about waning for each sub-protection that is consistent with observations for the total protection. Also equation (8.21) includes a bracket typo, but in any case abuses notation, and leaves us suspicious the assumption has been made that the mean-log equals the log-mean in parametrising it. 
+
+		- *My understanding of equation 8.19 is as follows: BCG vaccination gives a proportion of the population protection from infection (the first term) for those who were not protected (the first part of the second term) BCG vaccination provides some additional protection from developing active disease (the second part of the second term). A potential source for confusion here is that alpha, chi and alpha T are all effectiveness estimates (1 - Risk ratio) and not risk ratios. I agree that if the risk ratio of the overall protection was being estimated (and all terms were RRs) then the correct equation would be $\alpha^T = \chi \alpha$. Using 1 - RR this equation can be expanded to 8.19.*
+		- *I agree that sampling of the priors for protection from infection and protection for active TB disease (once infected) likely needs to be done assuming some correlation for it to be efficient. This is an area I will explore in the future once I have simplified the model as discussed during the viva.*
+		- 	*Updated 8.21 to use the mathematical exponential rather than the exp. Also updated the equation to make it clear that rhs is the distribution of the lhs rather than equalling it.*
+		- *8.22 assumes that the waning for each sub-protection follows the same functional form as waning for total protection as there is little other evidence on which to base this.  As estimates are only available for the total protection and for the initial protection from infection these are the only parameters used as prior distributions with the partial protection from active disease being calculated within the model for each sample using 8.20.*
+
+- In chapters 9 and 10 please explain the choice of model parameters used in the final simulation and consider (but we do not insist) running the model with other parameter choices just to illustrate whether the conclusions are particularly sensitive to parameter choice. Be sure also to explain what elements of the model are stochastic and why, and to define or drop the term ‘semi-stochastic’.
+		- *Model parameters used in the final simulations are drawn from the posterior distribution of the best (but still poorly) fitting scenario. Edits have been made to both Chapters 9 and 10 to highlight this. Edits include adding an explanatory sentence at the beginning of each results section and adding a sentence to each figure and table.*
 		- Evaluating additional - manually chosen - parameter sets was considered but not implemented beyond ad hoc model calibration (as detailed in Chapter 9). This choice was made as the current parameter set is data driven (though as discussed does not fit the data well). Any other parameter set chosen would be biased by my viewpoints and given the size of the parameter space is unlikely to reflect the underlying dynamics. In future work, I aim to improve the model fitting pipeline so that more weight can be placed on the results derived using the posterior distributions it produces.
-		- Semi-stochastic has been defined both in the introduction and in Chapter 9.
-		- Added a section summarising the areas of the model in which stochasticity is present (Chapter 9). Checked that details of all stochastic parameters are given in Chapter 8.
+		- *Semi-stochastic has been defined both in the introduction and in Chapter 9.*
+		- *Added a section summarising the areas of the model in which stochasticity is present (Chapter 9). Checked that details of all stochastic parameters are given in Chapter 8.*
 
-
-### Discussion
-
-- [x] When asked to summarise the policy implications for BCG in the UK of his analyses, the candidate expressed his own opinion, provided a detailed description of the limitations of the evidence for making definitive statements, highlighting what data would be needed to be more confident. Please add a paragraph along these lines to section 11.3 in the Discussion.
-		- Added an additional paragraph to 11.3 summarising the policy implications for BCG in the UK. 
+-  When asked to summarise the policy implications for BCG in the UK of his analyses, the candidate expressed his own opinion, provided a detailed description of the limitations of the evidence for making definitive statements, highlighting what data would be needed to be more confident. Please add a paragraph along these lines to section 11.3 in the Discussion.
+		- *Added an additional paragraph to 11.3 summarising the policy implications for BCG in the UK.*
