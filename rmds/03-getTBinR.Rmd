@@ -5,14 +5,14 @@ output:
   word_document: default
 ---
 
-# getTBinR: an R package for accessing and summarising the World Health Organization Tuberculosis data {#getTBinR}
+# getTBinR: an R package for accessing and summarising World Health Organization Tuberculosis data {#getTBinR}
 
 
 ```{r gettbinr-setup, include=FALSE, echo = FALSE}
 knitr::opts_chunk$set(echo = TRUE, dpi = 320, cache = TRUE,
                       fig.width = 8, fig.height = 8,
                       out.width = "80%", fig.align = 'center')
-## Wordcount:2124
+## Wordcount:2114
 ##packages
 ## Install via 
 ## CRAN: install.packages("getTBinR")
@@ -27,7 +27,7 @@ resources_path <- file.path("chapters", "getTBinR")
 
 Developing tools for rapidly accessing and exploring datasets benefits the public health research community by enabling multiple datasets to be combined in a consistent manner, increasing the visibility of key datasets, and providing a framework that can be used to explore key questions of interest. Tooling also reduces the barriers to entry, allowing non-specialists to explore datasets that would otherwise be inaccessible. This widening of access may also lead to new insights and wider interest for key public health issues.
  
-`getTBinR` is an R package[@RCoreTeam2019] that I developed to facilitate working with the data[@WHO:2018] collected by the World Health Organization (WHO) on the country level epidemiology of Tuberculosis (TB). All data is freely available from the WHO^[WHO TB data: https://www.who.int/tb/country/data/download/en/] and the package code is archived on Zenodo^[Zenodo: https://zenodo.org/badge/latestdoi/112591837] and Github^[GitHub: https://github.com/seabbs/getTBinR/]. The aim of `getTBinR` is to allow researchers, and other interested individuals, to quickly and easily gain access to a detailed TB dataset and to start using it to derive key insights. It provides a consistent set of tools that can be used to rapidly evaluate hypotheses on a widely used dataset before they are explored further using more complex methods or more detailed data. Prior to the development of `getTBinR` access to the WHO data was ad-hoc and there were no standardised visualisation or summary tools. 
+`getTBinR` is an R package[@RCoreTeam2019] that I developed to facilitate working with the data[@WHO:2018] collated by the World Health Organization (WHO) on the country level epidemiology of Tuberculosis (TB). All data is freely available from the WHO^[WHO TB data: https://www.who.int/tb/country/data/download/en/] and the package code is archived on Zenodo^[Zenodo: https://zenodo.org/badge/latestdoi/112591837] and Github^[GitHub: https://github.com/seabbs/getTBinR/]. The aim of `getTBinR` is to allow researchers, and other interested individuals, to quickly and easily gain access to a detailed TB dataset and to start using it to derive key insights. It provides a consistent set of tools that can be used to rapidly evaluate hypotheses on a widely used dataset before they are explored further using more complex methods or more detailed data. Prior to the development of `getTBinR` access to the WHO data was ad-hoc and there were no standardised visualisation or summary tools. 
 
 The remainder of this chapter outlines the structure, and key functionality, of `getTBinR 0.6.1`. The use of `getTBinR` in this thesis is explored as well as the use of the package in work external to this thesis and by others. Much of the work done for this chapter was code, documentation, and case study development and so is not fully captured here. The GitHub repository contains a full development history of the package, as well as providing links to the documentation and accompanying case studies. 
 
@@ -48,7 +48,7 @@ remotes::install_github("seabbs/getTBinR")
 
 ## Data extraction and variable look-up
 
-The data sourced by `getBTinR` is collected by the WHO, via member governments, and used to compile the yearly global TB report.[@WHO:2018] Data collection encompasses TB incidence, TB mortality rates, the age distribution of TB cases, the proportion of drug resistant cases, case detection rates, and treatment rates. For a complete description of the data and data collection process, see [@WHO:2018]. These data are used by the WHO, governmental organisations and researchers to summarise country level TB epidemiology, as well as the wider global and regional picture.
+The data sourced by `getBTinR` is collated by the WHO, via member governments, and used to compile the yearly global TB report.[@WHO:2018] Data collation and estimation encompasses TB incidence, TB mortality rates, the age distribution of TB cases, the proportion of drug resistant cases, case detection rates, and treatment rates. For a complete description of the data and data collection process, see [@WHO:2018]. These data are used by the WHO, governmental organisations and researchers to summarise country level TB epidemiology, as well as the wider global and regional picture.
 
 `getTBinR` provides a single user facing function for data extraction, `get_tb_burden`. This function downloads multiple datasets from the WHO, cleans variables names where required, and finally joins all datasets together. On top of the core datasets provided by default, `getTBinR` also supports importing multiple other datasets. These include data on latent TB, HIV surveillance, intervention budgets, and outcomes (see `?additional_datasets` for a full list of available datasets). To reduce unnecessary downloads, and improve performance, downloads are cached automatically. `get_tb_burden` is called by all other package functions allowing for a seamless user experience. `get_data_dict` has similar functionality to `get_tb_burden` but extracts data dictionaries rather than the underlying data. It is called by the majority of the package functions in order to provide intelligent labels.
 
@@ -131,7 +131,7 @@ To explore the package functionality in an interactive session, or to investigat
 run_tb_dashboard()
 ```
 
-Or accessed online^[Dashboard: http://www.seabbs.co.uk/shiny/ExploreGlobalTB]. Any metric in the WHO TB data can be explored, with country selection using the built in map, and animation possible by year. The shiny app can also be used to generate the country level reports discussed in the next section. Figure \@ref(fig:dash-snapshot) shows a screenshot of the dashboard, with South Africa selected as the country of interest.
+Any metric in the WHO TB data can be explored, with country selection using the built in map, and animation possible by year. The shiny app can also be used to generate the country level reports discussed in the next section. Figure \@ref(fig:dash-snapshot) shows a screenshot of the dashboard, with South Africa selected as the country of interest.
 
 ```{r dash-snapshot, echo = FALSE, fig.cap = "Snapshot of the built in package dashboard."}
 knitr::include_graphics(file.path(resources_path, "img", "ExploreGlobalTB.png"))
@@ -163,7 +163,7 @@ In this chapter I have introduced the `getTBinR` R package. `getTBinR` facilitat
 
 As of the 8th of August 2019, `getTBinR` has been released on CRAN for over a year. It has been downloaded over 10,000 times, has a growing user base, no outstanding bug-related issues, and has received multiple updates greatly expanding the functionality available. The standalone dashboard hosted online^[Dashboard: http://www.seabbs.co.uk/shiny/ExploreGlobalTB/] has had over 3000 unique users. It has been used as a teaching aid, as an example of open science, to facilitate exploratory data analysis and to provide context for other research. In this thesis, it has been used extensively in Chapter \@ref(background) to provide context and was also used as a hypothesis generating tool in all other chapters. Outside of the work presented in this thesis I have used `getTBinR` extensively as a data analysis tool^[Blog: https://www.samabbott.co.uk/tags/who/], to widen the appreciation of TB as a global health problem^[Twitter: https://twitter.com/search?q=getTBinR&src=typd; Reddit: https://www.reddit.com/user/seabbs/posts/], and to provide contextual information for other research^[Presentation: https://www.samabbott.co.uk/what-do-we-really-know-about-bcg/presentation.html#1]. 
  
-Whilst `getTBinR` is feature complete, and stable, development work continues. Future projects include: using the `shinymeta` R package to provide downloadable R code to users of the interactive application; iterating on the current automated report to improve formatting and to increase the amount of information displayed, and expanding the range of visualisation functions available. As additional WHO TB data are released they will be added to `getTBinR`.
+Whilst `getTBinR` is feature complete, and stable, development work continues. Future projects include: using the `shinymeta` R package to provide downloadable R code to users of the interactive application; iterating on the current automated report to improve formatting and to increase the amount of information displayed; and expanding the range of visualisation functions available. As additional WHO TB data are released they will be added to `getTBinR`.
 
 ## Summary
 

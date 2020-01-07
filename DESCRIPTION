@@ -21,10 +21,10 @@ Imports: tidyverse,
   bookdown,
   thesisdown,
   wordcountaddin,
-  tinytex
-Remotes: seabbs/prettypublisher,
-    seabbs/tbinenglanddataclean,
-    seabbs/getTBinR,
-    rstudio/bookdown,
-    ismayc/thesisdown,
-    benmarwick/wordcountaddin
+  tinytex,
+  stringr
+Remotes: seabbs/prettypublisher@4c3350d,
+    seabbs/tbinenglanddataclean@74e92c7,
+    seabbs/getTBinR@71a001c,
+    ismayc/thesisdown@8869cc1,
+    benmarwick/wordcountaddin@fdf70d9

@@ -3,12 +3,12 @@ output: html_document
 ---
 
 ```{r, include = FALSE}
-## Wordcount: 2934
+## Wordcount: 2946
 ```
 
 # Introduction {#introduction}
 
-Tuberculosis (TB) is one of the oldest human diseases, with recorded cases in ancient Egypt, renaissance Europe, and in the modern day across the globe. It is thought that roughly one-third of the world’s population has been infected with TB, with 1% of the world’s population being infected annually. However, the vast majority of these cases will never develop active disease. This reservoir of disease presents a challenge for control and eradication as, even if transmission can be halted, new cases will still occur for many years to come. While many people might consider TB to be a problem of the past in England, in 2017 there were 5,900 notified cases, the majority of which occurred in vulnerable communities; where incidence rates can be as much as 15 times higher than in the general population.[@PHE2017] Globally TB remains the leading cause of death from infectious disease.[@TheWorldHealthOrganization:2018va]
+Tuberculosis (TB) is one of the oldest human diseases, with recorded cases in ancient Egypt, renaissance Europe, and in the modern day across the globe.[@Stone2009] It is thought that roughly one-third of the world’s population has been infected with TB, with 1% of the world’s population being infected annually. However, the vast majority of these cases will never develop active disease. This reservoir of disease presents a challenge for control and eradication as, even if transmission can be halted, new cases will still occur for many years to come. While many people might consider TB to be a problem of the past in England, in 2017 there were 5,900 notified cases, the majority of which occurred in vulnerable populations; where incidence rates can be as much as 15 times higher than in the general population.[@PHE2017] Globally, TB remains the leading cause of death from infectious disease.[@TheWorldHealthOrganization:2018va]
 
 The Bacillus Calmette–Guérin (BCG) vaccine was developed in 1921 and was introduced to the UK in 1953. Globally, it has been shown to offer variable protection that may reduce over time.[@TheWorldHealthOrganization:2018va] However, there is strong evidence that BCG offers high levels of protection for children, and more generally within the UK born population.[@Roy2014] It remains the only licensed TB vaccine with over 100 million doses given globally each year. Serious side effects are rare but scarring commonly occurs at the site of injection. In 2005, the UK withdrew the universal BCG program for those at school age and introduced a targeted program of vaccination for babies that were deemed to be at high risk.[@Zwerling2011a] This was motivated by several years of declining transmission, the evidence of high levels of protection in children and a belief that other control measures would be more cost-effective.[@Zwerling2011a] Since this change in policy, declining incidence appears to support this decision.[@PHE2017] However, due to TB’s complex dynamics, the long-term effects are difficult to predict.
 
@@ -16,7 +16,7 @@ The availability of data is revolutionising the way we view the world; in few ot
 
 This thesis explores the impact of changing BCG policy in England, with the aim of informing global efforts to control TB. As a first step I outline some of the key background information and discuss the tooling that I developed in order to explore this information more fully. I then make use of the detailed PHE routine TB surveillance data to explore the current epidemiology of TB in England. Next, I use statistical models that make use of this data to explore the impact from the 2005 change in BCG policy. Finally I develop, and fit, a detailed, semi-sthochastic, mechanistic model of TB and BCG vaccination in England in order to forecast the ongoing impact of the change in policy versus multiple alternative scenarios. This thesis is also available as a website^[Website: https://www.samabbott.co.uk/thesis/], a pdf^[PDF: https://www.samabbott.co.uk/thesis/thesis.pdf], and a reproducible Rmarkdown document^[Rmarkdown: https://github.com/seabbs/thesis]
 
-The remainder of this chapter outlines: the theoretical framework used in this thesis; the aims and objects that were used to motivate this thesis; the chapter structure of this thesis; and the output from this thesis.
+The remainder of this chapter outlines: the theoretical framework used in this thesis; the aims and objectives that were used to motivate this thesis; the chapter structure of this thesis; and the output from this thesis.
 
 ## Theoretical framework
 
@@ -36,9 +36,9 @@ In this thesis, a variety of statistical models are used to explore complex mult
 
 ### Mechanistic modelling
 
-Mechanistic mathematical models provide an assumption based framework for understanding the transmission of infectious diseases.[@Anderson1991] Mechanistic models can be used to simplify complex real-world systems, whilst retaining a linkage to real-world processes.[@Keeling2007] This is unlike statistical models, which instead focus on modelling the underlying structure of the data generally without reference to the real-world processes. There are multiple mechanistic modelling approaches the most common being compartmental based models and individual based models.[@Anderson1991; @Keeling2007] Both of these approaches can be represented as a deterministic, semi-stochastic, or fully stochastic - both of the latter include a random component whilst the former does not. Recently, mechanistic models have been combined with statistical models to account for the fact that events may be only partially observed.[@King] Mechanistic models have an advantage over statistical models in that they can more easily be used to compare alternative scenarios over long periods of time for which observed data does not exist.
+Mechanistic mathematical models provide an assumption based framework for understanding the transmission of infectious diseases.[@Anderson1991] Mechanistic models can be used to simplify complex real-world systems, whilst retaining a linkage to real-world processes.[@Keeling2007] They are unlike statistical models, which instead focus on modelling the underlying structure of the data generally without reference to the real-world processes. There are multiple mechanistic modelling approaches, the most common being compartmental based models and individual based models.[@Anderson1991; @Keeling2007] Both of these approaches can be represented as  deterministic, semi-stochastic (deterministic with some stochastic elements),[@Funk2016a] or fully stochastic - both of the latter include a random component whilst the former does not. Recently, mechanistic models have been combined with statistical models to account for the fact that events may be only partially observed.[@King2016] Mechanistic models have an advantage over statistical models in that they can more easily be used to compare alternative scenarios over long periods of time for which observed data does not exist.
 
-In this thesis, a partially observed semi-stochastic compartmental model of TB is developed that models demographic processes such as ageing, births and deaths, as well as vaccination and TB treatment (Chapter \@ref(model-development)). Compartmental infectious disease models generally operate by separating a given population into a series of groups, most commonly susceptible, infectious and recovered populations.[@Anderson1991; @Keeling2007] Movements between these groups are then modeled using a series of differential equations. Transmission is modeled using mass action,[@Anderson1991; @Keeling2007] where infected cases are assumed to randomly interact with susceptible individuals at a rate dictated by the concentration of susceptibles in the population. Additional detail can be added to this model by stratifying the population further and adding additional parameters to modify the degree of mixing between populations. Transition between compartments is assumed to be exponential. See [@Anderson1991; @Keeling2007] for a theoretical introduction to infectious disease models and [@King] for implementation details using R.
+In this thesis, a partially observed semi-stochastic compartmental model of TB is developed that models demographic processes such as ageing, births and deaths, as well as vaccination and TB treatment (Chapter \@ref(model-development)). Compartmental infectious disease models generally operate by separating a given population into a series of groups, most commonly susceptible, infectious and recovered populations.[@Anderson1991; @Keeling2007] Movements between these groups are then modeled using a series of differential equations. Transmission is modeled using mass action,[@Anderson1991; @Keeling2007] where infected cases are assumed to randomly interact with susceptible individuals at a rate dictated by the concentration of susceptibles in the population. Additional detail can be added to this model by stratifying the population further and adding additional parameters to modify the degree of mixing between populations. Transition between compartments is assumed to be exponential. See [@Anderson1991; @Keeling2007] for a theoretical introduction to infectious disease models and [@King2016] for implementation details using R.
 
 ## Aims and objectives of the thesis 
 
@@ -59,7 +59,7 @@ To understand the impact of BCG vaccination on the epidemiology of TB in England
 
 ## Chapter overview
 
-* **Chapter \@ref(background):** Background information is given on TB and the BCG vaccine. This information helps motivate future chapters and is useful for non-subject area experts. 
+* **Chapter \@ref(background):** Background information is given on TB and the BCG vaccine. This information helps motivate future chapters and may be useful for non-subject area experts. 
 
 * **Chapter \@ref(getTBinR):** `getTBinR`, an R package that facilitates downloading TB relevant data from the World Health Organization and provides functionality for visualising the downloaded data, is introduced. The motivation and context for this package as part of the wider thesis is also outlined.
 
@@ -73,7 +73,7 @@ To understand the impact of BCG vaccination on the epidemiology of TB in England
 
 * **Chapter \@ref(model-development):** In this chapter a mechanistic model of TB and BCG vaccination in England is developed. The model structure is justified based on the known epidemiology of TB in England. Model parameters are given prior distributions based on routine surveillance data (Chapter \@ref(data)), the published literature, and assumptions based on expert knowledge where no other source exists. 
 
-* **Chapter \@ref(model-fitting):** In this chapter the model developed in the previous chapter is fitted to the routine surveillance data (Chapter \@ref(data)) using bayesian methods. Multiple scenarios are considered. 
+* **Chapter \@ref(model-fitting):** In this chapter the model developed in the previous chapter is fitted to the routine surveillance data (Chapter \@ref(data)) using Bayesian methods. Multiple scenarios are considered. 
 
 * **Chapter \@ref(model-results):** In this chapter the model, developed and fitted in the previous chapters, is used to forecast the impact of universal BCG vaccination at school-age vs. universal vaccination of neonates vs. no vaccination from 2005 on-wards. The ongoing impact of each policy is then discussed through to 2040.
 
@@ -90,11 +90,11 @@ Journal of Open Source Software, 2019, 4(34), 1260., doi: https://doi.org/10.211
 
 * Abbott, S., Christensen, H., Lalor, M. K., Zenner, D., Campbell, C., Ramsay, M. E., & Brooks-Pollock, E. (2019). *Exploring the effects of BCG vaccination in patients diagnosed with tuberculosis: Observational study using the Enhanced Tuberculosis Surveillance system*. Vaccine, 1–6. doi: http://doi.org/10.1016/j.vaccine.2019.06.056 (preprint: https://doi.org/10.1101/366476)
 
+* Abbott S., Christensen H., Welton N.J., Brooks-Pollock E. (2019) *Estimating the effect of the 2005 change in BCG policy in England: a retrospective cohort study, 2000 to 2015*. Eurosurveillance, 49(24). doi: https://doi.org/10.2807/1560-7917.ES.2019.24.49.1900220 (preprint: https://doi.org/10.1101/567511)
+
 ### Papers under review
 
-* Abbott S, Christensen H, Brooks-Pollock E. *Reassessing the evidence for universal school-age Bacillus Calmette Guerin (BCG) vaccination in England and Wales*, doi: https://doi.org/10.1101/567511 
-
-* Abbott S, Christensen H, Welton NJ, Brooks-Pollock E. *Estimating the effect of the 2005 change in BCG policy in England: A retrospective cohort study*, doi: https://doi.org/10.1101/567511
+* Abbott S., Christensen H., Brooks-Pollock E. *Reassessing the evidence for universal school-age BCG vaccination in England and Wales*, doi: https://doi.org/10.1101/567511 
 
 ### Software
 
@@ -106,23 +106,23 @@ Journal of Open Source Software, 2019, 4(34), 1260., doi: https://doi.org/10.211
 
 * **`idmodelr`**: An R package that contains a library  of infectious disease models as well as modelling utilities. It provides tooling that includes: example SEI/SEIR/SHLIR/SHLITR model code, a model solving wrapper; a model summary function; and a scenario analysis function. Used by the explore infectious disease model dashboard (http://seabbs.co.uk/shiny/exploreidmodels/) for all functionality. Available from CRAN using `install.packages("idmodelr")` or install the development version from GitHub with `devtools::install_github("seabbs/idmodelr")`. Link: https://www.samabbott.co.uk/idmodelr/
 
-* **`prettypublisher`**: An R package that improves the R based reproducible research workflow. It provides tooling that includes: paper and figure referencing; effect size reporting; percentage reporting; P value reporting; and produces a table ready for further word processing. Used throughout this thesis. Available from GitHub using `devtools::install_github("seabbs/prettypublisher")`. Link: https://www.samabbott.co.uk/prettypublisher/
+* **`prettypublisher`**: An R package that improves the R based reproducible research workflow. It provides tooling that includes: paper and figure referencing; effect size reporting; percentage reporting; p-value reporting; and produces a table ready for further word processing. Used throughout this thesis. Available from GitHub using `devtools::install_github("seabbs/prettypublisher")`. Link: https://www.samabbott.co.uk/prettypublisher/
 
 #### Interactive tools
 
-* **Explore global Tuberculosis**: Developed to showcase `geTBinR` (https://www.samabbott.co.uk/getTBinR/) package functionality. This dashboard allows the interactive exploration of WHO TB data. It can also be used to generate a static, country level, report on TB epidemiology. Link: http://seabbs.co.uk/shiny/ExploreGlobalTB/
+* **Explore global Tuberculosis**: Developed to showcase `geTBinR` (https://www.samabbott.co.uk/getTBinR/) package functionality. This dashboard allows the interactive exploration of WHO TB data. It can also be used to generate a static, country level, report on TB epidemiology. Link: https://github.com/seabbs/getTBinR/
 
-* **Explore Tuberculosis in England and Wales**: Developed to allow public Public Health England TB Notification data to be explored interactively. Key interventions are highlighted and link to trends in TB notifications. This app is used in its static form in Chapter \@ref(background). Link: http://seabbs.co.uk/shiny/TB_England_Wales/
+* **Explore Tuberculosis in England and Wales**: Developed to allow public Public Health England TB Notification data to be explored interactively. Key interventions are highlighted and link to trends in TB notifications. This app is used in its static form in Chapter \@ref(background). Link: https://github.com/seabbs/TB_England_Wales/
 
-* **Explore infectious disease models**: Developed to be used within a modelling short course at the University of Bristol (https://github.com/bristolmathmodellers/biddmodellingcourse). This dashboard allows the user to simulate and compare a variety of compartmental infectious disease models. All model code is surfaced in an easily view-able format to allow for users to develop their own models. Link: http://seabbs.co.uk/shiny/exploreidmodels/
+* **Explore infectious disease models**: Developed to be used within a modelling short course at the University of Bristol (https://github.com/bristolmathmodellers/biddmodellingcourse). This dashboard allows the user to simulate and compare a variety of compartmental infectious disease models. All model code is surfaced in an easily view-able format to allow for users to develop their own models. Link: https://github.com/seabbs/exploreidmodels/
 
-* **Introduction to Tuberculosis models**: Developed to allow simple TB models to be explored in an interactive session. Inspired by practicals from the Introduction to TB, run by TB MAC (http://tb-mac.org/) at the 2017 Union conference. Link: http://seabbs.co.uk/shiny/intro_to_tb_models/
+* **Introduction to Tuberculosis models**: Developed to allow simple TB models to be explored in an interactive session. Inspired by practicals from the Introduction to TB, run by TB MAC (http://tb-mac.org/) at the 2017 Union conference. Link: https://github.com/seabbs/intro_to_tb_models/
 
-* **The pebble game**: Developed as a learning aid to help a general audience understand the impact of vaccination on infectious disease dynamics. Used at Green Man 2016 as part of a week of outreach work and subsequently developed further. Link: http://seabbs.co.uk/shiny/thepebblegame/
+* **The pebble game**: Developed as a learning aid to help a general audience understand the impact of vaccination on infectious disease dynamics. Used at Green Man 2016 as part of a week of outreach work and subsequently developed further. Link: https://github.com/seabbs/thepebblegame/
 
 ### Talks
 
-* **Assessing the Evidence for Universal Bacillus Calmette-Guèrin (BCG) Vaccination in England** - Research and Applied Epidemiology Scientific Conference 2016, Warwick, United Kingdom. Received best abstract from an early career researcher. Link: https://www.samabbott.co.uk/talk/phe-applied_epi-2016/
+* **Assessing the Evidence for Universal BCG Vaccination in England** - Research and Applied Epidemiology Scientific Conference 2016, Warwick, United Kingdom. Received best abstract from an early career researcher. Link: https://www.samabbott.co.uk/talk/phe-applied_epi-2016/
 
 * **Beneficial effects of BCG vaccination in outcomes for patients with active TB: observational study using the Enhanced Tuberculosis surveillance system 2000-2014** - Research and Applied Epidemiology Scientific Conference 2017, Warwick, United Kingdom. Received best PhD student abstract. Link: https://www.samabbott.co.uk/talk/phe-applied-epi-2017/
 

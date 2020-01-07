@@ -93,7 +93,7 @@ plot_age_year_case_rate <- function(df, RateVar, year_strat = NULL, min_y = 0,  
     theme(axis.text.x = element_text(angle = 90, hjust = 1),
           legend.position = "top") +
     facet_wrap(~ CoB) +
-    labs(y = "Case rate (square root shown)", 
+    labs(y = "Case rate (square root scale)", 
          x = "Age group") +
     guides(fill = guide_legend(title = "BCG vaccination"),
            colour = guide_legend(title = "BCG vaccination"))

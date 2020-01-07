@@ -19,7 +19,8 @@ age_dist_pop <- demographics %>%
   scale_color_viridis_d(end = 0.9) +
   scale_y_continuous(labels = percent) +
   theme_minimal() +
-  labs(y = "Percentage of the total population") +
+  labs(y = "Percentage of the total population",
+       x = "Age group") +
   theme(axis.text.x = element_text(angle = 90)) +
   theme(plot.title = element_text(hjust = 0),
         legend.position = "top")
